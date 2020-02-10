@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>android studio 真机调试</title>
+    <url>/2020/02/10/android-run-on-a-real-device/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Android studio调试的时候可以运行在模拟器，也可以在真机上运行，本文记录一下真机（MIUI10）调试的前期准备。</p>
+<a id="more"></a>
+<h3 id="Windows设置"><a href="#Windows设置" class="headerlink" title="Windows设置"></a>Windows设置</h3><p>打开AS，点击File–&gt;Setting–&gt;Appearance &amp; Behavior–&gt;System Setting–&gt;Android SDK，在SDK Platforms下勾选真机Android版本相应的SDK。</p>
+<p><img src="/images/pasted-9.png" alt="upload successful"></p>
+<p>在SDK Tools目录下勾选Google Usb Driver，点击Apply，AS会自动下载Usb驱动，并记下Android SDK location。</p>
+<p><img src="/images/pasted-10.png" alt="upload successful"></p>
+<p>数据线连接手机，windows打开设备管理器，点击便携设备，</p>
+<p><img src="/images/pasted-11.png" alt="upload successful"></p>
+<p>点击相应的设备MI 5 ，选择驱动程序，更新驱动程序，浏览我的计算机以查找更新驱动程序，输入目录：AS中记下的SDK目录\extras\google\usb_driver，并安装。<br><img src="/images/pasted-12.png" alt="upload successful"></p>
+<p><img src="/images/pasted-14.png" alt="upload successful"></p>
+<p><img src="/images/pasted-13.png" alt="upload successful"></p>
+<h3 id="手机设置"><a href="#手机设置" class="headerlink" title="手机设置"></a>手机设置</h3><p>首先要打开开发者模式（每款手机的开发者模式打开方式不同，大家自行搜索），以小米为例，“设置-我的设备-全部参数-多次点击MIUI版本（有提示），如此便进入“开发者模式”了，在“更多设置”找到开发者选项，打开“USB调试” “USB安装”，并把滚动条滚到最下面，关掉“启用MIUI优化”。</p>
+<p>如此便可以进入android studio调试安装了。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>android studio http proxy for sdk </title>
     <url>/2020/02/02/andorid-studio-proxy-setting/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>闲来无事，研究一下安卓的开发，并记录一下开发工具android studio的配置，主要是安装时要下载android sdk，又因长城的原因，需要设置国内镜像，或者如果你能科学上网的话，设置http proxy也可。</p>

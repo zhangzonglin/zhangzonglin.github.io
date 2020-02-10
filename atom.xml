@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglin.xyz/"/>
-  <updated>2020-02-07T03:49:55.860Z</updated>
+  <updated>2020-02-10T03:52:02.193Z</updated>
   <id>http://blog.zhangzonglin.xyz/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>android studio 真机调试</title>
+    <link href="http://blog.zhangzonglin.xyz/2020/02/10/android-run-on-a-real-device/"/>
+    <id>http://blog.zhangzonglin.xyz/2020/02/10/android-run-on-a-real-device/</id>
+    <published>2020-02-10T02:30:56.000Z</published>
+    <updated>2020-02-10T03:52:02.193Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Android studio调试的时候可以运行在模拟器，也可以在真机上运行，本文记录一下真机（MIUI10）调试的前期准备。</p><a id="more"></a><h3 id="Windows设置"><a href="#Windows设置" class="headerlink" title="Windows设置"></a>Windows设置</h3><p>打开AS，点击File–&gt;Setting–&gt;Appearance &amp; Behavior–&gt;System Setting–&gt;Android SDK，在SDK Platforms下勾选真机Android版本相应的SDK。</p><p><img src="/images/pasted-9.png" alt="upload successful"></p><p>在SDK Tools目录下勾选Google Usb Driver，点击Apply，AS会自动下载Usb驱动，并记下Android SDK location。</p><p><img src="/images/pasted-10.png" alt="upload successful"></p><p>数据线连接手机，windows打开设备管理器，点击便携设备，</p><p><img src="/images/pasted-11.png" alt="upload successful"></p><p>点击相应的设备MI 5 ，选择驱动程序，更新驱动程序，浏览我的计算机以查找更新驱动程序，输入目录：AS中记下的SDK目录\extras\google\usb_driver，并安装。<br><img src="/images/pasted-12.png" alt="upload successful"></p><p><img src="/images/pasted-14.png" alt="upload successful"></p><p><img src="/images/pasted-13.png" alt="upload successful"></p><h3 id="手机设置"><a href="#手机设置" class="headerlink" title="手机设置"></a>手机设置</h3><p>首先要打开开发者模式（每款手机的开发者模式打开方式不同，大家自行搜索），以小米为例，“设置-我的设备-全部参数-多次点击MIUI版本（有提示），如此便进入“开发者模式”了，在“更多设置”找到开发者选项，打开“USB调试” “USB安装”，并把滚动条滚到最下面，关掉“启用MIUI优化”。</p><p>如此便可以进入android studio调试安装了。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;Android studio调试的时候可以运行在模拟器，也可以在真机上运行，本文记录一下真机（MIUI10）调试的前期准备。&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>android studio http proxy for sdk </title>
@@ -44,7 +63,7 @@
     <link href="http://blog.zhangzonglin.xyz/2020/01/30/pac/"/>
     <id>http://blog.zhangzonglin.xyz/2020/01/30/pac/</id>
     <published>2020-01-30T09:46:31.000Z</published>
-    <updated>2020-01-30T10:25:01.179Z</updated>
+    <updated>2020-02-10T14:26:47.441Z</updated>
     
     <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>科学上网PAC模式，有时会需要自己在pac.txt里添加一些被墙的URL，记录一下url通配的规则，以备以后使用。</p><a id="more"></a><ol><li>通配符支持。比如 .example.com/ 实际书写时可省略 * ， 如 .example.com/ ， 和 *.example.com/ 效果一样</li><li>正则表达式支持。以 \ 开始和结束， 如 [\w]+://example.com\</li><li>例外规则 @@ ，如 @@.example.com/ 满足 @@ 后规则的地址不使用代理</li><li>匹配地址开始和结尾 | ，如 |<a href="http://example.com" target="_blank" rel="noopener">http://example.com</a> 、 example.com| 分别表示以 <a href="http://example.com" target="_blank" rel="noopener">http://example.com</a> 开始和以 example.com 结束的地址</li><li>|| 标记，如 ||example.com 则 <a href="http://example.com" target="_blank" rel="noopener">http://example.com</a> 、 <a href="https://example.com" target="_blank" rel="noopener">https://example.com</a> 、 <a href="ftp://example.com" target="_blank" rel="noopener">ftp://example.com</a> 等地址均满足条件</li><li>注释 ! 。 如 !我是注释<br>v2rayN需重启生效。</li></ol>]]></content>
     
