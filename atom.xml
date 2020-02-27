@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglin.xyz/"/>
-  <updated>2020-02-14T03:22:23.037Z</updated>
+  <updated>2020-02-27T14:50:12.732Z</updated>
   <id>http://blog.zhangzonglin.xyz/</id>
   
   <author>
@@ -15,6 +15,48 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>java自定义类equal重写</title>
+    <link href="http://blog.zhangzonglin.xyz/2020/02/27/ava-equal/"/>
+    <id>http://blog.zhangzonglin.xyz/2020/02/27/ava-equal/</id>
+    <published>2020-02-27T14:47:14.000Z</published>
+    <updated>2020-02-27T14:50:12.732Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>判断两个对象在逻辑上是否相等，有时需要根据类的某些成员变量来判断两个实例是否相等，而继承Object中的equals方法比较的只是对象的引用是否指向同一块内存地址。这时候便需要重写equals()方法了。</p><a id="more"></a><p>比较的常用对象如int，float和String等，已重写了equals和hashcode方法，默认比较的是值，而其它自定义对象在用equal时都是比较的引用地址，故此有需要的时候需要重写equal方法。</p><h3 id="重写equal的要求"><a href="#重写equal的要求" class="headerlink" title="重写equal的要求"></a>重写equal的要求</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public boolean equals(Object obj) &#123;  </span><br><span class="line">        if(this &#x3D;&#x3D; obj) &#123;  </span><br><span class="line">            return true;  </span><br><span class="line">        &#125;  </span><br><span class="line">        if(null &#x3D;&#x3D; obj) &#123;  </span><br><span class="line">            return false;  </span><br><span class="line">        &#125;  </span><br><span class="line">       if (obj instanceof Test)&#123;</span><br><span class="line">            Test o &#x3D; (Test) obj;</span><br><span class="line">            return this.id &#x3D;&#x3D; o.id;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p>重写equals方法的要求：<br>1、自反性：对于任何非空引用x，x.equals(x)应该返回true。<br>2、对称性：对于任何引用x和y，如果x.equals(y)返回true，那么y.equals(x)也应该返回true。<br>3、传递性：对于任何引用x、y和z，如果x.equals(y)返回true，y.equals(z)返回true，那么x.equals(z)也应该返回true。<br>4、一致性：如果x和y引用的对象没有发生变化，那么反复调用x.equals(y)应该返回同样的结果。<br>5、非空性：对于任意非空引用x，x.equals(null)应该返回false。</p><h3 id="hashCode方法也要重写"><a href="#hashCode方法也要重写" class="headerlink" title="hashCode方法也要重写"></a>hashCode方法也要重写</h3><p>问什么说<strong>重写了equals方法都要进而重写Hashcode方法</strong>呢？</p><p>原因如下：当equals此方法被重写时，通常有必要重写 hashCode 方法，以维护 hashCode 方法的常规协定，该协定声明相等对象必须具有相等的哈希码。如下：</p><p>(1)当obj1.equals(obj2)为true时，obj1.hashCode() == obj2.hashCode()必须为true<br>(2)当obj1.hashCode() == obj2.hashCode()为false时，obj1.equals(obj2)必须为false</p><p>   &emsp;&emsp;hashcode是用于散列数据的快速存取，如利用HashSet/HashMap/Hashtable类来存储数据时，都是根据存储对象的hashcode值来进行判断是否相同的。</p><p>   &emsp;&emsp;以HashMap为例说一下的原理，HashMap存储数据的时候，是取的key值的哈希值，然后计算数组下标，采用链地址法解决冲突，然后进行存储；取数据的时候，依然是先要获取到hash值，找到数组下标，然后for遍历链表集合，进行比较是否有对应的key。比较关心的有2点：<br>  &emsp;&emsp; 1.不管是put还是get的时候，都需要得到key的哈希值，去定位key的数组下标；<br>   &emsp;&emsp;2.在get的时候，需要调用equals方法比较是否有相等的key存储过。</p><p>   更详细具体的可以看<a href="https://www.jianshu.com/p/75d9c2c3d0c1" target="_blank" rel="noopener">这篇博文</a>或者<a href="https://www.cnblogs.com/silence-hust/p/4510574.html" target="_blank" rel="noopener">这一篇</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;判断两个对象在逻辑上是否相等，有时需要根据类的某些成员变量来判断两个实例是否相等，而继承Object中的equals方法比较的只是对象的引用是否指向同一块内存地址。这时候便需要重写equals()方法了。&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>RxJava --学习链接</title>
+    <link href="http://blog.zhangzonglin.xyz/2020/02/18/xJava/"/>
+    <id>http://blog.zhangzonglin.xyz/2020/02/18/xJava/</id>
+    <published>2020-02-18T01:48:00.000Z</published>
+    <updated>2020-02-26T14:48:56.029Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Rx（Reactive Extensions）是一个使用<code>可观察数据流</code>进行<code>异步编程</code>的编程接口，ReactiveX结合了<code>观察者模式</code>、<code>迭代器模式</code>和<code>函数式编程</code>的精华。Rx的语言库比较流行的有RxJava/RxJS/Rx.NET，这里贴一些有关RxJava的链接，以便后续查找。</p><a id="more"></a><p><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/" target="_blank" rel="noopener">Rx中文文档</a><br><a href="https://www.jianshu.com/p/03a72a5a2049" target="_blank" rel="noopener">RxJava心得</a><br><a href="https://blog.lixplor.com/2016/10/16/rxjava/" target="_blank" rel="noopener">RxJava操作符</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;Rx（Reactive Extensions）是一个使用&lt;code&gt;可观察数据流&lt;/code&gt;进行&lt;code&gt;异步编程&lt;/code&gt;的编程接口，ReactiveX结合了&lt;code&gt;观察者模式&lt;/code&gt;、&lt;code&gt;迭代器模式&lt;/code&gt;和&lt;code&gt;函数式编程&lt;/code&gt;的精华。Rx的语言库比较流行的有RxJava/RxJS/Rx.NET，这里贴一些有关RxJava的链接，以便后续查找。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="java" scheme="http://blog.zhangzonglin.xyz/categories/java/"/>
+    
+    
+      <category term="RxJava" scheme="http://blog.zhangzonglin.xyz/tags/RxJava/"/>
+    
+  </entry>
   
   <entry>
     <title>android studio多语言(中英)适配</title>
@@ -32,29 +74,6 @@
     </summary>
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>git 使用代理</title>
-    <link href="http://blog.zhangzonglin.xyz/2020/02/12/git-use-proxy/"/>
-    <id>http://blog.zhangzonglin.xyz/2020/02/12/git-use-proxy/</id>
-    <published>2020-02-11T16:03:00.000Z</published>
-    <updated>2020-02-12T06:49:01.543Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>上国特色，使用git clone下载同性交友网站（github）的仓库时，巨慢！如果可以科学上网的话，设置一下代理，加一下油…</p><a id="more"></a><p>本文用的trojan科学上网，利用它的socks5代理加速。配置命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy &#39;socks5:&#x2F;&#x2F;127.0.0.1:1080&#39; </span><br><span class="line">git config --global https.proxy &#39;socks5:&#x2F;&#x2F;127.0.0.1:1080&#39;</span><br></pre></td></tr></table></figure><p>取消代理的命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;上国特色，使用git clone下载同性交友网站（github）的仓库时，巨慢！如果可以科学上网的话，设置一下代理，加一下油…&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="proxy" scheme="http://blog.zhangzonglin.xyz/tags/proxy/"/>
-    
-      <category term="git " scheme="http://blog.zhangzonglin.xyz/tags/git/"/>
     
   </entry>
   
@@ -145,20 +164,22 @@
   </entry>
   
   <entry>
-    <title>git命令：提交到多个git 远端</title>
+    <title>git学习笔记</title>
     <link href="http://blog.zhangzonglin.xyz/2020/01/18/git-command/"/>
     <id>http://blog.zhangzonglin.xyz/2020/01/18/git-command/</id>
     <published>2020-01-17T20:29:00.000Z</published>
-    <updated>2020-01-17T22:15:18.443Z</updated>
+    <updated>2020-02-26T16:12:20.903Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>前面已经本地生成博客页面，然后git部署到VPS远端，就打算顺便也部署到github。下面就通过把本地的文件提交到两个git远端(Remote)的事例，了解git命令的使用。详情链接：<a href="https://gist.github.com/guweigang/9848271" target="_blank" rel="noopener">git命令大全</a></p><a id="more"></a><p>切换到指定目录（以目录hexo下的.deploy_git文件夹为例）</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git init        &#x2F;&#x2F;初始化一个git的本地仓库(以前hexo deploy的时候已经有了本地仓库，配置信息在隐藏文件夹.git里)</span><br><span class="line">git add myfile. &#x2F;&#x2F;将myfile加入暂存区index（</span><br><span class="line">git commit -m “first commit” &#x2F;&#x2F;把暂存区的文件提交到本地仓库</span><br><span class="line">git remote add Name1 git@vps的IP:hexo.git &#x2F;&#x2F;增加一个新的远程仓库，并命名为Name1</span><br><span class="line">git push -u Name1 master &#x2F;&#x2F;把分支master的内容push到远程仓库</span><br><span class="line">git remote add Name2 git@github.com:yourname&#x2F;yourname.github.io.git</span><br><span class="line"> &#x2F;&#x2F;添加第二个远程仓库，并命名为Name2</span><br><span class="line">git push -u Name2 master &#x2F;&#x2F;将分支master的内容push到第二个远程仓库</span><br></pre></td></tr></table></figure><p>至此，就将本地文件提交到两个远端仓库了。<br>ps:由于我的github的yourname.github.io仓库里已经有了文件，所以push的时候会报错：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">error: failed to push some refs to &#39;git@github.com:yourname&#x2F;yourname.github.io.git&#39;</span><br><span class="line">hint: Updates were rejected because the remote contains work that you do</span><br><span class="line">hint: not have locally. This is usually caused by another repository pushing</span><br><span class="line">hint: to the same ref. You may want to first integrate the remote changes</span><br><span class="line">hint: (e.g., &#39;git pull ...&#39;) before pushing again.</span><br><span class="line">hint: See the &#39;Note about fast-forwards&#39; in &#39;git push --help&#39; for details.</span><br></pre></td></tr></table></figure><p>解决方法：<br>$ git push -f Name2 master</p>]]></content>
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>以前使用SVN,切换到分布式版本控制系统Git，此笔记记录一下学习心得，备询。<a href="https://gist.github.com/guweigang/9848271" target="_blank" rel="noopener">git命令大全</a>，贴一个网页，比较<a href="https://www.liaoxuefeng.com/wiki/896043488029600/896067008724000" target="_blank" rel="noopener">适合初次接触者</a></p><a id="more"></a><h3 id="git配置代理"><a href="#git配置代理" class="headerlink" title="git配置代理"></a>git配置代理</h3><p>天朝特色，使用git clone下载同性交友网站（github）的仓库时，巨慢！如果可以科学上网的话，设置一下代理，加一下速…<br>本文用的trojan科学上网，利用它的socks5代理加速。配置命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy &#39;socks5:&#x2F;&#x2F;127.0.0.1:1080&#39; </span><br><span class="line">git config --global https.proxy &#39;socks5:&#x2F;&#x2F;127.0.0.1:1080&#39;</span><br></pre></td></tr></table></figure><p>取消代理的命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure><h3 id="git提交到多个remote"><a href="#git提交到多个remote" class="headerlink" title="git提交到多个remote"></a>git提交到多个remote</h3><p>本地生成博客页面，git部署到VPS远端，也顺便也部署到github。下面就通过把本地的文件提交到两个git远端(Remote)的事例，了解git命令的使用。<br>切换到指定目录（以目录hexo下的.deploy_git文件夹为例）</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git init        &#x2F;&#x2F;初始化一个git的本地仓库(以前hexo deploy的时候已经有了本地仓库，配置信息在隐藏文件夹.git里)</span><br><span class="line">git add myfile. &#x2F;&#x2F;将myfile加入暂存区index（</span><br><span class="line">git commit -m “first commit” &#x2F;&#x2F;把暂存区的文件提交到本地仓库</span><br><span class="line">git remote add Name1 git@vps的IP:hexo.git &#x2F;&#x2F;增加一个新的远程仓库，并命名为Name1</span><br><span class="line">git push -u Name1 master &#x2F;&#x2F;把分支master的内容push到远程仓库</span><br><span class="line">git remote add Name2 git@github.com:yourname&#x2F;yourname.github.io.git</span><br><span class="line"> &#x2F;&#x2F;添加第二个远程仓库，并命名为Name2</span><br><span class="line">git push -u Name2 master &#x2F;&#x2F;将分支master的内容push到第二个远程仓库</span><br></pre></td></tr></table></figure><p>至此，就将本地文件提交到两个远端仓库了。<br>ps:由于我的github的yourname.github.io仓库里已经有了文件，所以push的时候会报错：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">error: failed to push some refs to &#39;git@github.com:yourname&#x2F;yourname.github.io.git&#39;</span><br><span class="line">hint: Updates were rejected because the remote contains work that you do</span><br><span class="line">hint: not have locally. This is usually caused by another repository pushing</span><br><span class="line">hint: to the same ref. You may want to first integrate the remote changes</span><br><span class="line">hint: (e.g., &#39;git pull ...&#39;) before pushing again.</span><br><span class="line">hint: See the &#39;Note about fast-forwards&#39; in &#39;git push --help&#39; for details.</span><br></pre></td></tr></table></figure><p>解决方法：<br>$ git push -f Name2 master</p><h3 id="git-pull冲突"><a href="#git-pull冲突" class="headerlink" title="git pull冲突"></a>git pull冲突</h3><p>从github上fork了一个项目，并clone到本地，做了一些删改后，想要提交到github个人仓库，但发现作者项目更新了，便把fork来的项目通过New pull request和原项目同步更新了。这时本地在用git pull更新项目时，遇到了下面的问题：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">error: Your local changes to the following files would be overwritten by merge: xxx&#x2F;xxx&#x2F;xxx </span><br><span class="line">Please, commit your changes or stash them before you can merge. </span><br><span class="line">Aborting</span><br></pre></td></tr></table></figure><p>解决方法两种：</p><h4 id="覆盖本地修改"><a href="#覆盖本地修改" class="headerlink" title="覆盖本地修改"></a>覆盖本地修改</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure><p>这种会放弃本地修改的代码，看情况使用。</p><h4 id="使用git-stash"><a href="#使用git-stash" class="headerlink" title="使用git stash"></a>使用git stash</h4><p>这种会保留自己本地修改</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git stash</span><br><span class="line">git pull</span><br><span class="line">git stash pop</span><br></pre></td></tr></table></figure><p>git stash: 备份当前的工作区的内容，从最近的一次提交中读取相关内容，让工作区保证和上次提交的内容一致。同时，将当前的工作区内容保存到Git栈中。<br>git stash pop: 从Git栈中读取最近一次保存的内容，恢复工作区的相关内容。由于可能存在多个Stash的内容，所以用栈来管理，pop会从最近的一个stash中读取内容并恢复。<br>git stash list: 显示Git栈内的所有备份，可以利用这个列表来决定从那个地方恢复。<br>git stash clear: 清空Git栈。此时使用gitg等图形化工具会发现，原来stash的哪些节点都消失了。</p><p>最后就可以diff一下文件看看自动合并的情况，并对解决冲突文件做相应修改后提交即可。</p>]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;前面已经本地生成博客页面，然后git部署到VPS远端，就打算顺便也部署到github。下面就通过把本地的文件提交到两个git远端(Remote)的事例，了解git命令的使用。详情链接：&lt;a href=&quot;https://gist.github.com/guweigang/9848271&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;git命令大全&lt;/a&gt;&lt;/p&gt;
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;以前使用SVN,切换到分布式版本控制系统Git，此笔记记录一下学习心得，备询。&lt;a href=&quot;https://gist.github.com/guweigang/9848271&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;git命令大全&lt;/a&gt;，贴一个网页，比较&lt;a href=&quot;https://www.liaoxuefeng.com/wiki/896043488029600/896067008724000&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;适合初次接触者&lt;/a&gt;&lt;/p&gt;
     
     </summary>
     
+    
+      <category term="git" scheme="http://blog.zhangzonglin.xyz/categories/git/"/>
     
     
       <category term="git" scheme="http://blog.zhangzonglin.xyz/tags/git/"/>
