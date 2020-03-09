@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglin.xyz/"/>
-  <updated>2020-03-05T02:56:02.831Z</updated>
+  <updated>2020-03-09T07:15:37.907Z</updated>
   <id>http://blog.zhangzonglin.xyz/</id>
   
   <author>
@@ -15,6 +15,110 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>spring 线程安全</title>
+    <link href="http://blog.zhangzonglin.xyz/2020/03/09/pring-%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/"/>
+    <id>http://blog.zhangzonglin.xyz/2020/03/09/pring-%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/</id>
+    <published>2020-03-09T06:46:00.000Z</published>
+    <updated>2020-03-09T07:15:37.907Z</updated>
+    
+    <content type="html"><![CDATA[<p>转载：<a href="https://www.cnblogs.com/kismetv/p/8757260.html" target="_blank" rel="noopener"><strong>Spring中获取request的几种方法，及其线程安全性分析</strong></a>、<strong><a href="https://www.jianshu.com/p/e04491f3550f" target="_blank" rel="noopener">Spring 如何保证线程安全</a></strong>、<strong><a href="https://blog.csdn.net/cs408/article/details/48972653" target="_blank" rel="noopener">Spring中Singleton模式的线程安全</a></strong></p><h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><p>&emsp;每启动一个线程，JVM都会为它分配一个Java栈，用于存放方法中的局部变量，操作</p><a id="more"></a><p>数以及异常数据等。当线程调用某个方法时，JVM会根据方法区中该方法的字节码组建一个栈帧。并将该栈帧压入Java栈中，方法执行完毕时，JVM会弹出该栈帧并释放掉。</p><p>&emsp;注意：Java栈中的数据是线程私有的，一个线程是无法访问另一个线程的Java栈的数据。这也就是为什么多线程编程时，两个相同线程执行同一方法时，对方法内的局部变量是不需要数据同步的原因。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;转载：&lt;a href=&quot;https://www.cnblogs.com/kismetv/p/8757260.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;strong&gt;Spring中获取request的几种方法，及其线程安全性分析&lt;/strong&gt;&lt;/a&gt;、&lt;strong&gt;&lt;a href=&quot;https://www.jianshu.com/p/e04491f3550f&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Spring 如何保证线程安全
+&lt;/a&gt;&lt;/strong&gt;、&lt;strong&gt;&lt;a href=&quot;https://blog.csdn.net/cs408/article/details/48972653&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Spring中Singleton模式的线程安全
+&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;备注&quot;&gt;&lt;a href=&quot;#备注&quot; class=&quot;headerlink&quot; title=&quot;备注&quot;&gt;&lt;/a&gt;备注&lt;/h3&gt;&lt;p&gt;&amp;emsp;每启动一个线程，JVM都会为它分配一个Java栈，用于存放方法中的局部变量，操作&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="java" scheme="http://blog.zhangzonglin.xyz/categories/java/"/>
+    
+    
+      <category term="spring" scheme="http://blog.zhangzonglin.xyz/tags/spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>jvm-invokeinterface</title>
+    <link href="http://blog.zhangzonglin.xyz/2020/03/09/vm-invokeinterface/"/>
+    <id>http://blog.zhangzonglin.xyz/2020/03/09/vm-invokeinterface/</id>
+    <published>2020-03-09T05:57:00.000Z</published>
+    <updated>2020-03-09T06:01:48.588Z</updated>
+    
+    <content type="html"><![CDATA[<p>转载：<a href="https://blog.csdn.net/kang389110772/article/details/50723127" target="_blank" rel="noopener">Spring为什么Autowired注入的是接口</a>、</p><p><a href="https://github.com/1993hzh/thoughts/issues/5" target="_blank" rel="noopener">浅析JVM中invokevirtual与invokeinterface的区别 #5</a>、</p><p><a href="https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.6.3" target="_blank" rel="noopener">Java Virtual Machine Specification</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;转载：&lt;a href=&quot;https://blog.csdn.net/kang389110772/article/details/50723127&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Spring为什么Autowired注入的是接口
+&lt;/a&gt;、&lt;/
+      
+    
+    </summary>
+    
+    
+      <category term="java" scheme="http://blog.zhangzonglin.xyz/categories/java/"/>
+    
+    
+      <category term="jvm" scheme="http://blog.zhangzonglin.xyz/tags/jvm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java底层机制（堆/栈/方法区/GC/类加载）</title>
+    <link href="http://blog.zhangzonglin.xyz/2020/03/08/ava%E5%BA%95%E5%B1%82%E6%9C%BA%E5%88%B6/"/>
+    <id>http://blog.zhangzonglin.xyz/2020/03/08/ava%E5%BA%95%E5%B1%82%E6%9C%BA%E5%88%B6/</id>
+    <published>2020-03-08T13:21:00.000Z</published>
+    <updated>2020-03-08T13:24:30.593Z</updated>
+    
+    <content type="html"><![CDATA[<p>转载:<a href="https://www.jianshu.com/p/ae97b692614e?from=timeline" target="_blank" rel="noopener">java底层机制</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;转载:&lt;a href=&quot;https://www.jianshu.com/p/ae97b692614e?from=timeline&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;java底层机制&lt;/a&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="java" scheme="http://blog.zhangzonglin.xyz/categories/java/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>spring boot注解基本了解</title>
+    <link href="http://blog.zhangzonglin.xyz/2020/03/06/java-annotation/"/>
+    <id>http://blog.zhangzonglin.xyz/2020/03/06/java-annotation/</id>
+    <published>2020-03-06T03:38:00.000Z</published>
+    <updated>2020-03-06T03:43:08.484Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这里放两篇对Java注解的文章，以备后面查询。<a href="https://www.jianshu.com/p/d74ed7374841" target="_blank" rel="noopener"><strong>Spring Boot 注解—基本知识</strong></a>以及<a href="https://www.cnblogs.com/liaojie970/p/7879917.html" target="_blank" rel="noopener"><strong>Java注释@interface的用法</strong></a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;这里放两篇对Java注解的文章，以备后面查询。&lt;a href=&quot;https://www.jianshu.com/p/d74ed7374841
+      
+    
+    </summary>
+    
+    
+      <category term="java" scheme="http://blog.zhangzonglin.xyz/categories/java/"/>
+    
+    
+      <category term="annotation" scheme="http://blog.zhangzonglin.xyz/tags/annotation/"/>
+    
+  </entry>
   
   <entry>
     <title>idea下gradle报jdk版本错误</title>
@@ -362,25 +466,6 @@
       <category term="mail" scheme="http://blog.zhangzonglin.xyz/tags/mail/"/>
     
       <category term="crontab" scheme="http://blog.zhangzonglin.xyz/tags/crontab/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>随笔有感</title>
-    <link href="http://blog.zhangzonglin.xyz/2020/01/13/hello-world/"/>
-    <id>http://blog.zhangzonglin.xyz/2020/01/13/hello-world/</id>
-    <published>2020-01-12T19:22:00.000Z</published>
-    <updated>2020-01-18T20:25:42.184Z</updated>
-    
-    <content type="html"><![CDATA[<p>一个不读书之人的胡思胡想</p><a id="more"></a><h2 id><a href="#" class="headerlink" title></a></h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;一个不读书之人的胡思胡想&lt;/p&gt;
-    
-    </summary>
-    
-    
     
   </entry>
   
