@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglin.xyz/"/>
-  <updated>2020-03-09T07:15:37.907Z</updated>
+  <updated>2020-03-20T07:26:25.818Z</updated>
   <id>http://blog.zhangzonglin.xyz/</id>
   
   <author>
@@ -15,6 +15,104 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>补码原理的个人理解</title>
+    <link href="http://blog.zhangzonglin.xyz/2020/03/20/%E8%A1%A5%E7%A0%81%E5%8E%9F%E7%90%86%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%90%86%E8%A7%A3/"/>
+    <id>http://blog.zhangzonglin.xyz/2020/03/20/%E8%A1%A5%E7%A0%81%E5%8E%9F%E7%90%86%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%90%86%E8%A7%A3/</id>
+    <published>2020-03-20T07:25:00.000Z</published>
+    <updated>2020-03-20T07:26:25.818Z</updated>
+    
+    <content type="html"><![CDATA[<p>转载：<strong><a href="https://blog.csdn.net/jiaobuchong/article/details/83188674" target="_blank" rel="noopener">补码原理的个人理解</a></strong></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;转载：&lt;strong&gt;&lt;a href=&quot;https://blog.csdn.net/jiaobuchong/article/details/83188674&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;补码原理的个人理解&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="计算机" scheme="http://blog.zhangzonglin.xyz/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    
+      <category term="补码" scheme="http://blog.zhangzonglin.xyz/tags/%E8%A1%A5%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Spring设计思想-事务篇》2.数据库隔离级别</title>
+    <link href="http://blog.zhangzonglin.xyz/2020/03/12/Spring%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3-%E4%BA%8B%E5%8A%A1%E7%AF%87%E3%80%8B2-%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/"/>
+    <id>http://blog.zhangzonglin.xyz/2020/03/12/Spring%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3-%E4%BA%8B%E5%8A%A1%E7%AF%87%E3%80%8B2-%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</id>
+    <published>2020-03-12T09:32:48.000Z</published>
+    <updated>2020-03-12T09:37:29.516Z</updated>
+    
+    <content type="html"><![CDATA[<p>转载：<strong><a href="https://blog.csdn.net/luanlouis/article/details/95319795" target="_blank" rel="noopener">《Spring设计思想-事务篇》2.数据库隔离级别</a></strong></p><h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>对上述的四种事务隔离级别的阐述中，我们使用了从资源互斥访问的角度做了解释。资源互斥粒度控制的越细，客户端事务的并发能力就越高，但是与此同时，会相应地降低数据的一致性。</p><a id="more"></a><p>事务的并发数和数据数据一致性这两个是两个相反的理想指标。而数据库研发的方向就是尽可能提高同时提高两个指标，尽可能减少之间的反作用影响。</p><p>SERIALIZABLE 序列化读，隔离级别最高，客户端以互斥的方式访问数据库资源，统一时间内，同一个资源只能被一个客户端访问，好像客户端在排队请求访问，所以称为序列化读。<br>REPEATABLE_READ 可重复读，可重复读能够保证，一个客户端在一个事务内，多次访问同一个资源时，返回结果是一样的，顾名思义，称为可重复读，这种隔离级别可能会造成幻读现象。<br>READ_COMMITTED 读已提交，即客户端在一个事务内，每次查询读取的数据都是从数据库读取最新的已提交的数据；这种隔离界别可能会造成不可重复读和幻读现象。<br>READ_UNCOMMITTED 读未提交，即客户端在一个事务内，可以读取到其他客户端事务的尚未提交的数据；这种隔离级别可能会造成脏读、不可重复读、幻读 现象。</p><p><img src="/images/pasted-23.png" alt="upload successful"></p><p>————————————————<br>版权声明：本文为CSDN博主「亦山」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/luanlouis/article/details/95319795" target="_blank" rel="noopener">https://blog.csdn.net/luanlouis/article/details/95319795</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;转载：&lt;strong&gt;&lt;a href=&quot;https://blog.csdn.net/luanlouis/article/details/95319795&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;《Spring设计思想-事务篇》2.数据库隔离级别
+&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;结论&quot;&gt;&lt;a href=&quot;#结论&quot; class=&quot;headerlink&quot; title=&quot;结论&quot;&gt;&lt;/a&gt;结论&lt;/h3&gt;&lt;p&gt;对上述的四种事务隔离级别的阐述中，我们使用了从资源互斥访问的角度做了解释。资源互斥粒度控制的越细，客户端事务的并发能力就越高，但是与此同时，会相应地降低数据的一致性。&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>《Spring设计思想》AOP设计基本原理</title>
+    <link href="http://blog.zhangzonglin.xyz/2020/03/11/pring%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3%E3%80%8BAOP%E8%AE%BE%E8%AE%A1%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/"/>
+    <id>http://blog.zhangzonglin.xyz/2020/03/11/pring%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3%E3%80%8BAOP%E8%AE%BE%E8%AE%A1%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/</id>
+    <published>2020-03-11T14:32:00.000Z</published>
+    <updated>2020-03-11T14:34:40.664Z</updated>
+    
+    <content type="html"><![CDATA[<p>转载：<strong><a href="https://blog.csdn.net/luanlouis/article/details/51095702" target="_blank" rel="noopener">《Spring设计思想》AOP设计基本原理</a></strong>、<strong><a href="https://blog.csdn.net/luanlouis/article/details/51155821" target="_blank" rel="noopener">《Spring设计思想》AOP实现原理（基于JDK和基于CGLIB）</a></strong></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;转载：&lt;strong&gt;&lt;a href=&quot;https://blog.csdn.net/luanlouis/article/details/51095702&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;《Spring设计思想》AOP设计基本原理
+&lt;/a&gt;&lt;/
+      
+    
+    </summary>
+    
+    
+      <category term="java" scheme="http://blog.zhangzonglin.xyz/categories/java/"/>
+    
+    
+      <category term="spring" scheme="http://blog.zhangzonglin.xyz/tags/spring/"/>
+    
+      <category term="aop" scheme="http://blog.zhangzonglin.xyz/tags/aop/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java动态代理机制详解（JDK 和CGLIB，Javassist，ASM）</title>
+    <link href="http://blog.zhangzonglin.xyz/2020/03/11/spring-struts2-action%E5%8D%95%E4%BE%8B%E8%BF%98%E6%98%AF%E5%A4%9A%E4%BE%8B/"/>
+    <id>http://blog.zhangzonglin.xyz/2020/03/11/spring-struts2-action%E5%8D%95%E4%BE%8B%E8%BF%98%E6%98%AF%E5%A4%9A%E4%BE%8B/</id>
+    <published>2020-03-11T06:07:04.000Z</published>
+    <updated>2020-03-11T14:24:18.605Z</updated>
+    
+    <content type="html"><![CDATA[<p>转载：<strong><a href="https://blog.csdn.net/luanlouis/article/details/24589193" target="_blank" rel="noopener">Java动态代理机制详解（JDK 和CGLIB，Javassist，ASM）</a></strong></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;转载：&lt;strong&gt;&lt;a href=&quot;https://blog.csdn.net/luanlouis/article/details/24589193&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Java动态代理机制详解（JDK 和CGLIB，Java
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>spring 线程安全</title>
@@ -74,16 +172,15 @@
     <link href="http://blog.zhangzonglin.xyz/2020/03/08/ava%E5%BA%95%E5%B1%82%E6%9C%BA%E5%88%B6/"/>
     <id>http://blog.zhangzonglin.xyz/2020/03/08/ava%E5%BA%95%E5%B1%82%E6%9C%BA%E5%88%B6/</id>
     <published>2020-03-08T13:21:00.000Z</published>
-    <updated>2020-03-08T13:24:30.593Z</updated>
+    <updated>2020-03-11T09:15:36.601Z</updated>
     
-    <content type="html"><![CDATA[<p>转载:<a href="https://www.jianshu.com/p/ae97b692614e?from=timeline" target="_blank" rel="noopener">java底层机制</a></p>]]></content>
+    <content type="html"><![CDATA[<p>转载:<strong><a href="https://www.jianshu.com/p/ae97b692614e?from=timeline" target="_blank" rel="noopener">java底层机制</a></strong>、<strong><a href="https://blog.csdn.net/luanlouis/article/details/40043991" target="_blank" rel="noopener">《Java虚拟机原理图解》3、JVM运行时数据区</a></strong></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;转载:&lt;a href=&quot;https://www.jianshu.com/p/ae97b692614e?from=timeline&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;java底层机制&lt;/a&gt;&lt;/p&gt;
-
+        &lt;p&gt;转载:&lt;strong&gt;&lt;a href=&quot;https://www.jianshu.com/p/ae97b692614e?from=timeline&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;java底层机制&lt;/a&gt;&lt;/strong&gt;、&lt;strong&gt;&lt;a
       
     
     </summary>
@@ -372,100 +469,6 @@
     
     
       <category term="git" scheme="http://blog.zhangzonglin.xyz/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>本地Hexo生成的博客部署到VPS</title>
-    <link href="http://blog.zhangzonglin.xyz/2020/01/17/localblog-git-vps/"/>
-    <id>http://blog.zhangzonglin.xyz/2020/01/17/localblog-git-vps/</id>
-    <published>2020-01-16T23:21:00.000Z</published>
-    <updated>2020-01-17T14:39:36.237Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>为了科学上网搭建了vps，顺便跑一下自己的博客，但vps只有500M内存，所以决定本地windows跑hexo生成网页，然后git到vps，记录一下本地和vps的git配置。</p><a id="more"></a><h3 id="本地配置"><a href="#本地配置" class="headerlink" title="本地配置"></a>本地配置</h3><p>本地windows安装Node.js hexo git，过程不提。</p><h4 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h4><p>安装后打开 Git Bash 输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;你的用户名&quot;</span><br><span class="line">git config --global user.email &quot;你的电子邮箱&quot;</span><br></pre></td></tr></table></figure><p>由于 Hexo 的 Git 部署不支持使用密码登陆，所以需要配置 SSH 公钥：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">mkdir .ssh</span><br><span class="line">cd .ssh</span><br><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure><p>由此便在系统当前用户文件夹下生成了私钥 id_rsa 和公钥 id_rsa.pub。</p><p>在上面建立的.ssh文件中新建config文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~&#x2F;.ssh</span><br><span class="line">vim config</span><br></pre></td></tr></table></figure><p>内容如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Host 服务器IP</span><br><span class="line">HostName 服务器IP</span><br><span class="line">User git</span><br><span class="line">Port 端口号</span><br><span class="line">IdentityFile ~&#x2F;.ssh&#x2F;id_rsa</span><br></pre></td></tr></table></figure><h4 id="hexo配置"><a href="#hexo配置" class="headerlink" title="hexo配置"></a>hexo配置</h4><p>安装插件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure><p>打开位于 hexo 文件夹下的 _config.yml，修改 deploy 参数：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@vps的IP:hexo.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure><h3 id="VPS-配置"><a href="#VPS-配置" class="headerlink" title="VPS 配置"></a>VPS 配置</h3><h4 id="新建用户"><a href="#新建用户" class="headerlink" title="新建用户"></a>新建用户</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adduser git</span><br><span class="line">passwd git</span><br></pre></td></tr></table></figure><h4 id="为用户git添加-sudo-权限"><a href="#为用户git添加-sudo-权限" class="headerlink" title="为用户git添加 sudo 权限"></a>为用户git添加 sudo 权限</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 740 &#x2F;etc&#x2F;sudoers</span><br><span class="line">vim &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure><p>找到以下内容</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL:ALL) ALL</span><br></pre></td></tr></table></figure><p>添加修改为</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL:ALL) ALL</span><br><span class="line">git     ALL&#x3D;(ALL:ALL) ALL</span><br></pre></td></tr></table></figure><p>假如是</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL) ALL</span><br></pre></td></tr></table></figure><p>则修改为</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL) ALL</span><br><span class="line">git     ALL&#x3D;(ALL) ALL</span><br></pre></td></tr></table></figure><p>保存,退出</p><p>然后修改回文件的权限</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 440 &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure><h4 id="关闭-git-用户-shell-权限"><a href="#关闭-git-用户-shell-权限" class="headerlink" title="关闭 git 用户 shell 权限"></a>关闭 git 用户 shell 权限</h4><p>至此我们可以在本地通过：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh git@VPS IP</span><br></pre></td></tr></table></figure><p>ssh 连接服务器，登录到服务器上，对服务器进行各种操作，这通常很不安全，也不合适，我们只需要能对仓库操作就可以了，不需要更大的权限。</p><p>因此我们关闭 git 用户 shell 权限，执行：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;passwd</span><br></pre></td></tr></table></figure><p>找到git用户的一行：<em>git:x:1001:1001:,,,:/home/git:/bin/bash</em><br>改为：<em>git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell</em></p><p>这样，git 用户可以正常通过 ssh 使用 git，但无法登录 shell，因为我们为 git 用户指定的 git-shell 每次一登录就自动退出。</p><h4 id="初始化-git-仓库"><a href="#初始化-git-仓库" class="headerlink" title="初始化 git 仓库"></a>初始化 git 仓库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git                &#x2F;&#x2F;切换到git用户目录</span><br><span class="line">mkdir blog.git              &#x2F;&#x2F;创建git仓库文件夹，以blog.git为例</span><br><span class="line">cd blog.git                 &#x2F;&#x2F;进入仓库目录</span><br><span class="line">git init --bare             &#x2F;&#x2F;使用--bare参数初始化为裸仓库，这样创建的仓库不包含工作区</span><br></pre></td></tr></table></figure><p>注意：裸仓库没有工作区，因为服务器上的 Git 仓库纯粹是为了共享，所以不让用户直接登录到服务器上去改工作区，并且服务器上的 Git 仓库通常都以.git 结尾。</p><h4 id="配置-SSH"><a href="#配置-SSH" class="headerlink" title="配置 SSH"></a>配置 SSH</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git                &#x2F;&#x2F;切换到git用户目录</span><br><span class="line">mkdir .ssh                  &#x2F;&#x2F;创建.ssh目录</span><br><span class="line">cd .ssh</span><br><span class="line">vim authorized_keys</span><br></pre></td></tr></table></figure><p>然后将本地的公钥复制到 authorized_keys 文件里 (公钥即上文生成的公钥，可通过 <em>cat ~/.ssh/id_rsa.pub</em> 查看)。</p><p>注意：收集所有需要登录的用户的公钥，就是他们自己的 id_rsa.pub 文件，把所有公钥导入到 <em>/home/git/.ssh/authorized_keys</em> 文件里，一行一个。</p><h4 id="用户组管理"><a href="#用户组管理" class="headerlink" title="用户组管理"></a>用户组管理</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ll &#x2F;home&#x2F;git&#x2F;</span><br><span class="line">ll &#x2F;var&#x2F;www&#x2F;</span><br></pre></td></tr></table></figure><p>确保 blog.git、.ssh、blog 目录的用户组权限为 git:git，若不是，执行下列命令：</p><p>修改用户权限的命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chown -R git.git &#x2F;home&#x2F;git&#x2F;blog.git&#x2F;</span><br><span class="line">chown -R git.git &#x2F;home&#x2F;git&#x2F;.ssh&#x2F;</span><br><span class="line">chown -R git.git &#x2F;var&#x2F;www&#x2F;blog&#x2F;</span><br></pre></td></tr></table></figure><h4 id="配置-Git-Hooks"><a href="#配置-Git-Hooks" class="headerlink" title="配置 Git Hooks"></a>配置 Git Hooks</h4><p>创建 post-receive 文件<br>git 用户下执行（这里由于禁止了git用户shell权限，所以我用 root 用户执行上述命令，然后更改了文件所有者为 git.git）：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git&#x2F;blog.git&#x2F;hooks     &#x2F;&#x2F;切换到hooks目录下</span><br><span class="line">vim post-receive            &#x2F;&#x2F;创建文件</span><br></pre></td></tr></table></figure><p>复制下面的内容到 post-receive 文件中：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">echo &quot;post-receive hook is running...&quot;</span><br><span class="line"></span><br><span class="line">GIT_REPO&#x3D;&#x2F;home&#x2F;git&#x2F;blog.git</span><br><span class="line">TMP_GIT_CLONE&#x3D;&#x2F;tmp&#x2F;blog</span><br><span class="line">PUBLIC_WWW&#x3D;&#x2F;var&#x2F;www&#x2F;blog</span><br><span class="line"></span><br><span class="line">rm -rf $&#123;TMP_GIT_CLONE&#125;</span><br><span class="line">git clone $GIT_REPO $TMP_GIT_CLONE</span><br><span class="line">rm -rf $&#123;PUBLIC_WWW&#125;&#x2F;*</span><br><span class="line">cp -rf $&#123;TMP_GIT_CLONE&#125;&#x2F;* $&#123;PUBLIC_WWW&#125;</span><br></pre></td></tr></table></figure><blockquote><p>为什么不直接将裸仓库克隆到 Web 根目录下呢？我之前也一直被这个问题困扰，感觉先&gt;克隆到 tmp 目录再拷贝到 Web 根目录是多此一举。后来我觉得可能是出于项目安全的&gt;考虑，在执行 cp 命令的时候，.git 作为隐藏目录不会被拷贝到 Web 根目录下，也就&gt;避免了将整个仓库历史暴露在 Web 服务中。</p></blockquote><p>赋予可执行权限：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x post-receive</span><br></pre></td></tr></table></figure><p>ok，至此配置完毕，可以本地hexo d直接发布到vps了。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;为了科学上网搭建了vps，顺便跑一下自己的博客，但vps只有500M内存，所以决定本地windows跑hexo生成网页，然后git到vps，记录一下本地和vps的git配置。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="http://blog.zhangzonglin.xyz/categories/linux/"/>
-    
-    
-      <category term="git hooks" scheme="http://blog.zhangzonglin.xyz/tags/git-hooks/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vim常用命令、快捷键</title>
-    <link href="http://blog.zhangzonglin.xyz/2020/01/17/vim-hotkey/"/>
-    <id>http://blog.zhangzonglin.xyz/2020/01/17/vim-hotkey/</id>
-    <published>2020-01-16T20:31:00.000Z</published>
-    <updated>2020-01-16T21:24:11.219Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>vim的常用命令以及快捷键，记录一下，方便以后查询。详细链接：<a href="https://linux.cn/article-8144-1.html" target="_blank" rel="noopener">Vim 快捷键速查表</a></p><a id="more"></a><h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><table><thead><tr><th>快捷键</th><th>功能</th></tr></thead><tbody><tr><td>Esc</td><td>从当前模式转换到“普通模式”。所有的键对应到命令。</td></tr><tr><td>i</td><td>“插入模式”用于插入文字。回归按键的本职工作。</td></tr><tr><td>:</td><td>“命令行模式” Vim 希望你输入类似于保存该文档命令的地方。</td></tr></tbody></table><h3 id="方向键"><a href="#方向键" class="headerlink" title="方向键"></a>方向键</h3><table><thead><tr><th>快捷键</th><th>功能</th></tr></thead><tbody><tr><td>h</td><td>光标向左移动一个字符</td></tr><tr><td>j 或 Ctrl + J</td><td>光标向下移动一行</td></tr><tr><td>k 或 Ctrl + P</td><td>光标向上移动一行</td></tr><tr><td>l</td><td>光标向右移动一个字符</td></tr><tr><td>0</td><td>（数字 0）移动光标至本行开头</td></tr><tr><td>$</td><td>移动光标至本行末尾</td></tr><tr><td>^</td><td>移动光标至本行第一个非空字符处</td></tr><tr><td>w</td><td>向前移动一个词 （上一个字母和数字组成的词之后）</td></tr><tr><td>W</td><td>向前移动一个词 （以空格分隔的词）</td></tr><tr><td>5w</td><td>向前移动五个词</td></tr><tr><td>b</td><td>向后移动一个词 （下一个字母和数字组成的词之前）</td></tr><tr><td>B</td><td>向后移动一个词 （以空格分隔的词）</td></tr><tr><td>5b</td><td>向后移动五个词</td></tr><tr><td>G</td><td>移动至文件末尾</td></tr><tr><td>gg</td><td>移动至文件开头</td></tr></tbody></table><h3 id="浏览文档"><a href="#浏览文档" class="headerlink" title="浏览文档"></a>浏览文档</h3><table><thead><tr><th>快捷键</th><th>功能</th></tr></thead><tbody><tr><td>(</td><td>跳转到上一句</td></tr><tr><td>)</td><td>跳转到下一句</td></tr><tr><td>{</td><td>跳转到上一段</td></tr><tr><td>}</td><td>跳转到下一段</td></tr><tr><td>[[</td><td>跳转到上一部分</td></tr><tr><td>]]</td><td>跳转到下一部分</td></tr><tr><td>[]</td><td>跳转到上一部分的末尾</td></tr><tr><td>][</td><td>跳转到上一部分的开头</td></tr></tbody></table><h3 id="插入文本"><a href="#插入文本" class="headerlink" title="插入文本"></a>插入文本</h3><table><thead><tr><th>快捷键</th><th>功能</th></tr></thead><tbody><tr><td>a</td><td>在光标后插入文本</td></tr><tr><td>A</td><td>在行末插入文本</td></tr><tr><td>i</td><td>在光标前插入文本</td></tr><tr><td>o</td><td>（小写字母 o）在光标下方新开一行</td></tr><tr><td>O</td><td>（大写字母 O）在光标上方新开一行</td></tr></tbody></table><h3 id="特殊插入"><a href="#特殊插入" class="headerlink" title="特殊插入"></a>特殊插入</h3><table><thead><tr><th>快捷键</th><th>功能</th></tr></thead><tbody><tr><td>:r [filename]</td><td>在光标下方插入文件 [filename] 的内容</td></tr><tr><td>:r ![command]</td><td>执行命令 [command] ，并将输出插入至光标下方</td></tr></tbody></table><h3 id="删除文本"><a href="#删除文本" class="headerlink" title="删除文本"></a>删除文本</h3><table><thead><tr><th>快捷键</th><th>功能</th></tr></thead><tbody><tr><td>x</td><td>删除光标处字符</td></tr><tr><td>dw</td><td>删除一个词</td></tr><tr><td>d0</td><td>删至行首</td></tr><tr><td>d$</td><td>删至行末</td></tr><tr><td>d)</td><td>删至句末</td></tr><tr><td>dgg</td><td>删至文件开头</td></tr><tr><td>dG</td><td>删至文件末尾</td></tr><tr><td>dd</td><td>删除该行</td></tr><tr><td>3dd</td><td>删除三行</td></tr></tbody></table><h3 id="简单替换文本"><a href="#简单替换文本" class="headerlink" title="简单替换文本"></a>简单替换文本</h3><table><thead><tr><th>快捷键</th><th>功能</th></tr></thead><tbody><tr><td>r{text}</td><td>将光标处的字符替换成 {text}</td></tr><tr><td>R</td><td>进入覆写模式，输入的字符将替换原有的字符</td></tr></tbody></table><h3 id="复制-粘贴文本"><a href="#复制-粘贴文本" class="headerlink" title="复制/粘贴文本"></a>复制/粘贴文本</h3><table><thead><tr><th>快捷键</th><th>功能</th></tr></thead><tbody><tr><td>yy</td><td>复制当前行至存储缓冲区</td></tr><tr><td>[“x]yy</td><td>复制当前行至寄存器 x</td></tr><tr><td>p</td><td>在当前行之后粘贴存储缓冲区中的内容</td></tr><tr><td>P</td><td>在当前行之前粘贴存储缓冲区中的内容</td></tr><tr><td>[“x]p</td><td>在当前行之后粘贴寄存器 x 中的内容</td></tr><tr><td>[“x]P</td><td>在当前行之前粘贴寄存器 x 中的内容</td></tr></tbody></table><h3 id="撤销-重做操作"><a href="#撤销-重做操作" class="headerlink" title="撤销/重做操作"></a>撤销/重做操作</h3><table><thead><tr><th>快捷键</th><th>功能</th></tr></thead><tbody><tr><td>u</td><td>撤销最后的操作</td></tr><tr><td>Ctrl+r</td><td>重做最后撤销的操作</td></tr></tbody></table><h3 id="搜索和替换"><a href="#搜索和替换" class="headerlink" title="搜索和替换"></a>搜索和替换</h3><table><thead><tr><th>快捷键</th><th>功能</th></tr></thead><tbody><tr><td>/search_text</td><td>检索文档，在文档后面的部分搜索 search_text</td></tr><tr><td>?search_text</td><td>检索文档，在文档前面的部分搜索 search_text</td></tr><tr><td>n</td><td>移动到后一个检索结果</td></tr><tr><td>N</td><td>移动到前一个检索结果</td></tr><tr><td>:%s/original/replacement</td><td>检索第一个 “original” 字符串并将其替换成“replacement”</td></tr><tr><td>:%s/original/replacement/g</td><td>检索并将所有的 “original” 替换为“replacement”</td></tr><tr><td>:%s/original/replacement/gc</td><td>检索出所有的 “original” 字符串，但在替换成 “replacement” 前，先询问是否替换</td></tr></tbody></table><h3 id="书签"><a href="#书签" class="headerlink" title="书签"></a>书签</h3><table><thead><tr><th>快捷键</th><th>功能</th></tr></thead><tbody><tr><td>m {a-zA-Z}</td><td>在当前光标位置设置书签，书签名可用一个大小写字母（{a-zA-Z}）</td></tr><tr><td>:marks</td><td>列出所有书签</td></tr><tr><td>{a-zA-Z}</td><td>跳转到书签 {a-zA-Z}</td></tr></tbody></table><h3 id="选择文本"><a href="#选择文本" class="headerlink" title="选择文本"></a>选择文本</h3><table><thead><tr><th>快捷键</th><th>功能</th></tr></thead><tbody><tr><td>v</td><td>进入逐字可视模式</td></tr><tr><td>V</td><td>进入逐行可视模式</td></tr><tr><td>Esc</td><td>退出可视模式</td></tr></tbody></table><h3 id="改动选中文本"><a href="#改动选中文本" class="headerlink" title="改动选中文本"></a>改动选中文本</h3><table><thead><tr><th>快捷键</th><th>功能</th></tr></thead><tbody><tr><td>~</td><td>切换大小写</td></tr><tr><td>d</td><td>删除一个词</td></tr><tr><td>c</td><td>变更</td></tr><tr><td>y</td><td>复制</td></tr><tr><td>&gt;</td><td>右移</td></tr><tr><td>&lt;</td><td>左移</td></tr><tr><td>!</td><td>通过外部命令进行过滤</td></tr></tbody></table><h3 id="保存并退出"><a href="#保存并退出" class="headerlink" title="保存并退出"></a>保存并退出</h3><table><thead><tr><th>快捷键</th><th>功能</th></tr></thead><tbody><tr><td>:q</td><td>退出 Vim，如果文件已被修改，将退出失败</td></tr><tr><td>:w</td><td>保存文件</td></tr><tr><td>:w new_name</td><td>用 new_name 作为文件名保存文件</td></tr><tr><td>:wq</td><td>保存文件并退出 Vim</td></tr><tr><td>:q!</td><td>退出 Vim，不保存文件改动</td></tr><tr><td>ZZ</td><td>退出 Vim，如果文件被改动过，保存改动内容</td></tr><tr><td>ZQ</td><td>与 :q! 相同，退出 Vim，不保存文件改动</td></tr></tbody></table>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;vim的常用命令以及快捷键，记录一下，方便以后查询。详细链接：&lt;a href=&quot;https://linux.cn/article-8144-1.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Vim 快捷键速查表&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="http://blog.zhangzonglin.xyz/categories/linux/"/>
-    
-    
-      <category term="vim hotkey" scheme="http://blog.zhangzonglin.xyz/tags/vim-hotkey/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>bash快捷键 光标移动</title>
-    <link href="http://blog.zhangzonglin.xyz/2020/01/16/bash-hot-key/"/>
-    <id>http://blog.zhangzonglin.xyz/2020/01/16/bash-hot-key/</id>
-    <published>2020-01-15T16:51:00.000Z</published>
-    <updated>2020-01-15T16:54:55.268Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>用xshell登录并操作系统的时候，光标移动的快捷键用起来很方便，记录一下，方便以后查询</p><a id="more"></a><h3 id="ctrl组合"><a href="#ctrl组合" class="headerlink" title="ctrl组合"></a>ctrl组合</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">ctrl+a:光标移到行首。</span><br><span class="line"></span><br><span class="line">ctrl+b:光标左移一个字母</span><br><span class="line"></span><br><span class="line">ctrl+c:杀死当前进程。</span><br><span class="line"></span><br><span class="line">ctrl+d:退出当前 Shell。</span><br><span class="line"></span><br><span class="line">ctrl+e:光标移到行尾。</span><br><span class="line"></span><br><span class="line">ctrl+h:删除光标前一个字符，同 backspace 键相同。</span><br><span class="line"></span><br><span class="line">ctrl+k:清除光标后至行尾的内容。</span><br><span class="line"></span><br><span class="line">ctrl+l:清屏，相当于clear。</span><br><span class="line"></span><br><span class="line">ctrl+r:搜索之前打过的命令。会有一个提示，根据你输入的关键字进行搜索bash的history</span><br><span class="line"></span><br><span class="line">ctrl+u: 清除光标前至行首间的所有内容。</span><br><span class="line"></span><br><span class="line">ctrl+w: 移除光标前的一个单词</span><br><span class="line"></span><br><span class="line">ctrl+t: 交换光标位置前的两个字符</span><br><span class="line"></span><br><span class="line">ctrl+y: 粘贴或者恢复上次的删除</span><br><span class="line"></span><br><span class="line">ctrl+d: 删除光标所在字母;注意和backspace以及ctrl+h的区别，这2个是删除光标前的字符</span><br><span class="line"></span><br><span class="line">ctrl+f: 光标右移</span><br><span class="line"></span><br><span class="line">ctrl+z : 把当前进程转到后台运行，使用’ fg ‘命令恢复。比如top -d1 然后ctrl+z ，到后台，然后fg,重新恢复</span><br></pre></td></tr></table></figure><h3 id="esc组合"><a href="#esc组合" class="headerlink" title="esc组合"></a>esc组合</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">esc+d: 删除光标后的一个词</span><br><span class="line"></span><br><span class="line">esc+f: 往右跳一个词</span><br><span class="line"></span><br><span class="line">esc+b: 往左跳一个词</span><br><span class="line"></span><br><span class="line">esc+t: 交换光标位置前的两个单词</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;用xshell登录并操作系统的时候，光标移动的快捷键用起来很方便，记录一下，方便以后查询&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="http://blog.zhangzonglin.xyz/categories/linux/"/>
-    
-    
-      <category term="bash-hotkey" scheme="http://blog.zhangzonglin.xyz/tags/bash-hotkey/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>centos 定时任务（cron）通过第三方邮件服务器（MTA）发送邮件</title>
-    <link href="http://blog.zhangzonglin.xyz/2020/01/13/corn-mail/"/>
-    <id>http://blog.zhangzonglin.xyz/2020/01/13/corn-mail/</id>
-    <published>2020-01-12T20:06:00.000Z</published>
-    <updated>2020-01-15T16:29:06.803Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>有时会需要把一些日志或者任务结果发送到用户邮箱，特此记录一下定时任务和邮箱信息的配置。</p><a id="more"></a><h3 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h3><p>守护进程 crond定期(每分钟)检查是否有要执行的任务，任务调度分为两类：<strong>系统任务调度</strong>和<strong>用户任务调度</strong>。</p><p><strong>系统任务调度</strong>：系统周期性所要执行的工作，比如写缓存数据到硬盘、日志清理等。配置文件<code>/etc/crontab</code>。（若要配置定时reboot任务，需配置在此）</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">SHELL&#x3D;&#x2F;bin&#x2F;bash</span><br><span class="line">PATH&#x3D;&#x2F;sbin:&#x2F;bin:&#x2F;usr&#x2F;sbin:&#x2F;usr&#x2F;bin</span><br><span class="line">MAILTO&#x3D;root</span><br><span class="line">HOME&#x3D;&#x2F;</span><br><span class="line"># For details see man 4 crontabs</span><br><span class="line"># Example of job definition:</span><br><span class="line"># .---------------- minute (0 - 59)</span><br><span class="line"># |  .------------- hour (0 - 23)</span><br><span class="line"># |  |  .---------- day of month (1 - 31)</span><br><span class="line"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span><br><span class="line"># |  |  |  |  .---- day of week (0 - 6) (Sunday&#x3D;0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span><br><span class="line"># |  |  |  |  |</span><br><span class="line"># *  *  *  *  * user-name command to be executed</span><br><span class="line">  10 21 *  *  * root reboot</span><br></pre></td></tr></table></figure><p><strong>用户任务调度</strong>：用户定期要执行的工作，比如用户数据备份、定时邮件提醒、自定义脚本等。配置文件<code>/var/spool/cron/usernamne</code>，用户亦可以用命令crontab定制自己的计划任务。如每隔一分钟给指定邮箱发信息，<code>crontab -u username -e</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MAILTO&#x3D;&quot;yourmailaddress@**.com&quot;</span><br><span class="line">*&#x2F;1 * * * *  echo &#39;message&#39;</span><br></pre></td></tr></table></figure><p><em>ps</em>：crontab中任何程序产生的输出都会以邮件的形式发送给由MAILTO指定的对象，若未指定则发给任务运行的用户（可于<code>/var/spool/mail/username</code>中查看），此时可通过<code>.forward</code> 或配置<code>/etc/aliases</code> 发送到外部邮箱。</p><h3 id="邮件配置"><a href="#邮件配置" class="headerlink" title="邮件配置"></a>邮件配置</h3><p>用系统自带的postfix配置MTA太费事儿，所以采用163邮箱的SMTP服务。</p><p>  1.邮箱开启SMTP服务</p><p>  登录邮箱，在<code>设置</code>里打开<code>POP3/SMTP/IMAP</code>，勾选<code>POP3/SMTP服务</code>和<code>IMAP/SMTP服务</code>，并设置自己的<code>客户端授权密码</code>。</p><p>  2.centos安装mailx(相当于MUA)<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install mailx</span><br></pre></td></tr></table></figure><br>  3.centos配置163邮箱信息，在文件 <code>/etc/mail.rc</code>末尾添加如下信息<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">set from&#x3D;&quot;*********@163.com&quot;</span><br><span class="line">set smtp&#x3D;smtp.163.com</span><br><span class="line">set smtp-auth-user&#x3D;*********@163.com</span><br><span class="line">set smtp-auth-password&#x3D;客户端授权密码</span><br><span class="line">set smtp-auth&#x3D;login</span><br></pre></td></tr></table></figure></p><p>  <em>ps</em>:防火墙配置（vultr要联系客服“开光”25端口）</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;有时会需要把一些日志或者任务结果发送到用户邮箱，特此记录一下定时任务和邮箱信息的配置。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="http://blog.zhangzonglin.xyz/categories/linux/"/>
-    
-    
-      <category term="mail" scheme="http://blog.zhangzonglin.xyz/tags/mail/"/>
-    
-      <category term="crontab" scheme="http://blog.zhangzonglin.xyz/tags/crontab/"/>
     
   </entry>
   
