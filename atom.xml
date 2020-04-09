@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglin.xyz/"/>
-  <updated>2020-03-20T07:26:25.818Z</updated>
+  <updated>2020-04-06T10:49:03.174Z</updated>
   <id>http://blog.zhangzonglin.xyz/</id>
   
   <author>
@@ -15,6 +15,63 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>锁、synchronized、CAS、volatile</title>
+    <link href="http://blog.zhangzonglin.xyz/2020/04/06/synchronized%E3%80%81CAS%E3%80%81volatile/"/>
+    <id>http://blog.zhangzonglin.xyz/2020/04/06/synchronized%E3%80%81CAS%E3%80%81volatile/</id>
+    <published>2020-04-06T10:42:00.000Z</published>
+    <updated>2020-04-06T10:49:03.174Z</updated>
+    
+    <content type="html"><![CDATA[<p>转载：<strong><a href="https://tech.meituan.com/2018/11/15/java-lock.html" target="_blank" rel="noopener">不可不说的Java“锁”事</a></strong>、<strong><a href="https://blog.csdn.net/javazejian/article/details/72828483" target="_blank" rel="noopener">深入理解Java并发之synchronized实现原理</a></strong>、<strong><a href="https://juejin.im/post/5a73cbbff265da4e807783f5" target="_blank" rel="noopener">Java CAS 原理剖析</a></strong>、<strong><a href="https://www.cnblogs.com/theRhyme/p/12129120.html" target="_blank" rel="noopener">从原子类和UNSAFE来理解JAVA内存模型，ATOMICINTEGER的INCREMENTANDGET方法和UNSAFE部分源码介绍，VALUEOFFSET偏移量的理解</a></strong>、<strong><a href="https://www.cnblogs.com/theRhyme/p/9396834.html" target="_blank" rel="noopener">JAVA内存模型中VOLATILE关键字的作用</a></strong>、<strong><a href="https://www.cnblogs.com/theRhyme/p/9399881.html" target="_blank" rel="noopener">JAVA内存模型，为啥线程要有自己的本地内存，CPU高速缓存</a></strong></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;转载：&lt;strong&gt;&lt;a href=&quot;https://tech.meituan.com/2018/11/15/java-lock.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;不可不说的Java“锁”事&lt;/a&gt;&lt;/strong&gt;、&lt;strong
+      
+    
+    </summary>
+    
+    
+    
+      <category term="lock" scheme="http://blog.zhangzonglin.xyz/tags/lock/"/>
+    
+      <category term="synchronized" scheme="http://blog.zhangzonglin.xyz/tags/synchronized/"/>
+    
+      <category term="CAS" scheme="http://blog.zhangzonglin.xyz/tags/CAS/"/>
+    
+      <category term="volatile" scheme="http://blog.zhangzonglin.xyz/tags/volatile/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TCP/IP之NAT</title>
+    <link href="http://blog.zhangzonglin.xyz/2020/03/27/CP-IP%E4%B9%8BNAT/"/>
+    <id>http://blog.zhangzonglin.xyz/2020/03/27/CP-IP%E4%B9%8BNAT/</id>
+    <published>2020-03-27T10:12:00.000Z</published>
+    <updated>2020-03-27T10:13:19.218Z</updated>
+    
+    <content type="html"><![CDATA[<p>转载：<strong><a href="https://www.mobilezhao.com/?cat=3" target="_blank" rel="noopener">TCP/IP之NAT</a></strong></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;转载：&lt;strong&gt;&lt;a href=&quot;https://www.mobilezhao.com/?cat=3&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;TCP/IP之NAT&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="tcp/ip" scheme="http://blog.zhangzonglin.xyz/categories/tcp-ip/"/>
+    
+    
+      <category term="nat" scheme="http://blog.zhangzonglin.xyz/tags/nat/"/>
+    
+  </entry>
   
   <entry>
     <title>补码原理的个人理解</title>
@@ -425,50 +482,6 @@
     </summary>
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>trojan科学上网</title>
-    <link href="http://blog.zhangzonglin.xyz/2020/01/29/gfw/"/>
-    <id>http://blog.zhangzonglin.xyz/2020/01/29/gfw/</id>
-    <published>2020-01-29T12:10:00.000Z</published>
-    <updated>2020-01-30T10:24:03.328Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>一直用的ssr科学上网，侥幸挺过了去年国庆等的各种严打，一直傲娇地活跃到年底，没想到值此新春佳节之际，终于不出预料地被封了，丧事喜办，旧的不去新的不来，正好试试trojan，希望他能接过前辈的火种，超神带我飞，直直挺到2021吖，本文记录一下vps、windows pc以及android手机的配置。</p><a id="more"></a><h3 id="vps配置"><a href="#vps配置" class="headerlink" title="vps配置"></a>vps配置</h3><h4 id="脚本安装"><a href="#脚本安装" class="headerlink" title="脚本安装"></a>脚本安装</h4><p>系统centos7，网上荡来的一键安装脚本：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -O https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;atrandys&#x2F;trojan&#x2F;master&#x2F;trojan_mult.sh &amp;&amp; chmod +x trojan_mult.sh &amp;&amp; .&#x2F;trojan_mult.sh</span><br></pre></td></tr></table></figure><p>根据脚本提示，该输入数字输入数字，该输入域名输入域名，一撸到底，成功后屏幕会显示一个客户端的链接，弃之不用。</p><h4 id="bbr加速"><a href="#bbr加速" class="headerlink" title="bbr加速"></a>bbr加速</h4><p>先查看系统内核版本</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure><p>低于4.10的需升级内核</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm --import https:&#x2F;&#x2F;www.elrepo.org&#x2F;RPM-GPG-KEY-elrepo.org</span><br><span class="line">rpm -Uvh http:&#x2F;&#x2F;www.elrepo.org&#x2F;elrepo-release-7.0-2.el7.elrepo.noarch.rpm</span><br><span class="line">yum --enablerepo&#x3D;elrepo-kernel install kernel-ml -y</span><br></pre></td></tr></table></figure><p>安装完毕后查看已安装内核</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk -F\&#39; &#39;$1&#x3D;&#x3D;&quot;menuentry &quot; &#123;print i++ &quot; : &quot; $2&#125;&#39; &#x2F;etc&#x2F;grub2.cfg</span><br></pre></td></tr></table></figure><p>返回：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0 : CentOS Linux 7 Rescue f128bc3705574dfab442f23fb7245e0b (5.5.0-1.el7.elrepo.x86_64)</span><br><span class="line">1 : CentOS Linux (5.5.0-1.el7.elrepo.x86_64) 7 (Core)</span><br><span class="line">2 : CentOS Linux (3.10.0-1062.9.1.el7.x86_64) 7 (Core)</span><br><span class="line">3 : CentOS Linux (3.10.0-1062.el7.x86_64) 7 (Core)</span><br><span class="line">4 : CentOS Linux (0-rescue-7bd68357fb1f47688c0f1b0a48330334) 7 (Core)</span><br></pre></td></tr></table></figure><p>根据序号设置默认内核：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grub2-set-default 1</span><br></pre></td></tr></table></figure><p>重启服务器。<br>修改sysctl配置</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo &#39;net.core.default_qdisc&#x3D;fq&#39; | tee -a &#x2F;etc&#x2F;sysctl.conf</span><br><span class="line">echo &#39;net.ipv4.tcp_congestion_control&#x3D;bbr&#39; |  tee -a &#x2F;etc&#x2F;sysctl.conf</span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure><p>检查是否加载BBR</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsmod | grep bbr</span><br></pre></td></tr></table></figure><p>如果输出结果包含tcp_bbr，则表示开启成功</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcp_bbr   20480  35</span><br></pre></td></tr></table></figure><p>值此，VPS配置完毕。</p><h3 id="windows配置"><a href="#windows配置" class="headerlink" title="windows配置"></a>windows配置</h3><p>下载v2rayN客户端：<a href="https://github.com/2dust/v2rayN/releases/download/3.5/v2rayN.zip" target="_blank" rel="noopener">v2rayN</a><br>运行v2rayN.exe，服务器–&gt;Add [trojan]server–&gt;输入VPS IP，密码以及端口443–&gt;右击任务栏上v2rayN,启用Http代理，Http模式选择pac。<br>密码可以在vps（cat /usr/src/trojan/server.conf）trojan配置文件中查看。<br>至此，便可以在浏览器里科学上网了，至于其他电脑程序要科学上网，可以配置本机socks5代理，监听1080端口。</p><h3 id="android配置"><a href="#android配置" class="headerlink" title="android配置"></a>android配置</h3><p>现在只找到<a href="https://github.com/trojan-gfw/igniter/releases/download/v0.1.0-pre-alpha13/app-release.apk" target="_blank" rel="noopener">Igniter</a>，不太好用，静待更新。。。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;一直用的ssr科学上网，侥幸挺过了去年国庆等的各种严打，一直傲娇地活跃到年底，没想到值此新春佳节之际，终于不出预料地被封了，丧事喜办，旧的不去新的不来，正好试试trojan，希望他能接过前辈的火种，超神带我飞，直直挺到2021吖，本文记录一下vps、windows pc以及android手机的配置。&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="trojan" scheme="http://blog.zhangzonglin.xyz/tags/trojan/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>git学习笔记</title>
-    <link href="http://blog.zhangzonglin.xyz/2020/01/18/git-command/"/>
-    <id>http://blog.zhangzonglin.xyz/2020/01/18/git-command/</id>
-    <published>2020-01-17T20:29:00.000Z</published>
-    <updated>2020-02-26T16:12:20.903Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>以前使用SVN,切换到分布式版本控制系统Git，此笔记记录一下学习心得，备询。<a href="https://gist.github.com/guweigang/9848271" target="_blank" rel="noopener">git命令大全</a>，贴一个网页，比较<a href="https://www.liaoxuefeng.com/wiki/896043488029600/896067008724000" target="_blank" rel="noopener">适合初次接触者</a></p><a id="more"></a><h3 id="git配置代理"><a href="#git配置代理" class="headerlink" title="git配置代理"></a>git配置代理</h3><p>天朝特色，使用git clone下载同性交友网站（github）的仓库时，巨慢！如果可以科学上网的话，设置一下代理，加一下速…<br>本文用的trojan科学上网，利用它的socks5代理加速。配置命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy &#39;socks5:&#x2F;&#x2F;127.0.0.1:1080&#39; </span><br><span class="line">git config --global https.proxy &#39;socks5:&#x2F;&#x2F;127.0.0.1:1080&#39;</span><br></pre></td></tr></table></figure><p>取消代理的命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure><h3 id="git提交到多个remote"><a href="#git提交到多个remote" class="headerlink" title="git提交到多个remote"></a>git提交到多个remote</h3><p>本地生成博客页面，git部署到VPS远端，也顺便也部署到github。下面就通过把本地的文件提交到两个git远端(Remote)的事例，了解git命令的使用。<br>切换到指定目录（以目录hexo下的.deploy_git文件夹为例）</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git init        &#x2F;&#x2F;初始化一个git的本地仓库(以前hexo deploy的时候已经有了本地仓库，配置信息在隐藏文件夹.git里)</span><br><span class="line">git add myfile. &#x2F;&#x2F;将myfile加入暂存区index（</span><br><span class="line">git commit -m “first commit” &#x2F;&#x2F;把暂存区的文件提交到本地仓库</span><br><span class="line">git remote add Name1 git@vps的IP:hexo.git &#x2F;&#x2F;增加一个新的远程仓库，并命名为Name1</span><br><span class="line">git push -u Name1 master &#x2F;&#x2F;把分支master的内容push到远程仓库</span><br><span class="line">git remote add Name2 git@github.com:yourname&#x2F;yourname.github.io.git</span><br><span class="line"> &#x2F;&#x2F;添加第二个远程仓库，并命名为Name2</span><br><span class="line">git push -u Name2 master &#x2F;&#x2F;将分支master的内容push到第二个远程仓库</span><br></pre></td></tr></table></figure><p>至此，就将本地文件提交到两个远端仓库了。<br>ps:由于我的github的yourname.github.io仓库里已经有了文件，所以push的时候会报错：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">error: failed to push some refs to &#39;git@github.com:yourname&#x2F;yourname.github.io.git&#39;</span><br><span class="line">hint: Updates were rejected because the remote contains work that you do</span><br><span class="line">hint: not have locally. This is usually caused by another repository pushing</span><br><span class="line">hint: to the same ref. You may want to first integrate the remote changes</span><br><span class="line">hint: (e.g., &#39;git pull ...&#39;) before pushing again.</span><br><span class="line">hint: See the &#39;Note about fast-forwards&#39; in &#39;git push --help&#39; for details.</span><br></pre></td></tr></table></figure><p>解决方法：<br>$ git push -f Name2 master</p><h3 id="git-pull冲突"><a href="#git-pull冲突" class="headerlink" title="git pull冲突"></a>git pull冲突</h3><p>从github上fork了一个项目，并clone到本地，做了一些删改后，想要提交到github个人仓库，但发现作者项目更新了，便把fork来的项目通过New pull request和原项目同步更新了。这时本地在用git pull更新项目时，遇到了下面的问题：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">error: Your local changes to the following files would be overwritten by merge: xxx&#x2F;xxx&#x2F;xxx </span><br><span class="line">Please, commit your changes or stash them before you can merge. </span><br><span class="line">Aborting</span><br></pre></td></tr></table></figure><p>解决方法两种：</p><h4 id="覆盖本地修改"><a href="#覆盖本地修改" class="headerlink" title="覆盖本地修改"></a>覆盖本地修改</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure><p>这种会放弃本地修改的代码，看情况使用。</p><h4 id="使用git-stash"><a href="#使用git-stash" class="headerlink" title="使用git stash"></a>使用git stash</h4><p>这种会保留自己本地修改</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git stash</span><br><span class="line">git pull</span><br><span class="line">git stash pop</span><br></pre></td></tr></table></figure><p>git stash: 备份当前的工作区的内容，从最近的一次提交中读取相关内容，让工作区保证和上次提交的内容一致。同时，将当前的工作区内容保存到Git栈中。<br>git stash pop: 从Git栈中读取最近一次保存的内容，恢复工作区的相关内容。由于可能存在多个Stash的内容，所以用栈来管理，pop会从最近的一个stash中读取内容并恢复。<br>git stash list: 显示Git栈内的所有备份，可以利用这个列表来决定从那个地方恢复。<br>git stash clear: 清空Git栈。此时使用gitg等图形化工具会发现，原来stash的哪些节点都消失了。</p><p>最后就可以diff一下文件看看自动合并的情况，并对解决冲突文件做相应修改后提交即可。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;以前使用SVN,切换到分布式版本控制系统Git，此笔记记录一下学习心得，备询。&lt;a href=&quot;https://gist.github.com/guweigang/9848271&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;git命令大全&lt;/a&gt;，贴一个网页，比较&lt;a href=&quot;https://www.liaoxuefeng.com/wiki/896043488029600/896067008724000&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;适合初次接触者&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="git" scheme="http://blog.zhangzonglin.xyz/categories/git/"/>
-    
-    
-      <category term="git" scheme="http://blog.zhangzonglin.xyz/tags/git/"/>
     
   </entry>
   

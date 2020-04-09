@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>锁、synchronized、CAS、volatile</title>
+    <url>/2020/04/06/synchronized%E3%80%81CAS%E3%80%81volatile/</url>
+    <content><![CDATA[<p>转载：<strong><a href="https://tech.meituan.com/2018/11/15/java-lock.html" target="_blank" rel="noopener">不可不说的Java“锁”事</a></strong>、<strong><a href="https://blog.csdn.net/javazejian/article/details/72828483" target="_blank" rel="noopener">深入理解Java并发之synchronized实现原理</a></strong>、<strong><a href="https://juejin.im/post/5a73cbbff265da4e807783f5" target="_blank" rel="noopener">Java CAS 原理剖析
+</a></strong>、<strong><a href="https://www.cnblogs.com/theRhyme/p/12129120.html" target="_blank" rel="noopener">从原子类和UNSAFE来理解JAVA内存模型，ATOMICINTEGER的INCREMENTANDGET方法和UNSAFE部分源码介绍，VALUEOFFSET偏移量的理解</a></strong>、<strong><a href="https://www.cnblogs.com/theRhyme/p/9396834.html" target="_blank" rel="noopener">JAVA内存模型中VOLATILE关键字的作用
+</a></strong>、<strong><a href="https://www.cnblogs.com/theRhyme/p/9399881.html" target="_blank" rel="noopener">JAVA内存模型，为啥线程要有自己的本地内存，CPU高速缓存
+</a></strong></p>
+]]></content>
+      <tags>
+        <tag>lock</tag>
+        <tag>synchronized</tag>
+        <tag>CAS</tag>
+        <tag>volatile</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TCP/IP之NAT</title>
+    <url>/2020/03/27/CP-IP%E4%B9%8BNAT/</url>
+    <content><![CDATA[<p>转载：<strong><a href="https://www.mobilezhao.com/?cat=3" target="_blank" rel="noopener">TCP/IP之NAT</a></strong></p>
+]]></content>
+      <categories>
+        <category>tcp/ip</category>
+      </categories>
+      <tags>
+        <tag>nat</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>补码原理的个人理解</title>
     <url>/2020/03/20/%E8%A1%A5%E7%A0%81%E5%8E%9F%E7%90%86%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%90%86%E8%A7%A3/</url>
     <content><![CDATA[<p>转载：<strong><a href="https://blog.csdn.net/jiaobuchong/article/details/83188674" target="_blank" rel="noopener">补码原理的个人理解</a></strong></p>
@@ -309,7 +336,7 @@
   <entry>
     <title>git学习笔记</title>
     <url>/2020/01/18/git-command/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>以前使用SVN,切换到分布式版本控制系统Git，此笔记记录一下学习心得，备询。<a href="https://gist.github.com/guweigang/9848271" target="_blank" rel="noopener">git命令大全</a>，贴一个网页，比较<a href="https://www.liaoxuefeng.com/wiki/896043488029600/896067008724000" target="_blank" rel="noopener">适合初次接触者</a></p>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>以前使用SVN,切换到分布式版本控制系统Git，此笔记记录一下学习心得，备询。<strong><a href="https://gist.github.com/guweigang/9848271" target="_blank" rel="noopener">git命令大全</a></strong>，贴个链接，比较<strong><a href="https://www.liaoxuefeng.com/wiki/896043488029600/896067008724000" target="_blank" rel="noopener">适合初次接触者</a></strong>，<strong><a href="https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1" target="_blank" rel="noopener">动画演示Git命令</a></strong></p>
 <a id="more"></a>
 <h3 id="git配置代理"><a href="#git配置代理" class="headerlink" title="git配置代理"></a>git配置代理</h3><p>天朝特色，使用git clone下载同性交友网站（github）的仓库时，巨慢！如果可以科学上网的话，设置一下代理，加一下速…<br>本文用的trojan科学上网，利用它的socks5代理加速。配置命令：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global http.proxy &#39;socks5:&#x2F;&#x2F;127.0.0.1:1080&#39; </span><br><span class="line">git config --global https.proxy &#39;socks5:&#x2F;&#x2F;127.0.0.1:1080&#39;</span><br></pre></td></tr></table></figure>
