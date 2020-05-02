@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>json web token(jwt)</title>
+    <url>/2020/05/02/json-web-token-jwt/</url>
+    <content><![CDATA[<p>转载：<strong><a href="https://learnku.com/articles/22616" target="_blank" rel="noopener">别再使用 JWT 作为 Session 系统！问题重重且很危险。
+</a></strong><br>结论：无状态 JWT Tokens 无法被单独地销毁或更新，取决于你如何存储，可能还会导致长度问题、安全隐患。有状态 JWT Tokens 在功能方面与 Session cookies 无异，但缺乏生产环境的验证、经过大量 Review 的实现，以及良好的客户端支持。<br>JWT 特别有效的使用例子通常是作为一次性的授权令牌。</p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>jwt</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>计算机网络之IP、MAC</title>
+    <url>/2020/04/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B9%8BIP%E3%80%81MAC/</url>
+    <content><![CDATA[<p>转载：<strong><a href="https://www.wmathor.com/index.php/archives/1124/" target="_blank" rel="noopener">MAC 地址与 IP 地址</a></strong>、<strong><a href="https://zhuanlan.zhihu.com/p/82184208" target="_blank" rel="noopener">物理层 和 MAC 层</a></strong>、<strong><a href="https://www.jianshu.com/p/63fd0faa47da" target="_blank" rel="noopener">网络传输中的三张表，MAC地址表、ARP缓存表以及路由表详解</a></strong></p>
+]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>MAC</tag>
+        <tag>IP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>锁、synchronized、CAS、volatile</title>
     <url>/2020/04/06/synchronized%E3%80%81CAS%E3%80%81volatile/</url>
     <content><![CDATA[<p>转载：<strong><a href="https://tech.meituan.com/2018/11/15/java-lock.html" target="_blank" rel="noopener">不可不说的Java“锁”事</a></strong>、<strong><a href="https://blog.csdn.net/javazejian/article/details/72828483" target="_blank" rel="noopener">深入理解Java并发之synchronized实现原理</a></strong>、<strong><a href="https://juejin.im/post/5a73cbbff265da4e807783f5" target="_blank" rel="noopener">Java CAS 原理剖析

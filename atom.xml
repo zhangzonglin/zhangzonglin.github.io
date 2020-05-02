@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglin.xyz/"/>
-  <updated>2020-04-06T10:49:03.174Z</updated>
+  <updated>2020-05-02T14:18:28.928Z</updated>
   <id>http://blog.zhangzonglin.xyz/</id>
   
   <author>
@@ -15,6 +15,61 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>json web token(jwt)</title>
+    <link href="http://blog.zhangzonglin.xyz/2020/05/02/json-web-token-jwt/"/>
+    <id>http://blog.zhangzonglin.xyz/2020/05/02/json-web-token-jwt/</id>
+    <published>2020-05-02T14:13:00.000Z</published>
+    <updated>2020-05-02T14:18:28.928Z</updated>
+    
+    <content type="html"><![CDATA[<p>转载：<strong><a href="https://learnku.com/articles/22616" target="_blank" rel="noopener">别再使用 JWT 作为 Session 系统！问题重重且很危险。</a></strong><br>结论：无状态 JWT Tokens 无法被单独地销毁或更新，取决于你如何存储，可能还会导致长度问题、安全隐患。有状态 JWT Tokens 在功能方面与 Session cookies 无异，但缺乏生产环境的验证、经过大量 Review 的实现，以及良好的客户端支持。<br>JWT 特别有效的使用例子通常是作为一次性的授权令牌。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;转载：&lt;strong&gt;&lt;a href=&quot;https://learnku.com/articles/22616&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;别再使用 JWT 作为 Session 系统！问题重重且很危险。
+&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="java" scheme="http://blog.zhangzonglin.xyz/categories/java/"/>
+    
+    
+      <category term="jwt" scheme="http://blog.zhangzonglin.xyz/tags/jwt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计算机网络之IP、MAC</title>
+    <link href="http://blog.zhangzonglin.xyz/2020/04/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B9%8BIP%E3%80%81MAC/"/>
+    <id>http://blog.zhangzonglin.xyz/2020/04/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B9%8BIP%E3%80%81MAC/</id>
+    <published>2020-04-14T02:31:00.000Z</published>
+    <updated>2020-04-14T02:34:07.139Z</updated>
+    
+    <content type="html"><![CDATA[<p>转载：<strong><a href="https://www.wmathor.com/index.php/archives/1124/" target="_blank" rel="noopener">MAC 地址与 IP 地址</a></strong>、<strong><a href="https://zhuanlan.zhihu.com/p/82184208" target="_blank" rel="noopener">物理层 和 MAC 层</a></strong>、<strong><a href="https://www.jianshu.com/p/63fd0faa47da" target="_blank" rel="noopener">网络传输中的三张表，MAC地址表、ARP缓存表以及路由表详解</a></strong></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;转载：&lt;strong&gt;&lt;a href=&quot;https://www.wmathor.com/index.php/archives/1124/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;MAC 地址与 IP 地址&lt;/a&gt;&lt;/strong&gt;、&lt;strong&gt;&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="计算机网络" scheme="http://blog.zhangzonglin.xyz/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="MAC" scheme="http://blog.zhangzonglin.xyz/tags/MAC/"/>
+    
+      <category term="IP" scheme="http://blog.zhangzonglin.xyz/tags/IP/"/>
+    
+  </entry>
   
   <entry>
     <title>锁、synchronized、CAS、volatile</title>
@@ -440,48 +495,6 @@
     
     
       <category term="android-studio" scheme="http://blog.zhangzonglin.xyz/tags/android-studio/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>android studio http proxy for sdk </title>
-    <link href="http://blog.zhangzonglin.xyz/2020/02/02/andorid-studio-proxy-setting/"/>
-    <id>http://blog.zhangzonglin.xyz/2020/02/02/andorid-studio-proxy-setting/</id>
-    <published>2020-02-02T05:29:00.000Z</published>
-    <updated>2020-02-07T03:49:55.860Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>闲来无事，研究一下安卓的开发，并记录一下开发工具android studio的配置，主要是安装时要下载android sdk，又因长城的原因，需要设置国内镜像，或者如果你能科学上网的话，设置http proxy也可。</p><a id="more"></a><h3 id="镜像设置"><a href="#镜像设置" class="headerlink" title="镜像设置"></a>镜像设置</h3><p>这里用的是电子科技大学的镜像网站：mirrors.dormforce.net 端口：80<br>通过File–&gt;Setting–&gt;Appearance &amp; Behavior –&gt;System Settings –&gt;Http Proxy，选择Auto-detect proxy settings，并且填写URL为：mirrors.dormforce.net :80，点击clear passwords<br><img src="/images/pasted-0.png" alt="upload successful"></p><h3 id="Http-proxy设置"><a href="#Http-proxy设置" class="headerlink" title="Http proxy设置"></a>Http proxy设置</h3><p>这个适合可以科学上网的同学，我用的是trojan,配置如下：<br>Manual proxy configuration–&gt;SOCKS–&gt;Host name:127.0.0.1 Port number:1080<br>完成后点击Check connection，输入网址<em><a href="https://www.android.com/" target="_blank" rel="noopener">https://www.android.com/</a></em>，测试连接。</p><p><img src="/images/pasted-2.png" alt="upload successful"></p><p>通过上述两种之一的方式设置后，点击Android SDK,点击SDK Update Sites，下面勾选<em>『Force https://… sources to be fetched using http://…』</em>，点击Apply，完成后返回主页面即可。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;闲来无事，研究一下安卓的开发，并记录一下开发工具android studio的配置，主要是安装时要下载android sdk，又因长城的原因，需要设置国内镜像，或者如果你能科学上网的话，设置http proxy也可。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="android" scheme="http://blog.zhangzonglin.xyz/categories/android/"/>
-    
-    
-      <category term="proxy" scheme="http://blog.zhangzonglin.xyz/tags/proxy/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>pac.txt---url通配规则</title>
-    <link href="http://blog.zhangzonglin.xyz/2020/01/30/pac/"/>
-    <id>http://blog.zhangzonglin.xyz/2020/01/30/pac/</id>
-    <published>2020-01-30T09:46:31.000Z</published>
-    <updated>2020-02-10T14:26:47.441Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>科学上网PAC模式，有时会需要自己在pac.txt里添加一些被墙的URL，记录一下url通配的规则，以备以后使用。</p><a id="more"></a><ol><li>通配符支持。比如 .example.com/ 实际书写时可省略 * ， 如 .example.com/ ， 和 *.example.com/ 效果一样</li><li>正则表达式支持。以 \ 开始和结束， 如 [\w]+://example.com\</li><li>例外规则 @@ ，如 @@.example.com/ 满足 @@ 后规则的地址不使用代理</li><li>匹配地址开始和结尾 | ，如 |<a href="http://example.com" target="_blank" rel="noopener">http://example.com</a> 、 example.com| 分别表示以 <a href="http://example.com" target="_blank" rel="noopener">http://example.com</a> 开始和以 example.com 结束的地址</li><li>|| 标记，如 ||example.com 则 <a href="http://example.com" target="_blank" rel="noopener">http://example.com</a> 、 <a href="https://example.com" target="_blank" rel="noopener">https://example.com</a> 、 <a href="ftp://example.com" target="_blank" rel="noopener">ftp://example.com</a> 等地址均满足条件</li><li>注释 ! 。 如 !我是注释<br>v2rayN需重启生效。</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;科学上网PAC模式，有时会需要自己在pac.txt里添加一些被墙的URL，记录一下url通配的规则，以备以后使用。&lt;/p&gt;
-    
-    </summary>
-    
-    
     
   </entry>
   
