@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglin.xyz/"/>
-  <updated>2020-06-07T04:38:03.208Z</updated>
+  <updated>2020-12-08T13:59:50.602Z</updated>
   <id>http://blog.zhangzonglin.xyz/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>java中的乱码</title>
+    <link href="http://blog.zhangzonglin.xyz/2020/12/08/java%E4%B8%AD%E7%9A%84%E4%B9%B1%E7%A0%81/"/>
+    <id>http://blog.zhangzonglin.xyz/2020/12/08/java%E4%B8%AD%E7%9A%84%E4%B9%B1%E7%A0%81/</id>
+    <published>2020-12-08T13:41:00.000Z</published>
+    <updated>2020-12-08T13:59:50.602Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://developer.ibm.com/zh/languages/java/articles/j-lo-chinesecoding/" target="_blank" rel="noopener">深入分析 Java 中的中文编码问题</a>、<a href="https://blog.csdn.net/u010234516/article/details/52853214" target="_blank" rel="noopener">锟斤拷？UTF-8与GBK互转，为什么会乱码？</a></p><p>附图一张:</p><a id="more"></a><p><img src="/images/crazyCode.jpg" alt="upload successful"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://developer.ibm.com/zh/languages/java/articles/j-lo-chinesecoding/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;深入分析 Java 中的中文编码问题&lt;/a&gt;、&lt;a href=&quot;https://blog.csdn.net/u010234516/article/details/52853214&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;锟斤拷？UTF-8与GBK互转，为什么会乱码？&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;附图一张:&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="乱码" scheme="http://blog.zhangzonglin.xyz/tags/%E4%B9%B1%E7%A0%81/"/>
+    
+  </entry>
   
   <entry>
     <title>websocket --Token Authentication</title>
@@ -485,25 +507,6 @@
     <summary type="html">
     
       &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;Java反射机制可以让我们在编译期（Compile Time）之外的运行期（Run Time）检查类、接口、变量以及方法的信息，即动态的调用某个对象的方法/构造函数、获取某个对象的属性等，而无需在编码时确定调用的对象。这种机制在我们常用的框架中也非常常见，如spring的IOC对bean的注入管理。&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>java自定义类equal重写</title>
-    <link href="http://blog.zhangzonglin.xyz/2020/02/27/ava-equal/"/>
-    <id>http://blog.zhangzonglin.xyz/2020/02/27/ava-equal/</id>
-    <published>2020-02-27T14:47:14.000Z</published>
-    <updated>2020-02-27T14:50:12.732Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>判断两个对象在逻辑上是否相等，有时需要根据类的某些成员变量来判断两个实例是否相等，而继承Object中的equals方法比较的只是对象的引用是否指向同一块内存地址。这时候便需要重写equals()方法了。</p><a id="more"></a><p>比较的常用对象如int，float和String等，已重写了equals和hashcode方法，默认比较的是值，而其它自定义对象在用equal时都是比较的引用地址，故此有需要的时候需要重写equal方法。</p><h3 id="重写equal的要求"><a href="#重写equal的要求" class="headerlink" title="重写equal的要求"></a>重写equal的要求</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public boolean equals(Object obj) &#123;  </span><br><span class="line">        if(this &#x3D;&#x3D; obj) &#123;  </span><br><span class="line">            return true;  </span><br><span class="line">        &#125;  </span><br><span class="line">        if(null &#x3D;&#x3D; obj) &#123;  </span><br><span class="line">            return false;  </span><br><span class="line">        &#125;  </span><br><span class="line">       if (obj instanceof Test)&#123;</span><br><span class="line">            Test o &#x3D; (Test) obj;</span><br><span class="line">            return this.id &#x3D;&#x3D; o.id;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p>重写equals方法的要求：<br>1、自反性：对于任何非空引用x，x.equals(x)应该返回true。<br>2、对称性：对于任何引用x和y，如果x.equals(y)返回true，那么y.equals(x)也应该返回true。<br>3、传递性：对于任何引用x、y和z，如果x.equals(y)返回true，y.equals(z)返回true，那么x.equals(z)也应该返回true。<br>4、一致性：如果x和y引用的对象没有发生变化，那么反复调用x.equals(y)应该返回同样的结果。<br>5、非空性：对于任意非空引用x，x.equals(null)应该返回false。</p><h3 id="hashCode方法也要重写"><a href="#hashCode方法也要重写" class="headerlink" title="hashCode方法也要重写"></a>hashCode方法也要重写</h3><p>问什么说<strong>重写了equals方法都要进而重写Hashcode方法</strong>呢？</p><p>原因如下：当equals此方法被重写时，通常有必要重写 hashCode 方法，以维护 hashCode 方法的常规协定，该协定声明相等对象必须具有相等的哈希码。如下：</p><p>(1)当obj1.equals(obj2)为true时，obj1.hashCode() == obj2.hashCode()必须为true<br>(2)当obj1.hashCode() == obj2.hashCode()为false时，obj1.equals(obj2)必须为false</p><p>   &emsp;&emsp;hashcode是用于散列数据的快速存取，如利用HashSet/HashMap/Hashtable类来存储数据时，都是根据存储对象的hashcode值来进行判断是否相同的。</p><p>   &emsp;&emsp;以HashMap为例说一下的原理，HashMap存储数据的时候，是取的key值的哈希值，然后计算数组下标，采用链地址法解决冲突，然后进行存储；取数据的时候，依然是先要获取到hash值，找到数组下标，然后for遍历链表集合，进行比较是否有对应的key。比较关心的有2点：<br>  &emsp;&emsp; 1.不管是put还是get的时候，都需要得到key的哈希值，去定位key的数组下标；<br>   &emsp;&emsp;2.在get的时候，需要调用equals方法比较是否有相等的key存储过。</p><p>   更详细具体的可以看<a href="https://www.jianshu.com/p/75d9c2c3d0c1" target="_blank" rel="noopener">这篇博文</a>或者<a href="https://www.cnblogs.com/silence-hust/p/4510574.html" target="_blank" rel="noopener">这一篇</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;判断两个对象在逻辑上是否相等，有时需要根据类的某些成员变量来判断两个实例是否相等，而继承Object中的equals方法比较的只是对象的引用是否指向同一块内存地址。这时候便需要重写equals()方法了。&lt;/p&gt;
     
     </summary>
     
