@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglin.xyz/"/>
-  <updated>2020-12-08T13:59:50.602Z</updated>
+  <updated>2020-12-23T10:37:11.119Z</updated>
   <id>http://blog.zhangzonglin.xyz/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>intellij-idea的快捷键</title>
+    <link href="http://blog.zhangzonglin.xyz/2020/12/23/intellij-idea%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    <id>http://blog.zhangzonglin.xyz/2020/12/23/intellij-idea%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/</id>
+    <published>2020-12-23T10:35:22.000Z</published>
+    <updated>2020-12-23T10:37:11.119Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf" target="_blank" rel="noopener">Intellij-idea的快捷键</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf&quot; target=&quot;_blank&quot; rel=&quot;noopene
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>java中的乱码</title>
@@ -488,25 +510,6 @@
       
         &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;这里贴一个介绍类加载的介绍链接：&lt;a href=&quot;https://juejin.im/post/5dac4edff265da5b5f7588
       
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Java反射机制</title>
-    <link href="http://blog.zhangzonglin.xyz/2020/03/03/ava-reflection/"/>
-    <id>http://blog.zhangzonglin.xyz/2020/03/03/ava-reflection/</id>
-    <published>2020-03-03T05:50:39.000Z</published>
-    <updated>2020-03-03T08:11:14.247Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Java反射机制可以让我们在编译期（Compile Time）之外的运行期（Run Time）检查类、接口、变量以及方法的信息，即动态的调用某个对象的方法/构造函数、获取某个对象的属性等，而无需在编码时确定调用的对象。这种机制在我们常用的框架中也非常常见，如spring的IOC对bean的注入管理。</p><a id="more"></a><h3 id="反射回顾"><a href="#反射回顾" class="headerlink" title="反射回顾"></a>反射回顾</h3><p>反射 (Reflection) 是 Java 的特征之一，它允许运行中的 Java 程序获取自身的信息，并且可以操作类或对象的内部属性。</p><p>Oracle 官方对反射的解释是：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Reflection enables Java code to discover information about the fields, methods and constructors of loaded classes, and to use reflected fields, methods, and constructors to operate on their underlying counterparts, within security restrictions.</span><br><span class="line">The API accommodates applications that need access to either the public members of a target object (based on its runtime class) or the members declared by a given class. It also allows programs to suppress default reflective access control.</span><br></pre></td></tr></table></figure><p>简而言之，通过反射，我们可以在运行时获得程序或程序集中每一个类型的成员和成员的信息。程序中一般的对象的类型都是在编译期就确定下来的，而 Java 反射机制可以动态地创建对象并调用其属性，这样的对象的类型在编译期是未知的。所以我们可以通过反射机制直接创建对象，即使这个对象的类型在编译期是未知的。</p><p>反射的核心是 JVM 在运行时才动态加载类或调用方法/访问属性，它不需要事先（写代码的时候或编译期）知道运行对象是谁。</p><p>Java 反射主要提供以下功能：</p><p>在运行时判断任意一个对象所属的类；<br>在运行时构造任意一个类的对象；<br>在运行时判断任意一个类所具有的成员变量和方法（通过反射甚至可以调用private方法）；<br>在运行时调用任意一个对象的方法<br>重点：是运行时而不是编译时</p><h3 id="反射的主要用途"><a href="#反射的主要用途" class="headerlink" title="反射的主要用途"></a>反射的主要用途</h3><p>很多人都认为反射在实际的 Java 开发应用中并不广泛，其实不然。当我们在使用 IDE(如 Eclipse，IDEA)时，当我们输入一个对象或类并想调用它的属性或方法时，一按点号，编译器就会自动列出它的属性或方法，这里就会用到反射。</p><p>反射最重要的用途就是开发各种通用框架。很多框架（比如 Spring）都是配置化的（比如通过 XML 文件配置 Bean），为了保证框架的通用性，它们可能需要根据配置文件加载不同的对象或类，调用不同的方法，这个时候就必须用到反射，运行时动态加载需要加载的对象。</p><p>举一个例子，在运用 Struts 2 框架的开发中我们一般会在 struts.xml 里去配置 Action，比如：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;action name&#x3D;&quot;login&quot;</span><br><span class="line">               class&#x3D;&quot;org.ScZyhSoft.test.action.SimpleLoginAction&quot;</span><br><span class="line">               method&#x3D;&quot;execute&quot;&gt;</span><br><span class="line">           &lt;result&gt;&#x2F;shop&#x2F;shop-index.jsp&lt;&#x2F;result&gt;</span><br><span class="line">           &lt;result name&#x3D;&quot;error&quot;&gt;login.jsp&lt;&#x2F;result&gt; </span><br><span class="line">&lt;&#x2F;action&gt;</span><br></pre></td></tr></table></figure><p>配置文件与 Action 建立了一种映射关系，当 View 层发出请求时，请求会被 StrutsPrepareAndExecuteFilter 拦截，然后 StrutsPrepareAndExecuteFilter 会去动态地创建 Action 实例。比如我们请求 login.action，那么 StrutsPrepareAndExecuteFilter就会去解析struts.xml文件，检索action中name为login的Action，并根据class属性创建SimpleLoginAction实例，并用invoke方法来调用execute方法，这个过程离不开反射。</p><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.iteye.com/blog/rednaxelafx-548536" target="_blank" rel="noopener">反射调用的一个Log</a><br><a href="http://www.fanyilun.me/2015/10/29/Java%E5%8F%8D%E5%B0%84%E5%8E%9F%E7%90%86/" target="_blank" rel="noopener">Java反射原理简析</a></p><p>对与框架开发人员来说，反射虽小但作用非常大，它是各种容器实现的核心。而对于一般的开发者来说，不深入框架开发则用反射用的就会少一点，不过了解一下框架的底层机制有助于丰富自己的编程思想，也是很有益的。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;Java反射机制可以让我们在编译期（Compile Time）之外的运行期（Run Time）检查类、接口、变量以及方法的信息，即动态的调用某个对象的方法/构造函数、获取某个对象的属性等，而无需在编码时确定调用的对象。这种机制在我们常用的框架中也非常常见，如spring的IOC对bean的注入管理。&lt;/p&gt;
     
     </summary>
     
