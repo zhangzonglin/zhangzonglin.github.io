@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglinagain.xyz/"/>
-  <updated>2021-02-22T17:51:56.236Z</updated>
+  <updated>2021-02-22T18:13:49.784Z</updated>
   <id>http://blog.zhangzonglinagain.xyz/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SkipList (跳跃表)的那点事儿</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2021/02/23/SkipList-%E7%9A%84%E9%82%A3%E7%82%B9%E4%BA%8B%E5%84%BF/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2021/02/23/SkipList-%E7%9A%84%E9%82%A3%E7%82%B9%E4%BA%8B%E5%84%BF/</id>
+    <published>2021-02-22T18:13:15.000Z</published>
+    <updated>2021-02-22T18:13:49.784Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://mp.weixin.qq.com/s/fNBjlpzqvNkmei0cHhNcog?article_exclude_marked=ea8284506ea5ccac099671313574ba5c" target="_blank" rel="noopener">SkipList 的那点事儿</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://mp.weixin.qq.com/s/fNBjlpzqvNkmei0cHhNcog?article_exclude_marked=ea8284506ea5ccac099671313574ba5c&quot; target=&quot;_blank&quot; rel=&quot;
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>查找算法</title>
@@ -493,31 +515,6 @@
     
     
       <category term="annotation" scheme="http://blog.zhangzonglinagain.xyz/tags/annotation/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>idea下gradle报jdk版本错误</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2020/03/05/idea-gradle-jdk/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2020/03/05/idea-gradle-jdk/</id>
-    <published>2020-03-05T02:32:00.000Z</published>
-    <updated>2020-03-05T02:56:02.831Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>idea下用gradle编译项目的时候报错如下：“Could not target platform: ‘Java SE 13’ using tool chain: ‘JDK 11 (11)’.”</p><a id="more"></a><p>确认project采用的jdk 13,build.gradle里也是13，应该是Gradle用的版本不匹配，最后在File–&gt;Setting–&gt;Build Tools–&gt;Gradle里，找到配置项。</p><p><img src="/images/pasted-22.png" alt="upload successful"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;idea下用gradle编译项目的时候报错如下：“Could not target platform: ‘Java SE 13’ using tool chain: ‘JDK 11 (11)’.”&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="java" scheme="http://blog.zhangzonglinagain.xyz/categories/java/"/>
-    
-    
-      <category term="gradle" scheme="http://blog.zhangzonglinagain.xyz/tags/gradle/"/>
-    
-      <category term="jdk" scheme="http://blog.zhangzonglinagain.xyz/tags/jdk/"/>
     
   </entry>
   
