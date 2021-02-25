@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>linux sort uniq命令</title>
+    <url>/2021/02/26/linux-sort-uniq%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<p><a href="https://www.linuxjournal.com/content/back-basics-sort-and-uniq" target="_blank" rel="noopener">Back to Basics: Sort and Uniq</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>linux 查看登录历史 操作用户</title>
+    <url>/2021/02/26/linux-%E6%9F%A5%E7%9C%8B%E7%99%BB%E5%BD%95%E5%8E%86%E5%8F%B2-%E6%93%8D%E4%BD%9C%E7%94%A8%E6%88%B7/</url>
+    <content><![CDATA[<p>linux 查看登录历史 操作用户</p>
+<a id="more"></a>
+<h2 id="linux查看用户登录，操作历史等"><a href="#linux查看用户登录，操作历史等" class="headerlink" title="linux查看用户登录，操作历史等"></a>linux查看用户登录，操作历史等</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">who 命令：显示当前当登录的用户的信息</span><br><span class="line">who -b命令：显示系统最近一次的启动时间</span><br><span class="line">w 命令：显示登录的用户及其当前执行的任务</span><br><span class="line">last 命令：显示当前与过去登录系统的用户的信息</span><br><span class="line">lastb 命令：显示所有登录系统失败的用户的信息</span><br><span class="line">lastlog 命令：显示用户最后一次登录的信息</span><br><span class="line">history 命令：查看操作历史</span><br><span class="line">history -c命令：清除操作历史</span><br><span class="line">pkill -kill -u test ： 强制test用户下线</span><br></pre></td></tr></table></figure>
+<h2 id="linux清除系统日志、历史记录、登录信息"><a href="#linux清除系统日志、历史记录、登录信息" class="headerlink" title="linux清除系统日志、历史记录、登录信息"></a>linux清除系统日志、历史记录、登录信息</h2><h3 id="清楚日志"><a href="#清楚日志" class="headerlink" title="清楚日志"></a>清楚日志</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &gt; &#x2F;var&#x2F;log&#x2F;wtmp &#x2F;&#x2F;清除用户登录记录</span><br><span class="line">echo &gt; &#x2F;var&#x2F;log&#x2F;btmp &#x2F;&#x2F;清除尝试登录记录</span><br><span class="line">echo&gt;&#x2F;var&#x2F;log&#x2F;lastlog &#x2F;&#x2F;清除最近登录信息</span><br><span class="line">echo &gt; &#x2F;var&#x2F;log&#x2F;secure &#x2F;&#x2F;登录信息</span><br><span class="line">echo &gt; &#x2F;var&#x2F;log&#x2F;messages</span><br><span class="line">echo&gt;&#x2F;var&#x2F;log&#x2F;syslog &#x2F;&#x2F;记录系统日志的服务</span><br><span class="line">echo&gt;&#x2F;var&#x2F;log&#x2F;xferlog</span><br><span class="line">echo&gt;&#x2F;var&#x2F;log&#x2F;auth.log</span><br><span class="line">echo&gt;&#x2F;var&#x2F;log&#x2F;user.log</span><br><span class="line">cat &#x2F;dev&#x2F;null &gt; &#x2F;var&#x2F;adm&#x2F;sylog</span><br><span class="line">cat &#x2F;dev&#x2F;null &gt; &#x2F;var&#x2F;log&#x2F;maillog</span><br><span class="line">cat &#x2F;dev&#x2F;null &gt; &#x2F;var&#x2F;log&#x2F;openwebmail.log</span><br><span class="line">cat &#x2F;dev&#x2F;null &gt; &#x2F;var&#x2F;log&#x2F;mail.info</span><br><span class="line">echo&gt;&#x2F;var&#x2F;run&#x2F;utmp</span><br></pre></td></tr></table></figure>
+<h3 id="清除操作过的命令记录"><a href="#清除操作过的命令记录" class="headerlink" title="清除操作过的命令记录"></a>清除操作过的命令记录</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &gt; .bash_history &#x2F;&#x2F;清除保存的用户操作历史记录</span><br><span class="line">history -cw &#x2F;&#x2F;清除所有历史</span><br></pre></td></tr></table></figure>
+<h3 id="Linux查看History记录加时间戳小技巧"><a href="#Linux查看History记录加时间戳小技巧" class="headerlink" title="Linux查看History记录加时间戳小技巧"></a>Linux查看History记录加时间戳小技巧</h3><p>熟悉bash的都一定知道使用history可以输出你曾经输入过的历史命令，例如  </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@servyou_web ~]# history | more</span><br><span class="line">.&#x2F;test.sh</span><br><span class="line">vim test.sh</span><br><span class="line">.&#x2F;test.sh</span><br></pre></td></tr></table></figure>
+<p>但是这里只显示了命令，并没有显示执行命令的时间，因为保存历史命令的~/.bash_history里并没有保存时间。</p>
+<p>通过设置环境变量 export HISTTIMEFORMAT=”%F %T whoami “ 给history加上时间戳</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@servyou_web ~]# export HISTTIMEFORMAT&#x3D;&quot;%F %T whoami &quot;</span><br><span class="line">[root@servyou_web ~]# history | tail</span><br><span class="line">2011-06-22 19:17:29 root 15 2011-06-22 19:13:02 root .&#x2F;test.sh</span><br><span class="line">2011-06-22 19:17:29 root 16 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:17:29 root 17 2011-06-22 19:13:02 root .&#x2F;test.sh</span><br><span class="line">2011-06-22 19:17:29 root 18 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:17:29 root 19 2011-06-22 19:13:02 root .&#x2F;test.sh</span><br><span class="line">2011-06-22 19:17:29 root 20 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:17:29 root 21 2011-06-22 19:13:02 root .&#x2F;test.sh</span><br><span class="line">2011-06-22 19:17:29 root 22 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:25:22 root 22 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:25:28 root history | tail</span><br></pre></td></tr></table></figure>
+<p>可以看到，历史命令的时间戳已经加上了，但是.bash_history里并没有加上这个时间戳。其实这个时间记录是保存在当前shell进程内存里的，如果你logout并且重新登录的话会发现你上次登录时执行的那些命令的时间戳都为同一个值，即当时logout时的时间。</p>
+<p>尽管如此，对于加上screen的bash来说，这个时间戳仍然可以长时间有效的，毕竟只要你的server不重启，screen就不会退出，因而这些时间就能长时间保留。你也可以使用echo ‘export HISTTIMEFORMAT=”%F %T whoami “‘ &gt;&gt; /etc/profile 然后source一下就OK。</p>
+<p><a href="https://blog.51cto.com/study2008/2301555" target="_blank" rel="noopener">source</a></p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
     <title>SkipList (跳跃表)的那点事儿</title>
     <url>/2021/02/23/SkipList-%E7%9A%84%E9%82%A3%E7%82%B9%E4%BA%8B%E5%84%BF/</url>
     <content><![CDATA[<p><a href="https://mp.weixin.qq.com/s/fNBjlpzqvNkmei0cHhNcog?article_exclude_marked=ea8284506ea5ccac099671313574ba5c" target="_blank" rel="noopener">SkipList 的那点事儿</a></p>
