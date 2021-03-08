@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglinagain.xyz/"/>
-  <updated>2021-02-25T19:03:51.206Z</updated>
+  <updated>2021-03-08T18:39:29.557Z</updated>
   <id>http://blog.zhangzonglinagain.xyz/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>巧记linux常用命令中的递归参数-r(R)和-p</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2021/03/09/%E5%B7%A7%E8%AE%B0linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B8%AD%E7%9A%84%E9%80%92%E5%BD%92%E5%8F%82%E6%95%B0-r-R-%E5%92%8C-p/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2021/03/09/%E5%B7%A7%E8%AE%B0linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B8%AD%E7%9A%84%E9%80%92%E5%BD%92%E5%8F%82%E6%95%B0-r-R-%E5%92%8C-p/</id>
+    <published>2021-03-08T18:38:00.000Z</published>
+    <updated>2021-03-08T18:39:29.557Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://blog.csdn.net/longyamiao/article/details/79782254" target="_blank" rel="noopener">巧记linux常用命令中的递归参数-r(R)和-p</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/longyamiao/article/details/79782254&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;巧记linux常用命令中的递归参数-r(R)和-p&lt;/a&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="http://blog.zhangzonglinagain.xyz/categories/linux/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>linux sort uniq命令</title>
@@ -481,33 +506,6 @@
     
     
       <category term="spring" scheme="http://blog.zhangzonglinagain.xyz/tags/spring/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>jvm-invokeinterface</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2020/03/09/vm-invokeinterface/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2020/03/09/vm-invokeinterface/</id>
-    <published>2020-03-09T05:57:00.000Z</published>
-    <updated>2020-03-09T06:01:48.588Z</updated>
-    
-    <content type="html"><![CDATA[<p>转载：<a href="https://blog.csdn.net/kang389110772/article/details/50723127" target="_blank" rel="noopener">Spring为什么Autowired注入的是接口</a>、</p><p><a href="https://github.com/1993hzh/thoughts/issues/5" target="_blank" rel="noopener">浅析JVM中invokevirtual与invokeinterface的区别 #5</a>、</p><p><a href="https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.6.3" target="_blank" rel="noopener">Java Virtual Machine Specification</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;转载：&lt;a href=&quot;https://blog.csdn.net/kang389110772/article/details/50723127&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Spring为什么Autowired注入的是接口
-&lt;/a&gt;、&lt;/
-      
-    
-    </summary>
-    
-    
-      <category term="java" scheme="http://blog.zhangzonglinagain.xyz/categories/java/"/>
-    
-    
-      <category term="jvm" scheme="http://blog.zhangzonglinagain.xyz/tags/jvm/"/>
     
   </entry>
   
