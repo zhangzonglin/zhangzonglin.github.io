@@ -5,6 +5,8 @@
     <url>/2021/04/02/linux-%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E3%80%81%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>linux termianl中，命令脚本的后台运行以及输出的重定向，如</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nohup .&#x2F;myshell.sh &gt; my.log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
+<p>等价于</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nohup .&#x2F;myshell.sh &amp;&gt; my.log &amp;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h3 id="后台运行"><a href="#后台运行" class="headerlink" title="后台运行"></a>后台运行</h3><p>当启动一个服务后，希望命令在后台运行时，可以通过在命令末尾增加 &amp; ，例如：./test.sh &amp;，执行上述命令后，脚本开始在后台运行，并且命令行回显为 [1] 12532 ,这里的 1表示后台进程的编号，可以通过命令 fg 1 把进程切换回前台运行。</p>
 <p>此时，虽然命令已经后台运行了，我们可以在控制台输入其他命令，但是脚本每秒打印的 x 会不断的输出到控制台，影响我们其他命令的执行，这时，我也需要用输出重定向把命令的执行结果输出的文件中。</p>
@@ -24,10 +26,10 @@
 
 <p>注意：此处的顺序不能更改，否则达不到想要的效果，此时先将标准输出重定向到 /dev/null，然后将标准错误重定向到标准输出，由于标准输出已经重定向到了/dev/null，因此标准错误也会重定向到/dev/null，于是一切静悄悄:-) </p>
 <p>另外+: </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">make &gt;&amp; make_log</span><br></pre></td></tr></table></figure>
-<p>意思是把标准输出和错误输出都重定向, <em>make&gt;out</em> 只重定向标准输出!!!!! </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">command &amp;&gt; make_log</span><br></pre></td></tr></table></figure>
+<p>意思是把标准输出和错误输出都重定向, <em>command&gt;out</em> 只重定向标准输出!!!!! </p>
 <p><em>&gt;log</em> 表示把标准输出重新定向到文件log中 </p>
-<p><em>&gt;&amp; log</em> 表示把标准输出和错误输出都定向到文件log中，相当于 <em>&gt;log 2&gt;&amp;1</em></p>
+<p><em>&amp;&gt; log</em> 表示把标准输出和错误输出都定向到文件log中，相当于 <em>&gt;log 2&gt;&amp;1</em></p>
 <h3 id="nohup"><a href="#nohup" class="headerlink" title="nohup"></a>nohup</h3><p>通过 &amp; 虽然可以把命令以后台进程的方式执行，但是如果SSH会话中断退出，和此会话相关的所有进程都会终止。<br>如果我们是登录服务器去启动一个服务程序，总不能启动后一直把SSH会话开着，而且会话到期会自动终止。</p>
 <p>这是，我们可以使用 nohup（no hung up）来执行进程，此命令确保会话挂断后，命令可以继续运行。以nohup运行的命令，系统默认自动把stdout和stderr重定向到当前目录的nohup.out文件。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nohup .&#x2F;run.py &amp;</span><br></pre></td></tr></table></figure>
