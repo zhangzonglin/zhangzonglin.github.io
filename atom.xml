@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglinagain.xyz/"/>
-  <updated>2021-03-18T19:15:15.103Z</updated>
+  <updated>2021-04-02T13:17:18.316Z</updated>
   <id>http://blog.zhangzonglinagain.xyz/</id>
   
   <author>
@@ -15,6 +15,90 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>linux 后台运行、输出重定向</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2021/04/02/linux-%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E3%80%81%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2021/04/02/linux-%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E3%80%81%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91/</id>
+    <published>2021-04-02T13:05:47.000Z</published>
+    <updated>2021-04-02T13:17:18.316Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>linux termianl中，命令脚本的后台运行以及输出的重定向，如</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup .&#x2F;myshell.sh &gt; my.log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure><a id="more"></a><h3 id="后台运行"><a href="#后台运行" class="headerlink" title="后台运行"></a>后台运行</h3><p>当启动一个服务后，希望命令在后台运行时，可以通过在命令末尾增加 &amp; ，例如：./test.sh &amp;，执行上述命令后，脚本开始在后台运行，并且命令行回显为 [1] 12532 ,这里的 1表示后台进程的编号，可以通过命令 fg 1 把进程切换回前台运行。</p><p>此时，虽然命令已经后台运行了，我们可以在控制台输入其他命令，但是脚本每秒打印的 x 会不断的输出到控制台，影响我们其他命令的执行，这时，我也需要用输出重定向把命令的执行结果输出的文件中。</p><h3 id="输出重定向"><a href="#输出重定向" class="headerlink" title="输出重定向"></a>输出重定向</h3><p>一个程序执行后，系统会生成三个句柄，分别是：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0&#x3D;stdin（标准输入）</span><br><span class="line">1&#x3D;stdout（标准输出）</span><br><span class="line">2&#x3D;stderr（错误输出）</span><br></pre></td></tr></table></figure><p>默认情况下，三个句柄都指向当前会话的命令行控制台。命令转到后台执行后，stdin关闭，stdout和stderr还是指向控制台。</p><p>通过在命令后使用输出重定向符 &gt; 实现对输出的重定向。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;run.py &gt; run.log &amp;</span><br></pre></td></tr></table></figure><p>表示把stdout重定向到当前目录的run.log文件。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;run.py &gt; run.log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure><p>表示把stdout和stderr都重定向到run.log，其中 2&gt;&amp;1 表示把stderr重定向到stdout。另外，其中&gt; run.log表示标准输出重定向到文件run.log中且是<strong>覆盖重写，如果想要追加方式写入，则是&gt;&gt; run.log</strong>。</p><p>Linux下还有一个特殊的文件/dev/null，它就像一个无底洞，所有重定向到它的信息都会消失得无影无踪。这一点非常有用，当我们不需要回显程序的所有信息时，就可以将输出重定向到/dev/null。 </p><p>如果想要正常输出和错误信息都不显示，则要把标准输出和标准错误都重定向到/dev/null， 例如： </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls 1&gt;&#x2F;dev&#x2F;null 2&gt;&#x2F;dev&#x2F;null</span><br></pre></td></tr></table></figure><p>还有一种做法是将错误重定向到标准输出，然后再重定向到 /dev/null，例如： </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls &gt;&#x2F;dev&#x2F;null 2&gt;&amp;1</span><br></pre></td></tr></table></figure><p>注意：此处的顺序不能更改，否则达不到想要的效果，此时先将标准输出重定向到 /dev/null，然后将标准错误重定向到标准输出，由于标准输出已经重定向到了/dev/null，因此标准错误也会重定向到/dev/null，于是一切静悄悄:-) </p><p>另外+: </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make &gt;&amp; make_log</span><br></pre></td></tr></table></figure><p>意思是把标准输出和错误输出都重定向, <em>make&gt;out</em> 只重定向标准输出!!!!! </p><p><em>&gt;log</em> 表示把标准输出重新定向到文件log中 </p><p><em>&gt;&amp; log</em> 表示把标准输出和错误输出都定向到文件log中，相当于 <em>&gt;log 2&gt;&amp;1</em></p><h3 id="nohup"><a href="#nohup" class="headerlink" title="nohup"></a>nohup</h3><p>通过 &amp; 虽然可以把命令以后台进程的方式执行，但是如果SSH会话中断退出，和此会话相关的所有进程都会终止。<br>如果我们是登录服务器去启动一个服务程序，总不能启动后一直把SSH会话开着，而且会话到期会自动终止。</p><p>这是，我们可以使用 nohup（no hung up）来执行进程，此命令确保会话挂断后，命令可以继续运行。以nohup运行的命令，系统默认自动把stdout和stderr重定向到当前目录的nohup.out文件。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup .&#x2F;run.py &amp;</span><br></pre></td></tr></table></figure><h3 id="nohup和-amp-的区别"><a href="#nohup和-amp-的区别" class="headerlink" title="nohup和&amp;的区别"></a>nohup和&amp;的区别</h3><p>&amp;：已后台进程执行命令，但是会话关闭后，进程会结束。</p><p>nohup：确保进程不挂断的执行，但是没有后台执行的功能，所以一般nohup和&amp;需要配合一起使用。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;linux termianl中，命令脚本的后台运行以及输出的重定向，如&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;nohup .&amp;#x2F;myshell.sh &amp;gt; my.log 2&amp;gt;&amp;amp;1 &amp;amp;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu 开机启动管理</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2021/03/21/ubuntu-%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%AE%A1%E7%90%86/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2021/03/21/ubuntu-%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%AE%A1%E7%90%86/</id>
+    <published>2021-03-20T16:26:23.000Z</published>
+    <updated>2021-03-20T16:31:48.804Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ubuntu自启服务管理命令</p><a id="more"></a><p>查看开机启动服务</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl list-unit-files --type&#x3D;service|grep enabled</span><br></pre></td></tr></table></figure><p>以蓝牙为例，查询蓝牙服务是否开机启动</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl is-enabled bluetooth.service</span><br></pre></td></tr></table></figure><p>如果是enable开机自启动<br>如果是disable不开机启动</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable bluetooth.service #开机运行服务</span><br><span class="line"></span><br><span class="line">systemctl disable bluetooth.service #取消开机运行</span><br><span class="line"></span><br><span class="line">sudo systemctl disable  bluetooth.service#关闭蓝牙服务</span><br><span class="line"></span><br><span class="line">systemctl start bluetooth.service #启动服务</span><br><span class="line"></span><br><span class="line">systemctl stop bluetooth.service #停止服务</span><br><span class="line"></span><br><span class="line">systemctl restart bluetooth.service #重启服务</span><br><span class="line"></span><br><span class="line">systemctl reload bluetooth.service #重新加载服务配置文件</span><br><span class="line"></span><br><span class="line">systemctl status bluetooth.service #查询服务运行状态</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;ubuntu自启服务管理命令&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>IntelliJ IDEA激活</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2021/03/20/IntelliJ-IDEA%E6%BF%80%E6%B4%BB/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2021/03/20/IntelliJ-IDEA%E6%BF%80%E6%B4%BB/</id>
+    <published>2021-03-20T07:01:39.000Z</published>
+    <updated>2021-03-20T07:03:11.678Z</updated>
+    
+    <content type="html"><![CDATA[<p>可用方法：<a href="https://www.exception.site/essay/how-to-free-use-intellij-idea-2019-3" target="_blank" rel="noopener">IntelliJ IDEA 2020.3.3激活破解教程（亲测激活至 2099 年，长期更新）</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;可用方法：&lt;a href=&quot;https://www.exception.site/essay/how-to-free-use-intellij-idea-2019-3&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;IntelliJ IDEA 2020.3.
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ssh 密码登录脚本</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2021/03/19/ssh-%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2021/03/19/ssh-%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/</id>
+    <published>2021-03-18T19:37:00.000Z</published>
+    <updated>2021-03-18T20:09:33.643Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>脚本密码登录服务器</p><a id="more"></a><p>1、安装expect<br>使用以下代码检测expect是否已经安装</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls &#x2F;usr&#x2F;bin | grep expect</span><br></pre></td></tr></table></figure><p>如果显示为空，则使用以下命令安装</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install tcl tk expect</span><br></pre></td></tr></table></figure><p>2、 制作脚本<br>合适位置建个sh文件，脚本中写入以下内容</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">spawn ssh root@127.0.0.1 -p 22</span><br><span class="line">expect &quot;*Are you sure you want to continue connecting (yes&#x2F;no)?&quot;</span><br><span class="line">send &quot;yes\r&quot;</span><br><span class="line">expect &quot;*password:&quot;</span><br><span class="line">send &quot;123456\r&quot;</span><br><span class="line">interact</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;脚本密码登录服务器&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="http://blog.zhangzonglinagain.xyz/categories/linux/"/>
+    
+    
+      <category term="shell" scheme="http://blog.zhangzonglinagain.xyz/tags/shell/"/>
+    
+  </entry>
   
   <entry>
     <title>ubuntu 打开win10 txt中文乱码</title>
@@ -383,118 +467,6 @@
     
     
       <category term="kotlin" scheme="http://blog.zhangzonglinagain.xyz/tags/kotlin/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>json web token(jwt)</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2020/05/02/json-web-token-jwt/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2020/05/02/json-web-token-jwt/</id>
-    <published>2020-05-02T14:13:00.000Z</published>
-    <updated>2020-05-02T14:18:28.928Z</updated>
-    
-    <content type="html"><![CDATA[<p>转载：<strong><a href="https://learnku.com/articles/22616" target="_blank" rel="noopener">别再使用 JWT 作为 Session 系统！问题重重且很危险。</a></strong><br>结论：无状态 JWT Tokens 无法被单独地销毁或更新，取决于你如何存储，可能还会导致长度问题、安全隐患。有状态 JWT Tokens 在功能方面与 Session cookies 无异，但缺乏生产环境的验证、经过大量 Review 的实现，以及良好的客户端支持。<br>JWT 特别有效的使用例子通常是作为一次性的授权令牌。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;转载：&lt;strong&gt;&lt;a href=&quot;https://learnku.com/articles/22616&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;别再使用 JWT 作为 Session 系统！问题重重且很危险。
-&lt;/a&gt;&lt;/strong&gt;&lt;br&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="java" scheme="http://blog.zhangzonglinagain.xyz/categories/java/"/>
-    
-    
-      <category term="jwt" scheme="http://blog.zhangzonglinagain.xyz/tags/jwt/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>计算机网络之IP、MAC</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2020/04/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B9%8BIP%E3%80%81MAC/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2020/04/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B9%8BIP%E3%80%81MAC/</id>
-    <published>2020-04-14T02:31:00.000Z</published>
-    <updated>2020-04-14T02:34:07.139Z</updated>
-    
-    <content type="html"><![CDATA[<p>转载：<strong><a href="https://www.wmathor.com/index.php/archives/1124/" target="_blank" rel="noopener">MAC 地址与 IP 地址</a></strong>、<strong><a href="https://zhuanlan.zhihu.com/p/82184208" target="_blank" rel="noopener">物理层 和 MAC 层</a></strong>、<strong><a href="https://www.jianshu.com/p/63fd0faa47da" target="_blank" rel="noopener">网络传输中的三张表，MAC地址表、ARP缓存表以及路由表详解</a></strong></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;转载：&lt;strong&gt;&lt;a href=&quot;https://www.wmathor.com/index.php/archives/1124/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;MAC 地址与 IP 地址&lt;/a&gt;&lt;/strong&gt;、&lt;strong&gt;&lt;
-      
-    
-    </summary>
-    
-    
-      <category term="计算机网络" scheme="http://blog.zhangzonglinagain.xyz/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
-    
-    
-      <category term="MAC" scheme="http://blog.zhangzonglinagain.xyz/tags/MAC/"/>
-    
-      <category term="IP" scheme="http://blog.zhangzonglinagain.xyz/tags/IP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>锁、synchronized、CAS、volatile</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2020/04/06/synchronized%E3%80%81CAS%E3%80%81volatile/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2020/04/06/synchronized%E3%80%81CAS%E3%80%81volatile/</id>
-    <published>2020-04-06T10:42:00.000Z</published>
-    <updated>2020-04-06T10:49:03.174Z</updated>
-    
-    <content type="html"><![CDATA[<p>转载：<strong><a href="https://tech.meituan.com/2018/11/15/java-lock.html" target="_blank" rel="noopener">不可不说的Java“锁”事</a></strong>、<strong><a href="https://blog.csdn.net/javazejian/article/details/72828483" target="_blank" rel="noopener">深入理解Java并发之synchronized实现原理</a></strong>、<strong><a href="https://juejin.im/post/5a73cbbff265da4e807783f5" target="_blank" rel="noopener">Java CAS 原理剖析</a></strong>、<strong><a href="https://www.cnblogs.com/theRhyme/p/12129120.html" target="_blank" rel="noopener">从原子类和UNSAFE来理解JAVA内存模型，ATOMICINTEGER的INCREMENTANDGET方法和UNSAFE部分源码介绍，VALUEOFFSET偏移量的理解</a></strong>、<strong><a href="https://www.cnblogs.com/theRhyme/p/9396834.html" target="_blank" rel="noopener">JAVA内存模型中VOLATILE关键字的作用</a></strong>、<strong><a href="https://www.cnblogs.com/theRhyme/p/9399881.html" target="_blank" rel="noopener">JAVA内存模型，为啥线程要有自己的本地内存，CPU高速缓存</a></strong></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;转载：&lt;strong&gt;&lt;a href=&quot;https://tech.meituan.com/2018/11/15/java-lock.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;不可不说的Java“锁”事&lt;/a&gt;&lt;/strong&gt;、&lt;strong
-      
-    
-    </summary>
-    
-    
-    
-      <category term="lock" scheme="http://blog.zhangzonglinagain.xyz/tags/lock/"/>
-    
-      <category term="synchronized" scheme="http://blog.zhangzonglinagain.xyz/tags/synchronized/"/>
-    
-      <category term="CAS" scheme="http://blog.zhangzonglinagain.xyz/tags/CAS/"/>
-    
-      <category term="volatile" scheme="http://blog.zhangzonglinagain.xyz/tags/volatile/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>TCP/IP之NAT</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2020/03/27/CP-IP%E4%B9%8BNAT/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2020/03/27/CP-IP%E4%B9%8BNAT/</id>
-    <published>2020-03-27T10:12:00.000Z</published>
-    <updated>2020-03-27T10:13:19.218Z</updated>
-    
-    <content type="html"><![CDATA[<p>转载：<strong><a href="https://www.mobilezhao.com/?cat=3" target="_blank" rel="noopener">TCP/IP之NAT</a></strong></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;转载：&lt;strong&gt;&lt;a href=&quot;https://www.mobilezhao.com/?cat=3&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;TCP/IP之NAT&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-    
-      <category term="tcp/ip" scheme="http://blog.zhangzonglinagain.xyz/categories/tcp-ip/"/>
-    
-    
-      <category term="nat" scheme="http://blog.zhangzonglinagain.xyz/tags/nat/"/>
     
   </entry>
   
