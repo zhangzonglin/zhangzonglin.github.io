@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Let’sEncrypt 证书自动更新脚本</title>
+    <url>/2021/04/08/Let%E2%80%99sEncrypt-%E8%AF%81%E4%B9%A6%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E8%84%9A%E6%9C%AC/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>vps科学上网用的Let’sEncrypt免费证书，有效期一般是3个月，需要定期更新。写个脚本，定时更新。</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">#Version:1.0</span><br><span class="line">#Author:zzl</span><br><span class="line">#Automatically renew Let&#39;s Encrypt certificates</span><br><span class="line">#A cron job will run this shell script everyday</span><br><span class="line">i&#x3D;0</span><br><span class="line">while [[ $i -lt 10]]</span><br><span class="line">do</span><br><span class="line">  let &quot;i++&quot;</span><br><span class="line">  if [ $(ps -C nginx --no-header | wc -l) -ne 0];then</span><br><span class="line">    service nginx stop</span><br><span class="line">    sleep 3s</span><br><span class="line">    if [ $(ps -C nginx --no-header | wc -l) -eq 0];then</span><br><span class="line">      break</span><br><span class="line">    fi</span><br><span class="line">  fi</span><br><span class="line">done</span><br><span class="line">certbot renew </span><br><span class="line">service nginx start</span><br></pre></td></tr></table></figure>
+<p>或者直接用certbot renew command，详情如下<br>        <strong><a href="https://certbot.eff.org/docs/using.html?highlight=hooks#renewing-certificates" target="_blank" rel="noopener">Certbot documentation on renewing certificates</a></strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">certbot renew --pre-hook &quot;service nginx stop&quot; --post-hook &quot;service nginx start&quot;</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>shell脚本检查nginx服务状态</title>
+    <url>/2021/04/08/shell%E8%84%9A%E6%9C%AC%E6%A3%80%E6%9F%A5nginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A&#x3D;&#96;ps -C nginx --no-header |wc -l&#96;</span><br><span class="line">if [ $A -eq 0 ];then</span><br><span class="line">    service nginx start</span><br><span class="line">    sleep 2</span><br><span class="line">    if [ &#96;ps -C nginx --no-header |wc -l&#96; -eq 0 ];then</span><br><span class="line">        killall keepalived</span><br><span class="line">    fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<h3 id="脚本解析"><a href="#脚本解析" class="headerlink" title="脚本解析"></a>脚本解析</h3><p>以上是通过进程判断，也可以通过端口判断，如netstat -nlpt | grep nginx</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# netstat -nlpt | grep nginx</span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      8801&#x2F;nginx: master</span><br></pre></td></tr></table></figure>
+
+<p>以下，以进程为例详解，ps -C nginx –no-header<br>这里涉及ps 的用法，我们一般用ps查看相关进程，一般都是用ps -ef | grep XX 或 ps -aux| grep XX 的模式<br>如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br><span class="line">root     11660  5532  0 09:55 pts&#x2F;1    00:00:00 grep --color&#x3D;auto nginx</span><br></pre></td></tr></table></figure>
+<p>但是这样通常都会覆盖一个grep的进程。</p>
+<p>我们可以用ps -ef|grep nginx|grep -v grep的方式排除grep的进程，如</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# ps -ef|grep nginx|grep -v grep</span><br><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br></pre></td></tr></table></figure>
+
+<p>也可以直接用ps -C 或ps -c 的方式， -C 后面接命令的名字（推荐） ，如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx</span><br><span class="line">   PID TTY          TIME CMD</span><br><span class="line">  8801 ?        00:00:00 nginx</span><br><span class="line">  8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
+<p>–no-header 就是去挑title,如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx --no-header</span><br><span class="line"> 8801 ?        00:00:00 nginx</span><br><span class="line"> 8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
+<p>wc -l 这个很熟悉了，行数计算</p>
+<p>所以用这种方式可判断，如果<br>ps -C nginx –no-header|wc -l</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">值为0，即代表服务未启动</span><br><span class="line">值为非0，即代表服务已启动</span><br></pre></td></tr></table></figure>
+<p>最后，killall keepalived 这个是以服务名称杀死进程，日常中也用的挺多的</p>
+<p>上面那段完整的脚本意思即为：<br>判断nginx 服务是否启动<br>如果未启动，执行启动命令<br>再次判断，如果启动失败，关掉keepalived，进入从节点</p>
+]]></content>
+      <categories>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>linux 后台运行、输出重定向</title>
     <url>/2021/04/02/linux-%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E3%80%81%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>linux termianl中，命令脚本的后台运行以及输出的重定向，如</p>
@@ -1288,6 +1330,72 @@
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Shell脚本检测Nginx服务状态</title>
+    <url>/1970/01/01/Shell%E8%84%9A%E6%9C%AC%E6%A3%80%E6%B5%8BNginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A&#x3D;&#96;ps -C nginx --no-header |wc -l&#96;</span><br><span class="line">if [ $A -eq 0 ];then</span><br><span class="line">    service nginx start</span><br><span class="line">    sleep 2</span><br><span class="line">    if [ &#96;ps -C nginx --no-header |wc -l&#96; -eq 0 ];then</span><br><span class="line">        killall keepalived</span><br><span class="line">    fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<h3 id="脚本解析"><a href="#脚本解析" class="headerlink" title="脚本解析"></a>脚本解析</h3><p>以上是通过进程判断，也可以通过端口判断，如netstat -nlpt | grep nginx</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# netstat -nlpt | grep nginx</span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      8801&#x2F;nginx: master</span><br></pre></td></tr></table></figure>
+
+<p>以下，以进程为例详解，ps -C nginx –no-header<br>这里涉及ps 的用法，我们一般用ps查看相关进程，一般都是用ps -ef | grep XX 或 ps -aux| grep XX 的模式<br>如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br><span class="line">root     11660  5532  0 09:55 pts&#x2F;1    00:00:00 grep --color&#x3D;auto nginx</span><br></pre></td></tr></table></figure>
+<p>但是这样通常都会覆盖一个grep的进程。</p>
+<p>我们可以用ps -ef|grep nginx|grep -v grep的方式排除grep的进程，如</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# ps -ef|grep nginx|grep -v grep</span><br><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br></pre></td></tr></table></figure>
+
+<p>也可以直接用ps -C 或ps -c 的方式， -C 后面接命令的名字（推荐） ，如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx</span><br><span class="line">   PID TTY          TIME CMD</span><br><span class="line">  8801 ?        00:00:00 nginx</span><br><span class="line">  8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
+<p>–no-header 就是去挑title,如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx --no-header</span><br><span class="line"> 8801 ?        00:00:00 nginx</span><br><span class="line"> 8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
+<p>wc -l 这个很熟悉了，行数计算</p>
+<p>所以用这种方式可判断，如果<br>ps -C nginx –no-header|wc -l</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">值为0，即代表服务未启动</span><br><span class="line">值为非0，即代表服务已启动</span><br></pre></td></tr></table></figure>
+<p>最后，killall keepalived 这个是以服务名称杀死进程，日常中也用的挺多的</p>
+<p>上面那段完整的脚本意思即为：<br>判断nginx 服务是否启动<br>如果未启动，执行启动命令<br>再次判断，如果启动失败，关掉keepalived，进入从节点</p>
+]]></content>
+      <categories>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>shell脚本监测nginx服务状态</title>
+    <url>/1970/01/01/shell%E8%84%9A%E6%9C%AC%E7%9B%91%E6%B5%8Bnginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A&#x3D;&#96;ps -C nginx --no-header |wc -l&#96;</span><br><span class="line">if [ $A -eq 0 ];then</span><br><span class="line">    service nginx start</span><br><span class="line">    sleep 2</span><br><span class="line">    if [ &#96;ps -C nginx --no-header |wc -l&#96; -eq 0 ];then</span><br><span class="line">        killall keepalived</span><br><span class="line">    fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<h3 id="脚本解析"><a href="#脚本解析" class="headerlink" title="脚本解析"></a>脚本解析</h3><p>以上是通过进程判断，也可以通过端口判断，如netstat -nlpt | grep nginx</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# netstat -nlpt | grep nginx</span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      8801&#x2F;nginx: master</span><br></pre></td></tr></table></figure>
+
+<p>以下，以进程为例详解，ps -C nginx –no-header<br>这里涉及ps 的用法，我们一般用ps查看相关进程，一般都是用ps -ef | grep XX 或 ps -aux| grep XX 的模式<br>如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br><span class="line">root     11660  5532  0 09:55 pts&#x2F;1    00:00:00 grep --color&#x3D;auto nginx</span><br></pre></td></tr></table></figure>
+<p>但是这样通常都会覆盖一个grep的进程。</p>
+<p>我们可以用ps -ef|grep nginx|grep -v grep的方式排除grep的进程，如</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# ps -ef|grep nginx|grep -v grep</span><br><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br></pre></td></tr></table></figure>
+
+<p>也可以直接用ps -C 或ps -c 的方式， -C 后面接命令的名字（推荐） ，如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx</span><br><span class="line">   PID TTY          TIME CMD</span><br><span class="line">  8801 ?        00:00:00 nginx</span><br><span class="line">  8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
+<p>–no-header 就是去挑title,如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx --no-header</span><br><span class="line"> 8801 ?        00:00:00 nginx</span><br><span class="line"> 8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
+<p>wc -l 这个很熟悉了，行数计算</p>
+<p>所以用这种方式可判断，如果<br>ps -C nginx –no-header|wc -l</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">值为0，即代表服务未启动</span><br><span class="line">值为非0，即代表服务已启动</span><br></pre></td></tr></table></figure>
+<p>最后，killall keepalived 这个是以服务名称杀死进程，日常中也用的挺多的</p>
+<p>上面那段完整的脚本意思即为：<br>判断nginx 服务是否启动<br>如果未启动，执行启动命令<br>再次判断，如果启动失败，关掉keepalived，进入从节点</p>
+]]></content>
+      <categories>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+      </tags>
   </entry>
   <entry>
     <title>ubuntu 开机自动挂载其他盘</title>
