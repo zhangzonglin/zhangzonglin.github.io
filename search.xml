@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>centos 免密切换root</title>
+    <url>/2021/04/11/centos-switch-to-root-without-password/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>centos6上免密切换到root，原理、步骤。</p>
+<a id="more"></a>
+<h3 id="execute-ALL-sudo-commands-without-password"><a href="#execute-ALL-sudo-commands-without-password" class="headerlink" title="execute ALL sudo commands without password"></a>execute ALL sudo commands without password</h3><p>Type the following command as root user:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># visudo</span><br></pre></td></tr></table></figure>
+<p>Or</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ vim &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure>
+<p>Append the following entry to run ALL command without a password for a user named marlena:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">remo ALL&#x3D;(ALL) NOPASSWD:ALL</span><br></pre></td></tr></table></figure>
+<p>Save and close the file in vim. It is also possible to grant access to the group name such as sysadm. Any member of sysadm group can run command without a password. The syntax is</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">%sysadm ALL&#x3D;(ALL) NOPASSWD: ALL</span><br></pre></td></tr></table></figure>
+<p>Of course, you can force the sysadm group to run only given commands such as /usr/sbin/reboot and systemctl:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">%sysadm ALL&#x3D;(ALL) NOPASSWD: &#x2F;usr&#x2F;sbin&#x2F;reboot, systemctl</span><br></pre></td></tr></table></figure>
+<p>参考：<strong><a href="https://www.cyberciti.biz/faq/how-to-sudo-without-password-on-centos-linux/" target="_blank" rel="noopener">How to sudo without password on CentOS Linux</a></strong></p>
+<h3 id="switch-to-root-without-password"><a href="#switch-to-root-without-password" class="headerlink" title="switch to root without password"></a>switch to root without password</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@lansetongxin2 &#x2F;]# vim &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure>
+<p>相应位置添加：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">username ALL&#x3D;(ALL) NOPASSWD: ALL</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-34.png" alt="upload successful"><br>ps: By default on CentOS systems, members of the group wheel are granted with sudo access.</p>
+<p>:wq 保存后，便可以免密切换到root(sudo su -)。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[remo@lansetongxin2 ~]$ sudo su #最好使用sudo su -完全切换，su会加载不出来环境变量</span><br></pre></td></tr></table></figure>
+
+<p>ps: su命令和su -命令最大的本质区别就是：前者只是切换了root身份，但Shell环境仍然是普通用户的Shell；而后者连用户和Shell环境一起切换成root身份了。只有切换了Shell环境才不会出现PATH环境变量错误。su切换成root用户以后，pwd一下，发现工作目录仍然是普通用户的工作目录；而用su -命令切换以后，工作目录变成root的工作目录了。用echo $PATH命令看一下su和su -以后的环境变量有何不同。以此类推，要从当前用户切换到其它用户也一样，应该使用su -命令。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>Let’sEncrypt 证书自动更新脚本</title>
     <url>/2021/04/08/Let%E2%80%99sEncrypt-%E8%AF%81%E4%B9%A6%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E8%84%9A%E6%9C%AC/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>vps科学上网用的Let’sEncrypt免费证书，有效期一般是3个月，需要定期更新。写个脚本，定时更新。</p>

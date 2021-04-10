@@ -48,17 +48,21 @@
   };
 </script>
 
-  <meta name="description" content="哥哥姐姐的梦">
-<meta property="og:type" content="website">
-<meta property="og:title" content="1.5L的喜欢">
-<meta property="og:url" content="http://blog.zhangzonglinagain.xyz/archives/2020/index.html">
+  <meta name="description" content="前言centos6上免密切换到root，原理、步骤。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="centos 免密切换root">
+<meta property="og:url" content="http://blog.zhangzonglinagain.xyz/2021/04/11/centos-switch-to-root-without-password/index.html">
 <meta property="og:site_name" content="1.5L的喜欢">
-<meta property="og:description" content="哥哥姐姐的梦">
+<meta property="og:description" content="前言centos6上免密切换到root，原理、步骤。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.zhangzonglinagain.xyz/images/pasted-34.png">
+<meta property="article:published_time" content="2021-04-10T17:29:40.000Z">
+<meta property="article:modified_time" content="2021-04-10T18:16:56.444Z">
 <meta property="article:author" content="zzl">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.zhangzonglinagain.xyz/images/pasted-34.png">
 
-<link rel="canonical" href="http://blog.zhangzonglinagain.xyz/archives/2020/">
+<link rel="canonical" href="http://blog.zhangzonglinagain.xyz/2021/04/11/centos-switch-to-root-without-password/">
 
 
 <script id="page-configurations">
@@ -66,11 +70,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false
+    isPost: true
   };
 </script>
 
-  <title>归档 | 1.5L的喜欢</title>
+  <title>centos 免密切换root | 1.5L的喜欢</title>
   <script src="/live2d-widget/autoload.js"></script>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-156237863-1"></script>
@@ -213,237 +217,149 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangzonglinagain.xyz/2021/04/11/centos-switch-to-root-without-password/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/lizi.png">
+      <meta itemprop="name" content="zzl">
+      <meta itemprop="description" content="哥哥姐姐的梦">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="1.5L的喜欢">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          centos 免密切换root
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-04-11 01:29:40 / 修改时间：02:16:56" itemprop="dateCreated datePublished" datetime="2021-04-11T01:29:40+08:00">2021-04-11</time>
+            </span>
+
+          
   
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        
-        <span class="collection-header">不错! 目前共计 56 篇日志。 继续努力。</span>
-      </div>
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/04/11/centos-switch-to-root-without-password/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/04/11/centos-switch-to-root-without-password/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2020</h1>
-    </div>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>centos6上免密切换到root，原理、步骤。</p>
+<a id="more"></a>
+<h3 id="execute-ALL-sudo-commands-without-password"><a href="#execute-ALL-sudo-commands-without-password" class="headerlink" title="execute ALL sudo commands without password"></a>execute ALL sudo commands without password</h3><p>Type the following command as root user:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># visudo</span><br></pre></td></tr></table></figure>
+<p>Or</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure>
+<p>Append the following entry to run ALL command without a password for a user named marlena:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">remo ALL&#x3D;(ALL) NOPASSWD:ALL</span><br></pre></td></tr></table></figure>
+<p>Save and close the file in vim. It is also possible to grant access to the group name such as sysadm. Any member of sysadm group can run command without a password. The syntax is</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%sysadm ALL&#x3D;(ALL) NOPASSWD: ALL</span><br></pre></td></tr></table></figure>
+<p>Of course, you can force the sysadm group to run only given commands such as /usr/sbin/reboot and systemctl:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%sysadm ALL&#x3D;(ALL) NOPASSWD: &#x2F;usr&#x2F;sbin&#x2F;reboot, systemctl</span><br></pre></td></tr></table></figure>
+<p>参考：<strong><a href="https://www.cyberciti.biz/faq/how-to-sudo-without-password-on-centos-linux/" target="_blank" rel="noopener">How to sudo without password on CentOS Linux</a></strong></p>
+<h3 id="switch-to-root-without-password"><a href="#switch-to-root-without-password" class="headerlink" title="switch to root without password"></a>switch to root without password</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@lansetongxin2 &#x2F;]# vim &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure>
+<p>相应位置添加：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username ALL&#x3D;(ALL) NOPASSWD: ALL</span><br></pre></td></tr></table></figure>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+<p><img src="/images/pasted-34.png" alt="upload successful"><br>ps: By default on CentOS systems, members of the group wheel are granted with sudo access.</p>
+<p>:wq 保存后，便可以免密切换到root(sudo su -)。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[remo@lansetongxin2 ~]$ sudo su #最好使用sudo su -完全切换，su会加载不出来环境变量</span><br></pre></td></tr></table></figure>
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-12-23T18:35:22+08:00"
-              content="2020-12-23">
-          12-23
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/12/23/intellij-idea%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/" itemprop="url">
-            <span itemprop="name">intellij-idea的快捷键</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-12-08T21:41:00+08:00"
-              content="2020-12-08">
-          12-08
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/12/08/java%E4%B8%AD%E7%9A%84%E4%B9%B1%E7%A0%81/" itemprop="url">
-            <span itemprop="name">java中的乱码</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-06-07T11:01:52+08:00"
-              content="2020-06-07">
-          06-07
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/06/07/websocket-Token-Authentication/" itemprop="url">
-            <span itemprop="name">websocket --Token Authentication</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-05-18T22:55:00+08:00"
-              content="2020-05-18">
-          05-18
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/05/18/rs-spring-shiro-%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E8%B7%A8%E5%9F%9F/" itemprop="url">
-            <span itemprop="name">cors--springboot shiro 前后端分离跨域</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-05-17T14:28:00+08:00"
-              content="2020-05-17">
-          05-17
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/05/17/kotlin-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/" itemprop="url">
-            <span itemprop="name">kotlin 构造函数</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-05-02T22:13:00+08:00"
-              content="2020-05-02">
-          05-02
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/05/02/json-web-token-jwt/" itemprop="url">
-            <span itemprop="name">json web token(jwt)</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-04-14T10:31:00+08:00"
-              content="2020-04-14">
-          04-14
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/04/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B9%8BIP%E3%80%81MAC/" itemprop="url">
-            <span itemprop="name">计算机网络之IP、MAC</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-04-06T18:42:00+08:00"
-              content="2020-04-06">
-          04-06
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/04/06/synchronized%E3%80%81CAS%E3%80%81volatile/" itemprop="url">
-            <span itemprop="name">锁、synchronized、CAS、volatile</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-27T18:12:00+08:00"
-              content="2020-03-27">
-          03-27
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/03/27/CP-IP%E4%B9%8BNAT/" itemprop="url">
-            <span itemprop="name">TCP/IP之NAT</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-20T15:25:00+08:00"
-              content="2020-03-20">
-          03-20
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/03/20/%E8%A1%A5%E7%A0%81%E5%8E%9F%E7%90%86%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%90%86%E8%A7%A3/" itemprop="url">
-            <span itemprop="name">补码原理的个人理解</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
+<p>ps: su命令和su -命令最大的本质区别就是：前者只是切换了root身份，但Shell环境仍然是普通用户的Shell；而后者连用户和Shell环境一起切换成root身份了。只有切换了Shell环境才不会出现PATH环境变量错误。su切换成root用户以后，pwd一下，发现工作目录仍然是普通用户的工作目录；而用su -命令切换以后，工作目录变成root的工作目录了。用echo $PATH命令看一下su和su -以后的环境变量有何不同。以此类推，要从当前用户切换到其它用户也一样，应该使用su -命令。</p>
 
     </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>zzl
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://blog.zhangzonglinagain.xyz/2021/04/11/centos-switch-to-root-without-password/" title="centos 免密切换root">http://blog.zhangzonglinagain.xyz/2021/04/11/centos-switch-to-root-without-password/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/04/08/Let%E2%80%99sEncrypt-%E8%AF%81%E4%B9%A6%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E8%84%9A%E6%9C%AC/" rel="prev" title="Let’sEncrypt 证书自动更新脚本">
+      <i class="fa fa-chevron-left"></i> Let’sEncrypt 证书自动更新脚本
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
   </div>
-  
-  
-  
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2020/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2020/page/4/">4</a><a class="extend next" rel="next" href="/archives/2020/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -490,6 +406,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#execute-ALL-sudo-commands-without-password"><span class="nav-number">1.1.</span> <span class="nav-text">execute ALL sudo commands without password</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#switch-to-root-without-password"><span class="nav-number">1.2.</span> <span class="nav-text">switch to root without password</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
