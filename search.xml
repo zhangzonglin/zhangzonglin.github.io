@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Using the Switch(true) Pattern in JavaScript</title>
+    <url>/2021/04/13/Using-the-Switch-true-Pattern-in-JavaScript-https-seanbarry-dev-posts-switch-true-pattern/</url>
+    <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
+]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>centos 免密切换root</title>
     <url>/2021/04/11/centos-switch-to-root-without-password/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>centos6上免密切换到root，原理、步骤。</p>
@@ -26,6 +38,9 @@
 
 <p>ps: su命令和su -命令最大的本质区别就是：前者只是切换了root身份，但Shell环境仍然是普通用户的Shell；而后者连用户和Shell环境一起切换成root身份了。只有切换了Shell环境才不会出现PATH环境变量错误。su切换成root用户以后，pwd一下，发现工作目录仍然是普通用户的工作目录；而用su -命令切换以后，工作目录变成root的工作目录了。用echo $PATH命令看一下su和su -以后的环境变量有何不同。以此类推，要从当前用户切换到其它用户也一样，应该使用su -命令。</p>
 ]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
   </entry>
   <entry>
     <title>Let’sEncrypt 证书自动更新脚本</title>
@@ -35,6 +50,9 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">#Version:1.0</span><br><span class="line">#Author:zzl</span><br><span class="line">#Automatically renew Let&#39;s Encrypt certificates</span><br><span class="line">#A cron job will run this shell script everyday</span><br><span class="line">i&#x3D;0</span><br><span class="line">while [[ $i -lt 10]]</span><br><span class="line">do</span><br><span class="line">  let &quot;i++&quot;</span><br><span class="line">  if [ $(ps -C nginx --no-header | wc -l) -ne 0];then</span><br><span class="line">    service nginx stop</span><br><span class="line">    sleep 3s</span><br><span class="line">    if [ $(ps -C nginx --no-header | wc -l) -eq 0];then</span><br><span class="line">      break</span><br><span class="line">    fi</span><br><span class="line">  fi</span><br><span class="line">done</span><br><span class="line">certbot renew </span><br><span class="line">service nginx start</span><br></pre></td></tr></table></figure>
 <p>或者直接用certbot renew command，详情如下<br>        <strong><a href="https://certbot.eff.org/docs/using.html?highlight=hooks#renewing-certificates" target="_blank" rel="noopener">Certbot documentation on renewing certificates</a></strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">certbot renew --pre-hook &quot;service nginx stop&quot; --post-hook &quot;service nginx start&quot;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
   </entry>
   <entry>
     <title>shell脚本检查nginx服务状态</title>
@@ -105,6 +123,9 @@
 <h3 id="nohup和-amp-的区别"><a href="#nohup和-amp-的区别" class="headerlink" title="nohup和&amp;的区别"></a>nohup和&amp;的区别</h3><p>&amp;：已后台进程执行命令，但是会话关闭后，进程会结束。</p>
 <p>nohup：确保进程不挂断的执行，但是没有后台执行的功能，所以一般nohup和&amp;需要配合一起使用。</p>
 ]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
   </entry>
   <entry>
     <title>ubuntu 开机启动管理</title>
@@ -120,12 +141,18 @@
 
 
 ]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
   </entry>
   <entry>
     <title>IntelliJ IDEA激活</title>
     <url>/2021/03/20/IntelliJ-IDEA%E6%BF%80%E6%B4%BB/</url>
     <content><![CDATA[<p>可用方法：<a href="https://www.exception.site/essay/how-to-free-use-intellij-idea-2019-3" target="_blank" rel="noopener">IntelliJ IDEA 2020.3.3激活破解教程（亲测激活至 2099 年，长期更新）</a></p>
 ]]></content>
+      <tags>
+        <tag>idea</tag>
+      </tags>
   </entry>
   <entry>
     <title>ssh 密码登录脚本</title>
@@ -141,9 +168,10 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">spawn ssh root@127.0.0.1 -p 22</span><br><span class="line">expect &quot;*Are you sure you want to continue connecting (yes&#x2F;no)?&quot;</span><br><span class="line">send &quot;yes\r&quot;</span><br><span class="line">expect &quot;*password:&quot;</span><br><span class="line">send &quot;123456\r&quot;</span><br><span class="line">interact</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>linux</category>
+        <category>shell</category>
       </categories>
       <tags>
-        <tag>shell</tag>
+        <tag>ssh</tag>
       </tags>
   </entry>
   <entry>
@@ -201,6 +229,10 @@
 <p><img src="/images/pasted-33.png" alt="upload successful"><br>第一个数字：0表示开机不检查磁盘，1表示开机检查磁盘；<br>第二个数字：0表示交换分区，1代表启动分区（Linux），2表示普通分区</p>
 <p>3、重启生效</p>
 ]]></content>
+      <categories>
+        <category>linux</category>
+        <category>ubuntu</category>
+      </categories>
   </entry>
   <entry>
     <title>ubuntu terminal 打开后的默认位置和大小</title>
@@ -249,6 +281,10 @@
 <h5 id="vim剪切到系统剪贴板"><a href="#vim剪切到系统剪贴板" class="headerlink" title="vim剪切到系统剪贴板"></a>vim剪切到系统剪贴板</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;+dd – 剪切一行</span><br><span class="line">从系统剪贴板粘贴到vim</span><br><span class="line">&quot;*p</span><br><span class="line">&quot;+p</span><br><span class="line">Shift+Insert</span><br><span class="line">:put + - Ex command puts contents of system clipboard on a new line</span><br><span class="line">&lt;C-r&gt;+ - From insert mode (or commandline mode)</span><br><span class="line">&quot;+p比 Ctrl-v 命令更好，它可以更快更可靠地处理大块文本的粘贴，也能够避免粘贴大量文本时，发生每行行首的自动缩进累积，因为Ctrl-v是通过系统缓存的stream处理，一行一行地处理粘贴的文本。</span><br></pre></td></tr></table></figure>
 <p>参考：<strong><a href="https://liushiming.cn/article/copy-and-paste-in-vim.html" target="_blank" rel="noopener">一文搞懂vim复制粘贴</a></strong>、<strong><a href="https://blog.csdn.net/jpch89/article/details/93915710" target="_blank" rel="noopener">打开 Ubuntu 18 中 Vim 的系统剪切板功能</a></strong></p>
 ]]></content>
+      <categories>
+        <category>linux</category>
+        <category>ubuntu</category>
+      </categories>
       <tags>
         <tag>vim</tag>
       </tags>
@@ -267,6 +303,9 @@
     <url>/2021/02/26/linux-sort-uniq%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<p><a href="https://www.linuxjournal.com/content/back-basics-sort-and-uniq" target="_blank" rel="noopener">Back to Basics: Sort and Uniq</a></p>
 ]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
   </entry>
   <entry>
     <title>linux 查看登录历史 操作用户</title>
@@ -294,6 +333,9 @@
     <url>/2021/02/23/SkipList-%E7%9A%84%E9%82%A3%E7%82%B9%E4%BA%8B%E5%84%BF/</url>
     <content><![CDATA[<p><a href="https://mp.weixin.qq.com/s/fNBjlpzqvNkmei0cHhNcog?article_exclude_marked=ea8284506ea5ccac099671313574ba5c" target="_blank" rel="noopener">SkipList 的那点事儿</a></p>
 ]]></content>
+      <tags>
+        <tag>SkipList</tag>
+      </tags>
   </entry>
   <entry>
     <title>查找算法</title>
@@ -312,6 +354,9 @@
     <url>/2020/12/23/intellij-idea%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
     <content><![CDATA[<p><a href="https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf" target="_blank" rel="noopener">Intellij-idea的快捷键</a></p>
 ]]></content>
+      <tags>
+        <tag>idea</tag>
+      </tags>
   </entry>
   <entry>
     <title>java中的乱码</title>
@@ -321,6 +366,9 @@
 <a id="more"></a>
 <p><img src="/images/crazyCode.jpg" alt="upload successful"></p>
 ]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
       <tags>
         <tag>乱码</tag>
       </tags>
@@ -1390,6 +1438,15 @@
       <tags>
         <tag>shell</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Using the Switch(true) Pattern in JavaScript</title>
+    <url>/1970/01/01/Using-the-Switch-true-Pattern-in-JavaScript/</url>
+    <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
+]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
   </entry>
   <entry>
     <title>shell脚本监测nginx服务状态</title>

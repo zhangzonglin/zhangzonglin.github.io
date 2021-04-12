@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglinagain.xyz/"/>
-  <updated>2021-04-10T18:16:56.444Z</updated>
+  <updated>2021-04-12T17:20:35.825Z</updated>
   <id>http://blog.zhangzonglinagain.xyz/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Using the Switch(true) Pattern in JavaScript</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2021/04/13/Using-the-Switch-true-Pattern-in-JavaScript-https-seanbarry-dev-posts-switch-true-pattern/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2021/04/13/Using-the-Switch-true-Pattern-in-JavaScript-https-seanbarry-dev-posts-switch-true-pattern/</id>
+    <published>2021-04-12T17:19:00.000Z</published>
+    <updated>2021-04-12T17:20:35.825Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://seanbarry.dev/posts/switch-true-pattern&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Using the Switch(true) Pattern in JavaScript&lt;/a&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="javascript" scheme="http://blog.zhangzonglinagain.xyz/categories/javascript/"/>
+    
+    
+      <category term="javascript" scheme="http://blog.zhangzonglinagain.xyz/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
     <title>centos 免密切换root</title>
     <link href="http://blog.zhangzonglinagain.xyz/2021/04/11/centos-switch-to-root-without-password/"/>
     <id>http://blog.zhangzonglinagain.xyz/2021/04/11/centos-switch-to-root-without-password/</id>
-    <published>2021-04-10T17:29:40.000Z</published>
-    <updated>2021-04-10T18:16:56.444Z</updated>
+    <published>2021-04-10T17:29:00.000Z</published>
+    <updated>2021-04-12T17:21:17.512Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>centos6上免密切换到root，原理、步骤。</p><a id="more"></a><h3 id="execute-ALL-sudo-commands-without-password"><a href="#execute-ALL-sudo-commands-without-password" class="headerlink" title="execute ALL sudo commands without password"></a>execute ALL sudo commands without password</h3><p>Type the following command as root user:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># visudo</span><br></pre></td></tr></table></figure><p>Or</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure><p>Append the following entry to run ALL command without a password for a user named marlena:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">remo ALL&#x3D;(ALL) NOPASSWD:ALL</span><br></pre></td></tr></table></figure><p>Save and close the file in vim. It is also possible to grant access to the group name such as sysadm. Any member of sysadm group can run command without a password. The syntax is</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%sysadm ALL&#x3D;(ALL) NOPASSWD: ALL</span><br></pre></td></tr></table></figure><p>Of course, you can force the sysadm group to run only given commands such as /usr/sbin/reboot and systemctl:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%sysadm ALL&#x3D;(ALL) NOPASSWD: &#x2F;usr&#x2F;sbin&#x2F;reboot, systemctl</span><br></pre></td></tr></table></figure><p>参考：<strong><a href="https://www.cyberciti.biz/faq/how-to-sudo-without-password-on-centos-linux/" target="_blank" rel="noopener">How to sudo without password on CentOS Linux</a></strong></p><h3 id="switch-to-root-without-password"><a href="#switch-to-root-without-password" class="headerlink" title="switch to root without password"></a>switch to root without password</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@lansetongxin2 &#x2F;]# vim &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure><p>相应位置添加：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username ALL&#x3D;(ALL) NOPASSWD: ALL</span><br></pre></td></tr></table></figure><p><img src="/images/pasted-34.png" alt="upload successful"><br>ps: By default on CentOS systems, members of the group wheel are granted with sudo access.</p><p>:wq 保存后，便可以免密切换到root(sudo su -)。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[remo@lansetongxin2 ~]$ sudo su #最好使用sudo su -完全切换，su会加载不出来环境变量</span><br></pre></td></tr></table></figure><p>ps: su命令和su -命令最大的本质区别就是：前者只是切换了root身份，但Shell环境仍然是普通用户的Shell；而后者连用户和Shell环境一起切换成root身份了。只有切换了Shell环境才不会出现PATH环境变量错误。su切换成root用户以后，pwd一下，发现工作目录仍然是普通用户的工作目录；而用su -命令切换以后，工作目录变成root的工作目录了。用echo $PATH命令看一下su和su -以后的环境变量有何不同。以此类推，要从当前用户切换到其它用户也一样，应该使用su -命令。</p>]]></content>
     
@@ -32,6 +58,8 @@
     </summary>
     
     
+      <category term="linux" scheme="http://blog.zhangzonglinagain.xyz/categories/linux/"/>
+    
     
   </entry>
   
@@ -39,8 +67,8 @@
     <title>Let’sEncrypt 证书自动更新脚本</title>
     <link href="http://blog.zhangzonglinagain.xyz/2021/04/08/Let%E2%80%99sEncrypt-%E8%AF%81%E4%B9%A6%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E8%84%9A%E6%9C%AC/"/>
     <id>http://blog.zhangzonglinagain.xyz/2021/04/08/Let%E2%80%99sEncrypt-%E8%AF%81%E4%B9%A6%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E8%84%9A%E6%9C%AC/</id>
-    <published>2021-04-08T10:49:20.000Z</published>
-    <updated>2021-04-08T16:18:37.340Z</updated>
+    <published>2021-04-08T10:49:00.000Z</published>
+    <updated>2021-04-12T17:21:51.417Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>vps科学上网用的Let’sEncrypt免费证书，有效期一般是3个月，需要定期更新。写个脚本，定时更新。</p><a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">#Version:1.0</span><br><span class="line">#Author:zzl</span><br><span class="line">#Automatically renew Let&#39;s Encrypt certificates</span><br><span class="line">#A cron job will run this shell script everyday</span><br><span class="line">i&#x3D;0</span><br><span class="line">while [[ $i -lt 10]]</span><br><span class="line">do</span><br><span class="line">  let &quot;i++&quot;</span><br><span class="line">  if [ $(ps -C nginx --no-header | wc -l) -ne 0];then</span><br><span class="line">    service nginx stop</span><br><span class="line">    sleep 3s</span><br><span class="line">    if [ $(ps -C nginx --no-header | wc -l) -eq 0];then</span><br><span class="line">      break</span><br><span class="line">    fi</span><br><span class="line">  fi</span><br><span class="line">done</span><br><span class="line">certbot renew </span><br><span class="line">service nginx start</span><br></pre></td></tr></table></figure><p>或者直接用certbot renew command，详情如下<br>        <strong><a href="https://certbot.eff.org/docs/using.html?highlight=hooks#renewing-certificates" target="_blank" rel="noopener">Certbot documentation on renewing certificates</a></strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">certbot renew --pre-hook &quot;service nginx stop&quot; --post-hook &quot;service nginx start&quot;</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -50,6 +78,8 @@
     
     </summary>
     
+    
+      <category term="linux" scheme="http://blog.zhangzonglinagain.xyz/categories/linux/"/>
     
     
   </entry>
@@ -81,8 +111,8 @@
     <title>linux 后台运行、输出重定向</title>
     <link href="http://blog.zhangzonglinagain.xyz/2021/04/02/linux-%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E3%80%81%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91/"/>
     <id>http://blog.zhangzonglinagain.xyz/2021/04/02/linux-%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E3%80%81%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91/</id>
-    <published>2021-04-02T13:05:47.000Z</published>
-    <updated>2021-04-02T13:48:16.913Z</updated>
+    <published>2021-04-02T13:05:00.000Z</published>
+    <updated>2021-04-12T17:22:20.936Z</updated>
     
     <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>linux termianl中，命令脚本的后台运行以及输出的重定向，如</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup .&#x2F;myshell.sh &gt; my.log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure><p>等价于</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup .&#x2F;myshell.sh &amp;&gt; my.log &amp;</span><br></pre></td></tr></table></figure><a id="more"></a><h3 id="后台运行"><a href="#后台运行" class="headerlink" title="后台运行"></a>后台运行</h3><p>当启动一个服务后，希望命令在后台运行时，可以通过在命令末尾增加 &amp; ，例如：./test.sh &amp;，执行上述命令后，脚本开始在后台运行，并且命令行回显为 [1] 12532 ,这里的 1表示后台进程的编号，可以通过命令 fg 1 把进程切换回前台运行。</p><p>此时，虽然命令已经后台运行了，我们可以在控制台输入其他命令，但是脚本每秒打印的 x 会不断的输出到控制台，影响我们其他命令的执行，这时，我也需要用输出重定向把命令的执行结果输出的文件中。</p><h3 id="输出重定向"><a href="#输出重定向" class="headerlink" title="输出重定向"></a>输出重定向</h3><p>一个程序执行后，系统会生成三个句柄，分别是：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0&#x3D;stdin（标准输入）</span><br><span class="line">1&#x3D;stdout（标准输出）</span><br><span class="line">2&#x3D;stderr（错误输出）</span><br></pre></td></tr></table></figure><p>默认情况下，三个句柄都指向当前会话的命令行控制台。命令转到后台执行后，stdin关闭，stdout和stderr还是指向控制台。</p><p>通过在命令后使用输出重定向符 &gt; 实现对输出的重定向。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;run.py &gt; run.log &amp;</span><br></pre></td></tr></table></figure><p>表示把stdout重定向到当前目录的run.log文件。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;run.py &gt; run.log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure><p>表示把stdout和stderr都重定向到run.log，其中 2&gt;&amp;1 表示把stderr重定向到stdout。另外，其中&gt; run.log表示标准输出重定向到文件run.log中且是<strong>覆盖重写，如果想要追加方式写入，则是&gt;&gt; run.log</strong>。</p><p>Linux下还有一个特殊的文件/dev/null，它就像一个无底洞，所有重定向到它的信息都会消失得无影无踪。这一点非常有用，当我们不需要回显程序的所有信息时，就可以将输出重定向到/dev/null。 </p><p>如果想要正常输出和错误信息都不显示，则要把标准输出和标准错误都重定向到/dev/null， 例如： </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls 1&gt;&#x2F;dev&#x2F;null 2&gt;&#x2F;dev&#x2F;null</span><br></pre></td></tr></table></figure><p>还有一种做法是将错误重定向到标准输出，然后再重定向到 /dev/null，例如： </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls &gt;&#x2F;dev&#x2F;null 2&gt;&amp;1</span><br></pre></td></tr></table></figure><p>注意：此处的顺序不能更改，否则达不到想要的效果，此时先将标准输出重定向到 /dev/null，然后将标准错误重定向到标准输出，由于标准输出已经重定向到了/dev/null，因此标准错误也会重定向到/dev/null，于是一切静悄悄:-) </p><p>另外+: </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command &amp;&gt; make_log</span><br></pre></td></tr></table></figure><p>意思是把标准输出和错误输出都重定向, <em>command&gt;out</em> 只重定向标准输出!!!!! </p><p><em>&gt;log</em> 表示把标准输出重新定向到文件log中 </p><p><em>&amp;&gt; log</em> 表示把标准输出和错误输出都定向到文件log中，相当于 <em>&gt;log 2&gt;&amp;1</em></p><h3 id="nohup"><a href="#nohup" class="headerlink" title="nohup"></a>nohup</h3><p>通过 &amp; 虽然可以把命令以后台进程的方式执行，但是如果SSH会话中断退出，和此会话相关的所有进程都会终止。<br>如果我们是登录服务器去启动一个服务程序，总不能启动后一直把SSH会话开着，而且会话到期会自动终止。</p><p>这是，我们可以使用 nohup（no hung up）来执行进程，此命令确保会话挂断后，命令可以继续运行。以nohup运行的命令，系统默认自动把stdout和stderr重定向到当前目录的nohup.out文件。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup .&#x2F;run.py &amp;</span><br></pre></td></tr></table></figure><h3 id="nohup和-amp-的区别"><a href="#nohup和-amp-的区别" class="headerlink" title="nohup和&amp;的区别"></a>nohup和&amp;的区别</h3><p>&amp;：已后台进程执行命令，但是会话关闭后，进程会结束。</p><p>nohup：确保进程不挂断的执行，但是没有后台执行的功能，所以一般nohup和&amp;需要配合一起使用。</p>]]></content>
     
@@ -96,6 +126,8 @@
     </summary>
     
     
+      <category term="linux" scheme="http://blog.zhangzonglinagain.xyz/categories/linux/"/>
+    
     
   </entry>
   
@@ -103,8 +135,8 @@
     <title>ubuntu 开机启动管理</title>
     <link href="http://blog.zhangzonglinagain.xyz/2021/03/21/ubuntu-%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%AE%A1%E7%90%86/"/>
     <id>http://blog.zhangzonglinagain.xyz/2021/03/21/ubuntu-%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%AE%A1%E7%90%86/</id>
-    <published>2021-03-20T16:26:23.000Z</published>
-    <updated>2021-03-20T16:31:48.804Z</updated>
+    <published>2021-03-20T16:26:00.000Z</published>
+    <updated>2021-04-12T17:24:50.042Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ubuntu自启服务管理命令</p><a id="more"></a><p>查看开机启动服务</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl list-unit-files --type&#x3D;service|grep enabled</span><br></pre></td></tr></table></figure><p>以蓝牙为例，查询蓝牙服务是否开机启动</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl is-enabled bluetooth.service</span><br></pre></td></tr></table></figure><p>如果是enable开机自启动<br>如果是disable不开机启动</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable bluetooth.service #开机运行服务</span><br><span class="line"></span><br><span class="line">systemctl disable bluetooth.service #取消开机运行</span><br><span class="line"></span><br><span class="line">sudo systemctl disable  bluetooth.service#关闭蓝牙服务</span><br><span class="line"></span><br><span class="line">systemctl start bluetooth.service #启动服务</span><br><span class="line"></span><br><span class="line">systemctl stop bluetooth.service #停止服务</span><br><span class="line"></span><br><span class="line">systemctl restart bluetooth.service #重启服务</span><br><span class="line"></span><br><span class="line">systemctl reload bluetooth.service #重新加载服务配置文件</span><br><span class="line"></span><br><span class="line">systemctl status bluetooth.service #查询服务运行状态</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -115,6 +147,8 @@
     </summary>
     
     
+      <category term="linux" scheme="http://blog.zhangzonglinagain.xyz/categories/linux/"/>
+    
     
   </entry>
   
@@ -122,8 +156,8 @@
     <title>IntelliJ IDEA激活</title>
     <link href="http://blog.zhangzonglinagain.xyz/2021/03/20/IntelliJ-IDEA%E6%BF%80%E6%B4%BB/"/>
     <id>http://blog.zhangzonglinagain.xyz/2021/03/20/IntelliJ-IDEA%E6%BF%80%E6%B4%BB/</id>
-    <published>2021-03-20T07:01:39.000Z</published>
-    <updated>2021-03-20T07:03:11.678Z</updated>
+    <published>2021-03-20T07:01:00.000Z</published>
+    <updated>2021-04-12T17:25:21.669Z</updated>
     
     <content type="html"><![CDATA[<p>可用方法：<a href="https://www.exception.site/essay/how-to-free-use-intellij-idea-2019-3" target="_blank" rel="noopener">IntelliJ IDEA 2020.3.3激活破解教程（亲测激活至 2099 年，长期更新）</a></p>]]></content>
     
@@ -138,6 +172,8 @@
     
     
     
+      <category term="idea" scheme="http://blog.zhangzonglinagain.xyz/tags/idea/"/>
+    
   </entry>
   
   <entry>
@@ -145,7 +181,7 @@
     <link href="http://blog.zhangzonglinagain.xyz/2021/03/19/ssh-%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/"/>
     <id>http://blog.zhangzonglinagain.xyz/2021/03/19/ssh-%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/</id>
     <published>2021-03-18T19:37:00.000Z</published>
-    <updated>2021-03-18T20:09:33.643Z</updated>
+    <updated>2021-04-12T17:25:59.017Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>脚本密码登录服务器</p><a id="more"></a><p>1、安装expect<br>使用以下代码检测expect是否已经安装</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls &#x2F;usr&#x2F;bin | grep expect</span><br></pre></td></tr></table></figure><p>如果显示为空，则使用以下命令安装</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install tcl tk expect</span><br></pre></td></tr></table></figure><p>2、 制作脚本<br>合适位置建个sh文件，脚本中写入以下内容</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">spawn ssh root@127.0.0.1 -p 22</span><br><span class="line">expect &quot;*Are you sure you want to continue connecting (yes&#x2F;no)?&quot;</span><br><span class="line">send &quot;yes\r&quot;</span><br><span class="line">expect &quot;*password:&quot;</span><br><span class="line">send &quot;123456\r&quot;</span><br><span class="line">interact</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -158,8 +194,10 @@
     
       <category term="linux" scheme="http://blog.zhangzonglinagain.xyz/categories/linux/"/>
     
+      <category term="shell" scheme="http://blog.zhangzonglinagain.xyz/categories/linux/shell/"/>
     
-      <category term="shell" scheme="http://blog.zhangzonglinagain.xyz/tags/shell/"/>
+    
+      <category term="ssh" scheme="http://blog.zhangzonglinagain.xyz/tags/ssh/"/>
     
   </entry>
   
@@ -215,8 +253,8 @@
     <title>ubuntu自动挂载其他盘</title>
     <link href="http://blog.zhangzonglinagain.xyz/2021/03/18/ceshi/"/>
     <id>http://blog.zhangzonglinagain.xyz/2021/03/18/ceshi/</id>
-    <published>2021-03-17T19:12:29.000Z</published>
-    <updated>2021-03-17T19:13:00.664Z</updated>
+    <published>2021-03-17T19:12:00.000Z</published>
+    <updated>2021-04-12T17:26:32.745Z</updated>
     
     <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>双系统，ubuntu和win10装在同一个固态盘，还有另外一个机械盘，平时放些资料啥的，设置给ubuntu开机自动挂载另一个机械盘。</p><a id="more"></a><p>1、查询挂载硬盘UUID</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo blkid &#x2F;dev&#x2F;sda2</span><br></pre></td></tr></table></figure><p><img src="/images/pasted-32.png" alt="upload successful"><br>Secert和WorkSpace盘信息如上，下面用到两个盘的UUID。</p><p>2、打开文件/etc/fstab文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;fstab</span><br></pre></td></tr></table></figure><p>在文档末尾添加相应磁盘的信息。格式为：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[UUID&#x3D;************] [挂载磁盘分区]  [挂载磁盘格式]  0  2</span><br><span class="line"></span><br><span class="line">UUID&#x3D;4D55CFC14D016D60 &#x2F;mnt&#x2F;workspace ntfs defaults  0  2</span><br></pre></td></tr></table></figure><p><img src="/images/pasted-33.png" alt="upload successful"><br>第一个数字：0表示开机不检查磁盘，1表示开机检查磁盘；<br>第二个数字：0表示交换分区，1代表启动分区（Linux），2表示普通分区</p><p>3、重启生效</p>]]></content>
     
@@ -226,6 +264,10 @@
     
     </summary>
     
+    
+      <category term="linux" scheme="http://blog.zhangzonglinagain.xyz/categories/linux/"/>
+    
+      <category term="ubuntu" scheme="http://blog.zhangzonglinagain.xyz/categories/linux/ubuntu/"/>
     
     
   </entry>
@@ -260,7 +302,7 @@
     <link href="http://blog.zhangzonglinagain.xyz/2021/03/17/vim-%E7%B2%98%E5%B8%96%E5%A4%8D%E5%88%B6%E5%91%BD%E4%BB%A4/"/>
     <id>http://blog.zhangzonglinagain.xyz/2021/03/17/vim-%E7%B2%98%E5%B8%96%E5%A4%8D%E5%88%B6%E5%91%BD%E4%BB%A4/</id>
     <published>2021-03-16T17:13:00.000Z</published>
-    <updated>2021-03-16T20:25:26.000Z</updated>
+    <updated>2021-04-12T17:27:38.675Z</updated>
     
     <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>想要从浏览器中把Ctrl+c的内容复制到Vim中，要搞懂Ubuntu18中vim的复制粘帖原理及使用。</p><a id="more"></a><h3 id="剪切板"><a href="#剪切板" class="headerlink" title="剪切板"></a>剪切板</h3><h4 id="默认剪贴板"><a href="#默认剪贴板" class="headerlink" title="默认剪贴板"></a>默认剪贴板</h4><p>vim会有一些存储空间来暂存内容，vim中将这些存储空间叫寄存器。此寄存器非我们硬件所说的寄存器，可以理解为是一种cache。例如我们在vim中y操作复制的内容，实际就是暂存到寄存器中。</p><p>如下，在vim中执使用:reg命令，可以查看各个寄存器的内容。<br><img src="/images/pasted-27.png" alt="upload successful"></p><p>其中有两个特殊的寄存器: “* 和 “+。前者关联系统选择缓冲区(Buffer)，后者关联系统剪切板(Clipboard)，关于系统剪切板的使用见下文。</p><h4 id="复制和粘贴到指定剪贴板"><a href="#复制和粘贴到指定剪贴板" class="headerlink" title="复制和粘贴到指定剪贴板"></a>复制和粘贴到指定剪贴板</h4><p>要把vim的内容复制到某个粘贴板，需要退出编辑模式，进入正常模式后（按Esc），按 *”Ny* 完成复制，其中N表示特定寄存器编号（注意是按一下双引号然后按粘贴板号最后按y），例如要把内容复制到系统剪切板，执行</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;+y</span><br></pre></td></tr></table></figure><p>就可以了。注意的是，上面是 双引号 + 加号寄存器 + y。通过这命令copy后就可以去浏览器Ctrl+v了。</p><p>如果从浏览器Ctrl+c后，要粘贴到vim中，则需要执行</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;+p</span><br></pre></td></tr></table></figure><h3 id="系统剪切板及使用"><a href="#系统剪切板及使用" class="headerlink" title="系统剪切板及使用"></a>系统剪切板及使用</h3><h4 id="查看-Vim-是否支持系统剪切板"><a href="#查看-Vim-是否支持系统剪切板" class="headerlink" title="查看 Vim 是否支持系统剪切板"></a>查看 Vim 是否支持系统剪切板</h4><p>刚重装了系统，命令按了半天，跑到其他地方Ctrl+v，什么也没有，原来是系统剪切板不支持的锅。<br>在终端输入 <em>vim –version | grep clipboard</em>回车：<br><img src="/images/pasted-28.png" alt="upload successful"><br>如果 clipboard 前面都是 - 号，说目前还不支持系统剪切板功能，请继续看下一节，如果都是 + 号，略过此节。</p><h4 id="开启系统剪切板功能"><a href="#开启系统剪切板功能" class="headerlink" title="开启系统剪切板功能"></a>开启系统剪切板功能</h4><p>开启系统剪切板功能的方法也有很多，比较正统的应该是重新编译安装 Vim 源码，因为我怕麻烦（水平渣），所以选择简单的方法，即安装 vim-gnome。<br>一行指令即可搞定，在终端输入 <em>sudo apt install vim-gnome -y</em>回车。<br>此时再次使用上述的两个方法验证，发现 Vim 已经支持系统剪切板功能。</p><h3 id="vim内部复制、粘贴、剪切"><a href="#vim内部复制、粘贴、剪切" class="headerlink" title="vim内部复制、粘贴、剪切"></a>vim内部复制、粘贴、剪切</h3><h4 id="选择文本"><a href="#选择文本" class="headerlink" title="选择文本"></a>选择文本</h4><p>在正常模式下（按ESC进入）按键v进入可视化模式，然后按键盘左右键或h,l键即可实现文本的选择。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">v+光标移动 （按字符选择）高亮选中所要的文本，然后进行各种操作（比如粘帖到系统剪切板“+y）。</span><br><span class="line">V （按行选择）</span><br><span class="line">v+选中的内容+c 更改选中的文字</span><br></pre></td></tr></table></figure><h4 id="复制：y-ank"><a href="#复制：y-ank" class="headerlink" title="复制：y(ank)"></a>复制：y(ank)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">y 用v命令选中文本后，用y进行复制</span><br><span class="line">yy 复制当前行，然后用p进行粘贴</span><br><span class="line">5yy 复制从当前行开始的5行</span><br><span class="line">y_ 等同于yy</span><br><span class="line">Y 等同于yy</span><br><span class="line">yw 复制当前单词</span><br><span class="line">y$ 从当前位置复制到行尾</span><br><span class="line">y0 从当前位置复制到行首</span><br><span class="line">y^ 从当前位置复制到第一个非空白字符</span><br><span class="line">yG 从当前行复制到文件结束</span><br><span class="line">y20G 从当前行复制到第20行</span><br><span class="line">y?bar 复制至上一个出现bar的位置</span><br></pre></td></tr></table></figure><h4 id="粘贴：p-aste"><a href="#粘贴：p-aste" class="headerlink" title="粘贴：p(aste)"></a>粘贴：p(aste)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p(小写) 在光标位置之后粘贴</span><br><span class="line">P(大写) 在光标位置之前粘贴</span><br></pre></td></tr></table></figure><h4 id="剪切"><a href="#剪切" class="headerlink" title="剪切"></a>剪切</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v + 方向键(hjkl)选中内容 + d 剪切 + p粘贴</span><br></pre></td></tr></table></figure><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><h5 id="vim复制到系统剪贴板"><a href="#vim复制到系统剪贴板" class="headerlink" title="vim复制到系统剪贴板"></a>vim复制到系统剪贴板</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&quot;*y</span><br><span class="line">&quot;+y</span><br><span class="line">&quot;+2yy – 复制两行</span><br><span class="line">&#123;Visual&#125;&quot;+y - copy the selected text into the system clipboard</span><br><span class="line">&quot;+y&#123;motion&#125; - copy the text specified by &#123;motion&#125; into the system clipboard</span><br><span class="line">:[range]yank + - copy the text specified by [range] into the system clipboard</span><br></pre></td></tr></table></figure><h5 id="vim剪切到系统剪贴板"><a href="#vim剪切到系统剪贴板" class="headerlink" title="vim剪切到系统剪贴板"></a>vim剪切到系统剪贴板</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&quot;+dd – 剪切一行</span><br><span class="line">从系统剪贴板粘贴到vim</span><br><span class="line">&quot;*p</span><br><span class="line">&quot;+p</span><br><span class="line">Shift+Insert</span><br><span class="line">:put + - Ex command puts contents of system clipboard on a new line</span><br><span class="line">&lt;C-r&gt;+ - From insert mode (or commandline mode)</span><br><span class="line">&quot;+p比 Ctrl-v 命令更好，它可以更快更可靠地处理大块文本的粘贴，也能够避免粘贴大量文本时，发生每行行首的自动缩进累积，因为Ctrl-v是通过系统缓存的stream处理，一行一行地处理粘贴的文本。</span><br></pre></td></tr></table></figure><p>参考：<strong><a href="https://liushiming.cn/article/copy-and-paste-in-vim.html" target="_blank" rel="noopener">一文搞懂vim复制粘贴</a></strong>、<strong><a href="https://blog.csdn.net/jpch89/article/details/93915710" target="_blank" rel="noopener">打开 Ubuntu 18 中 Vim 的系统剪切板功能</a></strong></p>]]></content>
     
@@ -270,6 +312,10 @@
     
     </summary>
     
+    
+      <category term="linux" scheme="http://blog.zhangzonglinagain.xyz/categories/linux/"/>
+    
+      <category term="ubuntu" scheme="http://blog.zhangzonglinagain.xyz/categories/linux/ubuntu/"/>
     
     
       <category term="vim" scheme="http://blog.zhangzonglinagain.xyz/tags/vim/"/>
@@ -306,7 +352,7 @@
     <link href="http://blog.zhangzonglinagain.xyz/2021/02/26/linux-sort-uniq%E5%91%BD%E4%BB%A4/"/>
     <id>http://blog.zhangzonglinagain.xyz/2021/02/26/linux-sort-uniq%E5%91%BD%E4%BB%A4/</id>
     <published>2021-02-25T19:03:00.000Z</published>
-    <updated>2021-02-25T19:03:51.206Z</updated>
+    <updated>2021-04-12T17:28:12.406Z</updated>
     
     <content type="html"><![CDATA[<p><a href="https://www.linuxjournal.com/content/back-basics-sort-and-uniq" target="_blank" rel="noopener">Back to Basics: Sort and Uniq</a></p>]]></content>
     
@@ -319,6 +365,8 @@
     
     </summary>
     
+    
+      <category term="linux" scheme="http://blog.zhangzonglinagain.xyz/categories/linux/"/>
     
     
   </entry>
@@ -348,8 +396,8 @@
     <title>SkipList (跳跃表)的那点事儿</title>
     <link href="http://blog.zhangzonglinagain.xyz/2021/02/23/SkipList-%E7%9A%84%E9%82%A3%E7%82%B9%E4%BA%8B%E5%84%BF/"/>
     <id>http://blog.zhangzonglinagain.xyz/2021/02/23/SkipList-%E7%9A%84%E9%82%A3%E7%82%B9%E4%BA%8B%E5%84%BF/</id>
-    <published>2021-02-22T18:13:15.000Z</published>
-    <updated>2021-02-22T18:13:49.784Z</updated>
+    <published>2021-02-22T18:13:00.000Z</published>
+    <updated>2021-04-12T17:28:47.463Z</updated>
     
     <content type="html"><![CDATA[<p><a href="https://mp.weixin.qq.com/s/fNBjlpzqvNkmei0cHhNcog?article_exclude_marked=ea8284506ea5ccac099671313574ba5c" target="_blank" rel="noopener">SkipList 的那点事儿</a></p>]]></content>
     
@@ -363,6 +411,8 @@
     </summary>
     
     
+    
+      <category term="SkipList" scheme="http://blog.zhangzonglinagain.xyz/tags/SkipList/"/>
     
   </entry>
   
@@ -415,8 +465,8 @@
     <title>intellij-idea的快捷键</title>
     <link href="http://blog.zhangzonglinagain.xyz/2020/12/23/intellij-idea%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
     <id>http://blog.zhangzonglinagain.xyz/2020/12/23/intellij-idea%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/</id>
-    <published>2020-12-23T10:35:22.000Z</published>
-    <updated>2020-12-23T10:37:11.119Z</updated>
+    <published>2020-12-23T10:35:00.000Z</published>
+    <updated>2021-04-12T17:29:19.639Z</updated>
     
     <content type="html"><![CDATA[<p><a href="https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf" target="_blank" rel="noopener">Intellij-idea的快捷键</a></p>]]></content>
     
@@ -431,27 +481,7 @@
     
     
     
-  </entry>
-  
-  <entry>
-    <title>java中的乱码</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2020/12/08/java%E4%B8%AD%E7%9A%84%E4%B9%B1%E7%A0%81/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2020/12/08/java%E4%B8%AD%E7%9A%84%E4%B9%B1%E7%A0%81/</id>
-    <published>2020-12-08T13:41:00.000Z</published>
-    <updated>2020-12-08T13:59:50.602Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://developer.ibm.com/zh/languages/java/articles/j-lo-chinesecoding/" target="_blank" rel="noopener">深入分析 Java 中的中文编码问题</a>、<a href="https://blog.csdn.net/u010234516/article/details/52853214" target="_blank" rel="noopener">锟斤拷？UTF-8与GBK互转，为什么会乱码？</a></p><p>附图一张:</p><a id="more"></a><p><img src="/images/crazyCode.jpg" alt="upload successful"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;https://developer.ibm.com/zh/languages/java/articles/j-lo-chinesecoding/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;深入分析 Java 中的中文编码问题&lt;/a&gt;、&lt;a href=&quot;https://blog.csdn.net/u010234516/article/details/52853214&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;锟斤拷？UTF-8与GBK互转，为什么会乱码？&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;附图一张:&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="乱码" scheme="http://blog.zhangzonglinagain.xyz/tags/%E4%B9%B1%E7%A0%81/"/>
+      <category term="idea" scheme="http://blog.zhangzonglinagain.xyz/tags/idea/"/>
     
   </entry>
   
