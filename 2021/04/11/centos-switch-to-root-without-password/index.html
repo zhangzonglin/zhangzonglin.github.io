@@ -57,7 +57,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://blog.zhangzonglinagain.xyz/images/pasted-34.png">
 <meta property="article:published_time" content="2021-04-10T17:29:00.000Z">
-<meta property="article:modified_time" content="2021-04-12T17:21:17.512Z">
+<meta property="article:modified_time" content="2021-04-13T19:16:18.325Z">
 <meta property="article:author" content="zzl">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://blog.zhangzonglinagain.xyz/images/pasted-34.png">
@@ -170,7 +170,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">58</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">61</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -252,7 +252,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-13 01:21:17" itemprop="dateModified" datetime="2021-04-13T01:21:17+08:00">2021-04-13</time>
+                <time title="修改时间：2021-04-14 03:16:18" itemprop="dateModified" datetime="2021-04-14T03:16:18+08:00">2021-04-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -286,14 +286,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.2k</span>
+              <span>3.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -310,13 +310,13 @@
 <h3 id="execute-ALL-sudo-commands-without-password"><a href="#execute-ALL-sudo-commands-without-password" class="headerlink" title="execute ALL sudo commands without password"></a>execute ALL sudo commands without password</h3><p>Type the following command as root user:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># visudo</span><br></pre></td></tr></table></figure>
 <p>Or</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo visudo</span><br></pre></td></tr></table></figure>
 <p>Append the following entry to run ALL command without a password for a user named marlena:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">remo ALL&#x3D;(ALL) NOPASSWD:ALL</span><br></pre></td></tr></table></figure>
 <p>Save and close the file in vim. It is also possible to grant access to the group name such as sysadm. Any member of sysadm group can run command without a password. The syntax is</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%sysadm ALL&#x3D;(ALL) NOPASSWD: ALL</span><br></pre></td></tr></table></figure>
 <p>Of course, you can force the sysadm group to run only given commands such as /usr/sbin/reboot and systemctl:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%sysadm ALL&#x3D;(ALL) NOPASSWD: &#x2F;usr&#x2F;sbin&#x2F;reboot, systemctl</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%sysadm ALL&#x3D;(ALL) NOPASSWD: &#x2F;sbin&#x2F;reboot, systemctl</span><br></pre></td></tr></table></figure>
 <p>参考：<strong><a href="https://www.cyberciti.biz/faq/how-to-sudo-without-password-on-centos-linux/" target="_blank" rel="noopener">How to sudo without password on CentOS Linux</a></strong></p>
 <h3 id="switch-to-root-without-password"><a href="#switch-to-root-without-password" class="headerlink" title="switch to root without password"></a>switch to root without password</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@lansetongxin2 &#x2F;]# vim &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure>
 <p>相应位置添加：</p>
@@ -327,6 +327,33 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[remo@lansetongxin2 ~]$ sudo su #最好使用sudo su -完全切换，su会加载不出来环境变量</span><br></pre></td></tr></table></figure>
 
 <p>ps: su命令和su -命令最大的本质区别就是：前者只是切换了root身份，但Shell环境仍然是普通用户的Shell；而后者连用户和Shell环境一起切换成root身份了。只有切换了Shell环境才不会出现PATH环境变量错误。su切换成root用户以后，pwd一下，发现工作目录仍然是普通用户的工作目录；而用su -命令切换以后，工作目录变成root的工作目录了。用echo $PATH命令看一下su和su -以后的环境变量有何不同。以此类推，要从当前用户切换到其它用户也一样，应该使用su -命令。</p>
+<h3 id="root-ALL-ALL-ALL详解"><a href="#root-ALL-ALL-ALL详解" class="headerlink" title="root ALL=(ALL) ALL详解"></a>root ALL=(ALL) ALL详解</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root ALL&#x3D;(ALL) ALL</span><br></pre></td></tr></table></figure>
+<p>/etc/sudoers中的此行表示：root用户可以从所有终端执行，充当所有（任何）用户，并运行ALL（任何）命令。<br>第一部分是用户，第二部分是用户可以使用sudo命令的终端，第三部分是他可以充当哪些用户，最后一部分是使用时可以运行的命令sudo。</p>
+<p>sudoers的例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">operator ALL&#x3D; &#x2F;sbin&#x2F;poweroff</span><br></pre></td></tr></table></figure>
+<p>以上命令，使用户操作员可以从任何终端，关闭命令电源。</p>
+<p>您还可以为以下项创建别名：users - &gt; User_Alias，以其他用户身份运行命令 - &gt; Runas_Alias，主机 - &gt; Host_Alias 命令 - &gt; Cmnd_Alias</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User_Alias OPERATORS &#x3D; joe, mike, jude Runas_Alias OP &#x3D; root, operator Host_Alias OFNET &#x3D; 10.1.2.0&#x2F;255.255.255.0 Cmnd_Alias PRINTING &#x3D; &#x2F;usr&#x2F;sbin&#x2F;lpc, &#x2F;usr&#x2F;bin&#x2F;lprm</span><br></pre></td></tr></table></figure>
+<p>正如您所看到的别名OPERATORS包括用户joe，mike和jude，别名OP包括用户root和operator，别名OFNET包括网络10.1.2.0（所有C类），命令别名PRINTING包含命令lpc和lprm。</p>
+<p>因此，典型的sudoers文件可能如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> User_Alias     OPERATORS &#x3D; joe, mike, jude</span><br><span class="line"> Runas_Alias    OP &#x3D; root, operator</span><br><span class="line"> Host_Alias     OFNET &#x3D; 10.1.2.0&#x2F;255.255.255.0</span><br><span class="line"> Cmnd_Alias     PRINTING &#x3D; &#x2F;usr&#x2F;sbin&#x2F;lpc, &#x2F;usr&#x2F;bin&#x2F;lprm</span><br><span class="line"></span><br><span class="line">OPERATORS ALL&#x3D;ALL</span><br><span class="line"></span><br><span class="line">#The users in the OPERATORS group can run any command from</span><br><span class="line"> any terminal.</span><br><span class="line"></span><br><span class="line">linus ALL&#x3D;(OP) ALL</span><br><span class="line"></span><br><span class="line"># The user linus can run any command from any terminal as any </span><br><span class="line">user in the OP group (root or operator).</span><br><span class="line"></span><br><span class="line">user2 OFNET&#x3D;(ALL) ALL</span><br><span class="line"></span><br><span class="line"># user user2 may run any command from any machine in the </span><br><span class="line">OFNET network, as any user.</span><br><span class="line"></span><br><span class="line">user3 ALL&#x3D; PRINTING</span><br><span class="line"></span><br><span class="line"># user user3 may run lpc and lprm from any machine.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yujiaao ALL&#x3D;(ALL) ALL</span><br></pre></td></tr></table></figure>
+<p>在编辑器中打开 sudoers 文件后，您需要向下滚动到编辑器的末尾并在其中添加以下代码！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yujiaao ALL&#x3D;(ALL) NOPASSWD:ALL</span><br></pre></td></tr></table></figure>
+<p>用您的用户名替换“ yujiaao ”！（例如：anderson ALL =（ALL）NOPASSWD：ALL），命令NOPASSWD将在终端中运行SUDO命令时跳过密码验证。</p>
+<p>如何在为特定命令运行sudo时跳过密码：<br>您可以允许某些命令使用密码运行sudo，使用以下命令来实现它：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yujiaao ALL&#x3D;(ALL) NOPASSWD:&#x2F;bin&#x2F;cp,&#x2F;bin&#x2F;install,bin&#x2F;remove</span><br></pre></td></tr></table></figure>
+<p>完成编辑后，请保存文件并退出终端。</p>
+<p>NOPASSWD 是一个“标签”，表示不会请求密码。它有一个名为的伴随命令 PASSWD，是默认行为。标签与规则的其余部分相关，除非在其后面的“双胞胎”标签上被否决。<br>例如，我们可以有这样的一行：</p>
+<p>在 /etc/sudoers文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GROUPTWO    ALL &#x3D; NOPASSWD: &#x2F;usr&#x2F;bin&#x2F;updatedb, PASSWD: &#x2F;bin&#x2F;kill</span><br></pre></td></tr></table></figure>
+<p>另一个有用的标签NOEXEC，可用于防止某些程序中的某些危险行为。</p>
+<p>例如，某些程序（如“less”）可以通过在其界面中键入以下内容来生成其他命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!command_to_run</span><br></pre></td></tr></table></figure>
+<p>这基本上执行用户赋予它的任何命令，具有“less”运行的相同权限，这可能非常危险。</p>
+<p>为了限制这一点，我们可以使用这样的一行：</p>
+<p>在 /etc/sudoers文件中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username  ALL &#x3D; NOEXEC: &#x2F;usr&#x2F;bin&#x2F;less</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -426,7 +453,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#execute-ALL-sudo-commands-without-password"><span class="nav-number">1.1.</span> <span class="nav-text">execute ALL sudo commands without password</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#switch-to-root-without-password"><span class="nav-number">1.2.</span> <span class="nav-text">switch to root without password</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#execute-ALL-sudo-commands-without-password"><span class="nav-number">1.1.</span> <span class="nav-text">execute ALL sudo commands without password</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#switch-to-root-without-password"><span class="nav-number">1.2.</span> <span class="nav-text">switch to root without password</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#root-ALL-ALL-ALL详解"><span class="nav-number">1.3.</span> <span class="nav-text">root ALL&#x3D;(ALL) ALL详解</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -442,7 +469,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">61</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -508,13 +535,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">51k</span>
+    <span title="站点总字数">53k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46 分钟</span>
+    <span title="站点阅读时长">48 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>
