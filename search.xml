@@ -99,10 +99,12 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ vim &#x2F;root&#x2F;sniffer&#x2F;src&#x2F;main.c</span><br><span class="line">$ mv !$ !$.bak</span><br><span class="line"># 相当于</span><br><span class="line">$ mv &#x2F;root&#x2F;sniffer&#x2F;src&#x2F;main.c &#x2F;root&#x2F;sniffer&#x2F;src&#x2F;main.c.bak</span><br></pre></td></tr></table></figure>
 <p>当前工作目录是 root，想把 main.c 改为 main.c.bak。正常情况你可能需要敲 2 遍包含 main.c 的长参数，当然你也可能会选择直接复制粘贴。</p>
 <p>而我通过使用 !$ 变量，可以很轻松优雅的实现改名。</p>
-<h4 id="优雅的删除乱码名字的文件"><a href="#优雅的删除乱码名字的文件" class="headerlink" title="优雅的删除乱码名字的文件"></a>优雅的删除乱码名字的文件</h4><p>在 Linux 系统中，会经常碰到名称乱码的文件。想要删除它，却无法通过键盘输入名字，有时候复制粘贴乱码名称，终端可能识别不了，该怎么办？</p>
+<h4 id="优雅的删除、修改乱码名字的文件"><a href="#优雅的删除、修改乱码名字的文件" class="headerlink" title="优雅的删除、修改乱码名字的文件"></a>优雅的删除、修改乱码名字的文件</h4><p>在 Linux 系统中，会经常碰到名称乱码的文件。想要删除它，却无法通过键盘输入名字，有时候复制粘贴乱码名称，终端可能识别不了，该怎么办？</p>
 <p>不用担心，下边来展示下 find 是如何优雅的解决问题的。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ls  -i</span><br><span class="line">138957 a.txt  138959 T.txt  132395 ڹ��.txt</span><br><span class="line"></span><br><span class="line">$ find . -inum 132395 -exec rm &#123;&#125; \;</span><br></pre></td></tr></table></figure>
 <p>命令中，-inum 指定的是文件的 inode 号，它是系统中每个文件对应的唯一编号，find 通过编号找到后，执行删除操作。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">find -inum 节点号 -exec rm &#123;&#125; \; &#x2F;&#x2F;删除</span><br><span class="line">find -inum 节点号 -exec mv &#123;&#125; newname \; &#x2F;&#x2F;重命名</span><br><span class="line">find -inum 节点号 -exec cat &#123;&#125; \; &#x2F;&#x2F;查看内容</span><br></pre></td></tr></table></figure>
+
 <h4 id="Linux上获取你的公网IP地址"><a href="#Linux上获取你的公网IP地址" class="headerlink" title="Linux上获取你的公网IP地址"></a>Linux上获取你的公网IP地址</h4><p>在办公或家庭环境，我们的虚拟机或服务器上配置的通常是内网 IP 地址，我们如何知道，在与外网通信时，我们的公网出口 IP 是神马呢？</p>
 <p>这个在 Linux 上非常简单，一条命令搞定</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ curl ip.sb</span><br><span class="line">$ curl ifconfig.me</span><br></pre></td></tr></table></figure>
@@ -152,12 +154,7 @@
 
 
 <h4 id="如何批量下载网页资源"><a href="#如何批量下载网页资源" class="headerlink" title="如何批量下载网页资源"></a>如何批量下载网页资源</h4><p>有时，同事会通过网页的形式分享文件下载链接，在 Linux 系统，通过 wget 命令可以轻松下载，而不用写脚本或爬虫</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ wget -r -nd -np --accept&#x3D;pdf http:&#x2F;&#x2F;fast.dpdk.org&#x2F;doc&#x2F;pdf-guides&#x2F;</span><br><span class="line"># --accept：选项指定资源类型格式 pdf</span><br></pre></td></tr></table></figure>
-
-
-
-
-]]></content>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ wget -r -nd -np --accept&#x3D;pdf http:&#x2F;&#x2F;fast.dpdk.org&#x2F;doc&#x2F;pdf-guides&#x2F;</span><br><span class="line"># --accept：选项指定资源类型格式 pdf</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
     <title>ubuntu登录界面美化</title>
