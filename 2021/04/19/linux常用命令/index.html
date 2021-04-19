@@ -57,7 +57,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://blog.zhangzonglinagain.xyz/images/pasted-35.png">
 <meta property="article:published_time" content="2021-04-19T06:49:00.000Z">
-<meta property="article:modified_time" content="2021-04-19T09:46:45.254Z">
+<meta property="article:modified_time" content="2021-04-19T17:18:20.757Z">
 <meta property="article:author" content="zzl">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://blog.zhangzonglinagain.xyz/images/pasted-35.png">
@@ -160,7 +160,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">38</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">39</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -244,10 +244,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-04-19 14:49:00 / 修改时间：17:46:45" itemprop="dateCreated datePublished" datetime="2021-04-19T14:49:00+08:00">2021-04-19</time>
+              <time title="创建时间：2021-04-19 14:49:00" itemprop="dateCreated datePublished" datetime="2021-04-19T14:49:00+08:00">2021-04-19</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-20 01:18:20" itemprop="dateModified" datetime="2021-04-20T01:18:20+08:00">2021-04-20</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -280,14 +286,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.6k</span>
+              <span>3.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -388,6 +394,38 @@
 <p>xdg-open command in the Linux system is used to open a file or URL in the user’s preferred application.<br>The URL will be opened in the user’s preferred web browser if a URL is provided. The file will be opened in the preferred application for files of that type if a file is provided. xdg-open supports ftp, file, https and http URLs. This can be used inside a desktop session only. It is not recommended to use xdg-open as root. Here, the zero is an indication of success while non-zero show the failure.</p>
 <p>Syntax:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xdg-open &#123;file | URL&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="sort-uniq"><a href="#sort-uniq" class="headerlink" title="sort uniq"></a>sort uniq</h3><p>字如其义：排序和去重</p>
+<h4 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h4><p><strong>sort</strong> - sort lines of text files(对文本文件的行进行排序)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort将文件的每一行作为一个单位，相互比较，比较原则是从首字符向后，依次按ASCII码值进行比较，最后将它们按升序输出。</span><br></pre></td></tr></table></figure>
+<p>格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort [OPTION]... [FILE]...</span><br></pre></td></tr></table></figure>
+<p><strong>OPTION:</strong></p>
+<ul>
+<li>-u,–unique :去重</li>
+<li>-r,–reverse :降序排列，不加sort命令默认升序</li>
+<li>-o, –output=FILE :将排序结果保存至文件中，也可使用重定向工具</li>
+<li>-n, –numeric-sort :根据数值排序</li>
+<li>-t, –field-separator=SEP :指定特定分隔符，默认以空格为分隔符。与cut -d一样一样的</li>
+<li>-k, –key=KEYDEF :指定特定列做为排序，默认忽略开头空白字符。与cut -f一样一样的。</li>
+<li>-M, –month-sort :根据月份进行排序，支持英文缩写格式:Jan</li>
+<li>-b, –ignore-leading-blanks :忽略每一行前面的所有空白部分，从第一个可见字符开始比较</li>
+<li>-f, –ignore-case :忽略大小写<br>示例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ awk -F&#39;|&#39; &#39;&#123;print $2&#125;&#39; nginx_access.log | uniq -c  | sort -n -r | head -n 10   #查询访问次数前10的ip地址。uniq -c 表示统计各行在文件中出现的次数</span><br><span class="line">   2582 120.26.40.76</span><br><span class="line">    826 120.26.40.76</span><br><span class="line">    716 120.26.40.76</span><br><span class="line">    525 120.26.40.76</span><br><span class="line">    424 120.26.40.76</span><br><span class="line">    325 120.26.40.76</span><br><span class="line">    235 120.26.40.76</span><br><span class="line">    233 120.26.40.76</span><br><span class="line">    226 120.26.40.76</span><br><span class="line">    120 120.26.40.76</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a>uniq</h4><p><strong>uniq</strong> - report or omit repeated lines(报告或省略重复的行)</p>
+<p>描述：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uniq 命令删除文件中的重复行。uniq 命令读取由 InFile 参数指定的标准输入或文件。该命令首先比较相邻的行，然后除去第二行和该行的后续副本。重复的行一定相邻。（在发出 uniq 命令之前，请使用 sort 命令使所有重复行相邻。uniq命令这种方式估计是想节省系统资源）最后，uniq 命令将最终单独的行写到标准输出或由 OutFile 参数指定的文件。InFile 和 OutFile 参数必须指定不同的文件。</span><br></pre></td></tr></table></figure>
+<p>格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uniq [OPTION]... [InFile [OutFile]]</span><br></pre></td></tr></table></figure>
+<p><strong>OPTION:</strong></p>
+<ul>
+<li>-c :在输出行前面加上每行在文件中出现的次数</li>
+<li>-d :仅显示重复行</li>
+<li>-u :仅显示不重复的行<br>示例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">$ cat fruit.txt </span><br><span class="line">apple</span><br><span class="line">banana</span><br><span class="line">orange</span><br><span class="line">apple</span><br><span class="line">$ uniq fruit.txt  #可以看到apple不是邻近的，所以无法去重</span><br><span class="line">apple</span><br><span class="line">banana</span><br><span class="line">orange</span><br><span class="line">apple</span><br><span class="line">$ uniq -d fruit.txt   </span><br><span class="line">$</span><br><span class="line">$ sort fruit.txt   #先排序，将相同的行安排在一起</span><br><span class="line">apple</span><br><span class="line">apple</span><br><span class="line">banana</span><br><span class="line">orange    </span><br><span class="line">$ sort fruit.txt | uniq  #排序后，去重</span><br><span class="line">apple</span><br><span class="line">banana</span><br><span class="line">orange</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$ awk -F&#39;|&#39; &#39;&#123;print $2&#125;&#39;nginx_access.log | sort -n  |uniq -c | sort -n | tail -n 10     #只有先sort后在uniq才能生效</span><br><span class="line">     28 122.192.13.58</span><br><span class="line">     31 183.212.188.57</span><br><span class="line">     31 223.104.4.82</span><br><span class="line">     35 223.104.4.61</span><br><span class="line">     36 112.20.81.240</span><br><span class="line">     71 183.209.48.38</span><br><span class="line">     86 122.96.43.243</span><br><span class="line">    216 183.208.16.53</span><br><span class="line">    616 49.77.231.174</span><br><span class="line">   6268 120.26.40.76</span><br></pre></td></tr></table></figure>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>uniq必须得和sort一起使用才能够达到所需要的结果。<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4></li>
+</ul>
+<p><strong><a href="https://www.linuxjournal.com/content/back-basics-sort-and-uniq" target="_blank" rel="noopener">Back to Basics: Sort and Uniq</a></strong></p>
 
     </div>
 
@@ -487,7 +525,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#type"><span class="nav-number">2.</span> <span class="nav-text">type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ll-amp-ls"><span class="nav-number">3.</span> <span class="nav-text">ll&amp;ls</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xdg-open"><span class="nav-number">4.</span> <span class="nav-text">xdg-open</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#type"><span class="nav-number">2.</span> <span class="nav-text">type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ll-amp-ls"><span class="nav-number">3.</span> <span class="nav-text">ll&amp;ls</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xdg-open"><span class="nav-number">4.</span> <span class="nav-text">xdg-open</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sort-uniq"><span class="nav-number">5.</span> <span class="nav-text">sort uniq</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sort"><span class="nav-number">5.1.</span> <span class="nav-text">sort</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#uniq"><span class="nav-number">5.2.</span> <span class="nav-text">uniq</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">5.3.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考"><span class="nav-number">5.4.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -516,7 +554,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-count">39</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -569,13 +607,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">59k</span>
+    <span title="站点总字数">62k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">53 分钟</span>
+    <span title="站点阅读时长">57 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>
