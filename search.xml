@@ -1,9 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>linux小技巧</title>
-    <url>/2021/04/16/linux%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>linux有用的命令，随时添加。</p>
+    <title>markdown的html标签应用</title>
+    <url>/2021/04/19/markdown%E5%86%85%E5%AE%B9%E6%8A%98%E5%8F%A0/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Markdown 是一种轻量级标记语言，非常适合网络书写。同时，Markdown支持嵌入html标签，我们就可以借此实现markdown不具有的某些功能，如代码折叠和文字样式等。</p>
+<a id="more"></a>
+<h3 id="代码折叠"><a href="#代码折叠" class="headerlink" title="代码折叠"></a>代码折叠</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;details&gt;</span><br><span class="line">  &lt;summary&gt;</span><br><span class="line">  	&lt;font color&#x3D;&quot;#0000ff&quot; &gt;点击时的区域标题：点击查看详细内容&lt;&#x2F;font&gt;</span><br><span class="line">  &lt;&#x2F;summary&gt;</span><br><span class="line">  &lt;p&gt; - 测试 测试测试&lt;&#x2F;p&gt;</span><br><span class="line">  &lt;pre&gt;&lt;code&gt;  title，value，callBack可以缺省  &lt;&#x2F;code&gt;  &lt;&#x2F;pre&gt;</span><br><span class="line">&lt;&#x2F;details&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>summary：折叠语法展示的摘要</p>
+</li>
+<li><p>details：折叠语法标签</p>
+</li>
+<li><p>pre：以原有格式显示元素内的文字是已经格式化的文本。</p>
+</li>
+<li><p>blockcode：表示程序的代码块。</p>
+</li>
+<li><p>code：指定代码范例。</p>
+</li>
+</ul>
+<p>效果如下：</p>
+<details>
+  <summary><font color="#0000ff">点击时的区域标题：点击查看详细内容</font></summary>
+  <p> - 测试 测试测试</p>
+  <pre><code>  title，value，callBack可以缺省  </code>  </pre>
+</details>
+
+<h3 id="字体样式"><a href="#字体样式" class="headerlink" title="字体样式"></a>字体样式</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;span style&#x3D;&#39;color:red&#39;&gt;This is red&lt;&#x2F;span&gt;   &#x2F;&#x2F;字体颜色</span><br><span class="line">&lt;ruby&gt; 漢 &lt;rt&gt; ㄏㄢˋ &lt;&#x2F;rt&gt; &lt;&#x2F;ruby&gt; &#x2F;&#x2F; 特殊字</span><br><span class="line">&lt;kbd&gt;Ctrl&lt;&#x2F;kbd&gt;+&lt;kbd&gt;F9&lt;&#x2F;kbd&gt;  &#x2F;&#x2F; 按键标识</span><br><span class="line">&lt;span style&#x3D;&quot;font-size:2rem; background:yellow;&quot;&gt;**Bigger**&lt;&#x2F;span&gt; &#x2F;&#x2F;字体大小和背景</span><br><span class="line"></span><br><span class="line">&lt;font face&#x3D;&quot;微软雅黑&quot; color&#x3D;&quot;red&quot; size&#x3D;&quot;6&quot;&gt;字体及字体颜色和大小&lt;&#x2F;font&gt;</span><br><span class="line">&lt;font color&#x3D;&quot;#0000ff&quot;&gt;字体颜色&lt;&#x2F;font&gt;</span><br><span class="line"></span><br><span class="line">&lt;p align&#x3D;&quot;left&quot;&gt;居左文本&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p align&#x3D;&quot;center&quot;&gt;居中文本&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p align&#x3D;&quot;right&quot;&gt;居右文本&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
+<p>使用span或者font标签，同时用style属性控制样式。</p>
+<p>效果如下：<br><span style="color:red">This is red</span>   //字体颜色</p>
+<p><ruby> 漢 <rt> ㄏㄢˋ </rt> </ruby> // 特殊字</p>
+<p><kbd>Ctrl</kbd>+<kbd>F9</kbd>  // 按键标识</p>
+<p><span style="font-size:2rem; background:yellow;"><strong>Bigger</strong></span> //字体大小和背景</p>
+<p><font face="微软雅黑" color="red" size="6">字体及字体颜色和大小</font></p>
+<p><font color="#0000ff">字体颜色</font></p>
+<p align="left">居左文本</p>
+
+<p align="center">居中文本</p>
+
+<p align="right">居右文本</p>
+
+<p>参考来源：<br><strong><a href="https://www.cnblogs.com/buwuliao/p/9578918.html" target="_blank" rel="noopener">【MarkDown】使用Html样式和折叠语法</a></strong>、<br><strong><a href="http://connorlin.github.io/2016/05/06/Markdown%E7%9A%84%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95(%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93)/" target="_blank" rel="noopener">Markdown的常用语法(个人总结) | ConnorLin’s Blog </a></strong></p>
+]]></content>
+      <categories>
+        <category>markdown</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>linux常用命令</title>
+    <url>/2021/04/19/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>linux常用的命令，随时添加。</p>
 <a id="more"></a>
 <h3 id="type"><a href="#type" class="headerlink" title="type"></a>type</h3><p>The type command is used to display information about the command type. It will show you how a given command would be interpreted if typed on the command line.<br>一般情况下，type命令被用于判断另外一个命令是否是内置命令，但是它实际上有更多的用法。  </p>
 <ol>
@@ -88,56 +133,70 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ls -lt 从新到旧</span><br><span class="line">ls -lrt 从旧到新</span><br></pre></td></tr></table></figure>
 
 <p>参考：<strong><u><a href="https://linux.cn/article-5109-1.html" target="_blank" rel="noopener">Linux中的15个基本‘ls’命令示例</a></u></strong></p>
-<h3 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h3><p>源链接：<strong><u><a href="https://mp.weixin.qq.com/s/KZcnlW4RRZowPUelsRQAGA" target="_blank" rel="noopener">15 个 Linux 实用技巧</a></u></strong></p>
-<h4 id="命令不记录到history"><a href="#命令不记录到history" class="headerlink" title="命令不记录到history"></a>命令不记录到history</h4><p>我们在所要执行的命令前，加一个空格，那这条命令就不会被 history 保存到历史记录</p>
+<h3 id="xdg-open"><a href="#xdg-open" class="headerlink" title="xdg-open"></a>xdg-open</h3><p>有时需要从terminal打开doc pdf jpg等文件，可以用xdg-open命令。</p>
+<p>xdg-open command in the Linux system is used to open a file or URL in the user’s preferred application.<br>The URL will be opened in the user’s preferred web browser if a URL is provided. The file will be opened in the preferred application for files of that type if a file is provided. xdg-open supports ftp, file, https and http URLs. This can be used inside a desktop session only. It is not recommended to use xdg-open as root. Here, the zero is an indication of success while non-zero show the failure.</p>
+<p>Syntax:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xdg-open &#123;file | URL&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>linux小技巧</title>
+    <url>/2021/04/16/linux%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<h3 id="linux小技巧"><a href="#linux小技巧" class="headerlink" title="linux小技巧"></a>linux小技巧</h3><p>linux有用的小技巧，随时添加。</p>
+<p>源链接：<strong><u><a href="https://mp.weixin.qq.com/s/KZcnlW4RRZowPUelsRQAGA" target="_blank" rel="noopener">15 个 Linux 实用技巧</a></u></strong></p>
+<a id="more"></a>
+<h3 id="命令不记录到history"><a href="#命令不记录到history" class="headerlink" title="命令不记录到history"></a>命令不记录到history</h3><p>我们在所要执行的命令前，加一个空格，那这条命令就不会被 history 保存到历史记录</p>
 <p>有时候，执行的命令中包含敏感信息，这个小技巧就显得非常实用了，你也不会再因为忘记执行 history -c 而烦恼了。</p>
-<h4 id="快速搜索历史命令"><a href="#快速搜索历史命令" class="headerlink" title="快速搜索历史命令"></a>快速搜索历史命令</h4><p>在 Linux 下经常会敲很多的命令，我们要怎么快速查找并执行历史命令呢？</p>
+<h3 id="快速搜索历史命令"><a href="#快速搜索历史命令" class="headerlink" title="快速搜索历史命令"></a>快速搜索历史命令</h3><p>在 Linux 下经常会敲很多的命令，我们要怎么快速查找并执行历史命令呢？</p>
 <p>通过上下键来翻看历史命令，No No No，可以通过执行 Ctrl + r，然后键入要所搜索的命令关键词，进行搜索，回车就可以执行，非常高效。</p>
-<h4 id="历史命令使用技巧"><a href="#历史命令使用技巧" class="headerlink" title="历史命令使用技巧"></a>历史命令使用技巧</h4><p>分享几个历史命令的使用技巧，能够提高你的工作效率。</p>
+<h3 id="历史命令使用技巧"><a href="#历史命令使用技巧" class="headerlink" title="历史命令使用技巧"></a>历史命令使用技巧</h3><p>分享几个历史命令的使用技巧，能够提高你的工作效率。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">!!：重复执行上条命令；</span><br><span class="line">!N：重复执行 history 历史中第 N 条命令，N 可以通过 history 查看；</span><br><span class="line">!pw：重复执行最近一次，以pw开头的历史命令，这个非常有用，小编使用非常高频；</span><br><span class="line">!$：表示最近一次命令的最后一个参数；</span><br></pre></td></tr></table></figure>
 <p>猜测大部分同学没用过 !$，这里简单举个例子，让你感受一下它的高效用法</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ vim &#x2F;root&#x2F;sniffer&#x2F;src&#x2F;main.c</span><br><span class="line">$ mv !$ !$.bak</span><br><span class="line"># 相当于</span><br><span class="line">$ mv &#x2F;root&#x2F;sniffer&#x2F;src&#x2F;main.c &#x2F;root&#x2F;sniffer&#x2F;src&#x2F;main.c.bak</span><br></pre></td></tr></table></figure>
 <p>当前工作目录是 root，想把 main.c 改为 main.c.bak。正常情况你可能需要敲 2 遍包含 main.c 的长参数，当然你也可能会选择直接复制粘贴。</p>
 <p>而我通过使用 !$ 变量，可以很轻松优雅的实现改名。</p>
-<h4 id="优雅的删除、修改乱码名字的文件"><a href="#优雅的删除、修改乱码名字的文件" class="headerlink" title="优雅的删除、修改乱码名字的文件"></a>优雅的删除、修改乱码名字的文件</h4><p>在 Linux 系统中，会经常碰到名称乱码的文件。想要删除它，却无法通过键盘输入名字，有时候复制粘贴乱码名称，终端可能识别不了，该怎么办？</p>
+<h3 id="优雅的删除、修改乱码名字的文件"><a href="#优雅的删除、修改乱码名字的文件" class="headerlink" title="优雅的删除、修改乱码名字的文件"></a>优雅的删除、修改乱码名字的文件</h3><p>在 Linux 系统中，会经常碰到名称乱码的文件。想要删除它，却无法通过键盘输入名字，有时候复制粘贴乱码名称，终端可能识别不了，该怎么办？</p>
 <p>不用担心，下边来展示下 find 是如何优雅的解决问题的。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ls  -i</span><br><span class="line">138957 a.txt  138959 T.txt  132395 ڹ��.txt</span><br><span class="line"></span><br><span class="line">$ find . -inum 132395 -exec rm &#123;&#125; \;</span><br></pre></td></tr></table></figure>
 <p>命令中，-inum 指定的是文件的 inode 号，它是系统中每个文件对应的唯一编号，find 通过编号找到后，执行删除操作。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">find -inum 节点号 -exec rm &#123;&#125; \; &#x2F;&#x2F;删除</span><br><span class="line">find -inum 节点号 -exec mv &#123;&#125; newname \; &#x2F;&#x2F;重命名</span><br><span class="line">find -inum 节点号 -exec cat &#123;&#125; \; &#x2F;&#x2F;查看内容</span><br></pre></td></tr></table></figure>
 
-<h4 id="Linux上获取你的公网IP地址"><a href="#Linux上获取你的公网IP地址" class="headerlink" title="Linux上获取你的公网IP地址"></a>Linux上获取你的公网IP地址</h4><p>在办公或家庭环境，我们的虚拟机或服务器上配置的通常是内网 IP 地址，我们如何知道，在与外网通信时，我们的公网出口 IP 是神马呢？</p>
+<h3 id="Linux上获取你的公网IP地址"><a href="#Linux上获取你的公网IP地址" class="headerlink" title="Linux上获取你的公网IP地址"></a>Linux上获取你的公网IP地址</h3><p>在办公或家庭环境，我们的虚拟机或服务器上配置的通常是内网 IP 地址，我们如何知道，在与外网通信时，我们的公网出口 IP 是神马呢？</p>
 <p>这个在 Linux 上非常简单，一条命令搞定</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ curl ip.sb</span><br><span class="line">$ curl ifconfig.me</span><br></pre></td></tr></table></figure>
 <p>上述两条命令都可以</p>
-<h4 id="动态实时查看日志"><a href="#动态实时查看日志" class="headerlink" title="动态实时查看日志"></a>动态实时查看日志</h4><p>通过 tail 命令 -f 选项，可以动态地监控日志文件的变化，非常实用</p>
+<h3 id="动态实时查看日志"><a href="#动态实时查看日志" class="headerlink" title="动态实时查看日志"></a>动态实时查看日志</h3><p>通过 tail 命令 -f 选项，可以动态地监控日志文件的变化，非常实用</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ tail -f test.log</span><br></pre></td></tr></table></figure>
 <p>如果想在日志中出现 Failed 等信息时立刻停止 tail 监控，可以通过如下命令来实现：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ tail -f test.log | sed &#39;&#x2F;Failed&#x2F; q&#39;</span><br></pre></td></tr></table></figure>
-<h4 id="快速清空文件的方法"><a href="#快速清空文件的方法" class="headerlink" title="快速清空文件的方法"></a>快速清空文件的方法</h4><p>快速清空一个文件，有 N 种方法，我比较喜欢下边这种，因为它最短</p>
+<h3 id="快速清空文件的方法"><a href="#快速清空文件的方法" class="headerlink" title="快速清空文件的方法"></a>快速清空文件的方法</h3><p>快速清空一个文件，有 N 种方法，我比较喜欢下边这种，因为它最短</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ &gt; access.log</span><br></pre></td></tr></table></figure>
 <p>不过瘾？好吧，我也顺便总结下，其它几种最常见的清空文件的方法</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">: &gt; access.log</span><br><span class="line">true &gt; access.log</span><br><span class="line">cat &#x2F;dev&#x2F;null &gt; access.log</span><br><span class="line">echo -n &quot;&quot; &gt; access.log</span><br><span class="line">echo &gt; access.log</span><br><span class="line">truncate -s 0 access.log</span><br></pre></td></tr></table></figure>
 <p>简单解释下， : 在 shell 中是一个内置命令，表示 no-op，大概就是空语句的意思，所以 : 的那个用法，就是执行命令后，什么都没有输出，将空内容覆盖到文件。</p>
-<h4 id="快速生成大文件"><a href="#快速生成大文件" class="headerlink" title="快速生成大文件"></a>快速生成大文件</h4><p>有时候，在 Linux 上，我们需要一个大文件，用于测试上传或下载的速度，通过 dd 命令可以快速生成一个大文件</p>
+<h3 id="快速生成大文件"><a href="#快速生成大文件" class="headerlink" title="快速生成大文件"></a>快速生成大文件</h3><p>有时候，在 Linux 上，我们需要一个大文件，用于测试上传或下载的速度，通过 dd 命令可以快速生成一个大文件</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ dd if&#x3D;&#x2F;dev&#x2F;zero of&#x3D;file.img bs&#x3D;1M count&#x3D;1024</span><br></pre></td></tr></table></figure>
 <p>上述命令，生成一个文件名为 file.img 大小为 1G 的文件。</p>
-<h4 id="安全擦除硬盘数据"><a href="#安全擦除硬盘数据" class="headerlink" title="安全擦除硬盘数据"></a>安全擦除硬盘数据</h4><p>介绍一种擦除硬盘数据的方法，高效，安全。可以通过 dd 命令，轻松实现：</p>
+<h3 id="安全擦除硬盘数据"><a href="#安全擦除硬盘数据" class="headerlink" title="安全擦除硬盘数据"></a>安全擦除硬盘数据</h3><p>介绍一种擦除硬盘数据的方法，高效，安全。可以通过 dd 命令，轻松实现：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ dd if&#x3D;&#x2F;dev&#x2F;urandom of&#x3D;&#x2F;dev&#x2F;sda</span><br></pre></td></tr></table></figure>
 <p>使用 /dev/urandom 生成随机数据，将生成的数据写入 sda 硬盘中，相当于安全的擦除了硬盘数据。</p>
-<h4 id="快速制作系统盘"><a href="#快速制作系统盘" class="headerlink" title="快速制作系统盘"></a>快速制作系统盘</h4><p>在 Linux 下制作系统盘，老毛桃神么工具都弱爆了，直接一条命令搞定：</p>
+<h3 id="快速制作系统盘"><a href="#快速制作系统盘" class="headerlink" title="快速制作系统盘"></a>快速制作系统盘</h3><p>在 Linux 下制作系统盘，老毛桃神么工具都弱爆了，直接一条命令搞定：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ dd if&#x3D;ubuntu-server-amd64.iso of&#x3D;&#x2F;dev&#x2F;sdb</span><br></pre></td></tr></table></figure>
 <p>哈哈，是不是很爽，sdb 可以 U 盘，也可以是普通硬盘</p>
-<h4 id="查看某个进程的运行时间"><a href="#查看某个进程的运行时间" class="headerlink" title="查看某个进程的运行时间"></a>查看某个进程的运行时间</h4><p>可能，大部分同学只会使用 ps aux，其实可以通过 -o 参数，指定只显示具体的某个字段，会得到更清晰的结果。</p>
+<h3 id="查看某个进程的运行时间"><a href="#查看某个进程的运行时间" class="headerlink" title="查看某个进程的运行时间"></a>查看某个进程的运行时间</h3><p>可能，大部分同学只会使用 ps aux，其实可以通过 -o 参数，指定只显示具体的某个字段，会得到更清晰的结果。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ps -p 10167 -o etimes,etime</span><br><span class="line">ELAPSED     ELAPSED</span><br><span class="line">1712055 19-19:34:15</span><br></pre></td></tr></table></figure>
 <p>通过 etime 获取该进程的运行时间，可以很直观地看到，进程运行了 19 天</p>
 <p>同样，可以通过 -o 指定 rss 可以只获取该进程的内存信息。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ps -p 10167 -o rss</span><br><span class="line">  RSS</span><br><span class="line"> 2180</span><br></pre></td></tr></table></figure>
 
-<h4 id="时间戳的快速转换"><a href="#时间戳的快速转换" class="headerlink" title="时间戳的快速转换"></a>时间戳的快速转换</h4><p>时间操作，对程序员来说就是家常便饭。有时候希望能够将时间戳，转换为日期时间，在 Linux 命令行上，也可以快速的进行转换：</p>
+<h3 id="时间戳的快速转换"><a href="#时间戳的快速转换" class="headerlink" title="时间戳的快速转换"></a>时间戳的快速转换</h3><p>时间操作，对程序员来说就是家常便饭。有时候希望能够将时间戳，转换为日期时间，在 Linux 命令行上，也可以快速的进行转换：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ date -d@1234567890 +&quot;%Y-%m-%d %H:%M:%S&quot;</span><br><span class="line">2009-02-14 07:31:30</span><br></pre></td></tr></table></figure>
 <p>当然，也可以在命令行上，查看当前的时间戳</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ date +%s</span><br><span class="line">1617514141</span><br></pre></td></tr></table></figure>
-<h4 id="优雅的计算程序运行时间"><a href="#优雅的计算程序运行时间" class="headerlink" title="优雅的计算程序运行时间"></a>优雅的计算程序运行时间</h4><p>在 Linux 下，可以通过 time 命令，很容易获取程序的运行时间：</p>
+<h3 id="优雅的计算程序运行时间"><a href="#优雅的计算程序运行时间" class="headerlink" title="优雅的计算程序运行时间"></a>优雅的计算程序运行时间</h3><p>在 Linux 下，可以通过 time 命令，很容易获取程序的运行时间：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ time .&#x2F;test</span><br><span class="line">real    0m1.003s</span><br><span class="line">user    0m0.000s</span><br><span class="line">sys     0m0.000s</span><br></pre></td></tr></table></figure>
 <p>可以看到，程序的运行时间为: 1.003s。细心的同学，会看到 real 貌似不等于 user + sys，而且还远远大于，这是怎么回事呢？</p>
 <p>先来解释下这三个参数的含义：</p>
@@ -149,12 +208,15 @@
 <p>由于 user 和 sys 只统计 cpu 消耗的时间，程序运行期间会调用 sleep 发生阻塞，也可能会等待网络或磁盘 IO，都会消耗大量时间。因此对于类似情况，real 的值就会大于其它两项之和。</p>
 <p>另外，也会遇到 real 远远小于 user + sys 的场景，这是什么鬼情况？</p>
 <p>这个更好理解，如果程序在多个 cpu 上并行，那么 user 和 sys 统计时间是多个 cpu 时间，实际消耗时间 real 很可能就比其它两个之和要小了</p>
-<h4 id="命令行查看ascii码"><a href="#命令行查看ascii码" class="headerlink" title="命令行查看ascii码"></a>命令行查看ascii码</h4><p>我们在开发过程中，通常需要查看 ascii 码，通过 Linux 命令行就可以轻松查看，而不用去 Google 或 Baidu</p>
+<h3 id="命令行查看ascii码"><a href="#命令行查看ascii码" class="headerlink" title="命令行查看ascii码"></a>命令行查看ascii码</h3><p>我们在开发过程中，通常需要查看 ascii 码，通过 Linux 命令行就可以轻松查看，而不用去 Google 或 Baidu</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ man ascii</span><br></pre></td></tr></table></figure>
 
 
-<h4 id="如何批量下载网页资源"><a href="#如何批量下载网页资源" class="headerlink" title="如何批量下载网页资源"></a>如何批量下载网页资源</h4><p>有时，同事会通过网页的形式分享文件下载链接，在 Linux 系统，通过 wget 命令可以轻松下载，而不用写脚本或爬虫</p>
+<h3 id="如何批量下载网页资源"><a href="#如何批量下载网页资源" class="headerlink" title="如何批量下载网页资源"></a>如何批量下载网页资源</h3><p>有时，同事会通过网页的形式分享文件下载链接，在 Linux 系统，通过 wget 命令可以轻松下载，而不用写脚本或爬虫</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ wget -r -nd -np --accept&#x3D;pdf http:&#x2F;&#x2F;fast.dpdk.org&#x2F;doc&#x2F;pdf-guides&#x2F;</span><br><span class="line"># --accept：选项指定资源类型格式 pdf</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
   </entry>
   <entry>
     <title>ubuntu登录界面美化</title>
@@ -1642,12 +1704,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Ubuntu 18.04 用户登录界面优化</title>
-    <url>/1970/01/01/Ubuntu-18-04-%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E4%BC%98%E5%8C%96/</url>
-    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/vselfdom/article/details/88546349" target="_blank" rel="noopener">Ubuntu 18.04 用户登录界面优化</a></strong>，备用。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>Using the Switch(true) Pattern in JavaScript</title>
     <url>/1970/01/01/Using-the-Switch-true-Pattern-in-JavaScript/</url>
     <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
@@ -1655,6 +1711,12 @@
       <categories>
         <category>javascript</category>
       </categories>
+  </entry>
+  <entry>
+    <title>Ubuntu 18.04 用户登录界面优化</title>
+    <url>/1970/01/01/Ubuntu-18-04-%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/vselfdom/article/details/88546349" target="_blank" rel="noopener">Ubuntu 18.04 用户登录界面优化</a></strong>，备用。</p>
+]]></content>
   </entry>
   <entry>
     <title>shell脚本监测nginx服务状态</title>
