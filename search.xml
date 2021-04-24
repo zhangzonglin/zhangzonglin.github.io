@@ -191,10 +191,87 @@
 <ul>
 <li>-c :在输出行前面加上每行在文件中出现的次数</li>
 <li>-d :仅显示重复行</li>
-<li>-u :仅显示不重复的行<br>示例：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cat fruit.txt </span><br><span class="line">apple</span><br><span class="line">banana</span><br><span class="line">orange</span><br><span class="line">apple</span><br><span class="line">$ uniq fruit.txt  #可以看到apple不是邻近的，所以无法去重</span><br><span class="line">apple</span><br><span class="line">banana</span><br><span class="line">orange</span><br><span class="line">apple</span><br><span class="line">$ uniq -d fruit.txt   </span><br><span class="line">$</span><br><span class="line">$ sort fruit.txt   #先排序，将相同的行安排在一起</span><br><span class="line">apple</span><br><span class="line">apple</span><br><span class="line">banana</span><br><span class="line">orange    </span><br><span class="line">$ sort fruit.txt | uniq  #排序后，去重</span><br><span class="line">apple</span><br><span class="line">banana</span><br><span class="line">orange</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$ awk -F&#39;|&#39; &#39;&#123;print $2&#125;&#39;nginx_access.log | sort -n  |uniq -c | sort -n | tail -n 10     #只有先sort后在uniq才能生效</span><br><span class="line">     28 122.192.13.58</span><br><span class="line">     31 183.212.188.57</span><br><span class="line">     31 223.104.4.82</span><br><span class="line">     35 223.104.4.61</span><br><span class="line">     36 112.20.81.240</span><br><span class="line">     71 183.209.48.38</span><br><span class="line">     86 122.96.43.243</span><br><span class="line">    216 183.208.16.53</span><br><span class="line">    616 49.77.231.174</span><br><span class="line">   6268 120.26.40.76</span><br></pre></td></tr></table></figure>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>uniq必须得和sort一起使用才能够达到所需要的结果。<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4></li>
+<li>-u :仅显示不重复的行</li>
 </ul>
-<p><strong><a href="https://www.linuxjournal.com/content/back-basics-sort-and-uniq" target="_blank" rel="noopener">Back to Basics: Sort and Uniq</a></strong></p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cat fruit.txt </span><br><span class="line">apple</span><br><span class="line">banana</span><br><span class="line">orange</span><br><span class="line">apple</span><br><span class="line">$ uniq fruit.txt  #可以看到apple不是邻近的，所以无法去重</span><br><span class="line">apple</span><br><span class="line">banana</span><br><span class="line">orange</span><br><span class="line">apple</span><br><span class="line">$ uniq -d fruit.txt   </span><br><span class="line">$</span><br><span class="line">$ sort fruit.txt   #先排序，将相同的行安排在一起</span><br><span class="line">apple</span><br><span class="line">apple</span><br><span class="line">banana</span><br><span class="line">orange    </span><br><span class="line">$ sort fruit.txt | uniq  #排序后，去重</span><br><span class="line">apple</span><br><span class="line">banana</span><br><span class="line">orange</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$ awk -F&#39;|&#39; &#39;&#123;print $2&#125;&#39;nginx_access.log | sort -n  |uniq -c | sort -n | tail -n 10     #只有先sort后在uniq才能生效</span><br><span class="line">     28 122.192.13.58</span><br><span class="line">     31 183.212.188.57</span><br><span class="line">     31 223.104.4.82</span><br><span class="line">     35 223.104.4.61</span><br><span class="line">     36 112.20.81.240</span><br><span class="line">     71 183.209.48.38</span><br><span class="line">     86 122.96.43.243</span><br><span class="line">    216 183.208.16.53</span><br><span class="line">    616 49.77.231.174</span><br><span class="line">   6268 120.26.40.76</span><br></pre></td></tr></table></figure>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>uniq必须得和sort一起使用才能够达到所需要的结果。</p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><strong><a href="https://www.linuxjournal.com/content/back-basics-sort-and-uniq" target="_blank" rel="noopener">Back to Basics: Sort and Uniq</a></strong></p>
+<h3 id="tar-amp-gzip"><a href="#tar-amp-gzip" class="headerlink" title="tar&amp;gzip"></a>tar&amp;gzip</h3><p>Linux下常见的压缩包格式有5种:zip tar.gz tar.bz2 tar.xz tar.Z</p>
+<p>其中tar是种打包格式,gz和bz2等后缀才是指代压缩方式:gzip和bzip2。</p>
+<h4 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h4><p>The Linux “tar” stands for tape archive, which is used by large number of Linux/Unix system administrators to deal with tape drives backup. </p>
+<p><strong>OPTION:</strong></p>
+<ul>
+<li>c – create a archive file.</li>
+<li>x – extract a archive file.</li>
+<li>v – show the progress of archive file.</li>
+<li>f – filename + of archive file.</li>
+<li>t – viewing content of archive file.</li>
+<li>j  – filter archive through bzip2.</li>
+<li>z – filter archive through gzip.</li>
+<li>r – append or update files or directories to existing archive file.</li>
+<li>W – Verify a archive file.</li>
+<li>wildcards – Specify patterns in unix tar command.</li>
+</ul>
+<p>其中j,z参数代表在压缩时需要注意选择压缩格式。如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1. Create tar Archive File</span><br><span class="line"></span><br><span class="line"> tar -cvf tecmint-14-09-12.tar &#x2F;home&#x2F;tecmint&#x2F;</span><br><span class="line"> </span><br><span class="line">2. Create tar.gz Archive File</span><br><span class="line"></span><br><span class="line">tar cvzf MyImages-14-09-12.tar.gz &#x2F;home&#x2F;MyImages</span><br><span class="line"></span><br><span class="line">3. Create tar.bz2 Archive File</span><br><span class="line"></span><br><span class="line"> tar cvfj Phpfiles-org.tar.bz2 &#x2F;home&#x2F;php</span><br></pre></td></tr></table></figure>
+
+<p>事实上, <span style="color:red">从1.15版本开始tar就可以自动识别压缩的格式</span>,故不需人为区分压缩格式就能正确解压或者查看里面的内容。如解压文件：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar -xvf filename.tar</span><br><span class="line">tar -xvf filename.tar.gz  </span><br><span class="line">tar -xvf filename.tar.bz2  </span><br><span class="line">tar -xvf filename.tar.xz  </span><br><span class="line">tar -xvf filename.tar.Z</span><br></pre></td></tr></table></figure>
+<p>抑或查看打包内容：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar -tvf filename.tar</span><br><span class="line">tar -tvf filename.tar.gz  </span><br><span class="line">tar -tvf filename.tar.bz2  </span><br><span class="line">tar -tvf filename.tar.xz  </span><br><span class="line">tar -tvf filename.tar.Z</span><br></pre></td></tr></table></figure>
+<h4 id="gzip"><a href="#gzip" class="headerlink" title="gzip"></a>gzip</h4><p>Gzip is one of the most popular compression algorithms that allow you to reduce the size of a file and keep the original file mode, ownership, and timestamp.</p>
+<p>Gzip also refers to the .gz file format and the gzip utility which is used to compress and decompress files.</p>
+<p>In this tutorial, we will show you how to use the gzip command.</p>
+<h5 id="gzip-Command-Syntax"><a href="#gzip-Command-Syntax" class="headerlink" title="gzip Command Syntax"></a>gzip Command Syntax</h5><p>The general syntax for the gzip command is as follows:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gzip [OPTION]... [FILE]...</span><br></pre></td></tr></table></figure>
+
+<p>Gzip compresses only single files and creates a compressed file for each given file. By convention, the name of a file compressed with Gzip should end with either .gz or .z.</p>
+<p>If you want to compress multiple files or directory into one file, first you need to create a Tar archive and then compress the .tar file with Gzip. A file that ends in .tar.gz or .tgz is a Tar archive compressed with Gzip.</p>
+<p>Gzip is most often used to compress text files, Tar archives, and web pages. <span style="color:red">Do not use Gzip to compress images, audio, PDF documents, and other binary files as they are already compressed</span>.</p>
+<p><em>gzip</em> can compress only regular files. The <em>symbolic links</em> are ignored.</p>
+<h5 id="Compressing-Files-with-gzip"><a href="#Compressing-Files-with-gzip" class="headerlink" title="Compressing Files with gzip"></a>Compressing Files with gzip</h5><p>To compress a single file invoke the gzip command followed by the filename:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gzip filename</span><br></pre></td></tr></table></figure>
+
+<p>gzip will create a file filename.gz and delete the original file.</p>
+<p>By default, gzip keeps the original file timestamp, mode, ownership, and name in the compressed file.</p>
+<p>Keep the original file<br>If you want to keep the input (original) file, use the -k option:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gzip -k filename</span><br></pre></td></tr></table></figure>
+<p>Another option to keep the original file is to use the -c option which tells gzip to write on standard output and redirect the output to a file:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gzip -c filename &gt; filename.gz</span><br></pre></td></tr></table></figure>
+<h5 id="Verbose-output"><a href="#Verbose-output" class="headerlink" title="Verbose output"></a>Verbose output</h5><p>Use the -v option if you want to see the percentage reduction and the names of the files that are being processed:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gzip -v filename</span><br></pre></td></tr></table></figure>
+<p>filename:      7.5% – replaced with filename.gz</p>
+<h5 id="Compress-multiple-files"><a href="#Compress-multiple-files" class="headerlink" title="Compress multiple files"></a>Compress multiple files</h5><p>You can also pass multiple files as arguments to the command. For example, to compress the files named file1, file2, file3, you would run the following command:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gzip file1 file2 file3</span><br></pre></td></tr></table></figure>
+<p>The command above will create three compressed files, file1.gz, file2.gz, file3.gz.</p>
+<h5 id="Compress-all-files-in-a-directory"><a href="#Compress-all-files-in-a-directory" class="headerlink" title="Compress all files in a directory"></a>Compress all files in a directory</h5><p>To compress all files in a given directory, use the -r option:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gzip -r directory</span><br></pre></td></tr></table></figure>
+<p><em>gzip</em> will recursively traverse through the whole directory structure and compress all the files in the directory and it’s subdirectories.</p>
+<h5 id="Change-the-compression-level"><a href="#Change-the-compression-level" class="headerlink" title="Change the compression level"></a>Change the compression level</h5><p>gzip allows you to specify a range of compression levels, from 1 to 9. -1 or –fast means fastest compression speed with minimal compression ratio, -9 or –best indicates the slowest compression speed with maximum compression ratio. The default compression level is -6.</p>
+<p>For example, to get maximum compression, you would run:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gzip -9 filename</span><br></pre></td></tr></table></figure>
+<p>Compression is a CPU-intensive task, the higher the compression level, the longer the process takes.</p>
+<h5 id="Using-standard-input"><a href="#Using-standard-input" class="headerlink" title="Using standard input"></a>Using standard input</h5><p>To create a .gz file from the stdin, pipe the output of the command to gzip. For example, to create a Gzipped MySQL database backup you would run:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysqldump database_name | gzip -c &gt; database_name.sql.gz</span><br></pre></td></tr></table></figure>
+<p>The output of the mysqldump command will be input for gzip.</p>
+<h5 id="Decompressing-Files-with-gzip"><a href="#Decompressing-Files-with-gzip" class="headerlink" title="Decompressing Files with gzip"></a>Decompressing Files with gzip</h5><p>To decompress a .gz file , use the -d option:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gzip -d filename.gz</span><br></pre></td></tr></table></figure>
+<p>Another command that you can use to decompress a Gzip file is gunzip . This command is basically an alias to gzip -d:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gunzip filename.gz</span><br></pre></td></tr></table></figure>
+<p>You might find it easier to remember gunzip than gzip -d.</p>
+<h5 id="Keep-the-compressed-file"><a href="#Keep-the-compressed-file" class="headerlink" title="Keep the compressed file"></a>Keep the compressed file</h5><p>Same as when compressing a file, the -k option tells gzip to keep the input file, in this case, that is the compressed file:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gzip -dk filename.gz</span><br></pre></td></tr></table></figure>
+<h5 id="Decompress-multiple-files"><a href="#Decompress-multiple-files" class="headerlink" title="Decompress multiple files"></a>Decompress multiple files</h5><p>To decompress multiple files at once pass the filenames to gzip as arguments:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gzip -d file1.gz file2.gz file3.gz</span><br></pre></td></tr></table></figure>
+<h5 id="Decompress-all-files-in-a-directory"><a href="#Decompress-all-files-in-a-directory" class="headerlink" title="Decompress all files in a directory"></a>Decompress all files in a directory</h5><p>When used with -d and -r options, gzip decompresses all files in a given directory recursively:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gzip -dr directory</span><br></pre></td></tr></table></figure>
+<h5 id="List-the-Compressed-File-Contents"><a href="#List-the-Compressed-File-Contents" class="headerlink" title="List the Compressed File Contents"></a>List the Compressed File Contents</h5><p>When used with the -l option, gzip shows statistics about the given compressed files:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gzip -l filename</span><br></pre></td></tr></table></figure>
+<p>The output will include the uncompressed file name, the compressed and uncompressed size, and the compression ratio:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">compressed        uncompressed  ratio uncompressed_name</span><br><span class="line">       130                 107   7.5% filename</span><br></pre></td></tr></table></figure>
+<p>To get more information, add the -v option:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gzip -lv filename</span><br><span class="line">method  crc     date  time           compressed        uncompressed  ratio uncompressed_name</span><br><span class="line">defla a9b9e776 Sep  3 21:20                 130                 107   7.5% filename</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>linux</category>
@@ -799,9 +876,69 @@
       </tags>
   </entry>
   <entry>
-    <title>TCP/IP之NAT</title>
+    <title>TCP/IP协议族的网络层基础（6）——NAT和NAPT</title>
     <url>/2020/03/27/CP-IP%E4%B9%8BNAT/</url>
-    <content><![CDATA[<p>转载：<strong><a href="https://www.mobilezhao.com/?cat=3" target="_blank" rel="noopener">TCP/IP之NAT</a></strong></p>
+    <content><![CDATA[<p>转载：<strong><a href="https://blog.csdn.net/lvyibin890/article/details/80206979" target="_blank" rel="noopener">TCP/IP协议族的网络层基础（6）——NAT和NAPT</a></strong>。</p>
+<a id="more"></a>
+
+<p>NAT技术（Network Address Translation，网络地址转换），是解决IP地址不够用的主要手段，是路由器的一个重要功能。</p>
+<ul>
+<li><span style="color:red">NAT能够将私有IP对外通信时转为公有IP，也就是一种将私有IP和全局IP相互转化的技术方法</span>。</li>
+<li>公有IP要求是唯一的，但私有IP不需要；在不同的局域网中出现相同的私有IP是不受影响的</li>
+<li>一般每个终端设置私有IP，而在路由器或必要的服务器上设置公有IP</li>
+</ul>
+<p>我们再来看看这个图</p>
+<p><img src="/images/pasted-41.png" alt="upload successful"></p>
+<p><strong>发送请求</strong></p>
+<ul>
+<li>我们在家里玩吃鸡游戏，就是在申请访问吃鸡的服务器</li>
+<li>我们的主机有一个私有IP，打个比方就是192.168.1.201</li>
+<li>对于这个主机，有一个给它分配私有IP的家用路由器，这个路由器的IP一般为192.168.1.1，这个是该路由器的对应LAN口IP</li>
+<li>该路由器有对应的WAN口IP，此时我们访问吃鸡服务器，之间还有一个运营商提供给我们的路由器，运营商路由器的WAN口一般对应的是公有IP，在广域网中能够被访问到</li>
+<li>在访问该路由器的过程中，家用路由器将我们本机的私有IP替换成它的WAN口IP发送给运营商路由器，所以看起来实际是WAN口IP来访问这个路由器</li>
+<li>运营商再通过它的WAN口IP 122.77.241.4来通过公网访问吃鸡服务器，所以真正在吃鸡服务器看到是122.74.241.4这个IP在访问它，于是吃鸡服务器把响应返回给这个IP的节点，即返回给运营商路由器</li>
+<li><span style="color:red">NAT路由器（以上的路由器都配有NAT技术）内部，有一张自动生成的，用于地址转换的表，注意，这张表不同于路由表（route命令查看的路由表）</span></li>
+<li>当家用路由器10.1.1.2第一次向运营商路由器就会生成表中的映射关系</li>
+</ul>
+<p><strong>返回数据（NAPT）</strong><br>那么运营商服务器怎么知道是IP 为10.1.1.2的家用路由器在访问而不是IP为10.1.1.3的家用路由器在访问呢？<br>这时<span style="color:red">NAPT（Network Address Port Translation，网络地址端口转换）就来解决问题了，使用IP+port来建立这个关联关系</span></p>
+<p><img src="/images/pasted-42.png" alt="upload successful"></p>
+<ul>
+<li>首先这个局域网下的两台客户机10.0.0.10和10.0.0.11都要通过应用程序（该应用程序的端口号是1025）访问同一个服务器上的应用程序，服务器上该应用程序的端口号是80</li>
+<li>这两个请求同时到达了给客户机分配IP的NAT路由器（这种自动分配IP的的技术是DHCP），它的LAN口IP是10.0.0.1，WAN口IP是202.224.171.37</li>
+<li>在这个路由器内部维护了一张转换表，使用IP+port的形式来解决到底是局域网内部的哪台主机的请求</li>
+<li>两者到达NAT路由器的次序总有快慢，假设客户机10.0.0.10先到，那么它的请求中的源IP就被替换成202.224.171.37，它的端口号不变默认是1025（这是NAT技术）</li>
+<li>好这个时候客户机10.0.0.11的请求来了，它的请求中的源IP也被替换成202.224.171.37，但是端口号1025已经被上一个客户机给占了啊，所以路由器就往后找一个没有使用过的端口号给该客户机（在上图中就是1026），这样两个请求对应的转换表就形成了</li>
+<li>在服务器看来，这就是源IP为202.224.171.37上的两个应用程序来访问的我（分别是1025和1026），那就分别把对应的应答发送给源IP上的1025和1026端口应用程序</li>
+<li>路由器接着根据转换表，发送给每个请求对应的客户机。​</li>
+<li>这种关联关系也是NAT路由器自动维护的。例如在TCP的情况下，建立连接时，就会生成这个表项；在断开连接时，就会删除这个表项</li>
+</ul>
+<p><strong>NAT技术缺陷（因为太过于依赖这个转换表）</strong></p>
+<ul>
+<li>无法从NAT外部向内部服务器进行连接</li>
+<li>装换表的生成和销毁都需要开销</li>
+<li>通信过程中一旦NAT设备异常，即使存在热备，所有的TCP连接也会断开</li>
+</ul>
+<p><strong>NAT和代理服务器的区别</strong></p>
+<ul>
+<li>从应用上讲, NAT设备是网络基础设备之一, 解决的是IP不足的问题. 代理服务器则是更贴近具体应用, 比如通过代理服务器进行翻墙, 另外像迅游这样的加速器, 也是使用代理服务器.</li>
+<li>从底层实现上讲, NAT是工作在网络层, 直接对IP地址进行替换. 代理服务器往往工作在应用层</li>
+<li>从使用范围上讲, NAT⼀般在局域网的出口部署, 代理服务器可以在局域网做, 也可以在广域网做, 也可以跨网</li>
+<li>从部署位置上看, NAT⼀般集成在防火墙, 路由器等硬件设备上, 代理服务器则是⼀个软件程序, 需要部署在服务器上</li>
+</ul>
+<p><strong>代理服务器的技术</strong></p>
+<ul>
+<li>翻墙：广域网中的代理</li>
+<li>负载均衡：局域网中的代理</li>
+</ul>
+<p><strong>NAT与桥接模式的区别</strong></p>
+<ul>
+<li>桥接模式：此模式虚拟机就是局域网一台独立的主机，需要手动配置IP地址、子网掩码，而且还要和本机处于一个网段才行，这样才能够和本机进行通信。同时，配置好网关和DNS的地址之后，以实现通过局域网的网关或路由器访问互联网</li>
+<li>NAT模式：此模式虚拟机借助NAT功能，通过本机的网络来访问互联网。NAT模式下的虚拟机的TCP/IP配置信息是由VMnet8（NAT）虚拟网络的DHCP服务器提供的，无法进行手动修改，因此虚拟机就无法和局域网中的其他主机进行通信。</li>
+<li>像我的虚拟机就是采用NAT模式网络连接，可以先在Windows下的cmd命令窗口输入窗口输入ipconfig，找到VMnet8选项，可以找到IPv4的地址和子网掩码</li>
+</ul>
+<p><img src="/images/pasted-43.png" alt="upload successful"></p>
+<p>我们可以在虚拟机中看一下虚拟机的IP地址和子网掩码  </p>
+<p><img src="/images/pasted-44.png" alt="upload successful"></p>
 ]]></content>
       <categories>
         <category>tcp/ip</category>
@@ -1720,21 +1857,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Ubuntu 18.04 用户登录界面优化</title>
-    <url>/1970/01/01/Ubuntu-18-04-%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E4%BC%98%E5%8C%96/</url>
-    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/vselfdom/article/details/88546349" target="_blank" rel="noopener">Ubuntu 18.04 用户登录界面优化</a></strong>，备用。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Using the Switch(true) Pattern in JavaScript</title>
-    <url>/1970/01/01/Using-the-Switch-true-Pattern-in-JavaScript/</url>
-    <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
-]]></content>
-      <categories>
-        <category>javascript</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Shell脚本检测Nginx服务状态</title>
     <url>/1970/01/01/Shell%E8%84%9A%E6%9C%AC%E6%A3%80%E6%B5%8BNginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
@@ -1766,6 +1888,21 @@
       <tags>
         <tag>shell</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu 18.04 用户登录界面优化</title>
+    <url>/1970/01/01/Ubuntu-18-04-%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/vselfdom/article/details/88546349" target="_blank" rel="noopener">Ubuntu 18.04 用户登录界面优化</a></strong>，备用。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Using the Switch(true) Pattern in JavaScript</title>
+    <url>/1970/01/01/Using-the-Switch-true-Pattern-in-JavaScript/</url>
+    <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
+]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
   </entry>
   <entry>
     <title>shell脚本监测nginx服务状态</title>
