@@ -1,6 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Ubuntu apt-get autoclean,clean,autoremove</title>
+    <url>/2021/04/29/Ubuntu-apt-get-autoclean-clean-autoremove/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>ubuntu移除安装包时用到的几个命令：autoclean,clean,autoremove</p>
+<a id="more"></a>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get autoclean:</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果你的硬盘空间不大的话，可以定期运行这个程序，将已经删除了的软件包的.deb安装文件从硬盘中删<br>除掉。如果你仍然需要硬盘空间的话，可以试试apt-get clean，这会把你已安装的软件包的安装包也删除掉，当然多数情况下这些包没什么用了，因此这是个为硬盘腾地方的好办法。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get clean:</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>类似上面的命令，但它删除包缓存中的所有包。这是个很好的做法，因为多数情况下这些包没有用了。但如果你是拨号上网的话，就得重新考虑了。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get autoremove:</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>删除为了满足其他软件包的依赖而安装的，但现在不再需要的软件包。</p>
+</blockquote>
+<p>其它：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get remove 软件包名称：</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>删除已安装的软件包（保留配置文件）。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get --purge remove 软件包名称：</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>删除已安装包（不保留配置文件)。</p>
+</blockquote>
+<p>This completely depends on what you want to achieve, they are separate for a reason. But lets see what they actually do:</p>
+<blockquote>
+<p>apt/apt-get clean → cleans the packages and install script in /var/cache/apt/archives/<br>apt/apt-get autoclean → cleans obsolete deb-packages, less than clean<br>apt/apt-get autoremove → removes orphaned packages which are not longer needed from the system, but not purges them, use the –purge option together with the command for that.  </p>
+</blockquote>
+<p>So it is up to you to decide if you want to combine one of the first two with the last one and you can do this like below:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt autoremove &amp;&amp; sudo apt clean</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+        <category>ubuntu</category>
+      </categories>
+      <tags>
+        <tag>apt-get</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ubuntu 桌面死机(重启gnome-shell)</title>
     <url>/2021/04/19/ubuntu-%E6%A1%8C%E9%9D%A2%E6%AD%BB%E6%9C%BA/</url>
     <content><![CDATA[<p>ubuntu有时桌面会卡死，鼠标点击失灵，解决方法：重启gnome-shell。<br>建议以下两种二选一：</p>
@@ -27,9 +72,10 @@
       </tags>
   </entry>
   <entry>
-    <title>markdown的html标签应用</title>
+    <title>markdown的html标签应用及常用语法</title>
     <url>/2021/04/19/markdown%E5%86%85%E5%AE%B9%E6%8A%98%E5%8F%A0/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Markdown 是一种轻量级标记语言，非常适合网络书写。同时，Markdown支持嵌入html标签，我们就可以借此实现markdown不具有的某些功能，如代码折叠和文字样式等。</p>
+<p><strong><a href="http://connorlin.github.io/2016/05/06/Markdown%E7%9A%84%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95(%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93)/" target="_blank" rel="noopener">Markdown的常用语法(个人总结) | ConnorLin’s Blog </a></strong></p>
 <a id="more"></a>
 <h3 id="代码折叠"><a href="#代码折叠" class="headerlink" title="代码折叠"></a>代码折叠</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;details&gt;</span><br><span class="line">  &lt;summary&gt;</span><br><span class="line">  	&lt;font color&#x3D;&quot;#0000ff&quot; &gt;点击时的区域标题：点击查看详细内容&lt;&#x2F;font&gt;</span><br><span class="line">  &lt;&#x2F;summary&gt;</span><br><span class="line">  &lt;p&gt; - 测试 测试测试&lt;&#x2F;p&gt;</span><br><span class="line">  &lt;pre&gt;&lt;code&gt;  title，value，callBack可以缺省  &lt;&#x2F;code&gt;  &lt;&#x2F;pre&gt;</span><br><span class="line">&lt;&#x2F;details&gt;</span><br></pre></td></tr></table></figure>
 <ul>
@@ -1857,6 +1903,21 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Ubuntu 18.04 用户登录界面优化</title>
+    <url>/1970/01/01/Ubuntu-18-04-%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/vselfdom/article/details/88546349" target="_blank" rel="noopener">Ubuntu 18.04 用户登录界面优化</a></strong>，备用。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Using the Switch(true) Pattern in JavaScript</title>
+    <url>/1970/01/01/Using-the-Switch-true-Pattern-in-JavaScript/</url>
+    <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
+]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Shell脚本检测Nginx服务状态</title>
     <url>/1970/01/01/Shell%E8%84%9A%E6%9C%AC%E6%A3%80%E6%B5%8BNginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
@@ -1888,21 +1949,6 @@
       <tags>
         <tag>shell</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Ubuntu 18.04 用户登录界面优化</title>
-    <url>/1970/01/01/Ubuntu-18-04-%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E4%BC%98%E5%8C%96/</url>
-    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/vselfdom/article/details/88546349" target="_blank" rel="noopener">Ubuntu 18.04 用户登录界面优化</a></strong>，备用。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Using the Switch(true) Pattern in JavaScript</title>
-    <url>/1970/01/01/Using-the-Switch-true-Pattern-in-JavaScript/</url>
-    <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
-]]></content>
-      <categories>
-        <category>javascript</category>
-      </categories>
   </entry>
   <entry>
     <title>shell脚本监测nginx服务状态</title>
