@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>ProcessExecutor、ProcessBuilder、Runtime.getRuntime().exec(...) </title>
+    <url>/2021/05/02/ProcessExecutor%E3%80%81ProcessBuilder%E3%80%81Runtime-getRuntime-exec/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>There are many approaches to take when running external processes from Java. There are the JRE options such as the Runtime.exec() 、 ProcessBuilder、  Apache Commons Exec and ZT Process Executor. 其中ZT Process Executor是一个更为强大的进程库（process library），能够通过使用一个单一的 ProcessExecutor 类来调用 java.lang.ProcessBuilder 和 Apache Commons Exec 中的接口。</p>
+<a id="more"></a>
+<h3 id="Runtime-amp-ProcessBuilder"><a href="#Runtime-amp-ProcessBuilder" class="headerlink" title="Runtime&amp;ProcessBuilder"></a>Runtime&amp;ProcessBuilder</h3><p><em>Runtime.getInstance().exec (String cmd)</em>和<em>new ProcessBuilder(String cmd).start()</em>都可以产生子进程对象Process。通过调用Process对象的waitFor()方法可以使主进程进入等待状态，直至子进程执行完毕，再进行下一步工作。如果对子进程处理不当，有可能造成主进程阻塞，整个程序死掉。(A program is executed with command(). With waitFor() we can wait for the process to finish.)<br><strong>通过查看JDK源码可知，Runtime.exec最终是通过调用ProcessBuilder来真正执行操作的</strong>，如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public Process exec(String command) throws IOException &#123;</span><br><span class="line">    return exec(command, null, null);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Process exec(String command, String[] envp, File dir)</span><br><span class="line">    throws IOException &#123;</span><br><span class="line">    if (command.length() &#x3D;&#x3D; 0)</span><br><span class="line">        throw new IllegalArgumentException(&quot;Empty command&quot;);</span><br><span class="line"></span><br><span class="line">    StringTokenizer st &#x3D; new StringTokenizer(command);</span><br><span class="line">    String[] cmdarray &#x3D; new String[st.countTokens()];</span><br><span class="line">    for (int i &#x3D; 0; st.hasMoreTokens(); i++)</span><br><span class="line">        cmdarray[i] &#x3D; st.nextToken();</span><br><span class="line">    return exec(cmdarray, envp, dir);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Process exec(String[] cmdarray, String[] envp, File dir)</span><br><span class="line">    throws IOException &#123;</span><br><span class="line">    return new ProcessBuilder(cmdarray)</span><br><span class="line">        .environment(envp)</span><br><span class="line">        .directory(dir)</span><br><span class="line">        .start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ProcessExecutor-amp-ProcessBuilder"><a href="#ProcessExecutor-amp-ProcessBuilder" class="headerlink" title="ProcessExecutor&amp;ProcessBuilder"></a>ProcessExecutor&amp;ProcessBuilder</h3><p>ProcessExecutor is implemented as a wrapper of <em>ProcessBuilder</em> complementing it with additional features.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class ProcessExecutor &#123;</span><br><span class="line"></span><br><span class="line">  private static final Logger log &#x3D; LoggerFactory.getLogger(ProcessExecutor.class);</span><br><span class="line"></span><br><span class="line">  private static final boolean IS_OS_WINDOWS &#x3D; System.getProperty(&quot;os.name&quot;).startsWith(&quot;Windows&quot;);</span><br><span class="line"></span><br><span class="line">  public static final Integer[] DEFAULT_EXIT_VALUES &#x3D; null;</span><br><span class="line"></span><br><span class="line">  private static final Integer NORMAL_EXIT_VALUE &#x3D; 0;</span><br><span class="line"></span><br><span class="line">  public static final boolean DEFAULT_REDIRECT_ERROR_STREAM &#x3D; true;</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Process builder used by this executor.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private final ProcessBuilder builder &#x3D; new ProcessBuilder();</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Environment variables which are added (removed in case of &lt;code&gt;null&lt;&#x2F;code&gt; values) to the process being started.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private final Map&lt;String, String&gt; environment &#x3D; new LinkedHashMap&lt;String, String&gt;();</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Set of accepted exit codes or &lt;code&gt;null&lt;&#x2F;code&gt; if all exit codes are allowed.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private Set&lt;Integer&gt; allowedExitValues;</span><br><span class="line">  ...</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>ProcessExecutor在后台运行进程（不阻塞当前代码对执行）:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void runInBackground() throws IOException, InterruptedException, ExecutionException, TimeoutException &#123;</span><br><span class="line">    List&lt;Future&lt;ProcessResult&gt;&gt; tasks &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">    for (int i &#x3D; 0; i &lt; 5; i++) &#123;</span><br><span class="line">        Future&lt;ProcessResult&gt; future &#x3D; new ProcessExecutor().command(&quot;java&quot;, &quot;-version&quot;)</span><br><span class="line">                .start().getFuture();</span><br><span class="line">        tasks.add(future);</span><br><span class="line">    &#125;</span><br><span class="line">    for (Future&lt;ProcessResult&gt; future : tasks) &#123;</span><br><span class="line">        ProcessResult processResult &#x3D; future.get(1, TimeUnit.SECONDS);</span><br><span class="line">        int exitValue &#x3D; processResult.getExitValue();</span><br><span class="line">        log.info(&quot;The exit value of the finished process is &#123;&#125;&quot;, exitValue);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>参考：<strong><a href="https://github.com/zeroturnaround/zt-exec" target="_blank" rel="noopener">GitHub: ZT Process Executor</a></strong></p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Ubuntu apt-get autoclean,clean,autoremove</title>
     <url>/2021/04/29/Ubuntu-apt-get-autoclean-clean-autoremove/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>ubuntu移除安装包时用到的几个命令：autoclean,clean,autoremove</p>
@@ -1909,6 +1929,15 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Using the Switch(true) Pattern in JavaScript</title>
+    <url>/1970/01/01/Using-the-Switch-true-Pattern-in-JavaScript/</url>
+    <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
+]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Shell脚本检测Nginx服务状态</title>
     <url>/1970/01/01/Shell%E8%84%9A%E6%9C%AC%E6%A3%80%E6%B5%8BNginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
@@ -1940,15 +1969,6 @@
       <tags>
         <tag>shell</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Using the Switch(true) Pattern in JavaScript</title>
-    <url>/1970/01/01/Using-the-Switch-true-Pattern-in-JavaScript/</url>
-    <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
-]]></content>
-      <categories>
-        <category>javascript</category>
-      </categories>
   </entry>
   <entry>
     <title>shell脚本监测nginx服务状态</title>
@@ -1984,6 +2004,28 @@
       </tags>
   </entry>
   <entry>
+    <title>ubuntu 开机自动挂载其他盘</title>
+    <url>/1970/01/01/ubuntu-%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E5%85%B6%E4%BB%96%E7%9B%98/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>双系统，ubuntu和win10装在同一个固态盘，还有另外一个机械盘，平时放些资料啥的，设置给ubuntu开机自动挂载另一个机械盘。</p>
+<a id="more"></a>
+
+<p>1、查询挂载硬盘UUID</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo blkid &#x2F;dev&#x2F;sda2</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-32.png" alt="upload successful"><br>Secert和WorkSpace盘信息如上，下面用到两个盘的UUID。</p>
+<p>2、打开文件/etc/fstab文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;fstab</span><br></pre></td></tr></table></figure>
+<p>在文档末尾添加相应磁盘的信息。格式为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[UUID&#x3D;************] [挂载磁盘分区]  [挂载磁盘格式]  0  2</span><br><span class="line"></span><br><span class="line">UUID&#x3D;4D55CFC14D016D60 &#x2F;mnt&#x2F;workspace ntfs defaults  0  2</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-33.png" alt="upload successful"><br>第一个数字：0表示开机不检查磁盘，1表示开机检查磁盘；<br>第二个数字：0表示交换分区，1代表启动分区（Linux），2表示普通分区</p>
+<p>3、重启生效</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
     <title>ubuntu 自动挂载其他盘</title>
     <url>/1970/01/01/ubuntu-%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E5%85%B6%E4%BB%96%E7%9B%98/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>双系统，ubuntu和win10装在同一个固态盘，还有另外一个机械盘，平时放些资料啥的，设置给ubuntu开机自动挂载另一个机械盘。</p>
@@ -2004,28 +2046,6 @@
       <categories>
         <category>linux</category>
         <category>ubuntu</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>ubuntu 开机自动挂载其他盘</title>
-    <url>/1970/01/01/ubuntu-%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E5%85%B6%E4%BB%96%E7%9B%98/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>双系统，ubuntu和win10装在同一个固态盘，还有另外一个机械盘，平时放些资料啥的，设置给ubuntu开机自动挂载另一个机械盘。</p>
-<a id="more"></a>
-
-<p>1、查询挂载硬盘UUID</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo blkid &#x2F;dev&#x2F;sda2</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/pasted-32.png" alt="upload successful"><br>Secert和WorkSpace盘信息如上，下面用到两个盘的UUID。</p>
-<p>2、打开文件/etc/fstab文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;fstab</span><br></pre></td></tr></table></figure>
-<p>在文档末尾添加相应磁盘的信息。格式为：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[UUID&#x3D;************] [挂载磁盘分区]  [挂载磁盘格式]  0  2</span><br><span class="line"></span><br><span class="line">UUID&#x3D;4D55CFC14D016D60 &#x2F;mnt&#x2F;workspace ntfs defaults  0  2</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/pasted-33.png" alt="upload successful"><br>第一个数字：0表示开机不检查磁盘，1表示开机检查磁盘；<br>第二个数字：0表示交换分区，1代表启动分区（Linux），2表示普通分区</p>
-<p>3、重启生效</p>
-]]></content>
-      <categories>
-        <category>linux</category>
       </categories>
   </entry>
 </search>
