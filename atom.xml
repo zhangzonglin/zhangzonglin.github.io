@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglinagain.xyz/"/>
-  <updated>2021-05-02T06:47:59.610Z</updated>
+  <updated>2021-05-05T18:06:04.200Z</updated>
   <id>http://blog.zhangzonglinagain.xyz/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vertx-plugin build vertx app with gradle</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2021/05/06/build-vertx-app-with-gradle/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2021/05/06/build-vertx-app-with-gradle/</id>
+    <published>2021-05-05T17:42:00.000Z</published>
+    <updated>2021-05-05T18:06:04.200Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><a href="https://plugins.gradle.org/plugin/io.vertx.vertx-plugin" target="_blank" rel="noopener">io.vertx.vertx-plugin</a> 介绍，gradle 添加vertx-plugin，脚本启动vertx application.</p><a id="more"></a><ol><li>build.gradle</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id &#39;io.vertx.vertx-plugin&#39; version &#39;1.2.0&#39;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">group &#39;org.example&#39;</span><br><span class="line">version &#39;1.0-SNAPSHOT&#39;</span><br><span class="line"></span><br><span class="line">repositories &#123;</span><br><span class="line">    mavenCentral()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">![upload successful](&#x2F;images&#x2F;pasted-45.png)</span><br><span class="line">    testImplementation &#39;org.junit.jupiter:junit-jupiter-api:5.6.0&#39;</span><br><span class="line">    testRuntimeOnly &#39;org.junit.jupiter:junit-jupiter-engine&#39;</span><br><span class="line">    compile &quot;io.vertx:vertx-core:4.0.3&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vertx &#123;</span><br><span class="line">  mainVerticle &#x3D; &quot;MainVerticle&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test &#123;</span><br><span class="line">    useJUnitPlatform()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ol start="2"><li>idea Run/Debug configurations</li></ol><p><img src="/images/pasted-46.png" alt="upload successful"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://plugins.gradle.org/plugin/io.vertx.vertx-plugin&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;io.vertx.vertx-plugin&lt;/a&gt; 介绍，gradle 添加vertx-plugin，脚本启动vertx application.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="vertx" scheme="http://blog.zhangzonglinagain.xyz/categories/vertx/"/>
+    
+    
+      <category term="vertx-plugin" scheme="http://blog.zhangzonglinagain.xyz/tags/vertx-plugin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>websocket data transfer </title>
+    <link href="http://blog.zhangzonglinagain.xyz/2021/05/05/websocket-msg-type/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2021/05/05/websocket-msg-type/</id>
+    <published>2021-05-05T10:08:00.000Z</published>
+    <updated>2021-05-05T10:09:28.314Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>websocket message type： text or binary byte. And for binary data, we can choose between Blob and ArrayBuffer formats.</p><a id="more"></a><h3 id="Receiving-Text-and-Binary-Data"><a href="#Receiving-Text-and-Binary-Data" class="headerlink" title="Receiving Text and Binary Data"></a>Receiving Text and Binary Data</h3><p><strong>参考：<a href="https://www.oreilly.com/library/view/high-performance-browser/9781449344757/ch17.html" target="_blank" rel="noopener">websocket receiving Text and Binary Data</a></strong></p><p>WebSocket communication consists of messages and application code and does not need to worry about buffering, parsing, and reconstructing received data. For example, if the server sends a 1 MB payload, the application’s onmessage callback will be called only when the entire message is available on the client.</p><p>Further, the WebSocket protocol makes no assumptions and places no constraints on the application payload: both text and binary data are fair game. Internally, the protocol tracks only two pieces of information about the message: the length of payload as a variable-length field and the type of payload to distinguish UTF-8 from binary transfers.</p><p>When a new message is received by the browser, it is automatically converted to a DOMString object for text-based data, or a Blob object for binary data, and then passed directly to the application. The only other option, which acts as performance hint and optimization for the client, is to tell the browser to convert the received binary data to an ArrayBuffer instead of Blob:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var ws &#x3D; new WebSocket(&#39;wss:&#x2F;&#x2F;example.com&#x2F;socket&#39;);</span><br><span class="line">ws.binaryType &#x3D; &quot;arraybuffer&quot;; 1</span><br><span class="line"></span><br><span class="line">ws.onmessage &#x3D; function(msg) &#123;</span><br><span class="line">  if(msg.data instanceof ArrayBuffer) &#123;</span><br><span class="line">    processArrayBuffer(msg.data);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    processText(msg.data);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="Data-transfer"><a href="#Data-transfer" class="headerlink" title="Data transfer"></a>Data transfer</h3><p><strong>参考：<a href="https://javascript.info/websocket#data-transfer" target="_blank" rel="noopener">websocket data transfer</a></strong></p><p>WebSocket communication consists of “frames” – data fragments, that can be sent from either side, and can be of several kinds:</p><ul><li>“text frames” – contain text data that parties send to each other.</li><li>“binary data frames” – contain binary data that parties send to each other.</li><li>“ping/pong frames” are used to check the connection, sent from the server, the browser responds to these automatically.</li><li>there’s also “connection close frame” and a few other service frames.<br>In the browser, we directly work only with text or binary frames.</li></ul><p><em>WebSocket .send()</em> method can send either text or binary data.</p><p>A call <em>socket.send(body)</em> allows body in string or a binary format, including Blob, ArrayBuffer, etc. No settings required: just send it out in any format.</p><p>When we receive the data, text always comes as string. And for binary data, we can choose between Blob and ArrayBuffer formats.</p><p>That’s set by <em>socket.binaryType</em> property, it’s “blob” by default, so binary data comes as Blob objects.</p><p>Blob is a high-level binary object, it directly integrates with <a>, <img> and other tags, so that’s a sane default. But for binary processing, to access individual data bytes, we can change it to “arraybuffer”:</a></p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  ws.binaryType &#x3D; &quot;arraybuffer&quot;;</span><br><span class="line">  ws.onmessage &#x3D; (event) &#x3D;&gt; &#123;</span><br><span class="line">  &#x2F;&#x2F; event.data is either a string (if text) or arraybuffer (if binary)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;websocket message type： text or binary byte. And for binary data, we can choose between Blob and ArrayBuffer formats.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="websocket" scheme="http://blog.zhangzonglinagain.xyz/categories/websocket/"/>
+    
+    
+      <category term="websocket" scheme="http://blog.zhangzonglinagain.xyz/tags/websocket/"/>
+    
+  </entry>
   
   <entry>
     <title>ProcessExecutor、ProcessBuilder、Runtime.getRuntime().exec(...) </title>
@@ -436,54 +482,6 @@
     
     
       <category term="wechat" scheme="http://blog.zhangzonglinagain.xyz/tags/wechat/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ubuntu自动挂载其他盘</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2021/03/18/ceshi/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2021/03/18/ceshi/</id>
-    <published>2021-03-17T19:12:00.000Z</published>
-    <updated>2021-04-12T17:26:32.745Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>双系统，ubuntu和win10装在同一个固态盘，还有另外一个机械盘，平时放些资料啥的，设置给ubuntu开机自动挂载另一个机械盘。</p><a id="more"></a><p>1、查询挂载硬盘UUID</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo blkid &#x2F;dev&#x2F;sda2</span><br></pre></td></tr></table></figure><p><img src="/images/pasted-32.png" alt="upload successful"><br>Secert和WorkSpace盘信息如上，下面用到两个盘的UUID。</p><p>2、打开文件/etc/fstab文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;fstab</span><br></pre></td></tr></table></figure><p>在文档末尾添加相应磁盘的信息。格式为：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[UUID&#x3D;************] [挂载磁盘分区]  [挂载磁盘格式]  0  2</span><br><span class="line"></span><br><span class="line">UUID&#x3D;4D55CFC14D016D60 &#x2F;mnt&#x2F;workspace ntfs defaults  0  2</span><br></pre></td></tr></table></figure><p><img src="/images/pasted-33.png" alt="upload successful"><br>第一个数字：0表示开机不检查磁盘，1表示开机检查磁盘；<br>第二个数字：0表示交换分区，1代表启动分区（Linux），2表示普通分区</p><p>3、重启生效</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;双系统，ubuntu和win10装在同一个固态盘，还有另外一个机械盘，平时放些资料啥的，设置给ubuntu开机自动挂载另一个机械盘。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="http://blog.zhangzonglinagain.xyz/categories/linux/"/>
-    
-      <category term="ubuntu" scheme="http://blog.zhangzonglinagain.xyz/categories/linux/ubuntu/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>ubuntu terminal 打开后的默认位置和大小</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2021/03/18/ubuntu-terminal-location/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2021/03/18/ubuntu-terminal-location/</id>
-    <published>2021-03-17T17:28:00.000Z</published>
-    <updated>2021-03-17T19:12:15.802Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>经常一边儿搜着浏览器，一边儿操作终端，这时候终端打开的默认位置大小就很重要，能节省不少步骤，下面介绍一下怎么设置。</p><a id="more"></a><p>网传的一般有两种，一种是自定义快捷键，一种是修改<em>/usr/share/applications/gnome-terminal.desktop</em>。第二种效果只是修改了“通过菜单栏或鼠标点击进入终端时的位置”，用<em>Ctrl+Alt+T</em>进入时，没有效果，所以本文选择第一种，步骤如下：</p><p>1、打开一个终端，把它调整到自己想要的大小和位置</p><p>2、在终端内执行xwininfo，鼠标变成十字，然后鼠标点击终端，出现终端窗口的信息，注意最后一行： -geometry 80x24-4+168</p><p><img src="/images/pasted-29.png" alt="upload successful"></p><p>3、依次进入Setting - Devices - keyboard，可以看到系统的所有快捷键设置，包括<em>Launch terminal Ctrl+Alt+T</em>。拉到最下面，点击+号</p><p><img src="/images/pasted-31.png" alt="upload successful"></p><p>Name自己取，主要是Command,输入步骤2的大小坐标信息，  <em>gnome-terminal –geometry=80x24-4+168</em> ，Shortcut自定义即可，注意不要跟现存的快捷键冲突。我自己是用的Super+T。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;经常一边儿搜着浏览器，一边儿操作终端，这时候终端打开的默认位置大小就很重要，能节省不少步骤，下面介绍一下怎么设置。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="http://blog.zhangzonglinagain.xyz/categories/linux/"/>
-    
-      <category term="ubuntu" scheme="http://blog.zhangzonglinagain.xyz/categories/linux/ubuntu/"/>
-    
-    
-      <category term="terminal" scheme="http://blog.zhangzonglinagain.xyz/tags/terminal/"/>
     
   </entry>
   
