@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>H5页面在微信浏览器中通过网页授权获取用户信息(openid、昵称、头像等)</title>
+    <url>/2021/08/11/H5%E9%A1%B5%E9%9D%A2%E8%8E%B7%E5%8F%96%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E7%9A%84openid/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>需要做一个Vue前端项目，UI选择buefy（一个基于Bulma的vue轻量级组件），其中一个H5页面涉及到，如果是在微信浏览器中，需要在后台服务器自动注册以及登录，即需要通过网页授权来获取用户信息（openid、昵称、头像等)。这儿只涉及前端的工作…</p>
+<a id="more"></a>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>公众号准备：生产环境的微信公众号，需要按照官方文档（<strong><a href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html" target="_blank" rel="noopener">微信网页开发授权</a></strong>）设置。开发环境可以前往<strong><a href="https://link.segmentfault.com/?url=https%3A%2F%2Fmp.weixin.qq.com%2Fdebug%2Fcgi-bin%2Fsandbox%3Ft%3Dsandbox%2Flogin" target="_blank" rel="noopener">微信公众平台</a></strong>申请测试号。</p>
+<p>注意：正式的公众号不需要关注，也可以通过网页授权获取用户信息，而测试号必须要关注！</p>
+<h3 id="微信授权流程"><a href="#微信授权流程" class="headerlink" title="微信授权流程"></a>微信授权流程</h3><p>详细流程见官方文档（<strong><a href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html" target="_blank" rel="noopener">微信网页开发授权</a></strong>）。</p>
+<p>具体而言，网页授权流程分为四步：</p>
+<ol>
+<li><p>引导用户进入授权页面同意授权，获取code</p>
+</li>
+<li><p>通过code换取网页授权access_token（与基础支持中的access_token不同）</p>
+</li>
+<li><p>如果需要，开发者可以刷新网页授权access_token，避免过期</p>
+</li>
+<li><p>通过网页授权access_token和openid获取用户基本信息（支持UnionID机制）</p>
+</li>
+</ol>
+<p>时序图如下：</p>
+<p><img src="/images/pasted-47.png" alt="upload successful"></p>
+<h3 id="授权code的获取"><a href="#授权code的获取" class="headerlink" title="授权code的获取"></a>授权code的获取</h3><p>以上是大概流程，这里主要分析用户统一授权后，获取code的两个路径：前端截取及后端获取。</p>
+<p>原理是：获取用户授权需要按照微信规定拼装链接，让用户点击访问，其中拼接的链接中有个redirect_uri参数(授权后重定向的回调链接地址)，微信服务器处理后会将redirect_uri拼接code等参数，浏览器会重定向该地址，也就形成了两个获取code的方法，前端在url截取code,后端也可以通过浏览器访问此链接获取code参数。</p>
+<p>示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const appid &#x3D; &quot;wx3b0e58d4d2dbea9q&quot;;  &#x2F;&#x2F;公众号后台获取</span><br><span class="line">const redirectUri &#x3D; encodeURIComponent(&quot;http:&#x2F;&#x2F;245691q6b5.zicp.vip&quot;)&#x2F;&#x2F;微信会带code码访问这个链接</span><br><span class="line">const url &#x3D; &#96;https:&#x2F;&#x2F;open.weixin.qq.com&#x2F;connect&#x2F;oauth2&#x2F;authorizeappid&#x3D;$&#123;appid&#125;&amp;redirect_uri&#x3D;$&#123;redirectUri&#125;&amp;response_type&#x3D;code&amp;scope&#x3D;snsapi_userinfo&amp;state&#x3D;STATE#wechat_redirect&#96;</span><br></pre></td></tr></table></figure>
+<h4 id="前端获取"><a href="#前端获取" class="headerlink" title="前端获取"></a>前端获取</h4><p>如果不是每次进入页面都要从微信获取code码时（用户信息），建议在前端获取，需要时才改变浏览器链接让用户访问链接获取授权，把code码传给后端获取用户信息。</p>
+<p>也可以参看此代码：<strong><a href="https://www.cnblogs.com/congfeicong/p/11125575.html" target="_blank" rel="noopener">H5页面获取微信公众号的openid</a></strong>，或者如下示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">const appid &#x3D; &quot;wx3b0e58d4d2dbea9q&quot;;  &#x2F;&#x2F;公众号后台获取</span><br><span class="line">const redirectUri &#x3D; encodeURIComponent(&quot;http:&#x2F;&#x2F;245691q6b5.zicp.vip&quot;)&#x2F;&#x2F;微信会带code码访问这个链接</span><br><span class="line"></span><br><span class="line">const url&#x3D;&#96;https:&#x2F;&#x2F;open.weixin.qq.com&#x2F;connect&#x2F;oauth2&#x2F;authorizeappid&#x3D;$&#123;appid&#125;&amp;redirect_uri&#x3D;$&#123;redirectUri&#125;&amp;response_type&#x3D;code&amp;scope&#x3D;snsapi_userinfo&amp;state&#x3D;STATE#wechat_redirect&#96;</span><br><span class="line"></span><br><span class="line">const querystring &#x3D; getQueryString()</span><br><span class="line">let code &#x3D; querystring.code;</span><br><span class="line"></span><br><span class="line">if(!code)&#123;</span><br><span class="line">    location.href &#x3D; url;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    https.get(&#39;http:&#x2F;&#x2F;127.0.0.1:3000&#x2F;auth&#39;,&#123;code&#125;).then(res &#x3D;&gt; &#123;</span><br><span class="line">      console.log(res)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function getQueryString() &#123;</span><br><span class="line">    const url &#x3D; location.search;</span><br><span class="line">    const rs &#x3D; &#123;&#125;</span><br><span class="line">    if(url.indexOf(&#39;?&#39;) &#x3D;&#x3D;&#x3D; 0)&#123;</span><br><span class="line">        const querystring &#x3D; url.substr(1);</span><br><span class="line">        const kvArr &#x3D; querystring.split(&#39;&amp;&#39;);</span><br><span class="line">        kvArr.forEach(item &#x3D;&gt; &#123;</span><br><span class="line">            const temp &#x3D; item.split(&#39;&#x3D;&#39;)</span><br><span class="line">            const key &#x3D; temp[0];</span><br><span class="line">            const val &#x3D; temp[1];</span><br><span class="line">            rs[key] &#x3D; val</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    return rs</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="后端获取"><a href="#后端获取" class="headerlink" title="后端获取"></a>后端获取</h4><p>如果每次都要获取code码，就让用户只要进入页面就访问接口链接，但这时的redirectUri要配置成后端接口的链接，也就是说微信会带着code码访问后端接口，后端直接获取code码。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;后端使用koa2</span><br><span class="line">&#x2F;&#x2F;Superagent时一个后端的http请求中间件</span><br><span class="line">router.get(&#39;&#x2F;auth&#39;, async (ctx, next) &#x3D;&gt; &#123;</span><br><span class="line">    code &#x3D; ctx.querystring.split(&#39;&amp;&#39;)[0].split(&#39;&#x3D;&#39;)[1];</span><br><span class="line">    &#x2F;&#x2F; 使用code获取openid和access_token </span><br><span class="line">    await Superagent</span><br><span class="line">        .get(&#96;https:&#x2F;&#x2F;api.weixin.qq.com&#x2F;sns&#x2F;oauth2&#x2F;access_token?appid&#x3D;$&#123;appid&#125;&amp;secret&#x3D;$&#123;appsecret&#125;&amp;code&#x3D;$&#123;code&#125;&amp;grant_type&#x3D;authorization_code&#96;)</span><br><span class="line">        .then(res &#x3D;&gt; &#123;</span><br><span class="line">            let result &#x3D; JSON.parse(res.text)</span><br><span class="line">            access_token &#x3D; result.access_token</span><br><span class="line">            openid &#x3D; result.openid</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 使用ACCESS_TOKEN和openid获取userinfo</span><br><span class="line">    await Superagent</span><br><span class="line">        .get(&#96;https:&#x2F;&#x2F;api.weixin.qq.com&#x2F;sns&#x2F;userinfo?access_token&#x3D;$&#123;access_token&#125;&amp;openid&#x3D;$&#123;openid&#125;&amp;lang&#x3D;zh_CN&#96;)</span><br><span class="line">        .then(res &#x3D;&gt; &#123;</span><br><span class="line">            &#x2F;&#x2F;userinfo返回给前端</span><br><span class="line">            userinfo &#x3D; JSON.parse(res.text)</span><br><span class="line">            ctx.body &#x3D; res.text</span><br><span class="line">        &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>微信公众号</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Wireshark抓包原理（ARP劫持、MAC泛洪）及数据流追踪和图像抓取</title>
     <url>/2021/05/31/Wireshark%E6%8A%93%E5%8C%85%E5%8E%9F%E7%90%86%EF%BC%88ARP%E5%8A%AB%E6%8C%81%E3%80%81MAC%E6%B3%9B%E6%B4%AA%EF%BC%89%E5%8F%8A%E6%95%B0%E6%8D%AE%E6%B5%81%E8%BF%BD%E8%B8%AA%E5%92%8C%E5%9B%BE%E5%83%8F%E6%8A%93%E5%8F%96/</url>
     <content><![CDATA[<p>转载：<a href="https://cloud.tencent.com/developer/article/1626729" target="_blank" rel="noopener">Wireshark抓包原理（ARP劫持、MAC泛洪）及数据流追踪和图像抓取</a></p>
