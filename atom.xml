@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglinagain.xyz/"/>
-  <updated>2021-11-11T13:29:41.370Z</updated>
+  <updated>2021-11-13T04:02:29.178Z</updated>
   <id>http://blog.zhangzonglinagain.xyz/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title> ThreadLocal 详解</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2021/11/13/ThreadLocal-%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2021/11/13/ThreadLocal-%E8%AF%A6%E8%A7%A3/</id>
+    <published>2021-11-13T03:57:48.000Z</published>
+    <updated>2021-11-13T04:02:29.178Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.pdai.tech/md/java/thread/java-thread-x-threadlocal.html" target="_blank" rel="noopener">ThreadLocal原理</a>  ,&nbsp;&nbsp;&nbsp; <a href="https://juejin.cn/post/6844903487193481224" target="_blank" rel="noopener">Java 之 ThreadLocal 详解: 内存泄漏</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://www.pdai.tech/md/java/thread/java-thread-x-threadlocal.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;ThreadLocal原理&lt;/a&gt;  ,&amp;nbsp;&amp;n
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>@interface 简介</title>
@@ -445,27 +467,6 @@
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;nohup .&amp;#x2F;myshell.sh &amp;gt; my.log 2&amp;gt;&amp;amp;1 &amp;amp;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;等价于&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;nohup .&amp;#x2F;myshell.sh &amp;amp;&amp;gt; my.log &amp;amp;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="http://blog.zhangzonglinagain.xyz/categories/linux/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>ubuntu 开机启动管理</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2021/03/21/ubuntu-%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%AE%A1%E7%90%86/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2021/03/21/ubuntu-%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%AE%A1%E7%90%86/</id>
-    <published>2021-03-20T16:26:00.000Z</published>
-    <updated>2021-04-12T17:24:50.042Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ubuntu自启服务管理命令</p><a id="more"></a><p>查看开机启动服务</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl list-unit-files --type&#x3D;service|grep enabled</span><br></pre></td></tr></table></figure><p>以蓝牙为例，查询蓝牙服务是否开机启动</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl is-enabled bluetooth.service</span><br></pre></td></tr></table></figure><p>如果是enable开机自启动<br>如果是disable不开机启动</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable bluetooth.service #开机运行服务</span><br><span class="line"></span><br><span class="line">systemctl disable bluetooth.service #取消开机运行</span><br><span class="line"></span><br><span class="line">sudo systemctl disable  bluetooth.service#关闭蓝牙服务</span><br><span class="line"></span><br><span class="line">systemctl start bluetooth.service #启动服务</span><br><span class="line"></span><br><span class="line">systemctl stop bluetooth.service #停止服务</span><br><span class="line"></span><br><span class="line">systemctl restart bluetooth.service #重启服务</span><br><span class="line"></span><br><span class="line">systemctl reload bluetooth.service #重新加载服务配置文件</span><br><span class="line"></span><br><span class="line">systemctl status bluetooth.service #查询服务运行状态</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;ubuntu自启服务管理命令&lt;/p&gt;
     
     </summary>
     
