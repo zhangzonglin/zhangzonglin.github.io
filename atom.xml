@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglinagain.xyz/"/>
-  <updated>2021-11-13T04:02:29.178Z</updated>
+  <updated>2021-11-15T13:12:15.065Z</updated>
   <id>http://blog.zhangzonglinagain.xyz/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Filter和Interceptor的比较</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2021/11/15/Filter%E5%92%8CInterceptor%E7%9A%84%E6%AF%94%E8%BE%83/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2021/11/15/Filter%E5%92%8CInterceptor%E7%9A%84%E6%AF%94%E8%BE%83/</id>
+    <published>2021-11-15T12:58:00.000Z</published>
+    <updated>2021-11-15T13:12:15.065Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.jianshu.com/p/5f5e5211bbdb" target="_blank" rel="noopener">Filter和Interceptor的比较</a>, &nbsp;&nbsp;&nbsp;<a href="https://www.cnblogs.com/hellovoyager1/p/9152292.html" target="_blank" rel="noopener">Listener、Filter 和Interceptor 总结</a>, &nbsp;&nbsp;<a href="https://www.cnblogs.com/hhhshct/p/8808115.html" target="_blank" rel="noopener">springboot配置监听器、过滤器和拦截器</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://www.jianshu.com/p/5f5e5211bbdb&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Filter和Interceptor的比较&lt;/a&gt;, &amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;htt
+      
+    
+    </summary>
+    
+    
+      <category term="spring" scheme="http://blog.zhangzonglinagain.xyz/categories/spring/"/>
+    
+      <category term="java" scheme="http://blog.zhangzonglinagain.xyz/categories/spring/java/"/>
+    
+    
+      <category term="interceptor" scheme="http://blog.zhangzonglinagain.xyz/tags/interceptor/"/>
+    
+      <category term="filter" scheme="http://blog.zhangzonglinagain.xyz/tags/filter/"/>
+    
+      <category term="listener" scheme="http://blog.zhangzonglinagain.xyz/tags/listener/"/>
+    
+  </entry>
   
   <entry>
     <title> ThreadLocal 详解</title>
@@ -449,30 +481,6 @@
     
     
       <category term="shell" scheme="http://blog.zhangzonglinagain.xyz/tags/shell/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>linux 后台运行、输出重定向</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2021/04/02/linux-%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E3%80%81%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2021/04/02/linux-%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E3%80%81%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91/</id>
-    <published>2021-04-02T13:05:00.000Z</published>
-    <updated>2021-04-12T17:22:20.936Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>linux termianl中，命令脚本的后台运行以及输出的重定向，如</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup .&#x2F;myshell.sh &gt; my.log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure><p>等价于</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup .&#x2F;myshell.sh &amp;&gt; my.log &amp;</span><br></pre></td></tr></table></figure><a id="more"></a><h3 id="后台运行"><a href="#后台运行" class="headerlink" title="后台运行"></a>后台运行</h3><p>当启动一个服务后，希望命令在后台运行时，可以通过在命令末尾增加 &amp; ，例如：./test.sh &amp;，执行上述命令后，脚本开始在后台运行，并且命令行回显为 [1] 12532 ,这里的 1表示后台进程的编号，可以通过命令 fg 1 把进程切换回前台运行。</p><p>此时，虽然命令已经后台运行了，我们可以在控制台输入其他命令，但是脚本每秒打印的 x 会不断的输出到控制台，影响我们其他命令的执行，这时，我也需要用输出重定向把命令的执行结果输出的文件中。</p><h3 id="输出重定向"><a href="#输出重定向" class="headerlink" title="输出重定向"></a>输出重定向</h3><p>一个程序执行后，系统会生成三个句柄，分别是：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0&#x3D;stdin（标准输入）</span><br><span class="line">1&#x3D;stdout（标准输出）</span><br><span class="line">2&#x3D;stderr（错误输出）</span><br></pre></td></tr></table></figure><p>默认情况下，三个句柄都指向当前会话的命令行控制台。命令转到后台执行后，stdin关闭，stdout和stderr还是指向控制台。</p><p>通过在命令后使用输出重定向符 &gt; 实现对输出的重定向。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;run.py &gt; run.log &amp;</span><br></pre></td></tr></table></figure><p>表示把stdout重定向到当前目录的run.log文件。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;run.py &gt; run.log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure><p>表示把stdout和stderr都重定向到run.log，其中 2&gt;&amp;1 表示把stderr重定向到stdout。另外，其中&gt; run.log表示标准输出重定向到文件run.log中且是<strong>覆盖重写，如果想要追加方式写入，则是&gt;&gt; run.log</strong>。</p><p>Linux下还有一个特殊的文件/dev/null，它就像一个无底洞，所有重定向到它的信息都会消失得无影无踪。这一点非常有用，当我们不需要回显程序的所有信息时，就可以将输出重定向到/dev/null。 </p><p>如果想要正常输出和错误信息都不显示，则要把标准输出和标准错误都重定向到/dev/null， 例如： </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls 1&gt;&#x2F;dev&#x2F;null 2&gt;&#x2F;dev&#x2F;null</span><br></pre></td></tr></table></figure><p>还有一种做法是将错误重定向到标准输出，然后再重定向到 /dev/null，例如： </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls &gt;&#x2F;dev&#x2F;null 2&gt;&amp;1</span><br></pre></td></tr></table></figure><p>注意：此处的顺序不能更改，否则达不到想要的效果，此时先将标准输出重定向到 /dev/null，然后将标准错误重定向到标准输出，由于标准输出已经重定向到了/dev/null，因此标准错误也会重定向到/dev/null，于是一切静悄悄:-) </p><p>另外+: </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command &amp;&gt; make_log</span><br></pre></td></tr></table></figure><p>意思是把标准输出和错误输出都重定向, <em>command&gt;out</em> 只重定向标准输出!!!!! </p><p><em>&gt;log</em> 表示把标准输出重新定向到文件log中 </p><p><em>&amp;&gt; log</em> 表示把标准输出和错误输出都定向到文件log中，相当于 <em>&gt;log 2&gt;&amp;1</em></p><h3 id="nohup"><a href="#nohup" class="headerlink" title="nohup"></a>nohup</h3><p>通过 &amp; 虽然可以把命令以后台进程的方式执行，但是如果SSH会话中断退出，和此会话相关的所有进程都会终止。<br>如果我们是登录服务器去启动一个服务程序，总不能启动后一直把SSH会话开着，而且会话到期会自动终止。</p><p>这是，我们可以使用 nohup（no hung up）来执行进程，此命令确保会话挂断后，命令可以继续运行。以nohup运行的命令，系统默认自动把stdout和stderr重定向到当前目录的nohup.out文件。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup .&#x2F;run.py &amp;</span><br></pre></td></tr></table></figure><h3 id="nohup和-amp-的区别"><a href="#nohup和-amp-的区别" class="headerlink" title="nohup和&amp;的区别"></a>nohup和&amp;的区别</h3><p>&amp;：已后台进程执行命令，但是会话关闭后，进程会结束。</p><p>nohup：确保进程不挂断的执行，但是没有后台执行的功能，所以一般nohup和&amp;需要配合一起使用。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;linux termianl中，命令脚本的后台运行以及输出的重定向，如&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;nohup .&amp;#x2F;myshell.sh &amp;gt; my.log 2&amp;gt;&amp;amp;1 &amp;amp;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;等价于&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;nohup .&amp;#x2F;myshell.sh &amp;amp;&amp;gt; my.log &amp;amp;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="http://blog.zhangzonglinagain.xyz/categories/linux/"/>
-    
     
   </entry>
   
