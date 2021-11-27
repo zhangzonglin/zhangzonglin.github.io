@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglinagain.xyz/"/>
-  <updated>2021-11-15T13:12:15.065Z</updated>
+  <updated>2021-11-27T12:22:11.232Z</updated>
   <id>http://blog.zhangzonglinagain.xyz/</id>
   
   <author>
@@ -15,6 +15,54 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue cli 前端跨域设置</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2021/11/27/vue-cli-%E5%89%8D%E7%AB%AF%E8%B7%A8%E5%9F%9F%E8%AE%BE%E7%BD%AE/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2021/11/27/vue-cli-%E5%89%8D%E7%AB%AF%E8%B7%A8%E5%9F%9F%E8%AE%BE%E7%BD%AE/</id>
+    <published>2021-11-27T12:13:00.000Z</published>
+    <updated>2021-11-27T12:22:11.232Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>前后分离的前端开发时,一般都缺少后端的支持,开发阶段可以用mock模拟后端的返回请求, 但后续总要访问后端联调, 此时就涉及到前端的跨越了(只有开发阶段,部署的时候统一部署). 本质上就是在前端开一个代理服务,服务器访问服务器就没有浏览器访问后端的跨域限制了.</p><a id="more"></a><p><strong><a href="https://blog.csdn.net/qq_34450741/article/details/107444815?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-2.no_search_link&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-2.no_search_link" target="_blank" rel="noopener">[vue] vue cli 4.0+ 解决前端跨域问题</a></strong> &nbsp;&nbsp;<strong><a href="https://blog.csdn.net/weixin_39553363/article/details/104152142" target="_blank" rel="noopener">图解vue3.0/vueCli4解决跨域问题</a></strong></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;前后分离的前端开发时,一般都缺少后端的支持,开发阶段可以用mock模拟后端的返回请求, 但后续总要访问后端联调, 此时就涉及到前端的跨越了(只有开发阶段,部署的时候统一部署). 本质上就是在前端开一个代理服务,服务器访问服务器就没有浏览器访问后端的跨域限制了.&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="跨域" scheme="http://blog.zhangzonglinagain.xyz/tags/%E8%B7%A8%E5%9F%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>@PostConstruct注解原理解析</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2021/11/16/PostConstruct%E6%B3%A8%E8%A7%A3%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2021/11/16/PostConstruct%E6%B3%A8%E8%A7%A3%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/</id>
+    <published>2021-11-16T05:31:00.000Z</published>
+    <updated>2021-11-16T05:32:14.597Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.cnblogs.com/lay2017/p/11735802.html" target="_blank" rel="noopener">@PostConstruct注解原理解析</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/lay2017/p/11735802.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;@PostConstruct注解原理解析&lt;/a&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="java" scheme="http://blog.zhangzonglinagain.xyz/categories/java/"/>
+    
+    
+      <category term="PostConstruct" scheme="http://blog.zhangzonglinagain.xyz/tags/PostConstruct/"/>
+    
+  </entry>
   
   <entry>
     <title>Filter和Interceptor的比较</title>
@@ -437,50 +485,6 @@
     
       <category term="linux" scheme="http://blog.zhangzonglinagain.xyz/categories/linux/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Let’sEncrypt 证书自动更新脚本</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2021/04/08/Let%E2%80%99sEncrypt-%E8%AF%81%E4%B9%A6%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E8%84%9A%E6%9C%AC/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2021/04/08/Let%E2%80%99sEncrypt-%E8%AF%81%E4%B9%A6%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E8%84%9A%E6%9C%AC/</id>
-    <published>2021-04-08T10:49:00.000Z</published>
-    <updated>2021-04-12T17:21:51.417Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>vps科学上网用的Let’sEncrypt免费证书，有效期一般是3个月，需要定期更新。写个脚本，定时更新。</p><a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">#Version:1.0</span><br><span class="line">#Author:zzl</span><br><span class="line">#Automatically renew Let&#39;s Encrypt certificates</span><br><span class="line">#A cron job will run this shell script everyday</span><br><span class="line">i&#x3D;0</span><br><span class="line">while [[ $i -lt 10]]</span><br><span class="line">do</span><br><span class="line">  let &quot;i++&quot;</span><br><span class="line">  if [ $(ps -C nginx --no-header | wc -l) -ne 0];then</span><br><span class="line">    service nginx stop</span><br><span class="line">    sleep 3s</span><br><span class="line">    if [ $(ps -C nginx --no-header | wc -l) -eq 0];then</span><br><span class="line">      break</span><br><span class="line">    fi</span><br><span class="line">  fi</span><br><span class="line">done</span><br><span class="line">certbot renew </span><br><span class="line">service nginx start</span><br></pre></td></tr></table></figure><p>或者直接用certbot renew command，详情如下<br>        <strong><a href="https://certbot.eff.org/docs/using.html?highlight=hooks#renewing-certificates" target="_blank" rel="noopener">Certbot documentation on renewing certificates</a></strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">certbot renew --pre-hook &quot;service nginx stop&quot; --post-hook &quot;service nginx start&quot;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;vps科学上网用的Let’sEncrypt免费证书，有效期一般是3个月，需要定期更新。写个脚本，定时更新。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="http://blog.zhangzonglinagain.xyz/categories/linux/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>shell脚本检查nginx服务状态</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2021/04/08/shell%E8%84%9A%E6%9C%AC%E6%A3%80%E6%9F%A5nginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2021/04/08/shell%E8%84%9A%E6%9C%AC%E6%A3%80%E6%9F%A5nginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</id>
-    <published>2021-04-08T10:35:00.000Z</published>
-    <updated>2021-04-08T10:36:20.514Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p><a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">A&#x3D;&#96;ps -C nginx --no-header |wc -l&#96;</span><br><span class="line">if [ $A -eq 0 ];then</span><br><span class="line">    service nginx start</span><br><span class="line">    sleep 2</span><br><span class="line">    if [ &#96;ps -C nginx --no-header |wc -l&#96; -eq 0 ];then</span><br><span class="line">        killall keepalived</span><br><span class="line">    fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure><h3 id="脚本解析"><a href="#脚本解析" class="headerlink" title="脚本解析"></a>脚本解析</h3><p>以上是通过进程判断，也可以通过端口判断，如netstat -nlpt | grep nginx</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@newyork ~]# netstat -nlpt | grep nginx</span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      8801&#x2F;nginx: master</span><br></pre></td></tr></table></figure><p>以下，以进程为例详解，ps -C nginx –no-header<br>这里涉及ps 的用法，我们一般用ps查看相关进程，一般都是用ps -ef | grep XX 或 ps -aux| grep XX 的模式<br>如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br><span class="line">root     11660  5532  0 09:55 pts&#x2F;1    00:00:00 grep --color&#x3D;auto nginx</span><br></pre></td></tr></table></figure><p>但是这样通常都会覆盖一个grep的进程。</p><p>我们可以用ps -ef|grep nginx|grep -v grep的方式排除grep的进程，如</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@newyork ~]# ps -ef|grep nginx|grep -v grep</span><br><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br></pre></td></tr></table></figure><p>也可以直接用ps -C 或ps -c 的方式， -C 后面接命令的名字（推荐） ，如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx</span><br><span class="line">   PID TTY          TIME CMD</span><br><span class="line">  8801 ?        00:00:00 nginx</span><br><span class="line">  8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure><p>–no-header 就是去挑title,如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx --no-header</span><br><span class="line"> 8801 ?        00:00:00 nginx</span><br><span class="line"> 8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure><p>wc -l 这个很熟悉了，行数计算</p><p>所以用这种方式可判断，如果<br>ps -C nginx –no-header|wc -l</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">值为0，即代表服务未启动</span><br><span class="line">值为非0，即代表服务已启动</span><br></pre></td></tr></table></figure><p>最后，killall keepalived 这个是以服务名称杀死进程，日常中也用的挺多的</p><p>上面那段完整的脚本意思即为：<br>判断nginx 服务是否启动<br>如果未启动，执行启动命令<br>再次判断，如果启动失败，关掉keepalived，进入从节点</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="shell" scheme="http://blog.zhangzonglinagain.xyz/categories/shell/"/>
-    
-    
-      <category term="shell" scheme="http://blog.zhangzonglinagain.xyz/tags/shell/"/>
     
   </entry>
   
