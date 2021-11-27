@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglinagain.xyz/"/>
-  <updated>2021-11-27T12:22:11.232Z</updated>
+  <updated>2021-11-27T13:23:52.101Z</updated>
   <id>http://blog.zhangzonglinagain.xyz/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Form Data &amp; Request Payload</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2021/11/27/Form-Data-Request-Payload/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2021/11/27/Form-Data-Request-Payload/</id>
+    <published>2021-11-27T13:10:00.000Z</published>
+    <updated>2021-11-27T13:23:52.101Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>简单来说,request headers里的Content-Type: application/json 表明request body里是json数据; Content-Type: application/x-www-form-urlencoded表明request body里是Form Data数据(以key1=value1&amp;key2=value2形式). 根据content-type的不同, 后端也要相应处理,或@RequestParam 处理表单数据, 或@RequestBody处理json数据等.<br><strong><a href="https://segmentfault.com/a/1190000018774494" target="_blank" rel="noopener">前后端联调之Form Data与Request Payload，你真的了解吗？</a></strong> &nbsp;&nbsp;<strong><a href="https://www.cnblogs.com/zoro-zero/p/11608491.html" target="_blank" rel="noopener">SpringBoot 传入JSON对象参数</a></strong></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;简单来说,request headers里的Content-Type: application/json 表明request body里是j
+      
+    
+    </summary>
+    
+    
+    
+      <category term="application/x-www-form-urlencoded" scheme="http://blog.zhangzonglinagain.xyz/tags/application-x-www-form-urlencoded/"/>
+    
+      <category term="application/json" scheme="http://blog.zhangzonglinagain.xyz/tags/application-json/"/>
+    
+  </entry>
   
   <entry>
     <title>vue cli 前端跨域设置</title>
@@ -464,27 +490,6 @@
     
     
       <category term="javascript" scheme="http://blog.zhangzonglinagain.xyz/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>centos 免密切换root</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2021/04/11/centos-switch-to-root-without-password/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2021/04/11/centos-switch-to-root-without-password/</id>
-    <published>2021-04-10T17:29:00.000Z</published>
-    <updated>2021-04-13T19:16:18.325Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>centos6上免密切换到root，原理、步骤。</p><a id="more"></a><h3 id="execute-ALL-sudo-commands-without-password"><a href="#execute-ALL-sudo-commands-without-password" class="headerlink" title="execute ALL sudo commands without password"></a>execute ALL sudo commands without password</h3><p>Type the following command as root user:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># visudo</span><br></pre></td></tr></table></figure><p>Or</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo visudo</span><br></pre></td></tr></table></figure><p>Append the following entry to run ALL command without a password for a user named marlena:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">remo ALL&#x3D;(ALL) NOPASSWD:ALL</span><br></pre></td></tr></table></figure><p>Save and close the file in vim. It is also possible to grant access to the group name such as sysadm. Any member of sysadm group can run command without a password. The syntax is</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%sysadm ALL&#x3D;(ALL) NOPASSWD: ALL</span><br></pre></td></tr></table></figure><p>Of course, you can force the sysadm group to run only given commands such as /usr/sbin/reboot and systemctl:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%sysadm ALL&#x3D;(ALL) NOPASSWD: &#x2F;sbin&#x2F;reboot, systemctl</span><br></pre></td></tr></table></figure><p>参考：<strong><a href="https://www.cyberciti.biz/faq/how-to-sudo-without-password-on-centos-linux/" target="_blank" rel="noopener">How to sudo without password on CentOS Linux</a></strong></p><h3 id="switch-to-root-without-password"><a href="#switch-to-root-without-password" class="headerlink" title="switch to root without password"></a>switch to root without password</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@lansetongxin2 &#x2F;]# vim &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure><p>相应位置添加：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username ALL&#x3D;(ALL) NOPASSWD: ALL</span><br></pre></td></tr></table></figure><p><img src="/images/pasted-34.png" alt="upload successful"><br>ps: By default on CentOS systems, members of the group wheel are granted with sudo access.</p><p>:wq 保存后，便可以免密切换到root(sudo su -)。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[remo@lansetongxin2 ~]$ sudo su #最好使用sudo su -完全切换，su会加载不出来环境变量</span><br></pre></td></tr></table></figure><p>ps: su命令和su -命令最大的本质区别就是：前者只是切换了root身份，但Shell环境仍然是普通用户的Shell；而后者连用户和Shell环境一起切换成root身份了。只有切换了Shell环境才不会出现PATH环境变量错误。su切换成root用户以后，pwd一下，发现工作目录仍然是普通用户的工作目录；而用su -命令切换以后，工作目录变成root的工作目录了。用echo $PATH命令看一下su和su -以后的环境变量有何不同。以此类推，要从当前用户切换到其它用户也一样，应该使用su -命令。</p><h3 id="root-ALL-ALL-ALL详解"><a href="#root-ALL-ALL-ALL详解" class="headerlink" title="root ALL=(ALL) ALL详解"></a>root ALL=(ALL) ALL详解</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root ALL&#x3D;(ALL) ALL</span><br></pre></td></tr></table></figure><p>/etc/sudoers中的此行表示：root用户可以从所有终端执行，充当所有（任何）用户，并运行ALL（任何）命令。<br>第一部分是用户，第二部分是用户可以使用sudo命令的终端，第三部分是他可以充当哪些用户，最后一部分是使用时可以运行的命令sudo。</p><p>sudoers的例子</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">operator ALL&#x3D; &#x2F;sbin&#x2F;poweroff</span><br></pre></td></tr></table></figure><p>以上命令，使用户操作员可以从任何终端，关闭命令电源。</p><p>您还可以为以下项创建别名：users - &gt; User_Alias，以其他用户身份运行命令 - &gt; Runas_Alias，主机 - &gt; Host_Alias 命令 - &gt; Cmnd_Alias</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User_Alias OPERATORS &#x3D; joe, mike, jude Runas_Alias OP &#x3D; root, operator Host_Alias OFNET &#x3D; 10.1.2.0&#x2F;255.255.255.0 Cmnd_Alias PRINTING &#x3D; &#x2F;usr&#x2F;sbin&#x2F;lpc, &#x2F;usr&#x2F;bin&#x2F;lprm</span><br></pre></td></tr></table></figure><p>正如您所看到的别名OPERATORS包括用户joe，mike和jude，别名OP包括用户root和operator，别名OFNET包括网络10.1.2.0（所有C类），命令别名PRINTING包含命令lpc和lprm。</p><p>因此，典型的sudoers文件可能如下所示：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> User_Alias     OPERATORS &#x3D; joe, mike, jude</span><br><span class="line"> Runas_Alias    OP &#x3D; root, operator</span><br><span class="line"> Host_Alias     OFNET &#x3D; 10.1.2.0&#x2F;255.255.255.0</span><br><span class="line"> Cmnd_Alias     PRINTING &#x3D; &#x2F;usr&#x2F;sbin&#x2F;lpc, &#x2F;usr&#x2F;bin&#x2F;lprm</span><br><span class="line"></span><br><span class="line">OPERATORS ALL&#x3D;ALL</span><br><span class="line"></span><br><span class="line">#The users in the OPERATORS group can run any command from</span><br><span class="line"> any terminal.</span><br><span class="line"></span><br><span class="line">linus ALL&#x3D;(OP) ALL</span><br><span class="line"></span><br><span class="line"># The user linus can run any command from any terminal as any </span><br><span class="line">user in the OP group (root or operator).</span><br><span class="line"></span><br><span class="line">user2 OFNET&#x3D;(ALL) ALL</span><br><span class="line"></span><br><span class="line"># user user2 may run any command from any machine in the </span><br><span class="line">OFNET network, as any user.</span><br><span class="line"></span><br><span class="line">user3 ALL&#x3D; PRINTING</span><br><span class="line"></span><br><span class="line"># user user3 may run lpc and lprm from any machine.</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yujiaao ALL&#x3D;(ALL) ALL</span><br></pre></td></tr></table></figure><p>在编辑器中打开 sudoers 文件后，您需要向下滚动到编辑器的末尾并在其中添加以下代码！</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yujiaao ALL&#x3D;(ALL) NOPASSWD:ALL</span><br></pre></td></tr></table></figure><p>用您的用户名替换“ yujiaao ”！（例如：anderson ALL =（ALL）NOPASSWD：ALL），命令NOPASSWD将在终端中运行SUDO命令时跳过密码验证。</p><p>如何在为特定命令运行sudo时跳过密码：<br>您可以允许某些命令使用密码运行sudo，使用以下命令来实现它：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yujiaao ALL&#x3D;(ALL) NOPASSWD:&#x2F;bin&#x2F;cp,&#x2F;bin&#x2F;install,bin&#x2F;remove</span><br></pre></td></tr></table></figure><p>完成编辑后，请保存文件并退出终端。</p><p>NOPASSWD 是一个“标签”，表示不会请求密码。它有一个名为的伴随命令 PASSWD，是默认行为。标签与规则的其余部分相关，除非在其后面的“双胞胎”标签上被否决。<br>例如，我们可以有这样的一行：</p><p>在 /etc/sudoers文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GROUPTWO    ALL &#x3D; NOPASSWD: &#x2F;usr&#x2F;bin&#x2F;updatedb, PASSWD: &#x2F;bin&#x2F;kill</span><br></pre></td></tr></table></figure><p>另一个有用的标签NOEXEC，可用于防止某些程序中的某些危险行为。</p><p>例如，某些程序（如“less”）可以通过在其界面中键入以下内容来生成其他命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!command_to_run</span><br></pre></td></tr></table></figure><p>这基本上执行用户赋予它的任何命令，具有“less”运行的相同权限，这可能非常危险。</p><p>为了限制这一点，我们可以使用这样的一行：</p><p>在 /etc/sudoers文件中</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username  ALL &#x3D; NOEXEC: &#x2F;usr&#x2F;bin&#x2F;less</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;centos6上免密切换到root，原理、步骤。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="http://blog.zhangzonglinagain.xyz/categories/linux/"/>
-    
     
   </entry>
   
