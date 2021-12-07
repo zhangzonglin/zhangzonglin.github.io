@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglinagain.xyz/"/>
-  <updated>2021-12-01T13:46:33.800Z</updated>
+  <updated>2021-12-07T16:16:54.048Z</updated>
   <id>http://blog.zhangzonglinagain.xyz/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>js  0 == &#39;&#39; 引出的判等</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2021/12/08/js-0-%E5%BC%95%E5%87%BA%E7%9A%84%E5%88%A4%E7%AD%89/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2021/12/08/js-0-%E5%BC%95%E5%87%BA%E7%9A%84%E5%88%A4%E7%AD%89/</id>
+    <published>2021-12-07T16:13:22.000Z</published>
+    <updated>2021-12-07T16:16:54.048Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong><a href="https://segmentfault.com/a/1190000021394035" target="_blank" rel="noopener">javascript中的假值相等判断(false,null,undefined,NaN,数字0,空字符串)</a></strong> &nbsp;&nbsp;&nbsp;<strong><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Equality_comparisons_and_sameness" target="_blank" rel="noopener">JavaScript 中的相等性判断</a></strong></p><a id="more"></a><table class="standard-table"> <caption>判等</caption> <thead>  <tr>   <th scope="col" style="text-align: center;">x</th>   <th scope="col" style="text-align: center;">y</th>   <th scope="col" style="width: 10em; text-align: center;"><code>==</code></th>   <th scope="col" style="width: 10em; text-align: center;"><code>===</code></th>   <th scope="col" style="width: 10em; text-align: center;"><code>Object.is</code></th>  </tr> </thead> <tbody>  <tr>   <td><code>undefined</code></td>   <td><code>undefined</code></td>   <td style="background-color: rgb(144, 255, 144); text-align: center;"><code>true</code></td>   <td style="background-color: rgb(144, 255, 144); text-align: center;"><code>true</code></td>   <td style="background-color: rgb(144, 255, 144); text-align: center;"><code>true</code></td>  </tr>  <tr>   <td><code>null</code></td>   <td><code>null</code></td>   <td style="background-color: rgb(144, 255, 144); text-align: center;"><code>true</code></td>   <td style="background-color: rgb(144, 255, 144); text-align: center;"><code>true</code></td>   <td style="background-color: rgb(144, 255, 144); text-align: center;"><code>true</code></td>  </tr>  <tr>   <td><code>true</code></td>   <td><code>true</code></td>   <td style="background-color: rgb(144, 255, 144); text-align: center;"><code>true</code></td>   <td style="background-color: rgb(144, 255, 144); text-align: center;"><code>true</code></td>   <td style="background-color: rgb(144, 255, 144); text-align: center;"><code>true</code></td>  </tr>  <tr>   <td><code>false</code></td>   <td><code>false</code></td>   <td style="background-color: rgb(144, 255, 144); text-align: center;"><code>true</code></td>   <td style="background-color: rgb(144, 255, 144); text-align: center;"><code>true</code></td>   <td style="background-color: rgb(144, 255, 144); text-align: center;"><code>true</code></td>  </tr>  <tr>   <td><code>"foo"</code></td>   <td><code>"foo"</code></td>   <td style="background-color: rgb(144, 255, 144); text-align: center;"><code>true</code></td>   <td style="background-color: rgb(144, 255, 144); text-align: center;"><code>true</code></td>   <td style="background-color: rgb(144, 255, 144); text-align: center;"><code>true</code></td>  </tr>  <tr>   <td><code>0</code></td>   <td><code>0</code></td>   <td style="background-color: rgb(144, 255, 144); text-align: center;"><code>true</code></td>   <td style="background-color: rgb(144, 255, 144); text-align: center;"><code>true</code></td>   <td style="background-color: rgb(144, 255, 144); text-align: center;"><code>true</code></td>  </tr>  <tr>   <td><code>+0</code></td>   <td><code>-0</code></td>   <td style="background-color: rgb(144, 255, 144); text-align: center;"><code>true</code></td>   <td style="background-color: rgb(144, 255, 144); text-align: center;"><code>true</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>  </tr>  <tr>   <td><code>0</code></td>   <td><code>false</code></td>   <td style="background-color: rgb(144, 255, 144); text-align: center;"><code>true</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>  </tr>  <tr>   <td><code>""</code></td>   <td><code>false</code></td>   <td style="background-color: rgb(144, 255, 144); text-align: center;"><code>true</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>  </tr>  <tr>   <td><code>""</code></td>   <td><code>0</code></td>   <td style="background-color: rgb(144, 255, 144); text-align: center;"><code>true</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>  </tr>  <tr>   <td><code>"0"</code></td>   <td><code>0</code></td>   <td style="background-color: rgb(144, 255, 144); text-align: center;"><code>true</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>  </tr>  <tr>   <td><code>"17"</code></td>   <td><code>17</code></td>   <td style="background-color: rgb(144, 255, 144); text-align: center;"><code>true</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>  </tr>  <tr>   <td><code>[1,2]</code></td>   <td><code>"1,2"</code></td>   <td style="background-color: rgb(144, 255, 144); text-align: center;"><code>true</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>  </tr>  <tr>   <td><code>new String("foo")</code></td>   <td><code>"foo"</code></td>   <td style="background-color: rgb(144, 255, 144); text-align: center;"><code>true</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>  </tr>  <tr>   <td><code>null</code></td>   <td><code>undefined</code></td>   <td style="background-color: rgb(144, 255, 144); text-align: center;"><code>true</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>  </tr>  <tr>   <td><code>null</code></td>   <td><code>false</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>  </tr>  <tr>   <td><code>undefined</code></td>   <td><code>false</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>  </tr>  <tr>   <td><code>{ foo: "bar" }</code></td>   <td><code>{ foo: "bar" }</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>  </tr>  <tr>   <td><code>new String("foo")</code></td>   <td><code>new String("foo")</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>  </tr>  <tr>   <td><code>0</code></td>   <td><code>null</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>  </tr>  <tr>   <td><code>0</code></td>   <td><code>NaN</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>  </tr>  <tr>   <td><code>"foo"</code></td>   <td><code>NaN</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>  </tr>  <tr>   <td><code>NaN</code></td>   <td><code>NaN</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>   <td style="background-color: rgb(255, 144, 144); text-align: center;"><code>false</code></td>   <td style="background-color: rgb(144, 255, 144); text-align: center;"><code>true</code></td>  </tr> </tbody></table>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000021394035&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;javascript中的假值相等判断(false,null,undefined,NaN,数字0,空字符串)&lt;/a&gt;&lt;/strong&gt; &amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;strong&gt;&lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Equality_comparisons_and_sameness&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JavaScript 中的相等性判断&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Hashtable、HashMap、ConcurrentHashMap</title>
@@ -461,32 +480,6 @@
     
     
       <category term="linux" scheme="http://blog.zhangzonglinagain.xyz/categories/linux/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>ubuntu登录界面美化</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2021/04/14/ubuntu%E5%BC%80%E6%9C%BA%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2021/04/14/ubuntu%E5%BC%80%E6%9C%BA%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96/</id>
-    <published>2021-04-13T18:03:00.000Z</published>
-    <updated>2021-04-13T18:03:45.688Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong><a href="https://blog.csdn.net/vselfdom/article/details/88546349" target="_blank" rel="noopener">Ubuntu 18.04 用户登录界面优化</a></strong>，备用。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://blog.csdn.net/vselfdom/article/details/88546349&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Ubuntu 18.04 用户登录界面优化&lt;/a&gt;&lt;/stron
-      
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="http://blog.zhangzonglinagain.xyz/categories/linux/"/>
-    
-      <category term="ubuntu" scheme="http://blog.zhangzonglinagain.xyz/categories/linux/ubuntu/"/>
     
     
   </entry>
