@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglinagain.xyz/"/>
-  <updated>2021-12-17T15:21:18.896Z</updated>
+  <updated>2021-12-30T06:33:44.318Z</updated>
   <id>http://blog.zhangzonglinagain.xyz/</id>
   
   <author>
@@ -15,6 +15,51 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mybatis mysql in (#{list}) 只能查询/删除第一条的问题</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2021/12/30/mybatis-mysql-in-list-%E5%8F%AA%E8%83%BD%E6%9F%A5%E8%AF%A2-%E5%88%A0%E9%99%A4%E7%AC%AC%E4%B8%80%E6%9D%A1%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2021/12/30/mybatis-mysql-in-list-%E5%8F%AA%E8%83%BD%E6%9F%A5%E8%AF%A2-%E5%88%A0%E9%99%A4%E7%AC%AC%E4%B8%80%E6%9D%A1%E7%9A%84%E9%97%AE%E9%A2%98/</id>
+    <published>2021-12-30T06:33:17.000Z</published>
+    <updated>2021-12-30T06:33:44.318Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.cnblogs.com/do-your-best/p/9513194.html" target="_blank" rel="noopener">mysql in (#{list}) 只能查询/删除第一条的问题</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/do-your-best/p/9513194.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;mysql in (#{list}) 只能查询/删除第一条的问题&lt;/a&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>你真的会用Gson吗?Gson使用指南（一）</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2021/12/23/%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BC%9A%E7%94%A8Gson%E5%90%97-Gson%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2021/12/23/%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BC%9A%E7%94%A8Gson%E5%90%97-Gson%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%EF%BC%88%E4%B8%80%EF%BC%89/</id>
+    <published>2021-12-23T15:58:30.000Z</published>
+    <updated>2021-12-23T15:59:27.469Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong><a href="https://www.jianshu.com/p/e740196225a4" target="_blank" rel="noopener">你真的会用Gson吗?Gson使用指南（一）</a></strong>&nbsp;&nbsp;<strong><a href="https://blog.csdn.net/majalis_c/article/details/79801863?utm_term=gsonjsonobject%E8%BD%ACstring&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-0-79801863&spm=3001.4430" target="_blank" rel="noopener">Gson基本操作，JsonObject，JsonArray，String，JavaBean，List互转</a></strong></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://www.jianshu.com/p/e740196225a4&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;你真的会用Gson吗?Gson使用指南（一）&lt;/a&gt;&lt;/strong&gt;&amp;nbsp;&amp;nbsp;&lt;s
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Java泛型详解：&lt;T&gt;和Class&lt;T&gt;的使用。泛型类，泛型方法的详细使用实例 </title>
@@ -436,56 +481,6 @@
     
     
       <category term="apt-get" scheme="http://blog.zhangzonglinagain.xyz/tags/apt-get/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ubuntu 桌面死机(重启gnome-shell)</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2021/04/19/ubuntu-%E6%A1%8C%E9%9D%A2%E6%AD%BB%E6%9C%BA/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2021/04/19/ubuntu-%E6%A1%8C%E9%9D%A2%E6%AD%BB%E6%9C%BA/</id>
-    <published>2021-04-19T10:54:00.000Z</published>
-    <updated>2021-04-19T17:01:55.765Z</updated>
-    
-    <content type="html"><![CDATA[<p>ubuntu有时桌面会卡死，鼠标点击失灵，解决方法：重启gnome-shell。<br>建议以下两种二选一：</p><ul><li><span style="color:red">alt + F2</span>  弹出的输入框里输入小写<span style="color:red">r</span> ，回车，如此重启gnome-shell桌面环境。</li><li><span style="color:red">ctrl + alt + F3</span> 切换到其它虚拟终端tty3(Ubuntu18.04 默认tty1是选择用户登录界面，tty2往往就是对应卡死的桌面位置，我们选择tty3进行操作)，输入用户密码登录，输入<span style="color:red">ps -ef|grep gnome-shell</span> ，找到tty2对应的gnome-shell pid（一般有两个，一个是tty1的，一个是tty2的），<span style="color:red">kill -9 pidNum</span> ，系统自动重启gnome-shell,最后<span style="color:red">crl + alt +F2</span> 切换至tty2,这种方法的优点是不会干扰其他正在运行的程序。<a id="more"></a>其他方法还有（未验证）：</li></ul><h3 id="How-to-restart-GUI-on-Ubuntu-20-04-step-by-step-instructions"><a href="#How-to-restart-GUI-on-Ubuntu-20-04-step-by-step-instructions" class="headerlink" title="How to restart GUI on Ubuntu 20.04 step by step instructions"></a>How to restart GUI on Ubuntu 20.04 step by step instructions</h3><p>Sometimes you many need to restart/reload GUI because you may have done some changes which require it. However, occasionally you are forced to restart GUI because it froze and you do not wish to restart the entire system. In any case you might find some of the bellow information helpful.</p><h4 id="The-first-method-is-the-least-destructing-however-it-might-not-provide-the-expected-result"><a href="#The-first-method-is-the-least-destructing-however-it-might-not-provide-the-expected-result" class="headerlink" title="The first method is the least destructing, however, it might not provide the expected result."></a>The first method is the least destructing, however, it might not provide the expected result.</h4><p>Enter a restart gui Command</p><p><img src="/images/pasted-36.png" alt="upload successful"></p><p>While logged in to your GNOME desktop press <span style="color:red">ALT + F2</span> key combination. Into the Enter a Command box type <span style="color:red">r </span> and press <span style="color:red">Enter</span> .</p><h4 id="Another-alternative-to-do-the-GUI-restart-trick-might-be-the-most-obvious-to-simply-re-login"><a href="#Another-alternative-to-do-the-GUI-restart-trick-might-be-the-most-obvious-to-simply-re-login" class="headerlink" title="Another alternative to do the GUI restart trick might be the most obvious to simply re-login."></a>Another alternative to do the GUI restart trick might be the most obvious to simply re-login.</h4><p><img src="/images/pasted-37.png" alt="upload successful"><br>Restart GUI by first Log Out and consequently Log In to your GUI desktop</p><h4 id="In-this-scenario-we-simply-restart-the-gnome-shell-as-non-privileged-user"><a href="#In-this-scenario-we-simply-restart-the-gnome-shell-as-non-privileged-user" class="headerlink" title="In this scenario we simply restart the gnome-shell as non-privileged user."></a>In this scenario we simply restart the gnome-shell as non-privileged user.</h4><p><img src="/images/pasted-38.png" alt="upload successful"><br>Open up terminal and enter the <span style="color:red">gnome-shell –replace </span>command.</p><h4 id="The-following-restart-GUI-solution-is-guaranteed-to-restart-your-desktop-even-if-your-GUI-froze-while-the-system-is-still-functioning-However-it-needs-administrative-sudo-privileges"><a href="#The-following-restart-GUI-solution-is-guaranteed-to-restart-your-desktop-even-if-your-GUI-froze-while-the-system-is-still-functioning-However-it-needs-administrative-sudo-privileges" class="headerlink" title="The following restart GUI solution is guaranteed to restart your desktop even if your GUI froze while the system is still functioning. However, it needs administrative sudo privileges."></a>The following restart GUI solution is guaranteed to restart your desktop even if your GUI froze while the system is still functioning. However, it needs administrative sudo privileges.</h4><p><img src="/images/pasted-39.png" alt="upload successful"><br>Either enter the <span style="color:red">sudo systemctl restart systemd-logind.service </span>command directly into the terminal while in GUI. However, if your GUI is frozen you may need to first change to TTY console using <span style="color:red">CTRL + ALT + F2</span>, login and execute command from there.</p><h4 id="In-this-method-we-will-restart-the-Display-Manager-which-will-consequently-also-restart-GNOME-shell"><a href="#In-this-method-we-will-restart-the-Display-Manager-which-will-consequently-also-restart-GNOME-shell" class="headerlink" title="In this method we will restart the Display Manager which will consequently also restart GNOME shell."></a>In this method we will restart the Display Manager which will consequently also restart GNOME shell.</h4><p><img src="/images/pasted-40.png" alt="upload successful"><br>Either from GUI and TTY console <span style="color:red">CTRL + ALT + F2</span> execute <span style="color:red">sudo systemctl restart gdm</span> command. However, if you have deployed LightDM display manager in that case execute<span style="color:red"> sudo systemctl restart lightdm</span> command.</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;ubuntu有时桌面会卡死，鼠标点击失灵，解决方法：重启gnome-shell。&lt;br&gt;建议以下两种二选一：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;span style=&quot;color:red&quot;&gt;alt + F2&lt;/span&gt;  弹出的输入框里输入小写&lt;span style=&quot;color:red&quot;&gt;r&lt;/span&gt; ，回车，如此重启gnome-shell桌面环境。&lt;/li&gt;
-&lt;li&gt;&lt;span style=&quot;color:red&quot;&gt;ctrl + alt + F3&lt;/span&gt; 切换到其它虚拟终端tty3(Ubuntu18.04 默认tty1是选择用户登录界面，tty2往往就是对应卡死的桌面位置，我们选择tty3进行操作)，输入用户密码登录，输入&lt;span style=&quot;color:red&quot;&gt;ps -ef|grep gnome-shell&lt;/span&gt; ，找到tty2对应的gnome-shell pid（一般有两个，一个是tty1的，一个是tty2的），&lt;span style=&quot;color:red&quot;&gt;kill -9 pidNum&lt;/span&gt; ，系统自动重启gnome-shell,最后&lt;span style=&quot;color:red&quot;&gt;crl + alt +F2&lt;/span&gt; 切换至tty2,这种方法的优点是不会干扰其他正在运行的程序。&lt;/li&gt;&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="http://blog.zhangzonglinagain.xyz/categories/linux/"/>
-    
-      <category term="ubuntu" scheme="http://blog.zhangzonglinagain.xyz/categories/linux/ubuntu/"/>
-    
-    
-      <category term="gnome-shell" scheme="http://blog.zhangzonglinagain.xyz/tags/gnome-shell/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>markdown的html标签应用及常用语法</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2021/04/19/markdown%E5%86%85%E5%AE%B9%E6%8A%98%E5%8F%A0/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2021/04/19/markdown%E5%86%85%E5%AE%B9%E6%8A%98%E5%8F%A0/</id>
-    <published>2021-04-19T06:59:00.000Z</published>
-    <updated>2021-04-29T11:54:24.413Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Markdown 是一种轻量级标记语言，非常适合网络书写。同时，Markdown支持嵌入html标签，我们就可以借此实现markdown不具有的某些功能，如代码折叠和文字样式等。</p><p><strong><a href="http://connorlin.github.io/2016/05/06/Markdown%E7%9A%84%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95(%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93)/" target="_blank" rel="noopener">Markdown的常用语法(个人总结) | ConnorLin’s Blog </a></strong></p><a id="more"></a><h3 id="代码折叠"><a href="#代码折叠" class="headerlink" title="代码折叠"></a>代码折叠</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;details&gt;</span><br><span class="line">  &lt;summary&gt;</span><br><span class="line">  &lt;font color&#x3D;&quot;#0000ff&quot; &gt;点击时的区域标题：点击查看详细内容&lt;&#x2F;font&gt;</span><br><span class="line">  &lt;&#x2F;summary&gt;</span><br><span class="line">  &lt;p&gt; - 测试 测试测试&lt;&#x2F;p&gt;</span><br><span class="line">  &lt;pre&gt;&lt;code&gt;  title，value，callBack可以缺省  &lt;&#x2F;code&gt;  &lt;&#x2F;pre&gt;</span><br><span class="line">&lt;&#x2F;details&gt;</span><br></pre></td></tr></table></figure><ul><li><p>summary：折叠语法展示的摘要</p></li><li><p>details：折叠语法标签</p></li><li><p>pre：以原有格式显示元素内的文字是已经格式化的文本。</p></li><li><p>blockcode：表示程序的代码块。</p></li><li><p>code：指定代码范例。</p></li></ul><p>效果如下：</p><details>  <summary><font color="#0000ff">点击时的区域标题：点击查看详细内容</font></summary>  <p> - 测试 测试测试</p>  <pre><code>  title，value，callBack可以缺省  </code>  </pre></details><h3 id="字体样式"><a href="#字体样式" class="headerlink" title="字体样式"></a>字体样式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;span style&#x3D;&#39;color:red&#39;&gt;This is red&lt;&#x2F;span&gt;   &#x2F;&#x2F;字体颜色</span><br><span class="line">&lt;ruby&gt; 漢 &lt;rt&gt; ㄏㄢˋ &lt;&#x2F;rt&gt; &lt;&#x2F;ruby&gt; &#x2F;&#x2F; 特殊字</span><br><span class="line">&lt;kbd&gt;Ctrl&lt;&#x2F;kbd&gt;+&lt;kbd&gt;F9&lt;&#x2F;kbd&gt;  &#x2F;&#x2F; 按键标识</span><br><span class="line">&lt;span style&#x3D;&quot;font-size:2rem; background:yellow;&quot;&gt;**Bigger**&lt;&#x2F;span&gt; &#x2F;&#x2F;字体大小和背景</span><br><span class="line"></span><br><span class="line">&lt;font face&#x3D;&quot;微软雅黑&quot; color&#x3D;&quot;red&quot; size&#x3D;&quot;6&quot;&gt;字体及字体颜色和大小&lt;&#x2F;font&gt;</span><br><span class="line">&lt;font color&#x3D;&quot;#0000ff&quot;&gt;字体颜色&lt;&#x2F;font&gt;</span><br><span class="line"></span><br><span class="line">&lt;p align&#x3D;&quot;left&quot;&gt;居左文本&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p align&#x3D;&quot;center&quot;&gt;居中文本&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p align&#x3D;&quot;right&quot;&gt;居右文本&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure><p>使用span或者font标签，同时用style属性控制样式。</p><p>效果如下：<br><span style="color:red">This is red</span>   //字体颜色</p><p><ruby> 漢 <rt> ㄏㄢˋ </rt> </ruby> // 特殊字</p><p><kbd>Ctrl</kbd>+<kbd>F9</kbd>  // 按键标识</p><p><span style="font-size:2rem; background:yellow;"><strong>Bigger</strong></span> //字体大小和背景</p><p><font face="微软雅黑" color="red" size="6">字体及字体颜色和大小</font></p><p><font color="#0000ff">字体颜色</font></p><p align="left">居左文本</p><p align="center">居中文本</p><p align="right">居右文本</p><p>参考来源：<br><strong><a href="https://www.cnblogs.com/buwuliao/p/9578918.html" target="_blank" rel="noopener">【MarkDown】使用Html样式和折叠语法</a></strong>、<br><strong><a href="http://connorlin.github.io/2016/05/06/Markdown%E7%9A%84%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95(%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93)/" target="_blank" rel="noopener">Markdown的常用语法(个人总结) | ConnorLin’s Blog </a></strong></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;Markdown 是一种轻量级标记语言，非常适合网络书写。同时，Markdown支持嵌入html标签，我们就可以借此实现markdown不具有的某些功能，如代码折叠和文字样式等。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;http://connorlin.github.io/2016/05/06/Markdown%E7%9A%84%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95(%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93)/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Markdown的常用语法(个人总结) | ConnorLin’s Blog &lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="markdown" scheme="http://blog.zhangzonglinagain.xyz/categories/markdown/"/>
-    
     
   </entry>
   
