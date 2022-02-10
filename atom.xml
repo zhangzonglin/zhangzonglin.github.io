@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglinagain.xyz/"/>
-  <updated>2022-02-08T10:28:58.266Z</updated>
+  <updated>2022-02-10T16:27:51.268Z</updated>
   <id>http://blog.zhangzonglinagain.xyz/</id>
   
   <author>
@@ -15,6 +15,55 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>图解--函数调用过程及栈帧分析</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2022/02/11/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B%E5%8F%8A%E6%A0%88%E5%B8%A7%E5%88%86%E6%9E%90/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2022/02/11/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B%E5%8F%8A%E6%A0%88%E5%B8%A7%E5%88%86%E6%9E%90/</id>
+    <published>2022-02-10T16:15:09.000Z</published>
+    <updated>2022-02-10T16:27:51.268Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://blog.csdn.net/yishizuofei/article/details/78282958" target="_blank" rel="noopener">函数调用过程原理及函数栈帧分析</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/yishizuofei/article/details/78282958&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;函数调用过程原理及函数栈帧分析&lt;/a&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>vue nginx 压缩</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2022/02/10/vue-nginx-%E5%8E%8B%E7%BC%A9/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2022/02/10/vue-nginx-%E5%8E%8B%E7%BC%A9/</id>
+    <published>2022-02-10T08:42:00.000Z</published>
+    <updated>2022-02-10T16:12:50.763Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong><a href="https://blog.csdn.net/qq_43363884/article/details/108195408" target="_blank" rel="noopener">vue打包时gzip压缩的两种方案</a></strong>  ,   &nbsp;&nbsp;<strong><a href="https://blog.csdn.net/github_38924695/article/details/108773173" target="_blank" rel="noopener">nginx中配置gzip_static on</a></strong></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://blog.csdn.net/qq_43363884/article/details/108195408&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;vue打包时gzip压缩的两种方案&lt;/a&gt;&lt;/stron
+      
+    
+    </summary>
+    
+    
+    
+      <category term="vue" scheme="http://blog.zhangzonglinagain.xyz/tags/vue/"/>
+    
+      <category term="nginx" scheme="http://blog.zhangzonglinagain.xyz/tags/nginx/"/>
+    
+  </entry>
   
   <entry>
     <title>rust --堆栈(内存)</title>
@@ -435,50 +484,6 @@
     
     
       <category term="vertx-plugin" scheme="http://blog.zhangzonglinagain.xyz/tags/vertx-plugin/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>websocket data transfer </title>
-    <link href="http://blog.zhangzonglinagain.xyz/2021/05/05/websocket-msg-type/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2021/05/05/websocket-msg-type/</id>
-    <published>2021-05-05T10:08:00.000Z</published>
-    <updated>2021-05-05T10:09:28.314Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>websocket message type： text or binary byte. And for binary data, we can choose between Blob and ArrayBuffer formats.</p><a id="more"></a><h3 id="Receiving-Text-and-Binary-Data"><a href="#Receiving-Text-and-Binary-Data" class="headerlink" title="Receiving Text and Binary Data"></a>Receiving Text and Binary Data</h3><p><strong>参考：<a href="https://www.oreilly.com/library/view/high-performance-browser/9781449344757/ch17.html" target="_blank" rel="noopener">websocket receiving Text and Binary Data</a></strong></p><p>WebSocket communication consists of messages and application code and does not need to worry about buffering, parsing, and reconstructing received data. For example, if the server sends a 1 MB payload, the application’s onmessage callback will be called only when the entire message is available on the client.</p><p>Further, the WebSocket protocol makes no assumptions and places no constraints on the application payload: both text and binary data are fair game. Internally, the protocol tracks only two pieces of information about the message: the length of payload as a variable-length field and the type of payload to distinguish UTF-8 from binary transfers.</p><p>When a new message is received by the browser, it is automatically converted to a DOMString object for text-based data, or a Blob object for binary data, and then passed directly to the application. The only other option, which acts as performance hint and optimization for the client, is to tell the browser to convert the received binary data to an ArrayBuffer instead of Blob:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var ws &#x3D; new WebSocket(&#39;wss:&#x2F;&#x2F;example.com&#x2F;socket&#39;);</span><br><span class="line">ws.binaryType &#x3D; &quot;arraybuffer&quot;; 1</span><br><span class="line"></span><br><span class="line">ws.onmessage &#x3D; function(msg) &#123;</span><br><span class="line">  if(msg.data instanceof ArrayBuffer) &#123;</span><br><span class="line">    processArrayBuffer(msg.data);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    processText(msg.data);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="Data-transfer"><a href="#Data-transfer" class="headerlink" title="Data transfer"></a>Data transfer</h3><p><strong>参考：<a href="https://javascript.info/websocket#data-transfer" target="_blank" rel="noopener">websocket data transfer</a></strong></p><p>WebSocket communication consists of “frames” – data fragments, that can be sent from either side, and can be of several kinds:</p><ul><li>“text frames” – contain text data that parties send to each other.</li><li>“binary data frames” – contain binary data that parties send to each other.</li><li>“ping/pong frames” are used to check the connection, sent from the server, the browser responds to these automatically.</li><li>there’s also “connection close frame” and a few other service frames.<br>In the browser, we directly work only with text or binary frames.</li></ul><p><em>WebSocket .send()</em> method can send either text or binary data.</p><p>A call <em>socket.send(body)</em> allows body in string or a binary format, including Blob, ArrayBuffer, etc. No settings required: just send it out in any format.</p><p>When we receive the data, text always comes as string. And for binary data, we can choose between Blob and ArrayBuffer formats.</p><p>That’s set by <em>socket.binaryType</em> property, it’s “blob” by default, so binary data comes as Blob objects.</p><p>Blob is a high-level binary object, it directly integrates with <a>, <img> and other tags, so that’s a sane default. But for binary processing, to access individual data bytes, we can change it to “arraybuffer”:</a></p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  ws.binaryType &#x3D; &quot;arraybuffer&quot;;</span><br><span class="line">  ws.onmessage &#x3D; (event) &#x3D;&gt; &#123;</span><br><span class="line">  &#x2F;&#x2F; event.data is either a string (if text) or arraybuffer (if binary)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;websocket message type： text or binary byte. And for binary data, we can choose between Blob and ArrayBuffer formats.&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="websocket" scheme="http://blog.zhangzonglinagain.xyz/categories/websocket/"/>
-    
-    
-      <category term="websocket" scheme="http://blog.zhangzonglinagain.xyz/tags/websocket/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ProcessExecutor、ProcessBuilder、Runtime.getRuntime().exec(...) </title>
-    <link href="http://blog.zhangzonglinagain.xyz/2021/05/02/ProcessExecutor%E3%80%81ProcessBuilder%E3%80%81Runtime-getRuntime-exec/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2021/05/02/ProcessExecutor%E3%80%81ProcessBuilder%E3%80%81Runtime-getRuntime-exec/</id>
-    <published>2021-05-02T05:55:00.000Z</published>
-    <updated>2021-05-02T06:47:59.610Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>There are many approaches to take when running external processes from Java. There are the JRE options such as the Runtime.exec() 、 ProcessBuilder、  Apache Commons Exec and ZT Process Executor. 其中ZT Process Executor是一个更为强大的进程库（process library），能够通过使用一个单一的 ProcessExecutor 类来调用 java.lang.ProcessBuilder 和 Apache Commons Exec 中的接口。</p><a id="more"></a><h3 id="Runtime-amp-ProcessBuilder"><a href="#Runtime-amp-ProcessBuilder" class="headerlink" title="Runtime&amp;ProcessBuilder"></a>Runtime&amp;ProcessBuilder</h3><p><em>Runtime.getInstance().exec (String cmd)</em>和<em>new ProcessBuilder(String cmd).start()</em>都可以产生子进程对象Process。通过调用Process对象的waitFor()方法可以使主进程进入等待状态，直至子进程执行完毕，再进行下一步工作。如果对子进程处理不当，有可能造成主进程阻塞，整个程序死掉。(A program is executed with command(). With waitFor() we can wait for the process to finish.)<br><strong>通过查看JDK源码可知，Runtime.exec最终是通过调用ProcessBuilder来真正执行操作的</strong>，如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public Process exec(String command) throws IOException &#123;</span><br><span class="line">    return exec(command, null, null);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Process exec(String command, String[] envp, File dir)</span><br><span class="line">    throws IOException &#123;</span><br><span class="line">    if (command.length() &#x3D;&#x3D; 0)</span><br><span class="line">        throw new IllegalArgumentException(&quot;Empty command&quot;);</span><br><span class="line"></span><br><span class="line">    StringTokenizer st &#x3D; new StringTokenizer(command);</span><br><span class="line">    String[] cmdarray &#x3D; new String[st.countTokens()];</span><br><span class="line">    for (int i &#x3D; 0; st.hasMoreTokens(); i++)</span><br><span class="line">        cmdarray[i] &#x3D; st.nextToken();</span><br><span class="line">    return exec(cmdarray, envp, dir);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Process exec(String[] cmdarray, String[] envp, File dir)</span><br><span class="line">    throws IOException &#123;</span><br><span class="line">    return new ProcessBuilder(cmdarray)</span><br><span class="line">        .environment(envp)</span><br><span class="line">        .directory(dir)</span><br><span class="line">        .start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="ProcessExecutor-amp-ProcessBuilder"><a href="#ProcessExecutor-amp-ProcessBuilder" class="headerlink" title="ProcessExecutor&amp;ProcessBuilder"></a>ProcessExecutor&amp;ProcessBuilder</h3><p>ProcessExecutor is implemented as a wrapper of <em>ProcessBuilder</em> complementing it with additional features.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class ProcessExecutor &#123;</span><br><span class="line"></span><br><span class="line">  private static final Logger log &#x3D; LoggerFactory.getLogger(ProcessExecutor.class);</span><br><span class="line"></span><br><span class="line">  private static final boolean IS_OS_WINDOWS &#x3D; System.getProperty(&quot;os.name&quot;).startsWith(&quot;Windows&quot;);</span><br><span class="line"></span><br><span class="line">  public static final Integer[] DEFAULT_EXIT_VALUES &#x3D; null;</span><br><span class="line"></span><br><span class="line">  private static final Integer NORMAL_EXIT_VALUE &#x3D; 0;</span><br><span class="line"></span><br><span class="line">  public static final boolean DEFAULT_REDIRECT_ERROR_STREAM &#x3D; true;</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Process builder used by this executor.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private final ProcessBuilder builder &#x3D; new ProcessBuilder();</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Environment variables which are added (removed in case of &lt;code&gt;null&lt;&#x2F;code&gt; values) to the process being started.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private final Map&lt;String, String&gt; environment &#x3D; new LinkedHashMap&lt;String, String&gt;();</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Set of accepted exit codes or &lt;code&gt;null&lt;&#x2F;code&gt; if all exit codes are allowed.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private Set&lt;Integer&gt; allowedExitValues;</span><br><span class="line">  ...</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><p>ProcessExecutor在后台运行进程（不阻塞当前代码对执行）:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void runInBackground() throws IOException, InterruptedException, ExecutionException, TimeoutException &#123;</span><br><span class="line">    List&lt;Future&lt;ProcessResult&gt;&gt; tasks &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">    for (int i &#x3D; 0; i &lt; 5; i++) &#123;</span><br><span class="line">        Future&lt;ProcessResult&gt; future &#x3D; new ProcessExecutor().command(&quot;java&quot;, &quot;-version&quot;)</span><br><span class="line">                .start().getFuture();</span><br><span class="line">        tasks.add(future);</span><br><span class="line">    &#125;</span><br><span class="line">    for (Future&lt;ProcessResult&gt; future : tasks) &#123;</span><br><span class="line">        ProcessResult processResult &#x3D; future.get(1, TimeUnit.SECONDS);</span><br><span class="line">        int exitValue &#x3D; processResult.getExitValue();</span><br><span class="line">        log.info(&quot;The exit value of the finished process is &#123;&#125;&quot;, exitValue);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>参考：<strong><a href="https://github.com/zeroturnaround/zt-exec" target="_blank" rel="noopener">GitHub: ZT Process Executor</a></strong></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;There are many approaches to take when running external processes from Java. There are the JRE options such as the Runtime.exec() 、 ProcessBuilder、  Apache Commons Exec and ZT Process Executor. 其中ZT Process Executor是一个更为强大的进程库（process library），能够通过使用一个单一的 ProcessExecutor 类来调用 java.lang.ProcessBuilder 和 Apache Commons Exec 中的接口。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="java" scheme="http://blog.zhangzonglinagain.xyz/categories/java/"/>
-    
     
   </entry>
   
