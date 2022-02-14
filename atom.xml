@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglinagain.xyz/"/>
-  <updated>2022-02-10T16:27:51.268Z</updated>
+  <updated>2022-02-14T18:42:53.179Z</updated>
   <id>http://blog.zhangzonglinagain.xyz/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>netstat 命令</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2022/02/15/netstat-%E5%91%BD%E4%BB%A4/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2022/02/15/netstat-%E5%91%BD%E4%BB%A4/</id>
+    <published>2022-02-14T18:23:00.000Z</published>
+    <updated>2022-02-14T18:42:53.179Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ntu|awk &#39;&#123;pring $5&#125;&#39;|cut -d : -f 1|sort|uniq -c</span><br></pre></td></tr></table></figure><a id="more"></a><h4 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h4><p>-n 显示数字IP, -t tcp连接, -u udp连接, -a 全部连接…</p><p><strong><a href="https://blog.csdn.net/qq_42014600/article/details/90372315" target="_blank" rel="noopener">netstat详解</a></strong></p><h4 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h4><p>-F 指定分割符(如 awk -F: ), 如不显示指定字段分隔符，awk的默认字段分隔符为任意空白字符，包括制表符、空格符、换行符等</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$0表示整行文本</span><br><span class="line">$1表示文本行中第一个数据字段</span><br><span class="line">$2表示文本行中第二个数据字段</span><br><span class="line">$n表示文本行中第n个数据字段</span><br></pre></td></tr></table></figure><p><strong><a href="https://blog.csdn.net/u010502101/article/details/81839519" target="_blank" rel="noopener">awk详解</a></strong></p><h4 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h4><p>cut -[n]b file</p><p>cut -c file</p><p>cut -d[分隔符] -f[域] file</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-b(bytes) ：以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志。</span><br><span class="line">-c(characters) ：以字符为单位进行分割。</span><br><span class="line">-d ：自定义分隔符，默认为制表符。</span><br><span class="line">-f(filed) ：与-d一起使用，指定显示哪个区域。</span><br><span class="line">-n ：取消分割多字节字符。仅和 -b 标志一起使用。如果字符的最后一个字节落在由 -b 标志的 List 参数指示的</span><br><span class="line">范围之内，该字符将被写出；否则，该字符将被排除。</span><br></pre></td></tr></table></figure><p><strong><a href="https://blog.csdn.net/u011003120/article/details/52190187" target="_blank" rel="noopener">cut用法</a></strong></p><h4 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a>uniq</h4><p>　报告或删除文件中重复的行。<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> -c, --count           在每行前加上表示相应行目出现次数的前缀编号</span><br><span class="line">-d, --repeated        只输出重复的行</span><br><span class="line">-D, --all-repeated[&#x3D;delimit-method    显示所有重复的行</span><br><span class="line">                      delimit-method&#x3D;&#123;none(default),prepend,separate&#125;</span><br><span class="line">                      以空行为界限</span><br><span class="line">-f, --skip-fields&#x3D;N   比较时跳过前N 列</span><br><span class="line">-i, --ignore-case     在比较的时候不区分大小写</span><br><span class="line">-s, --skip-chars&#x3D;N    比较时跳过前N 个字符</span><br><span class="line">-u, --unique          只显示唯一的行</span><br><span class="line">-z, --zero-terminated 使用&#39;\0&#39;作为行结束符，而不是新换行</span><br><span class="line">-w, --check-chars&#x3D;N   对每行第N 个字符以后的内容不作对照</span><br><span class="line">    --help            显示此帮助信息并退出</span><br><span class="line">    --version         显示版本信息并退出</span><br></pre></td></tr></table></figure></p><p> <strong><a href="https://www.cnblogs.com/ftl1012/p/uniq.html" target="_blank" rel="noopener">uniq详解</a></strong></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;netstat -ntu|awk &amp;#39;&amp;#123;pring $5&amp;#125;&amp;#39;|cut -d : -f 1|sort|uniq -c&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="http://blog.zhangzonglinagain.xyz/categories/linux/"/>
+    
+    
+      <category term="linux command" scheme="http://blog.zhangzonglinagain.xyz/tags/linux-command/"/>
+    
+  </entry>
   
   <entry>
     <title>图解--函数调用过程及栈帧分析</title>
@@ -461,29 +484,6 @@
     </summary>
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>vertx-plugin build vertx app with gradle</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2021/05/06/build-vertx-app-with-gradle/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2021/05/06/build-vertx-app-with-gradle/</id>
-    <published>2021-05-05T17:42:00.000Z</published>
-    <updated>2021-05-05T18:06:04.200Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><a href="https://plugins.gradle.org/plugin/io.vertx.vertx-plugin" target="_blank" rel="noopener">io.vertx.vertx-plugin</a> 介绍，gradle 添加vertx-plugin，脚本启动vertx application.</p><a id="more"></a><ol><li>build.gradle</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id &#39;io.vertx.vertx-plugin&#39; version &#39;1.2.0&#39;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">group &#39;org.example&#39;</span><br><span class="line">version &#39;1.0-SNAPSHOT&#39;</span><br><span class="line"></span><br><span class="line">repositories &#123;</span><br><span class="line">    mavenCentral()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">![upload successful](&#x2F;images&#x2F;pasted-45.png)</span><br><span class="line">    testImplementation &#39;org.junit.jupiter:junit-jupiter-api:5.6.0&#39;</span><br><span class="line">    testRuntimeOnly &#39;org.junit.jupiter:junit-jupiter-engine&#39;</span><br><span class="line">    compile &quot;io.vertx:vertx-core:4.0.3&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vertx &#123;</span><br><span class="line">  mainVerticle &#x3D; &quot;MainVerticle&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test &#123;</span><br><span class="line">    useJUnitPlatform()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ol start="2"><li>idea Run/Debug configurations</li></ol><p><img src="/images/pasted-46.png" alt="upload successful"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://plugins.gradle.org/plugin/io.vertx.vertx-plugin&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;io.vertx.vertx-plugin&lt;/a&gt; 介绍，gradle 添加vertx-plugin，脚本启动vertx application.&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="vertx" scheme="http://blog.zhangzonglinagain.xyz/categories/vertx/"/>
-    
-    
-      <category term="vertx-plugin" scheme="http://blog.zhangzonglinagain.xyz/tags/vertx-plugin/"/>
     
   </entry>
   
