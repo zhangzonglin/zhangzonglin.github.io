@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglinagain.xyz/"/>
-  <updated>2022-03-10T14:08:03.923Z</updated>
+  <updated>2022-03-16T18:27:04.506Z</updated>
   <id>http://blog.zhangzonglinagain.xyz/</id>
   
   <author>
@@ -15,6 +15,75 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Rust copy 、move、clone</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2022/03/17/Rust-copy%E4%B8%8Emove%E8%AF%AD%E4%B9%89/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2022/03/17/Rust-copy%E4%B8%8Emove%E8%AF%AD%E4%B9%89/</id>
+    <published>2022-03-16T17:37:00.000Z</published>
+    <updated>2022-03-16T18:27:04.506Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch6/02_move_copy.html" target="_blank" rel="noopener">Rust Copy语义</a></p><a id="more"></a><h3 id="move"><a href="#move" class="headerlink" title="move"></a>move</h3><p>比如下面的示例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let s1 &#x3D; String::from(&quot;hello&quot;);</span><br><span class="line">let s2 &#x3D; s1;</span><br></pre></td></tr></table></figure><p>上面已经分析过，值的所有权会从变量s1转移到变量s2，所有权的转移，涉及到的过程是拷贝到目标变量，同时重置原变量到未初始状态，整个过程就像是进行了一次数据的移动。但注意，上面示例中拷贝的是栈中的胖指针，而不是拷贝堆中的实际数据，因此这样的拷贝效率是相对较高的。</p><p>所有权转移之后，将只有新的所有者才会指向堆中的实际数据，而原变量将不再指向堆中实际数据，因此所有权转移之后仍然只有一个指针指向堆中数据。</p><p>Move不仅发生在变量赋值过程中，在函数传参、函数返回数据时也会Move，因此，如果将一个大对象(例如包含很多数据的数组，包含很多字段的struct)作为参数传递给函数，是否会让效率很低下？</p><p>按照上面的结论来说，确实如此。但Rust编译器会对Move语义的行为做出一些优化，简单来说，当数据量较大且不会引起程序正确性问题时，它会传递大对象的指针而非内存拷贝。</p><p>此外，对于胖指针类型的变量(如Vec、String)，即使发生了拷贝，其性能也不差，因为拷贝的只是它的胖指针部分。</p><p>总之，Move虽然发生了内存拷贝，但它的性能并不会太受影响。</p><p>此处部分结论参考：<em><a href="https://stackoverflow.com/questions/30288782/what-are-move-semantics-in-rust" target="_blank" rel="noopener">https://stackoverflow.com/questions/30288782/what-are-move-semantics-in-rust</a></em>。</p><h3 id="copy"><a href="#copy" class="headerlink" title="copy"></a>copy</h3><p><strong>默认情况下，在将一个值保存到某个位置时总是进行值的移动(实际上是拷贝  如String 拷贝的值是指针)，使得只有目标位置才拥有这个值，而原始变量将变回未初始化状态，也就是暂时不可用的状态。这是Rust的移动语义</strong>。</p><p>Rust还有Copy语义，和Move语义几乎相同，唯一的区别是Copy后，原始变量仍然可用。</p><p>前面说过，Move实际上是进行了拷贝，只不过拷贝后让原始变量变回未初始化状态了，而Copy的行为，就是保留原始变量。</p><p>但Rust默认是使用Move语义，如果想要使用Copy语义，要求要拷贝的数据类型实现了Copy Trait。</p><p>例如，i32默认就已经实现了Copy Trait，因此它在进行所有权转移的时候，会自动使用Copy语义，而不是Move语义。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let x &#x3D; 3;   &#x2F;&#x2F; 3是原始数据类型，它直接存储在栈中，所以x变量的值是3，x拥有3</span><br><span class="line">let n &#x3D; x;   &#x2F;&#x2F; Copy x的值(即3)到变量n，n现在拥有一个3，但x仍然拥有自己的3</span><br></pre></td></tr></table></figure><p>Rust中默认实现了Copy Trait的类型，包括但不限于：</p><ul><li>所有整数类型，比如u32</li><li>所有浮点数类型，比如f64</li><li>布尔类型，bool，它的值是true和false</li><li>字符类型，char</li><li>元组，当且仅当其包含的类型也都是Copy的时候。比如(i32, i32)是Copy的，但(i32, String)不是</li><li>共享指针类型或共享引用类型</li></ul><p>对于那些没有实现Copy的自定义类型，可以手动去实现Copy(要求同时实现Clone)，方式很简单：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#[derive(Copy, Clone)]</span><br><span class="line">struct Abc(i32, i32);</span><br></pre></td></tr></table></figure><p>下面是实现了Copy和未实现Copy时的一个对比示例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#[derive(Debug)]</span><br><span class="line">struct Xyz(i32, i32);</span><br><span class="line"></span><br><span class="line">#[derive(Copy, Clone, Debug)]</span><br><span class="line">struct Def(i32, i32);</span><br><span class="line"></span><br><span class="line">fn main() &#123;</span><br><span class="line">  let x &#x3D; Xyz(11, 22);</span><br><span class="line">  let y &#x3D; x;</span><br><span class="line">  &#x2F;&#x2F; println!(&quot;x: &#123;&#125;&quot;, x); &#x2F;&#x2F; 报错</span><br><span class="line">  println!(&quot;y: &#123;:?&#125;&quot;, y);</span><br><span class="line"></span><br><span class="line">  let d &#x3D; Def(33, 44);</span><br><span class="line">  let e &#x3D; d;</span><br><span class="line">  println!(&quot;d: &#123;:?&#125;&quot;, d);</span><br><span class="line">  println!(&quot;e: &#123;:?&#125;&quot;, e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><img src="/images/pasted-51.png" alt="upload successful"></p><h3 id="clone"><a href="#clone" class="headerlink" title="clone"></a>clone</h3><p>虽然实现Copy Trait可以让原变量继续拥有自己的值，但在某些需求下，不便甚至不能去实现Copy。这时如果想要继续使用原变量，可以使用clone()方法手动拷贝变量的数据，同时不会让原始变量变回未初始化状态。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fn main()&#123;</span><br><span class="line">  let s1 &#x3D; String::from(&quot;hello&quot;);</span><br><span class="line">  &#x2F;&#x2F; 克隆s1，克隆之后，变量s1仍然绑定原始数据</span><br><span class="line">  let s2 &#x3D; s1.clone();</span><br><span class="line">  println!(&quot;&#123;&#125;,&#123;&#125;&quot;, s1, s2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>但不是所有数据类型都可以进行克隆，只有那些实现了Clone Trait的类型才可以进行克隆(Trait类似于面向对象语言中的接口，如果不了解可先不管Trait是什么)，常见的数据类型都已经实现了Clone，因此它们可以直接使用clone()来克隆。</p><p>对于那些没有实现Clone Trait的自定义类型，需要手动实现Clone Trait。在自定义类型之前加上#[derive(Copy, Clone)]即可。例如：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#[derive(Copy, Clone)]</span><br><span class="line">struct Abc(i32, i32);</span><br></pre></td></tr></table></figure><p>这样Abc类型的值就可以使用clone()方法进行克隆。</p><p>要注意Copy和Clone时的区别，如果不考虑自己实现Copy trait和Clone trait，而是使用它们的默认实现，那么：</p><p>Copy时，只拷贝变量本身的值，如果这个变量指向了其它数据，则不会拷贝其指向的数据<br>Clone时，拷贝变量本身的值，如果这个变量指向了其它数据，则也会拷贝其指向的数据<br>也就是说，Copy是浅拷贝，Clone是深拷贝，Rust会对每个字段每个元素递归调用clone()，直到最底部。</p><p>例如：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">fn main() &#123;</span><br><span class="line">  let vb0 &#x3D; vec![&quot;s1&quot;.to_string()];</span><br><span class="line">  let v &#x3D; vec![vb0];</span><br><span class="line">  println!(&quot;&#123;:p&#125;&quot;, &amp;v[0][0]);     &#x2F;&#x2F; 0x21c43a20c50</span><br><span class="line"></span><br><span class="line">  let vc &#x3D; v.clone();</span><br><span class="line">  println!(&quot;&#123;:p&#125;&quot;, &amp;vc[0][0]);  &#x2F;&#x2F; 0x21c43a20b70</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>所以，使用Clone的默认实现时，clone()操作的性能是较低的。但可以自己实现自己的克隆逻辑，也不一定总是会效率低。比如Rc，它的clone用于增加引用计数，同时只拷贝少量数据，它的clone效率并不低。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://rust-book.junmajinlong.com/ch6/02_move_copy.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Rust Copy语义&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="rust" scheme="http://blog.zhangzonglinagain.xyz/categories/rust/"/>
+    
+    
+      <category term="move" scheme="http://blog.zhangzonglinagain.xyz/tags/move/"/>
+    
+      <category term="copy" scheme="http://blog.zhangzonglinagain.xyz/tags/copy/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Rust引用</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2022/03/17/Rust%E5%BC%95%E7%94%A8/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2022/03/17/Rust%E5%BC%95%E7%94%A8/</id>
+    <published>2022-03-16T17:07:00.000Z</published>
+    <updated>2022-03-16T17:14:47.643Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch3/07_reference_type.html" target="_blank" rel="noopener">Rust中的引用</a></p><a id="more"></a><h3 id="解引用"><a href="#解引用" class="headerlink" title="解引用"></a>解引用</h3><p>Rust绝大多数时候不会自动地解除引用。但在某些环境下，Rust会自动进行解引用。</p><p>自动解引用的情况有(结论先总结在此，混脸熟，以后涉及到时再来)：</p><ol><li><p>使用.操作符时(包括取属性值和方法调用)，会隐式地尽可能解除或创建多层引用</p></li><li><p>使用比较操作符时，若比较的两边是相同类型的引用，则会自动解除引用到它们的值然后比较<br>对于(1)，Rust会自动分析func()的参数，并在需要的时候自动创建或自动解除引用。例如以abc.func()有可能会自动转换为&amp;abc.func()，反之，&amp;abc.func()也有可能会自动转换为abc.func()。</p></li></ol><p>对于(2)，例如有引用类型的变量n，那么n &gt; &amp;30和*n &gt; 30的效果是一样的。</p><p>————————————————《rust入门秘籍》</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://rust-book.junmajinlong.com/ch3/07_reference_type.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Rust中的引用&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="rust" scheme="http://blog.zhangzonglinagain.xyz/categories/rust/"/>
+    
+    
+      <category term="references" scheme="http://blog.zhangzonglinagain.xyz/tags/references/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Rust是基于表达式的语言</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2022/03/16/rust-%E8%AF%AD%E5%8F%A5%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2022/03/16/rust-%E8%AF%AD%E5%8F%A5%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/</id>
+    <published>2022-03-15T17:04:00.000Z</published>
+    <updated>2022-03-16T17:15:02.351Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch1/01_expression.html" target="_blank" rel="noopener">Rust是基于表达式的语言</a></p><a id="more"></a><p>除了在表达式尾部加分号的代码是语句之外，还有另外一种情况的代码是语句而非表达式：<strong>用于声明或定义</strong>。例如let声明变量、fn定义函数、struct声明结构体等。</p><p>Rust很多地方都会结合表达式和语句来做变量赋值。例如，if结构也是一个表达式，所以它有返回值，可以将if的返回值赋值给变量，而<strong>它的返回值来自于它的大括号</strong>：当大括号最后执行的一条代码不加分号结尾时，该代码的计算结果就是if结构的返回值。</p><p>————————————————《rust入门秘籍》</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://rust-book.junmajinlong.com/ch1/01_expression.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Rust是基于表达式的语言&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="rust" scheme="http://blog.zhangzonglinagain.xyz/tags/rust/"/>
+    
+  </entry>
   
   <entry>
     <title>int&amp;Integer、 double&amp;Double&amp;BigDecimal</title>
@@ -419,71 +488,6 @@
     </summary>
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>@interface 简介</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2021/11/11/interface/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2021/11/11/interface/</id>
-    <published>2021-11-11T13:28:27.000Z</published>
-    <updated>2021-11-11T13:29:41.370Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://blog.csdn.net/zhangbeizhen18/article/details/87885441/" target="_blank" rel="noopener">自定义注释@interface的用法理解</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/zhangbeizhen18/article/details/87885441/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;自定义注释@interface的用法理解&lt;/a&gt;&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>node升级提示(sudo: npm: command not found)</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2021/08/12/sudo-npm-command-not-found/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2021/08/12/sudo-npm-command-not-found/</id>
-    <published>2021-08-12T13:40:51.000Z</published>
-    <updated>2021-08-12T14:42:57.441Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>重拿前端项目，要把以前ubuntu的node、npm升级到最新版本，按照网上找来的方法，输入：<em>sudo npm install n -g</em>，结果提示：<em>sudo : npm :command not found</em>。</p><a id="more"></a><h3 id="node、npm升级"><a href="#node、npm升级" class="headerlink" title="node、npm升级"></a>node、npm升级</h3><p>正常情况下，先安装工具<em>n</em>，然后通过它升级</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install n -g</span><br><span class="line"></span><br><span class="line">sudo n stable  # 安装最新版本</span><br></pre></td></tr></table></figure><p>但出现了前言里的错误，不加sudo，权限不够，加了又无法识别命令。</p><p><img src="/images/pasted-50.png" alt="upload successful"></p><h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>这是什么原因呢？<br>输入<em>which npm*可以得到</em>/home/zzl/.nvm/versions/node/v12.21.0/bin/npm*，这个是普通用户的目录。<br>而sudo执行的是/usr/bin目录，这是root用户的目录,<br>所以使用sudo命令是识别不到这个命令的，我们可以使用软链接来处理这个问题</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s &#x2F;mydata&#x2F;nodejs&#x2F;bin&#x2F;node &#x2F;usr&#x2F;bin&#x2F;node</span><br><span class="line">sudo ln -s &#x2F;mydata&#x2F;nodejs&#x2F;bin&#x2F;npm &#x2F;usr&#x2F;bin&#x2F;npm</span><br></pre></td></tr></table></figure><p>将上面左边的命令位置，替换用which npm查询出来的就行了。</p><p><strong>当然我用了which node之后就意识到我以前是用的nvm管理node的版本，差点儿就用n在另外的位置重新下了个版本，而且还发现以前用apt-get下了个更早的版本，每个工具下载的位置都不同，混乱不堪，统统删了，以后只用nvm管理node版本！教训啊～</strong></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;重拿前端项目，要把以前ubuntu的node、npm升级到最新版本，按照网上找来的方法，输入：&lt;em&gt;sudo npm install n -g&lt;/em&gt;，结果提示：&lt;em&gt;sudo : npm :command not found&lt;/em&gt;。&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>H5页面在微信浏览器中通过网页授权获取用户信息(openid、昵称、头像等)</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2021/08/11/H5%E9%A1%B5%E9%9D%A2%E8%8E%B7%E5%8F%96%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E7%9A%84openid/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2021/08/11/H5%E9%A1%B5%E9%9D%A2%E8%8E%B7%E5%8F%96%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E7%9A%84openid/</id>
-    <published>2021-08-10T18:22:00.000Z</published>
-    <updated>2021-08-11T08:38:33.354Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>需要做一个Vue前端项目，UI选择buefy（一个基于Bulma的vue轻量级组件），其中一个H5页面涉及到，如果是在微信浏览器中，需要在后台服务器自动注册以及登录，即需要通过网页授权来获取用户信息（openid、昵称、头像等)。这儿只涉及前端的工作…</p><a id="more"></a><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>公众号准备：生产环境的微信公众号，需要按照官方文档（<strong><a href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html" target="_blank" rel="noopener">微信网页开发授权</a></strong>）设置。开发环境可以前往<strong><a href="https://link.segmentfault.com/?url=https%3A%2F%2Fmp.weixin.qq.com%2Fdebug%2Fcgi-bin%2Fsandbox%3Ft%3Dsandbox%2Flogin" target="_blank" rel="noopener">微信公众平台</a></strong>申请测试号。</p><p>注意：正式的公众号不需要关注，也可以通过网页授权获取用户信息，而测试号必须要关注！</p><h3 id="微信授权流程"><a href="#微信授权流程" class="headerlink" title="微信授权流程"></a>微信授权流程</h3><p>详细流程见官方文档（<strong><a href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html" target="_blank" rel="noopener">微信网页开发授权</a></strong>）。</p><p>具体而言，网页授权流程分为四步：</p><ol><li><p>引导用户进入授权页面同意授权，获取code</p></li><li><p>通过code换取网页授权access_token（与基础支持中的access_token不同）</p></li><li><p>如果需要，开发者可以刷新网页授权access_token，避免过期</p></li><li><p>通过网页授权access_token和openid获取用户基本信息（支持UnionID机制）</p></li></ol><p>时序图如下：</p><p><img src="/images/pasted-47.png" alt="upload successful"></p><h3 id="授权code的获取"><a href="#授权code的获取" class="headerlink" title="授权code的获取"></a>授权code的获取</h3><p>以上是大概流程，这里主要分析用户统一授权后，获取code的两个路径：前端截取及后端获取。</p><p>原理是：获取用户授权需要按照微信规定拼装链接，让用户点击访问，其中拼接的链接中有个redirect_uri参数(授权后重定向的回调链接地址)，微信服务器处理后会将redirect_uri拼接code等参数，浏览器会重定向该地址，也就形成了两个获取code的方法，前端在url截取code,后端也可以通过浏览器访问此链接获取code参数。</p><p>示例如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const appid &#x3D; &quot;wx3b0e58d4d2dbea9q&quot;;  &#x2F;&#x2F;公众号后台获取</span><br><span class="line">const redirectUri &#x3D; encodeURIComponent(&quot;http:&#x2F;&#x2F;245691q6b5.zicp.vip&quot;)&#x2F;&#x2F;微信会带code码访问这个链接</span><br><span class="line">const url &#x3D; &#96;https:&#x2F;&#x2F;open.weixin.qq.com&#x2F;connect&#x2F;oauth2&#x2F;authorizeappid&#x3D;$&#123;appid&#125;&amp;redirect_uri&#x3D;$&#123;redirectUri&#125;&amp;response_type&#x3D;code&amp;scope&#x3D;snsapi_userinfo&amp;state&#x3D;STATE#wechat_redirect&#96;</span><br></pre></td></tr></table></figure><h4 id="前端获取"><a href="#前端获取" class="headerlink" title="前端获取"></a>前端获取</h4><p>如果不是每次进入页面都要从微信获取code码时（用户信息），建议在前端获取，需要时才改变浏览器链接让用户访问链接获取授权，把code码传给后端获取用户信息。</p><p>也可以参看此代码：<strong><a href="https://www.cnblogs.com/congfeicong/p/11125575.html" target="_blank" rel="noopener">H5页面获取微信公众号的openid</a></strong>，或者如下示例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const appid &#x3D; &quot;wx3b0e58d4d2dbea9q&quot;;  &#x2F;&#x2F;公众号后台获取</span><br><span class="line">const redirectUri &#x3D; encodeURIComponent(&quot;http:&#x2F;&#x2F;245691q6b5.zicp.vip&quot;)&#x2F;&#x2F;微信会带code码访问这个链接</span><br><span class="line"></span><br><span class="line">const url&#x3D;&#96;https:&#x2F;&#x2F;open.weixin.qq.com&#x2F;connect&#x2F;oauth2&#x2F;authorizeappid&#x3D;$&#123;appid&#125;&amp;redirect_uri&#x3D;$&#123;redirectUri&#125;&amp;response_type&#x3D;code&amp;scope&#x3D;snsapi_userinfo&amp;state&#x3D;STATE#wechat_redirect&#96;</span><br><span class="line"></span><br><span class="line">const querystring &#x3D; getQueryString()</span><br><span class="line">let code &#x3D; querystring.code;</span><br><span class="line"></span><br><span class="line">if(!code)&#123;</span><br><span class="line">    location.href &#x3D; url;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    https.get(&#39;http:&#x2F;&#x2F;127.0.0.1:3000&#x2F;auth&#39;,&#123;code&#125;).then(res &#x3D;&gt; &#123;</span><br><span class="line">      console.log(res)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function getQueryString() &#123;</span><br><span class="line">    const url &#x3D; location.search;</span><br><span class="line">    const rs &#x3D; &#123;&#125;</span><br><span class="line">    if(url.indexOf(&#39;?&#39;) &#x3D;&#x3D;&#x3D; 0)&#123;</span><br><span class="line">        const querystring &#x3D; url.substr(1);</span><br><span class="line">        const kvArr &#x3D; querystring.split(&#39;&amp;&#39;);</span><br><span class="line">        kvArr.forEach(item &#x3D;&gt; &#123;</span><br><span class="line">            const temp &#x3D; item.split(&#39;&#x3D;&#39;)</span><br><span class="line">            const key &#x3D; temp[0];</span><br><span class="line">            const val &#x3D; temp[1];</span><br><span class="line">            rs[key] &#x3D; val</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    return rs</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="后端获取"><a href="#后端获取" class="headerlink" title="后端获取"></a>后端获取</h4><p>如果每次都要获取code码，就让用户只要进入页面就访问接口链接，但这时的redirectUri要配置成后端接口的链接，也就是说微信会带着code码访问后端接口，后端直接获取code码。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;后端使用koa2</span><br><span class="line">&#x2F;&#x2F;Superagent时一个后端的http请求中间件</span><br><span class="line">router.get(&#39;&#x2F;auth&#39;, async (ctx, next) &#x3D;&gt; &#123;</span><br><span class="line">    code &#x3D; ctx.querystring.split(&#39;&amp;&#39;)[0].split(&#39;&#x3D;&#39;)[1];</span><br><span class="line">    &#x2F;&#x2F; 使用code获取openid和access_token </span><br><span class="line">    await Superagent</span><br><span class="line">        .get(&#96;https:&#x2F;&#x2F;api.weixin.qq.com&#x2F;sns&#x2F;oauth2&#x2F;access_token?appid&#x3D;$&#123;appid&#125;&amp;secret&#x3D;$&#123;appsecret&#125;&amp;code&#x3D;$&#123;code&#125;&amp;grant_type&#x3D;authorization_code&#96;)</span><br><span class="line">        .then(res &#x3D;&gt; &#123;</span><br><span class="line">            let result &#x3D; JSON.parse(res.text)</span><br><span class="line">            access_token &#x3D; result.access_token</span><br><span class="line">            openid &#x3D; result.openid</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 使用ACCESS_TOKEN和openid获取userinfo</span><br><span class="line">    await Superagent</span><br><span class="line">        .get(&#96;https:&#x2F;&#x2F;api.weixin.qq.com&#x2F;sns&#x2F;userinfo?access_token&#x3D;$&#123;access_token&#125;&amp;openid&#x3D;$&#123;openid&#125;&amp;lang&#x3D;zh_CN&#96;)</span><br><span class="line">        .then(res &#x3D;&gt; &#123;</span><br><span class="line">            &#x2F;&#x2F;userinfo返回给前端</span><br><span class="line">            userinfo &#x3D; JSON.parse(res.text)</span><br><span class="line">            ctx.body &#x3D; res.text</span><br><span class="line">        &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;需要做一个Vue前端项目，UI选择buefy（一个基于Bulma的vue轻量级组件），其中一个H5页面涉及到，如果是在微信浏览器中，需要在后台服务器自动注册以及登录，即需要通过网页授权来获取用户信息（openid、昵称、头像等)。这儿只涉及前端的工作…&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Vue" scheme="http://blog.zhangzonglinagain.xyz/categories/Vue/"/>
-    
-    
-      <category term="微信公众号" scheme="http://blog.zhangzonglinagain.xyz/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/"/>
     
   </entry>
   

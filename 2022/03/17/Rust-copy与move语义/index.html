@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-minimal.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://blog.zhangzonglinagain.xyz').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":null},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":true,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="Rust Copy语义">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rust copy 、move、clone">
+<meta property="og:url" content="http://blog.zhangzonglinagain.xyz/2022/03/17/Rust-copy%E4%B8%8Emove%E8%AF%AD%E4%B9%89/index.html">
+<meta property="og:site_name" content="1.5L的喜欢">
+<meta property="og:description" content="Rust Copy语义">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.zhangzonglinagain.xyz/images/pasted-51.png">
+<meta property="article:published_time" content="2022-03-16T17:37:00.000Z">
+<meta property="article:modified_time" content="2022-03-16T18:27:04.506Z">
+<meta property="article:author" content="zzl">
+<meta property="article:tag" content="move">
+<meta property="article:tag" content="copy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.zhangzonglinagain.xyz/images/pasted-51.png">
+
+<link rel="canonical" href="http://blog.zhangzonglinagain.xyz/2022/03/17/Rust-copy%E4%B8%8Emove%E8%AF%AD%E4%B9%89/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Rust copy 、move、clone | 1.5L的喜欢</title>
+  <script src="/live2d-widget/autoload.js"></script>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-156237863-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-156237863-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="1.5L的喜欢" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">1.5L的喜欢</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">62</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">21</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">94</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangzonglinagain.xyz/2022/03/17/Rust-copy%E4%B8%8Emove%E8%AF%AD%E4%B9%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/lizi.png">
+      <meta itemprop="name" content="zzl">
+      <meta itemprop="description" content="哥哥姐姐的梦">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="1.5L的喜欢">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Rust copy 、move、clone
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-17 01:37:00 / 修改时间：02:27:04" itemprop="dateCreated datePublished" datetime="2022-03-17T01:37:00+08:00">2022-03-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/rust/" itemprop="url" rel="index">
+                    <span itemprop="name">rust</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/03/17/Rust-copy%E4%B8%8Emove%E8%AF%AD%E4%B9%89/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/03/17/Rust-copy%E4%B8%8Emove%E8%AF%AD%E4%B9%89/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a href="https://rust-book.junmajinlong.com/ch6/02_move_copy.html" target="_blank" rel="noopener">Rust Copy语义</a></p>
+<a id="more"></a>
+
+<h3 id="move"><a href="#move" class="headerlink" title="move"></a>move</h3><p>比如下面的示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let s1 &#x3D; String::from(&quot;hello&quot;);</span><br><span class="line">let s2 &#x3D; s1;</span><br></pre></td></tr></table></figure>
+<p>上面已经分析过，值的所有权会从变量s1转移到变量s2，所有权的转移，涉及到的过程是拷贝到目标变量，同时重置原变量到未初始状态，整个过程就像是进行了一次数据的移动。但注意，上面示例中拷贝的是栈中的胖指针，而不是拷贝堆中的实际数据，因此这样的拷贝效率是相对较高的。</p>
+<p>所有权转移之后，将只有新的所有者才会指向堆中的实际数据，而原变量将不再指向堆中实际数据，因此所有权转移之后仍然只有一个指针指向堆中数据。</p>
+<p>Move不仅发生在变量赋值过程中，在函数传参、函数返回数据时也会Move，因此，如果将一个大对象(例如包含很多数据的数组，包含很多字段的struct)作为参数传递给函数，是否会让效率很低下？</p>
+<p>按照上面的结论来说，确实如此。但Rust编译器会对Move语义的行为做出一些优化，简单来说，当数据量较大且不会引起程序正确性问题时，它会传递大对象的指针而非内存拷贝。</p>
+<p>此外，对于胖指针类型的变量(如Vec、String)，即使发生了拷贝，其性能也不差，因为拷贝的只是它的胖指针部分。</p>
+<p>总之，Move虽然发生了内存拷贝，但它的性能并不会太受影响。</p>
+<p>此处部分结论参考：<em><a href="https://stackoverflow.com/questions/30288782/what-are-move-semantics-in-rust" target="_blank" rel="noopener">https://stackoverflow.com/questions/30288782/what-are-move-semantics-in-rust</a></em>。</p>
+<h3 id="copy"><a href="#copy" class="headerlink" title="copy"></a>copy</h3><p><strong>默认情况下，在将一个值保存到某个位置时总是进行值的移动(实际上是拷贝  如String 拷贝的值是指针)，使得只有目标位置才拥有这个值，而原始变量将变回未初始化状态，也就是暂时不可用的状态。这是Rust的移动语义</strong>。</p>
+<p>Rust还有Copy语义，和Move语义几乎相同，唯一的区别是Copy后，原始变量仍然可用。</p>
+<p>前面说过，Move实际上是进行了拷贝，只不过拷贝后让原始变量变回未初始化状态了，而Copy的行为，就是保留原始变量。</p>
+<p>但Rust默认是使用Move语义，如果想要使用Copy语义，要求要拷贝的数据类型实现了Copy Trait。</p>
+<p>例如，i32默认就已经实现了Copy Trait，因此它在进行所有权转移的时候，会自动使用Copy语义，而不是Move语义。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let x &#x3D; 3;   &#x2F;&#x2F; 3是原始数据类型，它直接存储在栈中，所以x变量的值是3，x拥有3</span><br><span class="line">let n &#x3D; x;   &#x2F;&#x2F; Copy x的值(即3)到变量n，n现在拥有一个3，但x仍然拥有自己的3</span><br></pre></td></tr></table></figure>
+<p>Rust中默认实现了Copy Trait的类型，包括但不限于：</p>
+<ul>
+<li>所有整数类型，比如u32</li>
+<li>所有浮点数类型，比如f64</li>
+<li>布尔类型，bool，它的值是true和false</li>
+<li>字符类型，char</li>
+<li>元组，当且仅当其包含的类型也都是Copy的时候。比如(i32, i32)是Copy的，但(i32, String)不是</li>
+<li>共享指针类型或共享引用类型</li>
+</ul>
+<p>对于那些没有实现Copy的自定义类型，可以手动去实现Copy(要求同时实现Clone)，方式很简单：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#[derive(Copy, Clone)]</span><br><span class="line">struct Abc(i32, i32);</span><br></pre></td></tr></table></figure>
+<p>下面是实现了Copy和未实现Copy时的一个对比示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#[derive(Debug)]</span><br><span class="line">struct Xyz(i32, i32);</span><br><span class="line"></span><br><span class="line">#[derive(Copy, Clone, Debug)]</span><br><span class="line">struct Def(i32, i32);</span><br><span class="line"></span><br><span class="line">fn main() &#123;</span><br><span class="line">  let x &#x3D; Xyz(11, 22);</span><br><span class="line">  let y &#x3D; x;</span><br><span class="line">  &#x2F;&#x2F; println!(&quot;x: &#123;&#125;&quot;, x); &#x2F;&#x2F; 报错</span><br><span class="line">  println!(&quot;y: &#123;:?&#125;&quot;, y);</span><br><span class="line"></span><br><span class="line">  let d &#x3D; Def(33, 44);</span><br><span class="line">  let e &#x3D; d;</span><br><span class="line">  println!(&quot;d: &#123;:?&#125;&quot;, d);</span><br><span class="line">  println!(&quot;e: &#123;:?&#125;&quot;, e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/pasted-51.png" alt="upload successful"></p>
+<h3 id="clone"><a href="#clone" class="headerlink" title="clone"></a>clone</h3><p>虽然实现Copy Trait可以让原变量继续拥有自己的值，但在某些需求下，不便甚至不能去实现Copy。这时如果想要继续使用原变量，可以使用clone()方法手动拷贝变量的数据，同时不会让原始变量变回未初始化状态。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fn main()&#123;</span><br><span class="line">  let s1 &#x3D; String::from(&quot;hello&quot;);</span><br><span class="line">  &#x2F;&#x2F; 克隆s1，克隆之后，变量s1仍然绑定原始数据</span><br><span class="line">  let s2 &#x3D; s1.clone();</span><br><span class="line">  println!(&quot;&#123;&#125;,&#123;&#125;&quot;, s1, s2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但不是所有数据类型都可以进行克隆，只有那些实现了Clone Trait的类型才可以进行克隆(Trait类似于面向对象语言中的接口，如果不了解可先不管Trait是什么)，常见的数据类型都已经实现了Clone，因此它们可以直接使用clone()来克隆。</p>
+<p>对于那些没有实现Clone Trait的自定义类型，需要手动实现Clone Trait。在自定义类型之前加上#[derive(Copy, Clone)]即可。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#[derive(Copy, Clone)]</span><br><span class="line">struct Abc(i32, i32);</span><br></pre></td></tr></table></figure>
+<p>这样Abc类型的值就可以使用clone()方法进行克隆。</p>
+<p>要注意Copy和Clone时的区别，如果不考虑自己实现Copy trait和Clone trait，而是使用它们的默认实现，那么：</p>
+<p>Copy时，只拷贝变量本身的值，如果这个变量指向了其它数据，则不会拷贝其指向的数据<br>Clone时，拷贝变量本身的值，如果这个变量指向了其它数据，则也会拷贝其指向的数据<br>也就是说，Copy是浅拷贝，Clone是深拷贝，Rust会对每个字段每个元素递归调用clone()，直到最底部。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">fn main() &#123;</span><br><span class="line">  let vb0 &#x3D; vec![&quot;s1&quot;.to_string()];</span><br><span class="line">  let v &#x3D; vec![vb0];</span><br><span class="line">  println!(&quot;&#123;:p&#125;&quot;, &amp;v[0][0]);     &#x2F;&#x2F; 0x21c43a20c50</span><br><span class="line"></span><br><span class="line">  let vc &#x3D; v.clone();</span><br><span class="line">  println!(&quot;&#123;:p&#125;&quot;, &amp;vc[0][0]);  &#x2F;&#x2F; 0x21c43a20b70</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所以，使用Clone的默认实现时，clone()操作的性能是较低的。但可以自己实现自己的克隆逻辑，也不一定总是会效率低。比如Rc，它的clone用于增加引用计数，同时只拷贝少量数据，它的clone效率并不低。</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>zzl
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://blog.zhangzonglinagain.xyz/2022/03/17/Rust-copy%E4%B8%8Emove%E8%AF%AD%E4%B9%89/" title="Rust copy 、move、clone">http://blog.zhangzonglinagain.xyz/2022/03/17/Rust-copy与move语义/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/move/" rel="tag"># move</a>
+              <a href="/tags/copy/" rel="tag"># copy</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/17/Rust%E5%BC%95%E7%94%A8/" rel="prev" title="Rust引用">
+      <i class="fa fa-chevron-left"></i> Rust引用
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#move"><span class="nav-number">1.</span> <span class="nav-text">move</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#copy"><span class="nav-number">2.</span> <span class="nav-text">copy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clone"><span class="nav-number">3.</span> <span class="nav-text">clone</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="zzl"
+      src="/images/lizi.png">
+  <p class="site-author-name" itemprop="name">zzl</p>
+  <div class="site-description" itemprop="description">哥哥姐姐的梦</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">94</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">62</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zhangzonglin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zhangzonglin" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zhanglinjinlan@gmail.com" title="E-Mail → mailto:zhanglinjinlan@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-fw fa-rss"></i>RSS</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zzl</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">103k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:34</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@1/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'uRPDywhEFou9N5nuhvjMxx6u-MdYXbMMI',
+      appKey: 'vta8LRoByDLj7y24h2xbeFcK',
+      placeholder: "请输入",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: false,
+      lang: '' || 'zh-cn',
+      path: location.pathname,
+      recordIP: false,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
