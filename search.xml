@@ -10,31 +10,6 @@
       </categories>
   </entry>
   <entry>
-    <title>IOC的实现原理—反射与工厂模式(转载)</title>
-    <url>/2020/03/03/C%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E2%80%94%E5%8F%8D%E5%B0%84%E4%B8%8E%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<h3 id="反射与工厂模式实现IOC"><a href="#反射与工厂模式实现IOC" class="headerlink" title="反射与工厂模式实现IOC"></a>反射与工厂模式实现IOC</h3><p>   &emsp;Spring中的IoC的实现原理就是工厂模式加反射机制。 我们首先看一下不用反射机制时的工厂模式：<br>   <a id="more"></a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface fruit&#123;</span><br><span class="line">    public abstract void eat();</span><br><span class="line">&#125; </span><br><span class="line">class Apple implements fruit&#123;</span><br><span class="line">     public void eat()&#123;</span><br><span class="line">         System.out.println(&quot;Apple&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">&#125; </span><br><span class="line">class Orange implements fruit&#123;</span><br><span class="line">     public void eat()&#123;</span><br><span class="line">         System.out.println(&quot;Orange&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;构造工厂类</span><br><span class="line">&#x2F;&#x2F;也就是说以后如果我们在添加其他的实例的时候只需要修改工厂类就行了</span><br><span class="line">class Factory&#123;</span><br><span class="line">     public static fruit getInstance(String fruitName)&#123;</span><br><span class="line">         fruit f&#x3D;null;</span><br><span class="line">         if(&quot;Apple&quot;.equals(fruitName))&#123;</span><br><span class="line">             f&#x3D;new Apple();</span><br><span class="line">         &#125;</span><br><span class="line">         if(&quot;Orange&quot;.equals(fruitName))&#123;</span><br><span class="line">             f&#x3D;new Orange();</span><br><span class="line">         &#125;</span><br><span class="line">         return f;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">class hello&#123;</span><br><span class="line">     public static void main(String[] a)&#123;</span><br><span class="line">         fruit f&#x3D;Factory.getInstance(&quot;Orange&quot;);</span><br><span class="line">         f.eat();</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>   &emsp;上面写法的缺点是当我们再添加一个子类的时候，就需要修改工厂类了。如果我们添加太多的子类的时候，改动就会很多。下面用反射机制实现工厂模式：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface fruit&#123;</span><br><span class="line">     public abstract void eat();</span><br><span class="line">&#125;</span><br><span class="line">class Apple implements fruit&#123;</span><br><span class="line">public void eat()&#123;</span><br><span class="line">         System.out.println(&quot;Apple&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Orange implements fruit&#123;</span><br><span class="line">public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;Orange&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Factory&#123;</span><br><span class="line">    public static fruit getInstance(String ClassName)&#123;</span><br><span class="line">        fruit f&#x3D;null;</span><br><span class="line">        try&#123;</span><br><span class="line">            f&#x3D;(fruit)Class.forName(ClassName).newInstance();</span><br><span class="line">        &#125;catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return f;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class hello&#123;</span><br><span class="line">    public static void main(String[] a)&#123;</span><br><span class="line">        fruit f&#x3D;Factory.getInstance(&quot;Reflect.Apple&quot;);</span><br><span class="line">        if(f!&#x3D;null)&#123;</span><br><span class="line">            f.eat();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>  &emsp;现在就算我们添加任意多个子类的时候，工厂类都不需要修改。使用反射机制实现的工厂模式可以通过反射取得接口的实例，但是需要传入完整的包和类名。而且用户也无法知道一个接口有多少个可以使用的子类，所以我们通过属性文件的形式配置所需要的子类。</p>
-<p>   &emsp;下面编写使用反射机制并结合属性文件的工厂模式（即IoC）。首先创建一个fruit.properties的资源文件：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apple&#x3D;Reflect.Apple</span><br><span class="line">orange&#x3D;Reflect.Orange</span><br></pre></td></tr></table></figure>
-<p>   &emsp;然后编写主类代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface fruit&#123;</span><br><span class="line">    public abstract void eat();</span><br><span class="line">&#125;</span><br><span class="line">class Apple implements fruit&#123;</span><br><span class="line">    public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;Apple&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Orange implements fruit&#123;</span><br><span class="line">    public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;Orange&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;操作属性文件类</span><br><span class="line">class init&#123;</span><br><span class="line">    public static Properties getPro() throws FileNotFoundException, IOException&#123;</span><br><span class="line">        Properties pro&#x3D;new Properties();</span><br><span class="line">        File f&#x3D;new File(&quot;fruit.properties&quot;);</span><br><span class="line">        if(f.exists())&#123;</span><br><span class="line">            pro.load(new FileInputStream(f));</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            pro.setProperty(&quot;apple&quot;, &quot;Reflect.Apple&quot;);</span><br><span class="line">            pro.setProperty(&quot;orange&quot;, &quot;Reflect.Orange&quot;);</span><br><span class="line">            pro.store(new FileOutputStream(f), &quot;FRUIT CLASS&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        return pro;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Factory&#123;</span><br><span class="line">    public static fruit getInstance(String ClassName)&#123;</span><br><span class="line">        fruit f&#x3D;null;</span><br><span class="line">        try&#123;</span><br><span class="line">            f&#x3D;(fruit)Class.forName(ClassName).newInstance();</span><br><span class="line">        &#125;catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return f;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class hello&#123;</span><br><span class="line">    public static void main(String[] a) throws FileNotFoundException, IOException&#123;</span><br><span class="line">        Properties pro&#x3D;init.getPro();</span><br><span class="line">        fruit f&#x3D;Factory.getInstance(pro.getProperty(&quot;apple&quot;));</span><br><span class="line">        if(f!&#x3D;null)&#123;</span><br><span class="line">            f.eat();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;运行结果：Apple</p>
-<h3 id="IOC容器的技术剖析"><a href="#IOC容器的技术剖析" class="headerlink" title="IOC容器的技术剖析"></a>IOC容器的技术剖析</h3><p> &emsp;IOC中最基本的技术就是“反射(Reflection)”编程，通俗来讲就是根据给出的类名（字符串方式）来动态地生成对象，这种编程方式可以让对象在生成时才被决定到底是哪一种对象。只是在Spring中要生产的对象都在配置文件中给出定义，目的就是提高灵活性和可维护性。</p>
-<p> &emsp;目前C#、Java和PHP5等语言均支持反射，其中PHP5的技术书籍中，有时候也被翻译成“映射”。有关反射的概念和用法，大家应该都很清楚。反射的应用是很广泛的，很多的成熟的框架，比如像Java中的Hibernate、Spring框架，.Net中NHibernate、Spring.NET框架都是把”反射“做为最基本的技术手段。</p>
-<p>&emsp;反射技术其实很早就出现了，但一直被忽略，没有被进一步的利用。当时的反射编程方式相对于正常的对象生成方式要慢至少得10倍。现在的反射技术经过改良优化，已经非常成熟，反射方式生成对象和通常对象生成方式，速度已经相差不大了，大约为1-2倍的差距。</p>
-<p>&emsp;我们可以把IOC容器的工作模式看做是工厂模式的升华，可以把IOC容器看作是一个工厂，这个工厂里要生产的对象都在配置文件中给出定义，然后利用编程语言提供的反射机制，根据配置文件中给出的类名生成相应的对象。从实现来看，IOC是把以前在工厂方法里写死的对象生成代码，改变为由配置文件来定义，也就是把工厂和对象生成这两者独立分隔开来，目的就是提高灵活性和可维护性。</p>
-<h3 id="使用IOC框架应该注意什么"><a href="#使用IOC框架应该注意什么" class="headerlink" title="使用IOC框架应该注意什么"></a>使用IOC框架应该注意什么</h3><p>&emsp;使用IOC框架产品能够给我们的开发过程带来很大的好处，但是也要充分认识引入IOC框架的缺点，做到心中有数，杜绝滥用框架。</p>
-<p>&emsp;1）软件系统中由于引入了第三方IOC容器，生成对象的步骤变得有些复杂，本来是两者之间的事情，又凭空多出一道手续，所以，我们在刚开始使用IOC框架的时候，会感觉系统变得不太直观。所以，引入了一个全新的框架，就会增加团队成员学习和认识的培训成本，并且在以后的运行维护中，还得让新加入者具备同样的知识体系。</p>
-<p>&emsp;2）由于IOC容器生成对象是通过反射方式，在运行效率上有一定的损耗。如果你要追求运行效率的话，就必须对此进行权衡。</p>
-<p>&emsp;3）具体到IOC框架产品（比如Spring）来讲，需要进行大量的配制工作，比较繁琐，对于一些小的项目而言，客观上也可能加大一些工作成本。</p>
-<p>&emsp;4）IOC框架产品本身的成熟度需要进行评估，如果引入一个不成熟的IOC框架产品，那么会影响到整个项目，所以这也是一个隐性的风险。</p>
-<p>&emsp;我们大体可以得出这样的结论：一些工作量不大的项目或者产品，不太适合使用IOC框架产品。另外，如果团队成员的知识能力欠缺，对于IOC框架产品缺乏深入的理解，也不要贸然引入。最后，特别强调运行效率的项目或者产品，也不太适合引入IOC框架产品，像WEB2.0网站就是这种情况。<br>————————————————<br>版权声明：本文为CSDN博主「fuzhongmin05」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br><a href="https://blog.csdn.net/fuzhongmin05/article/details/61614873" target="_blank" rel="noopener">原文链接</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>TCP/IP协议族的网络层基础（6）——NAT和NAPT</title>
     <url>/2020/03/27/CP-IP%E4%B9%8BNAT/</url>
     <content><![CDATA[<p>转载：<strong><a href="https://blog.csdn.net/lvyibin890/article/details/80206979" target="_blank" rel="noopener">TCP/IP协议族的网络层基础（6）——NAT和NAPT</a></strong>。</p>
@@ -117,6 +92,31 @@
       </tags>
   </entry>
   <entry>
+    <title>IOC的实现原理—反射与工厂模式(转载)</title>
+    <url>/2020/03/03/C%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E2%80%94%E5%8F%8D%E5%B0%84%E4%B8%8E%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<h3 id="反射与工厂模式实现IOC"><a href="#反射与工厂模式实现IOC" class="headerlink" title="反射与工厂模式实现IOC"></a>反射与工厂模式实现IOC</h3><p>   &emsp;Spring中的IoC的实现原理就是工厂模式加反射机制。 我们首先看一下不用反射机制时的工厂模式：<br>   <a id="more"></a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface fruit&#123;</span><br><span class="line">    public abstract void eat();</span><br><span class="line">&#125; </span><br><span class="line">class Apple implements fruit&#123;</span><br><span class="line">     public void eat()&#123;</span><br><span class="line">         System.out.println(&quot;Apple&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">&#125; </span><br><span class="line">class Orange implements fruit&#123;</span><br><span class="line">     public void eat()&#123;</span><br><span class="line">         System.out.println(&quot;Orange&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;构造工厂类</span><br><span class="line">&#x2F;&#x2F;也就是说以后如果我们在添加其他的实例的时候只需要修改工厂类就行了</span><br><span class="line">class Factory&#123;</span><br><span class="line">     public static fruit getInstance(String fruitName)&#123;</span><br><span class="line">         fruit f&#x3D;null;</span><br><span class="line">         if(&quot;Apple&quot;.equals(fruitName))&#123;</span><br><span class="line">             f&#x3D;new Apple();</span><br><span class="line">         &#125;</span><br><span class="line">         if(&quot;Orange&quot;.equals(fruitName))&#123;</span><br><span class="line">             f&#x3D;new Orange();</span><br><span class="line">         &#125;</span><br><span class="line">         return f;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">class hello&#123;</span><br><span class="line">     public static void main(String[] a)&#123;</span><br><span class="line">         fruit f&#x3D;Factory.getInstance(&quot;Orange&quot;);</span><br><span class="line">         f.eat();</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>   &emsp;上面写法的缺点是当我们再添加一个子类的时候，就需要修改工厂类了。如果我们添加太多的子类的时候，改动就会很多。下面用反射机制实现工厂模式：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface fruit&#123;</span><br><span class="line">     public abstract void eat();</span><br><span class="line">&#125;</span><br><span class="line">class Apple implements fruit&#123;</span><br><span class="line">public void eat()&#123;</span><br><span class="line">         System.out.println(&quot;Apple&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Orange implements fruit&#123;</span><br><span class="line">public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;Orange&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Factory&#123;</span><br><span class="line">    public static fruit getInstance(String ClassName)&#123;</span><br><span class="line">        fruit f&#x3D;null;</span><br><span class="line">        try&#123;</span><br><span class="line">            f&#x3D;(fruit)Class.forName(ClassName).newInstance();</span><br><span class="line">        &#125;catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return f;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class hello&#123;</span><br><span class="line">    public static void main(String[] a)&#123;</span><br><span class="line">        fruit f&#x3D;Factory.getInstance(&quot;Reflect.Apple&quot;);</span><br><span class="line">        if(f!&#x3D;null)&#123;</span><br><span class="line">            f.eat();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  &emsp;现在就算我们添加任意多个子类的时候，工厂类都不需要修改。使用反射机制实现的工厂模式可以通过反射取得接口的实例，但是需要传入完整的包和类名。而且用户也无法知道一个接口有多少个可以使用的子类，所以我们通过属性文件的形式配置所需要的子类。</p>
+<p>   &emsp;下面编写使用反射机制并结合属性文件的工厂模式（即IoC）。首先创建一个fruit.properties的资源文件：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apple&#x3D;Reflect.Apple</span><br><span class="line">orange&#x3D;Reflect.Orange</span><br></pre></td></tr></table></figure>
+<p>   &emsp;然后编写主类代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface fruit&#123;</span><br><span class="line">    public abstract void eat();</span><br><span class="line">&#125;</span><br><span class="line">class Apple implements fruit&#123;</span><br><span class="line">    public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;Apple&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Orange implements fruit&#123;</span><br><span class="line">    public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;Orange&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;操作属性文件类</span><br><span class="line">class init&#123;</span><br><span class="line">    public static Properties getPro() throws FileNotFoundException, IOException&#123;</span><br><span class="line">        Properties pro&#x3D;new Properties();</span><br><span class="line">        File f&#x3D;new File(&quot;fruit.properties&quot;);</span><br><span class="line">        if(f.exists())&#123;</span><br><span class="line">            pro.load(new FileInputStream(f));</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            pro.setProperty(&quot;apple&quot;, &quot;Reflect.Apple&quot;);</span><br><span class="line">            pro.setProperty(&quot;orange&quot;, &quot;Reflect.Orange&quot;);</span><br><span class="line">            pro.store(new FileOutputStream(f), &quot;FRUIT CLASS&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        return pro;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Factory&#123;</span><br><span class="line">    public static fruit getInstance(String ClassName)&#123;</span><br><span class="line">        fruit f&#x3D;null;</span><br><span class="line">        try&#123;</span><br><span class="line">            f&#x3D;(fruit)Class.forName(ClassName).newInstance();</span><br><span class="line">        &#125;catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return f;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class hello&#123;</span><br><span class="line">    public static void main(String[] a) throws FileNotFoundException, IOException&#123;</span><br><span class="line">        Properties pro&#x3D;init.getPro();</span><br><span class="line">        fruit f&#x3D;Factory.getInstance(pro.getProperty(&quot;apple&quot;));</span><br><span class="line">        if(f!&#x3D;null)&#123;</span><br><span class="line">            f.eat();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;运行结果：Apple</p>
+<h3 id="IOC容器的技术剖析"><a href="#IOC容器的技术剖析" class="headerlink" title="IOC容器的技术剖析"></a>IOC容器的技术剖析</h3><p> &emsp;IOC中最基本的技术就是“反射(Reflection)”编程，通俗来讲就是根据给出的类名（字符串方式）来动态地生成对象，这种编程方式可以让对象在生成时才被决定到底是哪一种对象。只是在Spring中要生产的对象都在配置文件中给出定义，目的就是提高灵活性和可维护性。</p>
+<p> &emsp;目前C#、Java和PHP5等语言均支持反射，其中PHP5的技术书籍中，有时候也被翻译成“映射”。有关反射的概念和用法，大家应该都很清楚。反射的应用是很广泛的，很多的成熟的框架，比如像Java中的Hibernate、Spring框架，.Net中NHibernate、Spring.NET框架都是把”反射“做为最基本的技术手段。</p>
+<p>&emsp;反射技术其实很早就出现了，但一直被忽略，没有被进一步的利用。当时的反射编程方式相对于正常的对象生成方式要慢至少得10倍。现在的反射技术经过改良优化，已经非常成熟，反射方式生成对象和通常对象生成方式，速度已经相差不大了，大约为1-2倍的差距。</p>
+<p>&emsp;我们可以把IOC容器的工作模式看做是工厂模式的升华，可以把IOC容器看作是一个工厂，这个工厂里要生产的对象都在配置文件中给出定义，然后利用编程语言提供的反射机制，根据配置文件中给出的类名生成相应的对象。从实现来看，IOC是把以前在工厂方法里写死的对象生成代码，改变为由配置文件来定义，也就是把工厂和对象生成这两者独立分隔开来，目的就是提高灵活性和可维护性。</p>
+<h3 id="使用IOC框架应该注意什么"><a href="#使用IOC框架应该注意什么" class="headerlink" title="使用IOC框架应该注意什么"></a>使用IOC框架应该注意什么</h3><p>&emsp;使用IOC框架产品能够给我们的开发过程带来很大的好处，但是也要充分认识引入IOC框架的缺点，做到心中有数，杜绝滥用框架。</p>
+<p>&emsp;1）软件系统中由于引入了第三方IOC容器，生成对象的步骤变得有些复杂，本来是两者之间的事情，又凭空多出一道手续，所以，我们在刚开始使用IOC框架的时候，会感觉系统变得不太直观。所以，引入了一个全新的框架，就会增加团队成员学习和认识的培训成本，并且在以后的运行维护中，还得让新加入者具备同样的知识体系。</p>
+<p>&emsp;2）由于IOC容器生成对象是通过反射方式，在运行效率上有一定的损耗。如果你要追求运行效率的话，就必须对此进行权衡。</p>
+<p>&emsp;3）具体到IOC框架产品（比如Spring）来讲，需要进行大量的配制工作，比较繁琐，对于一些小的项目而言，客观上也可能加大一些工作成本。</p>
+<p>&emsp;4）IOC框架产品本身的成熟度需要进行评估，如果引入一个不成熟的IOC框架产品，那么会影响到整个项目，所以这也是一个隐性的风险。</p>
+<p>&emsp;我们大体可以得出这样的结论：一些工作量不大的项目或者产品，不太适合使用IOC框架产品。另外，如果团队成员的知识能力欠缺，对于IOC框架产品缺乏深入的理解，也不要贸然引入。最后，特别强调运行效率的项目或者产品，也不太适合引入IOC框架产品，像WEB2.0网站就是这种情况。<br>————————————————<br>版权声明：本文为CSDN博主「fuzhongmin05」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br><a href="https://blog.csdn.net/fuzhongmin05/article/details/61614873" target="_blank" rel="noopener">原文链接</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Filter和Interceptor的比较</title>
     <url>/2021/11/15/Filter%E5%92%8CInterceptor%E7%9A%84%E6%AF%94%E8%BE%83/</url>
     <content><![CDATA[<p><a href="https://www.jianshu.com/p/5f5e5211bbdb" target="_blank" rel="noopener">Filter和Interceptor的比较</a>, &nbsp;&nbsp;&nbsp;<a href="https://www.cnblogs.com/hellovoyager1/p/9152292.html" target="_blank" rel="noopener">Listener、Filter 和Interceptor 总结</a>, &nbsp;&nbsp;<a href="https://www.cnblogs.com/hhhshct/p/8808115.html" target="_blank" rel="noopener">springboot配置监听器、过滤器和拦截器</a></p>
@@ -170,12 +170,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hashtable、HashMap、ConcurrentHashMap</title>
-    <url>/2021/12/01/Hashtable%E3%80%81HashMap%E3%80%81ConcurrentHashMap/</url>
-    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/Mr_YanMingXin/article/details/118601591" target="_blank" rel="noopener">详解Java中HashMap、HashTable、ConcurrentHashMap常见问题</a></strong> &nbsp;;&nbsp;<strong><a href="https://blog.csdn.net/amunamuna/article/details/107773902" target="_blank" rel="noopener">Hashtable、HashMap、ConcurrentHashMap等及常用阻塞队列</a></strong> &nbsp;&nbsp;</p>
-]]></content>
-  </entry>
-  <entry>
     <title>IntelliJ IDEA激活</title>
     <url>/2021/03/20/IntelliJ-IDEA%E6%BF%80%E6%B4%BB/</url>
     <content><![CDATA[<p>可用方法：<a href="https://www.exception.site/essay/how-to-free-use-intellij-idea-2019-3" target="_blank" rel="noopener">IntelliJ IDEA 2020.3.3激活破解教程（亲测激活至 2099 年，长期更新）</a>，或者一直白嫖试用30天（<em>rm -rf ～/.config/Jetbrains/IntelliJIdea2020.3/eval/</em> 可重置30天）。</p>
@@ -183,6 +177,12 @@
       <tags>
         <tag>idea</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hashtable、HashMap、ConcurrentHashMap</title>
+    <url>/2021/12/01/Hashtable%E3%80%81HashMap%E3%80%81ConcurrentHashMap/</url>
+    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/Mr_YanMingXin/article/details/118601591" target="_blank" rel="noopener">详解Java中HashMap、HashTable、ConcurrentHashMap常见问题</a></strong> &nbsp;;&nbsp;<strong><a href="https://blog.csdn.net/amunamuna/article/details/107773902" target="_blank" rel="noopener">Hashtable、HashMap、ConcurrentHashMap等及常用阻塞队列</a></strong> &nbsp;&nbsp;</p>
+]]></content>
   </entry>
   <entry>
     <title>Java泛型详解：&lt;T&gt;和Class&lt;T&gt;的使用。泛型类，泛型方法的详细使用实例 </title>
@@ -213,26 +213,6 @@
       <tags>
         <tag>PostConstruct</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>ProcessExecutor、ProcessBuilder、Runtime.getRuntime().exec(...) </title>
-    <url>/2021/05/02/ProcessExecutor%E3%80%81ProcessBuilder%E3%80%81Runtime-getRuntime-exec/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>There are many approaches to take when running external processes from Java. There are the JRE options such as the Runtime.exec() 、 ProcessBuilder、  Apache Commons Exec and ZT Process Executor. 其中ZT Process Executor是一个更为强大的进程库（process library），能够通过使用一个单一的 ProcessExecutor 类来调用 java.lang.ProcessBuilder 和 Apache Commons Exec 中的接口。</p>
-<a id="more"></a>
-<h3 id="Runtime-amp-ProcessBuilder"><a href="#Runtime-amp-ProcessBuilder" class="headerlink" title="Runtime&amp;ProcessBuilder"></a>Runtime&amp;ProcessBuilder</h3><p><em>Runtime.getInstance().exec (String cmd)</em>和<em>new ProcessBuilder(String cmd).start()</em>都可以产生子进程对象Process。通过调用Process对象的waitFor()方法可以使主进程进入等待状态，直至子进程执行完毕，再进行下一步工作。如果对子进程处理不当，有可能造成主进程阻塞，整个程序死掉。(A program is executed with command(). With waitFor() we can wait for the process to finish.)<br><strong>通过查看JDK源码可知，Runtime.exec最终是通过调用ProcessBuilder来真正执行操作的</strong>，如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public Process exec(String command) throws IOException &#123;</span><br><span class="line">    return exec(command, null, null);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Process exec(String command, String[] envp, File dir)</span><br><span class="line">    throws IOException &#123;</span><br><span class="line">    if (command.length() &#x3D;&#x3D; 0)</span><br><span class="line">        throw new IllegalArgumentException(&quot;Empty command&quot;);</span><br><span class="line"></span><br><span class="line">    StringTokenizer st &#x3D; new StringTokenizer(command);</span><br><span class="line">    String[] cmdarray &#x3D; new String[st.countTokens()];</span><br><span class="line">    for (int i &#x3D; 0; st.hasMoreTokens(); i++)</span><br><span class="line">        cmdarray[i] &#x3D; st.nextToken();</span><br><span class="line">    return exec(cmdarray, envp, dir);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Process exec(String[] cmdarray, String[] envp, File dir)</span><br><span class="line">    throws IOException &#123;</span><br><span class="line">    return new ProcessBuilder(cmdarray)</span><br><span class="line">        .environment(envp)</span><br><span class="line">        .directory(dir)</span><br><span class="line">        .start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="ProcessExecutor-amp-ProcessBuilder"><a href="#ProcessExecutor-amp-ProcessBuilder" class="headerlink" title="ProcessExecutor&amp;ProcessBuilder"></a>ProcessExecutor&amp;ProcessBuilder</h3><p>ProcessExecutor is implemented as a wrapper of <em>ProcessBuilder</em> complementing it with additional features.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class ProcessExecutor &#123;</span><br><span class="line"></span><br><span class="line">  private static final Logger log &#x3D; LoggerFactory.getLogger(ProcessExecutor.class);</span><br><span class="line"></span><br><span class="line">  private static final boolean IS_OS_WINDOWS &#x3D; System.getProperty(&quot;os.name&quot;).startsWith(&quot;Windows&quot;);</span><br><span class="line"></span><br><span class="line">  public static final Integer[] DEFAULT_EXIT_VALUES &#x3D; null;</span><br><span class="line"></span><br><span class="line">  private static final Integer NORMAL_EXIT_VALUE &#x3D; 0;</span><br><span class="line"></span><br><span class="line">  public static final boolean DEFAULT_REDIRECT_ERROR_STREAM &#x3D; true;</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Process builder used by this executor.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private final ProcessBuilder builder &#x3D; new ProcessBuilder();</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Environment variables which are added (removed in case of &lt;code&gt;null&lt;&#x2F;code&gt; values) to the process being started.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private final Map&lt;String, String&gt; environment &#x3D; new LinkedHashMap&lt;String, String&gt;();</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Set of accepted exit codes or &lt;code&gt;null&lt;&#x2F;code&gt; if all exit codes are allowed.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private Set&lt;Integer&gt; allowedExitValues;</span><br><span class="line">  ...</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>ProcessExecutor在后台运行进程（不阻塞当前代码对执行）:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void runInBackground() throws IOException, InterruptedException, ExecutionException, TimeoutException &#123;</span><br><span class="line">    List&lt;Future&lt;ProcessResult&gt;&gt; tasks &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">    for (int i &#x3D; 0; i &lt; 5; i++) &#123;</span><br><span class="line">        Future&lt;ProcessResult&gt; future &#x3D; new ProcessExecutor().command(&quot;java&quot;, &quot;-version&quot;)</span><br><span class="line">                .start().getFuture();</span><br><span class="line">        tasks.add(future);</span><br><span class="line">    &#125;</span><br><span class="line">    for (Future&lt;ProcessResult&gt; future : tasks) &#123;</span><br><span class="line">        ProcessResult processResult &#x3D; future.get(1, TimeUnit.SECONDS);</span><br><span class="line">        int exitValue &#x3D; processResult.getExitValue();</span><br><span class="line">        log.info(&quot;The exit value of the finished process is &#123;&#125;&quot;, exitValue);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>参考：<strong><a href="https://github.com/zeroturnaround/zt-exec" target="_blank" rel="noopener">GitHub: ZT Process Executor</a></strong></p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
   </entry>
   <entry>
     <title>Rust copy 、move、clone</title>
@@ -290,6 +270,26 @@
       </tags>
   </entry>
   <entry>
+    <title>ProcessExecutor、ProcessBuilder、Runtime.getRuntime().exec(...) </title>
+    <url>/2021/05/02/ProcessExecutor%E3%80%81ProcessBuilder%E3%80%81Runtime-getRuntime-exec/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>There are many approaches to take when running external processes from Java. There are the JRE options such as the Runtime.exec() 、 ProcessBuilder、  Apache Commons Exec and ZT Process Executor. 其中ZT Process Executor是一个更为强大的进程库（process library），能够通过使用一个单一的 ProcessExecutor 类来调用 java.lang.ProcessBuilder 和 Apache Commons Exec 中的接口。</p>
+<a id="more"></a>
+<h3 id="Runtime-amp-ProcessBuilder"><a href="#Runtime-amp-ProcessBuilder" class="headerlink" title="Runtime&amp;ProcessBuilder"></a>Runtime&amp;ProcessBuilder</h3><p><em>Runtime.getInstance().exec (String cmd)</em>和<em>new ProcessBuilder(String cmd).start()</em>都可以产生子进程对象Process。通过调用Process对象的waitFor()方法可以使主进程进入等待状态，直至子进程执行完毕，再进行下一步工作。如果对子进程处理不当，有可能造成主进程阻塞，整个程序死掉。(A program is executed with command(). With waitFor() we can wait for the process to finish.)<br><strong>通过查看JDK源码可知，Runtime.exec最终是通过调用ProcessBuilder来真正执行操作的</strong>，如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public Process exec(String command) throws IOException &#123;</span><br><span class="line">    return exec(command, null, null);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Process exec(String command, String[] envp, File dir)</span><br><span class="line">    throws IOException &#123;</span><br><span class="line">    if (command.length() &#x3D;&#x3D; 0)</span><br><span class="line">        throw new IllegalArgumentException(&quot;Empty command&quot;);</span><br><span class="line"></span><br><span class="line">    StringTokenizer st &#x3D; new StringTokenizer(command);</span><br><span class="line">    String[] cmdarray &#x3D; new String[st.countTokens()];</span><br><span class="line">    for (int i &#x3D; 0; st.hasMoreTokens(); i++)</span><br><span class="line">        cmdarray[i] &#x3D; st.nextToken();</span><br><span class="line">    return exec(cmdarray, envp, dir);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Process exec(String[] cmdarray, String[] envp, File dir)</span><br><span class="line">    throws IOException &#123;</span><br><span class="line">    return new ProcessBuilder(cmdarray)</span><br><span class="line">        .environment(envp)</span><br><span class="line">        .directory(dir)</span><br><span class="line">        .start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ProcessExecutor-amp-ProcessBuilder"><a href="#ProcessExecutor-amp-ProcessBuilder" class="headerlink" title="ProcessExecutor&amp;ProcessBuilder"></a>ProcessExecutor&amp;ProcessBuilder</h3><p>ProcessExecutor is implemented as a wrapper of <em>ProcessBuilder</em> complementing it with additional features.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class ProcessExecutor &#123;</span><br><span class="line"></span><br><span class="line">  private static final Logger log &#x3D; LoggerFactory.getLogger(ProcessExecutor.class);</span><br><span class="line"></span><br><span class="line">  private static final boolean IS_OS_WINDOWS &#x3D; System.getProperty(&quot;os.name&quot;).startsWith(&quot;Windows&quot;);</span><br><span class="line"></span><br><span class="line">  public static final Integer[] DEFAULT_EXIT_VALUES &#x3D; null;</span><br><span class="line"></span><br><span class="line">  private static final Integer NORMAL_EXIT_VALUE &#x3D; 0;</span><br><span class="line"></span><br><span class="line">  public static final boolean DEFAULT_REDIRECT_ERROR_STREAM &#x3D; true;</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Process builder used by this executor.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private final ProcessBuilder builder &#x3D; new ProcessBuilder();</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Environment variables which are added (removed in case of &lt;code&gt;null&lt;&#x2F;code&gt; values) to the process being started.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private final Map&lt;String, String&gt; environment &#x3D; new LinkedHashMap&lt;String, String&gt;();</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Set of accepted exit codes or &lt;code&gt;null&lt;&#x2F;code&gt; if all exit codes are allowed.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private Set&lt;Integer&gt; allowedExitValues;</span><br><span class="line">  ...</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>ProcessExecutor在后台运行进程（不阻塞当前代码对执行）:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void runInBackground() throws IOException, InterruptedException, ExecutionException, TimeoutException &#123;</span><br><span class="line">    List&lt;Future&lt;ProcessResult&gt;&gt; tasks &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">    for (int i &#x3D; 0; i &lt; 5; i++) &#123;</span><br><span class="line">        Future&lt;ProcessResult&gt; future &#x3D; new ProcessExecutor().command(&quot;java&quot;, &quot;-version&quot;)</span><br><span class="line">                .start().getFuture();</span><br><span class="line">        tasks.add(future);</span><br><span class="line">    &#125;</span><br><span class="line">    for (Future&lt;ProcessResult&gt; future : tasks) &#123;</span><br><span class="line">        ProcessResult processResult &#x3D; future.get(1, TimeUnit.SECONDS);</span><br><span class="line">        int exitValue &#x3D; processResult.getExitValue();</span><br><span class="line">        log.info(&quot;The exit value of the finished process is &#123;&#125;&quot;, exitValue);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>参考：<strong><a href="https://github.com/zeroturnaround/zt-exec" target="_blank" rel="noopener">GitHub: ZT Process Executor</a></strong></p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Rust引用</title>
     <url>/2022/03/17/Rust%E5%BC%95%E7%94%A8/</url>
     <content><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch3/07_reference_type.html" target="_blank" rel="noopener">Rust中的引用</a></p>
@@ -311,6 +311,15 @@
       </categories>
       <tags>
         <tag>references</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SkipList (跳跃表)的那点事儿</title>
+    <url>/2021/02/23/SkipList-%E7%9A%84%E9%82%A3%E7%82%B9%E4%BA%8B%E5%84%BF/</url>
+    <content><![CDATA[<p><a href="https://mp.weixin.qq.com/s/fNBjlpzqvNkmei0cHhNcog?article_exclude_marked=ea8284506ea5ccac099671313574ba5c" target="_blank" rel="noopener">SkipList 的那点事儿</a></p>
+]]></content>
+      <tags>
+        <tag>SkipList</tag>
       </tags>
   </entry>
   <entry>
@@ -347,15 +356,6 @@
       </tags>
   </entry>
   <entry>
-    <title>SkipList (跳跃表)的那点事儿</title>
-    <url>/2021/02/23/SkipList-%E7%9A%84%E9%82%A3%E7%82%B9%E4%BA%8B%E5%84%BF/</url>
-    <content><![CDATA[<p><a href="https://mp.weixin.qq.com/s/fNBjlpzqvNkmei0cHhNcog?article_exclude_marked=ea8284506ea5ccac099671313574ba5c" target="_blank" rel="noopener">SkipList 的那点事儿</a></p>
-]]></content>
-      <tags>
-        <tag>SkipList</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>《Spring设计思想-事务篇》2.数据库隔离级别</title>
     <url>/2020/03/12/Spring%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3-%E4%BA%8B%E5%8A%A1%E7%AF%87%E3%80%8B2-%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</url>
     <content><![CDATA[<p>转载：<strong><a href="https://blog.csdn.net/luanlouis/article/details/95319795" target="_blank" rel="noopener">《Spring设计思想-事务篇》2.数据库隔离级别
@@ -375,20 +375,24 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Ubuntu 18.04 用户登录界面优化</title>
-    <url>/1970/01/01/Ubuntu-18-04-%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E4%BC%98%E5%8C%96/</url>
-    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/vselfdom/article/details/88546349" target="_blank" rel="noopener">Ubuntu 18.04 用户登录界面优化</a></strong>，备用。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>Ubuntu18.04下通过zssh与服务器进行上传/下载文件操作</title>
     <url>/2021/11/29/Ubuntu18-04%E4%B8%8B%E9%80%9A%E8%BF%87zssh%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9B%E8%A1%8C%E4%B8%8A%E4%BC%A0-%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<p><a href="https://www.it610.com/article/1280947627608784896.htm" target="_blank" rel="noopener">Ubuntu18.04下通过zssh与服务器进行上传/下载文件操作</a></p>
+    <content><![CDATA[<p>把本地文件上传到远程：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">（1）打开远程终端，输入：rz -bye (打个招呼，表示要接受文件)</span><br><span class="line"> (2) ctrl+@,  （切换到本地，进入要上传的文件的目录）</span><br><span class="line">（3）sz filename （发送文件）</span><br></pre></td></tr></table></figure>
+<p>下载文件的话：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">（1）sz filename （打个招呼，表示要发送的文件）</span><br><span class="line"> (2) ctrl+@,（切换到本地，进入要接收该远程文件的路径下）</span><br><span class="line">（3）rz -ay   （接收完毕了哇）</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.it610.com/article/1280947627608784896.htm" target="_blank" rel="noopener">Ubuntu18.04下通过zssh与服务器进行上传/下载文件操作</a></p>
 ]]></content>
       <tags>
         <tag>zssh</tag>
         <tag>ubuntu</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu 18.04 用户登录界面优化</title>
+    <url>/1970/01/01/Ubuntu-18-04-%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/vselfdom/article/details/88546349" target="_blank" rel="noopener">Ubuntu 18.04 用户登录界面优化</a></strong>，备用。</p>
+]]></content>
   </entry>
   <entry>
     <title>Ubuntu apt-get autoclean,clean,autoremove</title>
@@ -436,33 +440,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Using the Switch(true) Pattern in JavaScript</title>
-    <url>/1970/01/01/Using-the-Switch-true-Pattern-in-JavaScript/</url>
-    <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
-]]></content>
-      <categories>
-        <category>javascript</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Using the Switch(true) Pattern in JavaScript</title>
-    <url>/2021/04/13/Using-the-Switch-true-Pattern-in-JavaScript-https-seanbarry-dev-posts-switch-true-pattern/</url>
-    <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
-]]></content>
-      <categories>
-        <category>javascript</category>
-      </categories>
-      <tags>
-        <tag>javascript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Wireshark抓包原理（ARP劫持、MAC泛洪）及数据流追踪和图像抓取</title>
-    <url>/2021/05/31/Wireshark%E6%8A%93%E5%8C%85%E5%8E%9F%E7%90%86%EF%BC%88ARP%E5%8A%AB%E6%8C%81%E3%80%81MAC%E6%B3%9B%E6%B4%AA%EF%BC%89%E5%8F%8A%E6%95%B0%E6%8D%AE%E6%B5%81%E8%BF%BD%E8%B8%AA%E5%92%8C%E5%9B%BE%E5%83%8F%E6%8A%93%E5%8F%96/</url>
-    <content><![CDATA[<p>转载：<a href="https://cloud.tencent.com/developer/article/1626729" target="_blank" rel="noopener">Wireshark抓包原理（ARP劫持、MAC泛洪）及数据流追踪和图像抓取</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>android studio http proxy for sdk </title>
     <url>/2020/02/02/andorid-studio-proxy-setting/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>闲来无事，研究一下安卓的开发，并记录一下开发工具android studio的配置，主要是安装时要下载android sdk，又因长城的原因，需要设置国内镜像，或者如果你能科学上网的话，设置http proxy也可。</p>
@@ -479,6 +456,33 @@
       <tags>
         <tag>proxy</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Using the Switch(true) Pattern in JavaScript</title>
+    <url>/2021/04/13/Using-the-Switch-true-Pattern-in-JavaScript-https-seanbarry-dev-posts-switch-true-pattern/</url>
+    <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
+]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Using the Switch(true) Pattern in JavaScript</title>
+    <url>/1970/01/01/Using-the-Switch-true-Pattern-in-JavaScript/</url>
+    <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
+]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Wireshark抓包原理（ARP劫持、MAC泛洪）及数据流追踪和图像抓取</title>
+    <url>/2021/05/31/Wireshark%E6%8A%93%E5%8C%85%E5%8E%9F%E7%90%86%EF%BC%88ARP%E5%8A%AB%E6%8C%81%E3%80%81MAC%E6%B3%9B%E6%B4%AA%EF%BC%89%E5%8F%8A%E6%95%B0%E6%8D%AE%E6%B5%81%E8%BF%BD%E8%B8%AA%E5%92%8C%E5%9B%BE%E5%83%8F%E6%8A%93%E5%8F%96/</url>
+    <content><![CDATA[<p>转载：<a href="https://cloud.tencent.com/developer/article/1626729" target="_blank" rel="noopener">Wireshark抓包原理（ARP劫持、MAC泛洪）及数据流追踪和图像抓取</a></p>
+]]></content>
   </entry>
   <entry>
     <title>java自定义类equal重写</title>
@@ -544,6 +548,15 @@
 ]]></content>
   </entry>
   <entry>
+    <title>java底层机制（堆/栈/方法区/GC/类加载）</title>
+    <url>/2020/03/08/ava%E5%BA%95%E5%B1%82%E6%9C%BA%E5%88%B6/</url>
+    <content><![CDATA[<p>转载:<strong><a href="https://www.jianshu.com/p/ae97b692614e?from=timeline" target="_blank" rel="noopener">java底层机制</a></strong>、<strong><a href="https://blog.csdn.net/luanlouis/article/details/40043991" target="_blank" rel="noopener">《Java虚拟机原理图解》3、JVM运行时数据区</a></strong></p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+  </entry>
+  <entry>
     <title>bash快捷键 光标移动</title>
     <url>/2020/01/16/bash-hot-key/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>用xshell登录并操作系统的时候，光标移动的快捷键用起来很方便，记录一下，方便以后查询</p>
@@ -557,15 +570,6 @@
       <tags>
         <tag>bash-hotkey</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>java底层机制（堆/栈/方法区/GC/类加载）</title>
-    <url>/2020/03/08/ava%E5%BA%95%E5%B1%82%E6%9C%BA%E5%88%B6/</url>
-    <content><![CDATA[<p>转载:<strong><a href="https://www.jianshu.com/p/ae97b692614e?from=timeline" target="_blank" rel="noopener">java底层机制</a></strong>、<strong><a href="https://blog.csdn.net/luanlouis/article/details/40043991" target="_blank" rel="noopener">《Java虚拟机原理图解》3、JVM运行时数据区</a></strong></p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
   </entry>
   <entry>
     <title>vertx-plugin build vertx app with gradle</title>
@@ -587,6 +591,29 @@
       <tags>
         <tag>vertx-plugin</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>ubuntu自动挂载其他盘</title>
+    <url>/2021/03/18/ceshi/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>双系统，ubuntu和win10装在同一个固态盘，还有另外一个机械盘，平时放些资料啥的，设置给ubuntu开机自动挂载另一个机械盘。</p>
+<a id="more"></a>
+
+<p>1、查询挂载硬盘UUID</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo blkid &#x2F;dev&#x2F;sda2</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-32.png" alt="upload successful"><br>Secert和WorkSpace盘信息如上，下面用到两个盘的UUID。</p>
+<p>2、打开文件/etc/fstab文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;fstab</span><br></pre></td></tr></table></figure>
+<p>在文档末尾添加相应磁盘的信息。格式为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[UUID&#x3D;************] [挂载磁盘分区]  [挂载磁盘格式]  0  2</span><br><span class="line"></span><br><span class="line">UUID&#x3D;4D55CFC14D016D60 &#x2F;mnt&#x2F;workspace ntfs defaults  0  2</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-33.png" alt="upload successful"><br>第一个数字：0表示开机不检查磁盘，1表示开机检查磁盘；<br>第二个数字：0表示交换分区，1代表启动分区（Linux），2表示普通分区</p>
+<p>3、重启生效</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+        <category>ubuntu</category>
+      </categories>
   </entry>
   <entry>
     <title>centos 免密切换root</title>
@@ -646,56 +673,6 @@
       </categories>
   </entry>
   <entry>
-    <title>centos 定时任务（cron）通过第三方邮件服务器（MTA）发送邮件</title>
-    <url>/2020/01/13/corn-mail/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>有时会需要把一些日志或者任务结果发送到用户邮箱，特此记录一下定时任务和邮箱信息的配置。</p>
-<a id="more"></a>
-<h3 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h3><p>守护进程 crond定期(每分钟)检查是否有要执行的任务，任务调度分为两类：<strong>系统任务调度</strong>和<strong>用户任务调度</strong>。</p>
-<p><strong>系统任务调度</strong>：系统周期性所要执行的工作，比如写缓存数据到硬盘、日志清理等。配置文件<code>/etc/crontab</code>。（若要配置定时reboot任务，需配置在此）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SHELL&#x3D;&#x2F;bin&#x2F;bash</span><br><span class="line">PATH&#x3D;&#x2F;sbin:&#x2F;bin:&#x2F;usr&#x2F;sbin:&#x2F;usr&#x2F;bin</span><br><span class="line">MAILTO&#x3D;root</span><br><span class="line">HOME&#x3D;&#x2F;</span><br><span class="line"># For details see man 4 crontabs</span><br><span class="line"># Example of job definition:</span><br><span class="line"># .---------------- minute (0 - 59)</span><br><span class="line"># |  .------------- hour (0 - 23)</span><br><span class="line"># |  |  .---------- day of month (1 - 31)</span><br><span class="line"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span><br><span class="line"># |  |  |  |  .---- day of week (0 - 6) (Sunday&#x3D;0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span><br><span class="line"># |  |  |  |  |</span><br><span class="line"># *  *  *  *  * user-name command to be executed</span><br><span class="line">  10 21 *  *  * root reboot</span><br></pre></td></tr></table></figure>
-
-
-<p><strong>用户任务调度</strong>：用户定期要执行的工作，比如用户数据备份、定时邮件提醒、自定义脚本等。配置文件<code>/var/spool/cron/usernamne</code>，用户亦可以用命令crontab定制自己的计划任务。如每隔一分钟给指定邮箱发信息，<code>crontab -u username -e</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">MAILTO&#x3D;&quot;yourmailaddress@**.com&quot;</span><br><span class="line">*&#x2F;1 * * * *  echo &#39;message&#39;</span><br></pre></td></tr></table></figure>
-<p><em>ps</em>：crontab中任何程序产生的输出都会以邮件的形式发送给由MAILTO指定的对象，若未指定则发给任务运行的用户（可于<code>/var/spool/mail/username</code>中查看），此时可通过<code>.forward</code> 或配置<code>/etc/aliases</code> 发送到外部邮箱。</p>
-<h3 id="邮件配置"><a href="#邮件配置" class="headerlink" title="邮件配置"></a>邮件配置</h3><p>用系统自带的postfix配置MTA太费事儿，所以采用163邮箱的SMTP服务。</p>
-<p>  1.邮箱开启SMTP服务</p>
-<p>  登录邮箱，在<code>设置</code>里打开<code>POP3/SMTP/IMAP</code>，勾选<code>POP3/SMTP服务</code>和<code>IMAP/SMTP服务</code>，并设置自己的<code>客户端授权密码</code>。</p>
-<p>  2.centos安装mailx(相当于MUA)<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install mailx</span><br></pre></td></tr></table></figure><br>  3.centos配置163邮箱信息，在文件 <code>/etc/mail.rc</code>末尾添加如下信息<br>    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set from&#x3D;&quot;*********@163.com&quot;</span><br><span class="line">set smtp&#x3D;smtp.163.com</span><br><span class="line">set smtp-auth-user&#x3D;*********@163.com</span><br><span class="line">set smtp-auth-password&#x3D;客户端授权密码</span><br><span class="line">set smtp-auth&#x3D;login</span><br></pre></td></tr></table></figure></p>
-<p>  <em>ps</em>:防火墙配置（vultr要联系客服“开光”25端口）</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>mail</tag>
-        <tag>crontab</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ubuntu自动挂载其他盘</title>
-    <url>/2021/03/18/ceshi/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>双系统，ubuntu和win10装在同一个固态盘，还有另外一个机械盘，平时放些资料啥的，设置给ubuntu开机自动挂载另一个机械盘。</p>
-<a id="more"></a>
-
-<p>1、查询挂载硬盘UUID</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo blkid &#x2F;dev&#x2F;sda2</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/pasted-32.png" alt="upload successful"><br>Secert和WorkSpace盘信息如上，下面用到两个盘的UUID。</p>
-<p>2、打开文件/etc/fstab文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;fstab</span><br></pre></td></tr></table></figure>
-<p>在文档末尾添加相应磁盘的信息。格式为：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[UUID&#x3D;************] [挂载磁盘分区]  [挂载磁盘格式]  0  2</span><br><span class="line"></span><br><span class="line">UUID&#x3D;4D55CFC14D016D60 &#x2F;mnt&#x2F;workspace ntfs defaults  0  2</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/pasted-33.png" alt="upload successful"><br>第一个数字：0表示开机不检查磁盘，1表示开机检查磁盘；<br>第二个数字：0表示交换分区，1代表启动分区（Linux），2表示普通分区</p>
-<p>3、重启生效</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-        <category>ubuntu</category>
-      </categories>
-  </entry>
-  <entry>
     <title>trojan科学上网</title>
     <url>/2020/01/29/gfw/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>一直用的ssr科学上网，侥幸挺过了去年国庆等的各种严打，一直傲娇地活跃到年底，没想到值此新春佳节之际，终于不出预料地被封了，丧事喜办，旧的不去新的不来，正好试试trojan，希望他能接过前辈的火种，超神带我飞，直直挺到2021吖，本文记录一下vps、windows pc以及android手机的配置。</p>
@@ -728,23 +705,31 @@
       </tags>
   </entry>
   <entry>
-    <title>随笔有感</title>
-    <url>/2020/01/13/hello-world/</url>
-    <content><![CDATA[<p>一个不读书之人的胡思胡想</p>
+    <title>centos 定时任务（cron）通过第三方邮件服务器（MTA）发送邮件</title>
+    <url>/2020/01/13/corn-mail/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>有时会需要把一些日志或者任务结果发送到用户邮箱，特此记录一下定时任务和邮箱信息的配置。</p>
 <a id="more"></a>
-<h2 id><a href="#" class="headerlink" title></a></h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<h3 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h3><p>守护进程 crond定期(每分钟)检查是否有要执行的任务，任务调度分为两类：<strong>系统任务调度</strong>和<strong>用户任务调度</strong>。</p>
+<p><strong>系统任务调度</strong>：系统周期性所要执行的工作，比如写缓存数据到硬盘、日志清理等。配置文件<code>/etc/crontab</code>。（若要配置定时reboot任务，需配置在此）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SHELL&#x3D;&#x2F;bin&#x2F;bash</span><br><span class="line">PATH&#x3D;&#x2F;sbin:&#x2F;bin:&#x2F;usr&#x2F;sbin:&#x2F;usr&#x2F;bin</span><br><span class="line">MAILTO&#x3D;root</span><br><span class="line">HOME&#x3D;&#x2F;</span><br><span class="line"># For details see man 4 crontabs</span><br><span class="line"># Example of job definition:</span><br><span class="line"># .---------------- minute (0 - 59)</span><br><span class="line"># |  .------------- hour (0 - 23)</span><br><span class="line"># |  |  .---------- day of month (1 - 31)</span><br><span class="line"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span><br><span class="line"># |  |  |  |  .---- day of week (0 - 6) (Sunday&#x3D;0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span><br><span class="line"># |  |  |  |  |</span><br><span class="line"># *  *  *  *  * user-name command to be executed</span><br><span class="line">  10 21 *  *  * root reboot</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p><strong>用户任务调度</strong>：用户定期要执行的工作，比如用户数据备份、定时邮件提醒、自定义脚本等。配置文件<code>/var/spool/cron/usernamne</code>，用户亦可以用命令crontab定制自己的计划任务。如每隔一分钟给指定邮箱发信息，<code>crontab -u username -e</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">MAILTO&#x3D;&quot;yourmailaddress@**.com&quot;</span><br><span class="line">*&#x2F;1 * * * *  echo &#39;message&#39;</span><br></pre></td></tr></table></figure>
+<p><em>ps</em>：crontab中任何程序产生的输出都会以邮件的形式发送给由MAILTO指定的对象，若未指定则发给任务运行的用户（可于<code>/var/spool/mail/username</code>中查看），此时可通过<code>.forward</code> 或配置<code>/etc/aliases</code> 发送到外部邮箱。</p>
+<h3 id="邮件配置"><a href="#邮件配置" class="headerlink" title="邮件配置"></a>邮件配置</h3><p>用系统自带的postfix配置MTA太费事儿，所以采用163邮箱的SMTP服务。</p>
+<p>  1.邮箱开启SMTP服务</p>
+<p>  登录邮箱，在<code>设置</code>里打开<code>POP3/SMTP/IMAP</code>，勾选<code>POP3/SMTP服务</code>和<code>IMAP/SMTP服务</code>，并设置自己的<code>客户端授权密码</code>。</p>
+<p>  2.centos安装mailx(相当于MUA)<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install mailx</span><br></pre></td></tr></table></figure><br>  3.centos配置163邮箱信息，在文件 <code>/etc/mail.rc</code>末尾添加如下信息<br>    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set from&#x3D;&quot;*********@163.com&quot;</span><br><span class="line">set smtp&#x3D;smtp.163.com</span><br><span class="line">set smtp-auth-user&#x3D;*********@163.com</span><br><span class="line">set smtp-auth-password&#x3D;客户端授权密码</span><br><span class="line">set smtp-auth&#x3D;login</span><br></pre></td></tr></table></figure></p>
+<p>  <em>ps</em>:防火墙配置（vultr要联系客服“开光”25端口）</p>
 ]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>mail</tag>
+        <tag>crontab</tag>
+      </tags>
   </entry>
   <entry>
     <title>git学习笔记</title>
@@ -780,6 +765,25 @@
       </tags>
   </entry>
   <entry>
+    <title>随笔有感</title>
+    <url>/2020/01/13/hello-world/</url>
+    <content><![CDATA[<p>一个不读书之人的胡思胡想</p>
+<a id="more"></a>
+<h2 id><a href="#" class="headerlink" title></a></h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>intellij-idea的快捷键</title>
     <url>/2020/12/23/intellij-idea%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
     <content><![CDATA[<p><a href="https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf" target="_blank" rel="noopener">Intellij-idea的快捷键</a></p>
@@ -787,12 +791,6 @@
       <tags>
         <tag>idea</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>int&amp;Integer、 double&amp;Double&amp;BigDecimal</title>
-    <url>/2022/03/09/int%E5%92%8CInteger%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/guodongdidi/p/6953217.html" target="_blank" rel="noopener">int和Integer的区别</a>&nbsp;&nbsp;<a href="http://www.louisvv.com/archives/2514.html" target="_blank" rel="noopener">double、Double与BigDecimal</a></p>
-]]></content>
   </entry>
   <entry>
     <title>idea下gradle报jdk版本错误</title>
@@ -811,10 +809,28 @@
       </tags>
   </entry>
   <entry>
+    <title>int&amp;Integer、 double&amp;Double&amp;BigDecimal</title>
+    <url>/2022/03/09/int%E5%92%8CInteger%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/guodongdidi/p/6953217.html" target="_blank" rel="noopener">int和Integer的区别</a>&nbsp;&nbsp;<a href="http://www.louisvv.com/archives/2514.html" target="_blank" rel="noopener">double、Double与BigDecimal</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>@interface 简介</title>
     <url>/2021/11/11/interface/</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/zhangbeizhen18/article/details/87885441/" target="_blank" rel="noopener">自定义注释@interface的用法理解</a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>spring boot注解基本了解</title>
+    <url>/2020/03/06/java-annotation/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这里放两篇对Java注解的文章，以备后面查询。<a href="https://www.jianshu.com/p/d74ed7374841" target="_blank" rel="noopener"><strong>Spring Boot 注解—基本知识</strong></a>以及<a href="https://www.cnblogs.com/liaojie970/p/7879917.html" target="_blank" rel="noopener"><strong>Java注释@interface的用法</strong></a></p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>annotation</tag>
+      </tags>
   </entry>
   <entry>
     <title>java中的乱码</title>
@@ -829,18 +845,6 @@
       </categories>
       <tags>
         <tag>乱码</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>spring boot注解基本了解</title>
-    <url>/2020/03/06/java-annotation/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这里放两篇对Java注解的文章，以备后面查询。<a href="https://www.jianshu.com/p/d74ed7374841" target="_blank" rel="noopener"><strong>Spring Boot 注解—基本知识</strong></a>以及<a href="https://www.cnblogs.com/liaojie970/p/7879917.html" target="_blank" rel="noopener"><strong>Java注释@interface的用法</strong></a></p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>annotation</tag>
       </tags>
   </entry>
   <entry>
@@ -1028,6 +1032,19 @@
 ]]></content>
   </entry>
   <entry>
+    <title>json web token(jwt)</title>
+    <url>/2020/05/02/json-web-token-jwt/</url>
+    <content><![CDATA[<p>转载：<strong><a href="https://learnku.com/articles/22616" target="_blank" rel="noopener">别再使用 JWT 作为 Session 系统！问题重重且很危险。
+</a></strong><br>结论：无状态 JWT Tokens 无法被单独地销毁或更新，取决于你如何存储，可能还会导致长度问题、安全隐患。有状态 JWT Tokens 在功能方面与 Session cookies 无异，但缺乏生产环境的验证、经过大量 Review 的实现，以及良好的客户端支持。<br>JWT 特别有效的使用例子通常是作为一次性的授权令牌。</p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>jwt</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>kotlin 构造函数</title>
     <url>/2020/05/17/kotlin-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<p>转载：<strong><a href="https://www.cnblogs.com/Jetictors/p/7758828.html" target="_blank" rel="noopener">Kotlin——中级篇（一）：类（class）详解</a></strong>、<strong><a href="https://www.jianshu.com/p/5db34354d812" target="_blank" rel="noopener">kotlin之构造函数(constructor)
@@ -1047,44 +1064,10 @@
       </tags>
   </entry>
   <entry>
-    <title>json web token(jwt)</title>
-    <url>/2020/05/02/json-web-token-jwt/</url>
-    <content><![CDATA[<p>转载：<strong><a href="https://learnku.com/articles/22616" target="_blank" rel="noopener">别再使用 JWT 作为 Session 系统！问题重重且很危险。
-</a></strong><br>结论：无状态 JWT Tokens 无法被单独地销毁或更新，取决于你如何存储，可能还会导致长度问题、安全隐患。有状态 JWT Tokens 在功能方面与 Session cookies 无异，但缺乏生产环境的验证、经过大量 Review 的实现，以及良好的客户端支持。<br>JWT 特别有效的使用例子通常是作为一次性的授权令牌。</p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>jwt</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>linux sort uniq命令</title>
     <url>/2021/02/26/linux-sort-uniq%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<p><a href="https://www.linuxjournal.com/content/back-basics-sort-and-uniq" target="_blank" rel="noopener">Back to Basics: Sort and Uniq</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>linux 查看登录历史 操作用户</title>
-    <url>/2021/02/26/linux-%E6%9F%A5%E7%9C%8B%E7%99%BB%E5%BD%95%E5%8E%86%E5%8F%B2-%E6%93%8D%E4%BD%9C%E7%94%A8%E6%88%B7/</url>
-    <content><![CDATA[<p>linux 查看登录历史 操作用户</p>
-<a id="more"></a>
-<h2 id="linux查看用户登录，操作历史等"><a href="#linux查看用户登录，操作历史等" class="headerlink" title="linux查看用户登录，操作历史等"></a>linux查看用户登录，操作历史等</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">who 命令：显示当前当登录的用户的信息</span><br><span class="line">who -b命令：显示系统最近一次的启动时间</span><br><span class="line">w 命令：显示登录的用户及其当前执行的任务</span><br><span class="line">last 命令：显示当前与过去登录系统的用户的信息</span><br><span class="line">lastb 命令：显示所有登录系统失败的用户的信息</span><br><span class="line">lastlog 命令：显示用户最后一次登录的信息</span><br><span class="line">history 命令：查看操作历史</span><br><span class="line">history -c命令：清除操作历史</span><br><span class="line">pkill -kill -u test ： 强制test用户下线</span><br></pre></td></tr></table></figure>
-<h2 id="linux清除系统日志、历史记录、登录信息"><a href="#linux清除系统日志、历史记录、登录信息" class="headerlink" title="linux清除系统日志、历史记录、登录信息"></a>linux清除系统日志、历史记录、登录信息</h2><h3 id="清楚日志"><a href="#清楚日志" class="headerlink" title="清楚日志"></a>清楚日志</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &gt; &#x2F;var&#x2F;log&#x2F;wtmp &#x2F;&#x2F;清除用户登录记录</span><br><span class="line">echo &gt; &#x2F;var&#x2F;log&#x2F;btmp &#x2F;&#x2F;清除尝试登录记录</span><br><span class="line">echo&gt;&#x2F;var&#x2F;log&#x2F;lastlog &#x2F;&#x2F;清除最近登录信息</span><br><span class="line">echo &gt; &#x2F;var&#x2F;log&#x2F;secure &#x2F;&#x2F;登录信息</span><br><span class="line">echo &gt; &#x2F;var&#x2F;log&#x2F;messages</span><br><span class="line">echo&gt;&#x2F;var&#x2F;log&#x2F;syslog &#x2F;&#x2F;记录系统日志的服务</span><br><span class="line">echo&gt;&#x2F;var&#x2F;log&#x2F;xferlog</span><br><span class="line">echo&gt;&#x2F;var&#x2F;log&#x2F;auth.log</span><br><span class="line">echo&gt;&#x2F;var&#x2F;log&#x2F;user.log</span><br><span class="line">cat &#x2F;dev&#x2F;null &gt; &#x2F;var&#x2F;adm&#x2F;sylog</span><br><span class="line">cat &#x2F;dev&#x2F;null &gt; &#x2F;var&#x2F;log&#x2F;maillog</span><br><span class="line">cat &#x2F;dev&#x2F;null &gt; &#x2F;var&#x2F;log&#x2F;openwebmail.log</span><br><span class="line">cat &#x2F;dev&#x2F;null &gt; &#x2F;var&#x2F;log&#x2F;mail.info</span><br><span class="line">echo&gt;&#x2F;var&#x2F;run&#x2F;utmp</span><br></pre></td></tr></table></figure>
-<h3 id="清除操作过的命令记录"><a href="#清除操作过的命令记录" class="headerlink" title="清除操作过的命令记录"></a>清除操作过的命令记录</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &gt; .bash_history &#x2F;&#x2F;清除保存的用户操作历史记录</span><br><span class="line">history -cw &#x2F;&#x2F;清除所有历史</span><br></pre></td></tr></table></figure>
-<h3 id="Linux查看History记录加时间戳小技巧"><a href="#Linux查看History记录加时间戳小技巧" class="headerlink" title="Linux查看History记录加时间戳小技巧"></a>Linux查看History记录加时间戳小技巧</h3><p>熟悉bash的都一定知道使用history可以输出你曾经输入过的历史命令，例如  </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@servyou_web ~]# history | more</span><br><span class="line">.&#x2F;test.sh</span><br><span class="line">vim test.sh</span><br><span class="line">.&#x2F;test.sh</span><br></pre></td></tr></table></figure>
-<p>但是这里只显示了命令，并没有显示执行命令的时间，因为保存历史命令的~/.bash_history里并没有保存时间。</p>
-<p>通过设置环境变量 export HISTTIMEFORMAT=”%F %T whoami “ 给history加上时间戳</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@servyou_web ~]# export HISTTIMEFORMAT&#x3D;&quot;%F %T whoami &quot;</span><br><span class="line">[root@servyou_web ~]# history | tail</span><br><span class="line">2011-06-22 19:17:29 root 15 2011-06-22 19:13:02 root .&#x2F;test.sh</span><br><span class="line">2011-06-22 19:17:29 root 16 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:17:29 root 17 2011-06-22 19:13:02 root .&#x2F;test.sh</span><br><span class="line">2011-06-22 19:17:29 root 18 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:17:29 root 19 2011-06-22 19:13:02 root .&#x2F;test.sh</span><br><span class="line">2011-06-22 19:17:29 root 20 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:17:29 root 21 2011-06-22 19:13:02 root .&#x2F;test.sh</span><br><span class="line">2011-06-22 19:17:29 root 22 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:25:22 root 22 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:25:28 root history | tail</span><br></pre></td></tr></table></figure>
-<p>可以看到，历史命令的时间戳已经加上了，但是.bash_history里并没有加上这个时间戳。其实这个时间记录是保存在当前shell进程内存里的，如果你logout并且重新登录的话会发现你上次登录时执行的那些命令的时间戳都为同一个值，即当时logout时的时间。</p>
-<p>尽管如此，对于加上screen的bash来说，这个时间戳仍然可以长时间有效的，毕竟只要你的server不重启，screen就不会退出，因而这些时间就能长时间保留。你也可以使用echo ‘export HISTTIMEFORMAT=”%F %T whoami “‘ &gt;&gt; /etc/profile 然后source一下就OK。</p>
-<p><a href="https://blog.51cto.com/study2008/2301555" target="_blank" rel="noopener">source</a></p>
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
   </entry>
   <entry>
     <title>linux 后台运行、输出重定向</title>
@@ -1121,6 +1104,27 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nohup .&#x2F;run.py &amp;</span><br></pre></td></tr></table></figure>
 <h3 id="nohup和-amp-的区别"><a href="#nohup和-amp-的区别" class="headerlink" title="nohup和&amp;的区别"></a>nohup和&amp;的区别</h3><p>&amp;：已后台进程执行命令，但是会话关闭后，进程会结束。</p>
 <p>nohup：确保进程不挂断的执行，但是没有后台执行的功能，所以一般nohup和&amp;需要配合一起使用。</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>linux 查看登录历史 操作用户</title>
+    <url>/2021/02/26/linux-%E6%9F%A5%E7%9C%8B%E7%99%BB%E5%BD%95%E5%8E%86%E5%8F%B2-%E6%93%8D%E4%BD%9C%E7%94%A8%E6%88%B7/</url>
+    <content><![CDATA[<p>linux 查看登录历史 操作用户</p>
+<a id="more"></a>
+<h2 id="linux查看用户登录，操作历史等"><a href="#linux查看用户登录，操作历史等" class="headerlink" title="linux查看用户登录，操作历史等"></a>linux查看用户登录，操作历史等</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">who 命令：显示当前当登录的用户的信息</span><br><span class="line">who -b命令：显示系统最近一次的启动时间</span><br><span class="line">w 命令：显示登录的用户及其当前执行的任务</span><br><span class="line">last 命令：显示当前与过去登录系统的用户的信息</span><br><span class="line">lastb 命令：显示所有登录系统失败的用户的信息</span><br><span class="line">lastlog 命令：显示用户最后一次登录的信息</span><br><span class="line">history 命令：查看操作历史</span><br><span class="line">history -c命令：清除操作历史</span><br><span class="line">pkill -kill -u test ： 强制test用户下线</span><br></pre></td></tr></table></figure>
+<h2 id="linux清除系统日志、历史记录、登录信息"><a href="#linux清除系统日志、历史记录、登录信息" class="headerlink" title="linux清除系统日志、历史记录、登录信息"></a>linux清除系统日志、历史记录、登录信息</h2><h3 id="清楚日志"><a href="#清楚日志" class="headerlink" title="清楚日志"></a>清楚日志</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &gt; &#x2F;var&#x2F;log&#x2F;wtmp &#x2F;&#x2F;清除用户登录记录</span><br><span class="line">echo &gt; &#x2F;var&#x2F;log&#x2F;btmp &#x2F;&#x2F;清除尝试登录记录</span><br><span class="line">echo&gt;&#x2F;var&#x2F;log&#x2F;lastlog &#x2F;&#x2F;清除最近登录信息</span><br><span class="line">echo &gt; &#x2F;var&#x2F;log&#x2F;secure &#x2F;&#x2F;登录信息</span><br><span class="line">echo &gt; &#x2F;var&#x2F;log&#x2F;messages</span><br><span class="line">echo&gt;&#x2F;var&#x2F;log&#x2F;syslog &#x2F;&#x2F;记录系统日志的服务</span><br><span class="line">echo&gt;&#x2F;var&#x2F;log&#x2F;xferlog</span><br><span class="line">echo&gt;&#x2F;var&#x2F;log&#x2F;auth.log</span><br><span class="line">echo&gt;&#x2F;var&#x2F;log&#x2F;user.log</span><br><span class="line">cat &#x2F;dev&#x2F;null &gt; &#x2F;var&#x2F;adm&#x2F;sylog</span><br><span class="line">cat &#x2F;dev&#x2F;null &gt; &#x2F;var&#x2F;log&#x2F;maillog</span><br><span class="line">cat &#x2F;dev&#x2F;null &gt; &#x2F;var&#x2F;log&#x2F;openwebmail.log</span><br><span class="line">cat &#x2F;dev&#x2F;null &gt; &#x2F;var&#x2F;log&#x2F;mail.info</span><br><span class="line">echo&gt;&#x2F;var&#x2F;run&#x2F;utmp</span><br></pre></td></tr></table></figure>
+<h3 id="清除操作过的命令记录"><a href="#清除操作过的命令记录" class="headerlink" title="清除操作过的命令记录"></a>清除操作过的命令记录</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &gt; .bash_history &#x2F;&#x2F;清除保存的用户操作历史记录</span><br><span class="line">history -cw &#x2F;&#x2F;清除所有历史</span><br></pre></td></tr></table></figure>
+<h3 id="Linux查看History记录加时间戳小技巧"><a href="#Linux查看History记录加时间戳小技巧" class="headerlink" title="Linux查看History记录加时间戳小技巧"></a>Linux查看History记录加时间戳小技巧</h3><p>熟悉bash的都一定知道使用history可以输出你曾经输入过的历史命令，例如  </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@servyou_web ~]# history | more</span><br><span class="line">.&#x2F;test.sh</span><br><span class="line">vim test.sh</span><br><span class="line">.&#x2F;test.sh</span><br></pre></td></tr></table></figure>
+<p>但是这里只显示了命令，并没有显示执行命令的时间，因为保存历史命令的~/.bash_history里并没有保存时间。</p>
+<p>通过设置环境变量 export HISTTIMEFORMAT=”%F %T whoami “ 给history加上时间戳</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@servyou_web ~]# export HISTTIMEFORMAT&#x3D;&quot;%F %T whoami &quot;</span><br><span class="line">[root@servyou_web ~]# history | tail</span><br><span class="line">2011-06-22 19:17:29 root 15 2011-06-22 19:13:02 root .&#x2F;test.sh</span><br><span class="line">2011-06-22 19:17:29 root 16 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:17:29 root 17 2011-06-22 19:13:02 root .&#x2F;test.sh</span><br><span class="line">2011-06-22 19:17:29 root 18 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:17:29 root 19 2011-06-22 19:13:02 root .&#x2F;test.sh</span><br><span class="line">2011-06-22 19:17:29 root 20 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:17:29 root 21 2011-06-22 19:13:02 root .&#x2F;test.sh</span><br><span class="line">2011-06-22 19:17:29 root 22 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:25:22 root 22 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:25:28 root history | tail</span><br></pre></td></tr></table></figure>
+<p>可以看到，历史命令的时间戳已经加上了，但是.bash_history里并没有加上这个时间戳。其实这个时间记录是保存在当前shell进程内存里的，如果你logout并且重新登录的话会发现你上次登录时执行的那些命令的时间戳都为同一个值，即当时logout时的时间。</p>
+<p>尽管如此，对于加上screen的bash来说，这个时间戳仍然可以长时间有效的，毕竟只要你的server不重启，screen就不会退出，因而这些时间就能长时间保留。你也可以使用echo ‘export HISTTIMEFORMAT=”%F %T whoami “‘ &gt;&gt; /etc/profile 然后source一下就OK。</p>
+<p><a href="https://blog.51cto.com/study2008/2301555" target="_blank" rel="noopener">source</a></p>
 ]]></content>
       <categories>
         <category>linux</category>
@@ -1698,6 +1702,69 @@
 ]]></content>
   </entry>
   <entry>
+    <title>netstat 命令</title>
+    <url>/2022/02/15/netstat-%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">netstat -ntu|awk &#39;&#123;pring $5&#125;&#39;|cut -d : -f 1|sort|uniq -c</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h4><p>-n 显示数字IP, -t tcp连接, -u udp连接, -a 全部连接…</p>
+<p><strong><a href="https://blog.csdn.net/qq_42014600/article/details/90372315" target="_blank" rel="noopener">netstat详解</a></strong></p>
+<h4 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h4><p>-F 指定分割符(如 awk -F: ), 如不显示指定字段分隔符，awk的默认字段分隔符为任意空白字符，包括制表符、空格符、换行符等</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$0表示整行文本</span><br><span class="line">$1表示文本行中第一个数据字段</span><br><span class="line">$2表示文本行中第二个数据字段</span><br><span class="line">$n表示文本行中第n个数据字段</span><br></pre></td></tr></table></figure>
+<p><strong><a href="https://blog.csdn.net/u010502101/article/details/81839519" target="_blank" rel="noopener">awk详解</a></strong></p>
+<h4 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h4><p>cut -[n]b file</p>
+<p>cut -c file</p>
+<p>cut -d[分隔符] -f[域] file</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-b(bytes) ：以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志。</span><br><span class="line">-c(characters) ：以字符为单位进行分割。</span><br><span class="line">-d ：自定义分隔符，默认为制表符。</span><br><span class="line">-f(filed) ：与-d一起使用，指定显示哪个区域。</span><br><span class="line">-n ：取消分割多字节字符。仅和 -b 标志一起使用。如果字符的最后一个字节落在由 -b 标志的 List 参数指示的</span><br><span class="line">范围之内，该字符将被写出；否则，该字符将被排除。</span><br></pre></td></tr></table></figure>
+<p><strong><a href="https://blog.csdn.net/u011003120/article/details/52190187" target="_blank" rel="noopener">cut用法</a></strong></p>
+<h4 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a>uniq</h4><p>　报告或删除文件中重复的行。<br> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> -c, --count           在每行前加上表示相应行目出现次数的前缀编号</span><br><span class="line">-d, --repeated        只输出重复的行</span><br><span class="line">-D, --all-repeated[&#x3D;delimit-method    显示所有重复的行</span><br><span class="line">                      delimit-method&#x3D;&#123;none(default),prepend,separate&#125;</span><br><span class="line">                      以空行为界限</span><br><span class="line">-f, --skip-fields&#x3D;N   比较时跳过前N 列</span><br><span class="line">-i, --ignore-case     在比较的时候不区分大小写</span><br><span class="line">-s, --skip-chars&#x3D;N    比较时跳过前N 个字符</span><br><span class="line">-u, --unique          只显示唯一的行</span><br><span class="line">-z, --zero-terminated 使用&#39;\0&#39;作为行结束符，而不是新换行</span><br><span class="line">-w, --check-chars&#x3D;N   对每行第N 个字符以后的内容不作对照</span><br><span class="line">    --help            显示此帮助信息并退出</span><br><span class="line">    --version         显示版本信息并退出</span><br></pre></td></tr></table></figure></p>
+<p> <strong><a href="https://www.cnblogs.com/ftl1012/p/uniq.html" target="_blank" rel="noopener">uniq详解</a></strong></p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux command</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ubuntu下使用微信、QQ等</title>
+    <url>/2021/03/18/new/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ubuntu下使用微信，网页版的登录不了，只能考虑客户端了。考虑了下，还是在docker里，无论怎么折腾，也不会污染系统。</p>
+<a id="more"></a>
+<p>网上教程多如牛毛，但不是坑，就是坑，找了个自己能用的，记录下备用<br>1、安装docker docker-compose，网上教程一大把，自己搜<br>2、执行如下命令<br>首先要允许所有用户访问X11服务,运行:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xhost +</span><br></pre></td></tr></table></figure>
+<p>拉取镜像（注意docker设置国内镜像地址，用科大的就行）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull bestwu&#x2F;wechat</span><br></pre></td></tr></table></figure>
+<p>在你指定的文件夹下创建 docker-compose.yml</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">version: &#39;2&#39;</span><br><span class="line">services:</span><br><span class="line">  wechat:</span><br><span class="line">    image: bestwu&#x2F;wechat</span><br><span class="line">    container_name: wechat</span><br><span class="line">    devices:</span><br><span class="line">      - &#x2F;dev&#x2F;snd</span><br><span class="line">    volumes:</span><br><span class="line">      - &#x2F;tmp&#x2F;.X11-unix:&#x2F;tmp&#x2F;.X11-unix</span><br><span class="line">      - $PWD&#x2F;WeChatFiles:&#x2F;WeChatFiles</span><br><span class="line">    environment:</span><br><span class="line">      - DISPLAY&#x3D;unix$DISPLAY</span><br><span class="line">      - QT_IM_MODULE&#x3D;fcitx</span><br><span class="line">      - XMODIFIERS&#x3D;@im&#x3D;fcitx</span><br><span class="line">      - GTK_IM_MODULE&#x3D;fcitx</span><br><span class="line">      - AUDIO_GID&#x3D;26 # 可选 默认63（在终端用getent group video | cut -d: -f3查） 主机audio gid 解决声音设备访问权限问题</span><br><span class="line">      - GID&#x3D;1000 # 可选 默认1000 主机当前用户 gid 解决挂载目录访问权限问题</span><br><span class="line">      - UID&#x3D;1000 # 可选 默认1000 主机当前用户 uid 解决挂载目录访问权限问题</span><br><span class="line">    ipc: host</span><br></pre></td></tr></table></figure>
+<p>启动</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+<p>停止</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose stop</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+        <category>ubuntu</category>
+      </categories>
+      <tags>
+        <tag>wechat</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>pac.txt---url通配规则</title>
+    <url>/2020/01/30/pac/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>科学上网PAC模式，有时会需要自己在pac.txt里添加一些被墙的URL，记录一下url通配的规则，以备以后使用。</p>
+<a id="more"></a>
+<ol>
+<li>通配符支持。比如 .example.com/ 实际书写时可省略 * ， 如 .example.com/ ， 和 *.example.com/ 效果一样</li>
+<li>正则表达式支持。以 \ 开始和结束， 如 [\w]+://example.com\</li>
+<li>例外规则 @@ ，如 @@.example.com/ 满足 @@ 后规则的地址不使用代理</li>
+<li>匹配地址开始和结尾 | ，如 |<a href="http://example.com" target="_blank" rel="noopener">http://example.com</a> 、 example.com| 分别表示以 <a href="http://example.com" target="_blank" rel="noopener">http://example.com</a> 开始和以 example.com 结束的地址</li>
+<li>|| 标记，如 ||example.com 则 <a href="http://example.com" target="_blank" rel="noopener">http://example.com</a> 、 <a href="https://example.com" target="_blank" rel="noopener">https://example.com</a> 、 <a href="ftp://example.com">ftp://example.com</a> 等地址均满足条件</li>
+<li>注释 ! 。 如 !我是注释<br>v2rayN需重启生效。</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
     <title>nginx conf location 配置</title>
     <url>/2022/03/23/nginx-conf-location-%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h4 id="root-alias"><a href="#root-alias" class="headerlink" title="root alias"></a>root alias</h4><ul>
@@ -1751,69 +1818,6 @@
         <tag>location</tag>
         <tag>nginx</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>ubuntu下使用微信、QQ等</title>
-    <url>/2021/03/18/new/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ubuntu下使用微信，网页版的登录不了，只能考虑客户端了。考虑了下，还是在docker里，无论怎么折腾，也不会污染系统。</p>
-<a id="more"></a>
-<p>网上教程多如牛毛，但不是坑，就是坑，找了个自己能用的，记录下备用<br>1、安装docker docker-compose，网上教程一大把，自己搜<br>2、执行如下命令<br>首先要允许所有用户访问X11服务,运行:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xhost +</span><br></pre></td></tr></table></figure>
-<p>拉取镜像（注意docker设置国内镜像地址，用科大的就行）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull bestwu&#x2F;wechat</span><br></pre></td></tr></table></figure>
-<p>在你指定的文件夹下创建 docker-compose.yml</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">version: &#39;2&#39;</span><br><span class="line">services:</span><br><span class="line">  wechat:</span><br><span class="line">    image: bestwu&#x2F;wechat</span><br><span class="line">    container_name: wechat</span><br><span class="line">    devices:</span><br><span class="line">      - &#x2F;dev&#x2F;snd</span><br><span class="line">    volumes:</span><br><span class="line">      - &#x2F;tmp&#x2F;.X11-unix:&#x2F;tmp&#x2F;.X11-unix</span><br><span class="line">      - $PWD&#x2F;WeChatFiles:&#x2F;WeChatFiles</span><br><span class="line">    environment:</span><br><span class="line">      - DISPLAY&#x3D;unix$DISPLAY</span><br><span class="line">      - QT_IM_MODULE&#x3D;fcitx</span><br><span class="line">      - XMODIFIERS&#x3D;@im&#x3D;fcitx</span><br><span class="line">      - GTK_IM_MODULE&#x3D;fcitx</span><br><span class="line">      - AUDIO_GID&#x3D;26 # 可选 默认63（在终端用getent group video | cut -d: -f3查） 主机audio gid 解决声音设备访问权限问题</span><br><span class="line">      - GID&#x3D;1000 # 可选 默认1000 主机当前用户 gid 解决挂载目录访问权限问题</span><br><span class="line">      - UID&#x3D;1000 # 可选 默认1000 主机当前用户 uid 解决挂载目录访问权限问题</span><br><span class="line">    ipc: host</span><br></pre></td></tr></table></figure>
-<p>启动</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
-<p>停止</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose stop</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>linux</category>
-        <category>ubuntu</category>
-      </categories>
-      <tags>
-        <tag>wechat</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>netstat 命令</title>
-    <url>/2022/02/15/netstat-%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">netstat -ntu|awk &#39;&#123;pring $5&#125;&#39;|cut -d : -f 1|sort|uniq -c</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h4 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h4><p>-n 显示数字IP, -t tcp连接, -u udp连接, -a 全部连接…</p>
-<p><strong><a href="https://blog.csdn.net/qq_42014600/article/details/90372315" target="_blank" rel="noopener">netstat详解</a></strong></p>
-<h4 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h4><p>-F 指定分割符(如 awk -F: ), 如不显示指定字段分隔符，awk的默认字段分隔符为任意空白字符，包括制表符、空格符、换行符等</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$0表示整行文本</span><br><span class="line">$1表示文本行中第一个数据字段</span><br><span class="line">$2表示文本行中第二个数据字段</span><br><span class="line">$n表示文本行中第n个数据字段</span><br></pre></td></tr></table></figure>
-<p><strong><a href="https://blog.csdn.net/u010502101/article/details/81839519" target="_blank" rel="noopener">awk详解</a></strong></p>
-<h4 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h4><p>cut -[n]b file</p>
-<p>cut -c file</p>
-<p>cut -d[分隔符] -f[域] file</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-b(bytes) ：以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志。</span><br><span class="line">-c(characters) ：以字符为单位进行分割。</span><br><span class="line">-d ：自定义分隔符，默认为制表符。</span><br><span class="line">-f(filed) ：与-d一起使用，指定显示哪个区域。</span><br><span class="line">-n ：取消分割多字节字符。仅和 -b 标志一起使用。如果字符的最后一个字节落在由 -b 标志的 List 参数指示的</span><br><span class="line">范围之内，该字符将被写出；否则，该字符将被排除。</span><br></pre></td></tr></table></figure>
-<p><strong><a href="https://blog.csdn.net/u011003120/article/details/52190187" target="_blank" rel="noopener">cut用法</a></strong></p>
-<h4 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a>uniq</h4><p>　报告或删除文件中重复的行。<br> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> -c, --count           在每行前加上表示相应行目出现次数的前缀编号</span><br><span class="line">-d, --repeated        只输出重复的行</span><br><span class="line">-D, --all-repeated[&#x3D;delimit-method    显示所有重复的行</span><br><span class="line">                      delimit-method&#x3D;&#123;none(default),prepend,separate&#125;</span><br><span class="line">                      以空行为界限</span><br><span class="line">-f, --skip-fields&#x3D;N   比较时跳过前N 列</span><br><span class="line">-i, --ignore-case     在比较的时候不区分大小写</span><br><span class="line">-s, --skip-chars&#x3D;N    比较时跳过前N 个字符</span><br><span class="line">-u, --unique          只显示唯一的行</span><br><span class="line">-z, --zero-terminated 使用&#39;\0&#39;作为行结束符，而不是新换行</span><br><span class="line">-w, --check-chars&#x3D;N   对每行第N 个字符以后的内容不作对照</span><br><span class="line">    --help            显示此帮助信息并退出</span><br><span class="line">    --version         显示版本信息并退出</span><br></pre></td></tr></table></figure></p>
-<p> <strong><a href="https://www.cnblogs.com/ftl1012/p/uniq.html" target="_blank" rel="noopener">uniq详解</a></strong></p>
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>linux command</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>pac.txt---url通配规则</title>
-    <url>/2020/01/30/pac/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>科学上网PAC模式，有时会需要自己在pac.txt里添加一些被墙的URL，记录一下url通配的规则，以备以后使用。</p>
-<a id="more"></a>
-<ol>
-<li>通配符支持。比如 .example.com/ 实际书写时可省略 * ， 如 .example.com/ ， 和 *.example.com/ 效果一样</li>
-<li>正则表达式支持。以 \ 开始和结束， 如 [\w]+://example.com\</li>
-<li>例外规则 @@ ，如 @@.example.com/ 满足 @@ 后规则的地址不使用代理</li>
-<li>匹配地址开始和结尾 | ，如 |<a href="http://example.com" target="_blank" rel="noopener">http://example.com</a> 、 example.com| 分别表示以 <a href="http://example.com" target="_blank" rel="noopener">http://example.com</a> 开始和以 example.com 结束的地址</li>
-<li>|| 标记，如 ||example.com 则 <a href="http://example.com" target="_blank" rel="noopener">http://example.com</a> 、 <a href="https://example.com" target="_blank" rel="noopener">https://example.com</a> 、 <a href="ftp://example.com">ftp://example.com</a> 等地址均满足条件</li>
-<li>注释 ! 。 如 !我是注释<br>v2rayN需重启生效。</li>
-</ol>
-]]></content>
   </entry>
   <entry>
     <title>spring 线程安全</title>
@@ -2089,6 +2093,21 @@
 ]]></content>
   </entry>
   <entry>
+    <title>锁、synchronized、CAS、volatile</title>
+    <url>/2020/04/06/synchronized%E3%80%81CAS%E3%80%81volatile/</url>
+    <content><![CDATA[<p>转载：<strong><a href="https://tech.meituan.com/2018/11/15/java-lock.html" target="_blank" rel="noopener">不可不说的Java“锁”事</a></strong>、<strong><a href="https://blog.csdn.net/javazejian/article/details/72828483" target="_blank" rel="noopener">深入理解Java并发之synchronized实现原理</a></strong>、<strong><a href="https://juejin.im/post/5a73cbbff265da4e807783f5" target="_blank" rel="noopener">Java CAS 原理剖析
+</a></strong>、<strong><a href="https://www.cnblogs.com/theRhyme/p/12129120.html" target="_blank" rel="noopener">从原子类和UNSAFE来理解JAVA内存模型，ATOMICINTEGER的INCREMENTANDGET方法和UNSAFE部分源码介绍，VALUEOFFSET偏移量的理解</a></strong>、<strong><a href="https://www.cnblogs.com/theRhyme/p/9396834.html" target="_blank" rel="noopener">JAVA内存模型中VOLATILE关键字的作用
+</a></strong>、<strong><a href="https://www.cnblogs.com/theRhyme/p/9399881.html" target="_blank" rel="noopener">JAVA内存模型，为啥线程要有自己的本地内存，CPU高速缓存
+</a></strong></p>
+]]></content>
+      <tags>
+        <tag>lock</tag>
+        <tag>synchronized</tag>
+        <tag>CAS</tag>
+        <tag>volatile</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ubuntu terminal 打开后的默认位置和大小</title>
     <url>/2021/03/18/ubuntu-terminal-location/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>经常一边儿搜着浏览器，一边儿操作终端，这时候终端打开的默认位置大小就很重要，能节省不少步骤，下面介绍一下怎么设置。</p>
@@ -2110,19 +2129,22 @@
       </tags>
   </entry>
   <entry>
-    <title>锁、synchronized、CAS、volatile</title>
-    <url>/2020/04/06/synchronized%E3%80%81CAS%E3%80%81volatile/</url>
-    <content><![CDATA[<p>转载：<strong><a href="https://tech.meituan.com/2018/11/15/java-lock.html" target="_blank" rel="noopener">不可不说的Java“锁”事</a></strong>、<strong><a href="https://blog.csdn.net/javazejian/article/details/72828483" target="_blank" rel="noopener">深入理解Java并发之synchronized实现原理</a></strong>、<strong><a href="https://juejin.im/post/5a73cbbff265da4e807783f5" target="_blank" rel="noopener">Java CAS 原理剖析
-</a></strong>、<strong><a href="https://www.cnblogs.com/theRhyme/p/12129120.html" target="_blank" rel="noopener">从原子类和UNSAFE来理解JAVA内存模型，ATOMICINTEGER的INCREMENTANDGET方法和UNSAFE部分源码介绍，VALUEOFFSET偏移量的理解</a></strong>、<strong><a href="https://www.cnblogs.com/theRhyme/p/9396834.html" target="_blank" rel="noopener">JAVA内存模型中VOLATILE关键字的作用
-</a></strong>、<strong><a href="https://www.cnblogs.com/theRhyme/p/9399881.html" target="_blank" rel="noopener">JAVA内存模型，为啥线程要有自己的本地内存，CPU高速缓存
-</a></strong></p>
+    <title>ubuntu 开机启动管理</title>
+    <url>/2021/03/21/ubuntu-%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%AE%A1%E7%90%86/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ubuntu自启服务管理命令</p>
+<a id="more"></a>
+<p>查看开机启动服务</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl list-unit-files --type&#x3D;service|grep enabled</span><br></pre></td></tr></table></figure>
+<p>以蓝牙为例，查询蓝牙服务是否开机启动</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl is-enabled bluetooth.service</span><br></pre></td></tr></table></figure>
+<p>如果是enable开机自启动<br>如果是disable不开机启动</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl enable bluetooth.service #开机运行服务</span><br><span class="line"></span><br><span class="line">systemctl disable bluetooth.service #取消开机运行</span><br><span class="line"></span><br><span class="line">sudo systemctl disable  bluetooth.service#关闭蓝牙服务</span><br><span class="line"></span><br><span class="line">systemctl start bluetooth.service #启动服务</span><br><span class="line"></span><br><span class="line">systemctl stop bluetooth.service #停止服务</span><br><span class="line"></span><br><span class="line">systemctl restart bluetooth.service #重启服务</span><br><span class="line"></span><br><span class="line">systemctl reload bluetooth.service #重新加载服务配置文件</span><br><span class="line"></span><br><span class="line">systemctl status bluetooth.service #查询服务运行状态</span><br></pre></td></tr></table></figure>
+
+
 ]]></content>
-      <tags>
-        <tag>lock</tag>
-        <tag>synchronized</tag>
-        <tag>CAS</tag>
-        <tag>volatile</tag>
-      </tags>
+      <categories>
+        <category>linux</category>
+      </categories>
   </entry>
   <entry>
     <title>ubuntu 开机自动挂载其他盘</title>
@@ -2147,21 +2169,17 @@
       </categories>
   </entry>
   <entry>
-    <title>ubuntu 开机启动管理</title>
-    <url>/2021/03/21/ubuntu-%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%AE%A1%E7%90%86/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ubuntu自启服务管理命令</p>
+    <title>ubuntu 打开win10 txt中文乱码</title>
+    <url>/2021/03/19/ubuntu-%E6%89%93%E5%BC%80win10-txt%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>双系统，ubuntu打开win10的文本文件，中文乱码，明显是编码问题，记录之。</p>
 <a id="more"></a>
-<p>查看开机启动服务</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl list-unit-files --type&#x3D;service|grep enabled</span><br></pre></td></tr></table></figure>
-<p>以蓝牙为例，查询蓝牙服务是否开机启动</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl is-enabled bluetooth.service</span><br></pre></td></tr></table></figure>
-<p>如果是enable开机自启动<br>如果是disable不开机启动</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl enable bluetooth.service #开机运行服务</span><br><span class="line"></span><br><span class="line">systemctl disable bluetooth.service #取消开机运行</span><br><span class="line"></span><br><span class="line">sudo systemctl disable  bluetooth.service#关闭蓝牙服务</span><br><span class="line"></span><br><span class="line">systemctl start bluetooth.service #启动服务</span><br><span class="line"></span><br><span class="line">systemctl stop bluetooth.service #停止服务</span><br><span class="line"></span><br><span class="line">systemctl restart bluetooth.service #重启服务</span><br><span class="line"></span><br><span class="line">systemctl reload bluetooth.service #重新加载服务配置文件</span><br><span class="line"></span><br><span class="line">systemctl status bluetooth.service #查询服务运行状态</span><br></pre></td></tr></table></figure>
 
-
-]]></content>
+<p>1、原因<br>ubuntu系统locale是utf-8（很多linux系统默认的locale形式），编辑的文档是GB2312或GBK形式的（Windows记事本默认保存形式，大部分编辑器也默认保存为这个形式，所以最常见），终端类型utf-8（也就是假定客户端是putty类的unicode软件）则vim打开文档后，encoding=utf-8（locale决定的），fileencoding=latin1（自动编码判断机制不准导致的），termencoding=空（默认无需转换term编码），最终显示文件为乱码。</p>
+<p>2、解决办法<br>在<em>/home/user/*下修改</em>.vimrc*文件（系统新装，默认情况下尚未创建）。 编辑 ~/.vimrc 文件（ 添加如下几行即可</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set fileencodings&#x3D;utf-8,ucs-bom,gb18030,gbk,gb2312,cp936</span><br><span class="line">set termencoding&#x3D;utf-8</span><br><span class="line">set encoding&#x3D;utf-8</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>linux</category>
+        <category>ubuntu</category>
       </categories>
   </entry>
   <entry>
@@ -2191,16 +2209,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ubuntu登录界面美化</title>
-    <url>/2021/04/14/ubuntu%E5%BC%80%E6%9C%BA%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96/</url>
-    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/vselfdom/article/details/88546349" target="_blank" rel="noopener">Ubuntu 18.04 用户登录界面优化</a></strong>，备用。</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-        <category>ubuntu</category>
-      </categories>
-  </entry>
-  <entry>
     <title>ubuntu 自动挂载其他盘</title>
     <url>/1970/01/01/ubuntu-%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E5%85%B6%E4%BB%96%E7%9B%98/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>双系统，ubuntu和win10装在同一个固态盘，还有另外一个机械盘，平时放些资料啥的，设置给ubuntu开机自动挂载另一个机械盘。</p>
@@ -2222,6 +2230,22 @@
         <category>linux</category>
         <category>ubuntu</category>
       </categories>
+  </entry>
+  <entry>
+    <title>ubuntu登录界面美化</title>
+    <url>/2021/04/14/ubuntu%E5%BC%80%E6%9C%BA%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96/</url>
+    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/vselfdom/article/details/88546349" target="_blank" rel="noopener">Ubuntu 18.04 用户登录界面优化</a></strong>，备用。</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+        <category>ubuntu</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>java类加载</title>
+    <url>/2020/03/03/va-class/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这里贴一个介绍类加载的介绍链接：<a href="https://juejin.im/post/5dac4edff265da5b5f7588d1#heading-0" target="_blank" rel="noopener">java 的类加载</a></p>
+]]></content>
   </entry>
   <entry>
     <title>vim常用命令、快捷键</title>
@@ -2666,6 +2690,22 @@
       </tags>
   </entry>
   <entry>
+    <title>jvm-invokeinterface</title>
+    <url>/2020/03/09/vm-invokeinterface/</url>
+    <content><![CDATA[<p>转载：<a href="https://blog.csdn.net/kang389110772/article/details/50723127" target="_blank" rel="noopener">Spring为什么Autowired注入的是接口
+</a>、</p>
+<p><a href="https://github.com/1993hzh/thoughts/issues/5" target="_blank" rel="noopener">浅析JVM中invokevirtual与invokeinterface的区别 #5
+</a>、</p>
+<p><a href="https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.6.3" target="_blank" rel="noopener">Java Virtual Machine Specification</a></p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>jvm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Ubuntu中vim的粘帖复制</title>
     <url>/2021/03/17/vim-%E7%B2%98%E5%B8%96%E5%A4%8D%E5%88%B6%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>想要从浏览器中把Ctrl+c的内容复制到Vim中，要搞懂Ubuntu18中vim的复制粘帖原理及使用。</p>
@@ -2700,22 +2740,6 @@
       </tags>
   </entry>
   <entry>
-    <title>jvm-invokeinterface</title>
-    <url>/2020/03/09/vm-invokeinterface/</url>
-    <content><![CDATA[<p>转载：<a href="https://blog.csdn.net/kang389110772/article/details/50723127" target="_blank" rel="noopener">Spring为什么Autowired注入的是接口
-</a>、</p>
-<p><a href="https://github.com/1993hzh/thoughts/issues/5" target="_blank" rel="noopener">浅析JVM中invokevirtual与invokeinterface的区别 #5
-</a>、</p>
-<p><a href="https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.6.3" target="_blank" rel="noopener">Java Virtual Machine Specification</a></p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>jvm</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>vue cli 前端跨域设置</title>
     <url>/2021/11/27/vue-cli-%E5%89%8D%E7%AB%AF%E8%B7%A8%E5%9F%9F%E8%AE%BE%E7%BD%AE/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>前后分离的前端开发时,一般都缺少后端的支持,开发阶段可以用mock模拟后端的返回请求, 但后续总要访问后端联调, 此时就涉及到前端的跨越了(只有开发阶段,部署的时候统一部署). 本质上就是在前端开一个代理服务,服务器访问服务器就没有浏览器访问后端的跨域限制了.</p>
@@ -2727,20 +2751,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ubuntu 打开win10 txt中文乱码</title>
-    <url>/2021/03/19/ubuntu-%E6%89%93%E5%BC%80win10-txt%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>双系统，ubuntu打开win10的文本文件，中文乱码，明显是编码问题，记录之。</p>
-<a id="more"></a>
-
-<p>1、原因<br>ubuntu系统locale是utf-8（很多linux系统默认的locale形式），编辑的文档是GB2312或GBK形式的（Windows记事本默认保存形式，大部分编辑器也默认保存为这个形式，所以最常见），终端类型utf-8（也就是假定客户端是putty类的unicode软件）则vim打开文档后，encoding=utf-8（locale决定的），fileencoding=latin1（自动编码判断机制不准导致的），termencoding=空（默认无需转换term编码），最终显示文件为乱码。</p>
-<p>2、解决办法<br>在<em>/home/user/*下修改</em>.vimrc*文件（系统新装，默认情况下尚未创建）。 编辑 ~/.vimrc 文件（ 添加如下几行即可</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set fileencodings&#x3D;utf-8,ucs-bom,gb18030,gbk,gb2312,cp936</span><br><span class="line">set termencoding&#x3D;utf-8</span><br><span class="line">set encoding&#x3D;utf-8</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>linux</category>
-        <category>ubuntu</category>
-      </categories>
-  </entry>
-  <entry>
     <title>vue nginx 压缩</title>
     <url>/2022/02/10/vue-nginx-%E5%8E%8B%E7%BC%A9/</url>
     <content><![CDATA[<p><strong><a href="https://blog.csdn.net/qq_43363884/article/details/108195408" target="_blank" rel="noopener">vue打包时gzip压缩的两种方案</a></strong>  ,   &nbsp;&nbsp;<strong><a href="https://blog.csdn.net/github_38924695/article/details/108773173" target="_blank" rel="noopener">nginx中配置gzip_static on</a></strong></p>
@@ -2749,12 +2759,6 @@
         <tag>nginx</tag>
         <tag>vue</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>java类加载</title>
-    <url>/2020/03/03/va-class/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这里贴一个介绍类加载的介绍链接：<a href="https://juejin.im/post/5dac4edff265da5b5f7588d1#heading-0" target="_blank" rel="noopener">java 的类加载</a></p>
-]]></content>
   </entry>
   <entry>
     <title>websocket --Token Authentication</title>
@@ -2824,6 +2828,12 @@
       </tags>
   </entry>
   <entry>
+    <title>你真的会用Gson吗?Gson使用指南（一）</title>
+    <url>/2021/12/23/%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BC%9A%E7%94%A8Gson%E5%90%97-Gson%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<p><strong><a href="https://www.jianshu.com/p/e740196225a4" target="_blank" rel="noopener">你真的会用Gson吗?Gson使用指南（一）</a></strong>&nbsp;&nbsp;<strong><a href="https://blog.csdn.net/majalis_c/article/details/79801863?utm_term=gsonjsonobject%E8%BD%ACstring&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-0-79801863&spm=3001.4430" target="_blank" rel="noopener">Gson基本操作，JsonObject，JsonArray，String，JavaBean，List互转</a></strong></p>
+]]></content>
+  </entry>
+  <entry>
     <title>RxJava --学习链接</title>
     <url>/2020/02/18/xJava/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Rx（Reactive Extensions）是一个使用<code>可观察数据流</code>进行<code>异步编程</code>的编程接口，ReactiveX结合了<code>观察者模式</code>、<code>迭代器模式</code>和<code>函数式编程</code>的精华。Rx的语言库比较流行的有RxJava/RxJS/Rx.NET，这里贴一些有关RxJava的链接，以便后续查找。</p>
@@ -2836,18 +2846,6 @@
       <tags>
         <tag>RxJava</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>图解--函数调用过程及栈帧分析</title>
-    <url>/2022/02/11/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B%E5%8F%8A%E6%A0%88%E5%B8%A7%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/yishizuofei/article/details/78282958" target="_blank" rel="noopener">函数调用过程原理及函数栈帧分析</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>你真的会用Gson吗?Gson使用指南（一）</title>
-    <url>/2021/12/23/%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BC%9A%E7%94%A8Gson%E5%90%97-Gson%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%EF%BC%88%E4%B8%80%EF%BC%89/</url>
-    <content><![CDATA[<p><strong><a href="https://www.jianshu.com/p/e740196225a4" target="_blank" rel="noopener">你真的会用Gson吗?Gson使用指南（一）</a></strong>&nbsp;&nbsp;<strong><a href="https://blog.csdn.net/majalis_c/article/details/79801863?utm_term=gsonjsonobject%E8%BD%ACstring&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-0-79801863&spm=3001.4430" target="_blank" rel="noopener">Gson基本操作，JsonObject，JsonArray，String，JavaBean，List互转</a></strong></p>
-]]></content>
   </entry>
   <entry>
     <title>二叉树</title>
@@ -2871,6 +2869,19 @@
 ]]></content>
   </entry>
   <entry>
+    <title>计算机网络之IP、MAC</title>
+    <url>/2020/04/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B9%8BIP%E3%80%81MAC/</url>
+    <content><![CDATA[<p>转载：<strong><a href="https://www.wmathor.com/index.php/archives/1124/" target="_blank" rel="noopener">MAC 地址与 IP 地址</a></strong>、<strong><a href="https://zhuanlan.zhihu.com/p/82184208" target="_blank" rel="noopener">物理层 和 MAC 层</a></strong>、<strong><a href="https://www.jianshu.com/p/63fd0faa47da" target="_blank" rel="noopener">网络传输中的三张表，MAC地址表、ARP缓存表以及路由表详解</a></strong></p>
+]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>MAC</tag>
+        <tag>IP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>补码原理的个人理解</title>
     <url>/2020/03/20/%E8%A1%A5%E7%A0%81%E5%8E%9F%E7%90%86%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%90%86%E8%A7%A3/</url>
     <content><![CDATA[<p>转载：<strong><a href="https://blog.csdn.net/jiaobuchong/article/details/83188674" target="_blank" rel="noopener">补码原理的个人理解</a></strong></p>
@@ -2883,16 +2894,9 @@
       </tags>
   </entry>
   <entry>
-    <title>计算机网络之IP、MAC</title>
-    <url>/2020/04/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B9%8BIP%E3%80%81MAC/</url>
-    <content><![CDATA[<p>转载：<strong><a href="https://www.wmathor.com/index.php/archives/1124/" target="_blank" rel="noopener">MAC 地址与 IP 地址</a></strong>、<strong><a href="https://zhuanlan.zhihu.com/p/82184208" target="_blank" rel="noopener">物理层 和 MAC 层</a></strong>、<strong><a href="https://www.jianshu.com/p/63fd0faa47da" target="_blank" rel="noopener">网络传输中的三张表，MAC地址表、ARP缓存表以及路由表详解</a></strong></p>
+    <title>图解--函数调用过程及栈帧分析</title>
+    <url>/2022/02/11/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B%E5%8F%8A%E6%A0%88%E5%B8%A7%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/yishizuofei/article/details/78282958" target="_blank" rel="noopener">函数调用过程原理及函数栈帧分析</a></p>
 ]]></content>
-      <categories>
-        <category>计算机网络</category>
-      </categories>
-      <tags>
-        <tag>MAC</tag>
-        <tag>IP</tag>
-      </tags>
   </entry>
 </search>
