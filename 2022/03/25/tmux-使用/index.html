@@ -48,26 +48,19 @@
   };
 </script>
 
-  <meta name="description" content="ubuntu有时桌面会卡死，鼠标点击失灵，解决方法：重启gnome-shell。建议以下两种二选一：  alt + F2  弹出的输入框里输入小写r ，回车，如此重启gnome-shell桌面环境。 ctrl + alt + F3 切换到其它虚拟终端tty3(Ubuntu18.04 默认tty1是选择用户登录界面，tty2往往就是对应卡死的桌面位置，我们选择tty3进行操作)，输入用户密码登录，输">
+  <meta name="description" content="只能说 tmux太香了…">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ubuntu 桌面死机(重启gnome-shell)">
-<meta property="og:url" content="http://blog.zhangzonglinagain.xyz/2021/04/19/ubuntu-%E6%A1%8C%E9%9D%A2%E6%AD%BB%E6%9C%BA/index.html">
+<meta property="og:title" content="tmux 使用">
+<meta property="og:url" content="http://blog.zhangzonglinagain.xyz/2022/03/25/tmux-%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="1.5L的喜欢">
-<meta property="og:description" content="ubuntu有时桌面会卡死，鼠标点击失灵，解决方法：重启gnome-shell。建议以下两种二选一：  alt + F2  弹出的输入框里输入小写r ，回车，如此重启gnome-shell桌面环境。 ctrl + alt + F3 切换到其它虚拟终端tty3(Ubuntu18.04 默认tty1是选择用户登录界面，tty2往往就是对应卡死的桌面位置，我们选择tty3进行操作)，输入用户密码登录，输">
+<meta property="og:description" content="只能说 tmux太香了…">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://blog.zhangzonglinagain.xyz/images/pasted-36.png">
-<meta property="og:image" content="http://blog.zhangzonglinagain.xyz/images/pasted-37.png">
-<meta property="og:image" content="http://blog.zhangzonglinagain.xyz/images/pasted-38.png">
-<meta property="og:image" content="http://blog.zhangzonglinagain.xyz/images/pasted-39.png">
-<meta property="og:image" content="http://blog.zhangzonglinagain.xyz/images/pasted-40.png">
-<meta property="article:published_time" content="2021-04-19T10:54:00.000Z">
-<meta property="article:modified_time" content="2021-04-19T17:01:55.765Z">
+<meta property="article:published_time" content="2022-03-24T18:09:22.000Z">
+<meta property="article:modified_time" content="2022-03-24T19:26:48.099Z">
 <meta property="article:author" content="zzl">
-<meta property="article:tag" content="gnome-shell">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://blog.zhangzonglinagain.xyz/images/pasted-36.png">
 
-<link rel="canonical" href="http://blog.zhangzonglinagain.xyz/2021/04/19/ubuntu-%E6%A1%8C%E9%9D%A2%E6%AD%BB%E6%9C%BA/">
+<link rel="canonical" href="http://blog.zhangzonglinagain.xyz/2022/03/25/tmux-%E4%BD%BF%E7%94%A8/">
 
 
 <script id="page-configurations">
@@ -79,7 +72,7 @@
   };
 </script>
 
-  <title>ubuntu 桌面死机(重启gnome-shell) | 1.5L的喜欢</title>
+  <title>tmux 使用 | 1.5L的喜欢</title>
   <script src="/live2d-widget/autoload.js"></script>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-156237863-1"></script>
@@ -227,7 +220,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://blog.zhangzonglinagain.xyz/2021/04/19/ubuntu-%E6%A1%8C%E9%9D%A2%E6%AD%BB%E6%9C%BA/">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangzonglinagain.xyz/2022/03/25/tmux-%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/lizi.png">
@@ -240,7 +233,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          ubuntu 桌面死机(重启gnome-shell)
+          tmux 使用
         </h1>
 
         <div class="post-meta">
@@ -249,32 +242,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-04-19 18:54:00" itemprop="dateCreated datePublished" datetime="2021-04-19T18:54:00+08:00">2021-04-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-20 01:01:55" itemprop="dateModified" datetime="2021-04-20T01:01:55+08:00">2021-04-20</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
-                  </a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/ubuntu/" itemprop="url" rel="index">
-                    <span itemprop="name">ubuntu</span>
-                  </a>
-                </span>
+              <time title="创建时间：2022-03-25 02:09:22 / 修改时间：03:26:48" itemprop="dateCreated datePublished" datetime="2022-03-25T02:09:22+08:00">2022-03-25</time>
             </span>
 
           
@@ -286,8 +256,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/04/19/ubuntu-%E6%A1%8C%E9%9D%A2%E6%AD%BB%E6%9C%BA/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/04/19/ubuntu-%E6%A1%8C%E9%9D%A2%E6%AD%BB%E6%9C%BA/" itemprop="commentCount"></span>
+    <a title="valine" href="/2022/03/25/tmux-%E4%BD%BF%E7%94%A8/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/03/25/tmux-%E4%BD%BF%E7%94%A8/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -297,14 +267,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.7k</span>
+              <span>475</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>1 分钟</span>
             </span>
 
         </div>
@@ -316,20 +286,32 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>ubuntu有时桌面会卡死，鼠标点击失灵，解决方法：重启gnome-shell。<br>建议以下两种二选一：</p>
-<ul>
-<li><span style="color:red">alt + F2</span>  弹出的输入框里输入小写<span style="color:red">r</span> ，回车，如此重启gnome-shell桌面环境。</li>
-<li><span style="color:red">ctrl + alt + F3</span> 切换到其它虚拟终端tty3(Ubuntu18.04 默认tty1是选择用户登录界面，tty2往往就是对应卡死的桌面位置，我们选择tty3进行操作)，输入用户密码登录，输入<span style="color:red">ps -ef|grep gnome-shell</span> ，找到tty2对应的gnome-shell pid（一般有两个，一个是tty1的，一个是tty2的），<span style="color:red">kill -9 pidNum</span> ，系统自动重启gnome-shell,最后<span style="color:red">crl + alt +F2</span> 切换至tty2,这种方法的优点是不会干扰其他正在运行的程序。<a id="more"></a>
-其他方法还有（未验证）：</li>
+        <p>只能说 tmux太香了…</p>
+<a id="more"></a>
+
+<h3 id="常用命令："><a href="#常用命令：" class="headerlink" title="常用命令："></a>常用命令：</h3><ul>
+<li>tmux：新建一个session和一个window</li>
+<li>tmux a：打开挂起的session</li>
+<li>tmux ls：显示所有挂起的session</li>
 </ul>
-<h3 id="How-to-restart-GUI-on-Ubuntu-20-04-step-by-step-instructions"><a href="#How-to-restart-GUI-on-Ubuntu-20-04-step-by-step-instructions" class="headerlink" title="How to restart GUI on Ubuntu 20.04 step by step instructions"></a>How to restart GUI on Ubuntu 20.04 step by step instructions</h3><p>Sometimes you many need to restart/reload GUI because you may have done some changes which require it. However, occasionally you are forced to restart GUI because it froze and you do not wish to restart the entire system. In any case you might find some of the bellow information helpful.</p>
-<h4 id="The-first-method-is-the-least-destructing-however-it-might-not-provide-the-expected-result"><a href="#The-first-method-is-the-least-destructing-however-it-might-not-provide-the-expected-result" class="headerlink" title="The first method is the least destructing, however, it might not provide the expected result."></a>The first method is the least destructing, however, it might not provide the expected result.</h4><p>Enter a restart gui Command</p>
-<p><img src="/images/pasted-36.png" alt="upload successful"></p>
-<p>While logged in to your GNOME desktop press <span style="color:red">ALT + F2</span> key combination. Into the Enter a Command box type <span style="color:red">r </span> and press <span style="color:red">Enter</span> .</p>
-<h4 id="Another-alternative-to-do-the-GUI-restart-trick-might-be-the-most-obvious-to-simply-re-login"><a href="#Another-alternative-to-do-the-GUI-restart-trick-might-be-the-most-obvious-to-simply-re-login" class="headerlink" title="Another alternative to do the GUI restart trick might be the most obvious to simply re-login."></a>Another alternative to do the GUI restart trick might be the most obvious to simply re-login.</h4><p><img src="/images/pasted-37.png" alt="upload successful"><br>Restart GUI by first Log Out and consequently Log In to your GUI desktop</p>
-<h4 id="In-this-scenario-we-simply-restart-the-gnome-shell-as-non-privileged-user"><a href="#In-this-scenario-we-simply-restart-the-gnome-shell-as-non-privileged-user" class="headerlink" title="In this scenario we simply restart the gnome-shell as non-privileged user."></a>In this scenario we simply restart the gnome-shell as non-privileged user.</h4><p><img src="/images/pasted-38.png" alt="upload successful"><br>Open up terminal and enter the <span style="color:red">gnome-shell –replace </span>command.</p>
-<h4 id="The-following-restart-GUI-solution-is-guaranteed-to-restart-your-desktop-even-if-your-GUI-froze-while-the-system-is-still-functioning-However-it-needs-administrative-sudo-privileges"><a href="#The-following-restart-GUI-solution-is-guaranteed-to-restart-your-desktop-even-if-your-GUI-froze-while-the-system-is-still-functioning-However-it-needs-administrative-sudo-privileges" class="headerlink" title="The following restart GUI solution is guaranteed to restart your desktop even if your GUI froze while the system is still functioning. However, it needs administrative sudo privileges."></a>The following restart GUI solution is guaranteed to restart your desktop even if your GUI froze while the system is still functioning. However, it needs administrative sudo privileges.</h4><p><img src="/images/pasted-39.png" alt="upload successful"><br>Either enter the <span style="color:red">sudo systemctl restart systemd-logind.service </span>command directly into the terminal while in GUI. However, if your GUI is frozen you may need to first change to TTY console using <span style="color:red">CTRL + ALT + F2</span>, login and execute command from there.</p>
-<h4 id="In-this-method-we-will-restart-the-Display-Manager-which-will-consequently-also-restart-GNOME-shell"><a href="#In-this-method-we-will-restart-the-Display-Manager-which-will-consequently-also-restart-GNOME-shell" class="headerlink" title="In this method we will restart the Display Manager which will consequently also restart GNOME shell."></a>In this method we will restart the Display Manager which will consequently also restart GNOME shell.</h4><p><img src="/images/pasted-40.png" alt="upload successful"><br>Either from GUI and TTY console <span style="color:red">CTRL + ALT + F2</span> execute <span style="color:red">sudo systemctl restart gdm</span> command. However, if you have deployed LightDM display manager in that case execute<span style="color:red"> sudo systemctl restart lightdm</span> command.</p>
+<p>在tmux中的操作：</p>
+<ul>
+<li>按下 ctrl + b 后松开，再按 % 可将当前pane左右平分成两个pane</li>
+<li>按下 ctrl + b 后松开，再按 “ 可将当前pane上下平分成两个pane</li>
+<li>按下 ctrl + b 后松开，再按 d 可挂起当前的session</li>
+<li>按下 ctrl + b 后松开，再按 z 可将当前pane全屏或取消全屏</li>
+<li>按下 ctrl + b 后松开，再按 c 可在当前session中创建新的window</li>
+<li>按下 ctrl + b 后松开，再按 s 可选择其他session，用方向键操作</li>
+<li>按下 ctrl + b 后松开，再按 w 可选择其他window，同样用方向键操作</li>
+<li>按下 ctrl + b 后松开，再按 PageUp 或 PageDown 可翻阅当前pane中的内容</li>
+</ul>
+<p>tmux中的复制粘贴</p>
+<ul>
+<li>按下 ctrl + b 后松开，再按 [</li>
+<li>用鼠标选中文本，被选中的文本会被自动复制到tmux的剪贴板</li>
+<li>按下 ctrl + b 后松开，再按 ]，会将剪贴板的内容粘贴到光标处</li>
+</ul>
+<p><a href="https://developer.aliyun.com/article/789729" target="_blank" rel="noopener">tmux简介</a>、<br><a href="http://www.ruanyifeng.com/blog/2019/10/tmux.html" target="_blank" rel="noopener">Tmux 使用教程</a>、<br><a href="https://developer.aliyun.com/article/789729" target="_blank" rel="noopener">Tmux 修改前缀快捷键</a></p>
 
     </div>
 
@@ -345,7 +327,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://blog.zhangzonglinagain.xyz/2021/04/19/ubuntu-%E6%A1%8C%E9%9D%A2%E6%AD%BB%E6%9C%BA/" title="ubuntu 桌面死机(重启gnome-shell)">http://blog.zhangzonglinagain.xyz/2021/04/19/ubuntu-桌面死机/</a>
+    <a href="http://blog.zhangzonglinagain.xyz/2022/03/25/tmux-%E4%BD%BF%E7%94%A8/" title="tmux 使用">http://blog.zhangzonglinagain.xyz/2022/03/25/tmux-使用/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -355,9 +337,6 @@
 
 
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/gnome-shell/" rel="tag"># gnome-shell</a>
-          </div>
 
         
 
@@ -365,13 +344,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/04/19/markdown%E5%86%85%E5%AE%B9%E6%8A%98%E5%8F%A0/" rel="prev" title="markdown的html标签应用及常用语法">
-      <i class="fa fa-chevron-left"></i> markdown的html标签应用及常用语法
+    <a href="/2022/03/23/nginx-conf-location-%E9%85%8D%E7%BD%AE/" rel="prev" title="nginx conf location 配置">
+      <i class="fa fa-chevron-left"></i> nginx conf location 配置
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/04/29/Ubuntu-apt-get-autoclean-clean-autoremove/" rel="next" title="Ubuntu apt-get autoclean,clean,autoremove">
-      Ubuntu apt-get autoclean,clean,autoremove <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -432,7 +408,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#How-to-restart-GUI-on-Ubuntu-20-04-step-by-step-instructions"><span class="nav-number">1.</span> <span class="nav-text">How to restart GUI on Ubuntu 20.04 step by step instructions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#The-first-method-is-the-least-destructing-however-it-might-not-provide-the-expected-result"><span class="nav-number">1.1.</span> <span class="nav-text">The first method is the least destructing, however, it might not provide the expected result.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Another-alternative-to-do-the-GUI-restart-trick-might-be-the-most-obvious-to-simply-re-login"><span class="nav-number">1.2.</span> <span class="nav-text">Another alternative to do the GUI restart trick might be the most obvious to simply re-login.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#In-this-scenario-we-simply-restart-the-gnome-shell-as-non-privileged-user"><span class="nav-number">1.3.</span> <span class="nav-text">In this scenario we simply restart the gnome-shell as non-privileged user.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#The-following-restart-GUI-solution-is-guaranteed-to-restart-your-desktop-even-if-your-GUI-froze-while-the-system-is-still-functioning-However-it-needs-administrative-sudo-privileges"><span class="nav-number">1.4.</span> <span class="nav-text">The following restart GUI solution is guaranteed to restart your desktop even if your GUI froze while the system is still functioning. However, it needs administrative sudo privileges.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#In-this-method-we-will-restart-the-Display-Manager-which-will-consequently-also-restart-GNOME-shell"><span class="nav-number">1.5.</span> <span class="nav-text">In this method we will restart the Display Manager which will consequently also restart GNOME shell.</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用命令："><span class="nav-number">1.</span> <span class="nav-text">常用命令：</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

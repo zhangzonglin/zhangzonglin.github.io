@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Async/await</title>
-    <url>/2021/04/14/Async-await/</url>
-    <content><![CDATA[<p><a href="https://javascript.info/async-await" target="_blank" rel="noopener">Async/await</a></p>
-]]></content>
-      <categories>
-        <category>javascript</category>
-      </categories>
-  </entry>
-  <entry>
     <title>TCP/IP协议族的网络层基础（6）——NAT和NAPT</title>
     <url>/2020/03/27/CP-IP%E4%B9%8BNAT/</url>
     <content><![CDATA[<p>转载：<strong><a href="https://blog.csdn.net/lvyibin890/article/details/80206979" target="_blank" rel="noopener">TCP/IP协议族的网络层基础（6）——NAT和NAPT</a></strong>。</p>
@@ -82,16 +73,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Form Data &amp; Request Payload</title>
-    <url>/2021/11/27/Form-Data-Request-Payload/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>简单来说,request headers里的Content-Type: application/json 表明request body里是json数据; Content-Type: application/x-www-form-urlencoded表明request body里是Form Data数据(以key1=value1&amp;key2=value2形式). 根据content-type的不同, 后端也要相应处理,或@RequestParam 处理表单数据, 或@RequestBody处理json数据等.<br><strong><a href="https://segmentfault.com/a/1190000018774494" target="_blank" rel="noopener">前后端联调之Form Data与Request Payload，你真的了解吗？</a></strong> &nbsp;&nbsp;<strong><a href="https://www.cnblogs.com/zoro-zero/p/11608491.html" target="_blank" rel="noopener">SpringBoot 传入JSON对象参数</a></strong></p>
-]]></content>
-      <tags>
-        <tag>application/x-www-form-urlencoded</tag>
-        <tag>application/json</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>IOC的实现原理—反射与工厂模式(转载)</title>
     <url>/2020/03/03/C%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E2%80%94%E5%8F%8D%E5%B0%84%E4%B8%8E%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</url>
     <content><![CDATA[<h3 id="反射与工厂模式实现IOC"><a href="#反射与工厂模式实现IOC" class="headerlink" title="反射与工厂模式实现IOC"></a>反射与工厂模式实现IOC</h3><p>   &emsp;Spring中的IoC的实现原理就是工厂模式加反射机制。 我们首先看一下不用反射机制时的工厂模式：<br>   <a id="more"></a></p>
@@ -117,18 +98,13 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Filter和Interceptor的比较</title>
-    <url>/2021/11/15/Filter%E5%92%8CInterceptor%E7%9A%84%E6%AF%94%E8%BE%83/</url>
-    <content><![CDATA[<p><a href="https://www.jianshu.com/p/5f5e5211bbdb" target="_blank" rel="noopener">Filter和Interceptor的比较</a>, &nbsp;&nbsp;&nbsp;<a href="https://www.cnblogs.com/hellovoyager1/p/9152292.html" target="_blank" rel="noopener">Listener、Filter 和Interceptor 总结</a>, &nbsp;&nbsp;<a href="https://www.cnblogs.com/hhhshct/p/8808115.html" target="_blank" rel="noopener">springboot配置监听器、过滤器和拦截器</a></p>
+    <title>Form Data &amp; Request Payload</title>
+    <url>/2021/11/27/Form-Data-Request-Payload/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>简单来说,request headers里的Content-Type: application/json 表明request body里是json数据; Content-Type: application/x-www-form-urlencoded表明request body里是Form Data数据(以key1=value1&amp;key2=value2形式). 根据content-type的不同, 后端也要相应处理,或@RequestParam 处理表单数据, 或@RequestBody处理json数据等.<br><strong><a href="https://segmentfault.com/a/1190000018774494" target="_blank" rel="noopener">前后端联调之Form Data与Request Payload，你真的了解吗？</a></strong> &nbsp;&nbsp;<strong><a href="https://www.cnblogs.com/zoro-zero/p/11608491.html" target="_blank" rel="noopener">SpringBoot 传入JSON对象参数</a></strong></p>
 ]]></content>
-      <categories>
-        <category>spring</category>
-        <category>java</category>
-      </categories>
       <tags>
-        <tag>interceptor</tag>
-        <tag>filter</tag>
-        <tag>listener</tag>
+        <tag>application/x-www-form-urlencoded</tag>
+        <tag>application/json</tag>
       </tags>
   </entry>
   <entry>
@@ -170,6 +146,21 @@
       </tags>
   </entry>
   <entry>
+    <title>Async/await</title>
+    <url>/2021/04/14/Async-await/</url>
+    <content><![CDATA[<p><a href="https://javascript.info/async-await" target="_blank" rel="noopener">Async/await</a></p>
+]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Hashtable、HashMap、ConcurrentHashMap</title>
+    <url>/2021/12/01/Hashtable%E3%80%81HashMap%E3%80%81ConcurrentHashMap/</url>
+    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/Mr_YanMingXin/article/details/118601591" target="_blank" rel="noopener">详解Java中HashMap、HashTable、ConcurrentHashMap常见问题</a></strong> &nbsp;;&nbsp;<strong><a href="https://blog.csdn.net/amunamuna/article/details/107773902" target="_blank" rel="noopener">Hashtable、HashMap、ConcurrentHashMap等及常用阻塞队列</a></strong> &nbsp;&nbsp;</p>
+]]></content>
+  </entry>
+  <entry>
     <title>IntelliJ IDEA激活</title>
     <url>/2021/03/20/IntelliJ-IDEA%E6%BF%80%E6%B4%BB/</url>
     <content><![CDATA[<p>可用方法：<a href="https://www.exception.site/essay/how-to-free-use-intellij-idea-2019-3" target="_blank" rel="noopener">IntelliJ IDEA 2020.3.3激活破解教程（亲测激活至 2099 年，长期更新）</a>，或者一直白嫖试用30天（<em>rm -rf ～/.config/Jetbrains/IntelliJIdea2020.3/eval/</em> 可重置30天）。</p>
@@ -179,16 +170,19 @@
       </tags>
   </entry>
   <entry>
-    <title>Hashtable、HashMap、ConcurrentHashMap</title>
-    <url>/2021/12/01/Hashtable%E3%80%81HashMap%E3%80%81ConcurrentHashMap/</url>
-    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/Mr_YanMingXin/article/details/118601591" target="_blank" rel="noopener">详解Java中HashMap、HashTable、ConcurrentHashMap常见问题</a></strong> &nbsp;;&nbsp;<strong><a href="https://blog.csdn.net/amunamuna/article/details/107773902" target="_blank" rel="noopener">Hashtable、HashMap、ConcurrentHashMap等及常用阻塞队列</a></strong> &nbsp;&nbsp;</p>
+    <title>Filter和Interceptor的比较</title>
+    <url>/2021/11/15/Filter%E5%92%8CInterceptor%E7%9A%84%E6%AF%94%E8%BE%83/</url>
+    <content><![CDATA[<p><a href="https://www.jianshu.com/p/5f5e5211bbdb" target="_blank" rel="noopener">Filter和Interceptor的比较</a>, &nbsp;&nbsp;&nbsp;<a href="https://www.cnblogs.com/hellovoyager1/p/9152292.html" target="_blank" rel="noopener">Listener、Filter 和Interceptor 总结</a>, &nbsp;&nbsp;<a href="https://www.cnblogs.com/hhhshct/p/8808115.html" target="_blank" rel="noopener">springboot配置监听器、过滤器和拦截器</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>Java泛型详解：&lt;T&gt;和Class&lt;T&gt;的使用。泛型类，泛型方法的详细使用实例 </title>
-    <url>/2021/12/17/Java%E6%B3%9B%E5%9E%8B%E8%AF%A6%E8%A7%A3%EF%BC%9A-T-%E5%92%8CClass-T-%E7%9A%84%E4%BD%BF%E7%94%A8%E3%80%82%E6%B3%9B%E5%9E%8B%E7%B1%BB%EF%BC%8C%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95%E7%9A%84%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/jpfss/p/9928747.html" target="_blank" rel="noopener">Java泛型详解：<T>和Class<T>的使用。泛型类，泛型方法的详细使用实例 </T></T></a></p>
-]]></content>
+      <categories>
+        <category>spring</category>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>interceptor</tag>
+        <tag>filter</tag>
+        <tag>listener</tag>
+      </tags>
   </entry>
   <entry>
     <title>Let’sEncrypt 证书自动更新脚本</title>
@@ -213,6 +207,12 @@
       <tags>
         <tag>PostConstruct</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Java泛型详解：&lt;T&gt;和Class&lt;T&gt;的使用。泛型类，泛型方法的详细使用实例 </title>
+    <url>/2021/12/17/Java%E6%B3%9B%E5%9E%8B%E8%AF%A6%E8%A7%A3%EF%BC%9A-T-%E5%92%8CClass-T-%E7%9A%84%E4%BD%BF%E7%94%A8%E3%80%82%E6%B3%9B%E5%9E%8B%E7%B1%BB%EF%BC%8C%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95%E7%9A%84%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/jpfss/p/9928747.html" target="_blank" rel="noopener">Java泛型详解：<T>和Class<T>的使用。泛型类，泛型方法的详细使用实例 </T></T></a></p>
+]]></content>
   </entry>
   <entry>
     <title>Rust copy 、move、clone</title>
@@ -270,26 +270,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ProcessExecutor、ProcessBuilder、Runtime.getRuntime().exec(...) </title>
-    <url>/2021/05/02/ProcessExecutor%E3%80%81ProcessBuilder%E3%80%81Runtime-getRuntime-exec/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>There are many approaches to take when running external processes from Java. There are the JRE options such as the Runtime.exec() 、 ProcessBuilder、  Apache Commons Exec and ZT Process Executor. 其中ZT Process Executor是一个更为强大的进程库（process library），能够通过使用一个单一的 ProcessExecutor 类来调用 java.lang.ProcessBuilder 和 Apache Commons Exec 中的接口。</p>
-<a id="more"></a>
-<h3 id="Runtime-amp-ProcessBuilder"><a href="#Runtime-amp-ProcessBuilder" class="headerlink" title="Runtime&amp;ProcessBuilder"></a>Runtime&amp;ProcessBuilder</h3><p><em>Runtime.getInstance().exec (String cmd)</em>和<em>new ProcessBuilder(String cmd).start()</em>都可以产生子进程对象Process。通过调用Process对象的waitFor()方法可以使主进程进入等待状态，直至子进程执行完毕，再进行下一步工作。如果对子进程处理不当，有可能造成主进程阻塞，整个程序死掉。(A program is executed with command(). With waitFor() we can wait for the process to finish.)<br><strong>通过查看JDK源码可知，Runtime.exec最终是通过调用ProcessBuilder来真正执行操作的</strong>，如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public Process exec(String command) throws IOException &#123;</span><br><span class="line">    return exec(command, null, null);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Process exec(String command, String[] envp, File dir)</span><br><span class="line">    throws IOException &#123;</span><br><span class="line">    if (command.length() &#x3D;&#x3D; 0)</span><br><span class="line">        throw new IllegalArgumentException(&quot;Empty command&quot;);</span><br><span class="line"></span><br><span class="line">    StringTokenizer st &#x3D; new StringTokenizer(command);</span><br><span class="line">    String[] cmdarray &#x3D; new String[st.countTokens()];</span><br><span class="line">    for (int i &#x3D; 0; st.hasMoreTokens(); i++)</span><br><span class="line">        cmdarray[i] &#x3D; st.nextToken();</span><br><span class="line">    return exec(cmdarray, envp, dir);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Process exec(String[] cmdarray, String[] envp, File dir)</span><br><span class="line">    throws IOException &#123;</span><br><span class="line">    return new ProcessBuilder(cmdarray)</span><br><span class="line">        .environment(envp)</span><br><span class="line">        .directory(dir)</span><br><span class="line">        .start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="ProcessExecutor-amp-ProcessBuilder"><a href="#ProcessExecutor-amp-ProcessBuilder" class="headerlink" title="ProcessExecutor&amp;ProcessBuilder"></a>ProcessExecutor&amp;ProcessBuilder</h3><p>ProcessExecutor is implemented as a wrapper of <em>ProcessBuilder</em> complementing it with additional features.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class ProcessExecutor &#123;</span><br><span class="line"></span><br><span class="line">  private static final Logger log &#x3D; LoggerFactory.getLogger(ProcessExecutor.class);</span><br><span class="line"></span><br><span class="line">  private static final boolean IS_OS_WINDOWS &#x3D; System.getProperty(&quot;os.name&quot;).startsWith(&quot;Windows&quot;);</span><br><span class="line"></span><br><span class="line">  public static final Integer[] DEFAULT_EXIT_VALUES &#x3D; null;</span><br><span class="line"></span><br><span class="line">  private static final Integer NORMAL_EXIT_VALUE &#x3D; 0;</span><br><span class="line"></span><br><span class="line">  public static final boolean DEFAULT_REDIRECT_ERROR_STREAM &#x3D; true;</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Process builder used by this executor.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private final ProcessBuilder builder &#x3D; new ProcessBuilder();</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Environment variables which are added (removed in case of &lt;code&gt;null&lt;&#x2F;code&gt; values) to the process being started.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private final Map&lt;String, String&gt; environment &#x3D; new LinkedHashMap&lt;String, String&gt;();</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Set of accepted exit codes or &lt;code&gt;null&lt;&#x2F;code&gt; if all exit codes are allowed.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private Set&lt;Integer&gt; allowedExitValues;</span><br><span class="line">  ...</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>ProcessExecutor在后台运行进程（不阻塞当前代码对执行）:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void runInBackground() throws IOException, InterruptedException, ExecutionException, TimeoutException &#123;</span><br><span class="line">    List&lt;Future&lt;ProcessResult&gt;&gt; tasks &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">    for (int i &#x3D; 0; i &lt; 5; i++) &#123;</span><br><span class="line">        Future&lt;ProcessResult&gt; future &#x3D; new ProcessExecutor().command(&quot;java&quot;, &quot;-version&quot;)</span><br><span class="line">                .start().getFuture();</span><br><span class="line">        tasks.add(future);</span><br><span class="line">    &#125;</span><br><span class="line">    for (Future&lt;ProcessResult&gt; future : tasks) &#123;</span><br><span class="line">        ProcessResult processResult &#x3D; future.get(1, TimeUnit.SECONDS);</span><br><span class="line">        int exitValue &#x3D; processResult.getExitValue();</span><br><span class="line">        log.info(&quot;The exit value of the finished process is &#123;&#125;&quot;, exitValue);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>参考：<strong><a href="https://github.com/zeroturnaround/zt-exec" target="_blank" rel="noopener">GitHub: ZT Process Executor</a></strong></p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Rust引用</title>
     <url>/2022/03/17/Rust%E5%BC%95%E7%94%A8/</url>
     <content><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch3/07_reference_type.html" target="_blank" rel="noopener">Rust中的引用</a></p>
@@ -321,6 +301,39 @@
       <tags>
         <tag>SkipList</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>《Spring设计思想-事务篇》2.数据库隔离级别</title>
+    <url>/2020/03/12/Spring%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3-%E4%BA%8B%E5%8A%A1%E7%AF%87%E3%80%8B2-%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</url>
+    <content><![CDATA[<p>转载：<strong><a href="https://blog.csdn.net/luanlouis/article/details/95319795" target="_blank" rel="noopener">《Spring设计思想-事务篇》2.数据库隔离级别
+</a></strong>，<strong><a href="http://www.hollischuang.com/archives/943" target="_blank" rel="noopener">深入分析事务的隔离级别</a></strong>，<strong><a href="https://www.hollischuang.com/archives/923" target="_blank" rel="noopener">MySQL中的共享锁与排他锁</a></strong></p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>对上述的四种事务隔离级别的阐述中，我们使用了从资源互斥访问的角度做了解释。资源互斥粒度控制的越细，客户端事务的并发能力就越高，但是与此同时，会相应地降低数据的一致性。</p>
+<a id="more"></a>
+
+<p>事务的并发数和数据数据一致性这两个是两个相反的理想指标。而数据库研发的方向就是尽可能提高同时提高两个指标，尽可能减少之间的反作用影响。</p>
+<p>SERIALIZABLE 序列化读，隔离级别最高，客户端以互斥的方式访问数据库资源，统一时间内，同一个资源只能被一个客户端访问，好像客户端在排队请求访问，所以称为序列化读。<br>REPEATABLE_READ 可重复读，可重复读能够保证，一个客户端在一个事务内，多次访问同一个资源时，返回结果是一样的，顾名思义，称为可重复读，这种隔离级别可能会造成幻读现象。<br>READ_COMMITTED 读已提交，即客户端在一个事务内，每次查询读取的数据都是从数据库读取最新的已提交的数据；这种隔离界别可能会造成不可重复读和幻读现象。<br>READ_UNCOMMITTED 读未提交，即客户端在一个事务内，可以读取到其他客户端事务的尚未提交的数据；这种隔离级别可能会造成脏读、不可重复读、幻读 现象。</p>
+<p><img src="/images/pasted-23.png" alt="upload successful"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>ProcessExecutor、ProcessBuilder、Runtime.getRuntime().exec(...) </title>
+    <url>/2021/05/02/ProcessExecutor%E3%80%81ProcessBuilder%E3%80%81Runtime-getRuntime-exec/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>There are many approaches to take when running external processes from Java. There are the JRE options such as the Runtime.exec() 、 ProcessBuilder、  Apache Commons Exec and ZT Process Executor. 其中ZT Process Executor是一个更为强大的进程库（process library），能够通过使用一个单一的 ProcessExecutor 类来调用 java.lang.ProcessBuilder 和 Apache Commons Exec 中的接口。</p>
+<a id="more"></a>
+<h3 id="Runtime-amp-ProcessBuilder"><a href="#Runtime-amp-ProcessBuilder" class="headerlink" title="Runtime&amp;ProcessBuilder"></a>Runtime&amp;ProcessBuilder</h3><p><em>Runtime.getInstance().exec (String cmd)</em>和<em>new ProcessBuilder(String cmd).start()</em>都可以产生子进程对象Process。通过调用Process对象的waitFor()方法可以使主进程进入等待状态，直至子进程执行完毕，再进行下一步工作。如果对子进程处理不当，有可能造成主进程阻塞，整个程序死掉。(A program is executed with command(). With waitFor() we can wait for the process to finish.)<br><strong>通过查看JDK源码可知，Runtime.exec最终是通过调用ProcessBuilder来真正执行操作的</strong>，如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public Process exec(String command) throws IOException &#123;</span><br><span class="line">    return exec(command, null, null);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Process exec(String command, String[] envp, File dir)</span><br><span class="line">    throws IOException &#123;</span><br><span class="line">    if (command.length() &#x3D;&#x3D; 0)</span><br><span class="line">        throw new IllegalArgumentException(&quot;Empty command&quot;);</span><br><span class="line"></span><br><span class="line">    StringTokenizer st &#x3D; new StringTokenizer(command);</span><br><span class="line">    String[] cmdarray &#x3D; new String[st.countTokens()];</span><br><span class="line">    for (int i &#x3D; 0; st.hasMoreTokens(); i++)</span><br><span class="line">        cmdarray[i] &#x3D; st.nextToken();</span><br><span class="line">    return exec(cmdarray, envp, dir);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Process exec(String[] cmdarray, String[] envp, File dir)</span><br><span class="line">    throws IOException &#123;</span><br><span class="line">    return new ProcessBuilder(cmdarray)</span><br><span class="line">        .environment(envp)</span><br><span class="line">        .directory(dir)</span><br><span class="line">        .start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ProcessExecutor-amp-ProcessBuilder"><a href="#ProcessExecutor-amp-ProcessBuilder" class="headerlink" title="ProcessExecutor&amp;ProcessBuilder"></a>ProcessExecutor&amp;ProcessBuilder</h3><p>ProcessExecutor is implemented as a wrapper of <em>ProcessBuilder</em> complementing it with additional features.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class ProcessExecutor &#123;</span><br><span class="line"></span><br><span class="line">  private static final Logger log &#x3D; LoggerFactory.getLogger(ProcessExecutor.class);</span><br><span class="line"></span><br><span class="line">  private static final boolean IS_OS_WINDOWS &#x3D; System.getProperty(&quot;os.name&quot;).startsWith(&quot;Windows&quot;);</span><br><span class="line"></span><br><span class="line">  public static final Integer[] DEFAULT_EXIT_VALUES &#x3D; null;</span><br><span class="line"></span><br><span class="line">  private static final Integer NORMAL_EXIT_VALUE &#x3D; 0;</span><br><span class="line"></span><br><span class="line">  public static final boolean DEFAULT_REDIRECT_ERROR_STREAM &#x3D; true;</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Process builder used by this executor.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private final ProcessBuilder builder &#x3D; new ProcessBuilder();</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Environment variables which are added (removed in case of &lt;code&gt;null&lt;&#x2F;code&gt; values) to the process being started.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private final Map&lt;String, String&gt; environment &#x3D; new LinkedHashMap&lt;String, String&gt;();</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Set of accepted exit codes or &lt;code&gt;null&lt;&#x2F;code&gt; if all exit codes are allowed.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private Set&lt;Integer&gt; allowedExitValues;</span><br><span class="line">  ...</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>ProcessExecutor在后台运行进程（不阻塞当前代码对执行）:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void runInBackground() throws IOException, InterruptedException, ExecutionException, TimeoutException &#123;</span><br><span class="line">    List&lt;Future&lt;ProcessResult&gt;&gt; tasks &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">    for (int i &#x3D; 0; i &lt; 5; i++) &#123;</span><br><span class="line">        Future&lt;ProcessResult&gt; future &#x3D; new ProcessExecutor().command(&quot;java&quot;, &quot;-version&quot;)</span><br><span class="line">                .start().getFuture();</span><br><span class="line">        tasks.add(future);</span><br><span class="line">    &#125;</span><br><span class="line">    for (Future&lt;ProcessResult&gt; future : tasks) &#123;</span><br><span class="line">        ProcessResult processResult &#x3D; future.get(1, TimeUnit.SECONDS);</span><br><span class="line">        int exitValue &#x3D; processResult.getExitValue();</span><br><span class="line">        log.info(&quot;The exit value of the finished process is &#123;&#125;&quot;, exitValue);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>参考：<strong><a href="https://github.com/zeroturnaround/zt-exec" target="_blank" rel="noopener">GitHub: ZT Process Executor</a></strong></p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
   </entry>
   <entry>
     <title>Shell脚本检测Nginx服务状态</title>
@@ -356,37 +369,10 @@
       </tags>
   </entry>
   <entry>
-    <title>《Spring设计思想-事务篇》2.数据库隔离级别</title>
-    <url>/2020/03/12/Spring%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3-%E4%BA%8B%E5%8A%A1%E7%AF%87%E3%80%8B2-%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</url>
-    <content><![CDATA[<p>转载：<strong><a href="https://blog.csdn.net/luanlouis/article/details/95319795" target="_blank" rel="noopener">《Spring设计思想-事务篇》2.数据库隔离级别
-</a></strong>，<strong><a href="http://www.hollischuang.com/archives/943" target="_blank" rel="noopener">深入分析事务的隔离级别</a></strong>，<strong><a href="https://www.hollischuang.com/archives/923" target="_blank" rel="noopener">MySQL中的共享锁与排他锁</a></strong></p>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>对上述的四种事务隔离级别的阐述中，我们使用了从资源互斥访问的角度做了解释。资源互斥粒度控制的越细，客户端事务的并发能力就越高，但是与此同时，会相应地降低数据的一致性。</p>
-<a id="more"></a>
-
-<p>事务的并发数和数据数据一致性这两个是两个相反的理想指标。而数据库研发的方向就是尽可能提高同时提高两个指标，尽可能减少之间的反作用影响。</p>
-<p>SERIALIZABLE 序列化读，隔离级别最高，客户端以互斥的方式访问数据库资源，统一时间内，同一个资源只能被一个客户端访问，好像客户端在排队请求访问，所以称为序列化读。<br>REPEATABLE_READ 可重复读，可重复读能够保证，一个客户端在一个事务内，多次访问同一个资源时，返回结果是一样的，顾名思义，称为可重复读，这种隔离级别可能会造成幻读现象。<br>READ_COMMITTED 读已提交，即客户端在一个事务内，每次查询读取的数据都是从数据库读取最新的已提交的数据；这种隔离界别可能会造成不可重复读和幻读现象。<br>READ_UNCOMMITTED 读未提交，即客户端在一个事务内，可以读取到其他客户端事务的尚未提交的数据；这种隔离级别可能会造成脏读、不可重复读、幻读 现象。</p>
-<p><img src="/images/pasted-23.png" alt="upload successful"></p>
-]]></content>
-  </entry>
-  <entry>
     <title> ThreadLocal 详解</title>
     <url>/2021/11/13/ThreadLocal-%E8%AF%A6%E8%A7%A3/</url>
     <content><![CDATA[<p><a href="https://www.pdai.tech/md/java/thread/java-thread-x-threadlocal.html" target="_blank" rel="noopener">ThreadLocal原理</a>  ,&nbsp;&nbsp;&nbsp; <a href="https://juejin.cn/post/6844903487193481224" target="_blank" rel="noopener">Java 之 ThreadLocal 详解: 内存泄漏</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>Ubuntu18.04下通过zssh与服务器进行上传/下载文件操作</title>
-    <url>/2021/11/29/Ubuntu18-04%E4%B8%8B%E9%80%9A%E8%BF%87zssh%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9B%E8%A1%8C%E4%B8%8A%E4%BC%A0-%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<p>把本地文件上传到远程：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">（1）打开远程终端，输入：rz -bye (打个招呼，表示要接受文件)</span><br><span class="line"> (2) ctrl+@,  （切换到本地，进入要上传的文件的目录）</span><br><span class="line">（3）sz filename （发送文件）</span><br></pre></td></tr></table></figure>
-<p>下载文件的话：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">（1）sz filename （打个招呼，表示要发送的文件）</span><br><span class="line"> (2) ctrl+@,（切换到本地，进入要接收该远程文件的路径下）</span><br><span class="line">（3）rz -ay   （接收完毕了哇）</span><br></pre></td></tr></table></figure>
-<p><a href="https://www.it610.com/article/1280947627608784896.htm" target="_blank" rel="noopener">Ubuntu18.04下通过zssh与服务器进行上传/下载文件操作</a></p>
-]]></content>
-      <tags>
-        <tag>zssh</tag>
-        <tag>ubuntu</tag>
-      </tags>
   </entry>
   <entry>
     <title>Ubuntu 18.04 用户登录界面优化</title>
@@ -440,21 +426,17 @@
       </tags>
   </entry>
   <entry>
-    <title>android studio http proxy for sdk </title>
-    <url>/2020/02/02/andorid-studio-proxy-setting/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>闲来无事，研究一下安卓的开发，并记录一下开发工具android studio的配置，主要是安装时要下载android sdk，又因长城的原因，需要设置国内镜像，或者如果你能科学上网的话，设置http proxy也可。</p>
-<a id="more"></a>
-
-<h3 id="镜像设置"><a href="#镜像设置" class="headerlink" title="镜像设置"></a>镜像设置</h3><p>这里用的是电子科技大学的镜像网站：mirrors.dormforce.net 端口：80<br>通过File–&gt;Setting–&gt;Appearance &amp; Behavior –&gt;System Settings –&gt;Http Proxy，选择Auto-detect proxy settings，并且填写URL为：mirrors.dormforce.net :80，点击clear passwords<br><img src="/images/pasted-0.png" alt="upload successful"></p>
-<h3 id="Http-proxy设置"><a href="#Http-proxy设置" class="headerlink" title="Http proxy设置"></a>Http proxy设置</h3><p>这个适合可以科学上网的同学，我用的是trojan,配置如下：<br>Manual proxy configuration–&gt;SOCKS–&gt;Host name:127.0.0.1 Port number:1080<br>完成后点击Check connection，输入网址<em><a href="https://www.android.com/" target="_blank" rel="noopener">https://www.android.com/</a></em>，测试连接。</p>
-<p><img src="/images/pasted-2.png" alt="upload successful"></p>
-<p>通过上述两种之一的方式设置后，点击Android SDK,点击SDK Update Sites，下面勾选<em>『Force https://… sources to be fetched using http://…』</em>，点击Apply，完成后返回主页面即可。</p>
+    <title>Ubuntu18.04下通过zssh与服务器进行上传/下载文件操作</title>
+    <url>/2021/11/29/Ubuntu18-04%E4%B8%8B%E9%80%9A%E8%BF%87zssh%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9B%E8%A1%8C%E4%B8%8A%E4%BC%A0-%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<p>把本地文件上传到远程：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">（1）打开远程终端，输入：rz -bye (打个招呼，表示要接受文件)</span><br><span class="line"> (2) ctrl+@,  （切换到本地，进入要上传的文件的目录）</span><br><span class="line">（3）sz filename （发送文件）</span><br></pre></td></tr></table></figure>
+<p>下载文件的话：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">（1）sz filename （打个招呼，表示要发送的文件）</span><br><span class="line"> (2) ctrl+@,（切换到本地，进入要接收该远程文件的路径下）</span><br><span class="line">（3）rz -ay   （接收完毕了哇）</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.it610.com/article/1280947627608784896.htm" target="_blank" rel="noopener">Ubuntu18.04下通过zssh与服务器进行上传/下载文件操作</a></p>
 ]]></content>
-      <categories>
-        <category>android</category>
-      </categories>
       <tags>
-        <tag>proxy</tag>
+        <tag>zssh</tag>
+        <tag>ubuntu</tag>
       </tags>
   </entry>
   <entry>
@@ -485,20 +467,22 @@
 ]]></content>
   </entry>
   <entry>
-    <title>java自定义类equal重写</title>
-    <url>/2020/02/27/ava-equal/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>判断两个对象在逻辑上是否相等，有时需要根据类的某些成员变量来判断两个实例是否相等，而继承Object中的equals方法比较的只是对象的引用是否指向同一块内存地址。这时候便需要重写equals()方法了。</p>
+    <title>android studio http proxy for sdk </title>
+    <url>/2020/02/02/andorid-studio-proxy-setting/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>闲来无事，研究一下安卓的开发，并记录一下开发工具android studio的配置，主要是安装时要下载android sdk，又因长城的原因，需要设置国内镜像，或者如果你能科学上网的话，设置http proxy也可。</p>
 <a id="more"></a>
-<p>比较的常用对象如int，float和String等，已重写了equals和hashcode方法，默认比较的是值，而其它自定义对象在用equal时都是比较的引用地址，故此有需要的时候需要重写equal方法。</p>
-<h3 id="重写equal的要求"><a href="#重写equal的要求" class="headerlink" title="重写equal的要求"></a>重写equal的要求</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Override</span><br><span class="line">public boolean equals(Object obj) &#123;  </span><br><span class="line">        if(this &#x3D;&#x3D; obj) &#123;  </span><br><span class="line">            return true;  </span><br><span class="line">        &#125;  </span><br><span class="line">        if(null &#x3D;&#x3D; obj) &#123;  </span><br><span class="line">            return false;  </span><br><span class="line">        &#125;  </span><br><span class="line">       if (obj instanceof Test)&#123;</span><br><span class="line">            Test o &#x3D; (Test) obj;</span><br><span class="line">            return this.id &#x3D;&#x3D; o.id;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>重写equals方法的要求：<br>1、自反性：对于任何非空引用x，x.equals(x)应该返回true。<br>2、对称性：对于任何引用x和y，如果x.equals(y)返回true，那么y.equals(x)也应该返回true。<br>3、传递性：对于任何引用x、y和z，如果x.equals(y)返回true，y.equals(z)返回true，那么x.equals(z)也应该返回true。<br>4、一致性：如果x和y引用的对象没有发生变化，那么反复调用x.equals(y)应该返回同样的结果。<br>5、非空性：对于任意非空引用x，x.equals(null)应该返回false。</p>
-<h3 id="hashCode方法也要重写"><a href="#hashCode方法也要重写" class="headerlink" title="hashCode方法也要重写"></a>hashCode方法也要重写</h3><p>问什么说<strong>重写了equals方法都要进而重写Hashcode方法</strong>呢？</p>
-<p>原因如下：当equals此方法被重写时，通常有必要重写 hashCode 方法，以维护 hashCode 方法的常规协定，该协定声明相等对象必须具有相等的哈希码。如下：</p>
-<p>(1)当obj1.equals(obj2)为true时，obj1.hashCode() == obj2.hashCode()必须为true<br>(2)当obj1.hashCode() == obj2.hashCode()为false时，obj1.equals(obj2)必须为false</p>
-<p>   &emsp;&emsp;hashcode是用于散列数据的快速存取，如利用HashSet/HashMap/Hashtable类来存储数据时，都是根据存储对象的hashcode值来进行判断是否相同的。</p>
-<p>   &emsp;&emsp;以HashMap为例说一下的原理，HashMap存储数据的时候，是取的key值的哈希值，然后计算数组下标，采用链地址法解决冲突，然后进行存储；取数据的时候，依然是先要获取到hash值，找到数组下标，然后for遍历链表集合，进行比较是否有对应的key。比较关心的有2点：<br>  &emsp;&emsp; 1.不管是put还是get的时候，都需要得到key的哈希值，去定位key的数组下标；<br>   &emsp;&emsp;2.在get的时候，需要调用equals方法比较是否有相等的key存储过。</p>
-<p>   更详细具体的可以看<a href="https://www.jianshu.com/p/75d9c2c3d0c1" target="_blank" rel="noopener">这篇博文</a>或者<a href="https://www.cnblogs.com/silence-hust/p/4510574.html" target="_blank" rel="noopener">这一篇</a></p>
+
+<h3 id="镜像设置"><a href="#镜像设置" class="headerlink" title="镜像设置"></a>镜像设置</h3><p>这里用的是电子科技大学的镜像网站：mirrors.dormforce.net 端口：80<br>通过File–&gt;Setting–&gt;Appearance &amp; Behavior –&gt;System Settings –&gt;Http Proxy，选择Auto-detect proxy settings，并且填写URL为：mirrors.dormforce.net :80，点击clear passwords<br><img src="/images/pasted-0.png" alt="upload successful"></p>
+<h3 id="Http-proxy设置"><a href="#Http-proxy设置" class="headerlink" title="Http proxy设置"></a>Http proxy设置</h3><p>这个适合可以科学上网的同学，我用的是trojan,配置如下：<br>Manual proxy configuration–&gt;SOCKS–&gt;Host name:127.0.0.1 Port number:1080<br>完成后点击Check connection，输入网址<em><a href="https://www.android.com/" target="_blank" rel="noopener">https://www.android.com/</a></em>，测试连接。</p>
+<p><img src="/images/pasted-2.png" alt="upload successful"></p>
+<p>通过上述两种之一的方式设置后，点击Android SDK,点击SDK Update Sites，下面勾选<em>『Force https://… sources to be fetched using http://…』</em>，点击Apply，完成后返回主页面即可。</p>
 ]]></content>
+      <categories>
+        <category>android</category>
+      </categories>
+      <tags>
+        <tag>proxy</tag>
+      </tags>
   </entry>
   <entry>
     <title>android studio 真机调试</title>
@@ -523,6 +507,22 @@
       <tags>
         <tag>android-studio</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>java自定义类equal重写</title>
+    <url>/2020/02/27/ava-equal/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>判断两个对象在逻辑上是否相等，有时需要根据类的某些成员变量来判断两个实例是否相等，而继承Object中的equals方法比较的只是对象的引用是否指向同一块内存地址。这时候便需要重写equals()方法了。</p>
+<a id="more"></a>
+<p>比较的常用对象如int，float和String等，已重写了equals和hashcode方法，默认比较的是值，而其它自定义对象在用equal时都是比较的引用地址，故此有需要的时候需要重写equal方法。</p>
+<h3 id="重写equal的要求"><a href="#重写equal的要求" class="headerlink" title="重写equal的要求"></a>重写equal的要求</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Override</span><br><span class="line">public boolean equals(Object obj) &#123;  </span><br><span class="line">        if(this &#x3D;&#x3D; obj) &#123;  </span><br><span class="line">            return true;  </span><br><span class="line">        &#125;  </span><br><span class="line">        if(null &#x3D;&#x3D; obj) &#123;  </span><br><span class="line">            return false;  </span><br><span class="line">        &#125;  </span><br><span class="line">       if (obj instanceof Test)&#123;</span><br><span class="line">            Test o &#x3D; (Test) obj;</span><br><span class="line">            return this.id &#x3D;&#x3D; o.id;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>重写equals方法的要求：<br>1、自反性：对于任何非空引用x，x.equals(x)应该返回true。<br>2、对称性：对于任何引用x和y，如果x.equals(y)返回true，那么y.equals(x)也应该返回true。<br>3、传递性：对于任何引用x、y和z，如果x.equals(y)返回true，y.equals(z)返回true，那么x.equals(z)也应该返回true。<br>4、一致性：如果x和y引用的对象没有发生变化，那么反复调用x.equals(y)应该返回同样的结果。<br>5、非空性：对于任意非空引用x，x.equals(null)应该返回false。</p>
+<h3 id="hashCode方法也要重写"><a href="#hashCode方法也要重写" class="headerlink" title="hashCode方法也要重写"></a>hashCode方法也要重写</h3><p>问什么说<strong>重写了equals方法都要进而重写Hashcode方法</strong>呢？</p>
+<p>原因如下：当equals此方法被重写时，通常有必要重写 hashCode 方法，以维护 hashCode 方法的常规协定，该协定声明相等对象必须具有相等的哈希码。如下：</p>
+<p>(1)当obj1.equals(obj2)为true时，obj1.hashCode() == obj2.hashCode()必须为true<br>(2)当obj1.hashCode() == obj2.hashCode()为false时，obj1.equals(obj2)必须为false</p>
+<p>   &emsp;&emsp;hashcode是用于散列数据的快速存取，如利用HashSet/HashMap/Hashtable类来存储数据时，都是根据存储对象的hashcode值来进行判断是否相同的。</p>
+<p>   &emsp;&emsp;以HashMap为例说一下的原理，HashMap存储数据的时候，是取的key值的哈希值，然后计算数组下标，采用链地址法解决冲突，然后进行存储；取数据的时候，依然是先要获取到hash值，找到数组下标，然后for遍历链表集合，进行比较是否有对应的key。比较关心的有2点：<br>  &emsp;&emsp; 1.不管是put还是get的时候，都需要得到key的哈希值，去定位key的数组下标；<br>   &emsp;&emsp;2.在get的时候，需要调用equals方法比较是否有相等的key存储过。</p>
+<p>   更详细具体的可以看<a href="https://www.jianshu.com/p/75d9c2c3d0c1" target="_blank" rel="noopener">这篇博文</a>或者<a href="https://www.cnblogs.com/silence-hust/p/4510574.html" target="_blank" rel="noopener">这一篇</a></p>
+]]></content>
   </entry>
   <entry>
     <title>Java反射机制</title>
@@ -593,29 +593,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ubuntu自动挂载其他盘</title>
-    <url>/2021/03/18/ceshi/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>双系统，ubuntu和win10装在同一个固态盘，还有另外一个机械盘，平时放些资料啥的，设置给ubuntu开机自动挂载另一个机械盘。</p>
-<a id="more"></a>
-
-<p>1、查询挂载硬盘UUID</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo blkid &#x2F;dev&#x2F;sda2</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/pasted-32.png" alt="upload successful"><br>Secert和WorkSpace盘信息如上，下面用到两个盘的UUID。</p>
-<p>2、打开文件/etc/fstab文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;fstab</span><br></pre></td></tr></table></figure>
-<p>在文档末尾添加相应磁盘的信息。格式为：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[UUID&#x3D;************] [挂载磁盘分区]  [挂载磁盘格式]  0  2</span><br><span class="line"></span><br><span class="line">UUID&#x3D;4D55CFC14D016D60 &#x2F;mnt&#x2F;workspace ntfs defaults  0  2</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/pasted-33.png" alt="upload successful"><br>第一个数字：0表示开机不检查磁盘，1表示开机检查磁盘；<br>第二个数字：0表示交换分区，1代表启动分区（Linux），2表示普通分区</p>
-<p>3、重启生效</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-        <category>ubuntu</category>
-      </categories>
-  </entry>
-  <entry>
     <title>centos 免密切换root</title>
     <url>/2021/04/11/centos-switch-to-root-without-password/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>centos6上免密切换到root，原理、步骤。</p>
@@ -673,6 +650,56 @@
       </categories>
   </entry>
   <entry>
+    <title>ubuntu自动挂载其他盘</title>
+    <url>/2021/03/18/ceshi/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>双系统，ubuntu和win10装在同一个固态盘，还有另外一个机械盘，平时放些资料啥的，设置给ubuntu开机自动挂载另一个机械盘。</p>
+<a id="more"></a>
+
+<p>1、查询挂载硬盘UUID</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo blkid &#x2F;dev&#x2F;sda2</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-32.png" alt="upload successful"><br>Secert和WorkSpace盘信息如上，下面用到两个盘的UUID。</p>
+<p>2、打开文件/etc/fstab文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;fstab</span><br></pre></td></tr></table></figure>
+<p>在文档末尾添加相应磁盘的信息。格式为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[UUID&#x3D;************] [挂载磁盘分区]  [挂载磁盘格式]  0  2</span><br><span class="line"></span><br><span class="line">UUID&#x3D;4D55CFC14D016D60 &#x2F;mnt&#x2F;workspace ntfs defaults  0  2</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-33.png" alt="upload successful"><br>第一个数字：0表示开机不检查磁盘，1表示开机检查磁盘；<br>第二个数字：0表示交换分区，1代表启动分区（Linux），2表示普通分区</p>
+<p>3、重启生效</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+        <category>ubuntu</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>centos 定时任务（cron）通过第三方邮件服务器（MTA）发送邮件</title>
+    <url>/2020/01/13/corn-mail/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>有时会需要把一些日志或者任务结果发送到用户邮箱，特此记录一下定时任务和邮箱信息的配置。</p>
+<a id="more"></a>
+<h3 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h3><p>守护进程 crond定期(每分钟)检查是否有要执行的任务，任务调度分为两类：<strong>系统任务调度</strong>和<strong>用户任务调度</strong>。</p>
+<p><strong>系统任务调度</strong>：系统周期性所要执行的工作，比如写缓存数据到硬盘、日志清理等。配置文件<code>/etc/crontab</code>。（若要配置定时reboot任务，需配置在此）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SHELL&#x3D;&#x2F;bin&#x2F;bash</span><br><span class="line">PATH&#x3D;&#x2F;sbin:&#x2F;bin:&#x2F;usr&#x2F;sbin:&#x2F;usr&#x2F;bin</span><br><span class="line">MAILTO&#x3D;root</span><br><span class="line">HOME&#x3D;&#x2F;</span><br><span class="line"># For details see man 4 crontabs</span><br><span class="line"># Example of job definition:</span><br><span class="line"># .---------------- minute (0 - 59)</span><br><span class="line"># |  .------------- hour (0 - 23)</span><br><span class="line"># |  |  .---------- day of month (1 - 31)</span><br><span class="line"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span><br><span class="line"># |  |  |  |  .---- day of week (0 - 6) (Sunday&#x3D;0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span><br><span class="line"># |  |  |  |  |</span><br><span class="line"># *  *  *  *  * user-name command to be executed</span><br><span class="line">  10 21 *  *  * root reboot</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>用户任务调度</strong>：用户定期要执行的工作，比如用户数据备份、定时邮件提醒、自定义脚本等。配置文件<code>/var/spool/cron/usernamne</code>，用户亦可以用命令crontab定制自己的计划任务。如每隔一分钟给指定邮箱发信息，<code>crontab -u username -e</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">MAILTO&#x3D;&quot;yourmailaddress@**.com&quot;</span><br><span class="line">*&#x2F;1 * * * *  echo &#39;message&#39;</span><br></pre></td></tr></table></figure>
+<p><em>ps</em>：crontab中任何程序产生的输出都会以邮件的形式发送给由MAILTO指定的对象，若未指定则发给任务运行的用户（可于<code>/var/spool/mail/username</code>中查看），此时可通过<code>.forward</code> 或配置<code>/etc/aliases</code> 发送到外部邮箱。</p>
+<h3 id="邮件配置"><a href="#邮件配置" class="headerlink" title="邮件配置"></a>邮件配置</h3><p>用系统自带的postfix配置MTA太费事儿，所以采用163邮箱的SMTP服务。</p>
+<p>  1.邮箱开启SMTP服务</p>
+<p>  登录邮箱，在<code>设置</code>里打开<code>POP3/SMTP/IMAP</code>，勾选<code>POP3/SMTP服务</code>和<code>IMAP/SMTP服务</code>，并设置自己的<code>客户端授权密码</code>。</p>
+<p>  2.centos安装mailx(相当于MUA)<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install mailx</span><br></pre></td></tr></table></figure><br>  3.centos配置163邮箱信息，在文件 <code>/etc/mail.rc</code>末尾添加如下信息<br>    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set from&#x3D;&quot;*********@163.com&quot;</span><br><span class="line">set smtp&#x3D;smtp.163.com</span><br><span class="line">set smtp-auth-user&#x3D;*********@163.com</span><br><span class="line">set smtp-auth-password&#x3D;客户端授权密码</span><br><span class="line">set smtp-auth&#x3D;login</span><br></pre></td></tr></table></figure></p>
+<p>  <em>ps</em>:防火墙配置（vultr要联系客服“开光”25端口）</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>mail</tag>
+        <tag>crontab</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>trojan科学上网</title>
     <url>/2020/01/29/gfw/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>一直用的ssr科学上网，侥幸挺过了去年国庆等的各种严打，一直傲娇地活跃到年底，没想到值此新春佳节之际，终于不出预料地被封了，丧事喜办，旧的不去新的不来，正好试试trojan，希望他能接过前辈的火种，超神带我飞，直直挺到2021吖，本文记录一下vps、windows pc以及android手机的配置。</p>
@@ -702,33 +729,6 @@
 ]]></content>
       <tags>
         <tag>trojan</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>centos 定时任务（cron）通过第三方邮件服务器（MTA）发送邮件</title>
-    <url>/2020/01/13/corn-mail/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>有时会需要把一些日志或者任务结果发送到用户邮箱，特此记录一下定时任务和邮箱信息的配置。</p>
-<a id="more"></a>
-<h3 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h3><p>守护进程 crond定期(每分钟)检查是否有要执行的任务，任务调度分为两类：<strong>系统任务调度</strong>和<strong>用户任务调度</strong>。</p>
-<p><strong>系统任务调度</strong>：系统周期性所要执行的工作，比如写缓存数据到硬盘、日志清理等。配置文件<code>/etc/crontab</code>。（若要配置定时reboot任务，需配置在此）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SHELL&#x3D;&#x2F;bin&#x2F;bash</span><br><span class="line">PATH&#x3D;&#x2F;sbin:&#x2F;bin:&#x2F;usr&#x2F;sbin:&#x2F;usr&#x2F;bin</span><br><span class="line">MAILTO&#x3D;root</span><br><span class="line">HOME&#x3D;&#x2F;</span><br><span class="line"># For details see man 4 crontabs</span><br><span class="line"># Example of job definition:</span><br><span class="line"># .---------------- minute (0 - 59)</span><br><span class="line"># |  .------------- hour (0 - 23)</span><br><span class="line"># |  |  .---------- day of month (1 - 31)</span><br><span class="line"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span><br><span class="line"># |  |  |  |  .---- day of week (0 - 6) (Sunday&#x3D;0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span><br><span class="line"># |  |  |  |  |</span><br><span class="line"># *  *  *  *  * user-name command to be executed</span><br><span class="line">  10 21 *  *  * root reboot</span><br></pre></td></tr></table></figure>
-
-
-<p><strong>用户任务调度</strong>：用户定期要执行的工作，比如用户数据备份、定时邮件提醒、自定义脚本等。配置文件<code>/var/spool/cron/usernamne</code>，用户亦可以用命令crontab定制自己的计划任务。如每隔一分钟给指定邮箱发信息，<code>crontab -u username -e</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">MAILTO&#x3D;&quot;yourmailaddress@**.com&quot;</span><br><span class="line">*&#x2F;1 * * * *  echo &#39;message&#39;</span><br></pre></td></tr></table></figure>
-<p><em>ps</em>：crontab中任何程序产生的输出都会以邮件的形式发送给由MAILTO指定的对象，若未指定则发给任务运行的用户（可于<code>/var/spool/mail/username</code>中查看），此时可通过<code>.forward</code> 或配置<code>/etc/aliases</code> 发送到外部邮箱。</p>
-<h3 id="邮件配置"><a href="#邮件配置" class="headerlink" title="邮件配置"></a>邮件配置</h3><p>用系统自带的postfix配置MTA太费事儿，所以采用163邮箱的SMTP服务。</p>
-<p>  1.邮箱开启SMTP服务</p>
-<p>  登录邮箱，在<code>设置</code>里打开<code>POP3/SMTP/IMAP</code>，勾选<code>POP3/SMTP服务</code>和<code>IMAP/SMTP服务</code>，并设置自己的<code>客户端授权密码</code>。</p>
-<p>  2.centos安装mailx(相当于MUA)<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install mailx</span><br></pre></td></tr></table></figure><br>  3.centos配置163邮箱信息，在文件 <code>/etc/mail.rc</code>末尾添加如下信息<br>    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set from&#x3D;&quot;*********@163.com&quot;</span><br><span class="line">set smtp&#x3D;smtp.163.com</span><br><span class="line">set smtp-auth-user&#x3D;*********@163.com</span><br><span class="line">set smtp-auth-password&#x3D;客户端授权密码</span><br><span class="line">set smtp-auth&#x3D;login</span><br></pre></td></tr></table></figure></p>
-<p>  <em>ps</em>:防火墙配置（vultr要联系客服“开光”25端口）</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>mail</tag>
-        <tag>crontab</tag>
       </tags>
   </entry>
   <entry>
@@ -765,6 +765,22 @@
       </tags>
   </entry>
   <entry>
+    <title>idea下gradle报jdk版本错误</title>
+    <url>/2020/03/05/idea-gradle-jdk/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>idea下用gradle编译项目的时候报错如下：“Could not target platform: ‘Java SE 13’ using tool chain: ‘JDK 11 (11)’.”</p>
+<a id="more"></a>
+<p>确认project采用的jdk 13,build.gradle里也是13，应该是Gradle用的版本不匹配，最后在File–&gt;Setting–&gt;Build Tools–&gt;Gradle里，找到配置项。</p>
+<p><img src="/images/pasted-22.png" alt="upload successful"></p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>gradle</tag>
+        <tag>jdk</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>随笔有感</title>
     <url>/2020/01/13/hello-world/</url>
     <content><![CDATA[<p>一个不读书之人的胡思胡想</p>
@@ -793,31 +809,15 @@
       </tags>
   </entry>
   <entry>
-    <title>idea下gradle报jdk版本错误</title>
-    <url>/2020/03/05/idea-gradle-jdk/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>idea下用gradle编译项目的时候报错如下：“Could not target platform: ‘Java SE 13’ using tool chain: ‘JDK 11 (11)’.”</p>
-<a id="more"></a>
-<p>确认project采用的jdk 13,build.gradle里也是13，应该是Gradle用的版本不匹配，最后在File–&gt;Setting–&gt;Build Tools–&gt;Gradle里，找到配置项。</p>
-<p><img src="/images/pasted-22.png" alt="upload successful"></p>
+    <title>@interface 简介</title>
+    <url>/2021/11/11/interface/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/zhangbeizhen18/article/details/87885441/" target="_blank" rel="noopener">自定义注释@interface的用法理解</a></p>
 ]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>gradle</tag>
-        <tag>jdk</tag>
-      </tags>
   </entry>
   <entry>
     <title>int&amp;Integer、 double&amp;Double&amp;BigDecimal</title>
     <url>/2022/03/09/int%E5%92%8CInteger%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
     <content><![CDATA[<p><a href="https://www.cnblogs.com/guodongdidi/p/6953217.html" target="_blank" rel="noopener">int和Integer的区别</a>&nbsp;&nbsp;<a href="http://www.louisvv.com/archives/2514.html" target="_blank" rel="noopener">double、Double与BigDecimal</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>@interface 简介</title>
-    <url>/2021/11/11/interface/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/zhangbeizhen18/article/details/87885441/" target="_blank" rel="noopener">自定义注释@interface的用法理解</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -845,6 +845,19 @@
       </categories>
       <tags>
         <tag>乱码</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>json web token(jwt)</title>
+    <url>/2020/05/02/json-web-token-jwt/</url>
+    <content><![CDATA[<p>转载：<strong><a href="https://learnku.com/articles/22616" target="_blank" rel="noopener">别再使用 JWT 作为 Session 系统！问题重重且很危险。
+</a></strong><br>结论：无状态 JWT Tokens 无法被单独地销毁或更新，取决于你如何存储，可能还会导致长度问题、安全隐患。有状态 JWT Tokens 在功能方面与 Session cookies 无异，但缺乏生产环境的验证、经过大量 Review 的实现，以及良好的客户端支持。<br>JWT 特别有效的使用例子通常是作为一次性的授权令牌。</p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>jwt</tag>
       </tags>
   </entry>
   <entry>
@@ -1030,19 +1043,6 @@
 </table>
 
 ]]></content>
-  </entry>
-  <entry>
-    <title>json web token(jwt)</title>
-    <url>/2020/05/02/json-web-token-jwt/</url>
-    <content><![CDATA[<p>转载：<strong><a href="https://learnku.com/articles/22616" target="_blank" rel="noopener">别再使用 JWT 作为 Session 系统！问题重重且很危险。
-</a></strong><br>结论：无状态 JWT Tokens 无法被单独地销毁或更新，取决于你如何存储，可能还会导致长度问题、安全隐患。有状态 JWT Tokens 在功能方面与 Session cookies 无异，但缺乏生产环境的验证、经过大量 Review 的实现，以及良好的客户端支持。<br>JWT 特别有效的使用例子通常是作为一次性的授权令牌。</p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>jwt</tag>
-      </tags>
   </entry>
   <entry>
     <title>kotlin 构造函数</title>
@@ -1750,21 +1750,6 @@
       </tags>
   </entry>
   <entry>
-    <title>pac.txt---url通配规则</title>
-    <url>/2020/01/30/pac/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>科学上网PAC模式，有时会需要自己在pac.txt里添加一些被墙的URL，记录一下url通配的规则，以备以后使用。</p>
-<a id="more"></a>
-<ol>
-<li>通配符支持。比如 .example.com/ 实际书写时可省略 * ， 如 .example.com/ ， 和 *.example.com/ 效果一样</li>
-<li>正则表达式支持。以 \ 开始和结束， 如 [\w]+://example.com\</li>
-<li>例外规则 @@ ，如 @@.example.com/ 满足 @@ 后规则的地址不使用代理</li>
-<li>匹配地址开始和结尾 | ，如 |<a href="http://example.com" target="_blank" rel="noopener">http://example.com</a> 、 example.com| 分别表示以 <a href="http://example.com" target="_blank" rel="noopener">http://example.com</a> 开始和以 example.com 结束的地址</li>
-<li>|| 标记，如 ||example.com 则 <a href="http://example.com" target="_blank" rel="noopener">http://example.com</a> 、 <a href="https://example.com" target="_blank" rel="noopener">https://example.com</a> 、 <a href="ftp://example.com">ftp://example.com</a> 等地址均满足条件</li>
-<li>注释 ! 。 如 !我是注释<br>v2rayN需重启生效。</li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
     <title>nginx conf location 配置</title>
     <url>/2022/03/23/nginx-conf-location-%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h4 id="root-alias"><a href="#root-alias" class="headerlink" title="root alias"></a>root alias</h4><ul>
@@ -1818,6 +1803,21 @@
         <tag>location</tag>
         <tag>nginx</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>pac.txt---url通配规则</title>
+    <url>/2020/01/30/pac/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>科学上网PAC模式，有时会需要自己在pac.txt里添加一些被墙的URL，记录一下url通配的规则，以备以后使用。</p>
+<a id="more"></a>
+<ol>
+<li>通配符支持。比如 .example.com/ 实际书写时可省略 * ， 如 .example.com/ ， 和 *.example.com/ 效果一样</li>
+<li>正则表达式支持。以 \ 开始和结束， 如 [\w]+://example.com\</li>
+<li>例外规则 @@ ，如 @@.example.com/ 满足 @@ 后规则的地址不使用代理</li>
+<li>匹配地址开始和结尾 | ，如 |<a href="http://example.com" target="_blank" rel="noopener">http://example.com</a> 、 example.com| 分别表示以 <a href="http://example.com" target="_blank" rel="noopener">http://example.com</a> 开始和以 example.com 结束的地址</li>
+<li>|| 标记，如 ||example.com 则 <a href="http://example.com" target="_blank" rel="noopener">http://example.com</a> 、 <a href="https://example.com" target="_blank" rel="noopener">https://example.com</a> 、 <a href="ftp://example.com">ftp://example.com</a> 等地址均满足条件</li>
+<li>注释 ! 。 如 !我是注释<br>v2rayN需重启生效。</li>
+</ol>
+]]></content>
   </entry>
   <entry>
     <title>spring 线程安全</title>
@@ -2106,6 +2106,37 @@
         <tag>CAS</tag>
         <tag>volatile</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>tmux 使用</title>
+    <url>/2022/03/25/tmux-%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>只能说 tmux太香了…</p>
+<a id="more"></a>
+
+<h3 id="常用命令："><a href="#常用命令：" class="headerlink" title="常用命令："></a>常用命令：</h3><ul>
+<li>tmux：新建一个session和一个window</li>
+<li>tmux a：打开挂起的session</li>
+<li>tmux ls：显示所有挂起的session</li>
+</ul>
+<p>在tmux中的操作：</p>
+<ul>
+<li>按下 ctrl + b 后松开，再按 % 可将当前pane左右平分成两个pane</li>
+<li>按下 ctrl + b 后松开，再按 “ 可将当前pane上下平分成两个pane</li>
+<li>按下 ctrl + b 后松开，再按 d 可挂起当前的session</li>
+<li>按下 ctrl + b 后松开，再按 z 可将当前pane全屏或取消全屏</li>
+<li>按下 ctrl + b 后松开，再按 c 可在当前session中创建新的window</li>
+<li>按下 ctrl + b 后松开，再按 s 可选择其他session，用方向键操作</li>
+<li>按下 ctrl + b 后松开，再按 w 可选择其他window，同样用方向键操作</li>
+<li>按下 ctrl + b 后松开，再按 PageUp 或 PageDown 可翻阅当前pane中的内容</li>
+</ul>
+<p>tmux中的复制粘贴</p>
+<ul>
+<li>按下 ctrl + b 后松开，再按 [</li>
+<li>用鼠标选中文本，被选中的文本会被自动复制到tmux的剪贴板</li>
+<li>按下 ctrl + b 后松开，再按 ]，会将剪贴板的内容粘贴到光标处</li>
+</ul>
+<p><a href="https://developer.aliyun.com/article/789729" target="_blank" rel="noopener">tmux简介</a>、<br><a href="http://www.ruanyifeng.com/blog/2019/10/tmux.html" target="_blank" rel="noopener">Tmux 使用教程</a>、<br><a href="https://developer.aliyun.com/article/789729" target="_blank" rel="noopener">Tmux 修改前缀快捷键</a></p>
+]]></content>
   </entry>
   <entry>
     <title>ubuntu terminal 打开后的默认位置和大小</title>
@@ -2690,22 +2721,6 @@
       </tags>
   </entry>
   <entry>
-    <title>jvm-invokeinterface</title>
-    <url>/2020/03/09/vm-invokeinterface/</url>
-    <content><![CDATA[<p>转载：<a href="https://blog.csdn.net/kang389110772/article/details/50723127" target="_blank" rel="noopener">Spring为什么Autowired注入的是接口
-</a>、</p>
-<p><a href="https://github.com/1993hzh/thoughts/issues/5" target="_blank" rel="noopener">浅析JVM中invokevirtual与invokeinterface的区别 #5
-</a>、</p>
-<p><a href="https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.6.3" target="_blank" rel="noopener">Java Virtual Machine Specification</a></p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>jvm</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Ubuntu中vim的粘帖复制</title>
     <url>/2021/03/17/vim-%E7%B2%98%E5%B8%96%E5%A4%8D%E5%88%B6%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>想要从浏览器中把Ctrl+c的内容复制到Vim中，要搞懂Ubuntu18中vim的复制粘帖原理及使用。</p>
@@ -2737,6 +2752,22 @@
       </categories>
       <tags>
         <tag>vim</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>jvm-invokeinterface</title>
+    <url>/2020/03/09/vm-invokeinterface/</url>
+    <content><![CDATA[<p>转载：<a href="https://blog.csdn.net/kang389110772/article/details/50723127" target="_blank" rel="noopener">Spring为什么Autowired注入的是接口
+</a>、</p>
+<p><a href="https://github.com/1993hzh/thoughts/issues/5" target="_blank" rel="noopener">浅析JVM中invokevirtual与invokeinterface的区别 #5
+</a>、</p>
+<p><a href="https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.6.3" target="_blank" rel="noopener">Java Virtual Machine Specification</a></p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>jvm</tag>
       </tags>
   </entry>
   <entry>
@@ -2828,12 +2859,6 @@
       </tags>
   </entry>
   <entry>
-    <title>你真的会用Gson吗?Gson使用指南（一）</title>
-    <url>/2021/12/23/%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BC%9A%E7%94%A8Gson%E5%90%97-Gson%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%EF%BC%88%E4%B8%80%EF%BC%89/</url>
-    <content><![CDATA[<p><strong><a href="https://www.jianshu.com/p/e740196225a4" target="_blank" rel="noopener">你真的会用Gson吗?Gson使用指南（一）</a></strong>&nbsp;&nbsp;<strong><a href="https://blog.csdn.net/majalis_c/article/details/79801863?utm_term=gsonjsonobject%E8%BD%ACstring&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-0-79801863&spm=3001.4430" target="_blank" rel="noopener">Gson基本操作，JsonObject，JsonArray，String，JavaBean，List互转</a></strong></p>
-]]></content>
-  </entry>
-  <entry>
     <title>RxJava --学习链接</title>
     <url>/2020/02/18/xJava/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Rx（Reactive Extensions）是一个使用<code>可观察数据流</code>进行<code>异步编程</code>的编程接口，ReactiveX结合了<code>观察者模式</code>、<code>迭代器模式</code>和<code>函数式编程</code>的精华。Rx的语言库比较流行的有RxJava/RxJS/Rx.NET，这里贴一些有关RxJava的链接，以便后续查找。</p>
@@ -2846,6 +2871,18 @@
       <tags>
         <tag>RxJava</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>你真的会用Gson吗?Gson使用指南（一）</title>
+    <url>/2021/12/23/%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BC%9A%E7%94%A8Gson%E5%90%97-Gson%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<p><strong><a href="https://www.jianshu.com/p/e740196225a4" target="_blank" rel="noopener">你真的会用Gson吗?Gson使用指南（一）</a></strong>&nbsp;&nbsp;<strong><a href="https://blog.csdn.net/majalis_c/article/details/79801863?utm_term=gsonjsonobject%E8%BD%ACstring&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-0-79801863&spm=3001.4430" target="_blank" rel="noopener">Gson基本操作，JsonObject，JsonArray，String，JavaBean，List互转</a></strong></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>图解--函数调用过程及栈帧分析</title>
+    <url>/2022/02/11/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B%E5%8F%8A%E6%A0%88%E5%B8%A7%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/yishizuofei/article/details/78282958" target="_blank" rel="noopener">函数调用过程原理及函数栈帧分析</a></p>
+]]></content>
   </entry>
   <entry>
     <title>二叉树</title>
@@ -2869,19 +2906,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>计算机网络之IP、MAC</title>
-    <url>/2020/04/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B9%8BIP%E3%80%81MAC/</url>
-    <content><![CDATA[<p>转载：<strong><a href="https://www.wmathor.com/index.php/archives/1124/" target="_blank" rel="noopener">MAC 地址与 IP 地址</a></strong>、<strong><a href="https://zhuanlan.zhihu.com/p/82184208" target="_blank" rel="noopener">物理层 和 MAC 层</a></strong>、<strong><a href="https://www.jianshu.com/p/63fd0faa47da" target="_blank" rel="noopener">网络传输中的三张表，MAC地址表、ARP缓存表以及路由表详解</a></strong></p>
-]]></content>
-      <categories>
-        <category>计算机网络</category>
-      </categories>
-      <tags>
-        <tag>MAC</tag>
-        <tag>IP</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>补码原理的个人理解</title>
     <url>/2020/03/20/%E8%A1%A5%E7%A0%81%E5%8E%9F%E7%90%86%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%90%86%E8%A7%A3/</url>
     <content><![CDATA[<p>转载：<strong><a href="https://blog.csdn.net/jiaobuchong/article/details/83188674" target="_blank" rel="noopener">补码原理的个人理解</a></strong></p>
@@ -2894,9 +2918,16 @@
       </tags>
   </entry>
   <entry>
-    <title>图解--函数调用过程及栈帧分析</title>
-    <url>/2022/02/11/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B%E5%8F%8A%E6%A0%88%E5%B8%A7%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/yishizuofei/article/details/78282958" target="_blank" rel="noopener">函数调用过程原理及函数栈帧分析</a></p>
+    <title>计算机网络之IP、MAC</title>
+    <url>/2020/04/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B9%8BIP%E3%80%81MAC/</url>
+    <content><![CDATA[<p>转载：<strong><a href="https://www.wmathor.com/index.php/archives/1124/" target="_blank" rel="noopener">MAC 地址与 IP 地址</a></strong>、<strong><a href="https://zhuanlan.zhihu.com/p/82184208" target="_blank" rel="noopener">物理层 和 MAC 层</a></strong>、<strong><a href="https://www.jianshu.com/p/63fd0faa47da" target="_blank" rel="noopener">网络传输中的三张表，MAC地址表、ARP缓存表以及路由表详解</a></strong></p>
 ]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>MAC</tag>
+        <tag>IP</tag>
+      </tags>
   </entry>
 </search>

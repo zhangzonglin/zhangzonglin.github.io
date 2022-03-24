@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglinagain.xyz/"/>
-  <updated>2022-03-23T16:18:23.403Z</updated>
+  <updated>2022-03-24T19:26:48.099Z</updated>
   <id>http://blog.zhangzonglinagain.xyz/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>tmux 使用</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2022/03/25/tmux-%E4%BD%BF%E7%94%A8/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2022/03/25/tmux-%E4%BD%BF%E7%94%A8/</id>
+    <published>2022-03-24T18:09:22.000Z</published>
+    <updated>2022-03-24T19:26:48.099Z</updated>
+    
+    <content type="html"><![CDATA[<p>只能说 tmux太香了…</p><a id="more"></a><h3 id="常用命令："><a href="#常用命令：" class="headerlink" title="常用命令："></a>常用命令：</h3><ul><li>tmux：新建一个session和一个window</li><li>tmux a：打开挂起的session</li><li>tmux ls：显示所有挂起的session</li></ul><p>在tmux中的操作：</p><ul><li>按下 ctrl + b 后松开，再按 % 可将当前pane左右平分成两个pane</li><li>按下 ctrl + b 后松开，再按 “ 可将当前pane上下平分成两个pane</li><li>按下 ctrl + b 后松开，再按 d 可挂起当前的session</li><li>按下 ctrl + b 后松开，再按 z 可将当前pane全屏或取消全屏</li><li>按下 ctrl + b 后松开，再按 c 可在当前session中创建新的window</li><li>按下 ctrl + b 后松开，再按 s 可选择其他session，用方向键操作</li><li>按下 ctrl + b 后松开，再按 w 可选择其他window，同样用方向键操作</li><li>按下 ctrl + b 后松开，再按 PageUp 或 PageDown 可翻阅当前pane中的内容</li></ul><p>tmux中的复制粘贴</p><ul><li>按下 ctrl + b 后松开，再按 [</li><li>用鼠标选中文本，被选中的文本会被自动复制到tmux的剪贴板</li><li>按下 ctrl + b 后松开，再按 ]，会将剪贴板的内容粘贴到光标处</li></ul><p><a href="https://developer.aliyun.com/article/789729" target="_blank" rel="noopener">tmux简介</a>、<br><a href="http://www.ruanyifeng.com/blog/2019/10/tmux.html" target="_blank" rel="noopener">Tmux 使用教程</a>、<br><a href="https://developer.aliyun.com/article/789729" target="_blank" rel="noopener">Tmux 修改前缀快捷键</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;只能说 tmux太香了…&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>nginx conf location 配置</title>
@@ -464,38 +483,6 @@
     
     
       <category term="PostConstruct" scheme="http://blog.zhangzonglinagain.xyz/tags/PostConstruct/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Filter和Interceptor的比较</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2021/11/15/Filter%E5%92%8CInterceptor%E7%9A%84%E6%AF%94%E8%BE%83/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2021/11/15/Filter%E5%92%8CInterceptor%E7%9A%84%E6%AF%94%E8%BE%83/</id>
-    <published>2021-11-15T12:58:00.000Z</published>
-    <updated>2021-11-15T13:12:15.065Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://www.jianshu.com/p/5f5e5211bbdb" target="_blank" rel="noopener">Filter和Interceptor的比较</a>, &nbsp;&nbsp;&nbsp;<a href="https://www.cnblogs.com/hellovoyager1/p/9152292.html" target="_blank" rel="noopener">Listener、Filter 和Interceptor 总结</a>, &nbsp;&nbsp;<a href="https://www.cnblogs.com/hhhshct/p/8808115.html" target="_blank" rel="noopener">springboot配置监听器、过滤器和拦截器</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;https://www.jianshu.com/p/5f5e5211bbdb&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Filter和Interceptor的比较&lt;/a&gt;, &amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;htt
-      
-    
-    </summary>
-    
-    
-      <category term="spring" scheme="http://blog.zhangzonglinagain.xyz/categories/spring/"/>
-    
-      <category term="java" scheme="http://blog.zhangzonglinagain.xyz/categories/spring/java/"/>
-    
-    
-      <category term="interceptor" scheme="http://blog.zhangzonglinagain.xyz/tags/interceptor/"/>
-    
-      <category term="filter" scheme="http://blog.zhangzonglinagain.xyz/tags/filter/"/>
-    
-      <category term="listener" scheme="http://blog.zhangzonglinagain.xyz/tags/listener/"/>
     
   </entry>
   
