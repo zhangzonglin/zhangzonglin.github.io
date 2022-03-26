@@ -50,13 +50,13 @@
 
   <meta name="description" content="root alias root的处理结果是：root路径＋location路径 alias的处理结果是：使用alias路径替换location路径">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nginx conf location 配置">
+<meta property="og:title" content="nginx conf location">
 <meta property="og:url" content="http://blog.zhangzonglinagain.xyz/2022/03/23/nginx-conf-location-%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="1.5L的喜欢">
 <meta property="og:description" content="root alias root的处理结果是：root路径＋location路径 alias的处理结果是：使用alias路径替换location路径">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-23T15:58:00.000Z">
-<meta property="article:modified_time" content="2022-03-23T16:18:23.403Z">
+<meta property="article:modified_time" content="2022-03-26T17:25:45.644Z">
 <meta property="article:author" content="zzl">
 <meta property="article:tag" content="alias">
 <meta property="article:tag" content="root">
@@ -76,7 +76,7 @@
   };
 </script>
 
-  <title>nginx conf location 配置 | 1.5L的喜欢</title>
+  <title>nginx conf location | 1.5L的喜欢</title>
   <script src="/live2d-widget/autoload.js"></script>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-156237863-1"></script>
@@ -237,7 +237,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          nginx conf location 配置
+          nginx conf location
         </h1>
 
         <div class="post-meta">
@@ -254,7 +254,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-24 00:18:23" itemprop="dateModified" datetime="2022-03-24T00:18:23+08:00">2022-03-24</time>
+                <time title="修改时间：2022-03-27 01:25:45" itemprop="dateModified" datetime="2022-03-27T01:25:45+08:00">2022-03-27</time>
               </span>
 
           
@@ -277,7 +277,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4.3k</span>
+              <span>4.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -334,6 +334,12 @@
 <p>例子，有如下匹配规则：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">location &#x3D; &#x2F; &#123;</span><br><span class="line">   #规则A  访问根目录&#x2F;， 比如http:&#x2F;&#x2F;localhost&#x2F;</span><br><span class="line">&#125;</span><br><span class="line">location &#x3D; &#x2F;login &#123;</span><br><span class="line">   #规则B  http:&#x2F;&#x2F;localhost&#x2F;login 将匹配规则B，http:&#x2F;&#x2F;localhost&#x2F;register 则匹配规则H</span><br><span class="line">&#125;</span><br><span class="line">location ^~ &#x2F;static&#x2F; &#123;</span><br><span class="line">   #规则C  http:&#x2F;&#x2F;localhost&#x2F;static&#x2F;a.html 将匹配规则C</span><br><span class="line">&#125;</span><br><span class="line">location ~ \.(gif|jpg|png|js|css)$ &#123;</span><br><span class="line">   #规则D，注意：是根据括号内的大小写进行匹配。括号内全是小写，只匹配小写</span><br><span class="line">&#125;</span><br><span class="line">location ~* \.png$ &#123;</span><br><span class="line">   #规则E  http:&#x2F;&#x2F;localhost&#x2F;a.gif, http:&#x2F;&#x2F;localhost&#x2F;b.jpg 将匹配规则D和规则E，但是规则D顺序优先，规则E不起作用， </span><br><span class="line">      http:&#x2F;&#x2F;localhost&#x2F;static&#x2F;c.png 则优先匹配到 规则C</span><br><span class="line">      http:&#x2F;&#x2F;localhost&#x2F;a.PNG 则匹配规则E， 而不会匹配规则D，因为规则E不区分大小写。</span><br><span class="line">&#125;</span><br><span class="line">location !~ \.xhtml$ &#123;</span><br><span class="line">   #规则F  访问 http:&#x2F;&#x2F;localhost&#x2F;a.xhtml 不会匹配规则F和规则G，</span><br><span class="line">&#125;</span><br><span class="line">location !~* \.xhtml$ &#123;</span><br><span class="line">   #规则G  访问 http:&#x2F;&#x2F;localhost&#x2F;a.xhtml 不会匹配规则F和规则G，</span><br><span class="line">&#125;</span><br><span class="line">location &#x2F; &#123;</span><br><span class="line">   #规则H</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost&#x2F;a.XHTML不会匹配规则G，（因为!）。规则F，规则G属于排除法，符合匹配规则也不会匹配到，所以想想看实际应用中哪里会用到。</span><br><span class="line"></span><br><span class="line">访问 http:&#x2F;&#x2F;localhost&#x2F;category&#x2F;id&#x2F;1111 则最终匹配到规则H，因为以上规则都不匹配，这个时候nginx转发请求给后端应用[服务器](https:&#x2F;&#x2F;www.baidu.com&#x2F;s?wd&#x3D;服务器&amp;tn&#x3D;24004469_oem_dg&amp;rsv_dl&#x3D;gh_pl_sl_csd)，比如FastCGI（php），tomcat（jsp），nginx作为方向代理服务器存在。</span><br><span class="line"></span><br><span class="line">所以实际使用中，个人觉得至少有三个匹配规则定义，如下：</span><br><span class="line">#直接匹配网站根，通过域名访问网站首页比较频繁，使用这个会加速处理，官网如是说。</span><br><span class="line">#这里是直接转发给后端应用服务器了，也可以是一个静态首页</span><br><span class="line"># 第一个必选规则</span><br><span class="line">location &#x3D; &#x2F; &#123;</span><br><span class="line">    proxy_pass http:&#x2F;&#x2F;tomcat:8080&#x2F;index</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location &#x3D; &#x2F;api&#x2F; &#123;   # 访问http:&#x2F;&#x2F;localhost&#x2F;api&#x2F;xxx.xxx  会被代理到192.168.0.1&#x2F;xxx.xxx</span><br><span class="line">    proxy_pass http:&#x2F;&#x2F;192.168.0.1&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 第二个必选规则是处理静态文件请求，这是nginx作为http服务器的强项</span><br><span class="line"># 有两种配置模式，目录匹配或后缀匹配,任选其一或搭配使用</span><br><span class="line">location ^~ &#x2F;static&#x2F; &#123;                              &#x2F;&#x2F;以xx开头</span><br><span class="line">    root &#x2F;webroot&#x2F;static&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line">location ~* \.(gif|jpg|jpeg|png|css|js|ico)$ &#123;     &#x2F;&#x2F;以xx结尾</span><br><span class="line">    root &#x2F;webroot&#x2F;res&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#第三个规则就是通用规则，用来转发动态请求到后端应用服务器</span><br><span class="line">#非静态文件请求就默认是动态请求，自己根据实际把握</span><br><span class="line">location &#x2F; &#123;</span><br><span class="line">    proxy_pass http:&#x2F;&#x2F;tomcat:8080&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="try-files详解"><a href="#try-files详解" class="headerlink" title="try_files详解"></a>try_files详解</h4><ul>
+<li>格式1：try_files file … uri;  </li>
+<li>格式2：try_files file … =code;</li>
+</ul>
+<p><a href="https://www.cnblogs.com/jedi1995/p/10900224.html" target="_blank" rel="noopener">nginx配置选项try_files详解</a></p>
 <h4 id="proxy-pass详解"><a href="#proxy-pass详解" class="headerlink" title="proxy_pass详解"></a>proxy_pass详解</h4><p>在nginx中配置proxy_pass代理转发时，如果在proxy_pass后面的url加/，表示绝对根路径；如果没有/，表示相对路径，把匹配的路径部分也给代理走。<br>假设下面四种情况分别用 <a href="http://192.168.1.1/proxy/test.html" target="_blank" rel="noopener">http://192.168.1.1/proxy/test.html</a> 进行访问。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">第一种：</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;test.html</span><br><span class="line"></span><br><span class="line">第二种（相对于第一种，最后少一个 &#x2F; ）</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;proxy&#x2F;test.html</span><br><span class="line"></span><br><span class="line">第三种：</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1&#x2F;aaa&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;aaa&#x2F;test.html</span><br><span class="line"></span><br><span class="line">第四种（相对于第三种，最后少一个 &#x2F; ）</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1&#x2F;aaa;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;aaatest.html</span><br></pre></td></tr></table></figure>
 
@@ -355,7 +361,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://blog.zhangzonglinagain.xyz/2022/03/23/nginx-conf-location-%E9%85%8D%E7%BD%AE/" title="nginx conf location 配置">http://blog.zhangzonglinagain.xyz/2022/03/23/nginx-conf-location-配置/</a>
+    <a href="http://blog.zhangzonglinagain.xyz/2022/03/23/nginx-conf-location-%E9%85%8D%E7%BD%AE/" title="nginx conf location">http://blog.zhangzonglinagain.xyz/2022/03/23/nginx-conf-location-配置/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -445,7 +451,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#root-alias"><span class="nav-number">1.</span> <span class="nav-text">root alias</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nginx-location配置详细解释"><span class="nav-number">2.</span> <span class="nav-text">nginx location配置详细解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#proxy-pass详解"><span class="nav-number">3.</span> <span class="nav-text">proxy_pass详解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#80端口重定向到443端口"><span class="nav-number">4.</span> <span class="nav-text">80端口重定向到443端口</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#root-alias"><span class="nav-number">1.</span> <span class="nav-text">root alias</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nginx-location配置详细解释"><span class="nav-number">2.</span> <span class="nav-text">nginx location配置详细解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#try-files详解"><span class="nav-number">3.</span> <span class="nav-text">try_files详解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#proxy-pass详解"><span class="nav-number">4.</span> <span class="nav-text">proxy_pass详解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#80端口重定向到443端口"><span class="nav-number">5.</span> <span class="nav-text">80端口重定向到443端口</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -533,7 +539,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:38</span>
+    <span title="站点阅读时长">1:39</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
   </div>

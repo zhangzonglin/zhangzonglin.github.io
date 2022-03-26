@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Filter和Interceptor的比较</title>
+    <url>/2021/11/15/Filter%E5%92%8CInterceptor%E7%9A%84%E6%AF%94%E8%BE%83/</url>
+    <content><![CDATA[<p><a href="https://www.jianshu.com/p/5f5e5211bbdb" target="_blank" rel="noopener">Filter和Interceptor的比较</a>, &nbsp;&nbsp;&nbsp;<a href="https://www.cnblogs.com/hellovoyager1/p/9152292.html" target="_blank" rel="noopener">Listener、Filter 和Interceptor 总结</a>, &nbsp;&nbsp;<a href="https://www.cnblogs.com/hhhshct/p/8808115.html" target="_blank" rel="noopener">springboot配置监听器、过滤器和拦截器</a></p>
+]]></content>
+      <categories>
+        <category>spring</category>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>interceptor</tag>
+        <tag>filter</tag>
+        <tag>listener</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Async/await</title>
+    <url>/2021/04/14/Async-await/</url>
+    <content><![CDATA[<p><a href="https://javascript.info/async-await" target="_blank" rel="noopener">Async/await</a></p>
+]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+  </entry>
+  <entry>
     <title>TCP/IP协议族的网络层基础（6）——NAT和NAPT</title>
     <url>/2020/03/27/CP-IP%E4%B9%8BNAT/</url>
     <content><![CDATA[<p>转载：<strong><a href="https://blog.csdn.net/lvyibin890/article/details/80206979" target="_blank" rel="noopener">TCP/IP协议族的网络层基础（6）——NAT和NAPT</a></strong>。</p>
@@ -73,31 +97,6 @@
       </tags>
   </entry>
   <entry>
-    <title>IOC的实现原理—反射与工厂模式(转载)</title>
-    <url>/2020/03/03/C%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E2%80%94%E5%8F%8D%E5%B0%84%E4%B8%8E%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<h3 id="反射与工厂模式实现IOC"><a href="#反射与工厂模式实现IOC" class="headerlink" title="反射与工厂模式实现IOC"></a>反射与工厂模式实现IOC</h3><p>   &emsp;Spring中的IoC的实现原理就是工厂模式加反射机制。 我们首先看一下不用反射机制时的工厂模式：<br>   <a id="more"></a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface fruit&#123;</span><br><span class="line">    public abstract void eat();</span><br><span class="line">&#125; </span><br><span class="line">class Apple implements fruit&#123;</span><br><span class="line">     public void eat()&#123;</span><br><span class="line">         System.out.println(&quot;Apple&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">&#125; </span><br><span class="line">class Orange implements fruit&#123;</span><br><span class="line">     public void eat()&#123;</span><br><span class="line">         System.out.println(&quot;Orange&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;构造工厂类</span><br><span class="line">&#x2F;&#x2F;也就是说以后如果我们在添加其他的实例的时候只需要修改工厂类就行了</span><br><span class="line">class Factory&#123;</span><br><span class="line">     public static fruit getInstance(String fruitName)&#123;</span><br><span class="line">         fruit f&#x3D;null;</span><br><span class="line">         if(&quot;Apple&quot;.equals(fruitName))&#123;</span><br><span class="line">             f&#x3D;new Apple();</span><br><span class="line">         &#125;</span><br><span class="line">         if(&quot;Orange&quot;.equals(fruitName))&#123;</span><br><span class="line">             f&#x3D;new Orange();</span><br><span class="line">         &#125;</span><br><span class="line">         return f;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">class hello&#123;</span><br><span class="line">     public static void main(String[] a)&#123;</span><br><span class="line">         fruit f&#x3D;Factory.getInstance(&quot;Orange&quot;);</span><br><span class="line">         f.eat();</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>   &emsp;上面写法的缺点是当我们再添加一个子类的时候，就需要修改工厂类了。如果我们添加太多的子类的时候，改动就会很多。下面用反射机制实现工厂模式：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface fruit&#123;</span><br><span class="line">     public abstract void eat();</span><br><span class="line">&#125;</span><br><span class="line">class Apple implements fruit&#123;</span><br><span class="line">public void eat()&#123;</span><br><span class="line">         System.out.println(&quot;Apple&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Orange implements fruit&#123;</span><br><span class="line">public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;Orange&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Factory&#123;</span><br><span class="line">    public static fruit getInstance(String ClassName)&#123;</span><br><span class="line">        fruit f&#x3D;null;</span><br><span class="line">        try&#123;</span><br><span class="line">            f&#x3D;(fruit)Class.forName(ClassName).newInstance();</span><br><span class="line">        &#125;catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return f;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class hello&#123;</span><br><span class="line">    public static void main(String[] a)&#123;</span><br><span class="line">        fruit f&#x3D;Factory.getInstance(&quot;Reflect.Apple&quot;);</span><br><span class="line">        if(f!&#x3D;null)&#123;</span><br><span class="line">            f.eat();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>  &emsp;现在就算我们添加任意多个子类的时候，工厂类都不需要修改。使用反射机制实现的工厂模式可以通过反射取得接口的实例，但是需要传入完整的包和类名。而且用户也无法知道一个接口有多少个可以使用的子类，所以我们通过属性文件的形式配置所需要的子类。</p>
-<p>   &emsp;下面编写使用反射机制并结合属性文件的工厂模式（即IoC）。首先创建一个fruit.properties的资源文件：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apple&#x3D;Reflect.Apple</span><br><span class="line">orange&#x3D;Reflect.Orange</span><br></pre></td></tr></table></figure>
-<p>   &emsp;然后编写主类代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface fruit&#123;</span><br><span class="line">    public abstract void eat();</span><br><span class="line">&#125;</span><br><span class="line">class Apple implements fruit&#123;</span><br><span class="line">    public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;Apple&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Orange implements fruit&#123;</span><br><span class="line">    public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;Orange&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;操作属性文件类</span><br><span class="line">class init&#123;</span><br><span class="line">    public static Properties getPro() throws FileNotFoundException, IOException&#123;</span><br><span class="line">        Properties pro&#x3D;new Properties();</span><br><span class="line">        File f&#x3D;new File(&quot;fruit.properties&quot;);</span><br><span class="line">        if(f.exists())&#123;</span><br><span class="line">            pro.load(new FileInputStream(f));</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            pro.setProperty(&quot;apple&quot;, &quot;Reflect.Apple&quot;);</span><br><span class="line">            pro.setProperty(&quot;orange&quot;, &quot;Reflect.Orange&quot;);</span><br><span class="line">            pro.store(new FileOutputStream(f), &quot;FRUIT CLASS&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        return pro;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Factory&#123;</span><br><span class="line">    public static fruit getInstance(String ClassName)&#123;</span><br><span class="line">        fruit f&#x3D;null;</span><br><span class="line">        try&#123;</span><br><span class="line">            f&#x3D;(fruit)Class.forName(ClassName).newInstance();</span><br><span class="line">        &#125;catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return f;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class hello&#123;</span><br><span class="line">    public static void main(String[] a) throws FileNotFoundException, IOException&#123;</span><br><span class="line">        Properties pro&#x3D;init.getPro();</span><br><span class="line">        fruit f&#x3D;Factory.getInstance(pro.getProperty(&quot;apple&quot;));</span><br><span class="line">        if(f!&#x3D;null)&#123;</span><br><span class="line">            f.eat();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&emsp;运行结果：Apple</p>
-<h3 id="IOC容器的技术剖析"><a href="#IOC容器的技术剖析" class="headerlink" title="IOC容器的技术剖析"></a>IOC容器的技术剖析</h3><p> &emsp;IOC中最基本的技术就是“反射(Reflection)”编程，通俗来讲就是根据给出的类名（字符串方式）来动态地生成对象，这种编程方式可以让对象在生成时才被决定到底是哪一种对象。只是在Spring中要生产的对象都在配置文件中给出定义，目的就是提高灵活性和可维护性。</p>
-<p> &emsp;目前C#、Java和PHP5等语言均支持反射，其中PHP5的技术书籍中，有时候也被翻译成“映射”。有关反射的概念和用法，大家应该都很清楚。反射的应用是很广泛的，很多的成熟的框架，比如像Java中的Hibernate、Spring框架，.Net中NHibernate、Spring.NET框架都是把”反射“做为最基本的技术手段。</p>
-<p>&emsp;反射技术其实很早就出现了，但一直被忽略，没有被进一步的利用。当时的反射编程方式相对于正常的对象生成方式要慢至少得10倍。现在的反射技术经过改良优化，已经非常成熟，反射方式生成对象和通常对象生成方式，速度已经相差不大了，大约为1-2倍的差距。</p>
-<p>&emsp;我们可以把IOC容器的工作模式看做是工厂模式的升华，可以把IOC容器看作是一个工厂，这个工厂里要生产的对象都在配置文件中给出定义，然后利用编程语言提供的反射机制，根据配置文件中给出的类名生成相应的对象。从实现来看，IOC是把以前在工厂方法里写死的对象生成代码，改变为由配置文件来定义，也就是把工厂和对象生成这两者独立分隔开来，目的就是提高灵活性和可维护性。</p>
-<h3 id="使用IOC框架应该注意什么"><a href="#使用IOC框架应该注意什么" class="headerlink" title="使用IOC框架应该注意什么"></a>使用IOC框架应该注意什么</h3><p>&emsp;使用IOC框架产品能够给我们的开发过程带来很大的好处，但是也要充分认识引入IOC框架的缺点，做到心中有数，杜绝滥用框架。</p>
-<p>&emsp;1）软件系统中由于引入了第三方IOC容器，生成对象的步骤变得有些复杂，本来是两者之间的事情，又凭空多出一道手续，所以，我们在刚开始使用IOC框架的时候，会感觉系统变得不太直观。所以，引入了一个全新的框架，就会增加团队成员学习和认识的培训成本，并且在以后的运行维护中，还得让新加入者具备同样的知识体系。</p>
-<p>&emsp;2）由于IOC容器生成对象是通过反射方式，在运行效率上有一定的损耗。如果你要追求运行效率的话，就必须对此进行权衡。</p>
-<p>&emsp;3）具体到IOC框架产品（比如Spring）来讲，需要进行大量的配制工作，比较繁琐，对于一些小的项目而言，客观上也可能加大一些工作成本。</p>
-<p>&emsp;4）IOC框架产品本身的成熟度需要进行评估，如果引入一个不成熟的IOC框架产品，那么会影响到整个项目，所以这也是一个隐性的风险。</p>
-<p>&emsp;我们大体可以得出这样的结论：一些工作量不大的项目或者产品，不太适合使用IOC框架产品。另外，如果团队成员的知识能力欠缺，对于IOC框架产品缺乏深入的理解，也不要贸然引入。最后，特别强调运行效率的项目或者产品，也不太适合引入IOC框架产品，像WEB2.0网站就是这种情况。<br>————————————————<br>版权声明：本文为CSDN博主「fuzhongmin05」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br><a href="https://blog.csdn.net/fuzhongmin05/article/details/61614873" target="_blank" rel="noopener">原文链接</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>Form Data &amp; Request Payload</title>
     <url>/2021/11/27/Form-Data-Request-Payload/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>简单来说,request headers里的Content-Type: application/json 表明request body里是json数据; Content-Type: application/x-www-form-urlencoded表明request body里是Form Data数据(以key1=value1&amp;key2=value2形式). 根据content-type的不同, 后端也要相应处理,或@RequestParam 处理表单数据, 或@RequestBody处理json数据等.<br><strong><a href="https://segmentfault.com/a/1190000018774494" target="_blank" rel="noopener">前后端联调之Form Data与Request Payload，你真的了解吗？</a></strong> &nbsp;&nbsp;<strong><a href="https://www.cnblogs.com/zoro-zero/p/11608491.html" target="_blank" rel="noopener">SpringBoot 传入JSON对象参数</a></strong></p>
@@ -146,18 +145,34 @@
       </tags>
   </entry>
   <entry>
-    <title>Async/await</title>
-    <url>/2021/04/14/Async-await/</url>
-    <content><![CDATA[<p><a href="https://javascript.info/async-await" target="_blank" rel="noopener">Async/await</a></p>
-]]></content>
-      <categories>
-        <category>javascript</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Hashtable、HashMap、ConcurrentHashMap</title>
     <url>/2021/12/01/Hashtable%E3%80%81HashMap%E3%80%81ConcurrentHashMap/</url>
     <content><![CDATA[<p><strong><a href="https://blog.csdn.net/Mr_YanMingXin/article/details/118601591" target="_blank" rel="noopener">详解Java中HashMap、HashTable、ConcurrentHashMap常见问题</a></strong> &nbsp;;&nbsp;<strong><a href="https://blog.csdn.net/amunamuna/article/details/107773902" target="_blank" rel="noopener">Hashtable、HashMap、ConcurrentHashMap等及常用阻塞队列</a></strong> &nbsp;&nbsp;</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>IOC的实现原理—反射与工厂模式(转载)</title>
+    <url>/2020/03/03/C%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E2%80%94%E5%8F%8D%E5%B0%84%E4%B8%8E%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<h3 id="反射与工厂模式实现IOC"><a href="#反射与工厂模式实现IOC" class="headerlink" title="反射与工厂模式实现IOC"></a>反射与工厂模式实现IOC</h3><p>   &emsp;Spring中的IoC的实现原理就是工厂模式加反射机制。 我们首先看一下不用反射机制时的工厂模式：<br>   <a id="more"></a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface fruit&#123;</span><br><span class="line">    public abstract void eat();</span><br><span class="line">&#125; </span><br><span class="line">class Apple implements fruit&#123;</span><br><span class="line">     public void eat()&#123;</span><br><span class="line">         System.out.println(&quot;Apple&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">&#125; </span><br><span class="line">class Orange implements fruit&#123;</span><br><span class="line">     public void eat()&#123;</span><br><span class="line">         System.out.println(&quot;Orange&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;构造工厂类</span><br><span class="line">&#x2F;&#x2F;也就是说以后如果我们在添加其他的实例的时候只需要修改工厂类就行了</span><br><span class="line">class Factory&#123;</span><br><span class="line">     public static fruit getInstance(String fruitName)&#123;</span><br><span class="line">         fruit f&#x3D;null;</span><br><span class="line">         if(&quot;Apple&quot;.equals(fruitName))&#123;</span><br><span class="line">             f&#x3D;new Apple();</span><br><span class="line">         &#125;</span><br><span class="line">         if(&quot;Orange&quot;.equals(fruitName))&#123;</span><br><span class="line">             f&#x3D;new Orange();</span><br><span class="line">         &#125;</span><br><span class="line">         return f;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">class hello&#123;</span><br><span class="line">     public static void main(String[] a)&#123;</span><br><span class="line">         fruit f&#x3D;Factory.getInstance(&quot;Orange&quot;);</span><br><span class="line">         f.eat();</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>   &emsp;上面写法的缺点是当我们再添加一个子类的时候，就需要修改工厂类了。如果我们添加太多的子类的时候，改动就会很多。下面用反射机制实现工厂模式：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface fruit&#123;</span><br><span class="line">     public abstract void eat();</span><br><span class="line">&#125;</span><br><span class="line">class Apple implements fruit&#123;</span><br><span class="line">public void eat()&#123;</span><br><span class="line">         System.out.println(&quot;Apple&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Orange implements fruit&#123;</span><br><span class="line">public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;Orange&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Factory&#123;</span><br><span class="line">    public static fruit getInstance(String ClassName)&#123;</span><br><span class="line">        fruit f&#x3D;null;</span><br><span class="line">        try&#123;</span><br><span class="line">            f&#x3D;(fruit)Class.forName(ClassName).newInstance();</span><br><span class="line">        &#125;catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return f;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class hello&#123;</span><br><span class="line">    public static void main(String[] a)&#123;</span><br><span class="line">        fruit f&#x3D;Factory.getInstance(&quot;Reflect.Apple&quot;);</span><br><span class="line">        if(f!&#x3D;null)&#123;</span><br><span class="line">            f.eat();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  &emsp;现在就算我们添加任意多个子类的时候，工厂类都不需要修改。使用反射机制实现的工厂模式可以通过反射取得接口的实例，但是需要传入完整的包和类名。而且用户也无法知道一个接口有多少个可以使用的子类，所以我们通过属性文件的形式配置所需要的子类。</p>
+<p>   &emsp;下面编写使用反射机制并结合属性文件的工厂模式（即IoC）。首先创建一个fruit.properties的资源文件：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apple&#x3D;Reflect.Apple</span><br><span class="line">orange&#x3D;Reflect.Orange</span><br></pre></td></tr></table></figure>
+<p>   &emsp;然后编写主类代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface fruit&#123;</span><br><span class="line">    public abstract void eat();</span><br><span class="line">&#125;</span><br><span class="line">class Apple implements fruit&#123;</span><br><span class="line">    public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;Apple&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Orange implements fruit&#123;</span><br><span class="line">    public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;Orange&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;操作属性文件类</span><br><span class="line">class init&#123;</span><br><span class="line">    public static Properties getPro() throws FileNotFoundException, IOException&#123;</span><br><span class="line">        Properties pro&#x3D;new Properties();</span><br><span class="line">        File f&#x3D;new File(&quot;fruit.properties&quot;);</span><br><span class="line">        if(f.exists())&#123;</span><br><span class="line">            pro.load(new FileInputStream(f));</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            pro.setProperty(&quot;apple&quot;, &quot;Reflect.Apple&quot;);</span><br><span class="line">            pro.setProperty(&quot;orange&quot;, &quot;Reflect.Orange&quot;);</span><br><span class="line">            pro.store(new FileOutputStream(f), &quot;FRUIT CLASS&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        return pro;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Factory&#123;</span><br><span class="line">    public static fruit getInstance(String ClassName)&#123;</span><br><span class="line">        fruit f&#x3D;null;</span><br><span class="line">        try&#123;</span><br><span class="line">            f&#x3D;(fruit)Class.forName(ClassName).newInstance();</span><br><span class="line">        &#125;catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return f;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class hello&#123;</span><br><span class="line">    public static void main(String[] a) throws FileNotFoundException, IOException&#123;</span><br><span class="line">        Properties pro&#x3D;init.getPro();</span><br><span class="line">        fruit f&#x3D;Factory.getInstance(pro.getProperty(&quot;apple&quot;));</span><br><span class="line">        if(f!&#x3D;null)&#123;</span><br><span class="line">            f.eat();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;运行结果：Apple</p>
+<h3 id="IOC容器的技术剖析"><a href="#IOC容器的技术剖析" class="headerlink" title="IOC容器的技术剖析"></a>IOC容器的技术剖析</h3><p> &emsp;IOC中最基本的技术就是“反射(Reflection)”编程，通俗来讲就是根据给出的类名（字符串方式）来动态地生成对象，这种编程方式可以让对象在生成时才被决定到底是哪一种对象。只是在Spring中要生产的对象都在配置文件中给出定义，目的就是提高灵活性和可维护性。</p>
+<p> &emsp;目前C#、Java和PHP5等语言均支持反射，其中PHP5的技术书籍中，有时候也被翻译成“映射”。有关反射的概念和用法，大家应该都很清楚。反射的应用是很广泛的，很多的成熟的框架，比如像Java中的Hibernate、Spring框架，.Net中NHibernate、Spring.NET框架都是把”反射“做为最基本的技术手段。</p>
+<p>&emsp;反射技术其实很早就出现了，但一直被忽略，没有被进一步的利用。当时的反射编程方式相对于正常的对象生成方式要慢至少得10倍。现在的反射技术经过改良优化，已经非常成熟，反射方式生成对象和通常对象生成方式，速度已经相差不大了，大约为1-2倍的差距。</p>
+<p>&emsp;我们可以把IOC容器的工作模式看做是工厂模式的升华，可以把IOC容器看作是一个工厂，这个工厂里要生产的对象都在配置文件中给出定义，然后利用编程语言提供的反射机制，根据配置文件中给出的类名生成相应的对象。从实现来看，IOC是把以前在工厂方法里写死的对象生成代码，改变为由配置文件来定义，也就是把工厂和对象生成这两者独立分隔开来，目的就是提高灵活性和可维护性。</p>
+<h3 id="使用IOC框架应该注意什么"><a href="#使用IOC框架应该注意什么" class="headerlink" title="使用IOC框架应该注意什么"></a>使用IOC框架应该注意什么</h3><p>&emsp;使用IOC框架产品能够给我们的开发过程带来很大的好处，但是也要充分认识引入IOC框架的缺点，做到心中有数，杜绝滥用框架。</p>
+<p>&emsp;1）软件系统中由于引入了第三方IOC容器，生成对象的步骤变得有些复杂，本来是两者之间的事情，又凭空多出一道手续，所以，我们在刚开始使用IOC框架的时候，会感觉系统变得不太直观。所以，引入了一个全新的框架，就会增加团队成员学习和认识的培训成本，并且在以后的运行维护中，还得让新加入者具备同样的知识体系。</p>
+<p>&emsp;2）由于IOC容器生成对象是通过反射方式，在运行效率上有一定的损耗。如果你要追求运行效率的话，就必须对此进行权衡。</p>
+<p>&emsp;3）具体到IOC框架产品（比如Spring）来讲，需要进行大量的配制工作，比较繁琐，对于一些小的项目而言，客观上也可能加大一些工作成本。</p>
+<p>&emsp;4）IOC框架产品本身的成熟度需要进行评估，如果引入一个不成熟的IOC框架产品，那么会影响到整个项目，所以这也是一个隐性的风险。</p>
+<p>&emsp;我们大体可以得出这样的结论：一些工作量不大的项目或者产品，不太适合使用IOC框架产品。另外，如果团队成员的知识能力欠缺，对于IOC框架产品缺乏深入的理解，也不要贸然引入。最后，特别强调运行效率的项目或者产品，也不太适合引入IOC框架产品，像WEB2.0网站就是这种情况。<br>————————————————<br>版权声明：本文为CSDN博主「fuzhongmin05」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br><a href="https://blog.csdn.net/fuzhongmin05/article/details/61614873" target="_blank" rel="noopener">原文链接</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -170,19 +185,10 @@
       </tags>
   </entry>
   <entry>
-    <title>Filter和Interceptor的比较</title>
-    <url>/2021/11/15/Filter%E5%92%8CInterceptor%E7%9A%84%E6%AF%94%E8%BE%83/</url>
-    <content><![CDATA[<p><a href="https://www.jianshu.com/p/5f5e5211bbdb" target="_blank" rel="noopener">Filter和Interceptor的比较</a>, &nbsp;&nbsp;&nbsp;<a href="https://www.cnblogs.com/hellovoyager1/p/9152292.html" target="_blank" rel="noopener">Listener、Filter 和Interceptor 总结</a>, &nbsp;&nbsp;<a href="https://www.cnblogs.com/hhhshct/p/8808115.html" target="_blank" rel="noopener">springboot配置监听器、过滤器和拦截器</a></p>
+    <title>Java泛型详解：&lt;T&gt;和Class&lt;T&gt;的使用。泛型类，泛型方法的详细使用实例 </title>
+    <url>/2021/12/17/Java%E6%B3%9B%E5%9E%8B%E8%AF%A6%E8%A7%A3%EF%BC%9A-T-%E5%92%8CClass-T-%E7%9A%84%E4%BD%BF%E7%94%A8%E3%80%82%E6%B3%9B%E5%9E%8B%E7%B1%BB%EF%BC%8C%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95%E7%9A%84%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/jpfss/p/9928747.html" target="_blank" rel="noopener">Java泛型详解：<T>和Class<T>的使用。泛型类，泛型方法的详细使用实例 </T></T></a></p>
 ]]></content>
-      <categories>
-        <category>spring</category>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>interceptor</tag>
-        <tag>filter</tag>
-        <tag>listener</tag>
-      </tags>
   </entry>
   <entry>
     <title>Let’sEncrypt 证书自动更新脚本</title>
@@ -209,10 +215,24 @@
       </tags>
   </entry>
   <entry>
-    <title>Java泛型详解：&lt;T&gt;和Class&lt;T&gt;的使用。泛型类，泛型方法的详细使用实例 </title>
-    <url>/2021/12/17/Java%E6%B3%9B%E5%9E%8B%E8%AF%A6%E8%A7%A3%EF%BC%9A-T-%E5%92%8CClass-T-%E7%9A%84%E4%BD%BF%E7%94%A8%E3%80%82%E6%B3%9B%E5%9E%8B%E7%B1%BB%EF%BC%8C%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95%E7%9A%84%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/jpfss/p/9928747.html" target="_blank" rel="noopener">Java泛型详解：<T>和Class<T>的使用。泛型类，泛型方法的详细使用实例 </T></T></a></p>
+    <title>ProcessExecutor、ProcessBuilder、Runtime.getRuntime().exec(...) </title>
+    <url>/2021/05/02/ProcessExecutor%E3%80%81ProcessBuilder%E3%80%81Runtime-getRuntime-exec/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>There are many approaches to take when running external processes from Java. There are the JRE options such as the Runtime.exec() 、 ProcessBuilder、  Apache Commons Exec and ZT Process Executor. 其中ZT Process Executor是一个更为强大的进程库（process library），能够通过使用一个单一的 ProcessExecutor 类来调用 java.lang.ProcessBuilder 和 Apache Commons Exec 中的接口。</p>
+<a id="more"></a>
+<h3 id="Runtime-amp-ProcessBuilder"><a href="#Runtime-amp-ProcessBuilder" class="headerlink" title="Runtime&amp;ProcessBuilder"></a>Runtime&amp;ProcessBuilder</h3><p><em>Runtime.getInstance().exec (String cmd)</em>和<em>new ProcessBuilder(String cmd).start()</em>都可以产生子进程对象Process。通过调用Process对象的waitFor()方法可以使主进程进入等待状态，直至子进程执行完毕，再进行下一步工作。如果对子进程处理不当，有可能造成主进程阻塞，整个程序死掉。(A program is executed with command(). With waitFor() we can wait for the process to finish.)<br><strong>通过查看JDK源码可知，Runtime.exec最终是通过调用ProcessBuilder来真正执行操作的</strong>，如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public Process exec(String command) throws IOException &#123;</span><br><span class="line">    return exec(command, null, null);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Process exec(String command, String[] envp, File dir)</span><br><span class="line">    throws IOException &#123;</span><br><span class="line">    if (command.length() &#x3D;&#x3D; 0)</span><br><span class="line">        throw new IllegalArgumentException(&quot;Empty command&quot;);</span><br><span class="line"></span><br><span class="line">    StringTokenizer st &#x3D; new StringTokenizer(command);</span><br><span class="line">    String[] cmdarray &#x3D; new String[st.countTokens()];</span><br><span class="line">    for (int i &#x3D; 0; st.hasMoreTokens(); i++)</span><br><span class="line">        cmdarray[i] &#x3D; st.nextToken();</span><br><span class="line">    return exec(cmdarray, envp, dir);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Process exec(String[] cmdarray, String[] envp, File dir)</span><br><span class="line">    throws IOException &#123;</span><br><span class="line">    return new ProcessBuilder(cmdarray)</span><br><span class="line">        .environment(envp)</span><br><span class="line">        .directory(dir)</span><br><span class="line">        .start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ProcessExecutor-amp-ProcessBuilder"><a href="#ProcessExecutor-amp-ProcessBuilder" class="headerlink" title="ProcessExecutor&amp;ProcessBuilder"></a>ProcessExecutor&amp;ProcessBuilder</h3><p>ProcessExecutor is implemented as a wrapper of <em>ProcessBuilder</em> complementing it with additional features.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class ProcessExecutor &#123;</span><br><span class="line"></span><br><span class="line">  private static final Logger log &#x3D; LoggerFactory.getLogger(ProcessExecutor.class);</span><br><span class="line"></span><br><span class="line">  private static final boolean IS_OS_WINDOWS &#x3D; System.getProperty(&quot;os.name&quot;).startsWith(&quot;Windows&quot;);</span><br><span class="line"></span><br><span class="line">  public static final Integer[] DEFAULT_EXIT_VALUES &#x3D; null;</span><br><span class="line"></span><br><span class="line">  private static final Integer NORMAL_EXIT_VALUE &#x3D; 0;</span><br><span class="line"></span><br><span class="line">  public static final boolean DEFAULT_REDIRECT_ERROR_STREAM &#x3D; true;</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Process builder used by this executor.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private final ProcessBuilder builder &#x3D; new ProcessBuilder();</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Environment variables which are added (removed in case of &lt;code&gt;null&lt;&#x2F;code&gt; values) to the process being started.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private final Map&lt;String, String&gt; environment &#x3D; new LinkedHashMap&lt;String, String&gt;();</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Set of accepted exit codes or &lt;code&gt;null&lt;&#x2F;code&gt; if all exit codes are allowed.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private Set&lt;Integer&gt; allowedExitValues;</span><br><span class="line">  ...</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>ProcessExecutor在后台运行进程（不阻塞当前代码对执行）:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void runInBackground() throws IOException, InterruptedException, ExecutionException, TimeoutException &#123;</span><br><span class="line">    List&lt;Future&lt;ProcessResult&gt;&gt; tasks &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">    for (int i &#x3D; 0; i &lt; 5; i++) &#123;</span><br><span class="line">        Future&lt;ProcessResult&gt; future &#x3D; new ProcessExecutor().command(&quot;java&quot;, &quot;-version&quot;)</span><br><span class="line">                .start().getFuture();</span><br><span class="line">        tasks.add(future);</span><br><span class="line">    &#125;</span><br><span class="line">    for (Future&lt;ProcessResult&gt; future : tasks) &#123;</span><br><span class="line">        ProcessResult processResult &#x3D; future.get(1, TimeUnit.SECONDS);</span><br><span class="line">        int exitValue &#x3D; processResult.getExitValue();</span><br><span class="line">        log.info(&quot;The exit value of the finished process is &#123;&#125;&quot;, exitValue);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>参考：<strong><a href="https://github.com/zeroturnaround/zt-exec" target="_blank" rel="noopener">GitHub: ZT Process Executor</a></strong></p>
 ]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
   </entry>
   <entry>
     <title>Rust copy 、move、clone</title>
@@ -294,48 +314,6 @@
       </tags>
   </entry>
   <entry>
-    <title>SkipList (跳跃表)的那点事儿</title>
-    <url>/2021/02/23/SkipList-%E7%9A%84%E9%82%A3%E7%82%B9%E4%BA%8B%E5%84%BF/</url>
-    <content><![CDATA[<p><a href="https://mp.weixin.qq.com/s/fNBjlpzqvNkmei0cHhNcog?article_exclude_marked=ea8284506ea5ccac099671313574ba5c" target="_blank" rel="noopener">SkipList 的那点事儿</a></p>
-]]></content>
-      <tags>
-        <tag>SkipList</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>《Spring设计思想-事务篇》2.数据库隔离级别</title>
-    <url>/2020/03/12/Spring%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3-%E4%BA%8B%E5%8A%A1%E7%AF%87%E3%80%8B2-%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</url>
-    <content><![CDATA[<p>转载：<strong><a href="https://blog.csdn.net/luanlouis/article/details/95319795" target="_blank" rel="noopener">《Spring设计思想-事务篇》2.数据库隔离级别
-</a></strong>，<strong><a href="http://www.hollischuang.com/archives/943" target="_blank" rel="noopener">深入分析事务的隔离级别</a></strong>，<strong><a href="https://www.hollischuang.com/archives/923" target="_blank" rel="noopener">MySQL中的共享锁与排他锁</a></strong></p>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>对上述的四种事务隔离级别的阐述中，我们使用了从资源互斥访问的角度做了解释。资源互斥粒度控制的越细，客户端事务的并发能力就越高，但是与此同时，会相应地降低数据的一致性。</p>
-<a id="more"></a>
-
-<p>事务的并发数和数据数据一致性这两个是两个相反的理想指标。而数据库研发的方向就是尽可能提高同时提高两个指标，尽可能减少之间的反作用影响。</p>
-<p>SERIALIZABLE 序列化读，隔离级别最高，客户端以互斥的方式访问数据库资源，统一时间内，同一个资源只能被一个客户端访问，好像客户端在排队请求访问，所以称为序列化读。<br>REPEATABLE_READ 可重复读，可重复读能够保证，一个客户端在一个事务内，多次访问同一个资源时，返回结果是一样的，顾名思义，称为可重复读，这种隔离级别可能会造成幻读现象。<br>READ_COMMITTED 读已提交，即客户端在一个事务内，每次查询读取的数据都是从数据库读取最新的已提交的数据；这种隔离界别可能会造成不可重复读和幻读现象。<br>READ_UNCOMMITTED 读未提交，即客户端在一个事务内，可以读取到其他客户端事务的尚未提交的数据；这种隔离级别可能会造成脏读、不可重复读、幻读 现象。</p>
-<p><img src="/images/pasted-23.png" alt="upload successful"></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>ProcessExecutor、ProcessBuilder、Runtime.getRuntime().exec(...) </title>
-    <url>/2021/05/02/ProcessExecutor%E3%80%81ProcessBuilder%E3%80%81Runtime-getRuntime-exec/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>There are many approaches to take when running external processes from Java. There are the JRE options such as the Runtime.exec() 、 ProcessBuilder、  Apache Commons Exec and ZT Process Executor. 其中ZT Process Executor是一个更为强大的进程库（process library），能够通过使用一个单一的 ProcessExecutor 类来调用 java.lang.ProcessBuilder 和 Apache Commons Exec 中的接口。</p>
-<a id="more"></a>
-<h3 id="Runtime-amp-ProcessBuilder"><a href="#Runtime-amp-ProcessBuilder" class="headerlink" title="Runtime&amp;ProcessBuilder"></a>Runtime&amp;ProcessBuilder</h3><p><em>Runtime.getInstance().exec (String cmd)</em>和<em>new ProcessBuilder(String cmd).start()</em>都可以产生子进程对象Process。通过调用Process对象的waitFor()方法可以使主进程进入等待状态，直至子进程执行完毕，再进行下一步工作。如果对子进程处理不当，有可能造成主进程阻塞，整个程序死掉。(A program is executed with command(). With waitFor() we can wait for the process to finish.)<br><strong>通过查看JDK源码可知，Runtime.exec最终是通过调用ProcessBuilder来真正执行操作的</strong>，如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public Process exec(String command) throws IOException &#123;</span><br><span class="line">    return exec(command, null, null);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Process exec(String command, String[] envp, File dir)</span><br><span class="line">    throws IOException &#123;</span><br><span class="line">    if (command.length() &#x3D;&#x3D; 0)</span><br><span class="line">        throw new IllegalArgumentException(&quot;Empty command&quot;);</span><br><span class="line"></span><br><span class="line">    StringTokenizer st &#x3D; new StringTokenizer(command);</span><br><span class="line">    String[] cmdarray &#x3D; new String[st.countTokens()];</span><br><span class="line">    for (int i &#x3D; 0; st.hasMoreTokens(); i++)</span><br><span class="line">        cmdarray[i] &#x3D; st.nextToken();</span><br><span class="line">    return exec(cmdarray, envp, dir);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Process exec(String[] cmdarray, String[] envp, File dir)</span><br><span class="line">    throws IOException &#123;</span><br><span class="line">    return new ProcessBuilder(cmdarray)</span><br><span class="line">        .environment(envp)</span><br><span class="line">        .directory(dir)</span><br><span class="line">        .start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="ProcessExecutor-amp-ProcessBuilder"><a href="#ProcessExecutor-amp-ProcessBuilder" class="headerlink" title="ProcessExecutor&amp;ProcessBuilder"></a>ProcessExecutor&amp;ProcessBuilder</h3><p>ProcessExecutor is implemented as a wrapper of <em>ProcessBuilder</em> complementing it with additional features.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class ProcessExecutor &#123;</span><br><span class="line"></span><br><span class="line">  private static final Logger log &#x3D; LoggerFactory.getLogger(ProcessExecutor.class);</span><br><span class="line"></span><br><span class="line">  private static final boolean IS_OS_WINDOWS &#x3D; System.getProperty(&quot;os.name&quot;).startsWith(&quot;Windows&quot;);</span><br><span class="line"></span><br><span class="line">  public static final Integer[] DEFAULT_EXIT_VALUES &#x3D; null;</span><br><span class="line"></span><br><span class="line">  private static final Integer NORMAL_EXIT_VALUE &#x3D; 0;</span><br><span class="line"></span><br><span class="line">  public static final boolean DEFAULT_REDIRECT_ERROR_STREAM &#x3D; true;</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Process builder used by this executor.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private final ProcessBuilder builder &#x3D; new ProcessBuilder();</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Environment variables which are added (removed in case of &lt;code&gt;null&lt;&#x2F;code&gt; values) to the process being started.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private final Map&lt;String, String&gt; environment &#x3D; new LinkedHashMap&lt;String, String&gt;();</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Set of accepted exit codes or &lt;code&gt;null&lt;&#x2F;code&gt; if all exit codes are allowed.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private Set&lt;Integer&gt; allowedExitValues;</span><br><span class="line">  ...</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>ProcessExecutor在后台运行进程（不阻塞当前代码对执行）:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void runInBackground() throws IOException, InterruptedException, ExecutionException, TimeoutException &#123;</span><br><span class="line">    List&lt;Future&lt;ProcessResult&gt;&gt; tasks &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">    for (int i &#x3D; 0; i &lt; 5; i++) &#123;</span><br><span class="line">        Future&lt;ProcessResult&gt; future &#x3D; new ProcessExecutor().command(&quot;java&quot;, &quot;-version&quot;)</span><br><span class="line">                .start().getFuture();</span><br><span class="line">        tasks.add(future);</span><br><span class="line">    &#125;</span><br><span class="line">    for (Future&lt;ProcessResult&gt; future : tasks) &#123;</span><br><span class="line">        ProcessResult processResult &#x3D; future.get(1, TimeUnit.SECONDS);</span><br><span class="line">        int exitValue &#x3D; processResult.getExitValue();</span><br><span class="line">        log.info(&quot;The exit value of the finished process is &#123;&#125;&quot;, exitValue);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>参考：<strong><a href="https://github.com/zeroturnaround/zt-exec" target="_blank" rel="noopener">GitHub: ZT Process Executor</a></strong></p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Shell脚本检测Nginx服务状态</title>
     <url>/1970/01/01/Shell%E8%84%9A%E6%9C%AC%E6%A3%80%E6%B5%8BNginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
@@ -369,6 +347,28 @@
       </tags>
   </entry>
   <entry>
+    <title>《Spring设计思想-事务篇》2.数据库隔离级别</title>
+    <url>/2020/03/12/Spring%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3-%E4%BA%8B%E5%8A%A1%E7%AF%87%E3%80%8B2-%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</url>
+    <content><![CDATA[<p>转载：<strong><a href="https://blog.csdn.net/luanlouis/article/details/95319795" target="_blank" rel="noopener">《Spring设计思想-事务篇》2.数据库隔离级别
+</a></strong>，<strong><a href="http://www.hollischuang.com/archives/943" target="_blank" rel="noopener">深入分析事务的隔离级别</a></strong>，<strong><a href="https://www.hollischuang.com/archives/923" target="_blank" rel="noopener">MySQL中的共享锁与排他锁</a></strong></p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>对上述的四种事务隔离级别的阐述中，我们使用了从资源互斥访问的角度做了解释。资源互斥粒度控制的越细，客户端事务的并发能力就越高，但是与此同时，会相应地降低数据的一致性。</p>
+<a id="more"></a>
+
+<p>事务的并发数和数据数据一致性这两个是两个相反的理想指标。而数据库研发的方向就是尽可能提高同时提高两个指标，尽可能减少之间的反作用影响。</p>
+<p>SERIALIZABLE 序列化读，隔离级别最高，客户端以互斥的方式访问数据库资源，统一时间内，同一个资源只能被一个客户端访问，好像客户端在排队请求访问，所以称为序列化读。<br>REPEATABLE_READ 可重复读，可重复读能够保证，一个客户端在一个事务内，多次访问同一个资源时，返回结果是一样的，顾名思义，称为可重复读，这种隔离级别可能会造成幻读现象。<br>READ_COMMITTED 读已提交，即客户端在一个事务内，每次查询读取的数据都是从数据库读取最新的已提交的数据；这种隔离界别可能会造成不可重复读和幻读现象。<br>READ_UNCOMMITTED 读未提交，即客户端在一个事务内，可以读取到其他客户端事务的尚未提交的数据；这种隔离级别可能会造成脏读、不可重复读、幻读 现象。</p>
+<p><img src="/images/pasted-23.png" alt="upload successful"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>SkipList (跳跃表)的那点事儿</title>
+    <url>/2021/02/23/SkipList-%E7%9A%84%E9%82%A3%E7%82%B9%E4%BA%8B%E5%84%BF/</url>
+    <content><![CDATA[<p><a href="https://mp.weixin.qq.com/s/fNBjlpzqvNkmei0cHhNcog?article_exclude_marked=ea8284506ea5ccac099671313574ba5c" target="_blank" rel="noopener">SkipList 的那点事儿</a></p>
+]]></content>
+      <tags>
+        <tag>SkipList</tag>
+      </tags>
+  </entry>
+  <entry>
     <title> ThreadLocal 详解</title>
     <url>/2021/11/13/ThreadLocal-%E8%AF%A6%E8%A7%A3/</url>
     <content><![CDATA[<p><a href="https://www.pdai.tech/md/java/thread/java-thread-x-threadlocal.html" target="_blank" rel="noopener">ThreadLocal原理</a>  ,&nbsp;&nbsp;&nbsp; <a href="https://juejin.cn/post/6844903487193481224" target="_blank" rel="noopener">Java 之 ThreadLocal 详解: 内存泄漏</a></p>
@@ -379,6 +379,18 @@
     <url>/1970/01/01/Ubuntu-18-04-%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E4%BC%98%E5%8C%96/</url>
     <content><![CDATA[<p><strong><a href="https://blog.csdn.net/vselfdom/article/details/88546349" target="_blank" rel="noopener">Ubuntu 18.04 用户登录界面优化</a></strong>，备用。</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Using the Switch(true) Pattern in JavaScript</title>
+    <url>/2021/04/13/Using-the-Switch-true-Pattern-in-JavaScript-https-seanbarry-dev-posts-switch-true-pattern/</url>
+    <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
+]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+      </tags>
   </entry>
   <entry>
     <title>Ubuntu apt-get autoclean,clean,autoremove</title>
@@ -437,18 +449,6 @@
       <tags>
         <tag>zssh</tag>
         <tag>ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Using the Switch(true) Pattern in JavaScript</title>
-    <url>/2021/04/13/Using-the-Switch-true-Pattern-in-JavaScript-https-seanbarry-dev-posts-switch-true-pattern/</url>
-    <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
-]]></content>
-      <categories>
-        <category>javascript</category>
-      </categories>
-      <tags>
-        <tag>javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -525,6 +525,15 @@
 ]]></content>
   </entry>
   <entry>
+    <title>java底层机制（堆/栈/方法区/GC/类加载）</title>
+    <url>/2020/03/08/ava%E5%BA%95%E5%B1%82%E6%9C%BA%E5%88%B6/</url>
+    <content><![CDATA[<p>转载:<strong><a href="https://www.jianshu.com/p/ae97b692614e?from=timeline" target="_blank" rel="noopener">java底层机制</a></strong>、<strong><a href="https://blog.csdn.net/luanlouis/article/details/40043991" target="_blank" rel="noopener">《Java虚拟机原理图解》3、JVM运行时数据区</a></strong></p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Java反射机制</title>
     <url>/2020/03/03/ava-reflection/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Java反射机制可以让我们在编译期（Compile Time）之外的运行期（Run Time）检查类、接口、变量以及方法的信息，即动态的调用某个对象的方法/构造函数、获取某个对象的属性等，而无需在编码时确定调用的对象。这种机制在我们常用的框架中也非常常见，如spring的IOC对bean的注入管理。</p>
@@ -548,30 +557,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>java底层机制（堆/栈/方法区/GC/类加载）</title>
-    <url>/2020/03/08/ava%E5%BA%95%E5%B1%82%E6%9C%BA%E5%88%B6/</url>
-    <content><![CDATA[<p>转载:<strong><a href="https://www.jianshu.com/p/ae97b692614e?from=timeline" target="_blank" rel="noopener">java底层机制</a></strong>、<strong><a href="https://blog.csdn.net/luanlouis/article/details/40043991" target="_blank" rel="noopener">《Java虚拟机原理图解》3、JVM运行时数据区</a></strong></p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>bash快捷键 光标移动</title>
-    <url>/2020/01/16/bash-hot-key/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>用xshell登录并操作系统的时候，光标移动的快捷键用起来很方便，记录一下，方便以后查询</p>
-<a id="more"></a>
-<h3 id="ctrl组合"><a href="#ctrl组合" class="headerlink" title="ctrl组合"></a>ctrl组合</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ctrl+a:光标移到行首。</span><br><span class="line"></span><br><span class="line">ctrl+b:光标左移一个字母</span><br><span class="line"></span><br><span class="line">ctrl+c:杀死当前进程。</span><br><span class="line"></span><br><span class="line">ctrl+d:退出当前 Shell。</span><br><span class="line"></span><br><span class="line">ctrl+e:光标移到行尾。</span><br><span class="line"></span><br><span class="line">ctrl+h:删除光标前一个字符，同 backspace 键相同。</span><br><span class="line"></span><br><span class="line">ctrl+k:清除光标后至行尾的内容。</span><br><span class="line"></span><br><span class="line">ctrl+l:清屏，相当于clear。</span><br><span class="line"></span><br><span class="line">ctrl+r:搜索之前打过的命令。会有一个提示，根据你输入的关键字进行搜索bash的history</span><br><span class="line"></span><br><span class="line">ctrl+u: 清除光标前至行首间的所有内容。</span><br><span class="line"></span><br><span class="line">ctrl+w: 移除光标前的一个单词</span><br><span class="line"></span><br><span class="line">ctrl+t: 交换光标位置前的两个字符</span><br><span class="line"></span><br><span class="line">ctrl+y: 粘贴或者恢复上次的删除</span><br><span class="line"></span><br><span class="line">ctrl+d: 删除光标所在字母;注意和backspace以及ctrl+h的区别，这2个是删除光标前的字符</span><br><span class="line"></span><br><span class="line">ctrl+f: 光标右移</span><br><span class="line"></span><br><span class="line">ctrl+z : 把当前进程转到后台运行，使用’ fg ‘命令恢复。比如top -d1 然后ctrl+z ，到后台，然后fg,重新恢复</span><br></pre></td></tr></table></figure>
-
-<h3 id="esc组合"><a href="#esc组合" class="headerlink" title="esc组合"></a>esc组合</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">esc+d: 删除光标后的一个词</span><br><span class="line"></span><br><span class="line">esc+f: 往右跳一个词</span><br><span class="line"></span><br><span class="line">esc+b: 往左跳一个词</span><br><span class="line"></span><br><span class="line">esc+t: 交换光标位置前的两个单词</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>bash-hotkey</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>vertx-plugin build vertx app with gradle</title>
     <url>/2021/05/06/build-vertx-app-with-gradle/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><a href="https://plugins.gradle.org/plugin/io.vertx.vertx-plugin" target="_blank" rel="noopener">io.vertx.vertx-plugin</a> 介绍，gradle 添加vertx-plugin，脚本启动vertx application.</p>
@@ -591,6 +576,44 @@
       <tags>
         <tag>vertx-plugin</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>bash快捷键 光标移动</title>
+    <url>/2020/01/16/bash-hot-key/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>用xshell登录并操作系统的时候，光标移动的快捷键用起来很方便，记录一下，方便以后查询</p>
+<a id="more"></a>
+<h3 id="ctrl组合"><a href="#ctrl组合" class="headerlink" title="ctrl组合"></a>ctrl组合</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ctrl+a:光标移到行首。</span><br><span class="line"></span><br><span class="line">ctrl+b:光标左移一个字母</span><br><span class="line"></span><br><span class="line">ctrl+c:杀死当前进程。</span><br><span class="line"></span><br><span class="line">ctrl+d:退出当前 Shell。</span><br><span class="line"></span><br><span class="line">ctrl+e:光标移到行尾。</span><br><span class="line"></span><br><span class="line">ctrl+h:删除光标前一个字符，同 backspace 键相同。</span><br><span class="line"></span><br><span class="line">ctrl+k:清除光标后至行尾的内容。</span><br><span class="line"></span><br><span class="line">ctrl+l:清屏，相当于clear。</span><br><span class="line"></span><br><span class="line">ctrl+r:搜索之前打过的命令。会有一个提示，根据你输入的关键字进行搜索bash的history</span><br><span class="line"></span><br><span class="line">ctrl+u: 清除光标前至行首间的所有内容。</span><br><span class="line"></span><br><span class="line">ctrl+w: 移除光标前的一个单词</span><br><span class="line"></span><br><span class="line">ctrl+t: 交换光标位置前的两个字符</span><br><span class="line"></span><br><span class="line">ctrl+y: 粘贴或者恢复上次的删除</span><br><span class="line"></span><br><span class="line">ctrl+d: 删除光标所在字母;注意和backspace以及ctrl+h的区别，这2个是删除光标前的字符</span><br><span class="line"></span><br><span class="line">ctrl+f: 光标右移</span><br><span class="line"></span><br><span class="line">ctrl+z : 把当前进程转到后台运行，使用’ fg ‘命令恢复。比如top -d1 然后ctrl+z ，到后台，然后fg,重新恢复</span><br></pre></td></tr></table></figure>
+
+<h3 id="esc组合"><a href="#esc组合" class="headerlink" title="esc组合"></a>esc组合</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">esc+d: 删除光标后的一个词</span><br><span class="line"></span><br><span class="line">esc+f: 往右跳一个词</span><br><span class="line"></span><br><span class="line">esc+b: 往左跳一个词</span><br><span class="line"></span><br><span class="line">esc+t: 交换光标位置前的两个单词</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>bash-hotkey</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ubuntu自动挂载其他盘</title>
+    <url>/2021/03/18/ceshi/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>双系统，ubuntu和win10装在同一个固态盘，还有另外一个机械盘，平时放些资料啥的，设置给ubuntu开机自动挂载另一个机械盘。</p>
+<a id="more"></a>
+
+<p>1、查询挂载硬盘UUID</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo blkid &#x2F;dev&#x2F;sda2</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-32.png" alt="upload successful"><br>Secert和WorkSpace盘信息如上，下面用到两个盘的UUID。</p>
+<p>2、打开文件/etc/fstab文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;fstab</span><br></pre></td></tr></table></figure>
+<p>在文档末尾添加相应磁盘的信息。格式为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[UUID&#x3D;************] [挂载磁盘分区]  [挂载磁盘格式]  0  2</span><br><span class="line"></span><br><span class="line">UUID&#x3D;4D55CFC14D016D60 &#x2F;mnt&#x2F;workspace ntfs defaults  0  2</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-33.png" alt="upload successful"><br>第一个数字：0表示开机不检查磁盘，1表示开机检查磁盘；<br>第二个数字：0表示交换分区，1代表启动分区（Linux），2表示普通分区</p>
+<p>3、重启生效</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+        <category>ubuntu</category>
+      </categories>
   </entry>
   <entry>
     <title>centos 免密切换root</title>
@@ -647,29 +670,6 @@
 ]]></content>
       <categories>
         <category>linux</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>ubuntu自动挂载其他盘</title>
-    <url>/2021/03/18/ceshi/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>双系统，ubuntu和win10装在同一个固态盘，还有另外一个机械盘，平时放些资料啥的，设置给ubuntu开机自动挂载另一个机械盘。</p>
-<a id="more"></a>
-
-<p>1、查询挂载硬盘UUID</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo blkid &#x2F;dev&#x2F;sda2</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/pasted-32.png" alt="upload successful"><br>Secert和WorkSpace盘信息如上，下面用到两个盘的UUID。</p>
-<p>2、打开文件/etc/fstab文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;fstab</span><br></pre></td></tr></table></figure>
-<p>在文档末尾添加相应磁盘的信息。格式为：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[UUID&#x3D;************] [挂载磁盘分区]  [挂载磁盘格式]  0  2</span><br><span class="line"></span><br><span class="line">UUID&#x3D;4D55CFC14D016D60 &#x2F;mnt&#x2F;workspace ntfs defaults  0  2</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/pasted-33.png" alt="upload successful"><br>第一个数字：0表示开机不检查磁盘，1表示开机检查磁盘；<br>第二个数字：0表示交换分区，1代表启动分区（Linux），2表示普通分区</p>
-<p>3、重启生效</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-        <category>ubuntu</category>
       </categories>
   </entry>
   <entry>
@@ -765,22 +765,6 @@
       </tags>
   </entry>
   <entry>
-    <title>idea下gradle报jdk版本错误</title>
-    <url>/2020/03/05/idea-gradle-jdk/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>idea下用gradle编译项目的时候报错如下：“Could not target platform: ‘Java SE 13’ using tool chain: ‘JDK 11 (11)’.”</p>
-<a id="more"></a>
-<p>确认project采用的jdk 13,build.gradle里也是13，应该是Gradle用的版本不匹配，最后在File–&gt;Setting–&gt;Build Tools–&gt;Gradle里，找到配置项。</p>
-<p><img src="/images/pasted-22.png" alt="upload successful"></p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>gradle</tag>
-        <tag>jdk</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>随笔有感</title>
     <url>/2020/01/13/hello-world/</url>
     <content><![CDATA[<p>一个不读书之人的胡思胡想</p>
@@ -800,6 +784,22 @@
 ]]></content>
   </entry>
   <entry>
+    <title>idea下gradle报jdk版本错误</title>
+    <url>/2020/03/05/idea-gradle-jdk/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>idea下用gradle编译项目的时候报错如下：“Could not target platform: ‘Java SE 13’ using tool chain: ‘JDK 11 (11)’.”</p>
+<a id="more"></a>
+<p>确认project采用的jdk 13,build.gradle里也是13，应该是Gradle用的版本不匹配，最后在File–&gt;Setting–&gt;Build Tools–&gt;Gradle里，找到配置项。</p>
+<p><img src="/images/pasted-22.png" alt="upload successful"></p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>gradle</tag>
+        <tag>jdk</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>intellij-idea的快捷键</title>
     <url>/2020/12/23/intellij-idea%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
     <content><![CDATA[<p><a href="https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf" target="_blank" rel="noopener">Intellij-idea的快捷键</a></p>
@@ -815,12 +815,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>int&amp;Integer、 double&amp;Double&amp;BigDecimal</title>
-    <url>/2022/03/09/int%E5%92%8CInteger%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/guodongdidi/p/6953217.html" target="_blank" rel="noopener">int和Integer的区别</a>&nbsp;&nbsp;<a href="http://www.louisvv.com/archives/2514.html" target="_blank" rel="noopener">double、Double与BigDecimal</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>spring boot注解基本了解</title>
     <url>/2020/03/06/java-annotation/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这里放两篇对Java注解的文章，以备后面查询。<a href="https://www.jianshu.com/p/d74ed7374841" target="_blank" rel="noopener"><strong>Spring Boot 注解—基本知识</strong></a>以及<a href="https://www.cnblogs.com/liaojie970/p/7879917.html" target="_blank" rel="noopener"><strong>Java注释@interface的用法</strong></a></p>
@@ -831,6 +825,12 @@
       <tags>
         <tag>annotation</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>int&amp;Integer、 double&amp;Double&amp;BigDecimal</title>
+    <url>/2022/03/09/int%E5%92%8CInteger%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/guodongdidi/p/6953217.html" target="_blank" rel="noopener">int和Integer的区别</a>&nbsp;&nbsp;<a href="http://www.louisvv.com/archives/2514.html" target="_blank" rel="noopener">double、Double与BigDecimal</a></p>
+]]></content>
   </entry>
   <entry>
     <title>java中的乱码</title>
@@ -1207,6 +1207,126 @@
       </categories>
   </entry>
   <entry>
+    <title>本地Hexo生成的博客部署到VPS</title>
+    <url>/2020/01/17/localblog-git-vps/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>为了科学上网搭建了vps，顺便跑一下自己的博客，但vps只有500M内存，所以决定本地windows跑hexo生成网页，然后git到vps，记录一下本地和vps的git配置。</p>
+<a id="more"></a>
+<h3 id="本地配置"><a href="#本地配置" class="headerlink" title="本地配置"></a>本地配置</h3><p>本地windows安装Node.js hexo git，过程不提。</p>
+<h4 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h4><p>安装后打开 Git Bash 输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;你的用户名&quot;</span><br><span class="line">git config --global user.email &quot;你的电子邮箱&quot;</span><br></pre></td></tr></table></figure>
+<p>由于 Hexo 的 Git 部署不支持使用密码登陆，所以需要配置 SSH 公钥：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~</span><br><span class="line">mkdir .ssh</span><br><span class="line">cd .ssh</span><br><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+<p>由此便在系统当前用户文件夹下生成了私钥 id_rsa 和公钥 id_rsa.pub。</p>
+<p>在上面建立的.ssh文件中新建config文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~&#x2F;.ssh</span><br><span class="line">vim config</span><br></pre></td></tr></table></figure>
+<p>内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Host 服务器IP</span><br><span class="line">HostName 服务器IP</span><br><span class="line">User git</span><br><span class="line">Port 端口号</span><br><span class="line">IdentityFile ~&#x2F;.ssh&#x2F;id_rsa</span><br></pre></td></tr></table></figure>
+<h4 id="hexo配置"><a href="#hexo配置" class="headerlink" title="hexo配置"></a>hexo配置</h4><p>安装插件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>打开位于 hexo 文件夹下的 _config.yml，修改 deploy 参数：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@vps的IP:hexo.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<h3 id="VPS-配置"><a href="#VPS-配置" class="headerlink" title="VPS 配置"></a>VPS 配置</h3><h4 id="新建用户"><a href="#新建用户" class="headerlink" title="新建用户"></a>新建用户</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adduser git</span><br><span class="line">passwd git</span><br></pre></td></tr></table></figure>
+<h4 id="为用户git添加-sudo-权限"><a href="#为用户git添加-sudo-权限" class="headerlink" title="为用户git添加 sudo 权限"></a>为用户git添加 sudo 权限</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod 740 &#x2F;etc&#x2F;sudoers</span><br><span class="line">vim &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure>
+<p>找到以下内容</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL:ALL) ALL</span><br></pre></td></tr></table></figure>
+<p>添加修改为</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL:ALL) ALL</span><br><span class="line">git     ALL&#x3D;(ALL:ALL) ALL</span><br></pre></td></tr></table></figure>
+<p>假如是</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL) ALL</span><br></pre></td></tr></table></figure>
+<p>则修改为</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL) ALL</span><br><span class="line">git     ALL&#x3D;(ALL) ALL</span><br></pre></td></tr></table></figure>
+<p>保存,退出</p>
+<p>然后修改回文件的权限</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod 440 &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure>
+<h4 id="关闭-git-用户-shell-权限"><a href="#关闭-git-用户-shell-权限" class="headerlink" title="关闭 git 用户 shell 权限"></a>关闭 git 用户 shell 权限</h4><p>至此我们可以在本地通过：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh git@VPS IP</span><br></pre></td></tr></table></figure>
+<p>ssh 连接服务器，登录到服务器上，对服务器进行各种操作，这通常很不安全，也不合适，我们只需要能对仓库操作就可以了，不需要更大的权限。</p>
+<p>因此我们关闭 git 用户 shell 权限，执行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;passwd</span><br></pre></td></tr></table></figure>
+<p>找到git用户的一行：<em>git:x:1001:1001:,,,:/home/git:/bin/bash</em><br>改为：<em>git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell</em></p>
+<p>这样，git 用户可以正常通过 ssh 使用 git，但无法登录 shell，因为我们为 git 用户指定的 git-shell 每次一登录就自动退出。</p>
+<h4 id="初始化-git-仓库"><a href="#初始化-git-仓库" class="headerlink" title="初始化 git 仓库"></a>初始化 git 仓库</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git                &#x2F;&#x2F;切换到git用户目录</span><br><span class="line">mkdir blog.git              &#x2F;&#x2F;创建git仓库文件夹，以blog.git为例</span><br><span class="line">cd blog.git                 &#x2F;&#x2F;进入仓库目录</span><br><span class="line">git init --bare             &#x2F;&#x2F;使用--bare参数初始化为裸仓库，这样创建的仓库不包含工作区</span><br></pre></td></tr></table></figure>
+<p>注意：裸仓库没有工作区，因为服务器上的 Git 仓库纯粹是为了共享，所以不让用户直接登录到服务器上去改工作区，并且服务器上的 Git 仓库通常都以.git 结尾。</p>
+<h4 id="配置-SSH"><a href="#配置-SSH" class="headerlink" title="配置 SSH"></a>配置 SSH</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git                &#x2F;&#x2F;切换到git用户目录</span><br><span class="line">mkdir .ssh                  &#x2F;&#x2F;创建.ssh目录</span><br><span class="line">cd .ssh</span><br><span class="line">vim authorized_keys</span><br></pre></td></tr></table></figure>
+<p>然后将本地的公钥复制到 authorized_keys 文件里 (公钥即上文生成的公钥，可通过 <em>cat ~/.ssh/id_rsa.pub</em> 查看)。</p>
+<p>注意：收集所有需要登录的用户的公钥，就是他们自己的 id_rsa.pub 文件，把所有公钥导入到 <em>/home/git/.ssh/authorized_keys</em> 文件里，一行一个。</p>
+<h4 id="用户组管理"><a href="#用户组管理" class="headerlink" title="用户组管理"></a>用户组管理</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ll &#x2F;home&#x2F;git&#x2F;</span><br><span class="line">ll &#x2F;var&#x2F;www&#x2F;</span><br></pre></td></tr></table></figure>
+<p>确保 blog.git、.ssh、blog 目录的用户组权限为 git:git，若不是，执行下列命令：</p>
+<p>修改用户权限的命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chown -R git.git &#x2F;home&#x2F;git&#x2F;blog.git&#x2F;</span><br><span class="line">chown -R git.git &#x2F;home&#x2F;git&#x2F;.ssh&#x2F;</span><br><span class="line">chown -R git.git &#x2F;var&#x2F;www&#x2F;blog&#x2F;</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置-Git-Hooks"><a href="#配置-Git-Hooks" class="headerlink" title="配置 Git Hooks"></a>配置 Git Hooks</h4><p>创建 post-receive 文件<br>git 用户下执行（这里由于禁止了git用户shell权限，所以我用 root 用户执行上述命令，然后更改了文件所有者为 git.git）：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git&#x2F;blog.git&#x2F;hooks     &#x2F;&#x2F;切换到hooks目录下</span><br><span class="line">vim post-receive            &#x2F;&#x2F;创建文件</span><br></pre></td></tr></table></figure>
+<p>复制下面的内容到 post-receive 文件中：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">echo &quot;post-receive hook is running...&quot;</span><br><span class="line"></span><br><span class="line">GIT_REPO&#x3D;&#x2F;home&#x2F;git&#x2F;blog.git</span><br><span class="line">TMP_GIT_CLONE&#x3D;&#x2F;tmp&#x2F;blog</span><br><span class="line">PUBLIC_WWW&#x3D;&#x2F;var&#x2F;www&#x2F;blog</span><br><span class="line"></span><br><span class="line">rm -rf $&#123;TMP_GIT_CLONE&#125;</span><br><span class="line">git clone $GIT_REPO $TMP_GIT_CLONE</span><br><span class="line">rm -rf $&#123;PUBLIC_WWW&#125;&#x2F;*</span><br><span class="line">cp -rf $&#123;TMP_GIT_CLONE&#125;&#x2F;* $&#123;PUBLIC_WWW&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>为什么不直接将裸仓库克隆到 Web 根目录下呢？我之前也一直被这个问题困扰，感觉先&gt;克隆到 tmp 目录再拷贝到 Web 根目录是多此一举。后来我觉得可能是出于项目安全的&gt;考虑，在执行 cp 命令的时候，.git 作为隐藏目录不会被拷贝到 Web 根目录下，也就&gt;避免了将整个仓库历史暴露在 Web 服务中。</p>
+</blockquote>
+<p>赋予可执行权限：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod +x post-receive</span><br></pre></td></tr></table></figure>
+<p>ok，至此配置完毕，可以本地hexo d直接发布到vps了。</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>git hooks</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>markdown的html标签应用及常用语法</title>
+    <url>/2021/04/19/markdown%E5%86%85%E5%AE%B9%E6%8A%98%E5%8F%A0/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Markdown 是一种轻量级标记语言，非常适合网络书写。同时，Markdown支持嵌入html标签，我们就可以借此实现markdown不具有的某些功能，如代码折叠和文字样式等。</p>
+<p><strong><a href="http://connorlin.github.io/2016/05/06/Markdown%E7%9A%84%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95(%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93)/" target="_blank" rel="noopener">Markdown的常用语法(个人总结) | ConnorLin’s Blog </a></strong></p>
+<a id="more"></a>
+<h3 id="代码折叠"><a href="#代码折叠" class="headerlink" title="代码折叠"></a>代码折叠</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;details&gt;</span><br><span class="line">  &lt;summary&gt;</span><br><span class="line">  	&lt;font color&#x3D;&quot;#0000ff&quot; &gt;点击时的区域标题：点击查看详细内容&lt;&#x2F;font&gt;</span><br><span class="line">  &lt;&#x2F;summary&gt;</span><br><span class="line">  &lt;p&gt; - 测试 测试测试&lt;&#x2F;p&gt;</span><br><span class="line">  &lt;pre&gt;&lt;code&gt;  title，value，callBack可以缺省  &lt;&#x2F;code&gt;  &lt;&#x2F;pre&gt;</span><br><span class="line">&lt;&#x2F;details&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>summary：折叠语法展示的摘要</p>
+</li>
+<li><p>details：折叠语法标签</p>
+</li>
+<li><p>pre：以原有格式显示元素内的文字是已经格式化的文本。</p>
+</li>
+<li><p>blockcode：表示程序的代码块。</p>
+</li>
+<li><p>code：指定代码范例。</p>
+</li>
+</ul>
+<p>效果如下：</p>
+<details>
+  <summary><font color="#0000ff">点击时的区域标题：点击查看详细内容</font></summary>
+  <p> - 测试 测试测试</p>
+  <pre><code>  title，value，callBack可以缺省  </code>  </pre>
+</details>
+
+<h3 id="字体样式"><a href="#字体样式" class="headerlink" title="字体样式"></a>字体样式</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;span style&#x3D;&#39;color:red&#39;&gt;This is red&lt;&#x2F;span&gt;   &#x2F;&#x2F;字体颜色</span><br><span class="line">&lt;ruby&gt; 漢 &lt;rt&gt; ㄏㄢˋ &lt;&#x2F;rt&gt; &lt;&#x2F;ruby&gt; &#x2F;&#x2F; 特殊字</span><br><span class="line">&lt;kbd&gt;Ctrl&lt;&#x2F;kbd&gt;+&lt;kbd&gt;F9&lt;&#x2F;kbd&gt;  &#x2F;&#x2F; 按键标识</span><br><span class="line">&lt;span style&#x3D;&quot;font-size:2rem; background:yellow;&quot;&gt;**Bigger**&lt;&#x2F;span&gt; &#x2F;&#x2F;字体大小和背景</span><br><span class="line"></span><br><span class="line">&lt;font face&#x3D;&quot;微软雅黑&quot; color&#x3D;&quot;red&quot; size&#x3D;&quot;6&quot;&gt;字体及字体颜色和大小&lt;&#x2F;font&gt;</span><br><span class="line">&lt;font color&#x3D;&quot;#0000ff&quot;&gt;字体颜色&lt;&#x2F;font&gt;</span><br><span class="line"></span><br><span class="line">&lt;p align&#x3D;&quot;left&quot;&gt;居左文本&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p align&#x3D;&quot;center&quot;&gt;居中文本&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p align&#x3D;&quot;right&quot;&gt;居右文本&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
+<p>使用span或者font标签，同时用style属性控制样式。</p>
+<p>效果如下：<br><span style="color:red">This is red</span>   //字体颜色</p>
+<p><ruby> 漢 <rt> ㄏㄢˋ </rt> </ruby> // 特殊字</p>
+<p><kbd>Ctrl</kbd>+<kbd>F9</kbd>  // 按键标识</p>
+<p><span style="font-size:2rem; background:yellow;"><strong>Bigger</strong></span> //字体大小和背景</p>
+<p><font face="微软雅黑" color="red" size="6">字体及字体颜色和大小</font></p>
+<p><font color="#0000ff">字体颜色</font></p>
+<p align="left">居左文本</p>
+
+<p align="center">居中文本</p>
+
+<p align="right">居右文本</p>
+
+<p>参考来源：<br><strong><a href="https://www.cnblogs.com/buwuliao/p/9578918.html" target="_blank" rel="noopener">【MarkDown】使用Html样式和折叠语法</a></strong>、<br><strong><a href="http://connorlin.github.io/2016/05/06/Markdown%E7%9A%84%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95(%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93)/" target="_blank" rel="noopener">Markdown的常用语法(个人总结) | ConnorLin’s Blog </a></strong></p>
+]]></content>
+      <categories>
+        <category>markdown</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>mybatis mysql in (#{list}) 只能查询/删除第一条的问题</title>
+    <url>/2021/12/30/mybatis-mysql-in-list-%E5%8F%AA%E8%83%BD%E6%9F%A5%E8%AF%A2-%E5%88%A0%E9%99%A4%E7%AC%AC%E4%B8%80%E6%9D%A1%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/do-your-best/p/9513194.html" target="_blank" rel="noopener">mysql in (#{list}) 只能查询/删除第一条的问题</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>linux常用命令</title>
     <url>/2021/04/19/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>linux常用的命令，随时添加。</p>
@@ -1568,126 +1688,6 @@
       </categories>
   </entry>
   <entry>
-    <title>本地Hexo生成的博客部署到VPS</title>
-    <url>/2020/01/17/localblog-git-vps/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>为了科学上网搭建了vps，顺便跑一下自己的博客，但vps只有500M内存，所以决定本地windows跑hexo生成网页，然后git到vps，记录一下本地和vps的git配置。</p>
-<a id="more"></a>
-<h3 id="本地配置"><a href="#本地配置" class="headerlink" title="本地配置"></a>本地配置</h3><p>本地windows安装Node.js hexo git，过程不提。</p>
-<h4 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h4><p>安装后打开 Git Bash 输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;你的用户名&quot;</span><br><span class="line">git config --global user.email &quot;你的电子邮箱&quot;</span><br></pre></td></tr></table></figure>
-<p>由于 Hexo 的 Git 部署不支持使用密码登陆，所以需要配置 SSH 公钥：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~</span><br><span class="line">mkdir .ssh</span><br><span class="line">cd .ssh</span><br><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
-<p>由此便在系统当前用户文件夹下生成了私钥 id_rsa 和公钥 id_rsa.pub。</p>
-<p>在上面建立的.ssh文件中新建config文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~&#x2F;.ssh</span><br><span class="line">vim config</span><br></pre></td></tr></table></figure>
-<p>内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Host 服务器IP</span><br><span class="line">HostName 服务器IP</span><br><span class="line">User git</span><br><span class="line">Port 端口号</span><br><span class="line">IdentityFile ~&#x2F;.ssh&#x2F;id_rsa</span><br></pre></td></tr></table></figure>
-<h4 id="hexo配置"><a href="#hexo配置" class="headerlink" title="hexo配置"></a>hexo配置</h4><p>安装插件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
-<p>打开位于 hexo 文件夹下的 _config.yml，修改 deploy 参数：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@vps的IP:hexo.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<h3 id="VPS-配置"><a href="#VPS-配置" class="headerlink" title="VPS 配置"></a>VPS 配置</h3><h4 id="新建用户"><a href="#新建用户" class="headerlink" title="新建用户"></a>新建用户</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adduser git</span><br><span class="line">passwd git</span><br></pre></td></tr></table></figure>
-<h4 id="为用户git添加-sudo-权限"><a href="#为用户git添加-sudo-权限" class="headerlink" title="为用户git添加 sudo 权限"></a>为用户git添加 sudo 权限</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod 740 &#x2F;etc&#x2F;sudoers</span><br><span class="line">vim &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure>
-<p>找到以下内容</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL:ALL) ALL</span><br></pre></td></tr></table></figure>
-<p>添加修改为</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL:ALL) ALL</span><br><span class="line">git     ALL&#x3D;(ALL:ALL) ALL</span><br></pre></td></tr></table></figure>
-<p>假如是</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL) ALL</span><br></pre></td></tr></table></figure>
-<p>则修改为</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL) ALL</span><br><span class="line">git     ALL&#x3D;(ALL) ALL</span><br></pre></td></tr></table></figure>
-<p>保存,退出</p>
-<p>然后修改回文件的权限</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod 440 &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure>
-<h4 id="关闭-git-用户-shell-权限"><a href="#关闭-git-用户-shell-权限" class="headerlink" title="关闭 git 用户 shell 权限"></a>关闭 git 用户 shell 权限</h4><p>至此我们可以在本地通过：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh git@VPS IP</span><br></pre></td></tr></table></figure>
-<p>ssh 连接服务器，登录到服务器上，对服务器进行各种操作，这通常很不安全，也不合适，我们只需要能对仓库操作就可以了，不需要更大的权限。</p>
-<p>因此我们关闭 git 用户 shell 权限，执行：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;passwd</span><br></pre></td></tr></table></figure>
-<p>找到git用户的一行：<em>git:x:1001:1001:,,,:/home/git:/bin/bash</em><br>改为：<em>git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell</em></p>
-<p>这样，git 用户可以正常通过 ssh 使用 git，但无法登录 shell，因为我们为 git 用户指定的 git-shell 每次一登录就自动退出。</p>
-<h4 id="初始化-git-仓库"><a href="#初始化-git-仓库" class="headerlink" title="初始化 git 仓库"></a>初始化 git 仓库</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git                &#x2F;&#x2F;切换到git用户目录</span><br><span class="line">mkdir blog.git              &#x2F;&#x2F;创建git仓库文件夹，以blog.git为例</span><br><span class="line">cd blog.git                 &#x2F;&#x2F;进入仓库目录</span><br><span class="line">git init --bare             &#x2F;&#x2F;使用--bare参数初始化为裸仓库，这样创建的仓库不包含工作区</span><br></pre></td></tr></table></figure>
-<p>注意：裸仓库没有工作区，因为服务器上的 Git 仓库纯粹是为了共享，所以不让用户直接登录到服务器上去改工作区，并且服务器上的 Git 仓库通常都以.git 结尾。</p>
-<h4 id="配置-SSH"><a href="#配置-SSH" class="headerlink" title="配置 SSH"></a>配置 SSH</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git                &#x2F;&#x2F;切换到git用户目录</span><br><span class="line">mkdir .ssh                  &#x2F;&#x2F;创建.ssh目录</span><br><span class="line">cd .ssh</span><br><span class="line">vim authorized_keys</span><br></pre></td></tr></table></figure>
-<p>然后将本地的公钥复制到 authorized_keys 文件里 (公钥即上文生成的公钥，可通过 <em>cat ~/.ssh/id_rsa.pub</em> 查看)。</p>
-<p>注意：收集所有需要登录的用户的公钥，就是他们自己的 id_rsa.pub 文件，把所有公钥导入到 <em>/home/git/.ssh/authorized_keys</em> 文件里，一行一个。</p>
-<h4 id="用户组管理"><a href="#用户组管理" class="headerlink" title="用户组管理"></a>用户组管理</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ll &#x2F;home&#x2F;git&#x2F;</span><br><span class="line">ll &#x2F;var&#x2F;www&#x2F;</span><br></pre></td></tr></table></figure>
-<p>确保 blog.git、.ssh、blog 目录的用户组权限为 git:git，若不是，执行下列命令：</p>
-<p>修改用户权限的命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chown -R git.git &#x2F;home&#x2F;git&#x2F;blog.git&#x2F;</span><br><span class="line">chown -R git.git &#x2F;home&#x2F;git&#x2F;.ssh&#x2F;</span><br><span class="line">chown -R git.git &#x2F;var&#x2F;www&#x2F;blog&#x2F;</span><br></pre></td></tr></table></figure>
-
-<h4 id="配置-Git-Hooks"><a href="#配置-Git-Hooks" class="headerlink" title="配置 Git Hooks"></a>配置 Git Hooks</h4><p>创建 post-receive 文件<br>git 用户下执行（这里由于禁止了git用户shell权限，所以我用 root 用户执行上述命令，然后更改了文件所有者为 git.git）：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git&#x2F;blog.git&#x2F;hooks     &#x2F;&#x2F;切换到hooks目录下</span><br><span class="line">vim post-receive            &#x2F;&#x2F;创建文件</span><br></pre></td></tr></table></figure>
-<p>复制下面的内容到 post-receive 文件中：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">echo &quot;post-receive hook is running...&quot;</span><br><span class="line"></span><br><span class="line">GIT_REPO&#x3D;&#x2F;home&#x2F;git&#x2F;blog.git</span><br><span class="line">TMP_GIT_CLONE&#x3D;&#x2F;tmp&#x2F;blog</span><br><span class="line">PUBLIC_WWW&#x3D;&#x2F;var&#x2F;www&#x2F;blog</span><br><span class="line"></span><br><span class="line">rm -rf $&#123;TMP_GIT_CLONE&#125;</span><br><span class="line">git clone $GIT_REPO $TMP_GIT_CLONE</span><br><span class="line">rm -rf $&#123;PUBLIC_WWW&#125;&#x2F;*</span><br><span class="line">cp -rf $&#123;TMP_GIT_CLONE&#125;&#x2F;* $&#123;PUBLIC_WWW&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>为什么不直接将裸仓库克隆到 Web 根目录下呢？我之前也一直被这个问题困扰，感觉先&gt;克隆到 tmp 目录再拷贝到 Web 根目录是多此一举。后来我觉得可能是出于项目安全的&gt;考虑，在执行 cp 命令的时候，.git 作为隐藏目录不会被拷贝到 Web 根目录下，也就&gt;避免了将整个仓库历史暴露在 Web 服务中。</p>
-</blockquote>
-<p>赋予可执行权限：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod +x post-receive</span><br></pre></td></tr></table></figure>
-<p>ok，至此配置完毕，可以本地hexo d直接发布到vps了。</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>git hooks</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>markdown的html标签应用及常用语法</title>
-    <url>/2021/04/19/markdown%E5%86%85%E5%AE%B9%E6%8A%98%E5%8F%A0/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Markdown 是一种轻量级标记语言，非常适合网络书写。同时，Markdown支持嵌入html标签，我们就可以借此实现markdown不具有的某些功能，如代码折叠和文字样式等。</p>
-<p><strong><a href="http://connorlin.github.io/2016/05/06/Markdown%E7%9A%84%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95(%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93)/" target="_blank" rel="noopener">Markdown的常用语法(个人总结) | ConnorLin’s Blog </a></strong></p>
-<a id="more"></a>
-<h3 id="代码折叠"><a href="#代码折叠" class="headerlink" title="代码折叠"></a>代码折叠</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;details&gt;</span><br><span class="line">  &lt;summary&gt;</span><br><span class="line">  	&lt;font color&#x3D;&quot;#0000ff&quot; &gt;点击时的区域标题：点击查看详细内容&lt;&#x2F;font&gt;</span><br><span class="line">  &lt;&#x2F;summary&gt;</span><br><span class="line">  &lt;p&gt; - 测试 测试测试&lt;&#x2F;p&gt;</span><br><span class="line">  &lt;pre&gt;&lt;code&gt;  title，value，callBack可以缺省  &lt;&#x2F;code&gt;  &lt;&#x2F;pre&gt;</span><br><span class="line">&lt;&#x2F;details&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>summary：折叠语法展示的摘要</p>
-</li>
-<li><p>details：折叠语法标签</p>
-</li>
-<li><p>pre：以原有格式显示元素内的文字是已经格式化的文本。</p>
-</li>
-<li><p>blockcode：表示程序的代码块。</p>
-</li>
-<li><p>code：指定代码范例。</p>
-</li>
-</ul>
-<p>效果如下：</p>
-<details>
-  <summary><font color="#0000ff">点击时的区域标题：点击查看详细内容</font></summary>
-  <p> - 测试 测试测试</p>
-  <pre><code>  title，value，callBack可以缺省  </code>  </pre>
-</details>
-
-<h3 id="字体样式"><a href="#字体样式" class="headerlink" title="字体样式"></a>字体样式</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;span style&#x3D;&#39;color:red&#39;&gt;This is red&lt;&#x2F;span&gt;   &#x2F;&#x2F;字体颜色</span><br><span class="line">&lt;ruby&gt; 漢 &lt;rt&gt; ㄏㄢˋ &lt;&#x2F;rt&gt; &lt;&#x2F;ruby&gt; &#x2F;&#x2F; 特殊字</span><br><span class="line">&lt;kbd&gt;Ctrl&lt;&#x2F;kbd&gt;+&lt;kbd&gt;F9&lt;&#x2F;kbd&gt;  &#x2F;&#x2F; 按键标识</span><br><span class="line">&lt;span style&#x3D;&quot;font-size:2rem; background:yellow;&quot;&gt;**Bigger**&lt;&#x2F;span&gt; &#x2F;&#x2F;字体大小和背景</span><br><span class="line"></span><br><span class="line">&lt;font face&#x3D;&quot;微软雅黑&quot; color&#x3D;&quot;red&quot; size&#x3D;&quot;6&quot;&gt;字体及字体颜色和大小&lt;&#x2F;font&gt;</span><br><span class="line">&lt;font color&#x3D;&quot;#0000ff&quot;&gt;字体颜色&lt;&#x2F;font&gt;</span><br><span class="line"></span><br><span class="line">&lt;p align&#x3D;&quot;left&quot;&gt;居左文本&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p align&#x3D;&quot;center&quot;&gt;居中文本&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p align&#x3D;&quot;right&quot;&gt;居右文本&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
-<p>使用span或者font标签，同时用style属性控制样式。</p>
-<p>效果如下：<br><span style="color:red">This is red</span>   //字体颜色</p>
-<p><ruby> 漢 <rt> ㄏㄢˋ </rt> </ruby> // 特殊字</p>
-<p><kbd>Ctrl</kbd>+<kbd>F9</kbd>  // 按键标识</p>
-<p><span style="font-size:2rem; background:yellow;"><strong>Bigger</strong></span> //字体大小和背景</p>
-<p><font face="微软雅黑" color="red" size="6">字体及字体颜色和大小</font></p>
-<p><font color="#0000ff">字体颜色</font></p>
-<p align="left">居左文本</p>
-
-<p align="center">居中文本</p>
-
-<p align="right">居右文本</p>
-
-<p>参考来源：<br><strong><a href="https://www.cnblogs.com/buwuliao/p/9578918.html" target="_blank" rel="noopener">【MarkDown】使用Html样式和折叠语法</a></strong>、<br><strong><a href="http://connorlin.github.io/2016/05/06/Markdown%E7%9A%84%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95(%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93)/" target="_blank" rel="noopener">Markdown的常用语法(个人总结) | ConnorLin’s Blog </a></strong></p>
-]]></content>
-      <categories>
-        <category>markdown</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>mybatis mysql in (#{list}) 只能查询/删除第一条的问题</title>
-    <url>/2021/12/30/mybatis-mysql-in-list-%E5%8F%AA%E8%83%BD%E6%9F%A5%E8%AF%A2-%E5%88%A0%E9%99%A4%E7%AC%AC%E4%B8%80%E6%9D%A1%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/do-your-best/p/9513194.html" target="_blank" rel="noopener">mysql in (#{list}) 只能查询/删除第一条的问题</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>android studio多语言(中英)适配</title>
     <url>/2020/02/14/ndroid-studio%E4%B8%AD%E8%8B%B1%E6%96%87%E9%80%82%E9%85%8D/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>strings.xml在目录res相应的value文件夹下,用来显示文本，避免硬编码，要添加新的语言支持，就要在不同的 value 文件夹下（如value 、values-zh-rCN）添加不同语言的 string.xml 文件。本文以简体中文为例,描述一下Android studio下相应strings.xml(zh-rCN)的生成方式，其他语言类似。</p>
@@ -1700,6 +1700,67 @@
 <p><img src="/images/pasted-20.png" alt="upload successful"></p>
 <p><img src="/images/pasted-21.png" alt="upload successful"></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>nginx conf location</title>
+    <url>/2022/03/23/nginx-conf-location-%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h4 id="root-alias"><a href="#root-alias" class="headerlink" title="root alias"></a>root alias</h4><ul>
+<li>root的处理结果是：root路径＋location路径</li>
+<li>alias的处理结果是：使用alias路径替换location路径</li>
+</ul>
+<a id="more"></a>
+
+<p>nginx指定文件路径有两种方式root和alias，root与alias主要区别在于nginx如何解释location后面的uri，这会使两者分别以不同的方式将请求映射到服务器文件上。</p>
+<p>alias 指定的目录是准确的，给location指定一个目录。</p>
+<p>root 指定目录的上级目录，并且该上级目录要含有locatoin指定名称的同名目录。也就是</p>
+<p>以root方式设置资源路径：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法: root path;</span><br><span class="line">配置块: http、server、location、if</span><br></pre></td></tr></table></figure>
+<p>如果server,location同时配置，优先采用location内的root路径，</p>
+<p>以alias 方式设置资源路径</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法: alias path;</span><br><span class="line">配置块: location</span><br></pre></td></tr></table></figure>
+<p>Example:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">location &#x2F;img&#x2F; &#123;</span><br><span class="line">	alias &#x2F;var&#x2F;www&#x2F;image&#x2F;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>#若按照上述配置的话，则访问/img/目录里面的文件时，ningx会自动去/var/www/image/目录找文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">location &#x2F;img&#x2F; &#123;</span><br><span class="line">	root &#x2F;var&#x2F;www&#x2F;image;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>#若按照这种配置的话，则访问/img/目录下的文件时，nginx会去/var/www/image/img/目录下找文件</p>
+<p>注意： </p>
+<ol>
+<li>使用alias时，目录名后面一定要加”/“。</li>
+<li>使用alias标签的目录块中不能使用rewrite的break。</li>
+<li>alias在使用正则匹配时，必须捕捉要匹配的内容并在指定的内容处使用。</li>
+<li>alias只能位于location块中</li>
+</ol>
+<h4 id="nginx-location配置详细解释"><a href="#nginx-location配置详细解释" class="headerlink" title="nginx location配置详细解释"></a>nginx location配置详细解释</h4><p>语法详解<br>语法规则： location [=|<del>|</del>*|^~] /uri/ { … }</p>
+<ul>
+<li>= 开头表示精确匹配</li>
+<li>^~ 开头表示uri以某个常规字符串开头，理解为匹配 url路径即可。nginx不对url做编码，因此请求为/static/20%/aa，可以被规则^~ /static/ /aa匹配到（注意是空格）。以xx开头</li>
+<li>~ 开头表示区分大小写的正则匹配 以xx结尾</li>
+<li>~* 开头表示不区分大小写的正则匹配 以xx结尾</li>
+<li>!<del>和!</del>*分别为区分大小写不匹配及不区分大小写不匹配 的正则</li>
+<li>/ 通用匹配，任何请求都会匹配到。</li>
+</ul>
+<p>例子，有如下匹配规则：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">location &#x3D; &#x2F; &#123;</span><br><span class="line">   #规则A  访问根目录&#x2F;， 比如http:&#x2F;&#x2F;localhost&#x2F;</span><br><span class="line">&#125;</span><br><span class="line">location &#x3D; &#x2F;login &#123;</span><br><span class="line">   #规则B  http:&#x2F;&#x2F;localhost&#x2F;login 将匹配规则B，http:&#x2F;&#x2F;localhost&#x2F;register 则匹配规则H</span><br><span class="line">&#125;</span><br><span class="line">location ^~ &#x2F;static&#x2F; &#123;</span><br><span class="line">   #规则C  http:&#x2F;&#x2F;localhost&#x2F;static&#x2F;a.html 将匹配规则C</span><br><span class="line">&#125;</span><br><span class="line">location ~ \.(gif|jpg|png|js|css)$ &#123;</span><br><span class="line">   #规则D，注意：是根据括号内的大小写进行匹配。括号内全是小写，只匹配小写</span><br><span class="line">&#125;</span><br><span class="line">location ~* \.png$ &#123;</span><br><span class="line">   #规则E  http:&#x2F;&#x2F;localhost&#x2F;a.gif, http:&#x2F;&#x2F;localhost&#x2F;b.jpg 将匹配规则D和规则E，但是规则D顺序优先，规则E不起作用， </span><br><span class="line">      http:&#x2F;&#x2F;localhost&#x2F;static&#x2F;c.png 则优先匹配到 规则C</span><br><span class="line">      http:&#x2F;&#x2F;localhost&#x2F;a.PNG 则匹配规则E， 而不会匹配规则D，因为规则E不区分大小写。</span><br><span class="line">&#125;</span><br><span class="line">location !~ \.xhtml$ &#123;</span><br><span class="line">   #规则F  访问 http:&#x2F;&#x2F;localhost&#x2F;a.xhtml 不会匹配规则F和规则G，</span><br><span class="line">&#125;</span><br><span class="line">location !~* \.xhtml$ &#123;</span><br><span class="line">   #规则G  访问 http:&#x2F;&#x2F;localhost&#x2F;a.xhtml 不会匹配规则F和规则G，</span><br><span class="line">&#125;</span><br><span class="line">location &#x2F; &#123;</span><br><span class="line">   #规则H</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost&#x2F;a.XHTML不会匹配规则G，（因为!）。规则F，规则G属于排除法，符合匹配规则也不会匹配到，所以想想看实际应用中哪里会用到。</span><br><span class="line"></span><br><span class="line">访问 http:&#x2F;&#x2F;localhost&#x2F;category&#x2F;id&#x2F;1111 则最终匹配到规则H，因为以上规则都不匹配，这个时候nginx转发请求给后端应用[服务器](https:&#x2F;&#x2F;www.baidu.com&#x2F;s?wd&#x3D;服务器&amp;tn&#x3D;24004469_oem_dg&amp;rsv_dl&#x3D;gh_pl_sl_csd)，比如FastCGI（php），tomcat（jsp），nginx作为方向代理服务器存在。</span><br><span class="line"></span><br><span class="line">所以实际使用中，个人觉得至少有三个匹配规则定义，如下：</span><br><span class="line">#直接匹配网站根，通过域名访问网站首页比较频繁，使用这个会加速处理，官网如是说。</span><br><span class="line">#这里是直接转发给后端应用服务器了，也可以是一个静态首页</span><br><span class="line"># 第一个必选规则</span><br><span class="line">location &#x3D; &#x2F; &#123;</span><br><span class="line">    proxy_pass http:&#x2F;&#x2F;tomcat:8080&#x2F;index</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location &#x3D; &#x2F;api&#x2F; &#123;   # 访问http:&#x2F;&#x2F;localhost&#x2F;api&#x2F;xxx.xxx  会被代理到192.168.0.1&#x2F;xxx.xxx</span><br><span class="line">    proxy_pass http:&#x2F;&#x2F;192.168.0.1&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 第二个必选规则是处理静态文件请求，这是nginx作为http服务器的强项</span><br><span class="line"># 有两种配置模式，目录匹配或后缀匹配,任选其一或搭配使用</span><br><span class="line">location ^~ &#x2F;static&#x2F; &#123;                              &#x2F;&#x2F;以xx开头</span><br><span class="line">    root &#x2F;webroot&#x2F;static&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line">location ~* \.(gif|jpg|jpeg|png|css|js|ico)$ &#123;     &#x2F;&#x2F;以xx结尾</span><br><span class="line">    root &#x2F;webroot&#x2F;res&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#第三个规则就是通用规则，用来转发动态请求到后端应用服务器</span><br><span class="line">#非静态文件请求就默认是动态请求，自己根据实际把握</span><br><span class="line">location &#x2F; &#123;</span><br><span class="line">    proxy_pass http:&#x2F;&#x2F;tomcat:8080&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="try-files详解"><a href="#try-files详解" class="headerlink" title="try_files详解"></a>try_files详解</h4><ul>
+<li>格式1：try_files file … uri;  </li>
+<li>格式2：try_files file … =code;</li>
+</ul>
+<p><a href="https://www.cnblogs.com/jedi1995/p/10900224.html" target="_blank" rel="noopener">nginx配置选项try_files详解</a></p>
+<h4 id="proxy-pass详解"><a href="#proxy-pass详解" class="headerlink" title="proxy_pass详解"></a>proxy_pass详解</h4><p>在nginx中配置proxy_pass代理转发时，如果在proxy_pass后面的url加/，表示绝对根路径；如果没有/，表示相对路径，把匹配的路径部分也给代理走。<br>假设下面四种情况分别用 <a href="http://192.168.1.1/proxy/test.html" target="_blank" rel="noopener">http://192.168.1.1/proxy/test.html</a> 进行访问。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">第一种：</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;test.html</span><br><span class="line"></span><br><span class="line">第二种（相对于第一种，最后少一个 &#x2F; ）</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;proxy&#x2F;test.html</span><br><span class="line"></span><br><span class="line">第三种：</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1&#x2F;aaa&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;aaa&#x2F;test.html</span><br><span class="line"></span><br><span class="line">第四种（相对于第三种，最后少一个 &#x2F; ）</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1&#x2F;aaa;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;aaatest.html</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.jianshu.com/p/b010c9302cd0" target="_blank" rel="noopener">nginx 之 proxy_pass详解</a></p>
+<h4 id="80端口重定向到443端口"><a href="#80端口重定向到443端口" class="headerlink" title="80端口重定向到443端口"></a>80端口重定向到443端口</h4><p>nginx 80端口重定向到443端口，也就是http访问自动跳转到https</p>
+<p>配置如下：<br>一、按照如下格式修改nginx.conf 配置文件，80端口会自动转给443端口，这样就强制使用SSL证书加密了。访问http的时候会自动跳转到https上面。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name www.域名.com;</span><br><span class="line">    rewrite ^(.*)$ https:&#x2F;&#x2F;$&#123;server_name&#125;$1 permanent;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">    listen 443;</span><br><span class="line">    server_name www.域名.com;</span><br><span class="line">    root &#x2F;home&#x2F;wwwroot;</span><br><span class="line">    ssl on;</span><br><span class="line">    ssl_certificate &#x2F;etc&#x2F;nginx&#x2F;certs&#x2F;server.crt;</span><br><span class="line">    ssl_certificate_key &#x2F;etc&#x2F;nginx&#x2F;certs&#x2F;server.key;</span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>alias</tag>
+        <tag>root</tag>
+        <tag>location</tag>
+        <tag>nginx</tag>
+      </tags>
   </entry>
   <entry>
     <title>netstat 命令</title>
@@ -1750,61 +1811,6 @@
       </tags>
   </entry>
   <entry>
-    <title>nginx conf location 配置</title>
-    <url>/2022/03/23/nginx-conf-location-%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<h4 id="root-alias"><a href="#root-alias" class="headerlink" title="root alias"></a>root alias</h4><ul>
-<li>root的处理结果是：root路径＋location路径</li>
-<li>alias的处理结果是：使用alias路径替换location路径</li>
-</ul>
-<a id="more"></a>
-
-<p>nginx指定文件路径有两种方式root和alias，root与alias主要区别在于nginx如何解释location后面的uri，这会使两者分别以不同的方式将请求映射到服务器文件上。</p>
-<p>alias 指定的目录是准确的，给location指定一个目录。</p>
-<p>root 指定目录的上级目录，并且该上级目录要含有locatoin指定名称的同名目录。也就是</p>
-<p>以root方式设置资源路径：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法: root path;</span><br><span class="line">配置块: http、server、location、if</span><br></pre></td></tr></table></figure>
-<p>如果server,location同时配置，优先采用location内的root路径，</p>
-<p>以alias 方式设置资源路径</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法: alias path;</span><br><span class="line">配置块: location</span><br></pre></td></tr></table></figure>
-<p>Example:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">location &#x2F;img&#x2F; &#123;</span><br><span class="line">	alias &#x2F;var&#x2F;www&#x2F;image&#x2F;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>#若按照上述配置的话，则访问/img/目录里面的文件时，ningx会自动去/var/www/image/目录找文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">location &#x2F;img&#x2F; &#123;</span><br><span class="line">	root &#x2F;var&#x2F;www&#x2F;image;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>#若按照这种配置的话，则访问/img/目录下的文件时，nginx会去/var/www/image/img/目录下找文件</p>
-<p>注意： </p>
-<ol>
-<li>使用alias时，目录名后面一定要加”/“。</li>
-<li>使用alias标签的目录块中不能使用rewrite的break。</li>
-<li>alias在使用正则匹配时，必须捕捉要匹配的内容并在指定的内容处使用。</li>
-<li>alias只能位于location块中</li>
-</ol>
-<h4 id="nginx-location配置详细解释"><a href="#nginx-location配置详细解释" class="headerlink" title="nginx location配置详细解释"></a>nginx location配置详细解释</h4><p>语法详解<br>语法规则： location [=|<del>|</del>*|^~] /uri/ { … }</p>
-<ul>
-<li>= 开头表示精确匹配</li>
-<li>^~ 开头表示uri以某个常规字符串开头，理解为匹配 url路径即可。nginx不对url做编码，因此请求为/static/20%/aa，可以被规则^~ /static/ /aa匹配到（注意是空格）。以xx开头</li>
-<li>~ 开头表示区分大小写的正则匹配 以xx结尾</li>
-<li>~* 开头表示不区分大小写的正则匹配 以xx结尾</li>
-<li>!<del>和!</del>*分别为区分大小写不匹配及不区分大小写不匹配 的正则</li>
-<li>/ 通用匹配，任何请求都会匹配到。</li>
-</ul>
-<p>例子，有如下匹配规则：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">location &#x3D; &#x2F; &#123;</span><br><span class="line">   #规则A  访问根目录&#x2F;， 比如http:&#x2F;&#x2F;localhost&#x2F;</span><br><span class="line">&#125;</span><br><span class="line">location &#x3D; &#x2F;login &#123;</span><br><span class="line">   #规则B  http:&#x2F;&#x2F;localhost&#x2F;login 将匹配规则B，http:&#x2F;&#x2F;localhost&#x2F;register 则匹配规则H</span><br><span class="line">&#125;</span><br><span class="line">location ^~ &#x2F;static&#x2F; &#123;</span><br><span class="line">   #规则C  http:&#x2F;&#x2F;localhost&#x2F;static&#x2F;a.html 将匹配规则C</span><br><span class="line">&#125;</span><br><span class="line">location ~ \.(gif|jpg|png|js|css)$ &#123;</span><br><span class="line">   #规则D，注意：是根据括号内的大小写进行匹配。括号内全是小写，只匹配小写</span><br><span class="line">&#125;</span><br><span class="line">location ~* \.png$ &#123;</span><br><span class="line">   #规则E  http:&#x2F;&#x2F;localhost&#x2F;a.gif, http:&#x2F;&#x2F;localhost&#x2F;b.jpg 将匹配规则D和规则E，但是规则D顺序优先，规则E不起作用， </span><br><span class="line">      http:&#x2F;&#x2F;localhost&#x2F;static&#x2F;c.png 则优先匹配到 规则C</span><br><span class="line">      http:&#x2F;&#x2F;localhost&#x2F;a.PNG 则匹配规则E， 而不会匹配规则D，因为规则E不区分大小写。</span><br><span class="line">&#125;</span><br><span class="line">location !~ \.xhtml$ &#123;</span><br><span class="line">   #规则F  访问 http:&#x2F;&#x2F;localhost&#x2F;a.xhtml 不会匹配规则F和规则G，</span><br><span class="line">&#125;</span><br><span class="line">location !~* \.xhtml$ &#123;</span><br><span class="line">   #规则G  访问 http:&#x2F;&#x2F;localhost&#x2F;a.xhtml 不会匹配规则F和规则G，</span><br><span class="line">&#125;</span><br><span class="line">location &#x2F; &#123;</span><br><span class="line">   #规则H</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost&#x2F;a.XHTML不会匹配规则G，（因为!）。规则F，规则G属于排除法，符合匹配规则也不会匹配到，所以想想看实际应用中哪里会用到。</span><br><span class="line"></span><br><span class="line">访问 http:&#x2F;&#x2F;localhost&#x2F;category&#x2F;id&#x2F;1111 则最终匹配到规则H，因为以上规则都不匹配，这个时候nginx转发请求给后端应用[服务器](https:&#x2F;&#x2F;www.baidu.com&#x2F;s?wd&#x3D;服务器&amp;tn&#x3D;24004469_oem_dg&amp;rsv_dl&#x3D;gh_pl_sl_csd)，比如FastCGI（php），tomcat（jsp），nginx作为方向代理服务器存在。</span><br><span class="line"></span><br><span class="line">所以实际使用中，个人觉得至少有三个匹配规则定义，如下：</span><br><span class="line">#直接匹配网站根，通过域名访问网站首页比较频繁，使用这个会加速处理，官网如是说。</span><br><span class="line">#这里是直接转发给后端应用服务器了，也可以是一个静态首页</span><br><span class="line"># 第一个必选规则</span><br><span class="line">location &#x3D; &#x2F; &#123;</span><br><span class="line">    proxy_pass http:&#x2F;&#x2F;tomcat:8080&#x2F;index</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location &#x3D; &#x2F;api&#x2F; &#123;   # 访问http:&#x2F;&#x2F;localhost&#x2F;api&#x2F;xxx.xxx  会被代理到192.168.0.1&#x2F;xxx.xxx</span><br><span class="line">    proxy_pass http:&#x2F;&#x2F;192.168.0.1&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 第二个必选规则是处理静态文件请求，这是nginx作为http服务器的强项</span><br><span class="line"># 有两种配置模式，目录匹配或后缀匹配,任选其一或搭配使用</span><br><span class="line">location ^~ &#x2F;static&#x2F; &#123;                              &#x2F;&#x2F;以xx开头</span><br><span class="line">    root &#x2F;webroot&#x2F;static&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line">location ~* \.(gif|jpg|jpeg|png|css|js|ico)$ &#123;     &#x2F;&#x2F;以xx结尾</span><br><span class="line">    root &#x2F;webroot&#x2F;res&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#第三个规则就是通用规则，用来转发动态请求到后端应用服务器</span><br><span class="line">#非静态文件请求就默认是动态请求，自己根据实际把握</span><br><span class="line">location &#x2F; &#123;</span><br><span class="line">    proxy_pass http:&#x2F;&#x2F;tomcat:8080&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="proxy-pass详解"><a href="#proxy-pass详解" class="headerlink" title="proxy_pass详解"></a>proxy_pass详解</h4><p>在nginx中配置proxy_pass代理转发时，如果在proxy_pass后面的url加/，表示绝对根路径；如果没有/，表示相对路径，把匹配的路径部分也给代理走。<br>假设下面四种情况分别用 <a href="http://192.168.1.1/proxy/test.html" target="_blank" rel="noopener">http://192.168.1.1/proxy/test.html</a> 进行访问。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">第一种：</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;test.html</span><br><span class="line"></span><br><span class="line">第二种（相对于第一种，最后少一个 &#x2F; ）</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;proxy&#x2F;test.html</span><br><span class="line"></span><br><span class="line">第三种：</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1&#x2F;aaa&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;aaa&#x2F;test.html</span><br><span class="line"></span><br><span class="line">第四种（相对于第三种，最后少一个 &#x2F; ）</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1&#x2F;aaa;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;aaatest.html</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://www.jianshu.com/p/b010c9302cd0" target="_blank" rel="noopener">nginx 之 proxy_pass详解</a></p>
-<h4 id="80端口重定向到443端口"><a href="#80端口重定向到443端口" class="headerlink" title="80端口重定向到443端口"></a>80端口重定向到443端口</h4><p>nginx 80端口重定向到443端口，也就是http访问自动跳转到https</p>
-<p>配置如下：<br>一、按照如下格式修改nginx.conf 配置文件，80端口会自动转给443端口，这样就强制使用SSL证书加密了。访问http的时候会自动跳转到https上面。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name www.域名.com;</span><br><span class="line">    rewrite ^(.*)$ https:&#x2F;&#x2F;$&#123;server_name&#125;$1 permanent;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">    listen 443;</span><br><span class="line">    server_name www.域名.com;</span><br><span class="line">    root &#x2F;home&#x2F;wwwroot;</span><br><span class="line">    ssl on;</span><br><span class="line">    ssl_certificate &#x2F;etc&#x2F;nginx&#x2F;certs&#x2F;server.crt;</span><br><span class="line">    ssl_certificate_key &#x2F;etc&#x2F;nginx&#x2F;certs&#x2F;server.key;</span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>alias</tag>
-        <tag>root</tag>
-        <tag>location</tag>
-        <tag>nginx</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>pac.txt---url通配规则</title>
     <url>/2020/01/30/pac/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>科学上网PAC模式，有时会需要自己在pac.txt里添加一些被墙的URL，记录一下url通配的规则，以备以后使用。</p>
@@ -1838,18 +1844,54 @@
       </tags>
   </entry>
   <entry>
-    <title>《Spring设计思想》AOP设计基本原理</title>
-    <url>/2020/03/11/pring%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3%E3%80%8BAOP%E8%AE%BE%E8%AE%A1%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/</url>
-    <content><![CDATA[<p>转载：<strong><a href="https://blog.csdn.net/luanlouis/article/details/51095702" target="_blank" rel="noopener">《Spring设计思想》AOP设计基本原理
-</a></strong>、<strong><a href="https://blog.csdn.net/luanlouis/article/details/51155821" target="_blank" rel="noopener">《Spring设计思想》AOP实现原理（基于JDK和基于CGLIB）
-</a></strong></p>
+    <title>rust --堆栈(内存)</title>
+    <url>/2022/02/08/rust-%E7%9A%84%E5%A0%86%E6%A0%88-%E5%BC%95%E7%94%A8/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>类型的值默认都分布在栈中(即便是动态类型的数据，但也通过胖指针改变了该类型的值的表现形式)，所以<strong>创建某个变量的引用时，引用的是栈中的那个值</strong>.   </p>
+<a id="more"></a>
+
+<h4 id="Rust将哪些数据存放于栈中？"><a href="#Rust将哪些数据存放于栈中？" class="headerlink" title="Rust将哪些数据存放于栈中？"></a>Rust将哪些数据存放于栈中？</h4><p>Rust中各种类型的值默认都存储在栈中，除非显式地使用Box::new()将它们存放在堆上。</p>
+<p>但数据要存放在栈中，要求其数据类型的大小已知。对于静态大小的类型，可直接存储在栈上。</p>
+<p>例如如下类型的数据存放在栈中：</p>
+<ul>
+<li>裸指针(一个机器字长)、普通引用(一个机器字长)、胖指针(除了指针外还包含其他元数据信息，智能指针也是一种带有额外功能的胖指针，而胖指针实际上又是Struct结构)</li>
+<li>布尔值</li>
+<li>char</li>
+<li>各种整数、浮点数</li>
+<li>数组(Rust数组的元素数据类型和数组长度都是固定不变的)</li>
+<li>元组</li>
+</ul>
+<p>对于动态大小的类型(如Vec、String)，则数据部分分布在堆中(被称为allocate buffer)，并在栈中留下胖指针(Struct方式实现)指向实际的数据，栈中的那个胖指针结构是静态大小的(换句话说，动态类型以Vec为例，Vec类型的值理应是那些连续的元素，但因为这样的连续内存的大小是不确定的，所以改变了它的行为，它的值是那个栈中的胖指针，而不是存储在allocatge buffer中的实际数据)。</p>
+<p>以上分类需要注意几点：</p>
+<ul>
+<li>将栈中数据赋值给变量时，数据直接存放在栈中。比如i32类型的33，33直接存放在栈内，而不是在堆中存放33并在栈中存放指向33的指针</li>
+<li>因为类型的值默认都分布在栈中(即便是动态类型的数据，但也通过胖指针改变了该类型的值的表现形式)，所以<strong>创建某个变量的引用时，引用的是栈中的那个值</strong></li>
+<li>有些数据是0字节的，不需要占用空间，比如()</li>
+<li>尽管【容器】结构中(如数组、元组、Struct)可以存放任意数据，但保存在容器中的要么是原始类型的栈中值，要么是指向堆中数据的引用，所以这些容器类型的值也在栈中。例如，对于struct User {name: String}，name字段存储的是String类型的胖指针，String类型实际的数据则在堆中</li>
+<li>尽管Box::new(T)可以将类型T的数据放入堆中，但Box类型本身是一个struct，它是一个胖指针(更严格地说是智能指针)，它在栈中</li>
+</ul>
+<p>实际上，对于理解来说，只有Box才能让数据存放到堆中，但对于实现上，只有调用alloc才能申请堆内存并将数据存放在堆中。比如，自己想实现一个类型，将某些数据明确存放在堆中，那么必须要在实现代码中调用alloc来分配堆内存，但同时，要实现的这个类型本身，它的值是在栈中的。</p>
+<p>(5).Rust除了使用堆栈，还使用全局内存区(静态变量区和字面量区)。</p>
+<p>Rust编译器会将全局内存区的数据直接嵌入在二进制程序文件中，当启动并加载程序时，嵌入在全局内存区的数据被放入内存的某个位置。</p>
+<p>全局内存区的数据是编译期间就可确定的，且存活于整个程序运行期间。</p>
+<p>字符串字面量、static定义的静态变量(相当于全局变量)都会硬编码嵌入到二进制程序的全局内存区。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fn main()&#123;</span><br><span class="line">  let _s &#x3D; &quot;hello&quot;;     &#x2F;&#x2F; (1)</span><br><span class="line">  let _ss &#x3D; String::from(&quot;hello&quot;); &#x2F;&#x2F; (2)</span><br><span class="line">  let _arr &#x3D; [&quot;hello&quot;;3];    &#x2F;&#x2F; (3)</span><br><span class="line">  let _tuple &#x3D; (&quot;hello&quot;,);   &#x2F;&#x2F; (4)</span><br><span class="line">  &#x2F;&#x2F; ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码中的几个变量都使用了字符串字面量，且使用的都是相同的字面量”hello”，在编译期间，它们会共用同一个”hello”，该”hello”会硬编码到二进制程序文件中。当程序被加载到内存时，该被放入到全局内存区，它在全局内存区有自己的内存地址，当运行到以上各行代码时：</p>
+<ul>
+<li>代码(1)、(3)、(4)，将根据地址取得其引用，并分别保存到变量_s、_arr各元素、_tuple元素中</li>
+<li>代码(2)，将根据地址取得数据并将其拷贝到堆中(转换为Vec<u8>的方式存储，它是String类型的底层存储方式)</u8></li>
+</ul>
+<h4 id="Rust中允许使用const定义常量。"><a href="#Rust中允许使用const定义常量。" class="headerlink" title="Rust中允许使用const定义常量。"></a>Rust中允许使用const定义常量。</h4><p>常量将在编译期间直接以硬编码的方式内联(inline)插入到使用常量的地方。</p>
+<p>所谓内联，即将它代表的值直接替换到使用它的地方。</p>
+<p>比如，定义了常量ABC=33，在第100行和第300行处都使用了常量ABC，那么在编译期间，会将33硬编码到第100行和第300行处。</p>
+<p>Rust中，除了const定义的常量会被内联，某些函数也可以被内联。将函数进行内联，表示将该函数对应的代码体直接展开并插入到调用该函数的地方，这样就没有函数调用的开销(比如没有调用函数时申请栈帧、在寄存器保存某些变量等的行为)，效率会更高一些。但只有那些频繁调用的短函数才适合被内联，并且内联会导致程序的代码膨胀。</p>
+<p>原地址: <strong><a href="https://rust-book.junmajinlong.com/ch5/02_rust_mem.html" target="_blank" rel="noopener">Rust如何使用堆和栈</a></strong></p>
 ]]></content>
       <categories>
-        <category>java</category>
+        <category>rust</category>
       </categories>
       <tags>
-        <tag>spring</tag>
-        <tag>aop</tag>
+        <tag>引用</tag>
       </tags>
   </entry>
   <entry>
@@ -1908,71 +1950,6 @@
       </tags>
   </entry>
   <entry>
-    <title>rust --堆栈(内存)</title>
-    <url>/2022/02/08/rust-%E7%9A%84%E5%A0%86%E6%A0%88-%E5%BC%95%E7%94%A8/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>类型的值默认都分布在栈中(即便是动态类型的数据，但也通过胖指针改变了该类型的值的表现形式)，所以<strong>创建某个变量的引用时，引用的是栈中的那个值</strong>.   </p>
-<a id="more"></a>
-
-<h4 id="Rust将哪些数据存放于栈中？"><a href="#Rust将哪些数据存放于栈中？" class="headerlink" title="Rust将哪些数据存放于栈中？"></a>Rust将哪些数据存放于栈中？</h4><p>Rust中各种类型的值默认都存储在栈中，除非显式地使用Box::new()将它们存放在堆上。</p>
-<p>但数据要存放在栈中，要求其数据类型的大小已知。对于静态大小的类型，可直接存储在栈上。</p>
-<p>例如如下类型的数据存放在栈中：</p>
-<ul>
-<li>裸指针(一个机器字长)、普通引用(一个机器字长)、胖指针(除了指针外还包含其他元数据信息，智能指针也是一种带有额外功能的胖指针，而胖指针实际上又是Struct结构)</li>
-<li>布尔值</li>
-<li>char</li>
-<li>各种整数、浮点数</li>
-<li>数组(Rust数组的元素数据类型和数组长度都是固定不变的)</li>
-<li>元组</li>
-</ul>
-<p>对于动态大小的类型(如Vec、String)，则数据部分分布在堆中(被称为allocate buffer)，并在栈中留下胖指针(Struct方式实现)指向实际的数据，栈中的那个胖指针结构是静态大小的(换句话说，动态类型以Vec为例，Vec类型的值理应是那些连续的元素，但因为这样的连续内存的大小是不确定的，所以改变了它的行为，它的值是那个栈中的胖指针，而不是存储在allocatge buffer中的实际数据)。</p>
-<p>以上分类需要注意几点：</p>
-<ul>
-<li>将栈中数据赋值给变量时，数据直接存放在栈中。比如i32类型的33，33直接存放在栈内，而不是在堆中存放33并在栈中存放指向33的指针</li>
-<li>因为类型的值默认都分布在栈中(即便是动态类型的数据，但也通过胖指针改变了该类型的值的表现形式)，所以<strong>创建某个变量的引用时，引用的是栈中的那个值</strong></li>
-<li>有些数据是0字节的，不需要占用空间，比如()</li>
-<li>尽管【容器】结构中(如数组、元组、Struct)可以存放任意数据，但保存在容器中的要么是原始类型的栈中值，要么是指向堆中数据的引用，所以这些容器类型的值也在栈中。例如，对于struct User {name: String}，name字段存储的是String类型的胖指针，String类型实际的数据则在堆中</li>
-<li>尽管Box::new(T)可以将类型T的数据放入堆中，但Box类型本身是一个struct，它是一个胖指针(更严格地说是智能指针)，它在栈中</li>
-</ul>
-<p>实际上，对于理解来说，只有Box才能让数据存放到堆中，但对于实现上，只有调用alloc才能申请堆内存并将数据存放在堆中。比如，自己想实现一个类型，将某些数据明确存放在堆中，那么必须要在实现代码中调用alloc来分配堆内存，但同时，要实现的这个类型本身，它的值是在栈中的。</p>
-<p>(5).Rust除了使用堆栈，还使用全局内存区(静态变量区和字面量区)。</p>
-<p>Rust编译器会将全局内存区的数据直接嵌入在二进制程序文件中，当启动并加载程序时，嵌入在全局内存区的数据被放入内存的某个位置。</p>
-<p>全局内存区的数据是编译期间就可确定的，且存活于整个程序运行期间。</p>
-<p>字符串字面量、static定义的静态变量(相当于全局变量)都会硬编码嵌入到二进制程序的全局内存区。</p>
-<p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fn main()&#123;</span><br><span class="line">  let _s &#x3D; &quot;hello&quot;;     &#x2F;&#x2F; (1)</span><br><span class="line">  let _ss &#x3D; String::from(&quot;hello&quot;); &#x2F;&#x2F; (2)</span><br><span class="line">  let _arr &#x3D; [&quot;hello&quot;;3];    &#x2F;&#x2F; (3)</span><br><span class="line">  let _tuple &#x3D; (&quot;hello&quot;,);   &#x2F;&#x2F; (4)</span><br><span class="line">  &#x2F;&#x2F; ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面代码中的几个变量都使用了字符串字面量，且使用的都是相同的字面量”hello”，在编译期间，它们会共用同一个”hello”，该”hello”会硬编码到二进制程序文件中。当程序被加载到内存时，该被放入到全局内存区，它在全局内存区有自己的内存地址，当运行到以上各行代码时：</p>
-<ul>
-<li>代码(1)、(3)、(4)，将根据地址取得其引用，并分别保存到变量_s、_arr各元素、_tuple元素中</li>
-<li>代码(2)，将根据地址取得数据并将其拷贝到堆中(转换为Vec<u8>的方式存储，它是String类型的底层存储方式)</u8></li>
-</ul>
-<h4 id="Rust中允许使用const定义常量。"><a href="#Rust中允许使用const定义常量。" class="headerlink" title="Rust中允许使用const定义常量。"></a>Rust中允许使用const定义常量。</h4><p>常量将在编译期间直接以硬编码的方式内联(inline)插入到使用常量的地方。</p>
-<p>所谓内联，即将它代表的值直接替换到使用它的地方。</p>
-<p>比如，定义了常量ABC=33，在第100行和第300行处都使用了常量ABC，那么在编译期间，会将33硬编码到第100行和第300行处。</p>
-<p>Rust中，除了const定义的常量会被内联，某些函数也可以被内联。将函数进行内联，表示将该函数对应的代码体直接展开并插入到调用该函数的地方，这样就没有函数调用的开销(比如没有调用函数时申请栈帧、在寄存器保存某些变量等的行为)，效率会更高一些。但只有那些频繁调用的短函数才适合被内联，并且内联会导致程序的代码膨胀。</p>
-<p>原地址: <strong><a href="https://rust-book.junmajinlong.com/ch5/02_rust_mem.html" target="_blank" rel="noopener">Rust如何使用堆和栈</a></strong></p>
-]]></content>
-      <categories>
-        <category>rust</category>
-      </categories>
-      <tags>
-        <tag>引用</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Rust是基于表达式的语言</title>
-    <url>/2022/03/16/rust-%E8%AF%AD%E5%8F%A5%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
-    <content><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch1/01_expression.html" target="_blank" rel="noopener">Rust是基于表达式的语言</a></p>
-<a id="more"></a>
-
-<p>除了在表达式尾部加分号的代码是语句之外，还有另外一种情况的代码是语句而非表达式：<strong>用于声明或定义</strong>。例如let声明变量、fn定义函数、struct声明结构体等。</p>
-<p>Rust很多地方都会结合表达式和语句来做变量赋值。例如，if结构也是一个表达式，所以它有返回值，可以将if的返回值赋值给变量，而<strong>它的返回值来自于它的大括号</strong>：当大括号最后执行的一条代码不加分号结尾时，该代码的计算结果就是if结构的返回值。</p>
-<p>————————————————《rust入门秘籍》</p>
-]]></content>
-      <tags>
-        <tag>rust</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>shell脚本检查nginx服务状态</title>
     <url>/2021/04/08/shell%E8%84%9A%E6%9C%AC%E6%A3%80%E6%9F%A5nginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
@@ -2003,6 +1980,20 @@
       </categories>
       <tags>
         <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rust是基于表达式的语言</title>
+    <url>/2022/03/16/rust-%E8%AF%AD%E5%8F%A5%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
+    <content><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch1/01_expression.html" target="_blank" rel="noopener">Rust是基于表达式的语言</a></p>
+<a id="more"></a>
+
+<p>除了在表达式尾部加分号的代码是语句之外，还有另外一种情况的代码是语句而非表达式：<strong>用于声明或定义</strong>。例如let声明变量、fn定义函数、struct声明结构体等。</p>
+<p>Rust很多地方都会结合表达式和语句来做变量赋值。例如，if结构也是一个表达式，所以它有返回值，可以将if的返回值赋值给变量，而<strong>它的返回值来自于它的大括号</strong>：当大括号最后执行的一条代码不加分号结尾时，该代码的计算结果就是if结构的返回值。</p>
+<p>————————————————《rust入门秘籍》</p>
+]]></content>
+      <tags>
+        <tag>rust</tag>
       </tags>
   </entry>
   <entry>
@@ -2256,16 +2247,6 @@
 
 <p><img src="/images/pasted-33.png" alt="upload successful"><br>第一个数字：0表示开机不检查磁盘，1表示开机检查磁盘；<br>第二个数字：0表示交换分区，1代表启动分区（Linux），2表示普通分区</p>
 <p>3、重启生效</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-        <category>ubuntu</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>ubuntu登录界面美化</title>
-    <url>/2021/04/14/ubuntu%E5%BC%80%E6%9C%BA%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96/</url>
-    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/vselfdom/article/details/88546349" target="_blank" rel="noopener">Ubuntu 18.04 用户登录界面优化</a></strong>，备用。</p>
 ]]></content>
       <categories>
         <category>linux</category>
@@ -2721,6 +2702,22 @@
       </tags>
   </entry>
   <entry>
+    <title>jvm-invokeinterface</title>
+    <url>/2020/03/09/vm-invokeinterface/</url>
+    <content><![CDATA[<p>转载：<a href="https://blog.csdn.net/kang389110772/article/details/50723127" target="_blank" rel="noopener">Spring为什么Autowired注入的是接口
+</a>、</p>
+<p><a href="https://github.com/1993hzh/thoughts/issues/5" target="_blank" rel="noopener">浅析JVM中invokevirtual与invokeinterface的区别 #5
+</a>、</p>
+<p><a href="https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.6.3" target="_blank" rel="noopener">Java Virtual Machine Specification</a></p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>jvm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Ubuntu中vim的粘帖复制</title>
     <url>/2021/03/17/vim-%E7%B2%98%E5%B8%96%E5%A4%8D%E5%88%B6%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>想要从浏览器中把Ctrl+c的内容复制到Vim中，要搞懂Ubuntu18中vim的复制粘帖原理及使用。</p>
@@ -2755,19 +2752,13 @@
       </tags>
   </entry>
   <entry>
-    <title>jvm-invokeinterface</title>
-    <url>/2020/03/09/vm-invokeinterface/</url>
-    <content><![CDATA[<p>转载：<a href="https://blog.csdn.net/kang389110772/article/details/50723127" target="_blank" rel="noopener">Spring为什么Autowired注入的是接口
-</a>、</p>
-<p><a href="https://github.com/1993hzh/thoughts/issues/5" target="_blank" rel="noopener">浅析JVM中invokevirtual与invokeinterface的区别 #5
-</a>、</p>
-<p><a href="https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.6.3" target="_blank" rel="noopener">Java Virtual Machine Specification</a></p>
+    <title>vue nginx 压缩</title>
+    <url>/2022/02/10/vue-nginx-%E5%8E%8B%E7%BC%A9/</url>
+    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/qq_43363884/article/details/108195408" target="_blank" rel="noopener">vue打包时gzip压缩的两种方案</a></strong>  ,   &nbsp;&nbsp;<strong><a href="https://blog.csdn.net/github_38924695/article/details/108773173" target="_blank" rel="noopener">nginx中配置gzip_static on</a></strong></p>
 ]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
       <tags>
-        <tag>jvm</tag>
+        <tag>nginx</tag>
+        <tag>vue</tag>
       </tags>
   </entry>
   <entry>
@@ -2779,16 +2770,6 @@
 ]]></content>
       <tags>
         <tag>跨域</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>vue nginx 压缩</title>
-    <url>/2022/02/10/vue-nginx-%E5%8E%8B%E7%BC%A9/</url>
-    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/qq_43363884/article/details/108195408" target="_blank" rel="noopener">vue打包时gzip压缩的两种方案</a></strong>  ,   &nbsp;&nbsp;<strong><a href="https://blog.csdn.net/github_38924695/article/details/108773173" target="_blank" rel="noopener">nginx中配置gzip_static on</a></strong></p>
-]]></content>
-      <tags>
-        <tag>nginx</tag>
-        <tag>vue</tag>
       </tags>
   </entry>
   <entry>
@@ -2859,24 +2840,25 @@
       </tags>
   </entry>
   <entry>
-    <title>RxJava --学习链接</title>
-    <url>/2020/02/18/xJava/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Rx（Reactive Extensions）是一个使用<code>可观察数据流</code>进行<code>异步编程</code>的编程接口，ReactiveX结合了<code>观察者模式</code>、<code>迭代器模式</code>和<code>函数式编程</code>的精华。Rx的语言库比较流行的有RxJava/RxJS/Rx.NET，这里贴一些有关RxJava的链接，以便后续查找。</p>
-<a id="more"></a>
-<p><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/" target="_blank" rel="noopener">Rx中文文档</a><br><a href="https://www.jianshu.com/p/03a72a5a2049" target="_blank" rel="noopener">RxJava心得</a><br><a href="https://blog.lixplor.com/2016/10/16/rxjava/" target="_blank" rel="noopener">RxJava操作符</a></p>
+    <title>你真的会用Gson吗?Gson使用指南（一）</title>
+    <url>/2021/12/23/%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BC%9A%E7%94%A8Gson%E5%90%97-Gson%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<p><strong><a href="https://www.jianshu.com/p/e740196225a4" target="_blank" rel="noopener">你真的会用Gson吗?Gson使用指南（一）</a></strong>&nbsp;&nbsp;<strong><a href="https://blog.csdn.net/majalis_c/article/details/79801863?utm_term=gsonjsonobject%E8%BD%ACstring&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-0-79801863&spm=3001.4430" target="_blank" rel="noopener">Gson基本操作，JsonObject，JsonArray，String，JavaBean，List互转</a></strong></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>《Spring设计思想》AOP设计基本原理</title>
+    <url>/2020/03/11/pring%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3%E3%80%8BAOP%E8%AE%BE%E8%AE%A1%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/</url>
+    <content><![CDATA[<p>转载：<strong><a href="https://blog.csdn.net/luanlouis/article/details/51095702" target="_blank" rel="noopener">《Spring设计思想》AOP设计基本原理
+</a></strong>、<strong><a href="https://blog.csdn.net/luanlouis/article/details/51155821" target="_blank" rel="noopener">《Spring设计思想》AOP实现原理（基于JDK和基于CGLIB）
+</a></strong></p>
 ]]></content>
       <categories>
         <category>java</category>
       </categories>
       <tags>
-        <tag>RxJava</tag>
+        <tag>spring</tag>
+        <tag>aop</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>你真的会用Gson吗?Gson使用指南（一）</title>
-    <url>/2021/12/23/%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BC%9A%E7%94%A8Gson%E5%90%97-Gson%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%EF%BC%88%E4%B8%80%EF%BC%89/</url>
-    <content><![CDATA[<p><strong><a href="https://www.jianshu.com/p/e740196225a4" target="_blank" rel="noopener">你真的会用Gson吗?Gson使用指南（一）</a></strong>&nbsp;&nbsp;<strong><a href="https://blog.csdn.net/majalis_c/article/details/79801863?utm_term=gsonjsonobject%E8%BD%ACstring&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-0-79801863&spm=3001.4430" target="_blank" rel="noopener">Gson基本操作，JsonObject，JsonArray，String，JavaBean，List互转</a></strong></p>
-]]></content>
   </entry>
   <entry>
     <title>图解--函数调用过程及栈帧分析</title>
@@ -2906,6 +2888,20 @@
 ]]></content>
   </entry>
   <entry>
+    <title>RxJava --学习链接</title>
+    <url>/2020/02/18/xJava/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Rx（Reactive Extensions）是一个使用<code>可观察数据流</code>进行<code>异步编程</code>的编程接口，ReactiveX结合了<code>观察者模式</code>、<code>迭代器模式</code>和<code>函数式编程</code>的精华。Rx的语言库比较流行的有RxJava/RxJS/Rx.NET，这里贴一些有关RxJava的链接，以便后续查找。</p>
+<a id="more"></a>
+<p><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/" target="_blank" rel="noopener">Rx中文文档</a><br><a href="https://www.jianshu.com/p/03a72a5a2049" target="_blank" rel="noopener">RxJava心得</a><br><a href="https://blog.lixplor.com/2016/10/16/rxjava/" target="_blank" rel="noopener">RxJava操作符</a></p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>RxJava</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>补码原理的个人理解</title>
     <url>/2020/03/20/%E8%A1%A5%E7%A0%81%E5%8E%9F%E7%90%86%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%90%86%E8%A7%A3/</url>
     <content><![CDATA[<p>转载：<strong><a href="https://blog.csdn.net/jiaobuchong/article/details/83188674" target="_blank" rel="noopener">补码原理的个人理解</a></strong></p>
@@ -2929,5 +2925,15 @@
         <tag>MAC</tag>
         <tag>IP</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>ubuntu登录界面美化</title>
+    <url>/2021/04/14/ubuntu%E5%BC%80%E6%9C%BA%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96/</url>
+    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/vselfdom/article/details/88546349" target="_blank" rel="noopener">Ubuntu 18.04 用户登录界面优化</a></strong>，备用。</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+        <category>ubuntu</category>
+      </categories>
   </entry>
 </search>
