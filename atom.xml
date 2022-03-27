@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglinagain.xyz/"/>
-  <updated>2022-03-24T19:26:48.099Z</updated>
+  <updated>2022-03-27T15:50:23.808Z</updated>
   <id>http://blog.zhangzonglinagain.xyz/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ubuntu 搜狗拼音 繁简切换快捷键冲突</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2022/03/27/ubuntu-%E6%90%9C%E7%8B%97%E6%8B%BC%E9%9F%B3-%E7%B9%81%E7%AE%80%E5%88%87%E6%8D%A2%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%86%B2%E7%AA%81/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2022/03/27/ubuntu-%E6%90%9C%E7%8B%97%E6%8B%BC%E9%9F%B3-%E7%B9%81%E7%AE%80%E5%88%87%E6%8D%A2%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%86%B2%E7%AA%81/</id>
+    <published>2022-03-27T15:46:20.000Z</published>
+    <updated>2022-03-27T15:50:23.808Z</updated>
+    
+    <content type="html"><![CDATA[<p>在用idea（vscode）搜索时，按Ctlr +Shift +F ,没反应，后打字发现触发了搜狗拼音的繁简切换，盘它~</p><a id="more"></a><h4 id="修改搜狗拼音的配置文件"><a href="#修改搜狗拼音的配置文件" class="headerlink" title="修改搜狗拼音的配置文件"></a>修改搜狗拼音的配置文件</h4><p>首先打开搜狗拼音的配置文件：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~&#x2F;.config&#x2F;sogoupinyin&#x2F;conf&#x2F;env.ini</span><br></pre></td></tr></table></figure><p>然后找到下面这行，将后面的值改为0，保存文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ShortCutFanJian&#x3D;1</span><br></pre></td></tr></table></figure><p>完成这一步还没结束，还需要修改fcitx的配置文件</p><h4 id="修改-fcitx-的配置文件"><a href="#修改-fcitx-的配置文件" class="headerlink" title="修改 fcitx 的配置文件"></a>修改 fcitx 的配置文件</h4><p>打开 fcitx 的相关配置文件：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~&#x2F;.config&#x2F;fcitx&#x2F;conf&#x2F;fcitx-chttrans.config</span><br></pre></td></tr></table></figure><p>然后找到下面这行</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#Hotkey&#x3D;CTRL_SHIFT_F</span><br></pre></td></tr></table></figure><p>将前面的注释取消，随便修改一个不常用的快捷键，比如</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hotkey&#x3D;CTRL_SHIFT_]</span><br></pre></td></tr></table></figure><p>保存文件，重新登录一下账户即可。</p><p><a href="https://www.cnblogs.com/FengZeng666/p/15504636.html" target="_blank" rel="noopener">Ubuntu 禁用搜狗输入法Linux版的简繁切换快捷键</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在用idea（vscode）搜索时，按Ctlr +Shift +F ,没反应，后打字发现触发了搜狗拼音的繁简切换，盘它~&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>tmux 使用</title>
@@ -456,33 +475,6 @@
     
     
       <category term="跨域" scheme="http://blog.zhangzonglinagain.xyz/tags/%E8%B7%A8%E5%9F%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>@PostConstruct注解原理解析</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2021/11/16/PostConstruct%E6%B3%A8%E8%A7%A3%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2021/11/16/PostConstruct%E6%B3%A8%E8%A7%A3%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/</id>
-    <published>2021-11-16T05:31:00.000Z</published>
-    <updated>2021-11-16T05:32:14.597Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://www.cnblogs.com/lay2017/p/11735802.html" target="_blank" rel="noopener">@PostConstruct注解原理解析</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/lay2017/p/11735802.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;@PostConstruct注解原理解析&lt;/a&gt;&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-    
-      <category term="java" scheme="http://blog.zhangzonglinagain.xyz/categories/java/"/>
-    
-    
-      <category term="PostConstruct" scheme="http://blog.zhangzonglinagain.xyz/tags/PostConstruct/"/>
     
   </entry>
   

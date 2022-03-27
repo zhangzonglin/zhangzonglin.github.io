@@ -1,30 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Filter和Interceptor的比较</title>
-    <url>/2021/11/15/Filter%E5%92%8CInterceptor%E7%9A%84%E6%AF%94%E8%BE%83/</url>
-    <content><![CDATA[<p><a href="https://www.jianshu.com/p/5f5e5211bbdb" target="_blank" rel="noopener">Filter和Interceptor的比较</a>, &nbsp;&nbsp;&nbsp;<a href="https://www.cnblogs.com/hellovoyager1/p/9152292.html" target="_blank" rel="noopener">Listener、Filter 和Interceptor 总结</a>, &nbsp;&nbsp;<a href="https://www.cnblogs.com/hhhshct/p/8808115.html" target="_blank" rel="noopener">springboot配置监听器、过滤器和拦截器</a></p>
-]]></content>
-      <categories>
-        <category>spring</category>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>interceptor</tag>
-        <tag>filter</tag>
-        <tag>listener</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Async/await</title>
-    <url>/2021/04/14/Async-await/</url>
-    <content><![CDATA[<p><a href="https://javascript.info/async-await" target="_blank" rel="noopener">Async/await</a></p>
-]]></content>
-      <categories>
-        <category>javascript</category>
-      </categories>
-  </entry>
-  <entry>
     <title>TCP/IP协议族的网络层基础（6）——NAT和NAPT</title>
     <url>/2020/03/27/CP-IP%E4%B9%8BNAT/</url>
     <content><![CDATA[<p>转载：<strong><a href="https://blog.csdn.net/lvyibin890/article/details/80206979" target="_blank" rel="noopener">TCP/IP协议族的网络层基础（6）——NAT和NAPT</a></strong>。</p>
@@ -97,16 +73,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Form Data &amp; Request Payload</title>
-    <url>/2021/11/27/Form-Data-Request-Payload/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>简单来说,request headers里的Content-Type: application/json 表明request body里是json数据; Content-Type: application/x-www-form-urlencoded表明request body里是Form Data数据(以key1=value1&amp;key2=value2形式). 根据content-type的不同, 后端也要相应处理,或@RequestParam 处理表单数据, 或@RequestBody处理json数据等.<br><strong><a href="https://segmentfault.com/a/1190000018774494" target="_blank" rel="noopener">前后端联调之Form Data与Request Payload，你真的了解吗？</a></strong> &nbsp;&nbsp;<strong><a href="https://www.cnblogs.com/zoro-zero/p/11608491.html" target="_blank" rel="noopener">SpringBoot 传入JSON对象参数</a></strong></p>
-]]></content>
-      <tags>
-        <tag>application/x-www-form-urlencoded</tag>
-        <tag>application/json</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>H5页面在微信浏览器中通过网页授权获取用户信息(openid、昵称、头像等)</title>
     <url>/2021/08/11/H5%E9%A1%B5%E9%9D%A2%E8%8E%B7%E5%8F%96%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E7%9A%84openid/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>需要做一个Vue前端项目，UI选择buefy（一个基于Bulma的vue轻量级组件），其中一个H5页面涉及到，如果是在微信浏览器中，需要在后台服务器自动注册以及登录，即需要通过网页授权来获取用户信息（openid、昵称、头像等)。这儿只涉及前端的工作…</p>
@@ -145,9 +111,43 @@
       </tags>
   </entry>
   <entry>
-    <title>Hashtable、HashMap、ConcurrentHashMap</title>
-    <url>/2021/12/01/Hashtable%E3%80%81HashMap%E3%80%81ConcurrentHashMap/</url>
-    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/Mr_YanMingXin/article/details/118601591" target="_blank" rel="noopener">详解Java中HashMap、HashTable、ConcurrentHashMap常见问题</a></strong> &nbsp;;&nbsp;<strong><a href="https://blog.csdn.net/amunamuna/article/details/107773902" target="_blank" rel="noopener">Hashtable、HashMap、ConcurrentHashMap等及常用阻塞队列</a></strong> &nbsp;&nbsp;</p>
+    <title>Form Data &amp; Request Payload</title>
+    <url>/2021/11/27/Form-Data-Request-Payload/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>简单来说,request headers里的Content-Type: application/json 表明request body里是json数据; Content-Type: application/x-www-form-urlencoded表明request body里是Form Data数据(以key1=value1&amp;key2=value2形式). 根据content-type的不同, 后端也要相应处理,或@RequestParam 处理表单数据, 或@RequestBody处理json数据等.<br><strong><a href="https://segmentfault.com/a/1190000018774494" target="_blank" rel="noopener">前后端联调之Form Data与Request Payload，你真的了解吗？</a></strong> &nbsp;&nbsp;<strong><a href="https://www.cnblogs.com/zoro-zero/p/11608491.html" target="_blank" rel="noopener">SpringBoot 传入JSON对象参数</a></strong></p>
+]]></content>
+      <tags>
+        <tag>application/x-www-form-urlencoded</tag>
+        <tag>application/json</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Filter和Interceptor的比较</title>
+    <url>/2021/11/15/Filter%E5%92%8CInterceptor%E7%9A%84%E6%AF%94%E8%BE%83/</url>
+    <content><![CDATA[<p><a href="https://www.jianshu.com/p/5f5e5211bbdb" target="_blank" rel="noopener">Filter和Interceptor的比较</a>, &nbsp;&nbsp;&nbsp;<a href="https://www.cnblogs.com/hellovoyager1/p/9152292.html" target="_blank" rel="noopener">Listener、Filter 和Interceptor 总结</a>, &nbsp;&nbsp;<a href="https://www.cnblogs.com/hhhshct/p/8808115.html" target="_blank" rel="noopener">springboot配置监听器、过滤器和拦截器</a></p>
+]]></content>
+      <categories>
+        <category>spring</category>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>interceptor</tag>
+        <tag>filter</tag>
+        <tag>listener</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Async/await</title>
+    <url>/2021/04/14/Async-await/</url>
+    <content><![CDATA[<p><a href="https://javascript.info/async-await" target="_blank" rel="noopener">Async/await</a></p>
+]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Java泛型详解：&lt;T&gt;和Class&lt;T&gt;的使用。泛型类，泛型方法的详细使用实例 </title>
+    <url>/2021/12/17/Java%E6%B3%9B%E5%9E%8B%E8%AF%A6%E8%A7%A3%EF%BC%9A-T-%E5%92%8CClass-T-%E7%9A%84%E4%BD%BF%E7%94%A8%E3%80%82%E6%B3%9B%E5%9E%8B%E7%B1%BB%EF%BC%8C%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95%E7%9A%84%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/jpfss/p/9928747.html" target="_blank" rel="noopener">Java泛型详解：<T>和Class<T>的使用。泛型类，泛型方法的详细使用实例 </T></T></a></p>
 ]]></content>
   </entry>
   <entry>
@@ -176,42 +176,18 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Hashtable、HashMap、ConcurrentHashMap</title>
+    <url>/2021/12/01/Hashtable%E3%80%81HashMap%E3%80%81ConcurrentHashMap/</url>
+    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/Mr_YanMingXin/article/details/118601591" target="_blank" rel="noopener">详解Java中HashMap、HashTable、ConcurrentHashMap常见问题</a></strong> &nbsp;;&nbsp;<strong><a href="https://blog.csdn.net/amunamuna/article/details/107773902" target="_blank" rel="noopener">Hashtable、HashMap、ConcurrentHashMap等及常用阻塞队列</a></strong> &nbsp;&nbsp;</p>
+]]></content>
+  </entry>
+  <entry>
     <title>IntelliJ IDEA激活</title>
     <url>/2021/03/20/IntelliJ-IDEA%E6%BF%80%E6%B4%BB/</url>
     <content><![CDATA[<p>可用方法：<a href="https://www.exception.site/essay/how-to-free-use-intellij-idea-2019-3" target="_blank" rel="noopener">IntelliJ IDEA 2020.3.3激活破解教程（亲测激活至 2099 年，长期更新）</a>，或者一直白嫖试用30天（<em>rm -rf ～/.config/Jetbrains/IntelliJIdea2020.3/eval/</em> 可重置30天）。</p>
 ]]></content>
       <tags>
         <tag>idea</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java泛型详解：&lt;T&gt;和Class&lt;T&gt;的使用。泛型类，泛型方法的详细使用实例 </title>
-    <url>/2021/12/17/Java%E6%B3%9B%E5%9E%8B%E8%AF%A6%E8%A7%A3%EF%BC%9A-T-%E5%92%8CClass-T-%E7%9A%84%E4%BD%BF%E7%94%A8%E3%80%82%E6%B3%9B%E5%9E%8B%E7%B1%BB%EF%BC%8C%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95%E7%9A%84%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/jpfss/p/9928747.html" target="_blank" rel="noopener">Java泛型详解：<T>和Class<T>的使用。泛型类，泛型方法的详细使用实例 </T></T></a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Let’sEncrypt 证书自动更新脚本</title>
-    <url>/2021/04/08/Let%E2%80%99sEncrypt-%E8%AF%81%E4%B9%A6%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E8%84%9A%E6%9C%AC/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>vps科学上网用的Let’sEncrypt免费证书，有效期一般是3个月，需要定期更新。写个脚本，定时更新。</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">#Version:1.0</span><br><span class="line">#Author:zzl</span><br><span class="line">#Automatically renew Let&#39;s Encrypt certificates</span><br><span class="line">#A cron job will run this shell script everyday</span><br><span class="line">i&#x3D;0</span><br><span class="line">while [[ $i -lt 10]]</span><br><span class="line">do</span><br><span class="line">  let &quot;i++&quot;</span><br><span class="line">  if [ $(ps -C nginx --no-header | wc -l) -ne 0];then</span><br><span class="line">    service nginx stop</span><br><span class="line">    sleep 3s</span><br><span class="line">    if [ $(ps -C nginx --no-header | wc -l) -eq 0];then</span><br><span class="line">      break</span><br><span class="line">    fi</span><br><span class="line">  fi</span><br><span class="line">done</span><br><span class="line">certbot renew </span><br><span class="line">service nginx start</span><br></pre></td></tr></table></figure>
-<p>或者直接用certbot renew command，详情如下<br>        <strong><a href="https://certbot.eff.org/docs/using.html?highlight=hooks#renewing-certificates" target="_blank" rel="noopener">Certbot documentation on renewing certificates</a></strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">certbot renew --pre-hook &quot;service nginx stop&quot; --post-hook &quot;service nginx start&quot;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>@PostConstruct注解原理解析</title>
-    <url>/2021/11/16/PostConstruct%E6%B3%A8%E8%A7%A3%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/lay2017/p/11735802.html" target="_blank" rel="noopener">@PostConstruct注解原理解析</a></p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>PostConstruct</tag>
       </tags>
   </entry>
   <entry>
@@ -233,6 +209,75 @@
       <categories>
         <category>java</category>
       </categories>
+  </entry>
+  <entry>
+    <title>Rust引用</title>
+    <url>/2022/03/17/Rust%E5%BC%95%E7%94%A8/</url>
+    <content><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch3/07_reference_type.html" target="_blank" rel="noopener">Rust中的引用</a></p>
+<a id="more"></a>
+
+<h3 id="解引用"><a href="#解引用" class="headerlink" title="解引用"></a>解引用</h3><p>Rust绝大多数时候不会自动地解除引用。但在某些环境下，Rust会自动进行解引用。</p>
+<p>自动解引用的情况有(结论先总结在此，混脸熟，以后涉及到时再来)：</p>
+<ol>
+<li><p>使用.操作符时(包括取属性值和方法调用)，会隐式地尽可能解除或创建多层引用</p>
+</li>
+<li><p>使用比较操作符时，若比较的两边是相同类型的引用，则会自动解除引用到它们的值然后比较<br>对于(1)，Rust会自动分析func()的参数，并在需要的时候自动创建或自动解除引用。例如以abc.func()有可能会自动转换为&amp;abc.func()，反之，&amp;abc.func()也有可能会自动转换为abc.func()。</p>
+</li>
+</ol>
+<p>对于(2)，例如有引用类型的变量n，那么n &gt; &amp;30和*n &gt; 30的效果是一样的。</p>
+<p>————————————————《rust入门秘籍》</p>
+]]></content>
+      <categories>
+        <category>rust</category>
+      </categories>
+      <tags>
+        <tag>references</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Let’sEncrypt 证书自动更新脚本</title>
+    <url>/2021/04/08/Let%E2%80%99sEncrypt-%E8%AF%81%E4%B9%A6%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E8%84%9A%E6%9C%AC/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>vps科学上网用的Let’sEncrypt免费证书，有效期一般是3个月，需要定期更新。写个脚本，定时更新。</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">#Version:1.0</span><br><span class="line">#Author:zzl</span><br><span class="line">#Automatically renew Let&#39;s Encrypt certificates</span><br><span class="line">#A cron job will run this shell script everyday</span><br><span class="line">i&#x3D;0</span><br><span class="line">while [[ $i -lt 10]]</span><br><span class="line">do</span><br><span class="line">  let &quot;i++&quot;</span><br><span class="line">  if [ $(ps -C nginx --no-header | wc -l) -ne 0];then</span><br><span class="line">    service nginx stop</span><br><span class="line">    sleep 3s</span><br><span class="line">    if [ $(ps -C nginx --no-header | wc -l) -eq 0];then</span><br><span class="line">      break</span><br><span class="line">    fi</span><br><span class="line">  fi</span><br><span class="line">done</span><br><span class="line">certbot renew </span><br><span class="line">service nginx start</span><br></pre></td></tr></table></figure>
+<p>或者直接用certbot renew command，详情如下<br>        <strong><a href="https://certbot.eff.org/docs/using.html?highlight=hooks#renewing-certificates" target="_blank" rel="noopener">Certbot documentation on renewing certificates</a></strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">certbot renew --pre-hook &quot;service nginx stop&quot; --post-hook &quot;service nginx start&quot;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Shell脚本检测Nginx服务状态</title>
+    <url>/1970/01/01/Shell%E8%84%9A%E6%9C%AC%E6%A3%80%E6%B5%8BNginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A&#x3D;&#96;ps -C nginx --no-header |wc -l&#96;</span><br><span class="line">if [ $A -eq 0 ];then</span><br><span class="line">    service nginx start</span><br><span class="line">    sleep 2</span><br><span class="line">    if [ &#96;ps -C nginx --no-header |wc -l&#96; -eq 0 ];then</span><br><span class="line">        killall keepalived</span><br><span class="line">    fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<h3 id="脚本解析"><a href="#脚本解析" class="headerlink" title="脚本解析"></a>脚本解析</h3><p>以上是通过进程判断，也可以通过端口判断，如netstat -nlpt | grep nginx</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# netstat -nlpt | grep nginx</span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      8801&#x2F;nginx: master</span><br></pre></td></tr></table></figure>
+
+<p>以下，以进程为例详解，ps -C nginx –no-header<br>这里涉及ps 的用法，我们一般用ps查看相关进程，一般都是用ps -ef | grep XX 或 ps -aux| grep XX 的模式<br>如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br><span class="line">root     11660  5532  0 09:55 pts&#x2F;1    00:00:00 grep --color&#x3D;auto nginx</span><br></pre></td></tr></table></figure>
+<p>但是这样通常都会覆盖一个grep的进程。</p>
+<p>我们可以用ps -ef|grep nginx|grep -v grep的方式排除grep的进程，如</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# ps -ef|grep nginx|grep -v grep</span><br><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br></pre></td></tr></table></figure>
+
+<p>也可以直接用ps -C 或ps -c 的方式， -C 后面接命令的名字（推荐） ，如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx</span><br><span class="line">   PID TTY          TIME CMD</span><br><span class="line">  8801 ?        00:00:00 nginx</span><br><span class="line">  8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
+<p>–no-header 就是去挑title,如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx --no-header</span><br><span class="line"> 8801 ?        00:00:00 nginx</span><br><span class="line"> 8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
+<p>wc -l 这个很熟悉了，行数计算</p>
+<p>所以用这种方式可判断，如果<br>ps -C nginx –no-header|wc -l</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">值为0，即代表服务未启动</span><br><span class="line">值为非0，即代表服务已启动</span><br></pre></td></tr></table></figure>
+<p>最后，killall keepalived 这个是以服务名称杀死进程，日常中也用的挺多的</p>
+<p>上面那段完整的脚本意思即为：<br>判断nginx 服务是否启动<br>如果未启动，执行启动命令<br>再次判断，如果启动失败，关掉keepalived，进入从节点</p>
+]]></content>
+      <categories>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+      </tags>
   </entry>
   <entry>
     <title>Rust copy 、move、clone</title>
@@ -290,60 +335,42 @@
       </tags>
   </entry>
   <entry>
-    <title>Rust引用</title>
-    <url>/2022/03/17/Rust%E5%BC%95%E7%94%A8/</url>
-    <content><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch3/07_reference_type.html" target="_blank" rel="noopener">Rust中的引用</a></p>
-<a id="more"></a>
-
-<h3 id="解引用"><a href="#解引用" class="headerlink" title="解引用"></a>解引用</h3><p>Rust绝大多数时候不会自动地解除引用。但在某些环境下，Rust会自动进行解引用。</p>
-<p>自动解引用的情况有(结论先总结在此，混脸熟，以后涉及到时再来)：</p>
-<ol>
-<li><p>使用.操作符时(包括取属性值和方法调用)，会隐式地尽可能解除或创建多层引用</p>
-</li>
-<li><p>使用比较操作符时，若比较的两边是相同类型的引用，则会自动解除引用到它们的值然后比较<br>对于(1)，Rust会自动分析func()的参数，并在需要的时候自动创建或自动解除引用。例如以abc.func()有可能会自动转换为&amp;abc.func()，反之，&amp;abc.func()也有可能会自动转换为abc.func()。</p>
-</li>
-</ol>
-<p>对于(2)，例如有引用类型的变量n，那么n &gt; &amp;30和*n &gt; 30的效果是一样的。</p>
-<p>————————————————《rust入门秘籍》</p>
+    <title>SkipList (跳跃表)的那点事儿</title>
+    <url>/2021/02/23/SkipList-%E7%9A%84%E9%82%A3%E7%82%B9%E4%BA%8B%E5%84%BF/</url>
+    <content><![CDATA[<p><a href="https://mp.weixin.qq.com/s/fNBjlpzqvNkmei0cHhNcog?article_exclude_marked=ea8284506ea5ccac099671313574ba5c" target="_blank" rel="noopener">SkipList 的那点事儿</a></p>
 ]]></content>
-      <categories>
-        <category>rust</category>
-      </categories>
       <tags>
-        <tag>references</tag>
+        <tag>SkipList</tag>
       </tags>
   </entry>
   <entry>
-    <title>Shell脚本检测Nginx服务状态</title>
-    <url>/1970/01/01/Shell%E8%84%9A%E6%9C%AC%E6%A3%80%E6%B5%8BNginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A&#x3D;&#96;ps -C nginx --no-header |wc -l&#96;</span><br><span class="line">if [ $A -eq 0 ];then</span><br><span class="line">    service nginx start</span><br><span class="line">    sleep 2</span><br><span class="line">    if [ &#96;ps -C nginx --no-header |wc -l&#96; -eq 0 ];then</span><br><span class="line">        killall keepalived</span><br><span class="line">    fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-
-<h3 id="脚本解析"><a href="#脚本解析" class="headerlink" title="脚本解析"></a>脚本解析</h3><p>以上是通过进程判断，也可以通过端口判断，如netstat -nlpt | grep nginx</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# netstat -nlpt | grep nginx</span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      8801&#x2F;nginx: master</span><br></pre></td></tr></table></figure>
-
-<p>以下，以进程为例详解，ps -C nginx –no-header<br>这里涉及ps 的用法，我们一般用ps查看相关进程，一般都是用ps -ef | grep XX 或 ps -aux| grep XX 的模式<br>如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br><span class="line">root     11660  5532  0 09:55 pts&#x2F;1    00:00:00 grep --color&#x3D;auto nginx</span><br></pre></td></tr></table></figure>
-<p>但是这样通常都会覆盖一个grep的进程。</p>
-<p>我们可以用ps -ef|grep nginx|grep -v grep的方式排除grep的进程，如</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# ps -ef|grep nginx|grep -v grep</span><br><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br></pre></td></tr></table></figure>
-
-<p>也可以直接用ps -C 或ps -c 的方式， -C 后面接命令的名字（推荐） ，如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx</span><br><span class="line">   PID TTY          TIME CMD</span><br><span class="line">  8801 ?        00:00:00 nginx</span><br><span class="line">  8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
-<p>–no-header 就是去挑title,如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx --no-header</span><br><span class="line"> 8801 ?        00:00:00 nginx</span><br><span class="line"> 8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
-<p>wc -l 这个很熟悉了，行数计算</p>
-<p>所以用这种方式可判断，如果<br>ps -C nginx –no-header|wc -l</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">值为0，即代表服务未启动</span><br><span class="line">值为非0，即代表服务已启动</span><br></pre></td></tr></table></figure>
-<p>最后，killall keepalived 这个是以服务名称杀死进程，日常中也用的挺多的</p>
-<p>上面那段完整的脚本意思即为：<br>判断nginx 服务是否启动<br>如果未启动，执行启动命令<br>再次判断，如果启动失败，关掉keepalived，进入从节点</p>
+    <title> ThreadLocal 详解</title>
+    <url>/2021/11/13/ThreadLocal-%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<p><a href="https://www.pdai.tech/md/java/thread/java-thread-x-threadlocal.html" target="_blank" rel="noopener">ThreadLocal原理</a>  ,&nbsp;&nbsp;&nbsp; <a href="https://juejin.cn/post/6844903487193481224" target="_blank" rel="noopener">Java 之 ThreadLocal 详解: 内存泄漏</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>@PostConstruct注解原理解析</title>
+    <url>/2021/11/16/PostConstruct%E6%B3%A8%E8%A7%A3%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/lay2017/p/11735802.html" target="_blank" rel="noopener">@PostConstruct注解原理解析</a></p>
 ]]></content>
       <categories>
-        <category>shell</category>
+        <category>java</category>
       </categories>
       <tags>
-        <tag>shell</tag>
+        <tag>PostConstruct</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Using the Switch(true) Pattern in JavaScript</title>
+    <url>/2021/04/13/Using-the-Switch-true-Pattern-in-JavaScript-https-seanbarry-dev-posts-switch-true-pattern/</url>
+    <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
+]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -360,84 +387,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>SkipList (跳跃表)的那点事儿</title>
-    <url>/2021/02/23/SkipList-%E7%9A%84%E9%82%A3%E7%82%B9%E4%BA%8B%E5%84%BF/</url>
-    <content><![CDATA[<p><a href="https://mp.weixin.qq.com/s/fNBjlpzqvNkmei0cHhNcog?article_exclude_marked=ea8284506ea5ccac099671313574ba5c" target="_blank" rel="noopener">SkipList 的那点事儿</a></p>
-]]></content>
-      <tags>
-        <tag>SkipList</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title> ThreadLocal 详解</title>
-    <url>/2021/11/13/ThreadLocal-%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[<p><a href="https://www.pdai.tech/md/java/thread/java-thread-x-threadlocal.html" target="_blank" rel="noopener">ThreadLocal原理</a>  ,&nbsp;&nbsp;&nbsp; <a href="https://juejin.cn/post/6844903487193481224" target="_blank" rel="noopener">Java 之 ThreadLocal 详解: 内存泄漏</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Ubuntu 18.04 用户登录界面优化</title>
-    <url>/1970/01/01/Ubuntu-18-04-%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E4%BC%98%E5%8C%96/</url>
-    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/vselfdom/article/details/88546349" target="_blank" rel="noopener">Ubuntu 18.04 用户登录界面优化</a></strong>，备用。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Using the Switch(true) Pattern in JavaScript</title>
-    <url>/2021/04/13/Using-the-Switch-true-Pattern-in-JavaScript-https-seanbarry-dev-posts-switch-true-pattern/</url>
-    <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
-]]></content>
-      <categories>
-        <category>javascript</category>
-      </categories>
-      <tags>
-        <tag>javascript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ubuntu apt-get autoclean,clean,autoremove</title>
-    <url>/2021/04/29/Ubuntu-apt-get-autoclean-clean-autoremove/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>ubuntu移除安装包时用到的几个命令：autoclean,clean,autoremove</p>
-<a id="more"></a>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get autoclean:</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>如果你的硬盘空间不大的话，可以定期运行这个程序，将已经删除了的软件包的.deb安装文件从硬盘中删<br>除掉。如果你仍然需要硬盘空间的话，可以试试apt-get clean，这会把你已安装的软件包的安装包也删除掉，当然多数情况下这些包没什么用了，因此这是个为硬盘腾地方的好办法。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get clean:</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>类似上面的命令，但它删除包缓存中的所有包。这是个很好的做法，因为多数情况下这些包没有用了。但如果你是拨号上网的话，就得重新考虑了。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get autoremove:</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>删除为了满足其他软件包的依赖而安装的，但现在不再需要的软件包。</p>
-</blockquote>
-<p>其它：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get remove 软件包名称：</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>删除已安装的软件包（保留配置文件）。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get --purge remove 软件包名称：</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>删除已安装包（不保留配置文件)。</p>
-</blockquote>
-<p>This completely depends on what you want to achieve, they are separate for a reason. But lets see what they actually do:</p>
-<blockquote>
-<p>apt/apt-get clean → cleans the packages and install script in /var/cache/apt/archives/<br>apt/apt-get autoclean → cleans obsolete deb-packages, less than clean<br>apt/apt-get autoremove → removes orphaned packages which are not longer needed from the system, but not purges them, use the –purge option together with the command for that.  </p>
-</blockquote>
-<p>So it is up to you to decide if you want to combine one of the first two with the last one and you can do this like below:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt autoremove &amp;&amp; sudo apt clean</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>linux</category>
-        <category>ubuntu</category>
-      </categories>
-      <tags>
-        <tag>apt-get</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Ubuntu18.04下通过zssh与服务器进行上传/下载文件操作</title>
     <url>/2021/11/29/Ubuntu18-04%E4%B8%8B%E9%80%9A%E8%BF%87zssh%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9B%E8%A1%8C%E4%B8%8A%E4%BC%A0-%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[<p>把本地文件上传到远程：</p>
@@ -450,21 +399,6 @@
         <tag>zssh</tag>
         <tag>ubuntu</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Using the Switch(true) Pattern in JavaScript</title>
-    <url>/1970/01/01/Using-the-Switch-true-Pattern-in-JavaScript/</url>
-    <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
-]]></content>
-      <categories>
-        <category>javascript</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Wireshark抓包原理（ARP劫持、MAC泛洪）及数据流追踪和图像抓取</title>
-    <url>/2021/05/31/Wireshark%E6%8A%93%E5%8C%85%E5%8E%9F%E7%90%86%EF%BC%88ARP%E5%8A%AB%E6%8C%81%E3%80%81MAC%E6%B3%9B%E6%B4%AA%EF%BC%89%E5%8F%8A%E6%95%B0%E6%8D%AE%E6%B5%81%E8%BF%BD%E8%B8%AA%E5%92%8C%E5%9B%BE%E5%83%8F%E6%8A%93%E5%8F%96/</url>
-    <content><![CDATA[<p>转载：<a href="https://cloud.tencent.com/developer/article/1626729" target="_blank" rel="noopener">Wireshark抓包原理（ARP劫持、MAC泛洪）及数据流追踪和图像抓取</a></p>
-]]></content>
   </entry>
   <entry>
     <title>android studio http proxy for sdk </title>
@@ -483,6 +417,21 @@
       <tags>
         <tag>proxy</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu 18.04 用户登录界面优化</title>
+    <url>/1970/01/01/Ubuntu-18-04-%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/vselfdom/article/details/88546349" target="_blank" rel="noopener">Ubuntu 18.04 用户登录界面优化</a></strong>，备用。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Using the Switch(true) Pattern in JavaScript</title>
+    <url>/1970/01/01/Using-the-Switch-true-Pattern-in-JavaScript/</url>
+    <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
+]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
   </entry>
   <entry>
     <title>android studio 真机调试</title>
@@ -534,6 +483,21 @@
       </categories>
   </entry>
   <entry>
+    <title>bash快捷键 光标移动</title>
+    <url>/2020/01/16/bash-hot-key/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>用xshell登录并操作系统的时候，光标移动的快捷键用起来很方便，记录一下，方便以后查询</p>
+<a id="more"></a>
+<h3 id="ctrl组合"><a href="#ctrl组合" class="headerlink" title="ctrl组合"></a>ctrl组合</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ctrl+a:光标移到行首。</span><br><span class="line"></span><br><span class="line">ctrl+b:光标左移一个字母</span><br><span class="line"></span><br><span class="line">ctrl+c:杀死当前进程。</span><br><span class="line"></span><br><span class="line">ctrl+d:退出当前 Shell。</span><br><span class="line"></span><br><span class="line">ctrl+e:光标移到行尾。</span><br><span class="line"></span><br><span class="line">ctrl+h:删除光标前一个字符，同 backspace 键相同。</span><br><span class="line"></span><br><span class="line">ctrl+k:清除光标后至行尾的内容。</span><br><span class="line"></span><br><span class="line">ctrl+l:清屏，相当于clear。</span><br><span class="line"></span><br><span class="line">ctrl+r:搜索之前打过的命令。会有一个提示，根据你输入的关键字进行搜索bash的history</span><br><span class="line"></span><br><span class="line">ctrl+u: 清除光标前至行首间的所有内容。</span><br><span class="line"></span><br><span class="line">ctrl+w: 移除光标前的一个单词</span><br><span class="line"></span><br><span class="line">ctrl+t: 交换光标位置前的两个字符</span><br><span class="line"></span><br><span class="line">ctrl+y: 粘贴或者恢复上次的删除</span><br><span class="line"></span><br><span class="line">ctrl+d: 删除光标所在字母;注意和backspace以及ctrl+h的区别，这2个是删除光标前的字符</span><br><span class="line"></span><br><span class="line">ctrl+f: 光标右移</span><br><span class="line"></span><br><span class="line">ctrl+z : 把当前进程转到后台运行，使用’ fg ‘命令恢复。比如top -d1 然后ctrl+z ，到后台，然后fg,重新恢复</span><br></pre></td></tr></table></figure>
+
+<h3 id="esc组合"><a href="#esc组合" class="headerlink" title="esc组合"></a>esc组合</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">esc+d: 删除光标后的一个词</span><br><span class="line"></span><br><span class="line">esc+f: 往右跳一个词</span><br><span class="line"></span><br><span class="line">esc+b: 往左跳一个词</span><br><span class="line"></span><br><span class="line">esc+t: 交换光标位置前的两个单词</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>bash-hotkey</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java反射机制</title>
     <url>/2020/03/03/ava-reflection/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Java反射机制可以让我们在编译期（Compile Time）之外的运行期（Run Time）检查类、接口、变量以及方法的信息，即动态的调用某个对象的方法/构造函数、获取某个对象的属性等，而无需在编码时确定调用的对象。这种机制在我们常用的框架中也非常常见，如spring的IOC对bean的注入管理。</p>
@@ -578,42 +542,55 @@
       </tags>
   </entry>
   <entry>
-    <title>bash快捷键 光标移动</title>
-    <url>/2020/01/16/bash-hot-key/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>用xshell登录并操作系统的时候，光标移动的快捷键用起来很方便，记录一下，方便以后查询</p>
-<a id="more"></a>
-<h3 id="ctrl组合"><a href="#ctrl组合" class="headerlink" title="ctrl组合"></a>ctrl组合</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ctrl+a:光标移到行首。</span><br><span class="line"></span><br><span class="line">ctrl+b:光标左移一个字母</span><br><span class="line"></span><br><span class="line">ctrl+c:杀死当前进程。</span><br><span class="line"></span><br><span class="line">ctrl+d:退出当前 Shell。</span><br><span class="line"></span><br><span class="line">ctrl+e:光标移到行尾。</span><br><span class="line"></span><br><span class="line">ctrl+h:删除光标前一个字符，同 backspace 键相同。</span><br><span class="line"></span><br><span class="line">ctrl+k:清除光标后至行尾的内容。</span><br><span class="line"></span><br><span class="line">ctrl+l:清屏，相当于clear。</span><br><span class="line"></span><br><span class="line">ctrl+r:搜索之前打过的命令。会有一个提示，根据你输入的关键字进行搜索bash的history</span><br><span class="line"></span><br><span class="line">ctrl+u: 清除光标前至行首间的所有内容。</span><br><span class="line"></span><br><span class="line">ctrl+w: 移除光标前的一个单词</span><br><span class="line"></span><br><span class="line">ctrl+t: 交换光标位置前的两个字符</span><br><span class="line"></span><br><span class="line">ctrl+y: 粘贴或者恢复上次的删除</span><br><span class="line"></span><br><span class="line">ctrl+d: 删除光标所在字母;注意和backspace以及ctrl+h的区别，这2个是删除光标前的字符</span><br><span class="line"></span><br><span class="line">ctrl+f: 光标右移</span><br><span class="line"></span><br><span class="line">ctrl+z : 把当前进程转到后台运行，使用’ fg ‘命令恢复。比如top -d1 然后ctrl+z ，到后台，然后fg,重新恢复</span><br></pre></td></tr></table></figure>
-
-<h3 id="esc组合"><a href="#esc组合" class="headerlink" title="esc组合"></a>esc组合</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">esc+d: 删除光标后的一个词</span><br><span class="line"></span><br><span class="line">esc+f: 往右跳一个词</span><br><span class="line"></span><br><span class="line">esc+b: 往左跳一个词</span><br><span class="line"></span><br><span class="line">esc+t: 交换光标位置前的两个单词</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>bash-hotkey</tag>
-      </tags>
+    <title>Wireshark抓包原理（ARP劫持、MAC泛洪）及数据流追踪和图像抓取</title>
+    <url>/2021/05/31/Wireshark%E6%8A%93%E5%8C%85%E5%8E%9F%E7%90%86%EF%BC%88ARP%E5%8A%AB%E6%8C%81%E3%80%81MAC%E6%B3%9B%E6%B4%AA%EF%BC%89%E5%8F%8A%E6%95%B0%E6%8D%AE%E6%B5%81%E8%BF%BD%E8%B8%AA%E5%92%8C%E5%9B%BE%E5%83%8F%E6%8A%93%E5%8F%96/</url>
+    <content><![CDATA[<p>转载：<a href="https://cloud.tencent.com/developer/article/1626729" target="_blank" rel="noopener">Wireshark抓包原理（ARP劫持、MAC泛洪）及数据流追踪和图像抓取</a></p>
+]]></content>
   </entry>
   <entry>
-    <title>ubuntu自动挂载其他盘</title>
-    <url>/2021/03/18/ceshi/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>双系统，ubuntu和win10装在同一个固态盘，还有另外一个机械盘，平时放些资料啥的，设置给ubuntu开机自动挂载另一个机械盘。</p>
+    <title>Ubuntu apt-get autoclean,clean,autoremove</title>
+    <url>/2021/04/29/Ubuntu-apt-get-autoclean-clean-autoremove/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>ubuntu移除安装包时用到的几个命令：autoclean,clean,autoremove</p>
 <a id="more"></a>
 
-<p>1、查询挂载硬盘UUID</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo blkid &#x2F;dev&#x2F;sda2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get autoclean:</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/pasted-32.png" alt="upload successful"><br>Secert和WorkSpace盘信息如上，下面用到两个盘的UUID。</p>
-<p>2、打开文件/etc/fstab文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;fstab</span><br></pre></td></tr></table></figure>
-<p>在文档末尾添加相应磁盘的信息。格式为：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[UUID&#x3D;************] [挂载磁盘分区]  [挂载磁盘格式]  0  2</span><br><span class="line"></span><br><span class="line">UUID&#x3D;4D55CFC14D016D60 &#x2F;mnt&#x2F;workspace ntfs defaults  0  2</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果你的硬盘空间不大的话，可以定期运行这个程序，将已经删除了的软件包的.deb安装文件从硬盘中删<br>除掉。如果你仍然需要硬盘空间的话，可以试试apt-get clean，这会把你已安装的软件包的安装包也删除掉，当然多数情况下这些包没什么用了，因此这是个为硬盘腾地方的好办法。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get clean:</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/pasted-33.png" alt="upload successful"><br>第一个数字：0表示开机不检查磁盘，1表示开机检查磁盘；<br>第二个数字：0表示交换分区，1代表启动分区（Linux），2表示普通分区</p>
-<p>3、重启生效</p>
-]]></content>
+<blockquote>
+<p>类似上面的命令，但它删除包缓存中的所有包。这是个很好的做法，因为多数情况下这些包没有用了。但如果你是拨号上网的话，就得重新考虑了。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get autoremove:</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>删除为了满足其他软件包的依赖而安装的，但现在不再需要的软件包。</p>
+</blockquote>
+<p>其它：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get remove 软件包名称：</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>删除已安装的软件包（保留配置文件）。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get --purge remove 软件包名称：</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>删除已安装包（不保留配置文件)。</p>
+</blockquote>
+<p>This completely depends on what you want to achieve, they are separate for a reason. But lets see what they actually do:</p>
+<blockquote>
+<p>apt/apt-get clean → cleans the packages and install script in /var/cache/apt/archives/<br>apt/apt-get autoclean → cleans obsolete deb-packages, less than clean<br>apt/apt-get autoremove → removes orphaned packages which are not longer needed from the system, but not purges them, use the –purge option together with the command for that.  </p>
+</blockquote>
+<p>So it is up to you to decide if you want to combine one of the first two with the last one and you can do this like below:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt autoremove &amp;&amp; sudo apt clean</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>linux</category>
         <category>ubuntu</category>
       </categories>
+      <tags>
+        <tag>apt-get</tag>
+      </tags>
   </entry>
   <entry>
     <title>centos 免密切换root</title>
@@ -784,6 +761,15 @@
 ]]></content>
   </entry>
   <entry>
+    <title>intellij-idea的快捷键</title>
+    <url>/2020/12/23/intellij-idea%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+    <content><![CDATA[<p><a href="https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf" target="_blank" rel="noopener">Intellij-idea的快捷键</a></p>
+]]></content>
+      <tags>
+        <tag>idea</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>idea下gradle报jdk版本错误</title>
     <url>/2020/03/05/idea-gradle-jdk/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>idea下用gradle编译项目的时候报错如下：“Could not target platform: ‘Java SE 13’ using tool chain: ‘JDK 11 (11)’.”</p>
@@ -797,15 +783,6 @@
       <tags>
         <tag>gradle</tag>
         <tag>jdk</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>intellij-idea的快捷键</title>
-    <url>/2020/12/23/intellij-idea%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
-    <content><![CDATA[<p><a href="https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf" target="_blank" rel="noopener">Intellij-idea的快捷键</a></p>
-]]></content>
-      <tags>
-        <tag>idea</tag>
       </tags>
   </entry>
   <entry>
@@ -825,6 +802,29 @@
       <tags>
         <tag>annotation</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>ubuntu自动挂载其他盘</title>
+    <url>/2021/03/18/ceshi/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>双系统，ubuntu和win10装在同一个固态盘，还有另外一个机械盘，平时放些资料啥的，设置给ubuntu开机自动挂载另一个机械盘。</p>
+<a id="more"></a>
+
+<p>1、查询挂载硬盘UUID</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo blkid &#x2F;dev&#x2F;sda2</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-32.png" alt="upload successful"><br>Secert和WorkSpace盘信息如上，下面用到两个盘的UUID。</p>
+<p>2、打开文件/etc/fstab文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;fstab</span><br></pre></td></tr></table></figure>
+<p>在文档末尾添加相应磁盘的信息。格式为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[UUID&#x3D;************] [挂载磁盘分区]  [挂载磁盘格式]  0  2</span><br><span class="line"></span><br><span class="line">UUID&#x3D;4D55CFC14D016D60 &#x2F;mnt&#x2F;workspace ntfs defaults  0  2</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-33.png" alt="upload successful"><br>第一个数字：0表示开机不检查磁盘，1表示开机检查磁盘；<br>第二个数字：0表示交换分区，1代表启动分区（Linux），2表示普通分区</p>
+<p>3、重启生效</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+        <category>ubuntu</category>
+      </categories>
   </entry>
   <entry>
     <title>int&amp;Integer、 double&amp;Double&amp;BigDecimal</title>
@@ -848,17 +848,29 @@
       </tags>
   </entry>
   <entry>
-    <title>json web token(jwt)</title>
-    <url>/2020/05/02/json-web-token-jwt/</url>
-    <content><![CDATA[<p>转载：<strong><a href="https://learnku.com/articles/22616" target="_blank" rel="noopener">别再使用 JWT 作为 Session 系统！问题重重且很危险。
-</a></strong><br>结论：无状态 JWT Tokens 无法被单独地销毁或更新，取决于你如何存储，可能还会导致长度问题、安全隐患。有状态 JWT Tokens 在功能方面与 Session cookies 无异，但缺乏生产环境的验证、经过大量 Review 的实现，以及良好的客户端支持。<br>JWT 特别有效的使用例子通常是作为一次性的授权令牌。</p>
+    <title>kotlin 构造函数</title>
+    <url>/2020/05/17/kotlin-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<p>转载：<strong><a href="https://www.cnblogs.com/Jetictors/p/7758828.html" target="_blank" rel="noopener">Kotlin——中级篇（一）：类（class）详解</a></strong>、<strong><a href="https://www.jianshu.com/p/5db34354d812" target="_blank" rel="noopener">kotlin之构造函数(constructor)
+</a></strong><br>1、在Kotlin中，允许有一个主构造函数和多个二级构造函数（辅助构造函数）。其中主构造函数是类头的一部分。</p>
+<p>2、如果类具有主构造函数，则每个辅助构造函数需要通过另一个辅助构造函数直接或间接地委派给主构造函数。 使用this关键字对同一类的另一个构造函数进行委派</p>
+<a id="more"></a>
+<p>例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Test constructor(num: Int)&#123;</span><br><span class="line">    constructor(num : Int, num2: Int) : this(num) &#123;</span><br><span class="line">        println(num + num2)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">说明：二级构造函数中的参数1(num)，是委托了主构造函数的参数num。</span><br></pre></td></tr></table></figure>
+
+<p>3、在JVM上，如果类主构造函数的所有参数都具有默认值，编译器将生成一个额外的无参数构造函数，它将使用默认值。 这使得更容易使用Kotlin与诸如Jackson或JPA的库，通过无参数构造函数创建类实例。<br>同理可看出，当类存在主构造函数并且有默认值时，二级构造函数也适用</p>
 ]]></content>
       <categories>
-        <category>java</category>
+        <category>kotlin</category>
       </categories>
       <tags>
-        <tag>jwt</tag>
+        <tag>kotlin</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>linux sort uniq命令</title>
+    <url>/2021/02/26/linux-sort-uniq%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<p><a href="https://www.linuxjournal.com/content/back-basics-sort-and-uniq" target="_blank" rel="noopener">Back to Basics: Sort and Uniq</a></p>
+]]></content>
   </entry>
   <entry>
     <title>js  0 == &#39;&#39; 引出的判等</title>
@@ -1045,31 +1057,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>kotlin 构造函数</title>
-    <url>/2020/05/17/kotlin-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<p>转载：<strong><a href="https://www.cnblogs.com/Jetictors/p/7758828.html" target="_blank" rel="noopener">Kotlin——中级篇（一）：类（class）详解</a></strong>、<strong><a href="https://www.jianshu.com/p/5db34354d812" target="_blank" rel="noopener">kotlin之构造函数(constructor)
-</a></strong><br>1、在Kotlin中，允许有一个主构造函数和多个二级构造函数（辅助构造函数）。其中主构造函数是类头的一部分。</p>
-<p>2、如果类具有主构造函数，则每个辅助构造函数需要通过另一个辅助构造函数直接或间接地委派给主构造函数。 使用this关键字对同一类的另一个构造函数进行委派</p>
-<a id="more"></a>
-<p>例：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Test constructor(num: Int)&#123;</span><br><span class="line">    constructor(num : Int, num2: Int) : this(num) &#123;</span><br><span class="line">        println(num + num2)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">说明：二级构造函数中的参数1(num)，是委托了主构造函数的参数num。</span><br></pre></td></tr></table></figure>
-
-<p>3、在JVM上，如果类主构造函数的所有参数都具有默认值，编译器将生成一个额外的无参数构造函数，它将使用默认值。 这使得更容易使用Kotlin与诸如Jackson或JPA的库，通过无参数构造函数创建类实例。<br>同理可看出，当类存在主构造函数并且有默认值时，二级构造函数也适用</p>
-]]></content>
-      <categories>
-        <category>kotlin</category>
-      </categories>
-      <tags>
-        <tag>kotlin</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>linux sort uniq命令</title>
-    <url>/2021/02/26/linux-sort-uniq%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<p><a href="https://www.linuxjournal.com/content/back-basics-sort-and-uniq" target="_blank" rel="noopener">Back to Basics: Sort and Uniq</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>linux 后台运行、输出重定向</title>
     <url>/2021/04/02/linux-%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E3%80%81%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>linux termianl中，命令脚本的后台运行以及输出的重定向，如</p>
@@ -1110,6 +1097,19 @@
       </categories>
   </entry>
   <entry>
+    <title>json web token(jwt)</title>
+    <url>/2020/05/02/json-web-token-jwt/</url>
+    <content><![CDATA[<p>转载：<strong><a href="https://learnku.com/articles/22616" target="_blank" rel="noopener">别再使用 JWT 作为 Session 系统！问题重重且很危险。
+</a></strong><br>结论：无状态 JWT Tokens 无法被单独地销毁或更新，取决于你如何存储，可能还会导致长度问题、安全隐患。有状态 JWT Tokens 在功能方面与 Session cookies 无异，但缺乏生产环境的验证、经过大量 Review 的实现，以及良好的客户端支持。<br>JWT 特别有效的使用例子通常是作为一次性的授权令牌。</p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>jwt</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>linux 查看登录历史 操作用户</title>
     <url>/2021/02/26/linux-%E6%9F%A5%E7%9C%8B%E7%99%BB%E5%BD%95%E5%8E%86%E5%8F%B2-%E6%93%8D%E4%BD%9C%E7%94%A8%E6%88%B7/</url>
     <content><![CDATA[<p>linux 查看登录历史 操作用户</p>
@@ -1126,82 +1126,6 @@
 <p>尽管如此，对于加上screen的bash来说，这个时间戳仍然可以长时间有效的，毕竟只要你的server不重启，screen就不会退出，因而这些时间就能长时间保留。你也可以使用echo ‘export HISTTIMEFORMAT=”%F %T whoami “‘ &gt;&gt; /etc/profile 然后source一下就OK。</p>
 <p><a href="https://blog.51cto.com/study2008/2301555" target="_blank" rel="noopener">source</a></p>
 ]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>linux小技巧</title>
-    <url>/2021/04/16/linux%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
-    <content><![CDATA[<h3 id="linux小技巧"><a href="#linux小技巧" class="headerlink" title="linux小技巧"></a>linux小技巧</h3><p>linux有用的小技巧，随时添加。</p>
-<p>源链接：<strong><u><a href="https://mp.weixin.qq.com/s/KZcnlW4RRZowPUelsRQAGA" target="_blank" rel="noopener">15 个 Linux 实用技巧</a></u></strong></p>
-<a id="more"></a>
-<h3 id="命令不记录到history"><a href="#命令不记录到history" class="headerlink" title="命令不记录到history"></a>命令不记录到history</h3><p>我们在所要执行的命令前，加一个空格，那这条命令就不会被 history 保存到历史记录</p>
-<p>有时候，执行的命令中包含敏感信息，这个小技巧就显得非常实用了，你也不会再因为忘记执行 history -c 而烦恼了。</p>
-<h3 id="快速搜索历史命令"><a href="#快速搜索历史命令" class="headerlink" title="快速搜索历史命令"></a>快速搜索历史命令</h3><p>在 Linux 下经常会敲很多的命令，我们要怎么快速查找并执行历史命令呢？</p>
-<p>通过上下键来翻看历史命令，No No No，可以通过执行 Ctrl + r，然后键入要所搜索的命令关键词，进行搜索，回车就可以执行，非常高效。</p>
-<h3 id="历史命令使用技巧"><a href="#历史命令使用技巧" class="headerlink" title="历史命令使用技巧"></a>历史命令使用技巧</h3><p>分享几个历史命令的使用技巧，能够提高你的工作效率。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">!!：重复执行上条命令；</span><br><span class="line">!N：重复执行 history 历史中第 N 条命令，N 可以通过 history 查看；</span><br><span class="line">!pw：重复执行最近一次，以pw开头的历史命令，这个非常有用，小编使用非常高频；</span><br><span class="line">!$：表示最近一次命令的最后一个参数；</span><br></pre></td></tr></table></figure>
-<p>猜测大部分同学没用过 !$，这里简单举个例子，让你感受一下它的高效用法</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ vim &#x2F;root&#x2F;sniffer&#x2F;src&#x2F;main.c</span><br><span class="line">$ mv !$ !$.bak</span><br><span class="line"># 相当于</span><br><span class="line">$ mv &#x2F;root&#x2F;sniffer&#x2F;src&#x2F;main.c &#x2F;root&#x2F;sniffer&#x2F;src&#x2F;main.c.bak</span><br></pre></td></tr></table></figure>
-<p>当前工作目录是 root，想把 main.c 改为 main.c.bak。正常情况你可能需要敲 2 遍包含 main.c 的长参数，当然你也可能会选择直接复制粘贴。</p>
-<p>而我通过使用 !$ 变量，可以很轻松优雅的实现改名。</p>
-<h3 id="优雅的删除、修改乱码名字的文件"><a href="#优雅的删除、修改乱码名字的文件" class="headerlink" title="优雅的删除、修改乱码名字的文件"></a>优雅的删除、修改乱码名字的文件</h3><p>在 Linux 系统中，会经常碰到名称乱码的文件。想要删除它，却无法通过键盘输入名字，有时候复制粘贴乱码名称，终端可能识别不了，该怎么办？</p>
-<p>不用担心，下边来展示下 find 是如何优雅的解决问题的。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ls  -i</span><br><span class="line">138957 a.txt  138959 T.txt  132395 ڹ��.txt</span><br><span class="line"></span><br><span class="line">$ find . -inum 132395 -exec rm &#123;&#125; \;</span><br></pre></td></tr></table></figure>
-<p>命令中，-inum 指定的是文件的 inode 号，它是系统中每个文件对应的唯一编号，find 通过编号找到后，执行删除操作。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">find -inum 节点号 -exec rm &#123;&#125; \; &#x2F;&#x2F;删除</span><br><span class="line">find -inum 节点号 -exec mv &#123;&#125; newname \; &#x2F;&#x2F;重命名</span><br><span class="line">find -inum 节点号 -exec cat &#123;&#125; \; &#x2F;&#x2F;查看内容</span><br></pre></td></tr></table></figure>
-
-<h3 id="Linux上获取你的公网IP地址"><a href="#Linux上获取你的公网IP地址" class="headerlink" title="Linux上获取你的公网IP地址"></a>Linux上获取你的公网IP地址</h3><p>在办公或家庭环境，我们的虚拟机或服务器上配置的通常是内网 IP 地址，我们如何知道，在与外网通信时，我们的公网出口 IP 是神马呢？</p>
-<p>这个在 Linux 上非常简单，一条命令搞定</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ curl ip.sb</span><br><span class="line">$ curl ifconfig.me</span><br></pre></td></tr></table></figure>
-<p>上述两条命令都可以</p>
-<h3 id="动态实时查看日志"><a href="#动态实时查看日志" class="headerlink" title="动态实时查看日志"></a>动态实时查看日志</h3><p>通过 tail 命令 -f 选项，可以动态地监控日志文件的变化，非常实用</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ tail -f test.log</span><br></pre></td></tr></table></figure>
-<p>如果想在日志中出现 Failed 等信息时立刻停止 tail 监控，可以通过如下命令来实现：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ tail -f test.log | sed &#39;&#x2F;Failed&#x2F; q&#39;</span><br></pre></td></tr></table></figure>
-<h3 id="快速清空文件的方法"><a href="#快速清空文件的方法" class="headerlink" title="快速清空文件的方法"></a>快速清空文件的方法</h3><p>快速清空一个文件，有 N 种方法，我比较喜欢下边这种，因为它最短</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ &gt; access.log</span><br></pre></td></tr></table></figure>
-<p>不过瘾？好吧，我也顺便总结下，其它几种最常见的清空文件的方法</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">: &gt; access.log</span><br><span class="line">true &gt; access.log</span><br><span class="line">cat &#x2F;dev&#x2F;null &gt; access.log</span><br><span class="line">echo -n &quot;&quot; &gt; access.log</span><br><span class="line">echo &gt; access.log</span><br><span class="line">truncate -s 0 access.log</span><br></pre></td></tr></table></figure>
-<p>简单解释下， : 在 shell 中是一个内置命令，表示 no-op，大概就是空语句的意思，所以 : 的那个用法，就是执行命令后，什么都没有输出，将空内容覆盖到文件。</p>
-<h3 id="快速生成大文件"><a href="#快速生成大文件" class="headerlink" title="快速生成大文件"></a>快速生成大文件</h3><p>有时候，在 Linux 上，我们需要一个大文件，用于测试上传或下载的速度，通过 dd 命令可以快速生成一个大文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ dd if&#x3D;&#x2F;dev&#x2F;zero of&#x3D;file.img bs&#x3D;1M count&#x3D;1024</span><br></pre></td></tr></table></figure>
-<p>上述命令，生成一个文件名为 file.img 大小为 1G 的文件。</p>
-<h3 id="安全擦除硬盘数据"><a href="#安全擦除硬盘数据" class="headerlink" title="安全擦除硬盘数据"></a>安全擦除硬盘数据</h3><p>介绍一种擦除硬盘数据的方法，高效，安全。可以通过 dd 命令，轻松实现：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ dd if&#x3D;&#x2F;dev&#x2F;urandom of&#x3D;&#x2F;dev&#x2F;sda</span><br></pre></td></tr></table></figure>
-<p>使用 /dev/urandom 生成随机数据，将生成的数据写入 sda 硬盘中，相当于安全的擦除了硬盘数据。</p>
-<h3 id="快速制作系统盘"><a href="#快速制作系统盘" class="headerlink" title="快速制作系统盘"></a>快速制作系统盘</h3><p>在 Linux 下制作系统盘，老毛桃神么工具都弱爆了，直接一条命令搞定：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ dd if&#x3D;ubuntu-server-amd64.iso of&#x3D;&#x2F;dev&#x2F;sdb</span><br></pre></td></tr></table></figure>
-<p>哈哈，是不是很爽，sdb 可以 U 盘，也可以是普通硬盘</p>
-<h3 id="查看某个进程的运行时间"><a href="#查看某个进程的运行时间" class="headerlink" title="查看某个进程的运行时间"></a>查看某个进程的运行时间</h3><p>可能，大部分同学只会使用 ps aux，其实可以通过 -o 参数，指定只显示具体的某个字段，会得到更清晰的结果。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ps -p 10167 -o etimes,etime</span><br><span class="line">ELAPSED     ELAPSED</span><br><span class="line">1712055 19-19:34:15</span><br></pre></td></tr></table></figure>
-<p>通过 etime 获取该进程的运行时间，可以很直观地看到，进程运行了 19 天</p>
-<p>同样，可以通过 -o 指定 rss 可以只获取该进程的内存信息。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ps -p 10167 -o rss</span><br><span class="line">  RSS</span><br><span class="line"> 2180</span><br></pre></td></tr></table></figure>
-
-<h3 id="时间戳的快速转换"><a href="#时间戳的快速转换" class="headerlink" title="时间戳的快速转换"></a>时间戳的快速转换</h3><p>时间操作，对程序员来说就是家常便饭。有时候希望能够将时间戳，转换为日期时间，在 Linux 命令行上，也可以快速的进行转换：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ date -d@1234567890 +&quot;%Y-%m-%d %H:%M:%S&quot;</span><br><span class="line">2009-02-14 07:31:30</span><br></pre></td></tr></table></figure>
-<p>当然，也可以在命令行上，查看当前的时间戳</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ date +%s</span><br><span class="line">1617514141</span><br></pre></td></tr></table></figure>
-<h3 id="优雅的计算程序运行时间"><a href="#优雅的计算程序运行时间" class="headerlink" title="优雅的计算程序运行时间"></a>优雅的计算程序运行时间</h3><p>在 Linux 下，可以通过 time 命令，很容易获取程序的运行时间：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ time .&#x2F;test</span><br><span class="line">real    0m1.003s</span><br><span class="line">user    0m0.000s</span><br><span class="line">sys     0m0.000s</span><br></pre></td></tr></table></figure>
-<p>可以看到，程序的运行时间为: 1.003s。细心的同学，会看到 real 貌似不等于 user + sys，而且还远远大于，这是怎么回事呢？</p>
-<p>先来解释下这三个参数的含义：</p>
-<ul>
-<li>real：表示的钟表时间，也就是从程序执行到结束花费的时间；</li>
-<li>user：表示运行期间，cpu 在用户空间所消耗的时间；</li>
-<li>sys：表示运行期间，cpu 在内核空间所消耗的时间；</li>
-</ul>
-<p>由于 user 和 sys 只统计 cpu 消耗的时间，程序运行期间会调用 sleep 发生阻塞，也可能会等待网络或磁盘 IO，都会消耗大量时间。因此对于类似情况，real 的值就会大于其它两项之和。</p>
-<p>另外，也会遇到 real 远远小于 user + sys 的场景，这是什么鬼情况？</p>
-<p>这个更好理解，如果程序在多个 cpu 上并行，那么 user 和 sys 统计时间是多个 cpu 时间，实际消耗时间 real 很可能就比其它两个之和要小了</p>
-<h3 id="命令行查看ascii码"><a href="#命令行查看ascii码" class="headerlink" title="命令行查看ascii码"></a>命令行查看ascii码</h3><p>我们在开发过程中，通常需要查看 ascii 码，通过 Linux 命令行就可以轻松查看，而不用去 Google 或 Baidu</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ man ascii</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="如何批量下载网页资源"><a href="#如何批量下载网页资源" class="headerlink" title="如何批量下载网页资源"></a>如何批量下载网页资源</h3><p>有时，同事会通过网页的形式分享文件下载链接，在 Linux 系统，通过 wget 命令可以轻松下载，而不用写脚本或爬虫</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ wget -r -nd -np --accept&#x3D;pdf http:&#x2F;&#x2F;fast.dpdk.org&#x2F;doc&#x2F;pdf-guides&#x2F;</span><br><span class="line"># --accept：选项指定资源类型格式 pdf</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>linux</category>
       </categories>
@@ -1324,6 +1248,195 @@
     <title>mybatis mysql in (#{list}) 只能查询/删除第一条的问题</title>
     <url>/2021/12/30/mybatis-mysql-in-list-%E5%8F%AA%E8%83%BD%E6%9F%A5%E8%AF%A2-%E5%88%A0%E9%99%A4%E7%AC%AC%E4%B8%80%E6%9D%A1%E7%9A%84%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<p><a href="https://www.cnblogs.com/do-your-best/p/9513194.html" target="_blank" rel="noopener">mysql in (#{list}) 只能查询/删除第一条的问题</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>android studio多语言(中英)适配</title>
+    <url>/2020/02/14/ndroid-studio%E4%B8%AD%E8%8B%B1%E6%96%87%E9%80%82%E9%85%8D/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>strings.xml在目录res相应的value文件夹下,用来显示文本，避免硬编码，要添加新的语言支持，就要在不同的 value 文件夹下（如value 、values-zh-rCN）添加不同语言的 string.xml 文件。本文以简体中文为例,描述一下Android studio下相应strings.xml(zh-rCN)的生成方式，其他语言类似。</p>
+<a id="more"></a>
+<h3 id="手动建立文件"><a href="#手动建立文件" class="headerlink" title="手动建立文件"></a>手动建立文件</h3><p>选中res文件夹，右键New–&gt;Android Resource Directory,然后选中Locale,如下图所示：</p>
+<p><img src="/images/pasted-17.png" alt="upload successful"><br>选择相应语言和相应区域：</p>
+<p><img src="/images/pasted-18.png" alt="upload successful"><br>文件夹名称（values-zh-rCN）自动生成，最后在该文件夹生成strings.xml即可。项目视图如下：</p>
+<p><img src="/images/pasted-19.png" alt="upload successful"></p>
+<h3 id="自动生成"><a href="#自动生成" class="headerlink" title="自动生成"></a>自动生成</h3><p>打开Translations Editor（双击打开strings.xml，窗口右上角点击Open Editor），点击Add Locale，在下拉菜单中选择相应语言区域，系统会自动生成相应文件夹以及strings.xml文件。</p>
+<p><img src="/images/pasted-20.png" alt="upload successful"></p>
+<p><img src="/images/pasted-21.png" alt="upload successful"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>linux小技巧</title>
+    <url>/2021/04/16/linux%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<h3 id="linux小技巧"><a href="#linux小技巧" class="headerlink" title="linux小技巧"></a>linux小技巧</h3><p>linux有用的小技巧，随时添加。</p>
+<p>源链接：<strong><u><a href="https://mp.weixin.qq.com/s/KZcnlW4RRZowPUelsRQAGA" target="_blank" rel="noopener">15 个 Linux 实用技巧</a></u></strong></p>
+<a id="more"></a>
+<h3 id="命令不记录到history"><a href="#命令不记录到history" class="headerlink" title="命令不记录到history"></a>命令不记录到history</h3><p>我们在所要执行的命令前，加一个空格，那这条命令就不会被 history 保存到历史记录</p>
+<p>有时候，执行的命令中包含敏感信息，这个小技巧就显得非常实用了，你也不会再因为忘记执行 history -c 而烦恼了。</p>
+<h3 id="快速搜索历史命令"><a href="#快速搜索历史命令" class="headerlink" title="快速搜索历史命令"></a>快速搜索历史命令</h3><p>在 Linux 下经常会敲很多的命令，我们要怎么快速查找并执行历史命令呢？</p>
+<p>通过上下键来翻看历史命令，No No No，可以通过执行 Ctrl + r，然后键入要所搜索的命令关键词，进行搜索，回车就可以执行，非常高效。</p>
+<h3 id="历史命令使用技巧"><a href="#历史命令使用技巧" class="headerlink" title="历史命令使用技巧"></a>历史命令使用技巧</h3><p>分享几个历史命令的使用技巧，能够提高你的工作效率。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">!!：重复执行上条命令；</span><br><span class="line">!N：重复执行 history 历史中第 N 条命令，N 可以通过 history 查看；</span><br><span class="line">!pw：重复执行最近一次，以pw开头的历史命令，这个非常有用，小编使用非常高频；</span><br><span class="line">!$：表示最近一次命令的最后一个参数；</span><br></pre></td></tr></table></figure>
+<p>猜测大部分同学没用过 !$，这里简单举个例子，让你感受一下它的高效用法</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ vim &#x2F;root&#x2F;sniffer&#x2F;src&#x2F;main.c</span><br><span class="line">$ mv !$ !$.bak</span><br><span class="line"># 相当于</span><br><span class="line">$ mv &#x2F;root&#x2F;sniffer&#x2F;src&#x2F;main.c &#x2F;root&#x2F;sniffer&#x2F;src&#x2F;main.c.bak</span><br></pre></td></tr></table></figure>
+<p>当前工作目录是 root，想把 main.c 改为 main.c.bak。正常情况你可能需要敲 2 遍包含 main.c 的长参数，当然你也可能会选择直接复制粘贴。</p>
+<p>而我通过使用 !$ 变量，可以很轻松优雅的实现改名。</p>
+<h3 id="优雅的删除、修改乱码名字的文件"><a href="#优雅的删除、修改乱码名字的文件" class="headerlink" title="优雅的删除、修改乱码名字的文件"></a>优雅的删除、修改乱码名字的文件</h3><p>在 Linux 系统中，会经常碰到名称乱码的文件。想要删除它，却无法通过键盘输入名字，有时候复制粘贴乱码名称，终端可能识别不了，该怎么办？</p>
+<p>不用担心，下边来展示下 find 是如何优雅的解决问题的。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ls  -i</span><br><span class="line">138957 a.txt  138959 T.txt  132395 ڹ��.txt</span><br><span class="line"></span><br><span class="line">$ find . -inum 132395 -exec rm &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+<p>命令中，-inum 指定的是文件的 inode 号，它是系统中每个文件对应的唯一编号，find 通过编号找到后，执行删除操作。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">find -inum 节点号 -exec rm &#123;&#125; \; &#x2F;&#x2F;删除</span><br><span class="line">find -inum 节点号 -exec mv &#123;&#125; newname \; &#x2F;&#x2F;重命名</span><br><span class="line">find -inum 节点号 -exec cat &#123;&#125; \; &#x2F;&#x2F;查看内容</span><br></pre></td></tr></table></figure>
+
+<h3 id="Linux上获取你的公网IP地址"><a href="#Linux上获取你的公网IP地址" class="headerlink" title="Linux上获取你的公网IP地址"></a>Linux上获取你的公网IP地址</h3><p>在办公或家庭环境，我们的虚拟机或服务器上配置的通常是内网 IP 地址，我们如何知道，在与外网通信时，我们的公网出口 IP 是神马呢？</p>
+<p>这个在 Linux 上非常简单，一条命令搞定</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ curl ip.sb</span><br><span class="line">$ curl ifconfig.me</span><br></pre></td></tr></table></figure>
+<p>上述两条命令都可以</p>
+<h3 id="动态实时查看日志"><a href="#动态实时查看日志" class="headerlink" title="动态实时查看日志"></a>动态实时查看日志</h3><p>通过 tail 命令 -f 选项，可以动态地监控日志文件的变化，非常实用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ tail -f test.log</span><br></pre></td></tr></table></figure>
+<p>如果想在日志中出现 Failed 等信息时立刻停止 tail 监控，可以通过如下命令来实现：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ tail -f test.log | sed &#39;&#x2F;Failed&#x2F; q&#39;</span><br></pre></td></tr></table></figure>
+<h3 id="快速清空文件的方法"><a href="#快速清空文件的方法" class="headerlink" title="快速清空文件的方法"></a>快速清空文件的方法</h3><p>快速清空一个文件，有 N 种方法，我比较喜欢下边这种，因为它最短</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ &gt; access.log</span><br></pre></td></tr></table></figure>
+<p>不过瘾？好吧，我也顺便总结下，其它几种最常见的清空文件的方法</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">: &gt; access.log</span><br><span class="line">true &gt; access.log</span><br><span class="line">cat &#x2F;dev&#x2F;null &gt; access.log</span><br><span class="line">echo -n &quot;&quot; &gt; access.log</span><br><span class="line">echo &gt; access.log</span><br><span class="line">truncate -s 0 access.log</span><br></pre></td></tr></table></figure>
+<p>简单解释下， : 在 shell 中是一个内置命令，表示 no-op，大概就是空语句的意思，所以 : 的那个用法，就是执行命令后，什么都没有输出，将空内容覆盖到文件。</p>
+<h3 id="快速生成大文件"><a href="#快速生成大文件" class="headerlink" title="快速生成大文件"></a>快速生成大文件</h3><p>有时候，在 Linux 上，我们需要一个大文件，用于测试上传或下载的速度，通过 dd 命令可以快速生成一个大文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ dd if&#x3D;&#x2F;dev&#x2F;zero of&#x3D;file.img bs&#x3D;1M count&#x3D;1024</span><br></pre></td></tr></table></figure>
+<p>上述命令，生成一个文件名为 file.img 大小为 1G 的文件。</p>
+<h3 id="安全擦除硬盘数据"><a href="#安全擦除硬盘数据" class="headerlink" title="安全擦除硬盘数据"></a>安全擦除硬盘数据</h3><p>介绍一种擦除硬盘数据的方法，高效，安全。可以通过 dd 命令，轻松实现：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ dd if&#x3D;&#x2F;dev&#x2F;urandom of&#x3D;&#x2F;dev&#x2F;sda</span><br></pre></td></tr></table></figure>
+<p>使用 /dev/urandom 生成随机数据，将生成的数据写入 sda 硬盘中，相当于安全的擦除了硬盘数据。</p>
+<h3 id="快速制作系统盘"><a href="#快速制作系统盘" class="headerlink" title="快速制作系统盘"></a>快速制作系统盘</h3><p>在 Linux 下制作系统盘，老毛桃神么工具都弱爆了，直接一条命令搞定：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ dd if&#x3D;ubuntu-server-amd64.iso of&#x3D;&#x2F;dev&#x2F;sdb</span><br></pre></td></tr></table></figure>
+<p>哈哈，是不是很爽，sdb 可以 U 盘，也可以是普通硬盘</p>
+<h3 id="查看某个进程的运行时间"><a href="#查看某个进程的运行时间" class="headerlink" title="查看某个进程的运行时间"></a>查看某个进程的运行时间</h3><p>可能，大部分同学只会使用 ps aux，其实可以通过 -o 参数，指定只显示具体的某个字段，会得到更清晰的结果。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ps -p 10167 -o etimes,etime</span><br><span class="line">ELAPSED     ELAPSED</span><br><span class="line">1712055 19-19:34:15</span><br></pre></td></tr></table></figure>
+<p>通过 etime 获取该进程的运行时间，可以很直观地看到，进程运行了 19 天</p>
+<p>同样，可以通过 -o 指定 rss 可以只获取该进程的内存信息。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ps -p 10167 -o rss</span><br><span class="line">  RSS</span><br><span class="line"> 2180</span><br></pre></td></tr></table></figure>
+
+<h3 id="时间戳的快速转换"><a href="#时间戳的快速转换" class="headerlink" title="时间戳的快速转换"></a>时间戳的快速转换</h3><p>时间操作，对程序员来说就是家常便饭。有时候希望能够将时间戳，转换为日期时间，在 Linux 命令行上，也可以快速的进行转换：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ date -d@1234567890 +&quot;%Y-%m-%d %H:%M:%S&quot;</span><br><span class="line">2009-02-14 07:31:30</span><br></pre></td></tr></table></figure>
+<p>当然，也可以在命令行上，查看当前的时间戳</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ date +%s</span><br><span class="line">1617514141</span><br></pre></td></tr></table></figure>
+<h3 id="优雅的计算程序运行时间"><a href="#优雅的计算程序运行时间" class="headerlink" title="优雅的计算程序运行时间"></a>优雅的计算程序运行时间</h3><p>在 Linux 下，可以通过 time 命令，很容易获取程序的运行时间：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ time .&#x2F;test</span><br><span class="line">real    0m1.003s</span><br><span class="line">user    0m0.000s</span><br><span class="line">sys     0m0.000s</span><br></pre></td></tr></table></figure>
+<p>可以看到，程序的运行时间为: 1.003s。细心的同学，会看到 real 貌似不等于 user + sys，而且还远远大于，这是怎么回事呢？</p>
+<p>先来解释下这三个参数的含义：</p>
+<ul>
+<li>real：表示的钟表时间，也就是从程序执行到结束花费的时间；</li>
+<li>user：表示运行期间，cpu 在用户空间所消耗的时间；</li>
+<li>sys：表示运行期间，cpu 在内核空间所消耗的时间；</li>
+</ul>
+<p>由于 user 和 sys 只统计 cpu 消耗的时间，程序运行期间会调用 sleep 发生阻塞，也可能会等待网络或磁盘 IO，都会消耗大量时间。因此对于类似情况，real 的值就会大于其它两项之和。</p>
+<p>另外，也会遇到 real 远远小于 user + sys 的场景，这是什么鬼情况？</p>
+<p>这个更好理解，如果程序在多个 cpu 上并行，那么 user 和 sys 统计时间是多个 cpu 时间，实际消耗时间 real 很可能就比其它两个之和要小了</p>
+<h3 id="命令行查看ascii码"><a href="#命令行查看ascii码" class="headerlink" title="命令行查看ascii码"></a>命令行查看ascii码</h3><p>我们在开发过程中，通常需要查看 ascii 码，通过 Linux 命令行就可以轻松查看，而不用去 Google 或 Baidu</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ man ascii</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="如何批量下载网页资源"><a href="#如何批量下载网页资源" class="headerlink" title="如何批量下载网页资源"></a>如何批量下载网页资源</h3><p>有时，同事会通过网页的形式分享文件下载链接，在 Linux 系统，通过 wget 命令可以轻松下载，而不用写脚本或爬虫</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ wget -r -nd -np --accept&#x3D;pdf http:&#x2F;&#x2F;fast.dpdk.org&#x2F;doc&#x2F;pdf-guides&#x2F;</span><br><span class="line"># --accept：选项指定资源类型格式 pdf</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>ubuntu下使用微信、QQ等</title>
+    <url>/2021/03/18/new/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ubuntu下使用微信，网页版的登录不了，只能考虑客户端了。考虑了下，还是在docker里，无论怎么折腾，也不会污染系统。</p>
+<a id="more"></a>
+<p>网上教程多如牛毛，但不是坑，就是坑，找了个自己能用的，记录下备用<br>1、安装docker docker-compose，网上教程一大把，自己搜<br>2、执行如下命令<br>首先要允许所有用户访问X11服务,运行:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xhost +</span><br></pre></td></tr></table></figure>
+<p>拉取镜像（注意docker设置国内镜像地址，用科大的就行）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull bestwu&#x2F;wechat</span><br></pre></td></tr></table></figure>
+<p>在你指定的文件夹下创建 docker-compose.yml</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">version: &#39;2&#39;</span><br><span class="line">services:</span><br><span class="line">  wechat:</span><br><span class="line">    image: bestwu&#x2F;wechat</span><br><span class="line">    container_name: wechat</span><br><span class="line">    devices:</span><br><span class="line">      - &#x2F;dev&#x2F;snd</span><br><span class="line">    volumes:</span><br><span class="line">      - &#x2F;tmp&#x2F;.X11-unix:&#x2F;tmp&#x2F;.X11-unix</span><br><span class="line">      - $PWD&#x2F;WeChatFiles:&#x2F;WeChatFiles</span><br><span class="line">    environment:</span><br><span class="line">      - DISPLAY&#x3D;unix$DISPLAY</span><br><span class="line">      - QT_IM_MODULE&#x3D;fcitx</span><br><span class="line">      - XMODIFIERS&#x3D;@im&#x3D;fcitx</span><br><span class="line">      - GTK_IM_MODULE&#x3D;fcitx</span><br><span class="line">      - AUDIO_GID&#x3D;26 # 可选 默认63（在终端用getent group video | cut -d: -f3查） 主机audio gid 解决声音设备访问权限问题</span><br><span class="line">      - GID&#x3D;1000 # 可选 默认1000 主机当前用户 gid 解决挂载目录访问权限问题</span><br><span class="line">      - UID&#x3D;1000 # 可选 默认1000 主机当前用户 uid 解决挂载目录访问权限问题</span><br><span class="line">    ipc: host</span><br></pre></td></tr></table></figure>
+<p>启动</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+<p>停止</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose stop</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+        <category>ubuntu</category>
+      </categories>
+      <tags>
+        <tag>wechat</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nginx conf location</title>
+    <url>/2022/03/23/nginx-conf-location-%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h4 id="root-alias"><a href="#root-alias" class="headerlink" title="root alias"></a>root alias</h4><ul>
+<li>root的处理结果是：root路径＋location路径</li>
+<li>alias的处理结果是：使用alias路径替换location路径</li>
+</ul>
+<a id="more"></a>
+
+<p>nginx指定文件路径有两种方式root和alias，root与alias主要区别在于nginx如何解释location后面的uri，这会使两者分别以不同的方式将请求映射到服务器文件上。</p>
+<p>alias 指定的目录是准确的，给location指定一个目录。</p>
+<p>root 指定目录的上级目录，并且该上级目录要含有locatoin指定名称的同名目录。也就是</p>
+<p>以root方式设置资源路径：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法: root path;</span><br><span class="line">配置块: http、server、location、if</span><br></pre></td></tr></table></figure>
+<p>如果server,location同时配置，优先采用location内的root路径，</p>
+<p>以alias 方式设置资源路径</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法: alias path;</span><br><span class="line">配置块: location</span><br></pre></td></tr></table></figure>
+<p>Example:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">location &#x2F;img&#x2F; &#123;</span><br><span class="line">	alias &#x2F;var&#x2F;www&#x2F;image&#x2F;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>#若按照上述配置的话，则访问/img/目录里面的文件时，ningx会自动去/var/www/image/目录找文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">location &#x2F;img&#x2F; &#123;</span><br><span class="line">	root &#x2F;var&#x2F;www&#x2F;image;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>#若按照这种配置的话，则访问/img/目录下的文件时，nginx会去/var/www/image/img/目录下找文件</p>
+<p>注意： </p>
+<ol>
+<li>使用alias时，目录名后面一定要加”/“。</li>
+<li>使用alias标签的目录块中不能使用rewrite的break。</li>
+<li>alias在使用正则匹配时，必须捕捉要匹配的内容并在指定的内容处使用。</li>
+<li>alias只能位于location块中</li>
+</ol>
+<h4 id="nginx-location配置详细解释"><a href="#nginx-location配置详细解释" class="headerlink" title="nginx location配置详细解释"></a>nginx location配置详细解释</h4><p>语法详解<br>语法规则： location [=|<del>|</del>*|^~] /uri/ { … }</p>
+<ul>
+<li>= 开头表示精确匹配</li>
+<li>^~ 开头表示uri以某个常规字符串开头，理解为匹配 url路径即可。nginx不对url做编码，因此请求为/static/20%/aa，可以被规则^~ /static/ /aa匹配到（注意是空格）。以xx开头</li>
+<li>~ 开头表示区分大小写的正则匹配 以xx结尾</li>
+<li>~* 开头表示不区分大小写的正则匹配 以xx结尾</li>
+<li>!<del>和!</del>*分别为区分大小写不匹配及不区分大小写不匹配 的正则</li>
+<li>/ 通用匹配，任何请求都会匹配到。</li>
+</ul>
+<p>例子，有如下匹配规则：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">location &#x3D; &#x2F; &#123;</span><br><span class="line">   #规则A  访问根目录&#x2F;， 比如http:&#x2F;&#x2F;localhost&#x2F;</span><br><span class="line">&#125;</span><br><span class="line">location &#x3D; &#x2F;login &#123;</span><br><span class="line">   #规则B  http:&#x2F;&#x2F;localhost&#x2F;login 将匹配规则B，http:&#x2F;&#x2F;localhost&#x2F;register 则匹配规则H</span><br><span class="line">&#125;</span><br><span class="line">location ^~ &#x2F;static&#x2F; &#123;</span><br><span class="line">   #规则C  http:&#x2F;&#x2F;localhost&#x2F;static&#x2F;a.html 将匹配规则C</span><br><span class="line">&#125;</span><br><span class="line">location ~ \.(gif|jpg|png|js|css)$ &#123;</span><br><span class="line">   #规则D，注意：是根据括号内的大小写进行匹配。括号内全是小写，只匹配小写</span><br><span class="line">&#125;</span><br><span class="line">location ~* \.png$ &#123;</span><br><span class="line">   #规则E  http:&#x2F;&#x2F;localhost&#x2F;a.gif, http:&#x2F;&#x2F;localhost&#x2F;b.jpg 将匹配规则D和规则E，但是规则D顺序优先，规则E不起作用， </span><br><span class="line">      http:&#x2F;&#x2F;localhost&#x2F;static&#x2F;c.png 则优先匹配到 规则C</span><br><span class="line">      http:&#x2F;&#x2F;localhost&#x2F;a.PNG 则匹配规则E， 而不会匹配规则D，因为规则E不区分大小写。</span><br><span class="line">&#125;</span><br><span class="line">location !~ \.xhtml$ &#123;</span><br><span class="line">   #规则F  访问 http:&#x2F;&#x2F;localhost&#x2F;a.xhtml 不会匹配规则F和规则G，</span><br><span class="line">&#125;</span><br><span class="line">location !~* \.xhtml$ &#123;</span><br><span class="line">   #规则G  访问 http:&#x2F;&#x2F;localhost&#x2F;a.xhtml 不会匹配规则F和规则G，</span><br><span class="line">&#125;</span><br><span class="line">location &#x2F; &#123;</span><br><span class="line">   #规则H</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost&#x2F;a.XHTML不会匹配规则G，（因为!）。规则F，规则G属于排除法，符合匹配规则也不会匹配到，所以想想看实际应用中哪里会用到。</span><br><span class="line"></span><br><span class="line">访问 http:&#x2F;&#x2F;localhost&#x2F;category&#x2F;id&#x2F;1111 则最终匹配到规则H，因为以上规则都不匹配，这个时候nginx转发请求给后端应用[服务器](https:&#x2F;&#x2F;www.baidu.com&#x2F;s?wd&#x3D;服务器&amp;tn&#x3D;24004469_oem_dg&amp;rsv_dl&#x3D;gh_pl_sl_csd)，比如FastCGI（php），tomcat（jsp），nginx作为方向代理服务器存在。</span><br><span class="line"></span><br><span class="line">所以实际使用中，个人觉得至少有三个匹配规则定义，如下：</span><br><span class="line">#直接匹配网站根，通过域名访问网站首页比较频繁，使用这个会加速处理，官网如是说。</span><br><span class="line">#这里是直接转发给后端应用服务器了，也可以是一个静态首页</span><br><span class="line"># 第一个必选规则</span><br><span class="line">location &#x3D; &#x2F; &#123;</span><br><span class="line">    proxy_pass http:&#x2F;&#x2F;tomcat:8080&#x2F;index</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location &#x3D; &#x2F;api&#x2F; &#123;   # 访问http:&#x2F;&#x2F;localhost&#x2F;api&#x2F;xxx.xxx  会被代理到192.168.0.1&#x2F;xxx.xxx</span><br><span class="line">    proxy_pass http:&#x2F;&#x2F;192.168.0.1&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 第二个必选规则是处理静态文件请求，这是nginx作为http服务器的强项</span><br><span class="line"># 有两种配置模式，目录匹配或后缀匹配,任选其一或搭配使用</span><br><span class="line">location ^~ &#x2F;static&#x2F; &#123;                              &#x2F;&#x2F;以xx开头</span><br><span class="line">    root &#x2F;webroot&#x2F;static&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line">location ~* \.(gif|jpg|jpeg|png|css|js|ico)$ &#123;     &#x2F;&#x2F;以xx结尾</span><br><span class="line">    root &#x2F;webroot&#x2F;res&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#第三个规则就是通用规则，用来转发动态请求到后端应用服务器</span><br><span class="line">#非静态文件请求就默认是动态请求，自己根据实际把握</span><br><span class="line">location &#x2F; &#123;</span><br><span class="line">    proxy_pass http:&#x2F;&#x2F;tomcat:8080&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="try-files详解"><a href="#try-files详解" class="headerlink" title="try_files详解"></a>try_files详解</h4><ul>
+<li>格式1：try_files file … uri;  </li>
+<li>格式2：try_files file … =code;</li>
+</ul>
+<p><a href="https://www.cnblogs.com/jedi1995/p/10900224.html" target="_blank" rel="noopener">nginx配置选项try_files详解</a></p>
+<h4 id="proxy-pass详解"><a href="#proxy-pass详解" class="headerlink" title="proxy_pass详解"></a>proxy_pass详解</h4><p>在nginx中配置proxy_pass代理转发时，如果在proxy_pass后面的url加/，表示绝对根路径；如果没有/，表示相对路径，把匹配的路径部分也给代理走。<br>假设下面四种情况分别用 <a href="http://192.168.1.1/proxy/test.html" target="_blank" rel="noopener">http://192.168.1.1/proxy/test.html</a> 进行访问。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">第一种：</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;test.html</span><br><span class="line"></span><br><span class="line">第二种（相对于第一种，最后少一个 &#x2F; ）</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;proxy&#x2F;test.html</span><br><span class="line"></span><br><span class="line">第三种：</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1&#x2F;aaa&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;aaa&#x2F;test.html</span><br><span class="line"></span><br><span class="line">第四种（相对于第三种，最后少一个 &#x2F; ）</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1&#x2F;aaa;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;aaatest.html</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.jianshu.com/p/b010c9302cd0" target="_blank" rel="noopener">nginx 之 proxy_pass详解</a></p>
+<h4 id="80端口重定向到443端口"><a href="#80端口重定向到443端口" class="headerlink" title="80端口重定向到443端口"></a>80端口重定向到443端口</h4><p>nginx 80端口重定向到443端口，也就是http访问自动跳转到https</p>
+<p>配置如下：<br>一、按照如下格式修改nginx.conf 配置文件，80端口会自动转给443端口，这样就强制使用SSL证书加密了。访问http的时候会自动跳转到https上面。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name www.域名.com;</span><br><span class="line">    rewrite ^(.*)$ https:&#x2F;&#x2F;$&#123;server_name&#125;$1 permanent;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">    listen 443;</span><br><span class="line">    server_name www.域名.com;</span><br><span class="line">    root &#x2F;home&#x2F;wwwroot;</span><br><span class="line">    ssl on;</span><br><span class="line">    ssl_certificate &#x2F;etc&#x2F;nginx&#x2F;certs&#x2F;server.crt;</span><br><span class="line">    ssl_certificate_key &#x2F;etc&#x2F;nginx&#x2F;certs&#x2F;server.key;</span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>alias</tag>
+        <tag>root</tag>
+        <tag>location</tag>
+        <tag>nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>pac.txt---url通配规则</title>
+    <url>/2020/01/30/pac/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>科学上网PAC模式，有时会需要自己在pac.txt里添加一些被墙的URL，记录一下url通配的规则，以备以后使用。</p>
+<a id="more"></a>
+<ol>
+<li>通配符支持。比如 .example.com/ 实际书写时可省略 * ， 如 .example.com/ ， 和 *.example.com/ 效果一样</li>
+<li>正则表达式支持。以 \ 开始和结束， 如 [\w]+://example.com\</li>
+<li>例外规则 @@ ，如 @@.example.com/ 满足 @@ 后规则的地址不使用代理</li>
+<li>匹配地址开始和结尾 | ，如 |<a href="http://example.com" target="_blank" rel="noopener">http://example.com</a> 、 example.com| 分别表示以 <a href="http://example.com" target="_blank" rel="noopener">http://example.com</a> 开始和以 example.com 结束的地址</li>
+<li>|| 标记，如 ||example.com 则 <a href="http://example.com" target="_blank" rel="noopener">http://example.com</a> 、 <a href="https://example.com" target="_blank" rel="noopener">https://example.com</a> 、 <a href="ftp://example.com">ftp://example.com</a> 等地址均满足条件</li>
+<li>注释 ! 。 如 !我是注释<br>v2rayN需重启生效。</li>
+</ol>
 ]]></content>
   </entry>
   <entry>
@@ -1688,81 +1801,6 @@
       </categories>
   </entry>
   <entry>
-    <title>android studio多语言(中英)适配</title>
-    <url>/2020/02/14/ndroid-studio%E4%B8%AD%E8%8B%B1%E6%96%87%E9%80%82%E9%85%8D/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>strings.xml在目录res相应的value文件夹下,用来显示文本，避免硬编码，要添加新的语言支持，就要在不同的 value 文件夹下（如value 、values-zh-rCN）添加不同语言的 string.xml 文件。本文以简体中文为例,描述一下Android studio下相应strings.xml(zh-rCN)的生成方式，其他语言类似。</p>
-<a id="more"></a>
-<h3 id="手动建立文件"><a href="#手动建立文件" class="headerlink" title="手动建立文件"></a>手动建立文件</h3><p>选中res文件夹，右键New–&gt;Android Resource Directory,然后选中Locale,如下图所示：</p>
-<p><img src="/images/pasted-17.png" alt="upload successful"><br>选择相应语言和相应区域：</p>
-<p><img src="/images/pasted-18.png" alt="upload successful"><br>文件夹名称（values-zh-rCN）自动生成，最后在该文件夹生成strings.xml即可。项目视图如下：</p>
-<p><img src="/images/pasted-19.png" alt="upload successful"></p>
-<h3 id="自动生成"><a href="#自动生成" class="headerlink" title="自动生成"></a>自动生成</h3><p>打开Translations Editor（双击打开strings.xml，窗口右上角点击Open Editor），点击Add Locale，在下拉菜单中选择相应语言区域，系统会自动生成相应文件夹以及strings.xml文件。</p>
-<p><img src="/images/pasted-20.png" alt="upload successful"></p>
-<p><img src="/images/pasted-21.png" alt="upload successful"></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>nginx conf location</title>
-    <url>/2022/03/23/nginx-conf-location-%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<h4 id="root-alias"><a href="#root-alias" class="headerlink" title="root alias"></a>root alias</h4><ul>
-<li>root的处理结果是：root路径＋location路径</li>
-<li>alias的处理结果是：使用alias路径替换location路径</li>
-</ul>
-<a id="more"></a>
-
-<p>nginx指定文件路径有两种方式root和alias，root与alias主要区别在于nginx如何解释location后面的uri，这会使两者分别以不同的方式将请求映射到服务器文件上。</p>
-<p>alias 指定的目录是准确的，给location指定一个目录。</p>
-<p>root 指定目录的上级目录，并且该上级目录要含有locatoin指定名称的同名目录。也就是</p>
-<p>以root方式设置资源路径：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法: root path;</span><br><span class="line">配置块: http、server、location、if</span><br></pre></td></tr></table></figure>
-<p>如果server,location同时配置，优先采用location内的root路径，</p>
-<p>以alias 方式设置资源路径</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法: alias path;</span><br><span class="line">配置块: location</span><br></pre></td></tr></table></figure>
-<p>Example:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">location &#x2F;img&#x2F; &#123;</span><br><span class="line">	alias &#x2F;var&#x2F;www&#x2F;image&#x2F;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>#若按照上述配置的话，则访问/img/目录里面的文件时，ningx会自动去/var/www/image/目录找文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">location &#x2F;img&#x2F; &#123;</span><br><span class="line">	root &#x2F;var&#x2F;www&#x2F;image;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>#若按照这种配置的话，则访问/img/目录下的文件时，nginx会去/var/www/image/img/目录下找文件</p>
-<p>注意： </p>
-<ol>
-<li>使用alias时，目录名后面一定要加”/“。</li>
-<li>使用alias标签的目录块中不能使用rewrite的break。</li>
-<li>alias在使用正则匹配时，必须捕捉要匹配的内容并在指定的内容处使用。</li>
-<li>alias只能位于location块中</li>
-</ol>
-<h4 id="nginx-location配置详细解释"><a href="#nginx-location配置详细解释" class="headerlink" title="nginx location配置详细解释"></a>nginx location配置详细解释</h4><p>语法详解<br>语法规则： location [=|<del>|</del>*|^~] /uri/ { … }</p>
-<ul>
-<li>= 开头表示精确匹配</li>
-<li>^~ 开头表示uri以某个常规字符串开头，理解为匹配 url路径即可。nginx不对url做编码，因此请求为/static/20%/aa，可以被规则^~ /static/ /aa匹配到（注意是空格）。以xx开头</li>
-<li>~ 开头表示区分大小写的正则匹配 以xx结尾</li>
-<li>~* 开头表示不区分大小写的正则匹配 以xx结尾</li>
-<li>!<del>和!</del>*分别为区分大小写不匹配及不区分大小写不匹配 的正则</li>
-<li>/ 通用匹配，任何请求都会匹配到。</li>
-</ul>
-<p>例子，有如下匹配规则：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">location &#x3D; &#x2F; &#123;</span><br><span class="line">   #规则A  访问根目录&#x2F;， 比如http:&#x2F;&#x2F;localhost&#x2F;</span><br><span class="line">&#125;</span><br><span class="line">location &#x3D; &#x2F;login &#123;</span><br><span class="line">   #规则B  http:&#x2F;&#x2F;localhost&#x2F;login 将匹配规则B，http:&#x2F;&#x2F;localhost&#x2F;register 则匹配规则H</span><br><span class="line">&#125;</span><br><span class="line">location ^~ &#x2F;static&#x2F; &#123;</span><br><span class="line">   #规则C  http:&#x2F;&#x2F;localhost&#x2F;static&#x2F;a.html 将匹配规则C</span><br><span class="line">&#125;</span><br><span class="line">location ~ \.(gif|jpg|png|js|css)$ &#123;</span><br><span class="line">   #规则D，注意：是根据括号内的大小写进行匹配。括号内全是小写，只匹配小写</span><br><span class="line">&#125;</span><br><span class="line">location ~* \.png$ &#123;</span><br><span class="line">   #规则E  http:&#x2F;&#x2F;localhost&#x2F;a.gif, http:&#x2F;&#x2F;localhost&#x2F;b.jpg 将匹配规则D和规则E，但是规则D顺序优先，规则E不起作用， </span><br><span class="line">      http:&#x2F;&#x2F;localhost&#x2F;static&#x2F;c.png 则优先匹配到 规则C</span><br><span class="line">      http:&#x2F;&#x2F;localhost&#x2F;a.PNG 则匹配规则E， 而不会匹配规则D，因为规则E不区分大小写。</span><br><span class="line">&#125;</span><br><span class="line">location !~ \.xhtml$ &#123;</span><br><span class="line">   #规则F  访问 http:&#x2F;&#x2F;localhost&#x2F;a.xhtml 不会匹配规则F和规则G，</span><br><span class="line">&#125;</span><br><span class="line">location !~* \.xhtml$ &#123;</span><br><span class="line">   #规则G  访问 http:&#x2F;&#x2F;localhost&#x2F;a.xhtml 不会匹配规则F和规则G，</span><br><span class="line">&#125;</span><br><span class="line">location &#x2F; &#123;</span><br><span class="line">   #规则H</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost&#x2F;a.XHTML不会匹配规则G，（因为!）。规则F，规则G属于排除法，符合匹配规则也不会匹配到，所以想想看实际应用中哪里会用到。</span><br><span class="line"></span><br><span class="line">访问 http:&#x2F;&#x2F;localhost&#x2F;category&#x2F;id&#x2F;1111 则最终匹配到规则H，因为以上规则都不匹配，这个时候nginx转发请求给后端应用[服务器](https:&#x2F;&#x2F;www.baidu.com&#x2F;s?wd&#x3D;服务器&amp;tn&#x3D;24004469_oem_dg&amp;rsv_dl&#x3D;gh_pl_sl_csd)，比如FastCGI（php），tomcat（jsp），nginx作为方向代理服务器存在。</span><br><span class="line"></span><br><span class="line">所以实际使用中，个人觉得至少有三个匹配规则定义，如下：</span><br><span class="line">#直接匹配网站根，通过域名访问网站首页比较频繁，使用这个会加速处理，官网如是说。</span><br><span class="line">#这里是直接转发给后端应用服务器了，也可以是一个静态首页</span><br><span class="line"># 第一个必选规则</span><br><span class="line">location &#x3D; &#x2F; &#123;</span><br><span class="line">    proxy_pass http:&#x2F;&#x2F;tomcat:8080&#x2F;index</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location &#x3D; &#x2F;api&#x2F; &#123;   # 访问http:&#x2F;&#x2F;localhost&#x2F;api&#x2F;xxx.xxx  会被代理到192.168.0.1&#x2F;xxx.xxx</span><br><span class="line">    proxy_pass http:&#x2F;&#x2F;192.168.0.1&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 第二个必选规则是处理静态文件请求，这是nginx作为http服务器的强项</span><br><span class="line"># 有两种配置模式，目录匹配或后缀匹配,任选其一或搭配使用</span><br><span class="line">location ^~ &#x2F;static&#x2F; &#123;                              &#x2F;&#x2F;以xx开头</span><br><span class="line">    root &#x2F;webroot&#x2F;static&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line">location ~* \.(gif|jpg|jpeg|png|css|js|ico)$ &#123;     &#x2F;&#x2F;以xx结尾</span><br><span class="line">    root &#x2F;webroot&#x2F;res&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#第三个规则就是通用规则，用来转发动态请求到后端应用服务器</span><br><span class="line">#非静态文件请求就默认是动态请求，自己根据实际把握</span><br><span class="line">location &#x2F; &#123;</span><br><span class="line">    proxy_pass http:&#x2F;&#x2F;tomcat:8080&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="try-files详解"><a href="#try-files详解" class="headerlink" title="try_files详解"></a>try_files详解</h4><ul>
-<li>格式1：try_files file … uri;  </li>
-<li>格式2：try_files file … =code;</li>
-</ul>
-<p><a href="https://www.cnblogs.com/jedi1995/p/10900224.html" target="_blank" rel="noopener">nginx配置选项try_files详解</a></p>
-<h4 id="proxy-pass详解"><a href="#proxy-pass详解" class="headerlink" title="proxy_pass详解"></a>proxy_pass详解</h4><p>在nginx中配置proxy_pass代理转发时，如果在proxy_pass后面的url加/，表示绝对根路径；如果没有/，表示相对路径，把匹配的路径部分也给代理走。<br>假设下面四种情况分别用 <a href="http://192.168.1.1/proxy/test.html" target="_blank" rel="noopener">http://192.168.1.1/proxy/test.html</a> 进行访问。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">第一种：</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;test.html</span><br><span class="line"></span><br><span class="line">第二种（相对于第一种，最后少一个 &#x2F; ）</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;proxy&#x2F;test.html</span><br><span class="line"></span><br><span class="line">第三种：</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1&#x2F;aaa&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;aaa&#x2F;test.html</span><br><span class="line"></span><br><span class="line">第四种（相对于第三种，最后少一个 &#x2F; ）</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1&#x2F;aaa;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;aaatest.html</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://www.jianshu.com/p/b010c9302cd0" target="_blank" rel="noopener">nginx 之 proxy_pass详解</a></p>
-<h4 id="80端口重定向到443端口"><a href="#80端口重定向到443端口" class="headerlink" title="80端口重定向到443端口"></a>80端口重定向到443端口</h4><p>nginx 80端口重定向到443端口，也就是http访问自动跳转到https</p>
-<p>配置如下：<br>一、按照如下格式修改nginx.conf 配置文件，80端口会自动转给443端口，这样就强制使用SSL证书加密了。访问http的时候会自动跳转到https上面。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name www.域名.com;</span><br><span class="line">    rewrite ^(.*)$ https:&#x2F;&#x2F;$&#123;server_name&#125;$1 permanent;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">    listen 443;</span><br><span class="line">    server_name www.域名.com;</span><br><span class="line">    root &#x2F;home&#x2F;wwwroot;</span><br><span class="line">    ssl on;</span><br><span class="line">    ssl_certificate &#x2F;etc&#x2F;nginx&#x2F;certs&#x2F;server.crt;</span><br><span class="line">    ssl_certificate_key &#x2F;etc&#x2F;nginx&#x2F;certs&#x2F;server.key;</span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>alias</tag>
-        <tag>root</tag>
-        <tag>location</tag>
-        <tag>nginx</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>netstat 命令</title>
     <url>/2022/02/15/netstat-%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">netstat -ntu|awk &#39;&#123;pring $5&#125;&#39;|cut -d : -f 1|sort|uniq -c</span><br></pre></td></tr></table></figure>
@@ -1788,42 +1826,19 @@
       </tags>
   </entry>
   <entry>
-    <title>ubuntu下使用微信、QQ等</title>
-    <url>/2021/03/18/new/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ubuntu下使用微信，网页版的登录不了，只能考虑客户端了。考虑了下，还是在docker里，无论怎么折腾，也不会污染系统。</p>
-<a id="more"></a>
-<p>网上教程多如牛毛，但不是坑，就是坑，找了个自己能用的，记录下备用<br>1、安装docker docker-compose，网上教程一大把，自己搜<br>2、执行如下命令<br>首先要允许所有用户访问X11服务,运行:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xhost +</span><br></pre></td></tr></table></figure>
-<p>拉取镜像（注意docker设置国内镜像地址，用科大的就行）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull bestwu&#x2F;wechat</span><br></pre></td></tr></table></figure>
-<p>在你指定的文件夹下创建 docker-compose.yml</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">version: &#39;2&#39;</span><br><span class="line">services:</span><br><span class="line">  wechat:</span><br><span class="line">    image: bestwu&#x2F;wechat</span><br><span class="line">    container_name: wechat</span><br><span class="line">    devices:</span><br><span class="line">      - &#x2F;dev&#x2F;snd</span><br><span class="line">    volumes:</span><br><span class="line">      - &#x2F;tmp&#x2F;.X11-unix:&#x2F;tmp&#x2F;.X11-unix</span><br><span class="line">      - $PWD&#x2F;WeChatFiles:&#x2F;WeChatFiles</span><br><span class="line">    environment:</span><br><span class="line">      - DISPLAY&#x3D;unix$DISPLAY</span><br><span class="line">      - QT_IM_MODULE&#x3D;fcitx</span><br><span class="line">      - XMODIFIERS&#x3D;@im&#x3D;fcitx</span><br><span class="line">      - GTK_IM_MODULE&#x3D;fcitx</span><br><span class="line">      - AUDIO_GID&#x3D;26 # 可选 默认63（在终端用getent group video | cut -d: -f3查） 主机audio gid 解决声音设备访问权限问题</span><br><span class="line">      - GID&#x3D;1000 # 可选 默认1000 主机当前用户 gid 解决挂载目录访问权限问题</span><br><span class="line">      - UID&#x3D;1000 # 可选 默认1000 主机当前用户 uid 解决挂载目录访问权限问题</span><br><span class="line">    ipc: host</span><br></pre></td></tr></table></figure>
-<p>启动</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
-<p>停止</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose stop</span><br></pre></td></tr></table></figure>]]></content>
+    <title>《Spring设计思想》AOP设计基本原理</title>
+    <url>/2020/03/11/pring%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3%E3%80%8BAOP%E8%AE%BE%E8%AE%A1%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/</url>
+    <content><![CDATA[<p>转载：<strong><a href="https://blog.csdn.net/luanlouis/article/details/51095702" target="_blank" rel="noopener">《Spring设计思想》AOP设计基本原理
+</a></strong>、<strong><a href="https://blog.csdn.net/luanlouis/article/details/51155821" target="_blank" rel="noopener">《Spring设计思想》AOP实现原理（基于JDK和基于CGLIB）
+</a></strong></p>
+]]></content>
       <categories>
-        <category>linux</category>
-        <category>ubuntu</category>
+        <category>java</category>
       </categories>
       <tags>
-        <tag>wechat</tag>
+        <tag>spring</tag>
+        <tag>aop</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>pac.txt---url通配规则</title>
-    <url>/2020/01/30/pac/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>科学上网PAC模式，有时会需要自己在pac.txt里添加一些被墙的URL，记录一下url通配的规则，以备以后使用。</p>
-<a id="more"></a>
-<ol>
-<li>通配符支持。比如 .example.com/ 实际书写时可省略 * ， 如 .example.com/ ， 和 *.example.com/ 效果一样</li>
-<li>正则表达式支持。以 \ 开始和结束， 如 [\w]+://example.com\</li>
-<li>例外规则 @@ ，如 @@.example.com/ 满足 @@ 后规则的地址不使用代理</li>
-<li>匹配地址开始和结尾 | ，如 |<a href="http://example.com" target="_blank" rel="noopener">http://example.com</a> 、 example.com| 分别表示以 <a href="http://example.com" target="_blank" rel="noopener">http://example.com</a> 开始和以 example.com 结束的地址</li>
-<li>|| 标记，如 ||example.com 则 <a href="http://example.com" target="_blank" rel="noopener">http://example.com</a> 、 <a href="https://example.com" target="_blank" rel="noopener">https://example.com</a> 、 <a href="ftp://example.com">ftp://example.com</a> 等地址均满足条件</li>
-<li>注释 ! 。 如 !我是注释<br>v2rayN需重启生效。</li>
-</ol>
-]]></content>
   </entry>
   <entry>
     <title>spring 线程安全</title>
@@ -1895,6 +1910,64 @@
       </tags>
   </entry>
   <entry>
+    <title>Rust是基于表达式的语言</title>
+    <url>/2022/03/16/rust-%E8%AF%AD%E5%8F%A5%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
+    <content><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch1/01_expression.html" target="_blank" rel="noopener">Rust是基于表达式的语言</a></p>
+<a id="more"></a>
+
+<p>除了在表达式尾部加分号的代码是语句之外，还有另外一种情况的代码是语句而非表达式：<strong>用于声明或定义</strong>。例如let声明变量、fn定义函数、struct声明结构体等。</p>
+<p>Rust很多地方都会结合表达式和语句来做变量赋值。例如，if结构也是一个表达式，所以它有返回值，可以将if的返回值赋值给变量，而<strong>它的返回值来自于它的大括号</strong>：当大括号最后执行的一条代码不加分号结尾时，该代码的计算结果就是if结构的返回值。</p>
+<p>————————————————《rust入门秘籍》</p>
+]]></content>
+      <tags>
+        <tag>rust</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>shell脚本检查nginx服务状态</title>
+    <url>/2021/04/08/shell%E8%84%9A%E6%9C%AC%E6%A3%80%E6%9F%A5nginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A&#x3D;&#96;ps -C nginx --no-header |wc -l&#96;</span><br><span class="line">if [ $A -eq 0 ];then</span><br><span class="line">    service nginx start</span><br><span class="line">    sleep 2</span><br><span class="line">    if [ &#96;ps -C nginx --no-header |wc -l&#96; -eq 0 ];then</span><br><span class="line">        killall keepalived</span><br><span class="line">    fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<h3 id="脚本解析"><a href="#脚本解析" class="headerlink" title="脚本解析"></a>脚本解析</h3><p>以上是通过进程判断，也可以通过端口判断，如netstat -nlpt | grep nginx</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# netstat -nlpt | grep nginx</span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      8801&#x2F;nginx: master</span><br></pre></td></tr></table></figure>
+
+<p>以下，以进程为例详解，ps -C nginx –no-header<br>这里涉及ps 的用法，我们一般用ps查看相关进程，一般都是用ps -ef | grep XX 或 ps -aux| grep XX 的模式<br>如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br><span class="line">root     11660  5532  0 09:55 pts&#x2F;1    00:00:00 grep --color&#x3D;auto nginx</span><br></pre></td></tr></table></figure>
+<p>但是这样通常都会覆盖一个grep的进程。</p>
+<p>我们可以用ps -ef|grep nginx|grep -v grep的方式排除grep的进程，如</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# ps -ef|grep nginx|grep -v grep</span><br><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br></pre></td></tr></table></figure>
+
+<p>也可以直接用ps -C 或ps -c 的方式， -C 后面接命令的名字（推荐） ，如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx</span><br><span class="line">   PID TTY          TIME CMD</span><br><span class="line">  8801 ?        00:00:00 nginx</span><br><span class="line">  8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
+<p>–no-header 就是去挑title,如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx --no-header</span><br><span class="line"> 8801 ?        00:00:00 nginx</span><br><span class="line"> 8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
+<p>wc -l 这个很熟悉了，行数计算</p>
+<p>所以用这种方式可判断，如果<br>ps -C nginx –no-header|wc -l</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">值为0，即代表服务未启动</span><br><span class="line">值为非0，即代表服务已启动</span><br></pre></td></tr></table></figure>
+<p>最后，killall keepalived 这个是以服务名称杀死进程，日常中也用的挺多的</p>
+<p>上面那段完整的脚本意思即为：<br>判断nginx 服务是否启动<br>如果未启动，执行启动命令<br>再次判断，如果启动失败，关掉keepalived，进入从节点</p>
+]]></content>
+      <categories>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>spring security 处理filter chain抛出的异常</title>
+    <url>/2021/12/15/spring-security-%E5%A4%84%E7%90%86filter-chain%E6%8A%9B%E5%87%BA%E7%9A%84%E5%BC%82%E5%B8%B8/</url>
+    <content><![CDATA[<p>springboot异常处理默认会redirect /error,但前后分离后, 异常处理就要返回json<br>异常一种是controller抛出的异常, 可以通过@RestControllerAdvice @ExceptionHandler全局处理,<br>另一种是spring security filter chain 抛出的异常,由于在@RestControllerAdvice之前,所以需要其它方式处理.<br>1: 自定义MyErrorController ,overriding default Spring Boot /error handler<br>2:在filter chain里第一的位置新增自定义filter,处理后面没有处理掉的异常.</p>
+<p><strong><a href="https://blog.csdn.net/muyuanjin67/article/details/120373168" target="_blank" rel="noopener">Spring和SpringSecurity 的全局异常处理</a></strong>&nbsp;&nbsp;&nbsp;&nbsp;,<strong><a href="https://stackoverflow.com/questions/34595605/how-to-manage-exceptions-thrown-in-filters-in-spring" target="_blank" rel="noopener">How to manage exceptions thrown in filters in Spring?</a></strong>&nbsp;&nbsp;&nbsp;&nbsp;,<strong><a href="https://www.jianshu.com/p/f528fe2377e2" target="_blank" rel="noopener">Spring security restful like 服务下的异常处理</a></strong></p>
+]]></content>
+      <tags>
+        <tag>spring security</tag>
+        <tag>filter chain</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>cors--springboot shiro 前后端分离跨域</title>
     <url>/2020/05/18/rs-spring-shiro-%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E8%B7%A8%E5%9F%9F/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>前后端分离，采用stateless JWT，服务器就无法控制客户端的登录，而stateful jwt本质上跟session一样，所以采用shiro的session管理，简单方便。由此涉及后续的session的管理、跨域、shiro跳转等问题。</p>
@@ -1950,53 +2023,6 @@
       </tags>
   </entry>
   <entry>
-    <title>shell脚本检查nginx服务状态</title>
-    <url>/2021/04/08/shell%E8%84%9A%E6%9C%AC%E6%A3%80%E6%9F%A5nginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A&#x3D;&#96;ps -C nginx --no-header |wc -l&#96;</span><br><span class="line">if [ $A -eq 0 ];then</span><br><span class="line">    service nginx start</span><br><span class="line">    sleep 2</span><br><span class="line">    if [ &#96;ps -C nginx --no-header |wc -l&#96; -eq 0 ];then</span><br><span class="line">        killall keepalived</span><br><span class="line">    fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-
-<h3 id="脚本解析"><a href="#脚本解析" class="headerlink" title="脚本解析"></a>脚本解析</h3><p>以上是通过进程判断，也可以通过端口判断，如netstat -nlpt | grep nginx</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# netstat -nlpt | grep nginx</span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      8801&#x2F;nginx: master</span><br></pre></td></tr></table></figure>
-
-<p>以下，以进程为例详解，ps -C nginx –no-header<br>这里涉及ps 的用法，我们一般用ps查看相关进程，一般都是用ps -ef | grep XX 或 ps -aux| grep XX 的模式<br>如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br><span class="line">root     11660  5532  0 09:55 pts&#x2F;1    00:00:00 grep --color&#x3D;auto nginx</span><br></pre></td></tr></table></figure>
-<p>但是这样通常都会覆盖一个grep的进程。</p>
-<p>我们可以用ps -ef|grep nginx|grep -v grep的方式排除grep的进程，如</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# ps -ef|grep nginx|grep -v grep</span><br><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br></pre></td></tr></table></figure>
-
-<p>也可以直接用ps -C 或ps -c 的方式， -C 后面接命令的名字（推荐） ，如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx</span><br><span class="line">   PID TTY          TIME CMD</span><br><span class="line">  8801 ?        00:00:00 nginx</span><br><span class="line">  8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
-<p>–no-header 就是去挑title,如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx --no-header</span><br><span class="line"> 8801 ?        00:00:00 nginx</span><br><span class="line"> 8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
-<p>wc -l 这个很熟悉了，行数计算</p>
-<p>所以用这种方式可判断，如果<br>ps -C nginx –no-header|wc -l</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">值为0，即代表服务未启动</span><br><span class="line">值为非0，即代表服务已启动</span><br></pre></td></tr></table></figure>
-<p>最后，killall keepalived 这个是以服务名称杀死进程，日常中也用的挺多的</p>
-<p>上面那段完整的脚本意思即为：<br>判断nginx 服务是否启动<br>如果未启动，执行启动命令<br>再次判断，如果启动失败，关掉keepalived，进入从节点</p>
-]]></content>
-      <categories>
-        <category>shell</category>
-      </categories>
-      <tags>
-        <tag>shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Rust是基于表达式的语言</title>
-    <url>/2022/03/16/rust-%E8%AF%AD%E5%8F%A5%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
-    <content><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch1/01_expression.html" target="_blank" rel="noopener">Rust是基于表达式的语言</a></p>
-<a id="more"></a>
-
-<p>除了在表达式尾部加分号的代码是语句之外，还有另外一种情况的代码是语句而非表达式：<strong>用于声明或定义</strong>。例如let声明变量、fn定义函数、struct声明结构体等。</p>
-<p>Rust很多地方都会结合表达式和语句来做变量赋值。例如，if结构也是一个表达式，所以它有返回值，可以将if的返回值赋值给变量，而<strong>它的返回值来自于它的大括号</strong>：当大括号最后执行的一条代码不加分号结尾时，该代码的计算结果就是if结构的返回值。</p>
-<p>————————————————《rust入门秘籍》</p>
-]]></content>
-      <tags>
-        <tag>rust</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>shell脚本监测nginx服务状态</title>
     <url>/1970/01/01/shell%E8%84%9A%E6%9C%AC%E7%9B%91%E6%B5%8Bnginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
@@ -2030,24 +2056,6 @@
       </tags>
   </entry>
   <entry>
-    <title>spring security 处理filter chain抛出的异常</title>
-    <url>/2021/12/15/spring-security-%E5%A4%84%E7%90%86filter-chain%E6%8A%9B%E5%87%BA%E7%9A%84%E5%BC%82%E5%B8%B8/</url>
-    <content><![CDATA[<p>springboot异常处理默认会redirect /error,但前后分离后, 异常处理就要返回json<br>异常一种是controller抛出的异常, 可以通过@RestControllerAdvice @ExceptionHandler全局处理,<br>另一种是spring security filter chain 抛出的异常,由于在@RestControllerAdvice之前,所以需要其它方式处理.<br>1: 自定义MyErrorController ,overriding default Spring Boot /error handler<br>2:在filter chain里第一的位置新增自定义filter,处理后面没有处理掉的异常.</p>
-<p><strong><a href="https://blog.csdn.net/muyuanjin67/article/details/120373168" target="_blank" rel="noopener">Spring和SpringSecurity 的全局异常处理</a></strong>&nbsp;&nbsp;&nbsp;&nbsp;,<strong><a href="https://stackoverflow.com/questions/34595605/how-to-manage-exceptions-thrown-in-filters-in-spring" target="_blank" rel="noopener">How to manage exceptions thrown in filters in Spring?</a></strong>&nbsp;&nbsp;&nbsp;&nbsp;,<strong><a href="https://www.jianshu.com/p/f528fe2377e2" target="_blank" rel="noopener">Spring security restful like 服务下的异常处理</a></strong></p>
-]]></content>
-      <tags>
-        <tag>spring security</tag>
-        <tag>filter chain</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java动态代理机制详解（JDK 和CGLIB，Javassist，ASM）</title>
-    <url>/2020/03/11/spring-struts2-action%E5%8D%95%E4%BE%8B%E8%BF%98%E6%98%AF%E5%A4%9A%E4%BE%8B/</url>
-    <content><![CDATA[<p>转载：<strong><a href="https://blog.csdn.net/luanlouis/article/details/24589193" target="_blank" rel="noopener">Java动态代理机制详解（JDK 和CGLIB，Javassist，ASM）
-</a></strong></p>
-]]></content>
-  </entry>
-  <entry>
     <title>ssh 密码登录脚本</title>
     <url>/2021/03/19/ssh-%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>脚本密码登录服务器</p>
@@ -2068,6 +2076,21 @@
       </tags>
   </entry>
   <entry>
+    <title>锁、synchronized、CAS、volatile</title>
+    <url>/2020/04/06/synchronized%E3%80%81CAS%E3%80%81volatile/</url>
+    <content><![CDATA[<p>转载：<strong><a href="https://tech.meituan.com/2018/11/15/java-lock.html" target="_blank" rel="noopener">不可不说的Java“锁”事</a></strong>、<strong><a href="https://blog.csdn.net/javazejian/article/details/72828483" target="_blank" rel="noopener">深入理解Java并发之synchronized实现原理</a></strong>、<strong><a href="https://juejin.im/post/5a73cbbff265da4e807783f5" target="_blank" rel="noopener">Java CAS 原理剖析
+</a></strong>、<strong><a href="https://www.cnblogs.com/theRhyme/p/12129120.html" target="_blank" rel="noopener">从原子类和UNSAFE来理解JAVA内存模型，ATOMICINTEGER的INCREMENTANDGET方法和UNSAFE部分源码介绍，VALUEOFFSET偏移量的理解</a></strong>、<strong><a href="https://www.cnblogs.com/theRhyme/p/9396834.html" target="_blank" rel="noopener">JAVA内存模型中VOLATILE关键字的作用
+</a></strong>、<strong><a href="https://www.cnblogs.com/theRhyme/p/9399881.html" target="_blank" rel="noopener">JAVA内存模型，为啥线程要有自己的本地内存，CPU高速缓存
+</a></strong></p>
+]]></content>
+      <tags>
+        <tag>lock</tag>
+        <tag>synchronized</tag>
+        <tag>CAS</tag>
+        <tag>volatile</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>node升级提示(sudo: npm: command not found)</title>
     <url>/2021/08/12/sudo-npm-command-not-found/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>重拿前端项目，要把以前ubuntu的node、npm升级到最新版本，按照网上找来的方法，输入：<em>sudo npm install n -g</em>，结果提示：<em>sudo : npm :command not found</em>。</p>
@@ -2082,21 +2105,6 @@
 <p>将上面左边的命令位置，替换用which npm查询出来的就行了。</p>
 <p><strong>当然我用了which node之后就意识到我以前是用的nvm管理node的版本，差点儿就用n在另外的位置重新下了个版本，而且还发现以前用apt-get下了个更早的版本，每个工具下载的位置都不同，混乱不堪，统统删了，以后只用nvm管理node版本！教训啊～</strong></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>锁、synchronized、CAS、volatile</title>
-    <url>/2020/04/06/synchronized%E3%80%81CAS%E3%80%81volatile/</url>
-    <content><![CDATA[<p>转载：<strong><a href="https://tech.meituan.com/2018/11/15/java-lock.html" target="_blank" rel="noopener">不可不说的Java“锁”事</a></strong>、<strong><a href="https://blog.csdn.net/javazejian/article/details/72828483" target="_blank" rel="noopener">深入理解Java并发之synchronized实现原理</a></strong>、<strong><a href="https://juejin.im/post/5a73cbbff265da4e807783f5" target="_blank" rel="noopener">Java CAS 原理剖析
-</a></strong>、<strong><a href="https://www.cnblogs.com/theRhyme/p/12129120.html" target="_blank" rel="noopener">从原子类和UNSAFE来理解JAVA内存模型，ATOMICINTEGER的INCREMENTANDGET方法和UNSAFE部分源码介绍，VALUEOFFSET偏移量的理解</a></strong>、<strong><a href="https://www.cnblogs.com/theRhyme/p/9396834.html" target="_blank" rel="noopener">JAVA内存模型中VOLATILE关键字的作用
-</a></strong>、<strong><a href="https://www.cnblogs.com/theRhyme/p/9399881.html" target="_blank" rel="noopener">JAVA内存模型，为啥线程要有自己的本地内存，CPU高速缓存
-</a></strong></p>
-]]></content>
-      <tags>
-        <tag>lock</tag>
-        <tag>synchronized</tag>
-        <tag>CAS</tag>
-        <tag>volatile</tag>
-      </tags>
   </entry>
   <entry>
     <title>tmux 使用</title>
@@ -2130,6 +2138,13 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Java动态代理机制详解（JDK 和CGLIB，Javassist，ASM）</title>
+    <url>/2020/03/11/spring-struts2-action%E5%8D%95%E4%BE%8B%E8%BF%98%E6%98%AF%E5%A4%9A%E4%BE%8B/</url>
+    <content><![CDATA[<p>转载：<strong><a href="https://blog.csdn.net/luanlouis/article/details/24589193" target="_blank" rel="noopener">Java动态代理机制详解（JDK 和CGLIB，Javassist，ASM）
+</a></strong></p>
+]]></content>
+  </entry>
+  <entry>
     <title>ubuntu terminal 打开后的默认位置和大小</title>
     <url>/2021/03/18/ubuntu-terminal-location/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>经常一边儿搜着浏览器，一边儿操作终端，这时候终端打开的默认位置大小就很重要，能节省不少步骤，下面介绍一下怎么设置。</p>
@@ -2151,24 +2166,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ubuntu 开机启动管理</title>
-    <url>/2021/03/21/ubuntu-%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%AE%A1%E7%90%86/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ubuntu自启服务管理命令</p>
-<a id="more"></a>
-<p>查看开机启动服务</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl list-unit-files --type&#x3D;service|grep enabled</span><br></pre></td></tr></table></figure>
-<p>以蓝牙为例，查询蓝牙服务是否开机启动</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl is-enabled bluetooth.service</span><br></pre></td></tr></table></figure>
-<p>如果是enable开机自启动<br>如果是disable不开机启动</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl enable bluetooth.service #开机运行服务</span><br><span class="line"></span><br><span class="line">systemctl disable bluetooth.service #取消开机运行</span><br><span class="line"></span><br><span class="line">sudo systemctl disable  bluetooth.service#关闭蓝牙服务</span><br><span class="line"></span><br><span class="line">systemctl start bluetooth.service #启动服务</span><br><span class="line"></span><br><span class="line">systemctl stop bluetooth.service #停止服务</span><br><span class="line"></span><br><span class="line">systemctl restart bluetooth.service #重启服务</span><br><span class="line"></span><br><span class="line">systemctl reload bluetooth.service #重新加载服务配置文件</span><br><span class="line"></span><br><span class="line">systemctl status bluetooth.service #查询服务运行状态</span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-  </entry>
-  <entry>
     <title>ubuntu 开机自动挂载其他盘</title>
     <url>/1970/01/01/ubuntu-%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E5%85%B6%E4%BB%96%E7%9B%98/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>双系统，ubuntu和win10装在同一个固态盘，还有另外一个机械盘，平时放些资料啥的，设置给ubuntu开机自动挂载另一个机械盘。</p>
@@ -2185,6 +2182,24 @@
 
 <p><img src="/images/pasted-33.png" alt="upload successful"><br>第一个数字：0表示开机不检查磁盘，1表示开机检查磁盘；<br>第二个数字：0表示交换分区，1代表启动分区（Linux），2表示普通分区</p>
 <p>3、重启生效</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>ubuntu 开机启动管理</title>
+    <url>/2021/03/21/ubuntu-%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%AE%A1%E7%90%86/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ubuntu自启服务管理命令</p>
+<a id="more"></a>
+<p>查看开机启动服务</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl list-unit-files --type&#x3D;service|grep enabled</span><br></pre></td></tr></table></figure>
+<p>以蓝牙为例，查询蓝牙服务是否开机启动</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl is-enabled bluetooth.service</span><br></pre></td></tr></table></figure>
+<p>如果是enable开机自启动<br>如果是disable不开机启动</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl enable bluetooth.service #开机运行服务</span><br><span class="line"></span><br><span class="line">systemctl disable bluetooth.service #取消开机运行</span><br><span class="line"></span><br><span class="line">sudo systemctl disable  bluetooth.service#关闭蓝牙服务</span><br><span class="line"></span><br><span class="line">systemctl start bluetooth.service #启动服务</span><br><span class="line"></span><br><span class="line">systemctl stop bluetooth.service #停止服务</span><br><span class="line"></span><br><span class="line">systemctl restart bluetooth.service #重启服务</span><br><span class="line"></span><br><span class="line">systemctl reload bluetooth.service #重新加载服务配置文件</span><br><span class="line"></span><br><span class="line">systemctl status bluetooth.service #查询服务运行状态</span><br></pre></td></tr></table></figure>
+
+
 ]]></content>
       <categories>
         <category>linux</category>
@@ -2231,6 +2246,35 @@
       </tags>
   </entry>
   <entry>
+    <title>java类加载</title>
+    <url>/2020/03/03/va-class/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这里贴一个介绍类加载的介绍链接：<a href="https://juejin.im/post/5dac4edff265da5b5f7588d1#heading-0" target="_blank" rel="noopener">java 的类加载</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>ubuntu 搜狗拼音 繁简切换快捷键冲突</title>
+    <url>/2022/03/27/ubuntu-%E6%90%9C%E7%8B%97%E6%8B%BC%E9%9F%B3-%E7%B9%81%E7%AE%80%E5%88%87%E6%8D%A2%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%86%B2%E7%AA%81/</url>
+    <content><![CDATA[<p>在用idea（vscode）搜索时，按Ctlr +Shift +F ,没反应，后打字发现触发了搜狗拼音的繁简切换，盘它~</p>
+<a id="more"></a>
+
+<h4 id="修改搜狗拼音的配置文件"><a href="#修改搜狗拼音的配置文件" class="headerlink" title="修改搜狗拼音的配置文件"></a>修改搜狗拼音的配置文件</h4><p>首先打开搜狗拼音的配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim ~&#x2F;.config&#x2F;sogoupinyin&#x2F;conf&#x2F;env.ini</span><br></pre></td></tr></table></figure>
+
+<p>然后找到下面这行，将后面的值改为0，保存文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ShortCutFanJian&#x3D;1</span><br></pre></td></tr></table></figure>
+
+<p>完成这一步还没结束，还需要修改fcitx的配置文件</p>
+<h4 id="修改-fcitx-的配置文件"><a href="#修改-fcitx-的配置文件" class="headerlink" title="修改 fcitx 的配置文件"></a>修改 fcitx 的配置文件</h4><p>打开 fcitx 的相关配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim ~&#x2F;.config&#x2F;fcitx&#x2F;conf&#x2F;fcitx-chttrans.config</span><br></pre></td></tr></table></figure>
+<p>然后找到下面这行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#Hotkey&#x3D;CTRL_SHIFT_F</span><br></pre></td></tr></table></figure>
+<p>将前面的注释取消，随便修改一个不常用的快捷键，比如</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Hotkey&#x3D;CTRL_SHIFT_]</span><br></pre></td></tr></table></figure>
+<p>保存文件，重新登录一下账户即可。</p>
+<p><a href="https://www.cnblogs.com/FengZeng666/p/15504636.html" target="_blank" rel="noopener">Ubuntu 禁用搜狗输入法Linux版的简繁切换快捷键</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>ubuntu 自动挂载其他盘</title>
     <url>/1970/01/01/ubuntu-%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E5%85%B6%E4%BB%96%E7%9B%98/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>双系统，ubuntu和win10装在同一个固态盘，还有另外一个机械盘，平时放些资料啥的，设置给ubuntu开机自动挂载另一个机械盘。</p>
@@ -2254,10 +2298,14 @@
       </categories>
   </entry>
   <entry>
-    <title>java类加载</title>
-    <url>/2020/03/03/va-class/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这里贴一个介绍类加载的介绍链接：<a href="https://juejin.im/post/5dac4edff265da5b5f7588d1#heading-0" target="_blank" rel="noopener">java 的类加载</a></p>
+    <title>ubuntu登录界面美化</title>
+    <url>/2021/04/14/ubuntu%E5%BC%80%E6%9C%BA%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96/</url>
+    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/vselfdom/article/details/88546349" target="_blank" rel="noopener">Ubuntu 18.04 用户登录界面优化</a></strong>，备用。</p>
 ]]></content>
+      <categories>
+        <category>linux</category>
+        <category>ubuntu</category>
+      </categories>
   </entry>
   <entry>
     <title>vim常用命令、快捷键</title>
@@ -2718,6 +2766,17 @@
       </tags>
   </entry>
   <entry>
+    <title>vue cli 前端跨域设置</title>
+    <url>/2021/11/27/vue-cli-%E5%89%8D%E7%AB%AF%E8%B7%A8%E5%9F%9F%E8%AE%BE%E7%BD%AE/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>前后分离的前端开发时,一般都缺少后端的支持,开发阶段可以用mock模拟后端的返回请求, 但后续总要访问后端联调, 此时就涉及到前端的跨越了(只有开发阶段,部署的时候统一部署). 本质上就是在前端开一个代理服务,服务器访问服务器就没有浏览器访问后端的跨域限制了.</p>
+<a id="more"></a>
+<p><strong><a href="https://blog.csdn.net/qq_34450741/article/details/107444815?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-2.no_search_link&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-2.no_search_link" target="_blank" rel="noopener">[vue] vue cli 4.0+ 解决前端跨域问题</a></strong> &nbsp;&nbsp;<strong><a href="https://blog.csdn.net/weixin_39553363/article/details/104152142" target="_blank" rel="noopener">图解vue3.0/vueCli4解决跨域问题</a></strong></p>
+]]></content>
+      <tags>
+        <tag>跨域</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Ubuntu中vim的粘帖复制</title>
     <url>/2021/03/17/vim-%E7%B2%98%E5%B8%96%E5%A4%8D%E5%88%B6%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>想要从浏览器中把Ctrl+c的内容复制到Vim中，要搞懂Ubuntu18中vim的复制粘帖原理及使用。</p>
@@ -2752,6 +2811,12 @@
       </tags>
   </entry>
   <entry>
+    <title>websocket --Token Authentication</title>
+    <url>/2020/06/07/websocket-Token-Authentication/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>链接：<a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#websocket-stomp-authentication" target="_blank" rel="noopener">STOMP–Token Authentication</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>vue nginx 压缩</title>
     <url>/2022/02/10/vue-nginx-%E5%8E%8B%E7%BC%A9/</url>
     <content><![CDATA[<p><strong><a href="https://blog.csdn.net/qq_43363884/article/details/108195408" target="_blank" rel="noopener">vue打包时gzip压缩的两种方案</a></strong>  ,   &nbsp;&nbsp;<strong><a href="https://blog.csdn.net/github_38924695/article/details/108773173" target="_blank" rel="noopener">nginx中配置gzip_static on</a></strong></p>
@@ -2760,52 +2825,6 @@
         <tag>nginx</tag>
         <tag>vue</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>vue cli 前端跨域设置</title>
-    <url>/2021/11/27/vue-cli-%E5%89%8D%E7%AB%AF%E8%B7%A8%E5%9F%9F%E8%AE%BE%E7%BD%AE/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>前后分离的前端开发时,一般都缺少后端的支持,开发阶段可以用mock模拟后端的返回请求, 但后续总要访问后端联调, 此时就涉及到前端的跨越了(只有开发阶段,部署的时候统一部署). 本质上就是在前端开一个代理服务,服务器访问服务器就没有浏览器访问后端的跨域限制了.</p>
-<a id="more"></a>
-<p><strong><a href="https://blog.csdn.net/qq_34450741/article/details/107444815?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-2.no_search_link&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-2.no_search_link" target="_blank" rel="noopener">[vue] vue cli 4.0+ 解决前端跨域问题</a></strong> &nbsp;&nbsp;<strong><a href="https://blog.csdn.net/weixin_39553363/article/details/104152142" target="_blank" rel="noopener">图解vue3.0/vueCli4解决跨域问题</a></strong></p>
-]]></content>
-      <tags>
-        <tag>跨域</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>websocket --Token Authentication</title>
-    <url>/2020/06/07/websocket-Token-Authentication/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>链接：<a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#websocket-stomp-authentication" target="_blank" rel="noopener">STOMP–Token Authentication</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>websocket data transfer</title>
-    <url>/1970/01/01/websocket-data-transfer/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>websocket message type： text or binary byte. And for binary data, we can choose between Blob and ArrayBuffer formats.</p>
-<a id="more"></a>
-<h3 id="Receiving-Text-and-Binary-Data"><a href="#Receiving-Text-and-Binary-Data" class="headerlink" title="Receiving Text and Binary Data"></a>Receiving Text and Binary Data</h3><p><strong>参考：<a href="https://www.oreilly.com/library/view/high-performance-browser/9781449344757/ch17.html" target="_blank" rel="noopener">websocket receiving Text and Binary Data</a></strong></p>
-<p>WebSocket communication consists of messages and application code and does not need to worry about buffering, parsing, and reconstructing received data. For example, if the server sends a 1 MB payload, the application’s onmessage callback will be called only when the entire message is available on the client.</p>
-<p>Further, the WebSocket protocol makes no assumptions and places no constraints on the application payload: both text and binary data are fair game. Internally, the protocol tracks only two pieces of information about the message: the length of payload as a variable-length field and the type of payload to distinguish UTF-8 from binary transfers.</p>
-<p>When a new message is received by the browser, it is automatically converted to a DOMString object for text-based data, or a Blob object for binary data, and then passed directly to the application. The only other option, which acts as performance hint and optimization for the client, is to tell the browser to convert the received binary data to an ArrayBuffer instead of Blob:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var ws &#x3D; new WebSocket(&#39;wss:&#x2F;&#x2F;example.com&#x2F;socket&#39;);</span><br><span class="line">ws.binaryType &#x3D; &quot;arraybuffer&quot;; 1</span><br><span class="line"></span><br><span class="line">ws.onmessage &#x3D; function(msg) &#123;</span><br><span class="line">  if(msg.data instanceof ArrayBuffer) &#123;</span><br><span class="line">    processArrayBuffer(msg.data);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    processText(msg.data);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Data-transfer"><a href="#Data-transfer" class="headerlink" title="Data transfer"></a>Data transfer</h3><p><strong>参考：<a href="https://javascript.info/websocket#data-transfer" target="_blank" rel="noopener">websocket data transfer</a></strong></p>
-<p>WebSocket communication consists of “frames” – data fragments, that can be sent from either side, and can be of several kinds:</p>
-<ul>
-<li>“text frames” – contain text data that parties send to each other.</li>
-<li>“binary data frames” – contain binary data that parties send to each other.</li>
-<li>“ping/pong frames” are used to check the connection, sent from the server, the browser responds to these automatically.</li>
-<li>there’s also “connection close frame” and a few other service frames.<br>In the browser, we directly work only with text or binary frames.</li>
-</ul>
-<p><em>WebSocket .send()</em> method can send either text or binary data.</p>
-<p>A call <em>socket.send(body)</em> allows body in string or a binary format, including Blob, ArrayBuffer, etc. No settings required: just send it out in any format.</p>
-<p>When we receive the data, text always comes as string. And for binary data, we can choose between Blob and ArrayBuffer formats.</p>
-<p>That’s set by <em>socket.binaryType</em> property, it’s “blob” by default, so binary data comes as Blob objects.</p>
-<p>Blob is a high-level binary object, it directly integrates with <a>, <img> and other tags, so that’s a sane default. But for binary processing, to access individual data bytes, we can change it to “arraybuffer”:</a></p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  ws.binaryType &#x3D; &quot;arraybuffer&quot;;</span><br><span class="line">  ws.onmessage &#x3D; (event) &#x3D;&gt; &#123;</span><br><span class="line">  &#x2F;&#x2F; event.data is either a string (if text) or arraybuffer (if binary)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>websocket</category>
-      </categories>
   </entry>
   <entry>
     <title>websocket data transfer </title>
@@ -2840,31 +2859,53 @@
       </tags>
   </entry>
   <entry>
-    <title>你真的会用Gson吗?Gson使用指南（一）</title>
-    <url>/2021/12/23/%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BC%9A%E7%94%A8Gson%E5%90%97-Gson%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%EF%BC%88%E4%B8%80%EF%BC%89/</url>
-    <content><![CDATA[<p><strong><a href="https://www.jianshu.com/p/e740196225a4" target="_blank" rel="noopener">你真的会用Gson吗?Gson使用指南（一）</a></strong>&nbsp;&nbsp;<strong><a href="https://blog.csdn.net/majalis_c/article/details/79801863?utm_term=gsonjsonobject%E8%BD%ACstring&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-0-79801863&spm=3001.4430" target="_blank" rel="noopener">Gson基本操作，JsonObject，JsonArray，String，JavaBean，List互转</a></strong></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>《Spring设计思想》AOP设计基本原理</title>
-    <url>/2020/03/11/pring%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3%E3%80%8BAOP%E8%AE%BE%E8%AE%A1%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/</url>
-    <content><![CDATA[<p>转载：<strong><a href="https://blog.csdn.net/luanlouis/article/details/51095702" target="_blank" rel="noopener">《Spring设计思想》AOP设计基本原理
-</a></strong>、<strong><a href="https://blog.csdn.net/luanlouis/article/details/51155821" target="_blank" rel="noopener">《Spring设计思想》AOP实现原理（基于JDK和基于CGLIB）
-</a></strong></p>
+    <title>websocket data transfer</title>
+    <url>/1970/01/01/websocket-data-transfer/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>websocket message type： text or binary byte. And for binary data, we can choose between Blob and ArrayBuffer formats.</p>
+<a id="more"></a>
+<h3 id="Receiving-Text-and-Binary-Data"><a href="#Receiving-Text-and-Binary-Data" class="headerlink" title="Receiving Text and Binary Data"></a>Receiving Text and Binary Data</h3><p><strong>参考：<a href="https://www.oreilly.com/library/view/high-performance-browser/9781449344757/ch17.html" target="_blank" rel="noopener">websocket receiving Text and Binary Data</a></strong></p>
+<p>WebSocket communication consists of messages and application code and does not need to worry about buffering, parsing, and reconstructing received data. For example, if the server sends a 1 MB payload, the application’s onmessage callback will be called only when the entire message is available on the client.</p>
+<p>Further, the WebSocket protocol makes no assumptions and places no constraints on the application payload: both text and binary data are fair game. Internally, the protocol tracks only two pieces of information about the message: the length of payload as a variable-length field and the type of payload to distinguish UTF-8 from binary transfers.</p>
+<p>When a new message is received by the browser, it is automatically converted to a DOMString object for text-based data, or a Blob object for binary data, and then passed directly to the application. The only other option, which acts as performance hint and optimization for the client, is to tell the browser to convert the received binary data to an ArrayBuffer instead of Blob:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var ws &#x3D; new WebSocket(&#39;wss:&#x2F;&#x2F;example.com&#x2F;socket&#39;);</span><br><span class="line">ws.binaryType &#x3D; &quot;arraybuffer&quot;; 1</span><br><span class="line"></span><br><span class="line">ws.onmessage &#x3D; function(msg) &#123;</span><br><span class="line">  if(msg.data instanceof ArrayBuffer) &#123;</span><br><span class="line">    processArrayBuffer(msg.data);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    processText(msg.data);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Data-transfer"><a href="#Data-transfer" class="headerlink" title="Data transfer"></a>Data transfer</h3><p><strong>参考：<a href="https://javascript.info/websocket#data-transfer" target="_blank" rel="noopener">websocket data transfer</a></strong></p>
+<p>WebSocket communication consists of “frames” – data fragments, that can be sent from either side, and can be of several kinds:</p>
+<ul>
+<li>“text frames” – contain text data that parties send to each other.</li>
+<li>“binary data frames” – contain binary data that parties send to each other.</li>
+<li>“ping/pong frames” are used to check the connection, sent from the server, the browser responds to these automatically.</li>
+<li>there’s also “connection close frame” and a few other service frames.<br>In the browser, we directly work only with text or binary frames.</li>
+</ul>
+<p><em>WebSocket .send()</em> method can send either text or binary data.</p>
+<p>A call <em>socket.send(body)</em> allows body in string or a binary format, including Blob, ArrayBuffer, etc. No settings required: just send it out in any format.</p>
+<p>When we receive the data, text always comes as string. And for binary data, we can choose between Blob and ArrayBuffer formats.</p>
+<p>That’s set by <em>socket.binaryType</em> property, it’s “blob” by default, so binary data comes as Blob objects.</p>
+<p>Blob is a high-level binary object, it directly integrates with <a>, <img> and other tags, so that’s a sane default. But for binary processing, to access individual data bytes, we can change it to “arraybuffer”:</a></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  ws.binaryType &#x3D; &quot;arraybuffer&quot;;</span><br><span class="line">  ws.onmessage &#x3D; (event) &#x3D;&gt; &#123;</span><br><span class="line">  &#x2F;&#x2F; event.data is either a string (if text) or arraybuffer (if binary)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>java</category>
+        <category>websocket</category>
       </categories>
-      <tags>
-        <tag>spring</tag>
-        <tag>aop</tag>
-      </tags>
   </entry>
   <entry>
     <title>图解--函数调用过程及栈帧分析</title>
     <url>/2022/02/11/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B%E5%8F%8A%E6%A0%88%E5%B8%A7%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/yishizuofei/article/details/78282958" target="_blank" rel="noopener">函数调用过程原理及函数栈帧分析</a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>RxJava --学习链接</title>
+    <url>/2020/02/18/xJava/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Rx（Reactive Extensions）是一个使用<code>可观察数据流</code>进行<code>异步编程</code>的编程接口，ReactiveX结合了<code>观察者模式</code>、<code>迭代器模式</code>和<code>函数式编程</code>的精华。Rx的语言库比较流行的有RxJava/RxJS/Rx.NET，这里贴一些有关RxJava的链接，以便后续查找。</p>
+<a id="more"></a>
+<p><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/" target="_blank" rel="noopener">Rx中文文档</a><br><a href="https://www.jianshu.com/p/03a72a5a2049" target="_blank" rel="noopener">RxJava心得</a><br><a href="https://blog.lixplor.com/2016/10/16/rxjava/" target="_blank" rel="noopener">RxJava操作符</a></p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>RxJava</tag>
+      </tags>
   </entry>
   <entry>
     <title>二叉树</title>
@@ -2888,20 +2929,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>RxJava --学习链接</title>
-    <url>/2020/02/18/xJava/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Rx（Reactive Extensions）是一个使用<code>可观察数据流</code>进行<code>异步编程</code>的编程接口，ReactiveX结合了<code>观察者模式</code>、<code>迭代器模式</code>和<code>函数式编程</code>的精华。Rx的语言库比较流行的有RxJava/RxJS/Rx.NET，这里贴一些有关RxJava的链接，以便后续查找。</p>
-<a id="more"></a>
-<p><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/" target="_blank" rel="noopener">Rx中文文档</a><br><a href="https://www.jianshu.com/p/03a72a5a2049" target="_blank" rel="noopener">RxJava心得</a><br><a href="https://blog.lixplor.com/2016/10/16/rxjava/" target="_blank" rel="noopener">RxJava操作符</a></p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>RxJava</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>补码原理的个人理解</title>
     <url>/2020/03/20/%E8%A1%A5%E7%A0%81%E5%8E%9F%E7%90%86%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%90%86%E8%A7%A3/</url>
     <content><![CDATA[<p>转载：<strong><a href="https://blog.csdn.net/jiaobuchong/article/details/83188674" target="_blank" rel="noopener">补码原理的个人理解</a></strong></p>
@@ -2912,6 +2939,12 @@
       <tags>
         <tag>补码</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>你真的会用Gson吗?Gson使用指南（一）</title>
+    <url>/2021/12/23/%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BC%9A%E7%94%A8Gson%E5%90%97-Gson%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<p><strong><a href="https://www.jianshu.com/p/e740196225a4" target="_blank" rel="noopener">你真的会用Gson吗?Gson使用指南（一）</a></strong>&nbsp;&nbsp;<strong><a href="https://blog.csdn.net/majalis_c/article/details/79801863?utm_term=gsonjsonobject%E8%BD%ACstring&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-0-79801863&spm=3001.4430" target="_blank" rel="noopener">Gson基本操作，JsonObject，JsonArray，String，JavaBean，List互转</a></strong></p>
+]]></content>
   </entry>
   <entry>
     <title>计算机网络之IP、MAC</title>
@@ -2925,15 +2958,5 @@
         <tag>MAC</tag>
         <tag>IP</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>ubuntu登录界面美化</title>
-    <url>/2021/04/14/ubuntu%E5%BC%80%E6%9C%BA%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96/</url>
-    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/vselfdom/article/details/88546349" target="_blank" rel="noopener">Ubuntu 18.04 用户登录界面优化</a></strong>，备用。</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-        <category>ubuntu</category>
-      </categories>
   </entry>
 </search>
