@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglinagain.xyz/"/>
-  <updated>2022-03-27T15:50:23.808Z</updated>
+  <updated>2022-03-30T09:45:51.828Z</updated>
   <id>http://blog.zhangzonglinagain.xyz/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>微信内置浏览器缓存清理</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2022/03/30/%E5%BE%AE%E4%BF%A1%E5%86%85%E7%BD%AE%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E6%B8%85%E7%90%86/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2022/03/30/%E5%BE%AE%E4%BF%A1%E5%86%85%E7%BD%AE%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E6%B8%85%E7%90%86/</id>
+    <published>2022-03-30T09:38:32.000Z</published>
+    <updated>2022-03-30T09:45:51.828Z</updated>
+    
+    <content type="html"><![CDATA[<p>单页面应用在微信浏览器里是个巨坑，它会缓存你的index.html，导致版本更新失效…</p><a id="more"></a><p> 调试时，可以手动清除微信缓存， 在安卓版微信内打开链接  <em><a href="http://debugtbs.qq.com" target="_blank" rel="noopener">http://debugtbs.qq.com</a></em><br> 按照它提示的再打开<em>debugmm.qq.com/?forcex5=true</em>，再重新打开<em><a href="http://debugtbs.qq.com" target="_blank" rel="noopener">http://debugtbs.qq.com</a></em>，点击清楚本地缓存….</p><p><a href="https://blog.csdn.net/weixin_40136189/article/details/81485171" target="_blank" rel="noopener">微信内置浏览器缓存清理</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;单页面应用在微信浏览器里是个巨坑，它会缓存你的index.html，导致版本更新失效…&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>ubuntu 搜狗拼音 繁简切换快捷键冲突</title>
@@ -454,27 +473,6 @@
       <category term="application/x-www-form-urlencoded" scheme="http://blog.zhangzonglinagain.xyz/tags/application-x-www-form-urlencoded/"/>
     
       <category term="application/json" scheme="http://blog.zhangzonglinagain.xyz/tags/application-json/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue cli 前端跨域设置</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2021/11/27/vue-cli-%E5%89%8D%E7%AB%AF%E8%B7%A8%E5%9F%9F%E8%AE%BE%E7%BD%AE/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2021/11/27/vue-cli-%E5%89%8D%E7%AB%AF%E8%B7%A8%E5%9F%9F%E8%AE%BE%E7%BD%AE/</id>
-    <published>2021-11-27T12:13:00.000Z</published>
-    <updated>2021-11-27T12:22:11.232Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>前后分离的前端开发时,一般都缺少后端的支持,开发阶段可以用mock模拟后端的返回请求, 但后续总要访问后端联调, 此时就涉及到前端的跨越了(只有开发阶段,部署的时候统一部署). 本质上就是在前端开一个代理服务,服务器访问服务器就没有浏览器访问后端的跨域限制了.</p><a id="more"></a><p><strong><a href="https://blog.csdn.net/qq_34450741/article/details/107444815?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-2.no_search_link&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-2.no_search_link" target="_blank" rel="noopener">[vue] vue cli 4.0+ 解决前端跨域问题</a></strong> &nbsp;&nbsp;<strong><a href="https://blog.csdn.net/weixin_39553363/article/details/104152142" target="_blank" rel="noopener">图解vue3.0/vueCli4解决跨域问题</a></strong></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;前后分离的前端开发时,一般都缺少后端的支持,开发阶段可以用mock模拟后端的返回请求, 但后续总要访问后端联调, 此时就涉及到前端的跨越了(只有开发阶段,部署的时候统一部署). 本质上就是在前端开一个代理服务,服务器访问服务器就没有浏览器访问后端的跨域限制了.&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="跨域" scheme="http://blog.zhangzonglinagain.xyz/tags/%E8%B7%A8%E5%9F%9F/"/>
     
   </entry>
   
