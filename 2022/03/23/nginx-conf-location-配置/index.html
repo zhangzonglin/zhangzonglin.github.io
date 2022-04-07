@@ -172,7 +172,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">98</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">100</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -277,7 +277,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4.4k</span>
+              <span>4.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -312,24 +312,24 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">语法: alias path;</span><br><span class="line">配置块: location</span><br></pre></td></tr></table></figure>
 <p>Example:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location &#x2F;img&#x2F; &#123;</span><br><span class="line">	alias &#x2F;var&#x2F;www&#x2F;image&#x2F;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>#若按照上述配置的话，则访问/img/目录里面的文件时，ningx会自动去/var/www/image/目录找文件</p>
+<p>#若按照上述配置的话，则访问&#x2F;img&#x2F;目录里面的文件时，ningx会自动去&#x2F;var&#x2F;www&#x2F;image&#x2F;目录找文件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location &#x2F;img&#x2F; &#123;</span><br><span class="line">	root &#x2F;var&#x2F;www&#x2F;image;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>#若按照这种配置的话，则访问/img/目录下的文件时，nginx会去/var/www/image/img/目录下找文件</p>
+<p>#若按照这种配置的话，则访问&#x2F;img&#x2F;目录下的文件时，nginx会去&#x2F;var&#x2F;www&#x2F;image&#x2F;img&#x2F;目录下找文件</p>
 <p>注意： </p>
 <ol>
-<li>使用alias时，目录名后面一定要加”/“。</li>
+<li>使用alias时，目录名后面一定要加”&#x2F;“。</li>
 <li>使用alias标签的目录块中不能使用rewrite的break。</li>
 <li>alias在使用正则匹配时，必须捕捉要匹配的内容并在指定的内容处使用。</li>
 <li>alias只能位于location块中</li>
 </ol>
-<h4 id="nginx-location配置详细解释"><a href="#nginx-location配置详细解释" class="headerlink" title="nginx location配置详细解释"></a>nginx location配置详细解释</h4><p>语法详解<br>语法规则： location [=|<del>|</del>*|^~] /uri/ { … }</p>
+<h4 id="nginx-location配置详细解释"><a href="#nginx-location配置详细解释" class="headerlink" title="nginx location配置详细解释"></a>nginx location配置详细解释</h4><p>语法详解<br>语法规则： location [&#x3D;|<del>|</del>*|^~] &#x2F;uri&#x2F; { … }</p>
 <ul>
-<li>= 开头表示精确匹配</li>
-<li>^~ 开头表示uri以某个常规字符串开头，理解为匹配 url路径即可。nginx不对url做编码，因此请求为/static/20%/aa，可以被规则^~ /static/ /aa匹配到（注意是空格）。以xx开头</li>
+<li>&#x3D; 开头表示精确匹配</li>
+<li>^~ 开头表示uri以某个常规字符串开头，理解为匹配 url路径即可。nginx不对url做编码，因此请求为&#x2F;static&#x2F;20%&#x2F;aa，可以被规则^~ &#x2F;static&#x2F; &#x2F;aa匹配到（注意是空格）。以xx开头</li>
 <li>~ 开头表示区分大小写的正则匹配 以xx结尾</li>
 <li>~* 开头表示不区分大小写的正则匹配 以xx结尾</li>
 <li>!<del>和!</del>*分别为区分大小写不匹配及不区分大小写不匹配 的正则</li>
-<li>/ 通用匹配，任何请求都会匹配到。</li>
+<li>&#x2F; 通用匹配，任何请求都会匹配到。</li>
 </ul>
 <p>例子，有如下匹配规则：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">location &#x3D; &#x2F; &#123;</span><br><span class="line">   #规则A  访问根目录&#x2F;， 比如http:&#x2F;&#x2F;localhost&#x2F;</span><br><span class="line">&#125;</span><br><span class="line">location &#x3D; &#x2F;login &#123;</span><br><span class="line">   #规则B  http:&#x2F;&#x2F;localhost&#x2F;login 将匹配规则B，http:&#x2F;&#x2F;localhost&#x2F;register 则匹配规则H</span><br><span class="line">&#125;</span><br><span class="line">location ^~ &#x2F;static&#x2F; &#123;</span><br><span class="line">   #规则C  http:&#x2F;&#x2F;localhost&#x2F;static&#x2F;a.html 将匹配规则C</span><br><span class="line">&#125;</span><br><span class="line">location ~ \.(gif|jpg|png|js|css)$ &#123;</span><br><span class="line">   #规则D，注意：是根据括号内的大小写进行匹配。括号内全是小写，只匹配小写</span><br><span class="line">&#125;</span><br><span class="line">location ~* \.png$ &#123;</span><br><span class="line">   #规则E  http:&#x2F;&#x2F;localhost&#x2F;a.gif, http:&#x2F;&#x2F;localhost&#x2F;b.jpg 将匹配规则D和规则E，但是规则D顺序优先，规则E不起作用， </span><br><span class="line">      http:&#x2F;&#x2F;localhost&#x2F;static&#x2F;c.png 则优先匹配到 规则C</span><br><span class="line">      http:&#x2F;&#x2F;localhost&#x2F;a.PNG 则匹配规则E， 而不会匹配规则D，因为规则E不区分大小写。</span><br><span class="line">&#125;</span><br><span class="line">location !~ \.xhtml$ &#123;</span><br><span class="line">   #规则F  访问 http:&#x2F;&#x2F;localhost&#x2F;a.xhtml 不会匹配规则F和规则G，</span><br><span class="line">&#125;</span><br><span class="line">location !~* \.xhtml$ &#123;</span><br><span class="line">   #规则G  访问 http:&#x2F;&#x2F;localhost&#x2F;a.xhtml 不会匹配规则F和规则G，</span><br><span class="line">&#125;</span><br><span class="line">location &#x2F; &#123;</span><br><span class="line">   #规则H</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -337,10 +337,10 @@
 
 <h4 id="try-files详解"><a href="#try-files详解" class="headerlink" title="try_files详解"></a>try_files详解</h4><ul>
 <li>格式1：try_files file … uri;  </li>
-<li>格式2：try_files file … =code;</li>
+<li>格式2：try_files file … &#x3D;code;</li>
 </ul>
 <p><a href="https://www.cnblogs.com/jedi1995/p/10900224.html" target="_blank" rel="noopener">nginx配置选项try_files详解</a></p>
-<h4 id="proxy-pass详解"><a href="#proxy-pass详解" class="headerlink" title="proxy_pass详解"></a>proxy_pass详解</h4><p>在nginx中配置proxy_pass代理转发时，如果在proxy_pass后面的url加/，表示绝对根路径；如果没有/，表示相对路径，把匹配的路径部分也给代理走。<br>假设下面四种情况分别用 <a href="http://192.168.1.1/proxy/test.html" target="_blank" rel="noopener">http://192.168.1.1/proxy/test.html</a> 进行访问。</p>
+<h4 id="proxy-pass详解"><a href="#proxy-pass详解" class="headerlink" title="proxy_pass详解"></a>proxy_pass详解</h4><p>在nginx中配置proxy_pass代理转发时，如果在proxy_pass后面的url加&#x2F;，表示绝对根路径；如果没有&#x2F;，表示相对路径，把匹配的路径部分也给代理走。<br>假设下面四种情况分别用 <a href="http://192.168.1.1/proxy/test.html" target="_blank" rel="noopener">http://192.168.1.1/proxy/test.html</a> 进行访问。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">第一种：</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;test.html</span><br><span class="line"></span><br><span class="line">第二种（相对于第一种，最后少一个 &#x2F; ）</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;proxy&#x2F;test.html</span><br><span class="line"></span><br><span class="line">第三种：</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1&#x2F;aaa&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;aaa&#x2F;test.html</span><br><span class="line"></span><br><span class="line">第四种（相对于第三种，最后少一个 &#x2F; ）</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1&#x2F;aaa;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;aaatest.html</span><br></pre></td></tr></table></figure>
 
 <p><a href="https://www.jianshu.com/p/b010c9302cd0" target="_blank" rel="noopener">nginx 之 proxy_pass详解</a></p>
@@ -467,7 +467,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-count">100</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -533,13 +533,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">109k</span>
+    <span title="站点总字数">112k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:39</span>
+    <span title="站点阅读时长">1:42</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
   </div>

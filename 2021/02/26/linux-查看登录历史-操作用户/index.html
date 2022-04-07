@@ -168,7 +168,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">98</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">100</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -304,11 +304,11 @@
 <h3 id="清除操作过的命令记录"><a href="#清除操作过的命令记录" class="headerlink" title="清除操作过的命令记录"></a>清除操作过的命令记录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &gt; .bash_history &#x2F;&#x2F;清除保存的用户操作历史记录</span><br><span class="line">history -cw &#x2F;&#x2F;清除所有历史</span><br></pre></td></tr></table></figure>
 <h3 id="Linux查看History记录加时间戳小技巧"><a href="#Linux查看History记录加时间戳小技巧" class="headerlink" title="Linux查看History记录加时间戳小技巧"></a>Linux查看History记录加时间戳小技巧</h3><p>熟悉bash的都一定知道使用history可以输出你曾经输入过的历史命令，例如  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@servyou_web ~]# history | more</span><br><span class="line">.&#x2F;test.sh</span><br><span class="line">vim test.sh</span><br><span class="line">.&#x2F;test.sh</span><br></pre></td></tr></table></figure>
-<p>但是这里只显示了命令，并没有显示执行命令的时间，因为保存历史命令的~/.bash_history里并没有保存时间。</p>
-<p>通过设置环境变量 export HISTTIMEFORMAT=”%F %T whoami “ 给history加上时间戳</p>
+<p>但是这里只显示了命令，并没有显示执行命令的时间，因为保存历史命令的~&#x2F;.bash_history里并没有保存时间。</p>
+<p>通过设置环境变量 export HISTTIMEFORMAT&#x3D;”%F %T whoami “ 给history加上时间戳</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@servyou_web ~]# export HISTTIMEFORMAT&#x3D;&quot;%F %T whoami &quot;</span><br><span class="line">[root@servyou_web ~]# history | tail</span><br><span class="line">2011-06-22 19:17:29 root 15 2011-06-22 19:13:02 root .&#x2F;test.sh</span><br><span class="line">2011-06-22 19:17:29 root 16 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:17:29 root 17 2011-06-22 19:13:02 root .&#x2F;test.sh</span><br><span class="line">2011-06-22 19:17:29 root 18 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:17:29 root 19 2011-06-22 19:13:02 root .&#x2F;test.sh</span><br><span class="line">2011-06-22 19:17:29 root 20 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:17:29 root 21 2011-06-22 19:13:02 root .&#x2F;test.sh</span><br><span class="line">2011-06-22 19:17:29 root 22 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:25:22 root 22 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:25:28 root history | tail</span><br></pre></td></tr></table></figure>
 <p>可以看到，历史命令的时间戳已经加上了，但是.bash_history里并没有加上这个时间戳。其实这个时间记录是保存在当前shell进程内存里的，如果你logout并且重新登录的话会发现你上次登录时执行的那些命令的时间戳都为同一个值，即当时logout时的时间。</p>
-<p>尽管如此，对于加上screen的bash来说，这个时间戳仍然可以长时间有效的，毕竟只要你的server不重启，screen就不会退出，因而这些时间就能长时间保留。你也可以使用echo ‘export HISTTIMEFORMAT=”%F %T whoami “‘ &gt;&gt; /etc/profile 然后source一下就OK。</p>
+<p>尽管如此，对于加上screen的bash来说，这个时间戳仍然可以长时间有效的，毕竟只要你的server不重启，screen就不会退出，因而这些时间就能长时间保留。你也可以使用echo ‘export HISTTIMEFORMAT&#x3D;”%F %T whoami “‘ &gt;&gt; &#x2F;etc&#x2F;profile 然后source一下就OK。</p>
 <p><a href="https://blog.51cto.com/study2008/2301555" target="_blank" rel="noopener">source</a></p>
 
     </div>
@@ -425,7 +425,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-count">100</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -491,13 +491,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">109k</span>
+    <span title="站点总字数">112k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:39</span>
+    <span title="站点阅读时长">1:42</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
   </div>

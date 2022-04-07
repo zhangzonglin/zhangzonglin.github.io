@@ -170,7 +170,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">98</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">100</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -286,7 +286,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>19k</span>
+              <span>20k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -311,7 +311,7 @@
 <ol>
 <li><p>判断一个名字当前是否是alias、keyword、function、builtin、file或者什么都不是：</p>
 <blockquote>
-<p>type ls 的输出是 ls 是 `ls –color=auto&#39; 的别名</p>
+<p>type ls 的输出是 ls 是 `ls –color&#x3D;auto&#39; 的别名</p>
 </blockquote>
 <blockquote>
 <p>type if 的输出是 if 是 shell 关键字</p>
@@ -323,8 +323,6 @@
 <p>type frydsh 的输出是 bash: type: frydsh: 未找到</p>
 </blockquote>
 </li>
-</ol>
-<ol start="2">
 <li><p>判断一个名字当前是否是alias、keyword、function、builtin、file或者什么都不是的另一种方法（适用于脚本编程）：</p>
 <blockquote>
 <p>type -t ls 的输出是 alias</p>
@@ -344,7 +342,7 @@
 </li>
 <li><p>显示一个名字的所有可能：</p>
 <blockquote>
-<p>type -a kill 的输出是 kill 是 shell 内嵌 和 kill 是 /bin/kill</p>
+<p>type -a kill 的输出是 kill 是 shell 内嵌 和 kill 是 &#x2F;bin&#x2F;kill</p>
 </blockquote>
 <blockquote>
 <p>type -at kill 的输出是 builtin 和 file</p>
@@ -352,17 +350,15 @@
 </li>
 <li><p>查看一个命令的执行路径（如果它是外部命令的话）：</p>
 <blockquote>
-<p>type -p gedit 的输出是 /usr/bin/gedit</p>
+<p>type -p gedit 的输出是 &#x2F;usr&#x2F;bin&#x2F;gedit</p>
 </blockquote>
 <blockquote>
 <p>type -p kill 没有输出（因为kill是内置命令）</p>
 </blockquote>
 </li>
-</ol>
-<ol start="5">
 <li><p>强制搜索外部命令：</p>
 <blockquote>
-<p>type -P kill 的输出是 /bin/kill</p>
+<p>type -P kill 的输出是 &#x2F;bin&#x2F;kill</p>
 </blockquote>
 </li>
 </ol>
@@ -375,7 +371,7 @@
 <li>-r 将文件以相反次序显示(原定依英文字母次序)</li>
 <li>-t 将文件依建立时间之先后次序列出</li>
 <li>-A 同 -a ，但不列出 “.” (目前目录) 及 “..” (父目录)</li>
-<li>-F 在列出的文件名称后加一符号；例如可执行档则加 “*”, 目录则加 “/“</li>
+<li>-F 在列出的文件名称后加一符号；例如可执行档则加 “*”, 目录则加 “&#x2F;“</li>
 <li>-R 若目录下有文件，则以下之文件亦皆依序列出</li>
 </ul>
 <p>详细参数ls –help 查看。<br>示例：</p>
@@ -390,7 +386,7 @@
 <p>ls按时间排序</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls -lt 从新到旧</span><br><span class="line">ls -lrt 从旧到新</span><br></pre></td></tr></table></figure>
 
-<p>参考：<strong><u><a href="https://linux.cn/article-5109-1.html" target="_blank" rel="noopener">Linux中的15个基本‘ls’命令示例</a></u></strong></p>
+<p>参考：**<u><a href="https://linux.cn/article-5109-1.html" target="_blank" rel="noopener">Linux中的15个基本‘ls’命令示例</a></u>**</p>
 <hr>
 <h3 id="xdg-open"><a href="#xdg-open" class="headerlink" title="xdg-open"></a>xdg-open</h3><p>有时需要从terminal打开doc pdf jpg等文件，可以用xdg-open命令。</p>
 <p>xdg-open command in the Linux system is used to open a file or URL in the user’s preferred application.<br>The URL will be opened in the user’s preferred web browser if a URL is provided. The file will be opened in the preferred application for files of that type if a file is provided. xdg-open supports ftp, file, https and http URLs. This can be used inside a desktop session only. It is not recommended to use xdg-open as root. Here, the zero is an indication of success while non-zero show the failure.</p>
@@ -410,20 +406,20 @@
 <li>-f, –ignore-case fold lower case to upper case characters</li>
 <li>-g, –general-numeric-sort compare according to general numerical value</li>
 <li>-i, –ignore-nonprinting consider only printable characters</li>
-<li>-M, –month-sort compare (unknown) &lt; <code>JAN&#39; &lt; ... &lt;</code>DEC’</li>
+<li>-M, –month-sort compare (unknown) &lt; <code>JAN&#39; &lt; ... &lt; </code>DEC’</li>
 <li>-n, –numeric-sort compare according to string numerical value</li>
 <li>-r, –reverse reverse the result of comparisons</li>
 </ul>
 <p><strong>Other option:</strong></p>
 <ul>
 <li>-c, –check check whether input is sorted; do not sort</li>
-<li>-k, –key=POS1[,POS2] start a key at POS1, end it at POS2 (origin 1)</li>
+<li>-k, –key&#x3D;POS1[,POS2] start a key at POS1, end it at POS2 (origin 1)</li>
 <li>-m, –merge merge already sorted files; do not sort</li>
-<li>-o, –output=FILE write result to FILE instead of standard output</li>
+<li>-o, –output&#x3D;FILE write result to FILE instead of standard output</li>
 <li>-s, –stable stabilize sort by disabling last-resort comparison</li>
-<li>-S, –buffer-size=SIZE use SIZE for main memory buffer</li>
-<li>-t, –field-separator=SEP use SEP instead of non-blank to blank transition</li>
-<li>-T, –temporary-directory=DIR use DIR for temporaries, not $TMPDIR or/tmp;<br>multiple options specify multiple directories</li>
+<li>-S, –buffer-size&#x3D;SIZE use SIZE for main memory buffer</li>
+<li>-t, –field-separator&#x3D;SEP use SEP instead of non-blank to blank transition</li>
+<li>-T, –temporary-directory&#x3D;DIR use DIR for temporaries, not $TMPDIR or&#x2F;tmp;<br>multiple options specify multiple directories</li>
 <li>-u, –unique with -c, check for strict ordering;<br>without -c, output only the first of an equal run</li>
 <li>-z, –zero-terminated end lines with 0 byte, not newline</li>
 <li>–help 显示此帮助信息并退出</li>
@@ -467,7 +463,7 @@
 
 
 
-<p>参考：<strong><a href="https://segmentfault.com/a/1190000005713784" target="_blank" rel="noopener">linux sort 多列正排序，倒排序</a></strong></p>
+<p>参考：**<a href="https://segmentfault.com/a/1190000005713784" target="_blank" rel="noopener">linux sort 多列正排序，倒排序</a>**</p>
 <h4 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a>uniq</h4><p><strong>uniq</strong> - report or omit repeated lines(报告或省略重复的行)</p>
 <p>描述：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uniq 命令删除文件中的重复行。uniq 命令读取由 InFile 参数指定的标准输入或文件。该命令首先比较相邻的行，然后除去第二行和该行的后续副本。重复的行一定相邻。（在发出 uniq 命令之前，请使用 sort 命令使所有重复行相邻。uniq命令这种方式估计是想节省系统资源）最后，uniq 命令将最终单独的行写到标准输出或由 OutFile 参数指定的文件。InFile 和 OutFile 参数必须指定不同的文件。</span><br></pre></td></tr></table></figure>
@@ -486,7 +482,7 @@
 <hr>
 <h3 id="tar-amp-gzip"><a href="#tar-amp-gzip" class="headerlink" title="tar&amp;gzip"></a>tar&amp;gzip</h3><p>Linux下常见的压缩包格式有5种:zip tar.gz tar.bz2 tar.xz tar.Z</p>
 <p>其中tar是种打包格式,gz和bz2等后缀才是指代压缩方式:gzip和bzip2。</p>
-<h4 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h4><p>The Linux “tar” stands for tape archive, which is used by large number of Linux/Unix system administrators to deal with tape drives backup. </p>
+<h4 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h4><p>The Linux “tar” stands for tape archive, which is used by large number of Linux&#x2F;Unix system administrators to deal with tape drives backup. </p>
 <p><strong>OPTION:</strong></p>
 <ul>
 <li>c – create a archive file.</li>
@@ -563,7 +559,7 @@
 <h3 id="du-amp-df"><a href="#du-amp-df" class="headerlink" title="du&amp;df"></a>du&amp;df</h3><h4 id="du"><a href="#du" class="headerlink" title="du"></a>du</h4><p>du command (short for disk usage) is useful command which is used to find disk usage for files &amp; directories. du command when used with various options provides results in many formats.</p>
 <p><strong>Syntax :</strong>  </p>
 <blockquote>
-<p>du [OPTION]… [FILE]…<br>du [OPTION]… –files0-from=F</p>
+<p>du [OPTION]… [FILE]…<br>du [OPTION]… –files0-from&#x3D;F</p>
 </blockquote>
 <p><strong>Options :</strong></p>
 <blockquote>
@@ -571,34 +567,41 @@
 <li>-0, –null : end each output line with NULL</li>
 <li>-a, –all : write count of all files, not just directories</li>
 <li>–apparent-size&gt; : print apparent sizes, rather than disk usage.</li>
-<li>-B, –block-s&gt;ize&gt;=SIZE : scale sizes to SIZE before printing on console</li>
+<li>-B, –block-s&gt;ize&gt;&#x3D;SIZE : scale sizes to SIZE before printing on console</li>
 <li>-c, –total : pro&gt;duce grand total</li>
-<li>-d, –max-depth=N :   print the total for a directory (or file, with –all) only if it is N or fewer levels below the command line argument;  –max-depth=0 is the same as –summarize</li>
+<li>-d, –max-depth&#x3D;N :   print the total for a directory (or file, with –all) only if it is N or fewer levels below the command line argument;  –max-depth&#x3D;0 is the same as –summarize</li>
 <li>-h, –human-readable : print sizes in human readable format</li>
 <li>-S, -separate-dirs : for directories, don’t include size of subdirectories</li>
 <li>-s, –summarize : display only total for each directory</li>
 <li>–time : show time of last modification of any file or directory.</li>
-<li>–exclude=PATTERN : exclude files that match PATTERN</li>
+<li>–exclude&#x3D;PATTERN : exclude files that match PATTERN</li>
 </ul>
 </blockquote>
 <p>Some of the examples are mentioned below:-</p>
 <ol>
 <li><p>To find out summary of disk usage for a directory with all its sub-directories</p>
-<p> $ du /hexo</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">zzl@zzl-J:&#x2F;mnt&#x2F;Secert&#x2F;hexo$ du &#x2F;var</span><br><span class="line">4	&#x2F;var&#x2F;lib&#x2F;misc</span><br><span class="line">44	&#x2F;var&#x2F;lib&#x2F;app-info&#x2F;yaml</span><br><span class="line">240	&#x2F;var&#x2F;lib&#x2F;app-info&#x2F;icons&#x2F;ubuntu-bionic-updates-main&#x2F;64x64</span><br><span class="line">132	&#x2F;var&#x2F;lib&#x2F;app-info&#x2F;icons&#x2F;ubuntu-bionic-updates-main&#x2F;48x48</span><br><span class="line">376	&#x2F;var&#x2F;lib&#x2F;app-info&#x2F;icons&#x2F;ubuntu-bionic-updates-main</span><br></pre></td></tr></table></figure>
-<p>Output of the command shows all the files &amp; directories in /home with block size.</p>
-</li>
-<li><p>Disk usage with file/directory sizes in human readable format I.e. in kb, mb etc</p>
-<p> $ du -h /var</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">zzl@zzl-J:&#x2F;mnt&#x2F;Secert&#x2F;hexo$ du -h &#x2F;var</span><br><span class="line">4.0K	&#x2F;var&#x2F;lib&#x2F;misc</span><br><span class="line">44K	&#x2F;var&#x2F;lib&#x2F;app-info&#x2F;yaml</span><br><span class="line">240K	&#x2F;var&#x2F;lib&#x2F;app-info&#x2F;icons&#x2F;ubuntu-bionic-updates-main&#x2F;64x64</span><br><span class="line">132K	&#x2F;var&#x2F;lib&#x2F;app-info&#x2F;icons&#x2F;ubuntu-bionic-updates-main&#x2F;48x48</span><br><span class="line">376K	&#x2F;var&#x2F;lib&#x2F;app-info&#x2F;icons&#x2F;ubuntu-bionic-updates-main</span><br><span class="line">8.0K	&#x2F;var&#x2F;lib&#x2F;app-info&#x2F;icons&#x2F;ubuntu-bionic-updates-multiverse&#x2F;64x64</span><br></pre></td></tr></table></figure></li>
-<li><p>Total disk size of a directory</p>
-<p> $ du -s /home/zzl</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">zzl@zzl-J:&#x2F;$ du -s &#x2F;home&#x2F;zzl&#x2F;</span><br><span class="line">8572584	&#x2F;home&#x2F;zzl&#x2F;</span><br><span class="line">zzl@zzl-J:&#x2F;$ du -sh &#x2F;home&#x2F;zzl&#x2F;</span><br><span class="line">8.2G	&#x2F;home&#x2F;zzl&#x2F;</span><br></pre></td></tr></table></figure></li>
-<li><p>To print sizes till particular level, use -d option with level no.<br> $ du -d 1 /home/zzl<br> or du –maxdepth=1 /home/zzl</p>
+<p> $ du &#x2F;hexo</p>
 </li>
 </ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">zzl@zzl-J:&#x2F;mnt&#x2F;Secert&#x2F;hexo$ du &#x2F;var</span><br><span class="line">4	&#x2F;var&#x2F;lib&#x2F;misc</span><br><span class="line">44	&#x2F;var&#x2F;lib&#x2F;app-info&#x2F;yaml</span><br><span class="line">240	&#x2F;var&#x2F;lib&#x2F;app-info&#x2F;icons&#x2F;ubuntu-bionic-updates-main&#x2F;64x64</span><br><span class="line">132	&#x2F;var&#x2F;lib&#x2F;app-info&#x2F;icons&#x2F;ubuntu-bionic-updates-main&#x2F;48x48</span><br><span class="line">376	&#x2F;var&#x2F;lib&#x2F;app-info&#x2F;icons&#x2F;ubuntu-bionic-updates-main</span><br></pre></td></tr></table></figure>
+<p>Output of the command shows all the files &amp; directories in &#x2F;home with block size.</p>
+<ol start="2">
+<li><p>Disk usage with file&#x2F;directory sizes in human readable format I.e. in kb, mb etc</p>
+<p> $ du -h &#x2F;var</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">zzl@zzl-J:&#x2F;mnt&#x2F;Secert&#x2F;hexo$ du -h &#x2F;var</span><br><span class="line">4.0K	&#x2F;var&#x2F;lib&#x2F;misc</span><br><span class="line">44K	&#x2F;var&#x2F;lib&#x2F;app-info&#x2F;yaml</span><br><span class="line">240K	&#x2F;var&#x2F;lib&#x2F;app-info&#x2F;icons&#x2F;ubuntu-bionic-updates-main&#x2F;64x64</span><br><span class="line">132K	&#x2F;var&#x2F;lib&#x2F;app-info&#x2F;icons&#x2F;ubuntu-bionic-updates-main&#x2F;48x48</span><br><span class="line">376K	&#x2F;var&#x2F;lib&#x2F;app-info&#x2F;icons&#x2F;ubuntu-bionic-updates-main</span><br><span class="line">8.0K	&#x2F;var&#x2F;lib&#x2F;app-info&#x2F;icons&#x2F;ubuntu-bionic-updates-multiverse&#x2F;64x64</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><p>Total disk size of a directory</p>
+<p> $ du -s &#x2F;home&#x2F;zzl</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">zzl@zzl-J:&#x2F;$ du -s &#x2F;home&#x2F;zzl&#x2F;</span><br><span class="line">8572584	&#x2F;home&#x2F;zzl&#x2F;</span><br><span class="line">zzl@zzl-J:&#x2F;$ du -sh &#x2F;home&#x2F;zzl&#x2F;</span><br><span class="line">8.2G	&#x2F;home&#x2F;zzl&#x2F;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>To print sizes till particular level, use -d option with level no.<br> $ du -d 1 &#x2F;home&#x2F;zzl<br> or du –maxdepth&#x3D;1 &#x2F;home&#x2F;zzl</li>
+</ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">zzl@zzl-J:&#x2F;$ du -d 1 &#x2F;home&#x2F;zzl&#x2F;</span><br><span class="line">136	&#x2F;home&#x2F;zzl&#x2F;.m2</span><br><span class="line">2635600	&#x2F;home&#x2F;zzl&#x2F;.local</span><br><span class="line">868	&#x2F;home&#x2F;zzl&#x2F;snap</span><br><span class="line">8	&#x2F;home&#x2F;zzl&#x2F;.pip</span><br></pre></td></tr></table></figure>
-<p>Now try with level 2, you will get some extra directories.<br>    $ du -d 2 /home/zzl<br>    or du –maxdepth=2 /home/zzl</p>
+<p>Now try with level 2, you will get some extra directories.<br>    $ du -d 2 &#x2F;home&#x2F;zzl<br>    or du –maxdepth&#x3D;2 &#x2F;home&#x2F;zzl</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">zzl@zzl-J:&#x2F;$ du -d 2 &#x2F;home&#x2F;zzl&#x2F;</span><br><span class="line">132	&#x2F;home&#x2F;zzl&#x2F;.m2&#x2F;repository</span><br><span class="line">136	&#x2F;home&#x2F;zzl&#x2F;.m2</span><br><span class="line">65548	&#x2F;home&#x2F;zzl&#x2F;.local&#x2F;lib</span><br><span class="line">1695880	&#x2F;home&#x2F;zzl&#x2F;.local&#x2F;idea-IU-203.7717.56</span><br><span class="line">32	&#x2F;home&#x2F;zzl&#x2F;.local&#x2F;bin</span><br><span class="line">100756	&#x2F;home&#x2F;zzl&#x2F;.local&#x2F;Telegram</span><br><span class="line">636576	&#x2F;home&#x2F;zzl&#x2F;.local&#x2F;share</span><br><span class="line">48	&#x2F;home&#x2F;zzl&#x2F;.local&#x2F;etc</span><br><span class="line">136756	&#x2F;home&#x2F;zzl&#x2F;.local&#x2F;redis-6.2.1</span><br><span class="line">2635600	&#x2F;home&#x2F;zzl&#x2F;.local</span><br><span class="line">320	&#x2F;home&#x2F;zzl&#x2F;snap&#x2F;gnome-system-monitor</span><br></pre></td></tr></table></figure>
 
 <h4 id="df"><a href="#df" class="headerlink" title="df"></a>df</h4><p>The df command (short for disk free), is used to display information related to file systems about total space and available space.</p>
@@ -610,7 +613,7 @@
 <blockquote>
 <ul>
 <li>-a, –all : includes pseudo, duplicate and inaccessible file systems.</li>
-<li>-B, –block-size=SIZE : scales sizes by SIZE before printing them.</li>
+<li>-B, –block-size&#x3D;SIZE : scales sizes by SIZE before printing them.</li>
 <li>-h, –human-readable : print sizes in power of 1024</li>
 <li>-H, –si: print sizes in power of 1000</li>
 <li>-i, –inodes : list inode information instead of block usage</li>
@@ -618,7 +621,7 @@
 <li>-P, –portability : use POSIX output format</li>
 <li>–sync : invoke sync before getting usage info</li>
 <li>–total : elide all entries insignificant to available space, and produce grand total</li>
-<li>-t, –type=TYPE : limit listing to file systems of type TYPE</li>
+<li>-t, –type&#x3D;TYPE : limit listing to file systems of type TYPE</li>
 <li>-T, –print-type : print file system type</li>
 </ul>
 </blockquote>
@@ -653,7 +656,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -T &#x2F;home&#x2F;mandeep</span><br></pre></td></tr></table></figure>
 <p>Output :</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Filesystem     Type 1K-blocks     Used Available Use% Mounted on</span><br><span class="line">&#x2F;dev&#x2F;sda10     ext4  78873504 67528128   7315732  91% &#x2F;home</span><br></pre></td></tr></table></figure>
-<p>You can see the file type for /home/mandeep is ext4.</p>
+<p>You can see the file type for &#x2F;home&#x2F;mandeep is ext4.</p>
 </li>
 <li><p>And for more help, you can use –help option.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df --help</span><br></pre></td></tr></table></figure></li>
@@ -773,7 +776,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-count">100</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -839,13 +842,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">109k</span>
+    <span title="站点总字数">112k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:39</span>
+    <span title="站点阅读时长">1:42</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
   </div>
