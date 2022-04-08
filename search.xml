@@ -82,16 +82,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Form Data &amp; Request Payload</title>
-    <url>/2021/11/27/Form-Data-Request-Payload/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>简单来说,request headers里的Content-Type: application&#x2F;json 表明request body里是json数据; Content-Type: application&#x2F;x-www-form-urlencoded表明request body里是Form Data数据(以key1&#x3D;value1&amp;key2&#x3D;value2形式). 根据content-type的不同, 后端也要相应处理,或@RequestParam 处理表单数据, 或@RequestBody处理json数据等.<br><strong><a href="https://segmentfault.com/a/1190000018774494" target="_blank" rel="noopener">前后端联调之Form Data与Request Payload，你真的了解吗？</a></strong> &amp;nbsp;&amp;nbsp;<strong><a href="https://www.cnblogs.com/zoro-zero/p/11608491.html" target="_blank" rel="noopener">SpringBoot 传入JSON对象参数</a></strong></p>
-]]></content>
-      <tags>
-        <tag>application/x-www-form-urlencoded</tag>
-        <tag>application/json</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Filter和Interceptor的比较</title>
     <url>/2021/11/15/Filter%E5%92%8CInterceptor%E7%9A%84%E6%AF%94%E8%BE%83/</url>
     <content><![CDATA[<p><a href="https://www.jianshu.com/p/5f5e5211bbdb" target="_blank" rel="noopener">Filter和Interceptor的比较</a>, &amp;nbsp;&amp;nbsp;&amp;nbsp;<a href="https://www.cnblogs.com/hellovoyager1/p/9152292.html" target="_blank" rel="noopener">Listener、Filter 和Interceptor 总结</a>, &amp;nbsp;&amp;nbsp;<a href="https://www.cnblogs.com/hhhshct/p/8808115.html" target="_blank" rel="noopener">springboot配置监听器、过滤器和拦截器</a></p>
@@ -130,6 +120,16 @@
 <p>&amp;emsp;4）IOC框架产品本身的成熟度需要进行评估，如果引入一个不成熟的IOC框架产品，那么会影响到整个项目，所以这也是一个隐性的风险。</p>
 <p>&amp;emsp;我们大体可以得出这样的结论：一些工作量不大的项目或者产品，不太适合使用IOC框架产品。另外，如果团队成员的知识能力欠缺，对于IOC框架产品缺乏深入的理解，也不要贸然引入。最后，特别强调运行效率的项目或者产品，也不太适合引入IOC框架产品，像WEB2.0网站就是这种情况。<br>————————————————<br>版权声明：本文为CSDN博主「fuzhongmin05」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br><a href="https://blog.csdn.net/fuzhongmin05/article/details/61614873" target="_blank" rel="noopener">原文链接</a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Form Data &amp; Request Payload</title>
+    <url>/2021/11/27/Form-Data-Request-Payload/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>简单来说,request headers里的Content-Type: application&#x2F;json 表明request body里是json数据; Content-Type: application&#x2F;x-www-form-urlencoded表明request body里是Form Data数据(以key1&#x3D;value1&amp;key2&#x3D;value2形式). 根据content-type的不同, 后端也要相应处理,或@RequestParam 处理表单数据, 或@RequestBody处理json数据等.<br><strong><a href="https://segmentfault.com/a/1190000018774494" target="_blank" rel="noopener">前后端联调之Form Data与Request Payload，你真的了解吗？</a></strong> &amp;nbsp;&amp;nbsp;<strong><a href="https://www.cnblogs.com/zoro-zero/p/11608491.html" target="_blank" rel="noopener">SpringBoot 传入JSON对象参数</a></strong></p>
+]]></content>
+      <tags>
+        <tag>application/x-www-form-urlencoded</tag>
+        <tag>application/json</tag>
+      </tags>
   </entry>
   <entry>
     <title>H5页面在微信浏览器中通过网页授权获取用户信息(openid、昵称、头像等)</title>
@@ -179,6 +179,17 @@
     <title>IntelliJ IDEA激活</title>
     <url>/2021/03/20/IntelliJ-IDEA%E6%BF%80%E6%B4%BB/</url>
     <content><![CDATA[<p>可用方法：<a href="https://www.exception.site/essay/how-to-free-use-intellij-idea-2019-3" target="_blank" rel="noopener">IntelliJ IDEA 2020.3.3激活破解教程（亲测激活至 2099 年，长期更新）</a>，或者一直白嫖试用30天（<em>rm -rf ～&#x2F;.config&#x2F;Jetbrains&#x2F;IntelliJIdea2020.3&#x2F;eval&#x2F;</em> 可重置30天）。</p>
+<a id="more"></a>
+
+<p>ps: 后重装系统，从走了一遍激活(白嫖有罪…)，记录下：</p>
+<ul>
+<li>下载插件ja-netfilter-all（重装前已备份数据，跳过）</li>
+<li>在idea(全家桶其他软件类似)目录下的“&#x2F;bin&#x2F;idea64.vmoptions”文件中，添加</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-javaagent:&#x2F;home&#x2F;zzl&#x2F;.local&#x2F;app&#x2F;idea-IU-213.7172.25&#x2F;ja-netfilter-all&#x2F;ja-netfilter.jar                 │</span><br></pre></td></tr></table></figure>
+<ul>
+<li>启动idea，激活码中复制该网站提供的激活码，激活成功</li>
+</ul>
 ]]></content>
       <tags>
         <tag>idea</tag>
@@ -189,6 +200,36 @@
     <url>/2021/12/17/Java%E6%B3%9B%E5%9E%8B%E8%AF%A6%E8%A7%A3%EF%BC%9A-T-%E5%92%8CClass-T-%E7%9A%84%E4%BD%BF%E7%94%A8%E3%80%82%E6%B3%9B%E5%9E%8B%E7%B1%BB%EF%BC%8C%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95%E7%9A%84%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B/</url>
     <content><![CDATA[<p><a href="https://www.cnblogs.com/jpfss/p/9928747.html" target="_blank" rel="noopener">Java泛型详解：<T>和Class<T>的使用。泛型类，泛型方法的详细使用实例 </T></T></a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Let’sEncrypt 证书自动更新脚本</title>
+    <url>/2021/04/08/Let%E2%80%99sEncrypt-%E8%AF%81%E4%B9%A6%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E8%84%9A%E6%9C%AC/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>vps科学上网用的Let’sEncrypt免费证书，有效期一般是3个月，需要定期更新。写个脚本，定时更新。</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">#Version:1.0</span><br><span class="line">#Author:zzl</span><br><span class="line">#Automatically renew Let&#39;s Encrypt certificates</span><br><span class="line">#A cron job will run this shell script everyday</span><br><span class="line">i&#x3D;0</span><br><span class="line">while [[ $i -lt 10]]</span><br><span class="line">do</span><br><span class="line">  let &quot;i++&quot;</span><br><span class="line">  if [ $(ps -C nginx --no-header | wc -l) -ne 0];then</span><br><span class="line">    service nginx stop</span><br><span class="line">    sleep 3s</span><br><span class="line">    if [ $(ps -C nginx --no-header | wc -l) -eq 0];then</span><br><span class="line">      break</span><br><span class="line">    fi</span><br><span class="line">  fi</span><br><span class="line">done</span><br><span class="line">certbot renew </span><br><span class="line">service nginx start</span><br></pre></td></tr></table></figure>
+<p>或者直接用certbot renew command，详情如下<br>        <strong><a href="https://certbot.eff.org/docs/using.html?highlight=hooks#renewing-certificates" target="_blank" rel="noopener">Certbot documentation on renewing certificates</a></strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">certbot renew --pre-hook &quot;service nginx stop&quot; --post-hook &quot;service nginx start&quot;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Nacos</title>
+    <url>/2022/04/01/Nacos/</url>
+    <content><![CDATA[<p>Nacos(Dynamic Naming and Configuration Service)，Na为naming&#x2F;nameServer即注册中心,co为configuration即配置中心，service是指该注册&#x2F;配置中心都是以服务为核心。操作起来比eureka简单且功能强大。<br><strong><a href="https://nacos.io/zh-cn/docs/quick-start-spring-cloud.html" target="_blank" rel="noopener">Nacos Spring Cloud 快速开始</a><strong>、</strong><a href="https://www.jianshu.com/p/39ade28c150d" target="_blank" rel="noopener">什么是Nacos？Nacos注册配置中心介绍</a></strong></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>@PostConstruct注解原理解析</title>
+    <url>/2021/11/16/PostConstruct%E6%B3%A8%E8%A7%A3%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/lay2017/p/11735802.html" target="_blank" rel="noopener">@PostConstruct注解原理解析</a></p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>PostConstruct</tag>
+      </tags>
   </entry>
   <entry>
     <title>ProcessExecutor、ProcessBuilder、Runtime.getRuntime().exec(...) </title>
@@ -209,6 +250,30 @@
       <categories>
         <category>java</category>
       </categories>
+  </entry>
+  <entry>
+    <title>Rust引用</title>
+    <url>/2022/03/17/Rust%E5%BC%95%E7%94%A8/</url>
+    <content><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch3/07_reference_type.html" target="_blank" rel="noopener">Rust中的引用</a></p>
+<a id="more"></a>
+
+<h3 id="解引用"><a href="#解引用" class="headerlink" title="解引用"></a>解引用</h3><p>Rust绝大多数时候不会自动地解除引用。但在某些环境下，Rust会自动进行解引用。</p>
+<p>自动解引用的情况有(结论先总结在此，混脸熟，以后涉及到时再来)：</p>
+<ol>
+<li><p>使用.操作符时(包括取属性值和方法调用)，会隐式地尽可能解除或创建多层引用</p>
+</li>
+<li><p>使用比较操作符时，若比较的两边是相同类型的引用，则会自动解除引用到它们的值然后比较<br>对于(1)，Rust会自动分析func()的参数，并在需要的时候自动创建或自动解除引用。例如以abc.func()有可能会自动转换为&amp;abc.func()，反之，&amp;abc.func()也有可能会自动转换为abc.func()。</p>
+</li>
+</ol>
+<p>对于(2)，例如有引用类型的变量n，那么n &gt; &amp;30和*n &gt; 30的效果是一样的。</p>
+<p>————————————————《rust入门秘籍》</p>
+]]></content>
+      <categories>
+        <category>rust</category>
+      </categories>
+      <tags>
+        <tag>references</tag>
+      </tags>
   </entry>
   <entry>
     <title>Rust copy 、move、clone</title>
@@ -266,60 +331,6 @@
       </tags>
   </entry>
   <entry>
-    <title>@PostConstruct注解原理解析</title>
-    <url>/2021/11/16/PostConstruct%E6%B3%A8%E8%A7%A3%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/lay2017/p/11735802.html" target="_blank" rel="noopener">@PostConstruct注解原理解析</a></p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>PostConstruct</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Let’sEncrypt 证书自动更新脚本</title>
-    <url>/2021/04/08/Let%E2%80%99sEncrypt-%E8%AF%81%E4%B9%A6%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E8%84%9A%E6%9C%AC/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>vps科学上网用的Let’sEncrypt免费证书，有效期一般是3个月，需要定期更新。写个脚本，定时更新。</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">#Version:1.0</span><br><span class="line">#Author:zzl</span><br><span class="line">#Automatically renew Let&#39;s Encrypt certificates</span><br><span class="line">#A cron job will run this shell script everyday</span><br><span class="line">i&#x3D;0</span><br><span class="line">while [[ $i -lt 10]]</span><br><span class="line">do</span><br><span class="line">  let &quot;i++&quot;</span><br><span class="line">  if [ $(ps -C nginx --no-header | wc -l) -ne 0];then</span><br><span class="line">    service nginx stop</span><br><span class="line">    sleep 3s</span><br><span class="line">    if [ $(ps -C nginx --no-header | wc -l) -eq 0];then</span><br><span class="line">      break</span><br><span class="line">    fi</span><br><span class="line">  fi</span><br><span class="line">done</span><br><span class="line">certbot renew </span><br><span class="line">service nginx start</span><br></pre></td></tr></table></figure>
-<p>或者直接用certbot renew command，详情如下<br>        <strong><a href="https://certbot.eff.org/docs/using.html?highlight=hooks#renewing-certificates" target="_blank" rel="noopener">Certbot documentation on renewing certificates</a></strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">certbot renew --pre-hook &quot;service nginx stop&quot; --post-hook &quot;service nginx start&quot;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Nacos</title>
-    <url>/2022/04/01/Nacos/</url>
-    <content><![CDATA[<p>Nacos(Dynamic Naming and Configuration Service)，Na为naming&#x2F;nameServer即注册中心,co为configuration即配置中心，service是指该注册&#x2F;配置中心都是以服务为核心。操作起来比eureka简单且功能强大。<br><strong><a href="https://nacos.io/zh-cn/docs/quick-start-spring-cloud.html" target="_blank" rel="noopener">Nacos Spring Cloud 快速开始</a><strong>、</strong><a href="https://www.jianshu.com/p/39ade28c150d" target="_blank" rel="noopener">什么是Nacos？Nacos注册配置中心介绍</a></strong></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Rust引用</title>
-    <url>/2022/03/17/Rust%E5%BC%95%E7%94%A8/</url>
-    <content><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch3/07_reference_type.html" target="_blank" rel="noopener">Rust中的引用</a></p>
-<a id="more"></a>
-
-<h3 id="解引用"><a href="#解引用" class="headerlink" title="解引用"></a>解引用</h3><p>Rust绝大多数时候不会自动地解除引用。但在某些环境下，Rust会自动进行解引用。</p>
-<p>自动解引用的情况有(结论先总结在此，混脸熟，以后涉及到时再来)：</p>
-<ol>
-<li><p>使用.操作符时(包括取属性值和方法调用)，会隐式地尽可能解除或创建多层引用</p>
-</li>
-<li><p>使用比较操作符时，若比较的两边是相同类型的引用，则会自动解除引用到它们的值然后比较<br>对于(1)，Rust会自动分析func()的参数，并在需要的时候自动创建或自动解除引用。例如以abc.func()有可能会自动转换为&amp;abc.func()，反之，&amp;abc.func()也有可能会自动转换为abc.func()。</p>
-</li>
-</ol>
-<p>对于(2)，例如有引用类型的变量n，那么n &gt; &amp;30和*n &gt; 30的效果是一样的。</p>
-<p>————————————————《rust入门秘籍》</p>
-]]></content>
-      <categories>
-        <category>rust</category>
-      </categories>
-      <tags>
-        <tag>references</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Shell脚本检测Nginx服务状态</title>
     <url>/1970/01/01/Shell%E8%84%9A%E6%9C%AC%E6%A3%80%E6%B5%8BNginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
@@ -353,6 +364,21 @@
       </tags>
   </entry>
   <entry>
+    <title>SkipList (跳跃表)的那点事儿</title>
+    <url>/2021/02/23/SkipList-%E7%9A%84%E9%82%A3%E7%82%B9%E4%BA%8B%E5%84%BF/</url>
+    <content><![CDATA[<p><a href="https://mp.weixin.qq.com/s/fNBjlpzqvNkmei0cHhNcog?article_exclude_marked=ea8284506ea5ccac099671313574ba5c" target="_blank" rel="noopener">SkipList 的那点事儿</a></p>
+]]></content>
+      <tags>
+        <tag>SkipList</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title> ThreadLocal 详解</title>
+    <url>/2021/11/13/ThreadLocal-%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<p><a href="https://www.pdai.tech/md/java/thread/java-thread-x-threadlocal.html" target="_blank" rel="noopener">ThreadLocal原理</a>  ,&amp;nbsp;&amp;nbsp;&amp;nbsp; <a href="https://juejin.cn/post/6844903487193481224" target="_blank" rel="noopener">Java 之 ThreadLocal 详解: 内存泄漏</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>《Spring设计思想-事务篇》2.数据库隔离级别</title>
     <url>/2020/03/12/Spring%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3-%E4%BA%8B%E5%8A%A1%E7%AF%87%E3%80%8B2-%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</url>
     <content><![CDATA[<p>转载：**<a href="https://blog.csdn.net/luanlouis/article/details/95319795" target="_blank" rel="noopener">《Spring设计思想-事务篇》2.数据库隔离级别
@@ -366,39 +392,10 @@
 ]]></content>
   </entry>
   <entry>
-    <title> ThreadLocal 详解</title>
-    <url>/2021/11/13/ThreadLocal-%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[<p><a href="https://www.pdai.tech/md/java/thread/java-thread-x-threadlocal.html" target="_blank" rel="noopener">ThreadLocal原理</a>  ,&amp;nbsp;&amp;nbsp;&amp;nbsp; <a href="https://juejin.cn/post/6844903487193481224" target="_blank" rel="noopener">Java 之 ThreadLocal 详解: 内存泄漏</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Ubuntu 18.04 用户登录界面优化</title>
+    <title>Ubuntu 20.04优化</title>
     <url>/1970/01/01/Ubuntu-18-04-%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E4%BC%98%E5%8C%96/</url>
-    <content><![CDATA[<p>**<a href="https://blog.csdn.net/vselfdom/article/details/88546349" target="_blank" rel="noopener">Ubuntu 18.04 用户登录界面优化</a>**，备用。</p>
+    <content><![CDATA[<p>**<a href="https://ratimechen.github.io/posts/1490628848/#%E5%AE%89%E8%A3%9D%E5%BF%85%E8%A3%9D%E5%B7%A5%E5%85%B7" target="_blank" rel="noopener">把 Ubuntu 20.04 打造成 macOS 風格</a>**，备用。 ps: 安装Dash to Dock插件时，一直Error，后电脑重启，不知道是重启前卸除“gnome-shell-extension-dock”起的作用，还是重启大法威力无边…</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>SkipList (跳跃表)的那点事儿</title>
-    <url>/2021/02/23/SkipList-%E7%9A%84%E9%82%A3%E7%82%B9%E4%BA%8B%E5%84%BF/</url>
-    <content><![CDATA[<p><a href="https://mp.weixin.qq.com/s/fNBjlpzqvNkmei0cHhNcog?article_exclude_marked=ea8284506ea5ccac099671313574ba5c" target="_blank" rel="noopener">SkipList 的那点事儿</a></p>
-]]></content>
-      <tags>
-        <tag>SkipList</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ubuntu18.04下通过zssh与服务器进行上传/下载文件操作</title>
-    <url>/2021/11/29/Ubuntu18-04%E4%B8%8B%E9%80%9A%E8%BF%87zssh%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9B%E8%A1%8C%E4%B8%8A%E4%BC%A0-%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<p>把本地文件上传到远程：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">（1）打开远程终端，输入：rz -bye (打个招呼，表示要接受文件)</span><br><span class="line"> (2) ctrl+@,  （切换到本地，进入要上传的文件的目录）</span><br><span class="line">（3）sz filename （发送文件）</span><br></pre></td></tr></table></figure>
-<p>下载文件的话：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">（1）sz filename （打个招呼，表示要发送的文件）</span><br><span class="line"> (2) ctrl+@,（切换到本地，进入要接收该远程文件的路径下）</span><br><span class="line">（3）rz -ay   （接收完毕了哇）</span><br></pre></td></tr></table></figure>
-<p><a href="https://www.it610.com/article/1280947627608784896.htm" target="_blank" rel="noopener">Ubuntu18.04下通过zssh与服务器进行上传&#x2F;下载文件操作</a></p>
-]]></content>
-      <tags>
-        <tag>zssh</tag>
-        <tag>ubuntu</tag>
-      </tags>
   </entry>
   <entry>
     <title>Ubuntu apt-get autoclean,clean,autoremove</title>
@@ -445,12 +442,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Wireshark抓包原理（ARP劫持、MAC泛洪）及数据流追踪和图像抓取</title>
-    <url>/2021/05/31/Wireshark%E6%8A%93%E5%8C%85%E5%8E%9F%E7%90%86%EF%BC%88ARP%E5%8A%AB%E6%8C%81%E3%80%81MAC%E6%B3%9B%E6%B4%AA%EF%BC%89%E5%8F%8A%E6%95%B0%E6%8D%AE%E6%B5%81%E8%BF%BD%E8%B8%AA%E5%92%8C%E5%9B%BE%E5%83%8F%E6%8A%93%E5%8F%96/</url>
-    <content><![CDATA[<p>转载：<a href="https://cloud.tencent.com/developer/article/1626729" target="_blank" rel="noopener">Wireshark抓包原理（ARP劫持、MAC泛洪）及数据流追踪和图像抓取</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>Using the Switch(true) Pattern in JavaScript</title>
     <url>/2021/04/13/Using-the-Switch-true-Pattern-in-JavaScript-https-seanbarry-dev-posts-switch-true-pattern/</url>
     <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
@@ -460,6 +451,20 @@
       </categories>
       <tags>
         <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu18.04下通过zssh与服务器进行上传/下载文件操作</title>
+    <url>/2021/11/29/Ubuntu18-04%E4%B8%8B%E9%80%9A%E8%BF%87zssh%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9B%E8%A1%8C%E4%B8%8A%E4%BC%A0-%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<p>把本地文件上传到远程：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">（1）打开远程终端，输入：rz -bye (打个招呼，表示要接受文件)</span><br><span class="line"> (2) ctrl+@,  （切换到本地，进入要上传的文件的目录）</span><br><span class="line">（3）sz filename （发送文件）</span><br></pre></td></tr></table></figure>
+<p>下载文件的话：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">（1）sz filename （打个招呼，表示要发送的文件）</span><br><span class="line"> (2) ctrl+@,（切换到本地，进入要接收该远程文件的路径下）</span><br><span class="line">（3）rz -ay   （接收完毕了哇）</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.it610.com/article/1280947627608784896.htm" target="_blank" rel="noopener">Ubuntu18.04下通过zssh与服务器进行上传&#x2F;下载文件操作</a></p>
+]]></content>
+      <tags>
+        <tag>zssh</tag>
+        <tag>ubuntu</tag>
       </tags>
   </entry>
   <entry>
@@ -490,6 +495,28 @@
       </tags>
   </entry>
   <entry>
+    <title>Wireshark抓包原理（ARP劫持、MAC泛洪）及数据流追踪和图像抓取</title>
+    <url>/2021/05/31/Wireshark%E6%8A%93%E5%8C%85%E5%8E%9F%E7%90%86%EF%BC%88ARP%E5%8A%AB%E6%8C%81%E3%80%81MAC%E6%B3%9B%E6%B4%AA%EF%BC%89%E5%8F%8A%E6%95%B0%E6%8D%AE%E6%B5%81%E8%BF%BD%E8%B8%AA%E5%92%8C%E5%9B%BE%E5%83%8F%E6%8A%93%E5%8F%96/</url>
+    <content><![CDATA[<p>转载：<a href="https://cloud.tencent.com/developer/article/1626729" target="_blank" rel="noopener">Wireshark抓包原理（ARP劫持、MAC泛洪）及数据流追踪和图像抓取</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>java自定义类equal重写</title>
+    <url>/2020/02/27/ava-equal/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>判断两个对象在逻辑上是否相等，有时需要根据类的某些成员变量来判断两个实例是否相等，而继承Object中的equals方法比较的只是对象的引用是否指向同一块内存地址。这时候便需要重写equals()方法了。</p>
+<a id="more"></a>
+<p>比较的常用对象如int，float和String等，已重写了equals和hashcode方法，默认比较的是值，而其它自定义对象在用equal时都是比较的引用地址，故此有需要的时候需要重写equal方法。</p>
+<h3 id="重写equal的要求"><a href="#重写equal的要求" class="headerlink" title="重写equal的要求"></a>重写equal的要求</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Override</span><br><span class="line">public boolean equals(Object obj) &#123;  </span><br><span class="line">        if(this &#x3D;&#x3D; obj) &#123;  </span><br><span class="line">            return true;  </span><br><span class="line">        &#125;  </span><br><span class="line">        if(null &#x3D;&#x3D; obj) &#123;  </span><br><span class="line">            return false;  </span><br><span class="line">        &#125;  </span><br><span class="line">       if (obj instanceof Test)&#123;</span><br><span class="line">            Test o &#x3D; (Test) obj;</span><br><span class="line">            return this.id &#x3D;&#x3D; o.id;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>重写equals方法的要求：<br>1、自反性：对于任何非空引用x，x.equals(x)应该返回true。<br>2、对称性：对于任何引用x和y，如果x.equals(y)返回true，那么y.equals(x)也应该返回true。<br>3、传递性：对于任何引用x、y和z，如果x.equals(y)返回true，y.equals(z)返回true，那么x.equals(z)也应该返回true。<br>4、一致性：如果x和y引用的对象没有发生变化，那么反复调用x.equals(y)应该返回同样的结果。<br>5、非空性：对于任意非空引用x，x.equals(null)应该返回false。</p>
+<h3 id="hashCode方法也要重写"><a href="#hashCode方法也要重写" class="headerlink" title="hashCode方法也要重写"></a>hashCode方法也要重写</h3><p>问什么说<strong>重写了equals方法都要进而重写Hashcode方法</strong>呢？</p>
+<p>原因如下：当equals此方法被重写时，通常有必要重写 hashCode 方法，以维护 hashCode 方法的常规协定，该协定声明相等对象必须具有相等的哈希码。如下：</p>
+<p>(1)当obj1.equals(obj2)为true时，obj1.hashCode() &#x3D;&#x3D; obj2.hashCode()必须为true<br>(2)当obj1.hashCode() &#x3D;&#x3D; obj2.hashCode()为false时，obj1.equals(obj2)必须为false</p>
+<p>   &amp;emsp;&amp;emsp;hashcode是用于散列数据的快速存取，如利用HashSet&#x2F;HashMap&#x2F;Hashtable类来存储数据时，都是根据存储对象的hashcode值来进行判断是否相同的。</p>
+<p>   &amp;emsp;&amp;emsp;以HashMap为例说一下的原理，HashMap存储数据的时候，是取的key值的哈希值，然后计算数组下标，采用链地址法解决冲突，然后进行存储；取数据的时候，依然是先要获取到hash值，找到数组下标，然后for遍历链表集合，进行比较是否有对应的key。比较关心的有2点：<br>  &amp;emsp;&amp;emsp; 1.不管是put还是get的时候，都需要得到key的哈希值，去定位key的数组下标；<br>   &amp;emsp;&amp;emsp;2.在get的时候，需要调用equals方法比较是否有相等的key存储过。</p>
+<p>   更详细具体的可以看<a href="https://www.jianshu.com/p/75d9c2c3d0c1" target="_blank" rel="noopener">这篇博文</a>或者<a href="https://www.cnblogs.com/silence-hust/p/4510574.html" target="_blank" rel="noopener">这一篇</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>android studio 真机调试</title>
     <url>/2020/02/10/android-run-on-a-real-device/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Android studio调试的时候可以运行在模拟器，也可以在真机上运行，本文记录一下真机（MIUI10）调试的前期准备。</p>
@@ -514,20 +541,13 @@
       </tags>
   </entry>
   <entry>
-    <title>java自定义类equal重写</title>
-    <url>/2020/02/27/ava-equal/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>判断两个对象在逻辑上是否相等，有时需要根据类的某些成员变量来判断两个实例是否相等，而继承Object中的equals方法比较的只是对象的引用是否指向同一块内存地址。这时候便需要重写equals()方法了。</p>
-<a id="more"></a>
-<p>比较的常用对象如int，float和String等，已重写了equals和hashcode方法，默认比较的是值，而其它自定义对象在用equal时都是比较的引用地址，故此有需要的时候需要重写equal方法。</p>
-<h3 id="重写equal的要求"><a href="#重写equal的要求" class="headerlink" title="重写equal的要求"></a>重写equal的要求</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Override</span><br><span class="line">public boolean equals(Object obj) &#123;  </span><br><span class="line">        if(this &#x3D;&#x3D; obj) &#123;  </span><br><span class="line">            return true;  </span><br><span class="line">        &#125;  </span><br><span class="line">        if(null &#x3D;&#x3D; obj) &#123;  </span><br><span class="line">            return false;  </span><br><span class="line">        &#125;  </span><br><span class="line">       if (obj instanceof Test)&#123;</span><br><span class="line">            Test o &#x3D; (Test) obj;</span><br><span class="line">            return this.id &#x3D;&#x3D; o.id;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>重写equals方法的要求：<br>1、自反性：对于任何非空引用x，x.equals(x)应该返回true。<br>2、对称性：对于任何引用x和y，如果x.equals(y)返回true，那么y.equals(x)也应该返回true。<br>3、传递性：对于任何引用x、y和z，如果x.equals(y)返回true，y.equals(z)返回true，那么x.equals(z)也应该返回true。<br>4、一致性：如果x和y引用的对象没有发生变化，那么反复调用x.equals(y)应该返回同样的结果。<br>5、非空性：对于任意非空引用x，x.equals(null)应该返回false。</p>
-<h3 id="hashCode方法也要重写"><a href="#hashCode方法也要重写" class="headerlink" title="hashCode方法也要重写"></a>hashCode方法也要重写</h3><p>问什么说<strong>重写了equals方法都要进而重写Hashcode方法</strong>呢？</p>
-<p>原因如下：当equals此方法被重写时，通常有必要重写 hashCode 方法，以维护 hashCode 方法的常规协定，该协定声明相等对象必须具有相等的哈希码。如下：</p>
-<p>(1)当obj1.equals(obj2)为true时，obj1.hashCode() &#x3D;&#x3D; obj2.hashCode()必须为true<br>(2)当obj1.hashCode() &#x3D;&#x3D; obj2.hashCode()为false时，obj1.equals(obj2)必须为false</p>
-<p>   &amp;emsp;&amp;emsp;hashcode是用于散列数据的快速存取，如利用HashSet&#x2F;HashMap&#x2F;Hashtable类来存储数据时，都是根据存储对象的hashcode值来进行判断是否相同的。</p>
-<p>   &amp;emsp;&amp;emsp;以HashMap为例说一下的原理，HashMap存储数据的时候，是取的key值的哈希值，然后计算数组下标，采用链地址法解决冲突，然后进行存储；取数据的时候，依然是先要获取到hash值，找到数组下标，然后for遍历链表集合，进行比较是否有对应的key。比较关心的有2点：<br>  &amp;emsp;&amp;emsp; 1.不管是put还是get的时候，都需要得到key的哈希值，去定位key的数组下标；<br>   &amp;emsp;&amp;emsp;2.在get的时候，需要调用equals方法比较是否有相等的key存储过。</p>
-<p>   更详细具体的可以看<a href="https://www.jianshu.com/p/75d9c2c3d0c1" target="_blank" rel="noopener">这篇博文</a>或者<a href="https://www.cnblogs.com/silence-hust/p/4510574.html" target="_blank" rel="noopener">这一篇</a></p>
+    <title>java底层机制（堆/栈/方法区/GC/类加载）</title>
+    <url>/2020/03/08/ava%E5%BA%95%E5%B1%82%E6%9C%BA%E5%88%B6/</url>
+    <content><![CDATA[<p>转载:<strong><a href="https://www.jianshu.com/p/ae97b692614e?from=timeline" target="_blank" rel="noopener">java底层机制</a><strong>、</strong><a href="https://blog.csdn.net/luanlouis/article/details/40043991" target="_blank" rel="noopener">《Java虚拟机原理图解》3、JVM运行时数据区</a></strong></p>
 ]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
   </entry>
   <entry>
     <title>Java反射机制</title>
@@ -551,15 +571,6 @@
 <h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.iteye.com/blog/rednaxelafx-548536" target="_blank" rel="noopener">反射调用的一个Log</a><br><a href="http://www.fanyilun.me/2015/10/29/Java%E5%8F%8D%E5%B0%84%E5%8E%9F%E7%90%86/" target="_blank" rel="noopener">Java反射原理简析</a></p>
 <p>对与框架开发人员来说，反射虽小但作用非常大，它是各种容器实现的核心。而对于一般的开发者来说，不深入框架开发则用反射用的就会少一点，不过了解一下框架的底层机制有助于丰富自己的编程思想，也是很有益的。</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>java底层机制（堆/栈/方法区/GC/类加载）</title>
-    <url>/2020/03/08/ava%E5%BA%95%E5%B1%82%E6%9C%BA%E5%88%B6/</url>
-    <content><![CDATA[<p>转载:<strong><a href="https://www.jianshu.com/p/ae97b692614e?from=timeline" target="_blank" rel="noopener">java底层机制</a><strong>、</strong><a href="https://blog.csdn.net/luanlouis/article/details/40043991" target="_blank" rel="noopener">《Java虚拟机原理图解》3、JVM运行时数据区</a></strong></p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
   </entry>
   <entry>
     <title>bash快捷键 光标移动</title>
@@ -678,38 +689,6 @@
       </categories>
   </entry>
   <entry>
-    <title>trojan科学上网</title>
-    <url>/2020/01/29/gfw/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>一直用的ssr科学上网，侥幸挺过了去年国庆等的各种严打，一直傲娇地活跃到年底，没想到值此新春佳节之际，终于不出预料地被封了，丧事喜办，旧的不去新的不来，正好试试trojan，希望他能接过前辈的火种，超神带我飞，直直挺到2021吖，本文记录一下vps、windows pc以及android手机的配置。</p>
-<a id="more"></a>
-<h3 id="vps配置"><a href="#vps配置" class="headerlink" title="vps配置"></a>vps配置</h3><h4 id="脚本安装"><a href="#脚本安装" class="headerlink" title="脚本安装"></a>脚本安装</h4><p>系统centos7，网上荡来的一键安装脚本：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -O https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;atrandys&#x2F;trojan&#x2F;master&#x2F;trojan_mult.sh &amp;&amp; chmod +x trojan_mult.sh &amp;&amp; .&#x2F;trojan_mult.sh</span><br></pre></td></tr></table></figure>
-<p>根据脚本提示，该输入数字输入数字，该输入域名输入域名，一撸到底，成功后屏幕会显示一个客户端的链接，弃之不用。</p>
-<h4 id="bbr加速"><a href="#bbr加速" class="headerlink" title="bbr加速"></a>bbr加速</h4><p>先查看系统内核版本</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure>
-<p>低于4.10的需升级内核</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rpm --import https:&#x2F;&#x2F;www.elrepo.org&#x2F;RPM-GPG-KEY-elrepo.org</span><br><span class="line">rpm -Uvh http:&#x2F;&#x2F;www.elrepo.org&#x2F;elrepo-release-7.0-2.el7.elrepo.noarch.rpm</span><br><span class="line">yum --enablerepo&#x3D;elrepo-kernel install kernel-ml -y</span><br></pre></td></tr></table></figure>
-<p>安装完毕后查看已安装内核</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">awk -F\&#39; &#39;$1&#x3D;&#x3D;&quot;menuentry &quot; &#123;print i++ &quot; : &quot; $2&#125;&#39; &#x2F;etc&#x2F;grub2.cfg</span><br></pre></td></tr></table></figure>
-<p>返回：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0 : CentOS Linux 7 Rescue f128bc3705574dfab442f23fb7245e0b (5.5.0-1.el7.elrepo.x86_64)</span><br><span class="line">1 : CentOS Linux (5.5.0-1.el7.elrepo.x86_64) 7 (Core)</span><br><span class="line">2 : CentOS Linux (3.10.0-1062.9.1.el7.x86_64) 7 (Core)</span><br><span class="line">3 : CentOS Linux (3.10.0-1062.el7.x86_64) 7 (Core)</span><br><span class="line">4 : CentOS Linux (0-rescue-7bd68357fb1f47688c0f1b0a48330334) 7 (Core)</span><br></pre></td></tr></table></figure>
-<p>根据序号设置默认内核：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">grub2-set-default 1</span><br></pre></td></tr></table></figure>
-<p>重启服务器。<br>修改sysctl配置</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &#39;net.core.default_qdisc&#x3D;fq&#39; | tee -a &#x2F;etc&#x2F;sysctl.conf</span><br><span class="line">echo &#39;net.ipv4.tcp_congestion_control&#x3D;bbr&#39; |  tee -a &#x2F;etc&#x2F;sysctl.conf</span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
-<p>检查是否加载BBR</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">lsmod | grep bbr</span><br></pre></td></tr></table></figure>
-<p>如果输出结果包含tcp_bbr，则表示开启成功</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tcp_bbr   20480  35</span><br></pre></td></tr></table></figure>
-<p>值此，VPS配置完毕。</p>
-<h3 id="windows配置"><a href="#windows配置" class="headerlink" title="windows配置"></a>windows配置</h3><p>下载v2rayN客户端：<a href="https://github.com/2dust/v2rayN/releases/download/3.5/v2rayN.zip" target="_blank" rel="noopener">v2rayN</a><br>运行v2rayN.exe，服务器–&gt;Add [trojan]server–&gt;输入VPS IP，密码以及端口443–&gt;右击任务栏上v2rayN,启用Http代理，Http模式选择pac。<br>密码可以在vps（cat &#x2F;usr&#x2F;src&#x2F;trojan&#x2F;server.conf）trojan配置文件中查看。<br>至此，便可以在浏览器里科学上网了，至于其他电脑程序要科学上网，可以配置本机socks5代理，监听1080端口。</p>
-<h3 id="android配置"><a href="#android配置" class="headerlink" title="android配置"></a>android配置</h3><p>现在只找到<a href="https://github.com/trojan-gfw/igniter/releases/download/v0.1.0-pre-alpha13/app-release.apk" target="_blank" rel="noopener">Igniter</a>，不太好用，静待更新。。。</p>
-]]></content>
-      <tags>
-        <tag>trojan</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>centos 定时任务（cron）通过第三方邮件服务器（MTA）发送邮件</title>
     <url>/2020/01/13/corn-mail/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>有时会需要把一些日志或者任务结果发送到用户邮箱，特此记录一下定时任务和邮箱信息的配置。</p>
@@ -735,25 +714,6 @@
         <tag>mail</tag>
         <tag>crontab</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>随笔有感</title>
-    <url>/2020/01/13/hello-world/</url>
-    <content><![CDATA[<p>一个不读书之人的胡思胡想</p>
-<a id="more"></a>
-<h2 id><a href="#" class="headerlink" title></a></h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-]]></content>
   </entry>
   <entry>
     <title>git学习笔记</title>
@@ -789,6 +749,78 @@
       </tags>
   </entry>
   <entry>
+    <title>trojan科学上网</title>
+    <url>/2020/01/29/gfw/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>一直用的ssr科学上网，侥幸挺过了去年国庆等的各种严打，一直傲娇地活跃到年底，没想到值此新春佳节之际，终于不出预料地被封了，丧事喜办，旧的不去新的不来，正好试试trojan，希望他能接过前辈的火种，超神带我飞，直直挺到2021吖，本文记录一下vps、windows pc以及android手机的配置。</p>
+<a id="more"></a>
+<h3 id="vps配置"><a href="#vps配置" class="headerlink" title="vps配置"></a>vps配置</h3><h4 id="脚本安装"><a href="#脚本安装" class="headerlink" title="脚本安装"></a>脚本安装</h4><p>系统centos7，网上荡来的一键安装脚本：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -O https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;atrandys&#x2F;trojan&#x2F;master&#x2F;trojan_mult.sh &amp;&amp; chmod +x trojan_mult.sh &amp;&amp; .&#x2F;trojan_mult.sh</span><br></pre></td></tr></table></figure>
+<p>根据脚本提示，该输入数字输入数字，该输入域名输入域名，一撸到底，成功后屏幕会显示一个客户端的链接，弃之不用。</p>
+<h4 id="bbr加速"><a href="#bbr加速" class="headerlink" title="bbr加速"></a>bbr加速</h4><p>先查看系统内核版本</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure>
+<p>低于4.10的需升级内核</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rpm --import https:&#x2F;&#x2F;www.elrepo.org&#x2F;RPM-GPG-KEY-elrepo.org</span><br><span class="line">rpm -Uvh http:&#x2F;&#x2F;www.elrepo.org&#x2F;elrepo-release-7.0-2.el7.elrepo.noarch.rpm</span><br><span class="line">yum --enablerepo&#x3D;elrepo-kernel install kernel-ml -y</span><br></pre></td></tr></table></figure>
+<p>安装完毕后查看已安装内核</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">awk -F\&#39; &#39;$1&#x3D;&#x3D;&quot;menuentry &quot; &#123;print i++ &quot; : &quot; $2&#125;&#39; &#x2F;etc&#x2F;grub2.cfg</span><br></pre></td></tr></table></figure>
+<p>返回：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0 : CentOS Linux 7 Rescue f128bc3705574dfab442f23fb7245e0b (5.5.0-1.el7.elrepo.x86_64)</span><br><span class="line">1 : CentOS Linux (5.5.0-1.el7.elrepo.x86_64) 7 (Core)</span><br><span class="line">2 : CentOS Linux (3.10.0-1062.9.1.el7.x86_64) 7 (Core)</span><br><span class="line">3 : CentOS Linux (3.10.0-1062.el7.x86_64) 7 (Core)</span><br><span class="line">4 : CentOS Linux (0-rescue-7bd68357fb1f47688c0f1b0a48330334) 7 (Core)</span><br></pre></td></tr></table></figure>
+<p>根据序号设置默认内核：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">grub2-set-default 1</span><br></pre></td></tr></table></figure>
+<p>重启服务器。<br>修改sysctl配置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &#39;net.core.default_qdisc&#x3D;fq&#39; | tee -a &#x2F;etc&#x2F;sysctl.conf</span><br><span class="line">echo &#39;net.ipv4.tcp_congestion_control&#x3D;bbr&#39; |  tee -a &#x2F;etc&#x2F;sysctl.conf</span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
+<p>检查是否加载BBR</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">lsmod | grep bbr</span><br></pre></td></tr></table></figure>
+<p>如果输出结果包含tcp_bbr，则表示开启成功</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tcp_bbr   20480  35</span><br></pre></td></tr></table></figure>
+<p>值此，VPS配置完毕。</p>
+<h3 id="windows配置"><a href="#windows配置" class="headerlink" title="windows配置"></a>windows配置</h3><p>下载v2rayN客户端：<a href="https://github.com/2dust/v2rayN/releases/download/3.5/v2rayN.zip" target="_blank" rel="noopener">v2rayN</a><br>运行v2rayN.exe，服务器–&gt;Add [trojan]server–&gt;输入VPS IP，密码以及端口443–&gt;右击任务栏上v2rayN,启用Http代理，Http模式选择pac。<br>密码可以在vps（cat &#x2F;usr&#x2F;src&#x2F;trojan&#x2F;server.conf）trojan配置文件中查看。<br>至此，便可以在浏览器里科学上网了，至于其他电脑程序要科学上网，可以配置本机socks5代理，监听1080端口。</p>
+<h3 id="android配置"><a href="#android配置" class="headerlink" title="android配置"></a>android配置</h3><p>现在只找到<a href="https://github.com/trojan-gfw/igniter/releases/download/v0.1.0-pre-alpha13/app-release.apk" target="_blank" rel="noopener">Igniter</a>，不太好用，静待更新。。。</p>
+]]></content>
+      <tags>
+        <tag>trojan</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>intellij-idea的快捷键</title>
+    <url>/2020/12/23/intellij-idea%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+    <content><![CDATA[<p><a href="https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf" target="_blank" rel="noopener">Intellij-idea的快捷键</a></p>
+]]></content>
+      <tags>
+        <tag>idea</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>随笔有感</title>
+    <url>/2020/01/13/hello-world/</url>
+    <content><![CDATA[<p>一个不读书之人的胡思胡想</p>
+<a id="more"></a>
+<h2 id><a href="#" class="headerlink" title></a></h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>@interface 简介</title>
+    <url>/2021/11/11/interface/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/zhangbeizhen18/article/details/87885441/" target="_blank" rel="noopener">自定义注释@interface的用法理解</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>int&amp;Integer、 double&amp;Double&amp;BigDecimal</title>
+    <url>/2022/03/09/int%E5%92%8CInteger%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/guodongdidi/p/6953217.html" target="_blank" rel="noopener">int和Integer的区别</a>&amp;nbsp;&amp;nbsp;<a href="http://www.louisvv.com/archives/2514.html" target="_blank" rel="noopener">double、Double与BigDecimal</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>idea下gradle报jdk版本错误</title>
     <url>/2020/03/05/idea-gradle-jdk/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>idea下用gradle编译项目的时候报错如下：“Could not target platform: ‘Java SE 13’ using tool chain: ‘JDK 11 (11)’.”</p>
@@ -805,25 +837,19 @@
       </tags>
   </entry>
   <entry>
-    <title>int&amp;Integer、 double&amp;Double&amp;BigDecimal</title>
-    <url>/2022/03/09/int%E5%92%8CInteger%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/guodongdidi/p/6953217.html" target="_blank" rel="noopener">int和Integer的区别</a>&amp;nbsp;&amp;nbsp;<a href="http://www.louisvv.com/archives/2514.html" target="_blank" rel="noopener">double、Double与BigDecimal</a></p>
+    <title>java中的乱码</title>
+    <url>/2020/12/08/java%E4%B8%AD%E7%9A%84%E4%B9%B1%E7%A0%81/</url>
+    <content><![CDATA[<p><a href="https://developer.ibm.com/zh/languages/java/articles/j-lo-chinesecoding/" target="_blank" rel="noopener">深入分析 Java 中的中文编码问题</a>、<a href="https://blog.csdn.net/u010234516/article/details/52853214" target="_blank" rel="noopener">锟斤拷？UTF-8与GBK互转，为什么会乱码？</a></p>
+<p>附图一张:</p>
+<a id="more"></a>
+<p><img src="/images/crazyCode.jpg" alt="upload successful"></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>intellij-idea的快捷键</title>
-    <url>/2020/12/23/intellij-idea%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
-    <content><![CDATA[<p><a href="https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf" target="_blank" rel="noopener">Intellij-idea的快捷键</a></p>
-]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
       <tags>
-        <tag>idea</tag>
+        <tag>乱码</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>@interface 简介</title>
-    <url>/2021/11/11/interface/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/zhangbeizhen18/article/details/87885441/" target="_blank" rel="noopener">自定义注释@interface的用法理解</a></p>
-]]></content>
   </entry>
   <entry>
     <title>spring boot注解基本了解</title>
@@ -838,23 +864,23 @@
       </tags>
   </entry>
   <entry>
-    <title>kotlin 构造函数</title>
-    <url>/2020/05/17/kotlin-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<p>转载：**<a href="https://www.cnblogs.com/Jetictors/p/7758828.html" target="_blank" rel="noopener">Kotlin——中级篇（一）：类（class）详解</a><strong>、</strong><a href="https://www.jianshu.com/p/5db34354d812" target="_blank" rel="noopener">kotlin之构造函数(constructor)
-</a>**<br>1、在Kotlin中，允许有一个主构造函数和多个二级构造函数（辅助构造函数）。其中主构造函数是类头的一部分。</p>
-<p>2、如果类具有主构造函数，则每个辅助构造函数需要通过另一个辅助构造函数直接或间接地委派给主构造函数。 使用this关键字对同一类的另一个构造函数进行委派</p>
-<a id="more"></a>
-<p>例：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Test constructor(num: Int)&#123;</span><br><span class="line">    constructor(num : Int, num2: Int) : this(num) &#123;</span><br><span class="line">        println(num + num2)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">说明：二级构造函数中的参数1(num)，是委托了主构造函数的参数num。</span><br></pre></td></tr></table></figure>
-
-<p>3、在JVM上，如果类主构造函数的所有参数都具有默认值，编译器将生成一个额外的无参数构造函数，它将使用默认值。 这使得更容易使用Kotlin与诸如Jackson或JPA的库，通过无参数构造函数创建类实例。<br>同理可看出，当类存在主构造函数并且有默认值时，二级构造函数也适用</p>
+    <title>json web token(jwt)</title>
+    <url>/2020/05/02/json-web-token-jwt/</url>
+    <content><![CDATA[<p>转载：**<a href="https://learnku.com/articles/22616" target="_blank" rel="noopener">别再使用 JWT 作为 Session 系统！问题重重且很危险。
+</a>**<br>结论：无状态 JWT Tokens 无法被单独地销毁或更新，取决于你如何存储，可能还会导致长度问题、安全隐患。有状态 JWT Tokens 在功能方面与 Session cookies 无异，但缺乏生产环境的验证、经过大量 Review 的实现，以及良好的客户端支持。<br>JWT 特别有效的使用例子通常是作为一次性的授权令牌。</p>
 ]]></content>
       <categories>
-        <category>kotlin</category>
+        <category>java</category>
       </categories>
       <tags>
-        <tag>kotlin</tag>
+        <tag>jwt</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>linux sort uniq命令</title>
+    <url>/2021/02/26/linux-sort-uniq%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<p><a href="https://www.linuxjournal.com/content/back-basics-sort-and-uniq" target="_blank" rel="noopener">Back to Basics: Sort and Uniq</a></p>
+]]></content>
   </entry>
   <entry>
     <title>js  0 == &#39;&#39; 引出的判等</title>
@@ -1041,40 +1067,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>json web token(jwt)</title>
-    <url>/2020/05/02/json-web-token-jwt/</url>
-    <content><![CDATA[<p>转载：**<a href="https://learnku.com/articles/22616" target="_blank" rel="noopener">别再使用 JWT 作为 Session 系统！问题重重且很危险。
-</a>**<br>结论：无状态 JWT Tokens 无法被单独地销毁或更新，取决于你如何存储，可能还会导致长度问题、安全隐患。有状态 JWT Tokens 在功能方面与 Session cookies 无异，但缺乏生产环境的验证、经过大量 Review 的实现，以及良好的客户端支持。<br>JWT 特别有效的使用例子通常是作为一次性的授权令牌。</p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>jwt</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>linux sort uniq命令</title>
-    <url>/2021/02/26/linux-sort-uniq%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<p><a href="https://www.linuxjournal.com/content/back-basics-sort-and-uniq" target="_blank" rel="noopener">Back to Basics: Sort and Uniq</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>java中的乱码</title>
-    <url>/2020/12/08/java%E4%B8%AD%E7%9A%84%E4%B9%B1%E7%A0%81/</url>
-    <content><![CDATA[<p><a href="https://developer.ibm.com/zh/languages/java/articles/j-lo-chinesecoding/" target="_blank" rel="noopener">深入分析 Java 中的中文编码问题</a>、<a href="https://blog.csdn.net/u010234516/article/details/52853214" target="_blank" rel="noopener">锟斤拷？UTF-8与GBK互转，为什么会乱码？</a></p>
-<p>附图一张:</p>
-<a id="more"></a>
-<p><img src="/images/crazyCode.jpg" alt="upload successful"></p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>乱码</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>linux 后台运行、输出重定向</title>
     <url>/2021/04/02/linux-%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E3%80%81%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>linux termianl中，命令脚本的后台运行以及输出的重定向，如</p>
@@ -1113,6 +1105,25 @@
       <categories>
         <category>linux</category>
       </categories>
+  </entry>
+  <entry>
+    <title>kotlin 构造函数</title>
+    <url>/2020/05/17/kotlin-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<p>转载：**<a href="https://www.cnblogs.com/Jetictors/p/7758828.html" target="_blank" rel="noopener">Kotlin——中级篇（一）：类（class）详解</a><strong>、</strong><a href="https://www.jianshu.com/p/5db34354d812" target="_blank" rel="noopener">kotlin之构造函数(constructor)
+</a>**<br>1、在Kotlin中，允许有一个主构造函数和多个二级构造函数（辅助构造函数）。其中主构造函数是类头的一部分。</p>
+<p>2、如果类具有主构造函数，则每个辅助构造函数需要通过另一个辅助构造函数直接或间接地委派给主构造函数。 使用this关键字对同一类的另一个构造函数进行委派</p>
+<a id="more"></a>
+<p>例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Test constructor(num: Int)&#123;</span><br><span class="line">    constructor(num : Int, num2: Int) : this(num) &#123;</span><br><span class="line">        println(num + num2)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">说明：二级构造函数中的参数1(num)，是委托了主构造函数的参数num。</span><br></pre></td></tr></table></figure>
+
+<p>3、在JVM上，如果类主构造函数的所有参数都具有默认值，编译器将生成一个额外的无参数构造函数，它将使用默认值。 这使得更容易使用Kotlin与诸如Jackson或JPA的库，通过无参数构造函数创建类实例。<br>同理可看出，当类存在主构造函数并且有默认值时，二级构造函数也适用</p>
+]]></content>
+      <categories>
+        <category>kotlin</category>
+      </categories>
+      <tags>
+        <tag>kotlin</tag>
+      </tags>
   </entry>
   <entry>
     <title>linux 查看登录历史 操作用户</title>
@@ -1280,6 +1291,12 @@
       </tags>
   </entry>
   <entry>
+    <title>mybatis mysql in (#{list}) 只能查询/删除第一条的问题</title>
+    <url>/2021/12/30/mybatis-mysql-in-list-%E5%8F%AA%E8%83%BD%E6%9F%A5%E8%AF%A2-%E5%88%A0%E9%99%A4%E7%AC%AC%E4%B8%80%E6%9D%A1%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/do-your-best/p/9513194.html" target="_blank" rel="noopener">mysql in (#{list}) 只能查询&#x2F;删除第一条的问题</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>markdown的html标签应用及常用语法</title>
     <url>/2021/04/19/markdown%E5%86%85%E5%AE%B9%E6%8A%98%E5%8F%A0/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Markdown 是一种轻量级标记语言，非常适合网络书写。同时，Markdown支持嵌入html标签，我们就可以借此实现markdown不具有的某些功能，如代码折叠和文字样式等。</p>
@@ -1324,6 +1341,68 @@
       <categories>
         <category>markdown</category>
       </categories>
+  </entry>
+  <entry>
+    <title>android studio多语言(中英)适配</title>
+    <url>/2020/02/14/ndroid-studio%E4%B8%AD%E8%8B%B1%E6%96%87%E9%80%82%E9%85%8D/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>strings.xml在目录res相应的value文件夹下,用来显示文本，避免硬编码，要添加新的语言支持，就要在不同的 value 文件夹下（如value 、values-zh-rCN）添加不同语言的 string.xml 文件。本文以简体中文为例,描述一下Android studio下相应strings.xml(zh-rCN)的生成方式，其他语言类似。</p>
+<a id="more"></a>
+<h3 id="手动建立文件"><a href="#手动建立文件" class="headerlink" title="手动建立文件"></a>手动建立文件</h3><p>选中res文件夹，右键New–&gt;Android Resource Directory,然后选中Locale,如下图所示：</p>
+<p><img src="/images/pasted-17.png" alt="upload successful"><br>选择相应语言和相应区域：</p>
+<p><img src="/images/pasted-18.png" alt="upload successful"><br>文件夹名称（values-zh-rCN）自动生成，最后在该文件夹生成strings.xml即可。项目视图如下：</p>
+<p><img src="/images/pasted-19.png" alt="upload successful"></p>
+<h3 id="自动生成"><a href="#自动生成" class="headerlink" title="自动生成"></a>自动生成</h3><p>打开Translations Editor（双击打开strings.xml，窗口右上角点击Open Editor），点击Add Locale，在下拉菜单中选择相应语言区域，系统会自动生成相应文件夹以及strings.xml文件。</p>
+<p><img src="/images/pasted-20.png" alt="upload successful"></p>
+<p><img src="/images/pasted-21.png" alt="upload successful"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>netstat 命令</title>
+    <url>/2022/02/15/netstat-%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">netstat -ntu|awk &#39;&#123;pring $5&#125;&#39;|cut -d : -f 1|sort|uniq -c</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h4><p>-n 显示数字IP, -t tcp连接, -u udp连接, -a 全部连接…</p>
+<p><strong><a href="https://blog.csdn.net/qq_42014600/article/details/90372315" target="_blank" rel="noopener">netstat详解</a></strong></p>
+<h4 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h4><p>-F 指定分割符(如 awk -F: ), 如不显示指定字段分隔符，awk的默认字段分隔符为任意空白字符，包括制表符、空格符、换行符等</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$0表示整行文本</span><br><span class="line">$1表示文本行中第一个数据字段</span><br><span class="line">$2表示文本行中第二个数据字段</span><br><span class="line">$n表示文本行中第n个数据字段</span><br></pre></td></tr></table></figure>
+<p><strong><a href="https://blog.csdn.net/u010502101/article/details/81839519" target="_blank" rel="noopener">awk详解</a></strong></p>
+<h4 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h4><p>cut -[n]b file</p>
+<p>cut -c file</p>
+<p>cut -d[分隔符] -f[域] file</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-b(bytes) ：以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志。</span><br><span class="line">-c(characters) ：以字符为单位进行分割。</span><br><span class="line">-d ：自定义分隔符，默认为制表符。</span><br><span class="line">-f(filed) ：与-d一起使用，指定显示哪个区域。</span><br><span class="line">-n ：取消分割多字节字符。仅和 -b 标志一起使用。如果字符的最后一个字节落在由 -b 标志的 List 参数指示的</span><br><span class="line">范围之内，该字符将被写出；否则，该字符将被排除。</span><br></pre></td></tr></table></figure>
+<p><strong><a href="https://blog.csdn.net/u011003120/article/details/52190187" target="_blank" rel="noopener">cut用法</a></strong></p>
+<h4 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a>uniq</h4><p>　报告或删除文件中重复的行。<br> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> -c, --count           在每行前加上表示相应行目出现次数的前缀编号</span><br><span class="line">-d, --repeated        只输出重复的行</span><br><span class="line">-D, --all-repeated[&#x3D;delimit-method    显示所有重复的行</span><br><span class="line">                      delimit-method&#x3D;&#123;none(default),prepend,separate&#125;</span><br><span class="line">                      以空行为界限</span><br><span class="line">-f, --skip-fields&#x3D;N   比较时跳过前N 列</span><br><span class="line">-i, --ignore-case     在比较的时候不区分大小写</span><br><span class="line">-s, --skip-chars&#x3D;N    比较时跳过前N 个字符</span><br><span class="line">-u, --unique          只显示唯一的行</span><br><span class="line">-z, --zero-terminated 使用&#39;\0&#39;作为行结束符，而不是新换行</span><br><span class="line">-w, --check-chars&#x3D;N   对每行第N 个字符以后的内容不作对照</span><br><span class="line">    --help            显示此帮助信息并退出</span><br><span class="line">    --version         显示版本信息并退出</span><br></pre></td></tr></table></figure></p>
+<p> <strong><a href="https://www.cnblogs.com/ftl1012/p/uniq.html" target="_blank" rel="noopener">uniq详解</a></strong></p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux command</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ubuntu下使用微信、QQ等</title>
+    <url>/2021/03/18/new/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ubuntu下使用微信，网页版的登录不了，只能考虑客户端了。考虑了下，还是在docker里，无论怎么折腾，也不会污染系统。</p>
+<a id="more"></a>
+<p>网上教程多如牛毛，但不是坑，就是坑，找了个自己能用的，记录下备用<br>1、安装docker docker-compose，网上教程一大把，自己搜<br>2、执行如下命令<br>首先要允许所有用户访问X11服务,运行:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xhost +</span><br></pre></td></tr></table></figure>
+<p>拉取镜像（注意docker设置国内镜像地址，用科大的就行）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull bestwu&#x2F;wechat</span><br></pre></td></tr></table></figure>
+<p>在你指定的文件夹下创建 docker-compose.yml</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">version: &#39;2&#39;</span><br><span class="line">services:</span><br><span class="line">  wechat:</span><br><span class="line">    image: bestwu&#x2F;wechat</span><br><span class="line">    container_name: wechat</span><br><span class="line">    devices:</span><br><span class="line">      - &#x2F;dev&#x2F;snd</span><br><span class="line">    volumes:</span><br><span class="line">      - &#x2F;tmp&#x2F;.X11-unix:&#x2F;tmp&#x2F;.X11-unix</span><br><span class="line">      - $PWD&#x2F;WeChatFiles:&#x2F;WeChatFiles</span><br><span class="line">    environment:</span><br><span class="line">      - DISPLAY&#x3D;unix$DISPLAY</span><br><span class="line">      - QT_IM_MODULE&#x3D;fcitx</span><br><span class="line">      - XMODIFIERS&#x3D;@im&#x3D;fcitx</span><br><span class="line">      - GTK_IM_MODULE&#x3D;fcitx</span><br><span class="line">      - AUDIO_GID&#x3D;26 # 可选 默认63（在终端用getent group video | cut -d: -f3查） 主机audio gid 解决声音设备访问权限问题</span><br><span class="line">      - GID&#x3D;1000 # 可选 默认1000 主机当前用户 gid 解决挂载目录访问权限问题</span><br><span class="line">      - UID&#x3D;1000 # 可选 默认1000 主机当前用户 uid 解决挂载目录访问权限问题</span><br><span class="line">    ipc: host</span><br></pre></td></tr></table></figure>
+<p>启动</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+<p>停止</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose stop</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+        <category>ubuntu</category>
+      </categories>
+      <tags>
+        <tag>wechat</tag>
+      </tags>
   </entry>
   <entry>
     <title>linux常用命令</title>
@@ -1690,71 +1769,21 @@
       </categories>
   </entry>
   <entry>
-    <title>mybatis mysql in (#{list}) 只能查询/删除第一条的问题</title>
-    <url>/2021/12/30/mybatis-mysql-in-list-%E5%8F%AA%E8%83%BD%E6%9F%A5%E8%AF%A2-%E5%88%A0%E9%99%A4%E7%AC%AC%E4%B8%80%E6%9D%A1%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/do-your-best/p/9513194.html" target="_blank" rel="noopener">mysql in (#{list}) 只能查询&#x2F;删除第一条的问题</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>netstat 命令</title>
-    <url>/2022/02/15/netstat-%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">netstat -ntu|awk &#39;&#123;pring $5&#125;&#39;|cut -d : -f 1|sort|uniq -c</span><br></pre></td></tr></table></figure>
+    <title>spring 线程安全</title>
+    <url>/2020/03/09/pring-%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/</url>
+    <content><![CDATA[<p>转载：<a href="https://www.cnblogs.com/kismetv/p/8757260.html" target="_blank" rel="noopener"><strong>Spring中获取request的几种方法，及其线程安全性分析</strong></a>、**<a href="https://www.jianshu.com/p/e04491f3550f" target="_blank" rel="noopener">Spring 如何保证线程安全
+</a><strong>、</strong><a href="https://blog.csdn.net/cs408/article/details/48972653" target="_blank" rel="noopener">Spring中Singleton模式的线程安全
+</a>**</p>
+<h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><p>&amp;emsp;每启动一个线程，JVM都会为它分配一个Java栈，用于存放方法中的局部变量，操作</p>
 <a id="more"></a>
-<h4 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h4><p>-n 显示数字IP, -t tcp连接, -u udp连接, -a 全部连接…</p>
-<p><strong><a href="https://blog.csdn.net/qq_42014600/article/details/90372315" target="_blank" rel="noopener">netstat详解</a></strong></p>
-<h4 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h4><p>-F 指定分割符(如 awk -F: ), 如不显示指定字段分隔符，awk的默认字段分隔符为任意空白字符，包括制表符、空格符、换行符等</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$0表示整行文本</span><br><span class="line">$1表示文本行中第一个数据字段</span><br><span class="line">$2表示文本行中第二个数据字段</span><br><span class="line">$n表示文本行中第n个数据字段</span><br></pre></td></tr></table></figure>
-<p><strong><a href="https://blog.csdn.net/u010502101/article/details/81839519" target="_blank" rel="noopener">awk详解</a></strong></p>
-<h4 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h4><p>cut -[n]b file</p>
-<p>cut -c file</p>
-<p>cut -d[分隔符] -f[域] file</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-b(bytes) ：以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志。</span><br><span class="line">-c(characters) ：以字符为单位进行分割。</span><br><span class="line">-d ：自定义分隔符，默认为制表符。</span><br><span class="line">-f(filed) ：与-d一起使用，指定显示哪个区域。</span><br><span class="line">-n ：取消分割多字节字符。仅和 -b 标志一起使用。如果字符的最后一个字节落在由 -b 标志的 List 参数指示的</span><br><span class="line">范围之内，该字符将被写出；否则，该字符将被排除。</span><br></pre></td></tr></table></figure>
-<p><strong><a href="https://blog.csdn.net/u011003120/article/details/52190187" target="_blank" rel="noopener">cut用法</a></strong></p>
-<h4 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a>uniq</h4><p>　报告或删除文件中重复的行。<br> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> -c, --count           在每行前加上表示相应行目出现次数的前缀编号</span><br><span class="line">-d, --repeated        只输出重复的行</span><br><span class="line">-D, --all-repeated[&#x3D;delimit-method    显示所有重复的行</span><br><span class="line">                      delimit-method&#x3D;&#123;none(default),prepend,separate&#125;</span><br><span class="line">                      以空行为界限</span><br><span class="line">-f, --skip-fields&#x3D;N   比较时跳过前N 列</span><br><span class="line">-i, --ignore-case     在比较的时候不区分大小写</span><br><span class="line">-s, --skip-chars&#x3D;N    比较时跳过前N 个字符</span><br><span class="line">-u, --unique          只显示唯一的行</span><br><span class="line">-z, --zero-terminated 使用&#39;\0&#39;作为行结束符，而不是新换行</span><br><span class="line">-w, --check-chars&#x3D;N   对每行第N 个字符以后的内容不作对照</span><br><span class="line">    --help            显示此帮助信息并退出</span><br><span class="line">    --version         显示版本信息并退出</span><br></pre></td></tr></table></figure></p>
-<p> <strong><a href="https://www.cnblogs.com/ftl1012/p/uniq.html" target="_blank" rel="noopener">uniq详解</a></strong></p>
+<p>数以及异常数据等。当线程调用某个方法时，JVM会根据方法区中该方法的字节码组建一个栈帧。并将该栈帧压入Java栈中，方法执行完毕时，JVM会弹出该栈帧并释放掉。</p>
+<p>&amp;emsp;注意：Java栈中的数据是线程私有的，一个线程是无法访问另一个线程的Java栈的数据。这也就是为什么多线程编程时，两个相同线程执行同一方法时，对方法内的局部变量是不需要数据同步的原因。</p>
 ]]></content>
       <categories>
-        <category>linux</category>
+        <category>java</category>
       </categories>
       <tags>
-        <tag>linux command</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>android studio多语言(中英)适配</title>
-    <url>/2020/02/14/ndroid-studio%E4%B8%AD%E8%8B%B1%E6%96%87%E9%80%82%E9%85%8D/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>strings.xml在目录res相应的value文件夹下,用来显示文本，避免硬编码，要添加新的语言支持，就要在不同的 value 文件夹下（如value 、values-zh-rCN）添加不同语言的 string.xml 文件。本文以简体中文为例,描述一下Android studio下相应strings.xml(zh-rCN)的生成方式，其他语言类似。</p>
-<a id="more"></a>
-<h3 id="手动建立文件"><a href="#手动建立文件" class="headerlink" title="手动建立文件"></a>手动建立文件</h3><p>选中res文件夹，右键New–&gt;Android Resource Directory,然后选中Locale,如下图所示：</p>
-<p><img src="/images/pasted-17.png" alt="upload successful"><br>选择相应语言和相应区域：</p>
-<p><img src="/images/pasted-18.png" alt="upload successful"><br>文件夹名称（values-zh-rCN）自动生成，最后在该文件夹生成strings.xml即可。项目视图如下：</p>
-<p><img src="/images/pasted-19.png" alt="upload successful"></p>
-<h3 id="自动生成"><a href="#自动生成" class="headerlink" title="自动生成"></a>自动生成</h3><p>打开Translations Editor（双击打开strings.xml，窗口右上角点击Open Editor），点击Add Locale，在下拉菜单中选择相应语言区域，系统会自动生成相应文件夹以及strings.xml文件。</p>
-<p><img src="/images/pasted-20.png" alt="upload successful"></p>
-<p><img src="/images/pasted-21.png" alt="upload successful"></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>ubuntu下使用微信、QQ等</title>
-    <url>/2021/03/18/new/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ubuntu下使用微信，网页版的登录不了，只能考虑客户端了。考虑了下，还是在docker里，无论怎么折腾，也不会污染系统。</p>
-<a id="more"></a>
-<p>网上教程多如牛毛，但不是坑，就是坑，找了个自己能用的，记录下备用<br>1、安装docker docker-compose，网上教程一大把，自己搜<br>2、执行如下命令<br>首先要允许所有用户访问X11服务,运行:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xhost +</span><br></pre></td></tr></table></figure>
-<p>拉取镜像（注意docker设置国内镜像地址，用科大的就行）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull bestwu&#x2F;wechat</span><br></pre></td></tr></table></figure>
-<p>在你指定的文件夹下创建 docker-compose.yml</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">version: &#39;2&#39;</span><br><span class="line">services:</span><br><span class="line">  wechat:</span><br><span class="line">    image: bestwu&#x2F;wechat</span><br><span class="line">    container_name: wechat</span><br><span class="line">    devices:</span><br><span class="line">      - &#x2F;dev&#x2F;snd</span><br><span class="line">    volumes:</span><br><span class="line">      - &#x2F;tmp&#x2F;.X11-unix:&#x2F;tmp&#x2F;.X11-unix</span><br><span class="line">      - $PWD&#x2F;WeChatFiles:&#x2F;WeChatFiles</span><br><span class="line">    environment:</span><br><span class="line">      - DISPLAY&#x3D;unix$DISPLAY</span><br><span class="line">      - QT_IM_MODULE&#x3D;fcitx</span><br><span class="line">      - XMODIFIERS&#x3D;@im&#x3D;fcitx</span><br><span class="line">      - GTK_IM_MODULE&#x3D;fcitx</span><br><span class="line">      - AUDIO_GID&#x3D;26 # 可选 默认63（在终端用getent group video | cut -d: -f3查） 主机audio gid 解决声音设备访问权限问题</span><br><span class="line">      - GID&#x3D;1000 # 可选 默认1000 主机当前用户 gid 解决挂载目录访问权限问题</span><br><span class="line">      - UID&#x3D;1000 # 可选 默认1000 主机当前用户 uid 解决挂载目录访问权限问题</span><br><span class="line">    ipc: host</span><br></pre></td></tr></table></figure>
-<p>启动</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
-<p>停止</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose stop</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>linux</category>
-        <category>ubuntu</category>
-      </categories>
-      <tags>
-        <tag>wechat</tag>
+        <tag>spring</tag>
       </tags>
   </entry>
   <entry>
@@ -1773,21 +1802,18 @@
 ]]></content>
   </entry>
   <entry>
-    <title>spring 线程安全</title>
-    <url>/2020/03/09/pring-%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/</url>
-    <content><![CDATA[<p>转载：<a href="https://www.cnblogs.com/kismetv/p/8757260.html" target="_blank" rel="noopener"><strong>Spring中获取request的几种方法，及其线程安全性分析</strong></a>、**<a href="https://www.jianshu.com/p/e04491f3550f" target="_blank" rel="noopener">Spring 如何保证线程安全
-</a><strong>、</strong><a href="https://blog.csdn.net/cs408/article/details/48972653" target="_blank" rel="noopener">Spring中Singleton模式的线程安全
+    <title>《Spring设计思想》AOP设计基本原理</title>
+    <url>/2020/03/11/pring%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3%E3%80%8BAOP%E8%AE%BE%E8%AE%A1%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/</url>
+    <content><![CDATA[<p>转载：**<a href="https://blog.csdn.net/luanlouis/article/details/51095702" target="_blank" rel="noopener">《Spring设计思想》AOP设计基本原理
+</a><strong>、</strong><a href="https://blog.csdn.net/luanlouis/article/details/51155821" target="_blank" rel="noopener">《Spring设计思想》AOP实现原理（基于JDK和基于CGLIB）
 </a>**</p>
-<h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><p>&amp;emsp;每启动一个线程，JVM都会为它分配一个Java栈，用于存放方法中的局部变量，操作</p>
-<a id="more"></a>
-<p>数以及异常数据等。当线程调用某个方法时，JVM会根据方法区中该方法的字节码组建一个栈帧。并将该栈帧压入Java栈中，方法执行完毕时，JVM会弹出该栈帧并释放掉。</p>
-<p>&amp;emsp;注意：Java栈中的数据是线程私有的，一个线程是无法访问另一个线程的Java栈的数据。这也就是为什么多线程编程时，两个相同线程执行同一方法时，对方法内的局部变量是不需要数据同步的原因。</p>
 ]]></content>
       <categories>
         <category>java</category>
       </categories>
       <tags>
         <tag>spring</tag>
+        <tag>aop</tag>
       </tags>
   </entry>
   <entry>
@@ -1852,6 +1878,86 @@
       </tags>
   </entry>
   <entry>
+    <title>Rust是基于表达式的语言</title>
+    <url>/2022/03/16/rust-%E8%AF%AD%E5%8F%A5%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
+    <content><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch1/01_expression.html" target="_blank" rel="noopener">Rust是基于表达式的语言</a></p>
+<a id="more"></a>
+
+<p>除了在表达式尾部加分号的代码是语句之外，还有另外一种情况的代码是语句而非表达式：<strong>用于声明或定义</strong>。例如let声明变量、fn定义函数、struct声明结构体等。</p>
+<p>Rust很多地方都会结合表达式和语句来做变量赋值。例如，if结构也是一个表达式，所以它有返回值，可以将if的返回值赋值给变量，而<strong>它的返回值来自于它的大括号</strong>：当大括号最后执行的一条代码不加分号结尾时，该代码的计算结果就是if结构的返回值。</p>
+<p>————————————————《rust入门秘籍》</p>
+]]></content>
+      <tags>
+        <tag>rust</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>shell脚本检查nginx服务状态</title>
+    <url>/2021/04/08/shell%E8%84%9A%E6%9C%AC%E6%A3%80%E6%9F%A5nginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A&#x3D;&#96;ps -C nginx --no-header |wc -l&#96;</span><br><span class="line">if [ $A -eq 0 ];then</span><br><span class="line">    service nginx start</span><br><span class="line">    sleep 2</span><br><span class="line">    if [ &#96;ps -C nginx --no-header |wc -l&#96; -eq 0 ];then</span><br><span class="line">        killall keepalived</span><br><span class="line">    fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<h3 id="脚本解析"><a href="#脚本解析" class="headerlink" title="脚本解析"></a>脚本解析</h3><p>以上是通过进程判断，也可以通过端口判断，如netstat -nlpt | grep nginx</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# netstat -nlpt | grep nginx</span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      8801&#x2F;nginx: master</span><br></pre></td></tr></table></figure>
+
+<p>以下，以进程为例详解，ps -C nginx –no-header<br>这里涉及ps 的用法，我们一般用ps查看相关进程，一般都是用ps -ef | grep XX 或 ps -aux| grep XX 的模式<br>如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br><span class="line">root     11660  5532  0 09:55 pts&#x2F;1    00:00:00 grep --color&#x3D;auto nginx</span><br></pre></td></tr></table></figure>
+<p>但是这样通常都会覆盖一个grep的进程。</p>
+<p>我们可以用ps -ef|grep nginx|grep -v grep的方式排除grep的进程，如</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# ps -ef|grep nginx|grep -v grep</span><br><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br></pre></td></tr></table></figure>
+
+<p>也可以直接用ps -C 或ps -c 的方式， -C 后面接命令的名字（推荐） ，如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx</span><br><span class="line">   PID TTY          TIME CMD</span><br><span class="line">  8801 ?        00:00:00 nginx</span><br><span class="line">  8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
+<p>–no-header 就是去挑title,如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx --no-header</span><br><span class="line"> 8801 ?        00:00:00 nginx</span><br><span class="line"> 8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
+<p>wc -l 这个很熟悉了，行数计算</p>
+<p>所以用这种方式可判断，如果<br>ps -C nginx –no-header|wc -l</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">值为0，即代表服务未启动</span><br><span class="line">值为非0，即代表服务已启动</span><br></pre></td></tr></table></figure>
+<p>最后，killall keepalived 这个是以服务名称杀死进程，日常中也用的挺多的</p>
+<p>上面那段完整的脚本意思即为：<br>判断nginx 服务是否启动<br>如果未启动，执行启动命令<br>再次判断，如果启动失败，关掉keepalived，进入从节点</p>
+]]></content>
+      <categories>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>shell脚本监测nginx服务状态</title>
+    <url>/1970/01/01/shell%E8%84%9A%E6%9C%AC%E7%9B%91%E6%B5%8Bnginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A&#x3D;&#96;ps -C nginx --no-header |wc -l&#96;</span><br><span class="line">if [ $A -eq 0 ];then</span><br><span class="line">    service nginx start</span><br><span class="line">    sleep 2</span><br><span class="line">    if [ &#96;ps -C nginx --no-header |wc -l&#96; -eq 0 ];then</span><br><span class="line">        killall keepalived</span><br><span class="line">    fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<h3 id="脚本解析"><a href="#脚本解析" class="headerlink" title="脚本解析"></a>脚本解析</h3><p>以上是通过进程判断，也可以通过端口判断，如netstat -nlpt | grep nginx</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# netstat -nlpt | grep nginx</span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      8801&#x2F;nginx: master</span><br></pre></td></tr></table></figure>
+
+<p>以下，以进程为例详解，ps -C nginx –no-header<br>这里涉及ps 的用法，我们一般用ps查看相关进程，一般都是用ps -ef | grep XX 或 ps -aux| grep XX 的模式<br>如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br><span class="line">root     11660  5532  0 09:55 pts&#x2F;1    00:00:00 grep --color&#x3D;auto nginx</span><br></pre></td></tr></table></figure>
+<p>但是这样通常都会覆盖一个grep的进程。</p>
+<p>我们可以用ps -ef|grep nginx|grep -v grep的方式排除grep的进程，如</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# ps -ef|grep nginx|grep -v grep</span><br><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br></pre></td></tr></table></figure>
+
+<p>也可以直接用ps -C 或ps -c 的方式， -C 后面接命令的名字（推荐） ，如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx</span><br><span class="line">   PID TTY          TIME CMD</span><br><span class="line">  8801 ?        00:00:00 nginx</span><br><span class="line">  8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
+<p>–no-header 就是去挑title,如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx --no-header</span><br><span class="line"> 8801 ?        00:00:00 nginx</span><br><span class="line"> 8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
+<p>wc -l 这个很熟悉了，行数计算</p>
+<p>所以用这种方式可判断，如果<br>ps -C nginx –no-header|wc -l</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">值为0，即代表服务未启动</span><br><span class="line">值为非0，即代表服务已启动</span><br></pre></td></tr></table></figure>
+<p>最后，killall keepalived 这个是以服务名称杀死进程，日常中也用的挺多的</p>
+<p>上面那段完整的脚本意思即为：<br>判断nginx 服务是否启动<br>如果未启动，执行启动命令<br>再次判断，如果启动失败，关掉keepalived，进入从节点</p>
+]]></content>
+      <categories>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>rust --堆栈(内存)</title>
     <url>/2022/02/08/rust-%E7%9A%84%E5%A0%86%E6%A0%88-%E5%BC%95%E7%94%A8/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>类型的值默认都分布在栈中(即便是动态类型的数据，但也通过胖指针改变了该类型的值的表现形式)，所以<strong>创建某个变量的引用时，引用的是栈中的那个值</strong>.   </p>
@@ -1900,21 +2006,6 @@
       </categories>
       <tags>
         <tag>引用</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>《Spring设计思想》AOP设计基本原理</title>
-    <url>/2020/03/11/pring%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3%E3%80%8BAOP%E8%AE%BE%E8%AE%A1%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/</url>
-    <content><![CDATA[<p>转载：**<a href="https://blog.csdn.net/luanlouis/article/details/51095702" target="_blank" rel="noopener">《Spring设计思想》AOP设计基本原理
-</a><strong>、</strong><a href="https://blog.csdn.net/luanlouis/article/details/51155821" target="_blank" rel="noopener">《Spring设计思想》AOP实现原理（基于JDK和基于CGLIB）
-</a>**</p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>spring</tag>
-        <tag>aop</tag>
       </tags>
   </entry>
   <entry>
@@ -1973,60 +2064,6 @@
       </tags>
   </entry>
   <entry>
-    <title>shell脚本检查nginx服务状态</title>
-    <url>/2021/04/08/shell%E8%84%9A%E6%9C%AC%E6%A3%80%E6%9F%A5nginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A&#x3D;&#96;ps -C nginx --no-header |wc -l&#96;</span><br><span class="line">if [ $A -eq 0 ];then</span><br><span class="line">    service nginx start</span><br><span class="line">    sleep 2</span><br><span class="line">    if [ &#96;ps -C nginx --no-header |wc -l&#96; -eq 0 ];then</span><br><span class="line">        killall keepalived</span><br><span class="line">    fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-
-<h3 id="脚本解析"><a href="#脚本解析" class="headerlink" title="脚本解析"></a>脚本解析</h3><p>以上是通过进程判断，也可以通过端口判断，如netstat -nlpt | grep nginx</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# netstat -nlpt | grep nginx</span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      8801&#x2F;nginx: master</span><br></pre></td></tr></table></figure>
-
-<p>以下，以进程为例详解，ps -C nginx –no-header<br>这里涉及ps 的用法，我们一般用ps查看相关进程，一般都是用ps -ef | grep XX 或 ps -aux| grep XX 的模式<br>如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br><span class="line">root     11660  5532  0 09:55 pts&#x2F;1    00:00:00 grep --color&#x3D;auto nginx</span><br></pre></td></tr></table></figure>
-<p>但是这样通常都会覆盖一个grep的进程。</p>
-<p>我们可以用ps -ef|grep nginx|grep -v grep的方式排除grep的进程，如</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# ps -ef|grep nginx|grep -v grep</span><br><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br></pre></td></tr></table></figure>
-
-<p>也可以直接用ps -C 或ps -c 的方式， -C 后面接命令的名字（推荐） ，如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx</span><br><span class="line">   PID TTY          TIME CMD</span><br><span class="line">  8801 ?        00:00:00 nginx</span><br><span class="line">  8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
-<p>–no-header 就是去挑title,如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx --no-header</span><br><span class="line"> 8801 ?        00:00:00 nginx</span><br><span class="line"> 8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
-<p>wc -l 这个很熟悉了，行数计算</p>
-<p>所以用这种方式可判断，如果<br>ps -C nginx –no-header|wc -l</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">值为0，即代表服务未启动</span><br><span class="line">值为非0，即代表服务已启动</span><br></pre></td></tr></table></figure>
-<p>最后，killall keepalived 这个是以服务名称杀死进程，日常中也用的挺多的</p>
-<p>上面那段完整的脚本意思即为：<br>判断nginx 服务是否启动<br>如果未启动，执行启动命令<br>再次判断，如果启动失败，关掉keepalived，进入从节点</p>
-]]></content>
-      <categories>
-        <category>shell</category>
-      </categories>
-      <tags>
-        <tag>shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Rust是基于表达式的语言</title>
-    <url>/2022/03/16/rust-%E8%AF%AD%E5%8F%A5%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
-    <content><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch1/01_expression.html" target="_blank" rel="noopener">Rust是基于表达式的语言</a></p>
-<a id="more"></a>
-
-<p>除了在表达式尾部加分号的代码是语句之外，还有另外一种情况的代码是语句而非表达式：<strong>用于声明或定义</strong>。例如let声明变量、fn定义函数、struct声明结构体等。</p>
-<p>Rust很多地方都会结合表达式和语句来做变量赋值。例如，if结构也是一个表达式，所以它有返回值，可以将if的返回值赋值给变量，而<strong>它的返回值来自于它的大括号</strong>：当大括号最后执行的一条代码不加分号结尾时，该代码的计算结果就是if结构的返回值。</p>
-<p>————————————————《rust入门秘籍》</p>
-]]></content>
-      <tags>
-        <tag>rust</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java动态代理机制详解（JDK 和CGLIB，Javassist，ASM）</title>
-    <url>/2020/03/11/spring-struts2-action%E5%8D%95%E4%BE%8B%E8%BF%98%E6%98%AF%E5%A4%9A%E4%BE%8B/</url>
-    <content><![CDATA[<p>转载：**<a href="https://blog.csdn.net/luanlouis/article/details/24589193" target="_blank" rel="noopener">Java动态代理机制详解（JDK 和CGLIB，Javassist，ASM）
-</a>**</p>
-]]></content>
-  </entry>
-  <entry>
     <title>spring security 处理filter chain抛出的异常</title>
     <url>/2021/12/15/spring-security-%E5%A4%84%E7%90%86filter-chain%E6%8A%9B%E5%87%BA%E7%9A%84%E5%BC%82%E5%B8%B8/</url>
     <content><![CDATA[<p>springboot异常处理默认会redirect &#x2F;error,但前后分离后, 异常处理就要返回json<br>异常一种是controller抛出的异常, 可以通过@RestControllerAdvice @ExceptionHandler全局处理,<br>另一种是spring security filter chain 抛出的异常,由于在@RestControllerAdvice之前,所以需要其它方式处理.<br>1: 自定义MyErrorController ,overriding default Spring Boot &#x2F;error handler<br>2:在filter chain里第一的位置新增自定义filter,处理后面没有处理掉的异常.</p>
@@ -2038,37 +2075,11 @@
       </tags>
   </entry>
   <entry>
-    <title>shell脚本监测nginx服务状态</title>
-    <url>/1970/01/01/shell%E8%84%9A%E6%9C%AC%E7%9B%91%E6%B5%8Bnginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A&#x3D;&#96;ps -C nginx --no-header |wc -l&#96;</span><br><span class="line">if [ $A -eq 0 ];then</span><br><span class="line">    service nginx start</span><br><span class="line">    sleep 2</span><br><span class="line">    if [ &#96;ps -C nginx --no-header |wc -l&#96; -eq 0 ];then</span><br><span class="line">        killall keepalived</span><br><span class="line">    fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-
-<h3 id="脚本解析"><a href="#脚本解析" class="headerlink" title="脚本解析"></a>脚本解析</h3><p>以上是通过进程判断，也可以通过端口判断，如netstat -nlpt | grep nginx</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# netstat -nlpt | grep nginx</span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      8801&#x2F;nginx: master</span><br></pre></td></tr></table></figure>
-
-<p>以下，以进程为例详解，ps -C nginx –no-header<br>这里涉及ps 的用法，我们一般用ps查看相关进程，一般都是用ps -ef | grep XX 或 ps -aux| grep XX 的模式<br>如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br><span class="line">root     11660  5532  0 09:55 pts&#x2F;1    00:00:00 grep --color&#x3D;auto nginx</span><br></pre></td></tr></table></figure>
-<p>但是这样通常都会覆盖一个grep的进程。</p>
-<p>我们可以用ps -ef|grep nginx|grep -v grep的方式排除grep的进程，如</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# ps -ef|grep nginx|grep -v grep</span><br><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br></pre></td></tr></table></figure>
-
-<p>也可以直接用ps -C 或ps -c 的方式， -C 后面接命令的名字（推荐） ，如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx</span><br><span class="line">   PID TTY          TIME CMD</span><br><span class="line">  8801 ?        00:00:00 nginx</span><br><span class="line">  8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
-<p>–no-header 就是去挑title,如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx --no-header</span><br><span class="line"> 8801 ?        00:00:00 nginx</span><br><span class="line"> 8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
-<p>wc -l 这个很熟悉了，行数计算</p>
-<p>所以用这种方式可判断，如果<br>ps -C nginx –no-header|wc -l</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">值为0，即代表服务未启动</span><br><span class="line">值为非0，即代表服务已启动</span><br></pre></td></tr></table></figure>
-<p>最后，killall keepalived 这个是以服务名称杀死进程，日常中也用的挺多的</p>
-<p>上面那段完整的脚本意思即为：<br>判断nginx 服务是否启动<br>如果未启动，执行启动命令<br>再次判断，如果启动失败，关掉keepalived，进入从节点</p>
+    <title>Java动态代理机制详解（JDK 和CGLIB，Javassist，ASM）</title>
+    <url>/2020/03/11/spring-struts2-action%E5%8D%95%E4%BE%8B%E8%BF%98%E6%98%AF%E5%A4%9A%E4%BE%8B/</url>
+    <content><![CDATA[<p>转载：**<a href="https://blog.csdn.net/luanlouis/article/details/24589193" target="_blank" rel="noopener">Java动态代理机制详解（JDK 和CGLIB，Javassist，ASM）
+</a>**</p>
 ]]></content>
-      <categories>
-        <category>shell</category>
-      </categories>
-      <tags>
-        <tag>shell</tag>
-      </tags>
   </entry>
   <entry>
     <title>ssh 密码登录脚本</title>
@@ -2126,7 +2137,8 @@
     <url>/2022/03/25/tmux-%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p>只能说 tmux太香了…</p>
 <a id="more"></a>
-
+<h3 id="vim配色在tmux中异常"><a href="#vim配色在tmux中异常" class="headerlink" title="vim配色在tmux中异常"></a>vim配色在tmux中异常</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim ~&#x2F;.tmux.conf</span><br><span class="line">set -g default-terminal &quot;xterm-256color&quot;</span><br><span class="line">source  ~&#x2F;.tmux.conf</span><br></pre></td></tr></table></figure>
+<p>ps：退出tmux再设置…</p>
 <h3 id="常用命令："><a href="#常用命令：" class="headerlink" title="常用命令："></a>常用命令：</h3><ul>
 <li>tmux：新建一个session和一个window</li>
 <li>tmux a：打开挂起的session</li>
@@ -2151,28 +2163,6 @@
 </ul>
 <p><a href="https://developer.aliyun.com/article/789729" target="_blank" rel="noopener">tmux简介</a>、<br><a href="http://www.ruanyifeng.com/blog/2019/10/tmux.html" target="_blank" rel="noopener">Tmux 使用教程</a>、<br><a href="https://developer.aliyun.com/article/789729" target="_blank" rel="noopener">Tmux 修改前缀快捷键</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>ubuntu 开机自动挂载其他盘</title>
-    <url>/1970/01/01/ubuntu-%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E5%85%B6%E4%BB%96%E7%9B%98/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>双系统，ubuntu和win10装在同一个固态盘，还有另外一个机械盘，平时放些资料啥的，设置给ubuntu开机自动挂载另一个机械盘。</p>
-<a id="more"></a>
-
-<p>1、查询挂载硬盘UUID</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo blkid &#x2F;dev&#x2F;sda2</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/pasted-32.png" alt="upload successful"><br>Secert和WorkSpace盘信息如上，下面用到两个盘的UUID。</p>
-<p>2、打开文件&#x2F;etc&#x2F;fstab文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;fstab</span><br></pre></td></tr></table></figure>
-<p>在文档末尾添加相应磁盘的信息。格式为：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[UUID&#x3D;************] [挂载磁盘分区]  [挂载磁盘格式]  0  2</span><br><span class="line"></span><br><span class="line">UUID&#x3D;4D55CFC14D016D60 &#x2F;mnt&#x2F;workspace ntfs defaults  0  2</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/pasted-33.png" alt="upload successful"><br>第一个数字：0表示开机不检查磁盘，1表示开机检查磁盘；<br>第二个数字：0表示交换分区，1代表启动分区（Linux），2表示普通分区</p>
-<p>3、重启生效</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
   </entry>
   <entry>
     <title>ubuntu 开机启动管理</title>
@@ -2214,6 +2204,16 @@
       </tags>
   </entry>
   <entry>
+    <title>Ubuntu20.04 标题栏实时显示上下行网速、CPU及内存使用率</title>
+    <url>/1970/01/01/ubuntu-%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E5%85%B6%E4%BB%96%E7%9B%98/</url>
+    <content><![CDATA[<p><a href="https://www.tuziang.com/combat/1106.html" target="_blank" rel="noopener">Ubuntu18.04安装indicator-sysmonitor显示CPU、网速</a></p>
+]]></content>
+      <categories>
+        <category>linux</category>
+        <category>ubuntu</category>
+      </categories>
+  </entry>
+  <entry>
     <title>ubuntu 打开win10 txt中文乱码</title>
     <url>/2021/03/19/ubuntu-%E6%89%93%E5%BC%80win10-txt%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>双系统，ubuntu打开win10的文本文件，中文乱码，明显是编码问题，记录之。</p>
@@ -2225,6 +2225,28 @@
       <categories>
         <category>linux</category>
         <category>ubuntu</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>ubuntu 开机自动挂载其他盘</title>
+    <url>/1970/01/01/ubuntu-%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E5%85%B6%E4%BB%96%E7%9B%98/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>双系统，ubuntu和win10装在同一个固态盘，还有另外一个机械盘，平时放些资料啥的，设置给ubuntu开机自动挂载另一个机械盘。</p>
+<a id="more"></a>
+
+<p>1、查询挂载硬盘UUID</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo blkid &#x2F;dev&#x2F;sda2</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-32.png" alt="upload successful"><br>Secert和WorkSpace盘信息如上，下面用到两个盘的UUID。</p>
+<p>2、打开文件&#x2F;etc&#x2F;fstab文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;fstab</span><br></pre></td></tr></table></figure>
+<p>在文档末尾添加相应磁盘的信息。格式为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[UUID&#x3D;************] [挂载磁盘分区]  [挂载磁盘格式]  0  2</span><br><span class="line"></span><br><span class="line">UUID&#x3D;4D55CFC14D016D60 &#x2F;mnt&#x2F;workspace ntfs defaults  0  2</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-33.png" alt="upload successful"><br>第一个数字：0表示开机不检查磁盘，1表示开机检查磁盘；<br>第二个数字：0表示交换分区，1代表启动分区（Linux），2表示普通分区</p>
+<p>3、重启生效</p>
+]]></content>
+      <categories>
+        <category>linux</category>
       </categories>
   </entry>
   <entry>
@@ -2285,35 +2307,6 @@
         <category>linux</category>
         <category>ubuntu</category>
       </categories>
-  </entry>
-  <entry>
-    <title>ubuntu 自动挂载其他盘</title>
-    <url>/1970/01/01/ubuntu-%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E5%85%B6%E4%BB%96%E7%9B%98/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>双系统，ubuntu和win10装在同一个固态盘，还有另外一个机械盘，平时放些资料啥的，设置给ubuntu开机自动挂载另一个机械盘。</p>
-<a id="more"></a>
-
-<p>1、查询挂载硬盘UUID</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo blkid &#x2F;dev&#x2F;sda2</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/pasted-32.png" alt="upload successful"><br>Secert和WorkSpace盘信息如上，下面用到两个盘的UUID。</p>
-<p>2、打开文件&#x2F;etc&#x2F;fstab文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;fstab</span><br></pre></td></tr></table></figure>
-<p>在文档末尾添加相应磁盘的信息。格式为：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[UUID&#x3D;************] [挂载磁盘分区]  [挂载磁盘格式]  0  2</span><br><span class="line"></span><br><span class="line">UUID&#x3D;4D55CFC14D016D60 &#x2F;mnt&#x2F;workspace ntfs defaults  0  2</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/pasted-33.png" alt="upload successful"><br>第一个数字：0表示开机不检查磁盘，1表示开机检查磁盘；<br>第二个数字：0表示交换分区，1代表启动分区（Linux），2表示普通分区</p>
-<p>3、重启生效</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-        <category>ubuntu</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>java类加载</title>
-    <url>/2020/03/03/va-class/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这里贴一个介绍类加载的介绍链接：<a href="https://juejin.im/post/5dac4edff265da5b5f7588d1#heading-0" target="_blank" rel="noopener">java 的类加载</a></p>
-]]></content>
   </entry>
   <entry>
     <title>vim常用命令、快捷键</title>
@@ -2758,6 +2751,12 @@
       </tags>
   </entry>
   <entry>
+    <title>java类加载</title>
+    <url>/2020/03/03/va-class/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这里贴一个介绍类加载的介绍链接：<a href="https://juejin.im/post/5dac4edff265da5b5f7588d1#heading-0" target="_blank" rel="noopener">java 的类加载</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Ubuntu中vim的粘帖复制</title>
     <url>/2021/03/17/vim-%E7%B2%98%E5%B8%96%E5%A4%8D%E5%88%B6%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>想要从浏览器中把Ctrl+c的内容复制到Vim中，要搞懂Ubuntu18中vim的复制粘帖原理及使用。</p>
@@ -2772,10 +2771,17 @@
 <p>如果从浏览器Ctrl+c后，要粘贴到vim中，则需要执行</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&quot;+p</span><br></pre></td></tr></table></figure>
 
-<h3 id="系统剪切板及使用"><a href="#系统剪切板及使用" class="headerlink" title="系统剪切板及使用"></a>系统剪切板及使用</h3><h4 id="查看-Vim-是否支持系统剪切板"><a href="#查看-Vim-是否支持系统剪切板" class="headerlink" title="查看 Vim 是否支持系统剪切板"></a>查看 Vim 是否支持系统剪切板</h4><p>刚重装了系统，命令按了半天，跑到其他地方Ctrl+v，什么也没有，原来是系统剪切板不支持的锅。<br>在终端输入 <em>vim –version | grep clipboard</em>回车：<br><img src="/images/pasted-28.png" alt="upload successful"><br>如果 clipboard 前面都是 - 号，说目前还不支持系统剪切板功能，请继续看下一节，如果都是 + 号，略过此节。</p>
-<h4 id="开启系统剪切板功能"><a href="#开启系统剪切板功能" class="headerlink" title="开启系统剪切板功能"></a>开启系统剪切板功能</h4><p>开启系统剪切板功能的方法也有很多，比较正统的应该是重新编译安装 Vim 源码，因为我怕麻烦（水平渣），所以选择简单的方法，即安装 vim-gnome。<br>一行指令即可搞定，在终端输入 <em>sudo apt install vim-gnome -y</em>回车。<br>此时再次使用上述的两个方法验证，发现 Vim 已经支持系统剪切板功能。</p>
+<h3 id="系统剪切板及使用"><a href="#系统剪切板及使用" class="headerlink" title="系统剪切板及使用"></a>系统剪切板及使用</h3><h4 id="查看-Vim-是否支持系统剪切板"><a href="#查看-Vim-是否支持系统剪切板" class="headerlink" title="查看 Vim 是否支持系统剪切板"></a>查看 Vim 是否支持系统剪切板</h4><p>刚重装了系统，命令按了半天，跑到其他地方Ctrl+v，什么也没有，原来是系统剪切板不支持的锅。<br>在终端输入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim --version | grep clipboard</span><br></pre></td></tr></table></figure>
+<p><img src="/images/pasted-28.png" alt="upload successful"><br>如果 clipboard 前面都是 - 号，说目前还不支持系统剪切板功能，请继续看下一节，如果都是 + 号，略过此节。</p>
+<h4 id="开启系统剪切板功能"><a href="#开启系统剪切板功能" class="headerlink" title="开启系统剪切板功能"></a>开启系统剪切板功能</h4><p>开启系统剪切板功能的方法也有很多，比较正统的应该是重新编译安装 Vim 源码，因为我怕麻烦（水平渣），所以选择简单的方法，即安装 vim-gnome。<br>一行指令即可搞定，在终端输入 </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt install vim-gnome -y</span><br></pre></td></tr></table></figure>
+<p>ps:后续重装系统，20.04提示“Package ‘vim-gnome’ has no installation candidate”，采用另一个插件：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get install vim-gtk</span><br></pre></td></tr></table></figure>
+<p>此时再次使用上述的两个方法验证，发现 Vim 已经支持系统剪切板功能。</p>
 <h3 id="vim内部复制、粘贴、剪切"><a href="#vim内部复制、粘贴、剪切" class="headerlink" title="vim内部复制、粘贴、剪切"></a>vim内部复制、粘贴、剪切</h3><h4 id="选择文本"><a href="#选择文本" class="headerlink" title="选择文本"></a>选择文本</h4><p>在正常模式下（按ESC进入）按键v进入可视化模式，然后按键盘左右键或h,l键即可实现文本的选择。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">v+光标移动 （按字符选择）高亮选中所要的文本，然后进行各种操作（比如粘帖到系统剪切板“+y）。</span><br><span class="line">V （按行选择）</span><br><span class="line">v+选中的内容+c 更改选中的文字</span><br></pre></td></tr></table></figure>
+
 <h4 id="复制：y-ank"><a href="#复制：y-ank" class="headerlink" title="复制：y(ank)"></a>复制：y(ank)</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">y 用v命令选中文本后，用y进行复制</span><br><span class="line">yy 复制当前行，然后用p进行粘贴</span><br><span class="line">5yy 复制从当前行开始的5行</span><br><span class="line">y_ 等同于yy</span><br><span class="line">Y 等同于yy</span><br><span class="line">yw 复制当前单词</span><br><span class="line">y$ 从当前位置复制到行尾</span><br><span class="line">y0 从当前位置复制到行首</span><br><span class="line">y^ 从当前位置复制到第一个非空白字符</span><br><span class="line">yG 从当前行复制到文件结束</span><br><span class="line">y20G 从当前行复制到第20行</span><br><span class="line">y?bar 复制至上一个出现bar的位置</span><br></pre></td></tr></table></figure>
 <h4 id="粘贴：p-aste"><a href="#粘贴：p-aste" class="headerlink" title="粘贴：p(aste)"></a>粘贴：p(aste)</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">p(小写) 在光标位置之后粘贴</span><br><span class="line">P(大写) 在光标位置之前粘贴</span><br></pre></td></tr></table></figure>
 <h4 id="剪切"><a href="#剪切" class="headerlink" title="剪切"></a>剪切</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">v + 方向键(hjkl)选中内容 + d 剪切 + p粘贴</span><br></pre></td></tr></table></figure>
@@ -2789,17 +2795,6 @@
       </categories>
       <tags>
         <tag>vim</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>vue cli 前端跨域设置</title>
-    <url>/2021/11/27/vue-cli-%E5%89%8D%E7%AB%AF%E8%B7%A8%E5%9F%9F%E8%AE%BE%E7%BD%AE/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>前后分离的前端开发时,一般都缺少后端的支持,开发阶段可以用mock模拟后端的返回请求, 但后续总要访问后端联调, 此时就涉及到前端的跨越了(只有开发阶段,部署的时候统一部署). 本质上就是在前端开一个代理服务,服务器访问服务器就没有浏览器访问后端的跨域限制了.</p>
-<a id="more"></a>
-<p><strong><a href="https://blog.csdn.net/qq_34450741/article/details/107444815?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-2.no_search_link&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-2.no_search_link" target="_blank" rel="noopener">[vue] vue cli 4.0+ 解决前端跨域问题</a></strong> &amp;nbsp;&amp;nbsp;<strong><a href="https://blog.csdn.net/weixin_39553363/article/details/104152142" target="_blank" rel="noopener">图解vue3.0&#x2F;vueCli4解决跨域问题</a></strong></p>
-]]></content>
-      <tags>
-        <tag>跨域</tag>
       </tags>
   </entry>
   <entry>
@@ -2819,6 +2814,17 @@
       </tags>
   </entry>
   <entry>
+    <title>vue cli 前端跨域设置</title>
+    <url>/2021/11/27/vue-cli-%E5%89%8D%E7%AB%AF%E8%B7%A8%E5%9F%9F%E8%AE%BE%E7%BD%AE/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>前后分离的前端开发时,一般都缺少后端的支持,开发阶段可以用mock模拟后端的返回请求, 但后续总要访问后端联调, 此时就涉及到前端的跨越了(只有开发阶段,部署的时候统一部署). 本质上就是在前端开一个代理服务,服务器访问服务器就没有浏览器访问后端的跨域限制了.</p>
+<a id="more"></a>
+<p><strong><a href="https://blog.csdn.net/qq_34450741/article/details/107444815?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-2.no_search_link&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-2.no_search_link" target="_blank" rel="noopener">[vue] vue cli 4.0+ 解决前端跨域问题</a></strong> &amp;nbsp;&amp;nbsp;<strong><a href="https://blog.csdn.net/weixin_39553363/article/details/104152142" target="_blank" rel="noopener">图解vue3.0&#x2F;vueCli4解决跨域问题</a></strong></p>
+]]></content>
+      <tags>
+        <tag>跨域</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>vue nginx 压缩</title>
     <url>/2022/02/10/vue-nginx-%E5%8E%8B%E7%BC%A9/</url>
     <content><![CDATA[<p><strong><a href="https://blog.csdn.net/qq_43363884/article/details/108195408" target="_blank" rel="noopener">vue打包时gzip压缩的两种方案</a></strong>  ,   &amp;nbsp;&amp;nbsp;<strong><a href="https://blog.csdn.net/github_38924695/article/details/108773173" target="_blank" rel="noopener">nginx中配置gzip_static on</a></strong></p>
@@ -2833,35 +2839,6 @@
     <url>/2020/06/07/websocket-Token-Authentication/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>链接：<a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#websocket-stomp-authentication" target="_blank" rel="noopener">STOMP–Token Authentication</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>websocket data transfer</title>
-    <url>/1970/01/01/websocket-data-transfer/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>websocket message type： text or binary byte. And for binary data, we can choose between Blob and ArrayBuffer formats.</p>
-<a id="more"></a>
-<h3 id="Receiving-Text-and-Binary-Data"><a href="#Receiving-Text-and-Binary-Data" class="headerlink" title="Receiving Text and Binary Data"></a>Receiving Text and Binary Data</h3><p><strong>参考：<a href="https://www.oreilly.com/library/view/high-performance-browser/9781449344757/ch17.html" target="_blank" rel="noopener">websocket receiving Text and Binary Data</a></strong></p>
-<p>WebSocket communication consists of messages and application code and does not need to worry about buffering, parsing, and reconstructing received data. For example, if the server sends a 1 MB payload, the application’s onmessage callback will be called only when the entire message is available on the client.</p>
-<p>Further, the WebSocket protocol makes no assumptions and places no constraints on the application payload: both text and binary data are fair game. Internally, the protocol tracks only two pieces of information about the message: the length of payload as a variable-length field and the type of payload to distinguish UTF-8 from binary transfers.</p>
-<p>When a new message is received by the browser, it is automatically converted to a DOMString object for text-based data, or a Blob object for binary data, and then passed directly to the application. The only other option, which acts as performance hint and optimization for the client, is to tell the browser to convert the received binary data to an ArrayBuffer instead of Blob:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var ws &#x3D; new WebSocket(&#39;wss:&#x2F;&#x2F;example.com&#x2F;socket&#39;);</span><br><span class="line">ws.binaryType &#x3D; &quot;arraybuffer&quot;; 1</span><br><span class="line"></span><br><span class="line">ws.onmessage &#x3D; function(msg) &#123;</span><br><span class="line">  if(msg.data instanceof ArrayBuffer) &#123;</span><br><span class="line">    processArrayBuffer(msg.data);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    processText(msg.data);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Data-transfer"><a href="#Data-transfer" class="headerlink" title="Data transfer"></a>Data transfer</h3><p><strong>参考：<a href="https://javascript.info/websocket#data-transfer" target="_blank" rel="noopener">websocket data transfer</a></strong></p>
-<p>WebSocket communication consists of “frames” – data fragments, that can be sent from either side, and can be of several kinds:</p>
-<ul>
-<li>“text frames” – contain text data that parties send to each other.</li>
-<li>“binary data frames” – contain binary data that parties send to each other.</li>
-<li>“ping&#x2F;pong frames” are used to check the connection, sent from the server, the browser responds to these automatically.</li>
-<li>there’s also “connection close frame” and a few other service frames.<br>In the browser, we directly work only with text or binary frames.</li>
-</ul>
-<p><em>WebSocket .send()</em> method can send either text or binary data.</p>
-<p>A call <em>socket.send(body)</em> allows body in string or a binary format, including Blob, ArrayBuffer, etc. No settings required: just send it out in any format.</p>
-<p>When we receive the data, text always comes as string. And for binary data, we can choose between Blob and ArrayBuffer formats.</p>
-<p>That’s set by <em>socket.binaryType</em> property, it’s “blob” by default, so binary data comes as Blob objects.</p>
-<p>Blob is a high-level binary object, it directly integrates with <a>, <img> and other tags, so that’s a sane default. But for binary processing, to access individual data bytes, we can change it to “arraybuffer”:</a></p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  ws.binaryType &#x3D; &quot;arraybuffer&quot;;</span><br><span class="line">  ws.onmessage &#x3D; (event) &#x3D;&gt; &#123;</span><br><span class="line">  &#x2F;&#x2F; event.data is either a string (if text) or arraybuffer (if binary)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>websocket</category>
-      </categories>
   </entry>
   <entry>
     <title>websocket data transfer </title>
@@ -2896,6 +2873,35 @@
       </tags>
   </entry>
   <entry>
+    <title>websocket data transfer</title>
+    <url>/1970/01/01/websocket-data-transfer/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>websocket message type： text or binary byte. And for binary data, we can choose between Blob and ArrayBuffer formats.</p>
+<a id="more"></a>
+<h3 id="Receiving-Text-and-Binary-Data"><a href="#Receiving-Text-and-Binary-Data" class="headerlink" title="Receiving Text and Binary Data"></a>Receiving Text and Binary Data</h3><p><strong>参考：<a href="https://www.oreilly.com/library/view/high-performance-browser/9781449344757/ch17.html" target="_blank" rel="noopener">websocket receiving Text and Binary Data</a></strong></p>
+<p>WebSocket communication consists of messages and application code and does not need to worry about buffering, parsing, and reconstructing received data. For example, if the server sends a 1 MB payload, the application’s onmessage callback will be called only when the entire message is available on the client.</p>
+<p>Further, the WebSocket protocol makes no assumptions and places no constraints on the application payload: both text and binary data are fair game. Internally, the protocol tracks only two pieces of information about the message: the length of payload as a variable-length field and the type of payload to distinguish UTF-8 from binary transfers.</p>
+<p>When a new message is received by the browser, it is automatically converted to a DOMString object for text-based data, or a Blob object for binary data, and then passed directly to the application. The only other option, which acts as performance hint and optimization for the client, is to tell the browser to convert the received binary data to an ArrayBuffer instead of Blob:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var ws &#x3D; new WebSocket(&#39;wss:&#x2F;&#x2F;example.com&#x2F;socket&#39;);</span><br><span class="line">ws.binaryType &#x3D; &quot;arraybuffer&quot;; 1</span><br><span class="line"></span><br><span class="line">ws.onmessage &#x3D; function(msg) &#123;</span><br><span class="line">  if(msg.data instanceof ArrayBuffer) &#123;</span><br><span class="line">    processArrayBuffer(msg.data);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    processText(msg.data);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Data-transfer"><a href="#Data-transfer" class="headerlink" title="Data transfer"></a>Data transfer</h3><p><strong>参考：<a href="https://javascript.info/websocket#data-transfer" target="_blank" rel="noopener">websocket data transfer</a></strong></p>
+<p>WebSocket communication consists of “frames” – data fragments, that can be sent from either side, and can be of several kinds:</p>
+<ul>
+<li>“text frames” – contain text data that parties send to each other.</li>
+<li>“binary data frames” – contain binary data that parties send to each other.</li>
+<li>“ping&#x2F;pong frames” are used to check the connection, sent from the server, the browser responds to these automatically.</li>
+<li>there’s also “connection close frame” and a few other service frames.<br>In the browser, we directly work only with text or binary frames.</li>
+</ul>
+<p><em>WebSocket .send()</em> method can send either text or binary data.</p>
+<p>A call <em>socket.send(body)</em> allows body in string or a binary format, including Blob, ArrayBuffer, etc. No settings required: just send it out in any format.</p>
+<p>When we receive the data, text always comes as string. And for binary data, we can choose between Blob and ArrayBuffer formats.</p>
+<p>That’s set by <em>socket.binaryType</em> property, it’s “blob” by default, so binary data comes as Blob objects.</p>
+<p>Blob is a high-level binary object, it directly integrates with <a>, <img> and other tags, so that’s a sane default. But for binary processing, to access individual data bytes, we can change it to “arraybuffer”:</a></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  ws.binaryType &#x3D; &quot;arraybuffer&quot;;</span><br><span class="line">  ws.onmessage &#x3D; (event) &#x3D;&gt; &#123;</span><br><span class="line">  &#x2F;&#x2F; event.data is either a string (if text) or arraybuffer (if binary)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>websocket</category>
+      </categories>
+  </entry>
+  <entry>
     <title>RxJava --学习链接</title>
     <url>/2020/02/18/xJava/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Rx（Reactive Extensions）是一个使用<code>可观察数据流</code>进行<code>异步编程</code>的编程接口，ReactiveX结合了<code>观察者模式</code>、<code>迭代器模式</code>和<code>函数式编程</code>的精华。Rx的语言库比较流行的有RxJava&#x2F;RxJS&#x2F;Rx.NET，这里贴一些有关RxJava的链接，以便后续查找。</p>
@@ -2920,6 +2926,15 @@
     <url>/2021/02/04/%E5%8F%89%E6%A0%91/</url>
     <content><![CDATA[<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><p><a href="https://www.kukuxiaai.com/blog/2019-07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E6%A0%91/" target="_blank" rel="noopener">数据结构与算法-树</a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>巧记linux常用命令中的递归参数-r(R)和-p</title>
+    <url>/2021/03/09/%E5%B7%A7%E8%AE%B0linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B8%AD%E7%9A%84%E9%80%92%E5%BD%92%E5%8F%82%E6%95%B0-r-R-%E5%92%8C-p/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/longyamiao/article/details/79782254" target="_blank" rel="noopener">巧记linux常用命令中的递归参数-r(R)和-p</a></p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
   </entry>
   <entry>
     <title>图解--函数调用过程及栈帧分析</title>
@@ -2958,28 +2973,6 @@
       </tags>
   </entry>
   <entry>
-    <title>巧记linux常用命令中的递归参数-r(R)和-p</title>
-    <url>/2021/03/09/%E5%B7%A7%E8%AE%B0linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B8%AD%E7%9A%84%E9%80%92%E5%BD%92%E5%8F%82%E6%95%B0-r-R-%E5%92%8C-p/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/longyamiao/article/details/79782254" target="_blank" rel="noopener">巧记linux常用命令中的递归参数-r(R)和-p</a></p>
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>计算机网络之IP、MAC</title>
-    <url>/2020/04/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B9%8BIP%E3%80%81MAC/</url>
-    <content><![CDATA[<p>转载：**<a href="https://www.wmathor.com/index.php/archives/1124/" target="_blank" rel="noopener">MAC 地址与 IP 地址</a><strong>、</strong><a href="https://zhuanlan.zhihu.com/p/82184208" target="_blank" rel="noopener">物理层 和 MAC 层</a><strong>、</strong><a href="https://www.jianshu.com/p/63fd0faa47da" target="_blank" rel="noopener">网络传输中的三张表，MAC地址表、ARP缓存表以及路由表详解</a>**</p>
-]]></content>
-      <categories>
-        <category>计算机网络</category>
-      </categories>
-      <tags>
-        <tag>MAC</tag>
-        <tag>IP</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>重装ubuntu及win10引导修复</title>
     <url>/2022/04/08/%E9%87%8D%E8%A3%85ubuntu%E5%8F%8Awin10%E5%BC%95%E5%AF%BC%E4%BF%AE%E5%A4%8D/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>人被杀就会死，ubuntu20果然崩溃了，起因似乎是重装搜狗输入法，卸载时autoremove不知删了哪个依赖，桌面死活进不去（oh,no,something went wrong警告），<a id="more"></a> 后面<em>Ctrl+Alt+F3</em>通过tty3登录，进去翻日志，一通装一通删，试了N次，发现把gnome-session删了，倒是能进桌面了，算了，直接转移数据，重装。切到win10系统，下载镜像、刻盘一气呵成，隐约记得以前用EasyBCD添加引导，下了个进去手贱，把WIN10的引导给删了,这时候才想起ubuntu新版本不用自己添加引导了~~. 幸亏U盘已经刻好，索性先重装ubuntu，再在ubuntu下，看看有什么方法恢复引导文件。装系统网上很多教程，倒是在ubuntu下刻盘，恢复win10引导值得记录一下（毕竟两个晚上的青春）。</p>
@@ -2994,5 +2987,18 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo fdisk -l #查看U盘</span><br><span class="line">umount &#x2F;dev&#x2F;sdb  #卸载u盘</span><br><span class="line">sudo mkfs.ntfs -F &#x2F;dev&#x2F;sdb #格式化U盘</span><br><span class="line">sudo .&#x2F;woeusb-5.2.4.bash --device &#39;WinPE.iso&#39;  &#x2F;dev&#x2F;sdb  --tgt-fs  NTFS #刻盘</span><br></pre></td></tr></table></figure>
 <h3 id="WIN10-引导修复"><a href="#WIN10-引导修复" class="headerlink" title="WIN10 引导修复"></a>WIN10 引导修复</h3><p>拿着刻好的U盘，重新开机，狂按F12,进入WINPE，接来下的修复过程，严格参照下面的链接（C盘和D盘，我的也是反着的）<br><a href="https://blog.csdn.net/A_Sen_A/article/details/89545311" target="_blank" rel="noopener">win10 UEFI引导恢复</a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>计算机网络之IP、MAC</title>
+    <url>/2020/04/14/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B9%8BIP%E3%80%81MAC/</url>
+    <content><![CDATA[<p>转载：**<a href="https://www.wmathor.com/index.php/archives/1124/" target="_blank" rel="noopener">MAC 地址与 IP 地址</a><strong>、</strong><a href="https://zhuanlan.zhihu.com/p/82184208" target="_blank" rel="noopener">物理层 和 MAC 层</a><strong>、</strong><a href="https://www.jianshu.com/p/63fd0faa47da" target="_blank" rel="noopener">网络传输中的三张表，MAC地址表、ARP缓存表以及路由表详解</a>**</p>
+]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>MAC</tag>
+        <tag>IP</tag>
+      </tags>
   </entry>
 </search>
