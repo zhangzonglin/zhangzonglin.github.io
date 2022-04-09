@@ -1,29 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>IOC的实现原理—反射与工厂模式(转载)</title>
-    <url>/2020/03/03/C%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E2%80%94%E5%8F%8D%E5%B0%84%E4%B8%8E%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<h3 id="反射与工厂模式实现IOC"><a href="#反射与工厂模式实现IOC" class="headerlink" title="反射与工厂模式实现IOC"></a>反射与工厂模式实现IOC</h3><p>   &amp;emsp;Spring中的IoC的实现原理就是工厂模式加反射机制。 我们首先看一下不用反射机制时的工厂模式：<br>   <a id="more"></a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface fruit&#123;</span><br><span class="line">    public abstract void eat();</span><br><span class="line">&#125; </span><br><span class="line">class Apple implements fruit&#123;</span><br><span class="line">     public void eat()&#123;</span><br><span class="line">         System.out.println(&quot;Apple&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">&#125; </span><br><span class="line">class Orange implements fruit&#123;</span><br><span class="line">     public void eat()&#123;</span><br><span class="line">         System.out.println(&quot;Orange&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;构造工厂类</span><br><span class="line">&#x2F;&#x2F;也就是说以后如果我们在添加其他的实例的时候只需要修改工厂类就行了</span><br><span class="line">class Factory&#123;</span><br><span class="line">     public static fruit getInstance(String fruitName)&#123;</span><br><span class="line">         fruit f&#x3D;null;</span><br><span class="line">         if(&quot;Apple&quot;.equals(fruitName))&#123;</span><br><span class="line">             f&#x3D;new Apple();</span><br><span class="line">         &#125;</span><br><span class="line">         if(&quot;Orange&quot;.equals(fruitName))&#123;</span><br><span class="line">             f&#x3D;new Orange();</span><br><span class="line">         &#125;</span><br><span class="line">         return f;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">class hello&#123;</span><br><span class="line">     public static void main(String[] a)&#123;</span><br><span class="line">         fruit f&#x3D;Factory.getInstance(&quot;Orange&quot;);</span><br><span class="line">         f.eat();</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>   &amp;emsp;上面写法的缺点是当我们再添加一个子类的时候，就需要修改工厂类了。如果我们添加太多的子类的时候，改动就会很多。下面用反射机制实现工厂模式：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface fruit&#123;</span><br><span class="line">     public abstract void eat();</span><br><span class="line">&#125;</span><br><span class="line">class Apple implements fruit&#123;</span><br><span class="line">public void eat()&#123;</span><br><span class="line">         System.out.println(&quot;Apple&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Orange implements fruit&#123;</span><br><span class="line">public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;Orange&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Factory&#123;</span><br><span class="line">    public static fruit getInstance(String ClassName)&#123;</span><br><span class="line">        fruit f&#x3D;null;</span><br><span class="line">        try&#123;</span><br><span class="line">            f&#x3D;(fruit)Class.forName(ClassName).newInstance();</span><br><span class="line">        &#125;catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return f;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class hello&#123;</span><br><span class="line">    public static void main(String[] a)&#123;</span><br><span class="line">        fruit f&#x3D;Factory.getInstance(&quot;Reflect.Apple&quot;);</span><br><span class="line">        if(f!&#x3D;null)&#123;</span><br><span class="line">            f.eat();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>  &amp;emsp;现在就算我们添加任意多个子类的时候，工厂类都不需要修改。使用反射机制实现的工厂模式可以通过反射取得接口的实例，但是需要传入完整的包和类名。而且用户也无法知道一个接口有多少个可以使用的子类，所以我们通过属性文件的形式配置所需要的子类。</p>
-<p>   &amp;emsp;下面编写使用反射机制并结合属性文件的工厂模式（即IoC）。首先创建一个fruit.properties的资源文件：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apple&#x3D;Reflect.Apple</span><br><span class="line">orange&#x3D;Reflect.Orange</span><br></pre></td></tr></table></figure>
-<p>   &amp;emsp;然后编写主类代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface fruit&#123;</span><br><span class="line">    public abstract void eat();</span><br><span class="line">&#125;</span><br><span class="line">class Apple implements fruit&#123;</span><br><span class="line">    public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;Apple&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Orange implements fruit&#123;</span><br><span class="line">    public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;Orange&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;操作属性文件类</span><br><span class="line">class init&#123;</span><br><span class="line">    public static Properties getPro() throws FileNotFoundException, IOException&#123;</span><br><span class="line">        Properties pro&#x3D;new Properties();</span><br><span class="line">        File f&#x3D;new File(&quot;fruit.properties&quot;);</span><br><span class="line">        if(f.exists())&#123;</span><br><span class="line">            pro.load(new FileInputStream(f));</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            pro.setProperty(&quot;apple&quot;, &quot;Reflect.Apple&quot;);</span><br><span class="line">            pro.setProperty(&quot;orange&quot;, &quot;Reflect.Orange&quot;);</span><br><span class="line">            pro.store(new FileOutputStream(f), &quot;FRUIT CLASS&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        return pro;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Factory&#123;</span><br><span class="line">    public static fruit getInstance(String ClassName)&#123;</span><br><span class="line">        fruit f&#x3D;null;</span><br><span class="line">        try&#123;</span><br><span class="line">            f&#x3D;(fruit)Class.forName(ClassName).newInstance();</span><br><span class="line">        &#125;catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return f;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class hello&#123;</span><br><span class="line">    public static void main(String[] a) throws FileNotFoundException, IOException&#123;</span><br><span class="line">        Properties pro&#x3D;init.getPro();</span><br><span class="line">        fruit f&#x3D;Factory.getInstance(pro.getProperty(&quot;apple&quot;));</span><br><span class="line">        if(f!&#x3D;null)&#123;</span><br><span class="line">            f.eat();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&amp;emsp;运行结果：Apple</p>
-<h3 id="IOC容器的技术剖析"><a href="#IOC容器的技术剖析" class="headerlink" title="IOC容器的技术剖析"></a>IOC容器的技术剖析</h3><p> &amp;emsp;IOC中最基本的技术就是“反射(Reflection)”编程，通俗来讲就是根据给出的类名（字符串方式）来动态地生成对象，这种编程方式可以让对象在生成时才被决定到底是哪一种对象。只是在Spring中要生产的对象都在配置文件中给出定义，目的就是提高灵活性和可维护性。</p>
-<p> &amp;emsp;目前C#、Java和PHP5等语言均支持反射，其中PHP5的技术书籍中，有时候也被翻译成“映射”。有关反射的概念和用法，大家应该都很清楚。反射的应用是很广泛的，很多的成熟的框架，比如像Java中的Hibernate、Spring框架，.Net中NHibernate、Spring.NET框架都是把”反射“做为最基本的技术手段。</p>
-<p>&amp;emsp;反射技术其实很早就出现了，但一直被忽略，没有被进一步的利用。当时的反射编程方式相对于正常的对象生成方式要慢至少得10倍。现在的反射技术经过改良优化，已经非常成熟，反射方式生成对象和通常对象生成方式，速度已经相差不大了，大约为1-2倍的差距。</p>
-<p>&amp;emsp;我们可以把IOC容器的工作模式看做是工厂模式的升华，可以把IOC容器看作是一个工厂，这个工厂里要生产的对象都在配置文件中给出定义，然后利用编程语言提供的反射机制，根据配置文件中给出的类名生成相应的对象。从实现来看，IOC是把以前在工厂方法里写死的对象生成代码，改变为由配置文件来定义，也就是把工厂和对象生成这两者独立分隔开来，目的就是提高灵活性和可维护性。</p>
-<h3 id="使用IOC框架应该注意什么"><a href="#使用IOC框架应该注意什么" class="headerlink" title="使用IOC框架应该注意什么"></a>使用IOC框架应该注意什么</h3><p>&amp;emsp;使用IOC框架产品能够给我们的开发过程带来很大的好处，但是也要充分认识引入IOC框架的缺点，做到心中有数，杜绝滥用框架。</p>
-<p>&amp;emsp;1）软件系统中由于引入了第三方IOC容器，生成对象的步骤变得有些复杂，本来是两者之间的事情，又凭空多出一道手续，所以，我们在刚开始使用IOC框架的时候，会感觉系统变得不太直观。所以，引入了一个全新的框架，就会增加团队成员学习和认识的培训成本，并且在以后的运行维护中，还得让新加入者具备同样的知识体系。</p>
-<p>&amp;emsp;2）由于IOC容器生成对象是通过反射方式，在运行效率上有一定的损耗。如果你要追求运行效率的话，就必须对此进行权衡。</p>
-<p>&amp;emsp;3）具体到IOC框架产品（比如Spring）来讲，需要进行大量的配制工作，比较繁琐，对于一些小的项目而言，客观上也可能加大一些工作成本。</p>
-<p>&amp;emsp;4）IOC框架产品本身的成熟度需要进行评估，如果引入一个不成熟的IOC框架产品，那么会影响到整个项目，所以这也是一个隐性的风险。</p>
-<p>&amp;emsp;我们大体可以得出这样的结论：一些工作量不大的项目或者产品，不太适合使用IOC框架产品。另外，如果团队成员的知识能力欠缺，对于IOC框架产品缺乏深入的理解，也不要贸然引入。最后，特别强调运行效率的项目或者产品，也不太适合引入IOC框架产品，像WEB2.0网站就是这种情况。<br>————————————————<br>版权声明：本文为CSDN博主「fuzhongmin05」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br><a href="https://blog.csdn.net/fuzhongmin05/article/details/61614873" target="_blank" rel="noopener">原文链接</a></p>
+    <title>Async/await</title>
+    <url>/2021/04/14/Async-await/</url>
+    <content><![CDATA[<p><a href="https://javascript.info/async-await" target="_blank" rel="noopener">Async&#x2F;await</a></p>
 ]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
   </entry>
   <entry>
     <title>TCP/IP协议族的网络层基础（6）——NAT和NAPT</title>
@@ -98,6 +82,31 @@
       </tags>
   </entry>
   <entry>
+    <title>IOC的实现原理—反射与工厂模式(转载)</title>
+    <url>/2020/03/03/C%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E2%80%94%E5%8F%8D%E5%B0%84%E4%B8%8E%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<h3 id="反射与工厂模式实现IOC"><a href="#反射与工厂模式实现IOC" class="headerlink" title="反射与工厂模式实现IOC"></a>反射与工厂模式实现IOC</h3><p>   &amp;emsp;Spring中的IoC的实现原理就是工厂模式加反射机制。 我们首先看一下不用反射机制时的工厂模式：<br>   <a id="more"></a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface fruit&#123;</span><br><span class="line">    public abstract void eat();</span><br><span class="line">&#125; </span><br><span class="line">class Apple implements fruit&#123;</span><br><span class="line">     public void eat()&#123;</span><br><span class="line">         System.out.println(&quot;Apple&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">&#125; </span><br><span class="line">class Orange implements fruit&#123;</span><br><span class="line">     public void eat()&#123;</span><br><span class="line">         System.out.println(&quot;Orange&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;构造工厂类</span><br><span class="line">&#x2F;&#x2F;也就是说以后如果我们在添加其他的实例的时候只需要修改工厂类就行了</span><br><span class="line">class Factory&#123;</span><br><span class="line">     public static fruit getInstance(String fruitName)&#123;</span><br><span class="line">         fruit f&#x3D;null;</span><br><span class="line">         if(&quot;Apple&quot;.equals(fruitName))&#123;</span><br><span class="line">             f&#x3D;new Apple();</span><br><span class="line">         &#125;</span><br><span class="line">         if(&quot;Orange&quot;.equals(fruitName))&#123;</span><br><span class="line">             f&#x3D;new Orange();</span><br><span class="line">         &#125;</span><br><span class="line">         return f;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">class hello&#123;</span><br><span class="line">     public static void main(String[] a)&#123;</span><br><span class="line">         fruit f&#x3D;Factory.getInstance(&quot;Orange&quot;);</span><br><span class="line">         f.eat();</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>   &amp;emsp;上面写法的缺点是当我们再添加一个子类的时候，就需要修改工厂类了。如果我们添加太多的子类的时候，改动就会很多。下面用反射机制实现工厂模式：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface fruit&#123;</span><br><span class="line">     public abstract void eat();</span><br><span class="line">&#125;</span><br><span class="line">class Apple implements fruit&#123;</span><br><span class="line">public void eat()&#123;</span><br><span class="line">         System.out.println(&quot;Apple&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Orange implements fruit&#123;</span><br><span class="line">public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;Orange&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Factory&#123;</span><br><span class="line">    public static fruit getInstance(String ClassName)&#123;</span><br><span class="line">        fruit f&#x3D;null;</span><br><span class="line">        try&#123;</span><br><span class="line">            f&#x3D;(fruit)Class.forName(ClassName).newInstance();</span><br><span class="line">        &#125;catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return f;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class hello&#123;</span><br><span class="line">    public static void main(String[] a)&#123;</span><br><span class="line">        fruit f&#x3D;Factory.getInstance(&quot;Reflect.Apple&quot;);</span><br><span class="line">        if(f!&#x3D;null)&#123;</span><br><span class="line">            f.eat();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  &amp;emsp;现在就算我们添加任意多个子类的时候，工厂类都不需要修改。使用反射机制实现的工厂模式可以通过反射取得接口的实例，但是需要传入完整的包和类名。而且用户也无法知道一个接口有多少个可以使用的子类，所以我们通过属性文件的形式配置所需要的子类。</p>
+<p>   &amp;emsp;下面编写使用反射机制并结合属性文件的工厂模式（即IoC）。首先创建一个fruit.properties的资源文件：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apple&#x3D;Reflect.Apple</span><br><span class="line">orange&#x3D;Reflect.Orange</span><br></pre></td></tr></table></figure>
+<p>   &amp;emsp;然后编写主类代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface fruit&#123;</span><br><span class="line">    public abstract void eat();</span><br><span class="line">&#125;</span><br><span class="line">class Apple implements fruit&#123;</span><br><span class="line">    public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;Apple&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Orange implements fruit&#123;</span><br><span class="line">    public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;Orange&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;操作属性文件类</span><br><span class="line">class init&#123;</span><br><span class="line">    public static Properties getPro() throws FileNotFoundException, IOException&#123;</span><br><span class="line">        Properties pro&#x3D;new Properties();</span><br><span class="line">        File f&#x3D;new File(&quot;fruit.properties&quot;);</span><br><span class="line">        if(f.exists())&#123;</span><br><span class="line">            pro.load(new FileInputStream(f));</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            pro.setProperty(&quot;apple&quot;, &quot;Reflect.Apple&quot;);</span><br><span class="line">            pro.setProperty(&quot;orange&quot;, &quot;Reflect.Orange&quot;);</span><br><span class="line">            pro.store(new FileOutputStream(f), &quot;FRUIT CLASS&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        return pro;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Factory&#123;</span><br><span class="line">    public static fruit getInstance(String ClassName)&#123;</span><br><span class="line">        fruit f&#x3D;null;</span><br><span class="line">        try&#123;</span><br><span class="line">            f&#x3D;(fruit)Class.forName(ClassName).newInstance();</span><br><span class="line">        &#125;catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return f;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class hello&#123;</span><br><span class="line">    public static void main(String[] a) throws FileNotFoundException, IOException&#123;</span><br><span class="line">        Properties pro&#x3D;init.getPro();</span><br><span class="line">        fruit f&#x3D;Factory.getInstance(pro.getProperty(&quot;apple&quot;));</span><br><span class="line">        if(f!&#x3D;null)&#123;</span><br><span class="line">            f.eat();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&amp;emsp;运行结果：Apple</p>
+<h3 id="IOC容器的技术剖析"><a href="#IOC容器的技术剖析" class="headerlink" title="IOC容器的技术剖析"></a>IOC容器的技术剖析</h3><p> &amp;emsp;IOC中最基本的技术就是“反射(Reflection)”编程，通俗来讲就是根据给出的类名（字符串方式）来动态地生成对象，这种编程方式可以让对象在生成时才被决定到底是哪一种对象。只是在Spring中要生产的对象都在配置文件中给出定义，目的就是提高灵活性和可维护性。</p>
+<p> &amp;emsp;目前C#、Java和PHP5等语言均支持反射，其中PHP5的技术书籍中，有时候也被翻译成“映射”。有关反射的概念和用法，大家应该都很清楚。反射的应用是很广泛的，很多的成熟的框架，比如像Java中的Hibernate、Spring框架，.Net中NHibernate、Spring.NET框架都是把”反射“做为最基本的技术手段。</p>
+<p>&amp;emsp;反射技术其实很早就出现了，但一直被忽略，没有被进一步的利用。当时的反射编程方式相对于正常的对象生成方式要慢至少得10倍。现在的反射技术经过改良优化，已经非常成熟，反射方式生成对象和通常对象生成方式，速度已经相差不大了，大约为1-2倍的差距。</p>
+<p>&amp;emsp;我们可以把IOC容器的工作模式看做是工厂模式的升华，可以把IOC容器看作是一个工厂，这个工厂里要生产的对象都在配置文件中给出定义，然后利用编程语言提供的反射机制，根据配置文件中给出的类名生成相应的对象。从实现来看，IOC是把以前在工厂方法里写死的对象生成代码，改变为由配置文件来定义，也就是把工厂和对象生成这两者独立分隔开来，目的就是提高灵活性和可维护性。</p>
+<h3 id="使用IOC框架应该注意什么"><a href="#使用IOC框架应该注意什么" class="headerlink" title="使用IOC框架应该注意什么"></a>使用IOC框架应该注意什么</h3><p>&amp;emsp;使用IOC框架产品能够给我们的开发过程带来很大的好处，但是也要充分认识引入IOC框架的缺点，做到心中有数，杜绝滥用框架。</p>
+<p>&amp;emsp;1）软件系统中由于引入了第三方IOC容器，生成对象的步骤变得有些复杂，本来是两者之间的事情，又凭空多出一道手续，所以，我们在刚开始使用IOC框架的时候，会感觉系统变得不太直观。所以，引入了一个全新的框架，就会增加团队成员学习和认识的培训成本，并且在以后的运行维护中，还得让新加入者具备同样的知识体系。</p>
+<p>&amp;emsp;2）由于IOC容器生成对象是通过反射方式，在运行效率上有一定的损耗。如果你要追求运行效率的话，就必须对此进行权衡。</p>
+<p>&amp;emsp;3）具体到IOC框架产品（比如Spring）来讲，需要进行大量的配制工作，比较繁琐，对于一些小的项目而言，客观上也可能加大一些工作成本。</p>
+<p>&amp;emsp;4）IOC框架产品本身的成熟度需要进行评估，如果引入一个不成熟的IOC框架产品，那么会影响到整个项目，所以这也是一个隐性的风险。</p>
+<p>&amp;emsp;我们大体可以得出这样的结论：一些工作量不大的项目或者产品，不太适合使用IOC框架产品。另外，如果团队成员的知识能力欠缺，对于IOC框架产品缺乏深入的理解，也不要贸然引入。最后，特别强调运行效率的项目或者产品，也不太适合引入IOC框架产品，像WEB2.0网站就是这种情况。<br>————————————————<br>版权声明：本文为CSDN博主「fuzhongmin05」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br><a href="https://blog.csdn.net/fuzhongmin05/article/details/61614873" target="_blank" rel="noopener">原文链接</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Filter和Interceptor的比较</title>
     <url>/2021/11/15/Filter%E5%92%8CInterceptor%E7%9A%84%E6%AF%94%E8%BE%83/</url>
     <content><![CDATA[<p><a href="https://www.jianshu.com/p/5f5e5211bbdb" target="_blank" rel="noopener">Filter和Interceptor的比较</a>, &amp;nbsp;&amp;nbsp;&amp;nbsp;<a href="https://www.cnblogs.com/hellovoyager1/p/9152292.html" target="_blank" rel="noopener">Listener、Filter 和Interceptor 总结</a>, &amp;nbsp;&amp;nbsp;<a href="https://www.cnblogs.com/hhhshct/p/8808115.html" target="_blank" rel="noopener">springboot配置监听器、过滤器和拦截器</a></p>
@@ -111,27 +120,6 @@
         <tag>filter</tag>
         <tag>listener</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Async/await</title>
-    <url>/2021/04/14/Async-await/</url>
-    <content><![CDATA[<p><a href="https://javascript.info/async-await" target="_blank" rel="noopener">Async&#x2F;await</a></p>
-]]></content>
-      <categories>
-        <category>javascript</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Hashtable、HashMap、ConcurrentHashMap</title>
-    <url>/2021/12/01/Hashtable%E3%80%81HashMap%E3%80%81ConcurrentHashMap/</url>
-    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/Mr_YanMingXin/article/details/118601591" target="_blank" rel="noopener">详解Java中HashMap、HashTable、ConcurrentHashMap常见问题</a></strong> &amp;nbsp;;&amp;nbsp;<strong><a href="https://blog.csdn.net/amunamuna/article/details/107773902" target="_blank" rel="noopener">Hashtable、HashMap、ConcurrentHashMap等及常用阻塞队列</a></strong> &amp;nbsp;&amp;nbsp;</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Java泛型详解：&lt;T&gt;和Class&lt;T&gt;的使用。泛型类，泛型方法的详细使用实例 </title>
-    <url>/2021/12/17/Java%E6%B3%9B%E5%9E%8B%E8%AF%A6%E8%A7%A3%EF%BC%9A-T-%E5%92%8CClass-T-%E7%9A%84%E4%BD%BF%E7%94%A8%E3%80%82%E6%B3%9B%E5%9E%8B%E7%B1%BB%EF%BC%8C%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95%E7%9A%84%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/jpfss/p/9928747.html" target="_blank" rel="noopener">Java泛型详解：<T>和Class<T>的使用。泛型类，泛型方法的详细使用实例 </T></T></a></p>
-]]></content>
   </entry>
   <entry>
     <title>Form Data &amp; Request Payload</title>
@@ -182,6 +170,50 @@
       </tags>
   </entry>
   <entry>
+    <title>Java泛型详解：&lt;T&gt;和Class&lt;T&gt;的使用。泛型类，泛型方法的详细使用实例 </title>
+    <url>/2021/12/17/Java%E6%B3%9B%E5%9E%8B%E8%AF%A6%E8%A7%A3%EF%BC%9A-T-%E5%92%8CClass-T-%E7%9A%84%E4%BD%BF%E7%94%A8%E3%80%82%E6%B3%9B%E5%9E%8B%E7%B1%BB%EF%BC%8C%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95%E7%9A%84%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/jpfss/p/9928747.html" target="_blank" rel="noopener">Java泛型详解：<T>和Class<T>的使用。泛型类，泛型方法的详细使用实例 </T></T></a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Hashtable、HashMap、ConcurrentHashMap</title>
+    <url>/2021/12/01/Hashtable%E3%80%81HashMap%E3%80%81ConcurrentHashMap/</url>
+    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/Mr_YanMingXin/article/details/118601591" target="_blank" rel="noopener">详解Java中HashMap、HashTable、ConcurrentHashMap常见问题</a></strong> &amp;nbsp;;&amp;nbsp;<strong><a href="https://blog.csdn.net/amunamuna/article/details/107773902" target="_blank" rel="noopener">Hashtable、HashMap、ConcurrentHashMap等及常用阻塞队列</a></strong> &amp;nbsp;&amp;nbsp;</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>IntelliJ IDEA激活</title>
+    <url>/2021/03/20/IntelliJ-IDEA%E6%BF%80%E6%B4%BB/</url>
+    <content><![CDATA[<p>可用方法：<a href="https://www.exception.site/essay/how-to-free-use-intellij-idea-2019-3" target="_blank" rel="noopener">IntelliJ IDEA 2020.3.3激活破解教程（亲测激活至 2099 年，长期更新）</a>，或者一直白嫖试用30天（<em>rm -rf ～&#x2F;.config&#x2F;Jetbrains&#x2F;IntelliJIdea2020.3&#x2F;eval&#x2F;</em> 可重置30天）。</p>
+<a id="more"></a>
+
+<p>ps: 后重装系统，从走了一遍激活(白嫖有罪…)，记录下：</p>
+<ul>
+<li>下载插件ja-netfilter-all（重装前已备份数据，跳过）</li>
+<li>在idea(全家桶其他软件类似)目录下的“&#x2F;bin&#x2F;idea64.vmoptions”文件中，添加</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-javaagent:&#x2F;home&#x2F;zzl&#x2F;.local&#x2F;app&#x2F;idea-IU-213.7172.25&#x2F;ja-netfilter-all&#x2F;ja-netfilter.jar                 │</span><br></pre></td></tr></table></figure>
+<ul>
+<li>启动idea，激活码中复制该网站提供的激活码，激活成功</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>idea</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Let’sEncrypt 证书自动更新脚本</title>
+    <url>/2021/04/08/Let%E2%80%99sEncrypt-%E8%AF%81%E4%B9%A6%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E8%84%9A%E6%9C%AC/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>vps科学上网用的Let’sEncrypt免费证书，有效期一般是3个月，需要定期更新。写个脚本，定时更新。</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">#Version:1.0</span><br><span class="line">#Author:zzl</span><br><span class="line">#Automatically renew Let&#39;s Encrypt certificates</span><br><span class="line">#A cron job will run this shell script everyday</span><br><span class="line">i&#x3D;0</span><br><span class="line">while [[ $i -lt 10]]</span><br><span class="line">do</span><br><span class="line">  let &quot;i++&quot;</span><br><span class="line">  if [ $(ps -C nginx --no-header | wc -l) -ne 0];then</span><br><span class="line">    service nginx stop</span><br><span class="line">    sleep 3s</span><br><span class="line">    if [ $(ps -C nginx --no-header | wc -l) -eq 0];then</span><br><span class="line">      break</span><br><span class="line">    fi</span><br><span class="line">  fi</span><br><span class="line">done</span><br><span class="line">certbot renew </span><br><span class="line">service nginx start</span><br></pre></td></tr></table></figure>
+<p>或者直接用certbot renew command，详情如下<br>        <strong><a href="https://certbot.eff.org/docs/using.html?highlight=hooks#renewing-certificates" target="_blank" rel="noopener">Certbot documentation on renewing certificates</a></strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">certbot renew --pre-hook &quot;service nginx stop&quot; --post-hook &quot;service nginx start&quot;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
     <title>@PostConstruct注解原理解析</title>
     <url>/2021/11/16/PostConstruct%E6%B3%A8%E8%A7%A3%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/</url>
     <content><![CDATA[<p><a href="https://www.cnblogs.com/lay2017/p/11735802.html" target="_blank" rel="noopener">@PostConstruct注解原理解析</a></p>
@@ -198,6 +230,26 @@
     <url>/2022/04/01/Nacos/</url>
     <content><![CDATA[<p>Nacos(Dynamic Naming and Configuration Service)，Na为naming&#x2F;nameServer即注册中心,co为configuration即配置中心，service是指该注册&#x2F;配置中心都是以服务为核心。操作起来比eureka简单且功能强大。<br><strong><a href="https://nacos.io/zh-cn/docs/quick-start-spring-cloud.html" target="_blank" rel="noopener">Nacos Spring Cloud 快速开始</a><strong>、</strong><a href="https://www.jianshu.com/p/39ade28c150d" target="_blank" rel="noopener">什么是Nacos？Nacos注册配置中心介绍</a></strong></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>ProcessExecutor、ProcessBuilder、Runtime.getRuntime().exec(...) </title>
+    <url>/2021/05/02/ProcessExecutor%E3%80%81ProcessBuilder%E3%80%81Runtime-getRuntime-exec/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>There are many approaches to take when running external processes from Java. There are the JRE options such as the Runtime.exec() 、 ProcessBuilder、  Apache Commons Exec and ZT Process Executor. 其中ZT Process Executor是一个更为强大的进程库（process library），能够通过使用一个单一的 ProcessExecutor 类来调用 java.lang.ProcessBuilder 和 Apache Commons Exec 中的接口。</p>
+<a id="more"></a>
+<h3 id="Runtime-amp-ProcessBuilder"><a href="#Runtime-amp-ProcessBuilder" class="headerlink" title="Runtime&amp;ProcessBuilder"></a>Runtime&amp;ProcessBuilder</h3><p>*Runtime.getInstance().exec (String cmd)<em>和</em>new ProcessBuilder(String cmd).start()*都可以产生子进程对象Process。通过调用Process对象的waitFor()方法可以使主进程进入等待状态，直至子进程执行完毕，再进行下一步工作。如果对子进程处理不当，有可能造成主进程阻塞，整个程序死掉。(A program is executed with command(). With waitFor() we can wait for the process to finish.)<br><strong>通过查看JDK源码可知，Runtime.exec最终是通过调用ProcessBuilder来真正执行操作的</strong>，如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public Process exec(String command) throws IOException &#123;</span><br><span class="line">    return exec(command, null, null);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Process exec(String command, String[] envp, File dir)</span><br><span class="line">    throws IOException &#123;</span><br><span class="line">    if (command.length() &#x3D;&#x3D; 0)</span><br><span class="line">        throw new IllegalArgumentException(&quot;Empty command&quot;);</span><br><span class="line"></span><br><span class="line">    StringTokenizer st &#x3D; new StringTokenizer(command);</span><br><span class="line">    String[] cmdarray &#x3D; new String[st.countTokens()];</span><br><span class="line">    for (int i &#x3D; 0; st.hasMoreTokens(); i++)</span><br><span class="line">        cmdarray[i] &#x3D; st.nextToken();</span><br><span class="line">    return exec(cmdarray, envp, dir);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Process exec(String[] cmdarray, String[] envp, File dir)</span><br><span class="line">    throws IOException &#123;</span><br><span class="line">    return new ProcessBuilder(cmdarray)</span><br><span class="line">        .environment(envp)</span><br><span class="line">        .directory(dir)</span><br><span class="line">        .start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ProcessExecutor-amp-ProcessBuilder"><a href="#ProcessExecutor-amp-ProcessBuilder" class="headerlink" title="ProcessExecutor&amp;ProcessBuilder"></a>ProcessExecutor&amp;ProcessBuilder</h3><p>ProcessExecutor is implemented as a wrapper of <em>ProcessBuilder</em> complementing it with additional features.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class ProcessExecutor &#123;</span><br><span class="line"></span><br><span class="line">  private static final Logger log &#x3D; LoggerFactory.getLogger(ProcessExecutor.class);</span><br><span class="line"></span><br><span class="line">  private static final boolean IS_OS_WINDOWS &#x3D; System.getProperty(&quot;os.name&quot;).startsWith(&quot;Windows&quot;);</span><br><span class="line"></span><br><span class="line">  public static final Integer[] DEFAULT_EXIT_VALUES &#x3D; null;</span><br><span class="line"></span><br><span class="line">  private static final Integer NORMAL_EXIT_VALUE &#x3D; 0;</span><br><span class="line"></span><br><span class="line">  public static final boolean DEFAULT_REDIRECT_ERROR_STREAM &#x3D; true;</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Process builder used by this executor.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private final ProcessBuilder builder &#x3D; new ProcessBuilder();</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Environment variables which are added (removed in case of &lt;code&gt;null&lt;&#x2F;code&gt; values) to the process being started.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private final Map&lt;String, String&gt; environment &#x3D; new LinkedHashMap&lt;String, String&gt;();</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Set of accepted exit codes or &lt;code&gt;null&lt;&#x2F;code&gt; if all exit codes are allowed.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private Set&lt;Integer&gt; allowedExitValues;</span><br><span class="line">  ...</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>ProcessExecutor在后台运行进程（不阻塞当前代码对执行）:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void runInBackground() throws IOException, InterruptedException, ExecutionException, TimeoutException &#123;</span><br><span class="line">    List&lt;Future&lt;ProcessResult&gt;&gt; tasks &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">    for (int i &#x3D; 0; i &lt; 5; i++) &#123;</span><br><span class="line">        Future&lt;ProcessResult&gt; future &#x3D; new ProcessExecutor().command(&quot;java&quot;, &quot;-version&quot;)</span><br><span class="line">                .start().getFuture();</span><br><span class="line">        tasks.add(future);</span><br><span class="line">    &#125;</span><br><span class="line">    for (Future&lt;ProcessResult&gt; future : tasks) &#123;</span><br><span class="line">        ProcessResult processResult &#x3D; future.get(1, TimeUnit.SECONDS);</span><br><span class="line">        int exitValue &#x3D; processResult.getExitValue();</span><br><span class="line">        log.info(&quot;The exit value of the finished process is &#123;&#125;&quot;, exitValue);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>参考：**<a href="https://github.com/zeroturnaround/zt-exec" target="_blank" rel="noopener">GitHub: ZT Process Executor</a>**</p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
   </entry>
   <entry>
     <title>Rust copy 、move、clone</title>
@@ -253,38 +305,6 @@
         <tag>move</tag>
         <tag>copy</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>ProcessExecutor、ProcessBuilder、Runtime.getRuntime().exec(...) </title>
-    <url>/2021/05/02/ProcessExecutor%E3%80%81ProcessBuilder%E3%80%81Runtime-getRuntime-exec/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>There are many approaches to take when running external processes from Java. There are the JRE options such as the Runtime.exec() 、 ProcessBuilder、  Apache Commons Exec and ZT Process Executor. 其中ZT Process Executor是一个更为强大的进程库（process library），能够通过使用一个单一的 ProcessExecutor 类来调用 java.lang.ProcessBuilder 和 Apache Commons Exec 中的接口。</p>
-<a id="more"></a>
-<h3 id="Runtime-amp-ProcessBuilder"><a href="#Runtime-amp-ProcessBuilder" class="headerlink" title="Runtime&amp;ProcessBuilder"></a>Runtime&amp;ProcessBuilder</h3><p>*Runtime.getInstance().exec (String cmd)<em>和</em>new ProcessBuilder(String cmd).start()*都可以产生子进程对象Process。通过调用Process对象的waitFor()方法可以使主进程进入等待状态，直至子进程执行完毕，再进行下一步工作。如果对子进程处理不当，有可能造成主进程阻塞，整个程序死掉。(A program is executed with command(). With waitFor() we can wait for the process to finish.)<br><strong>通过查看JDK源码可知，Runtime.exec最终是通过调用ProcessBuilder来真正执行操作的</strong>，如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public Process exec(String command) throws IOException &#123;</span><br><span class="line">    return exec(command, null, null);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Process exec(String command, String[] envp, File dir)</span><br><span class="line">    throws IOException &#123;</span><br><span class="line">    if (command.length() &#x3D;&#x3D; 0)</span><br><span class="line">        throw new IllegalArgumentException(&quot;Empty command&quot;);</span><br><span class="line"></span><br><span class="line">    StringTokenizer st &#x3D; new StringTokenizer(command);</span><br><span class="line">    String[] cmdarray &#x3D; new String[st.countTokens()];</span><br><span class="line">    for (int i &#x3D; 0; st.hasMoreTokens(); i++)</span><br><span class="line">        cmdarray[i] &#x3D; st.nextToken();</span><br><span class="line">    return exec(cmdarray, envp, dir);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Process exec(String[] cmdarray, String[] envp, File dir)</span><br><span class="line">    throws IOException &#123;</span><br><span class="line">    return new ProcessBuilder(cmdarray)</span><br><span class="line">        .environment(envp)</span><br><span class="line">        .directory(dir)</span><br><span class="line">        .start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="ProcessExecutor-amp-ProcessBuilder"><a href="#ProcessExecutor-amp-ProcessBuilder" class="headerlink" title="ProcessExecutor&amp;ProcessBuilder"></a>ProcessExecutor&amp;ProcessBuilder</h3><p>ProcessExecutor is implemented as a wrapper of <em>ProcessBuilder</em> complementing it with additional features.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class ProcessExecutor &#123;</span><br><span class="line"></span><br><span class="line">  private static final Logger log &#x3D; LoggerFactory.getLogger(ProcessExecutor.class);</span><br><span class="line"></span><br><span class="line">  private static final boolean IS_OS_WINDOWS &#x3D; System.getProperty(&quot;os.name&quot;).startsWith(&quot;Windows&quot;);</span><br><span class="line"></span><br><span class="line">  public static final Integer[] DEFAULT_EXIT_VALUES &#x3D; null;</span><br><span class="line"></span><br><span class="line">  private static final Integer NORMAL_EXIT_VALUE &#x3D; 0;</span><br><span class="line"></span><br><span class="line">  public static final boolean DEFAULT_REDIRECT_ERROR_STREAM &#x3D; true;</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Process builder used by this executor.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private final ProcessBuilder builder &#x3D; new ProcessBuilder();</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Environment variables which are added (removed in case of &lt;code&gt;null&lt;&#x2F;code&gt; values) to the process being started.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private final Map&lt;String, String&gt; environment &#x3D; new LinkedHashMap&lt;String, String&gt;();</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Set of accepted exit codes or &lt;code&gt;null&lt;&#x2F;code&gt; if all exit codes are allowed.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private Set&lt;Integer&gt; allowedExitValues;</span><br><span class="line">  ...</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>ProcessExecutor在后台运行进程（不阻塞当前代码对执行）:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void runInBackground() throws IOException, InterruptedException, ExecutionException, TimeoutException &#123;</span><br><span class="line">    List&lt;Future&lt;ProcessResult&gt;&gt; tasks &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">    for (int i &#x3D; 0; i &lt; 5; i++) &#123;</span><br><span class="line">        Future&lt;ProcessResult&gt; future &#x3D; new ProcessExecutor().command(&quot;java&quot;, &quot;-version&quot;)</span><br><span class="line">                .start().getFuture();</span><br><span class="line">        tasks.add(future);</span><br><span class="line">    &#125;</span><br><span class="line">    for (Future&lt;ProcessResult&gt; future : tasks) &#123;</span><br><span class="line">        ProcessResult processResult &#x3D; future.get(1, TimeUnit.SECONDS);</span><br><span class="line">        int exitValue &#x3D; processResult.getExitValue();</span><br><span class="line">        log.info(&quot;The exit value of the finished process is &#123;&#125;&quot;, exitValue);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>参考：**<a href="https://github.com/zeroturnaround/zt-exec" target="_blank" rel="noopener">GitHub: ZT Process Executor</a>**</p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Let’sEncrypt 证书自动更新脚本</title>
-    <url>/2021/04/08/Let%E2%80%99sEncrypt-%E8%AF%81%E4%B9%A6%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E8%84%9A%E6%9C%AC/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>vps科学上网用的Let’sEncrypt免费证书，有效期一般是3个月，需要定期更新。写个脚本，定时更新。</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">#Version:1.0</span><br><span class="line">#Author:zzl</span><br><span class="line">#Automatically renew Let&#39;s Encrypt certificates</span><br><span class="line">#A cron job will run this shell script everyday</span><br><span class="line">i&#x3D;0</span><br><span class="line">while [[ $i -lt 10]]</span><br><span class="line">do</span><br><span class="line">  let &quot;i++&quot;</span><br><span class="line">  if [ $(ps -C nginx --no-header | wc -l) -ne 0];then</span><br><span class="line">    service nginx stop</span><br><span class="line">    sleep 3s</span><br><span class="line">    if [ $(ps -C nginx --no-header | wc -l) -eq 0];then</span><br><span class="line">      break</span><br><span class="line">    fi</span><br><span class="line">  fi</span><br><span class="line">done</span><br><span class="line">certbot renew </span><br><span class="line">service nginx start</span><br></pre></td></tr></table></figure>
-<p>或者直接用certbot renew command，详情如下<br>        <strong><a href="https://certbot.eff.org/docs/using.html?highlight=hooks#renewing-certificates" target="_blank" rel="noopener">Certbot documentation on renewing certificates</a></strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">certbot renew --pre-hook &quot;service nginx stop&quot; --post-hook &quot;service nginx start&quot;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
   </entry>
   <entry>
     <title>Rust引用</title>
@@ -365,13 +385,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Ulauncher</title>
-    <url>/2022/04/10/Ulauncher/</url>
-    <content><![CDATA[<p>Ulauncher(Application launcher for Linux)效率提升工具…</p>
-<p><a href="https://ulauncher.io/#Download" target="_blank" rel="noopener">官网</a>、<a href="https://www.geeksforgeeks.org/how-to-install-ulauncher-in-ubuntu/" target="_blank" rel="noopener">How to Install Ulauncher in Ubuntu?</a>、<a href="https://www.makeuseof.com/install-ulauncher-on-linux/" target="_blank" rel="noopener">How to Install Extensions And Best Ulauncher Extensions</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>Ubuntu apt-get autoclean,clean,autoremove</title>
     <url>/2021/04/29/Ubuntu-apt-get-autoclean-clean-autoremove/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>ubuntu移除安装包时用到的几个命令：autoclean,clean,autoremove</p>
@@ -416,15 +429,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Using the Switch(true) Pattern in JavaScript</title>
-    <url>/1970/01/01/Using-the-Switch-true-Pattern-in-JavaScript/</url>
-    <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
-]]></content>
-      <categories>
-        <category>javascript</category>
-      </categories>
-  </entry>
-  <entry>
     <title>《Spring设计思想-事务篇》2.数据库隔离级别</title>
     <url>/2020/03/12/Spring%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3-%E4%BA%8B%E5%8A%A1%E7%AF%87%E3%80%8B2-%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</url>
     <content><![CDATA[<p>转载：**<a href="https://blog.csdn.net/luanlouis/article/details/95319795" target="_blank" rel="noopener">《Spring设计思想-事务篇》2.数据库隔离级别
@@ -438,22 +442,11 @@
 ]]></content>
   </entry>
   <entry>
-    <title>android studio http proxy for sdk </title>
-    <url>/2020/02/02/andorid-studio-proxy-setting/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>闲来无事，研究一下安卓的开发，并记录一下开发工具android studio的配置，主要是安装时要下载android sdk，又因长城的原因，需要设置国内镜像，或者如果你能科学上网的话，设置http proxy也可。</p>
-<a id="more"></a>
-
-<h3 id="镜像设置"><a href="#镜像设置" class="headerlink" title="镜像设置"></a>镜像设置</h3><p>这里用的是电子科技大学的镜像网站：mirrors.dormforce.net 端口：80<br>通过File–&gt;Setting–&gt;Appearance &amp; Behavior –&gt;System Settings –&gt;Http Proxy，选择Auto-detect proxy settings，并且填写URL为：mirrors.dormforce.net :80，点击clear passwords<br><img src="/images/pasted-0.png" alt="upload successful"></p>
-<h3 id="Http-proxy设置"><a href="#Http-proxy设置" class="headerlink" title="Http proxy设置"></a>Http proxy设置</h3><p>这个适合可以科学上网的同学，我用的是trojan,配置如下：<br>Manual proxy configuration–&gt;SOCKS–&gt;Host name:127.0.0.1 Port number:1080<br>完成后点击Check connection，输入网址*<a href="https://www.android.com/*%EF%BC%8C%E6%B5%8B%E8%AF%95%E8%BF%9E%E6%8E%A5%E3%80%82" target="_blank" rel="noopener">https://www.android.com/*，测试连接。</a></p>
-<p><img src="/images/pasted-2.png" alt="upload successful"></p>
-<p>通过上述两种之一的方式设置后，点击Android SDK,点击SDK Update Sites，下面勾选<em>『Force https:&#x2F;&#x2F;… sources to be fetched using http:&#x2F;&#x2F;…』</em>，点击Apply，完成后返回主页面即可。</p>
+    <title>Ulauncher</title>
+    <url>/2022/04/10/Ulauncher/</url>
+    <content><![CDATA[<p>Ulauncher(Application launcher for Linux)效率提升工具…</p>
+<p><a href="https://ulauncher.io/#Download" target="_blank" rel="noopener">官网</a>、<a href="https://www.geeksforgeeks.org/how-to-install-ulauncher-in-ubuntu/" target="_blank" rel="noopener">How to Install Ulauncher in Ubuntu?</a>、<a href="https://www.makeuseof.com/install-ulauncher-on-linux/" target="_blank" rel="noopener">How to Install Extensions And Best Ulauncher Extensions</a>.<br>实测好用的插件：Terminal Runner(关机重启方便)、IpCopy（查看自己内网外网IP并复制）、Better file browser（文件浏览及搜索）、Translate（翻译。默认翻译成en，如果是英译汉格式为“tr :zh english”）、Calculate Anything</p>
 ]]></content>
-      <categories>
-        <category>android</category>
-      </categories>
-      <tags>
-        <tag>proxy</tag>
-      </tags>
   </entry>
   <entry>
     <title>Ubuntu18.04下通过zssh与服务器进行上传/下载文件操作</title>
@@ -479,6 +472,33 @@
       </categories>
       <tags>
         <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Using the Switch(true) Pattern in JavaScript</title>
+    <url>/1970/01/01/Using-the-Switch-true-Pattern-in-JavaScript/</url>
+    <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
+]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>android studio http proxy for sdk </title>
+    <url>/2020/02/02/andorid-studio-proxy-setting/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>闲来无事，研究一下安卓的开发，并记录一下开发工具android studio的配置，主要是安装时要下载android sdk，又因长城的原因，需要设置国内镜像，或者如果你能科学上网的话，设置http proxy也可。</p>
+<a id="more"></a>
+
+<h3 id="镜像设置"><a href="#镜像设置" class="headerlink" title="镜像设置"></a>镜像设置</h3><p>这里用的是电子科技大学的镜像网站：mirrors.dormforce.net 端口：80<br>通过File–&gt;Setting–&gt;Appearance &amp; Behavior –&gt;System Settings –&gt;Http Proxy，选择Auto-detect proxy settings，并且填写URL为：mirrors.dormforce.net :80，点击clear passwords<br><img src="/images/pasted-0.png" alt="upload successful"></p>
+<h3 id="Http-proxy设置"><a href="#Http-proxy设置" class="headerlink" title="Http proxy设置"></a>Http proxy设置</h3><p>这个适合可以科学上网的同学，我用的是trojan,配置如下：<br>Manual proxy configuration–&gt;SOCKS–&gt;Host name:127.0.0.1 Port number:1080<br>完成后点击Check connection，输入网址*<a href="https://www.android.com/*%EF%BC%8C%E6%B5%8B%E8%AF%95%E8%BF%9E%E6%8E%A5%E3%80%82" target="_blank" rel="noopener">https://www.android.com/*，测试连接。</a></p>
+<p><img src="/images/pasted-2.png" alt="upload successful"></p>
+<p>通过上述两种之一的方式设置后，点击Android SDK,点击SDK Update Sites，下面勾选<em>『Force https:&#x2F;&#x2F;… sources to be fetched using http:&#x2F;&#x2F;…』</em>，点击Apply，完成后返回主页面即可。</p>
+]]></content>
+      <categories>
+        <category>android</category>
+      </categories>
+      <tags>
+        <tag>proxy</tag>
       </tags>
   </entry>
   <entry>
@@ -554,10 +574,19 @@
       </categories>
   </entry>
   <entry>
-    <title>Wireshark抓包原理（ARP劫持、MAC泛洪）及数据流追踪和图像抓取</title>
-    <url>/2021/05/31/Wireshark%E6%8A%93%E5%8C%85%E5%8E%9F%E7%90%86%EF%BC%88ARP%E5%8A%AB%E6%8C%81%E3%80%81MAC%E6%B3%9B%E6%B4%AA%EF%BC%89%E5%8F%8A%E6%95%B0%E6%8D%AE%E6%B5%81%E8%BF%BD%E8%B8%AA%E5%92%8C%E5%9B%BE%E5%83%8F%E6%8A%93%E5%8F%96/</url>
-    <content><![CDATA[<p>转载：<a href="https://cloud.tencent.com/developer/article/1626729" target="_blank" rel="noopener">Wireshark抓包原理（ARP劫持、MAC泛洪）及数据流追踪和图像抓取</a></p>
-]]></content>
+    <title>bash快捷键 光标移动</title>
+    <url>/2020/01/16/bash-hot-key/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>用xshell登录并操作系统的时候，光标移动的快捷键用起来很方便，记录一下，方便以后查询</p>
+<a id="more"></a>
+<h3 id="ctrl组合"><a href="#ctrl组合" class="headerlink" title="ctrl组合"></a>ctrl组合</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ctrl+a:光标移到行首。</span><br><span class="line"></span><br><span class="line">ctrl+b:光标左移一个字母</span><br><span class="line"></span><br><span class="line">ctrl+c:杀死当前进程。</span><br><span class="line"></span><br><span class="line">ctrl+d:退出当前 Shell。</span><br><span class="line"></span><br><span class="line">ctrl+e:光标移到行尾。</span><br><span class="line"></span><br><span class="line">ctrl+h:删除光标前一个字符，同 backspace 键相同。</span><br><span class="line"></span><br><span class="line">ctrl+k:清除光标后至行尾的内容。</span><br><span class="line"></span><br><span class="line">ctrl+l:清屏，相当于clear。</span><br><span class="line"></span><br><span class="line">ctrl+r:搜索之前打过的命令。会有一个提示，根据你输入的关键字进行搜索bash的history</span><br><span class="line"></span><br><span class="line">ctrl+u: 清除光标前至行首间的所有内容。</span><br><span class="line"></span><br><span class="line">ctrl+w: 移除光标前的一个单词</span><br><span class="line"></span><br><span class="line">ctrl+t: 交换光标位置前的两个字符</span><br><span class="line"></span><br><span class="line">ctrl+y: 粘贴或者恢复上次的删除</span><br><span class="line"></span><br><span class="line">ctrl+d: 删除光标所在字母;注意和backspace以及ctrl+h的区别，这2个是删除光标前的字符</span><br><span class="line"></span><br><span class="line">ctrl+f: 光标右移</span><br><span class="line"></span><br><span class="line">ctrl+z : 把当前进程转到后台运行，使用’ fg ‘命令恢复。比如top -d1 然后ctrl+z ，到后台，然后fg,重新恢复</span><br></pre></td></tr></table></figure>
+
+<h3 id="esc组合"><a href="#esc组合" class="headerlink" title="esc组合"></a>esc组合</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">esc+d: 删除光标后的一个词</span><br><span class="line"></span><br><span class="line">esc+f: 往右跳一个词</span><br><span class="line"></span><br><span class="line">esc+b: 往左跳一个词</span><br><span class="line"></span><br><span class="line">esc+t: 交换光标位置前的两个单词</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>bash-hotkey</tag>
+      </tags>
   </entry>
   <entry>
     <title>vertx-plugin build vertx app with gradle</title>
@@ -578,21 +607,6 @@
       </categories>
       <tags>
         <tag>vertx-plugin</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>bash快捷键 光标移动</title>
-    <url>/2020/01/16/bash-hot-key/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>用xshell登录并操作系统的时候，光标移动的快捷键用起来很方便，记录一下，方便以后查询</p>
-<a id="more"></a>
-<h3 id="ctrl组合"><a href="#ctrl组合" class="headerlink" title="ctrl组合"></a>ctrl组合</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ctrl+a:光标移到行首。</span><br><span class="line"></span><br><span class="line">ctrl+b:光标左移一个字母</span><br><span class="line"></span><br><span class="line">ctrl+c:杀死当前进程。</span><br><span class="line"></span><br><span class="line">ctrl+d:退出当前 Shell。</span><br><span class="line"></span><br><span class="line">ctrl+e:光标移到行尾。</span><br><span class="line"></span><br><span class="line">ctrl+h:删除光标前一个字符，同 backspace 键相同。</span><br><span class="line"></span><br><span class="line">ctrl+k:清除光标后至行尾的内容。</span><br><span class="line"></span><br><span class="line">ctrl+l:清屏，相当于clear。</span><br><span class="line"></span><br><span class="line">ctrl+r:搜索之前打过的命令。会有一个提示，根据你输入的关键字进行搜索bash的history</span><br><span class="line"></span><br><span class="line">ctrl+u: 清除光标前至行首间的所有内容。</span><br><span class="line"></span><br><span class="line">ctrl+w: 移除光标前的一个单词</span><br><span class="line"></span><br><span class="line">ctrl+t: 交换光标位置前的两个字符</span><br><span class="line"></span><br><span class="line">ctrl+y: 粘贴或者恢复上次的删除</span><br><span class="line"></span><br><span class="line">ctrl+d: 删除光标所在字母;注意和backspace以及ctrl+h的区别，这2个是删除光标前的字符</span><br><span class="line"></span><br><span class="line">ctrl+f: 光标右移</span><br><span class="line"></span><br><span class="line">ctrl+z : 把当前进程转到后台运行，使用’ fg ‘命令恢复。比如top -d1 然后ctrl+z ，到后台，然后fg,重新恢复</span><br></pre></td></tr></table></figure>
-
-<h3 id="esc组合"><a href="#esc组合" class="headerlink" title="esc组合"></a>esc组合</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">esc+d: 删除光标后的一个词</span><br><span class="line"></span><br><span class="line">esc+f: 往右跳一个词</span><br><span class="line"></span><br><span class="line">esc+b: 往左跳一个词</span><br><span class="line"></span><br><span class="line">esc+t: 交换光标位置前的两个单词</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>bash-hotkey</tag>
       </tags>
   </entry>
   <entry>
@@ -703,6 +717,38 @@
       </tags>
   </entry>
   <entry>
+    <title>trojan科学上网</title>
+    <url>/2020/01/29/gfw/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>一直用的ssr科学上网，侥幸挺过了去年国庆等的各种严打，一直傲娇地活跃到年底，没想到值此新春佳节之际，终于不出预料地被封了，丧事喜办，旧的不去新的不来，正好试试trojan，希望他能接过前辈的火种，超神带我飞，直直挺到2021吖，本文记录一下vps、windows pc以及android手机的配置。</p>
+<a id="more"></a>
+<h3 id="vps配置"><a href="#vps配置" class="headerlink" title="vps配置"></a>vps配置</h3><h4 id="脚本安装"><a href="#脚本安装" class="headerlink" title="脚本安装"></a>脚本安装</h4><p>系统centos7，网上荡来的一键安装脚本：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -O https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;atrandys&#x2F;trojan&#x2F;master&#x2F;trojan_mult.sh &amp;&amp; chmod +x trojan_mult.sh &amp;&amp; .&#x2F;trojan_mult.sh</span><br></pre></td></tr></table></figure>
+<p>根据脚本提示，该输入数字输入数字，该输入域名输入域名，一撸到底，成功后屏幕会显示一个客户端的链接，弃之不用。</p>
+<h4 id="bbr加速"><a href="#bbr加速" class="headerlink" title="bbr加速"></a>bbr加速</h4><p>先查看系统内核版本</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure>
+<p>低于4.10的需升级内核</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rpm --import https:&#x2F;&#x2F;www.elrepo.org&#x2F;RPM-GPG-KEY-elrepo.org</span><br><span class="line">rpm -Uvh http:&#x2F;&#x2F;www.elrepo.org&#x2F;elrepo-release-7.0-2.el7.elrepo.noarch.rpm</span><br><span class="line">yum --enablerepo&#x3D;elrepo-kernel install kernel-ml -y</span><br></pre></td></tr></table></figure>
+<p>安装完毕后查看已安装内核</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">awk -F\&#39; &#39;$1&#x3D;&#x3D;&quot;menuentry &quot; &#123;print i++ &quot; : &quot; $2&#125;&#39; &#x2F;etc&#x2F;grub2.cfg</span><br></pre></td></tr></table></figure>
+<p>返回：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0 : CentOS Linux 7 Rescue f128bc3705574dfab442f23fb7245e0b (5.5.0-1.el7.elrepo.x86_64)</span><br><span class="line">1 : CentOS Linux (5.5.0-1.el7.elrepo.x86_64) 7 (Core)</span><br><span class="line">2 : CentOS Linux (3.10.0-1062.9.1.el7.x86_64) 7 (Core)</span><br><span class="line">3 : CentOS Linux (3.10.0-1062.el7.x86_64) 7 (Core)</span><br><span class="line">4 : CentOS Linux (0-rescue-7bd68357fb1f47688c0f1b0a48330334) 7 (Core)</span><br></pre></td></tr></table></figure>
+<p>根据序号设置默认内核：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">grub2-set-default 1</span><br></pre></td></tr></table></figure>
+<p>重启服务器。<br>修改sysctl配置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &#39;net.core.default_qdisc&#x3D;fq&#39; | tee -a &#x2F;etc&#x2F;sysctl.conf</span><br><span class="line">echo &#39;net.ipv4.tcp_congestion_control&#x3D;bbr&#39; |  tee -a &#x2F;etc&#x2F;sysctl.conf</span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
+<p>检查是否加载BBR</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">lsmod | grep bbr</span><br></pre></td></tr></table></figure>
+<p>如果输出结果包含tcp_bbr，则表示开启成功</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tcp_bbr   20480  35</span><br></pre></td></tr></table></figure>
+<p>值此，VPS配置完毕。</p>
+<h3 id="windows配置"><a href="#windows配置" class="headerlink" title="windows配置"></a>windows配置</h3><p>下载v2rayN客户端：<a href="https://github.com/2dust/v2rayN/releases/download/3.5/v2rayN.zip" target="_blank" rel="noopener">v2rayN</a><br>运行v2rayN.exe，服务器–&gt;Add [trojan]server–&gt;输入VPS IP，密码以及端口443–&gt;右击任务栏上v2rayN,启用Http代理，Http模式选择pac。<br>密码可以在vps（cat &#x2F;usr&#x2F;src&#x2F;trojan&#x2F;server.conf）trojan配置文件中查看。<br>至此，便可以在浏览器里科学上网了，至于其他电脑程序要科学上网，可以配置本机socks5代理，监听1080端口。</p>
+<h3 id="android配置"><a href="#android配置" class="headerlink" title="android配置"></a>android配置</h3><p>现在只找到<a href="https://github.com/trojan-gfw/igniter/releases/download/v0.1.0-pre-alpha13/app-release.apk" target="_blank" rel="noopener">Igniter</a>，不太好用，静待更新。。。</p>
+]]></content>
+      <tags>
+        <tag>trojan</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>git学习笔记</title>
     <url>/2020/01/18/git-command/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>以前使用SVN,切换到分布式版本控制系统Git，此笔记记录一下学习心得，备询。**<a href="https://gist.github.com/guweigang/9848271" target="_blank" rel="noopener">git命令大全</a><strong>，贴个链接，比较</strong><a href="https://www.liaoxuefeng.com/wiki/896043488029600/896067008724000" target="_blank" rel="noopener">适合初次接触者</a><strong>，</strong><a href="https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1" target="_blank" rel="noopener">动画演示Git命令</a>**</p>
@@ -736,54 +782,6 @@
       </tags>
   </entry>
   <entry>
-    <title>trojan科学上网</title>
-    <url>/2020/01/29/gfw/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>一直用的ssr科学上网，侥幸挺过了去年国庆等的各种严打，一直傲娇地活跃到年底，没想到值此新春佳节之际，终于不出预料地被封了，丧事喜办，旧的不去新的不来，正好试试trojan，希望他能接过前辈的火种，超神带我飞，直直挺到2021吖，本文记录一下vps、windows pc以及android手机的配置。</p>
-<a id="more"></a>
-<h3 id="vps配置"><a href="#vps配置" class="headerlink" title="vps配置"></a>vps配置</h3><h4 id="脚本安装"><a href="#脚本安装" class="headerlink" title="脚本安装"></a>脚本安装</h4><p>系统centos7，网上荡来的一键安装脚本：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -O https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;atrandys&#x2F;trojan&#x2F;master&#x2F;trojan_mult.sh &amp;&amp; chmod +x trojan_mult.sh &amp;&amp; .&#x2F;trojan_mult.sh</span><br></pre></td></tr></table></figure>
-<p>根据脚本提示，该输入数字输入数字，该输入域名输入域名，一撸到底，成功后屏幕会显示一个客户端的链接，弃之不用。</p>
-<h4 id="bbr加速"><a href="#bbr加速" class="headerlink" title="bbr加速"></a>bbr加速</h4><p>先查看系统内核版本</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure>
-<p>低于4.10的需升级内核</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rpm --import https:&#x2F;&#x2F;www.elrepo.org&#x2F;RPM-GPG-KEY-elrepo.org</span><br><span class="line">rpm -Uvh http:&#x2F;&#x2F;www.elrepo.org&#x2F;elrepo-release-7.0-2.el7.elrepo.noarch.rpm</span><br><span class="line">yum --enablerepo&#x3D;elrepo-kernel install kernel-ml -y</span><br></pre></td></tr></table></figure>
-<p>安装完毕后查看已安装内核</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">awk -F\&#39; &#39;$1&#x3D;&#x3D;&quot;menuentry &quot; &#123;print i++ &quot; : &quot; $2&#125;&#39; &#x2F;etc&#x2F;grub2.cfg</span><br></pre></td></tr></table></figure>
-<p>返回：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0 : CentOS Linux 7 Rescue f128bc3705574dfab442f23fb7245e0b (5.5.0-1.el7.elrepo.x86_64)</span><br><span class="line">1 : CentOS Linux (5.5.0-1.el7.elrepo.x86_64) 7 (Core)</span><br><span class="line">2 : CentOS Linux (3.10.0-1062.9.1.el7.x86_64) 7 (Core)</span><br><span class="line">3 : CentOS Linux (3.10.0-1062.el7.x86_64) 7 (Core)</span><br><span class="line">4 : CentOS Linux (0-rescue-7bd68357fb1f47688c0f1b0a48330334) 7 (Core)</span><br></pre></td></tr></table></figure>
-<p>根据序号设置默认内核：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">grub2-set-default 1</span><br></pre></td></tr></table></figure>
-<p>重启服务器。<br>修改sysctl配置</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &#39;net.core.default_qdisc&#x3D;fq&#39; | tee -a &#x2F;etc&#x2F;sysctl.conf</span><br><span class="line">echo &#39;net.ipv4.tcp_congestion_control&#x3D;bbr&#39; |  tee -a &#x2F;etc&#x2F;sysctl.conf</span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
-<p>检查是否加载BBR</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">lsmod | grep bbr</span><br></pre></td></tr></table></figure>
-<p>如果输出结果包含tcp_bbr，则表示开启成功</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tcp_bbr   20480  35</span><br></pre></td></tr></table></figure>
-<p>值此，VPS配置完毕。</p>
-<h3 id="windows配置"><a href="#windows配置" class="headerlink" title="windows配置"></a>windows配置</h3><p>下载v2rayN客户端：<a href="https://github.com/2dust/v2rayN/releases/download/3.5/v2rayN.zip" target="_blank" rel="noopener">v2rayN</a><br>运行v2rayN.exe，服务器–&gt;Add [trojan]server–&gt;输入VPS IP，密码以及端口443–&gt;右击任务栏上v2rayN,启用Http代理，Http模式选择pac。<br>密码可以在vps（cat &#x2F;usr&#x2F;src&#x2F;trojan&#x2F;server.conf）trojan配置文件中查看。<br>至此，便可以在浏览器里科学上网了，至于其他电脑程序要科学上网，可以配置本机socks5代理，监听1080端口。</p>
-<h3 id="android配置"><a href="#android配置" class="headerlink" title="android配置"></a>android配置</h3><p>现在只找到<a href="https://github.com/trojan-gfw/igniter/releases/download/v0.1.0-pre-alpha13/app-release.apk" target="_blank" rel="noopener">Igniter</a>，不太好用，静待更新。。。</p>
-]]></content>
-      <tags>
-        <tag>trojan</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>idea下gradle报jdk版本错误</title>
-    <url>/2020/03/05/idea-gradle-jdk/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>idea下用gradle编译项目的时候报错如下：“Could not target platform: ‘Java SE 13’ using tool chain: ‘JDK 11 (11)’.”</p>
-<a id="more"></a>
-<p>确认project采用的jdk 13,build.gradle里也是13，应该是Gradle用的版本不匹配，最后在File–&gt;Setting–&gt;Build Tools–&gt;Gradle里，找到配置项。</p>
-<p><img src="/images/pasted-22.png" alt="upload successful"></p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>gradle</tag>
-        <tag>jdk</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>随笔有感</title>
     <url>/2020/01/13/hello-world/</url>
     <content><![CDATA[<p>一个不读书之人的胡思胡想</p>
@@ -803,12 +801,19 @@
 ]]></content>
   </entry>
   <entry>
-    <title>intellij-idea的快捷键</title>
-    <url>/2020/12/23/intellij-idea%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
-    <content><![CDATA[<p><a href="https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf" target="_blank" rel="noopener">Intellij-idea的快捷键</a></p>
+    <title>idea下gradle报jdk版本错误</title>
+    <url>/2020/03/05/idea-gradle-jdk/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>idea下用gradle编译项目的时候报错如下：“Could not target platform: ‘Java SE 13’ using tool chain: ‘JDK 11 (11)’.”</p>
+<a id="more"></a>
+<p>确认project采用的jdk 13,build.gradle里也是13，应该是Gradle用的版本不匹配，最后在File–&gt;Setting–&gt;Build Tools–&gt;Gradle里，找到配置项。</p>
+<p><img src="/images/pasted-22.png" alt="upload successful"></p>
 ]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
       <tags>
-        <tag>idea</tag>
+        <tag>gradle</tag>
+        <tag>jdk</tag>
       </tags>
   </entry>
   <entry>
@@ -818,10 +823,13 @@
 ]]></content>
   </entry>
   <entry>
-    <title>int&amp;Integer、 double&amp;Double&amp;BigDecimal</title>
-    <url>/2022/03/09/int%E5%92%8CInteger%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/guodongdidi/p/6953217.html" target="_blank" rel="noopener">int和Integer的区别</a>&amp;nbsp;&amp;nbsp;<a href="http://www.louisvv.com/archives/2514.html" target="_blank" rel="noopener">double、Double与BigDecimal</a></p>
+    <title>intellij-idea的快捷键</title>
+    <url>/2020/12/23/intellij-idea%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+    <content><![CDATA[<p><a href="https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf" target="_blank" rel="noopener">Intellij-idea的快捷键</a></p>
 ]]></content>
+      <tags>
+        <tag>idea</tag>
+      </tags>
   </entry>
   <entry>
     <title>java中的乱码</title>
@@ -839,6 +847,12 @@
       </tags>
   </entry>
   <entry>
+    <title>int&amp;Integer、 double&amp;Double&amp;BigDecimal</title>
+    <url>/2022/03/09/int%E5%92%8CInteger%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/guodongdidi/p/6953217.html" target="_blank" rel="noopener">int和Integer的区别</a>&amp;nbsp;&amp;nbsp;<a href="http://www.louisvv.com/archives/2514.html" target="_blank" rel="noopener">double、Double与BigDecimal</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>spring boot注解基本了解</title>
     <url>/2020/03/06/java-annotation/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这里放两篇对Java注解的文章，以备后面查询。<a href="https://www.jianshu.com/p/d74ed7374841" target="_blank" rel="noopener"><strong>Spring Boot 注解—基本知识</strong></a>以及<a href="https://www.cnblogs.com/liaojie970/p/7879917.html" target="_blank" rel="noopener"><strong>Java注释@interface的用法</strong></a></p>
@@ -848,19 +862,6 @@
       </categories>
       <tags>
         <tag>annotation</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>json web token(jwt)</title>
-    <url>/2020/05/02/json-web-token-jwt/</url>
-    <content><![CDATA[<p>转载：**<a href="https://learnku.com/articles/22616" target="_blank" rel="noopener">别再使用 JWT 作为 Session 系统！问题重重且很危险。
-</a>**<br>结论：无状态 JWT Tokens 无法被单独地销毁或更新，取决于你如何存储，可能还会导致长度问题、安全隐患。有状态 JWT Tokens 在功能方面与 Session cookies 无异，但缺乏生产环境的验证、经过大量 Review 的实现，以及良好的客户端支持。<br>JWT 特别有效的使用例子通常是作为一次性的授权令牌。</p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>jwt</tag>
       </tags>
   </entry>
   <entry>
@@ -1048,6 +1049,19 @@
 ]]></content>
   </entry>
   <entry>
+    <title>json web token(jwt)</title>
+    <url>/2020/05/02/json-web-token-jwt/</url>
+    <content><![CDATA[<p>转载：**<a href="https://learnku.com/articles/22616" target="_blank" rel="noopener">别再使用 JWT 作为 Session 系统！问题重重且很危险。
+</a>**<br>结论：无状态 JWT Tokens 无法被单独地销毁或更新，取决于你如何存储，可能还会导致长度问题、安全隐患。有状态 JWT Tokens 在功能方面与 Session cookies 无异，但缺乏生产环境的验证、经过大量 Review 的实现，以及良好的客户端支持。<br>JWT 特别有效的使用例子通常是作为一次性的授权令牌。</p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>jwt</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>kotlin 构造函数</title>
     <url>/2020/05/17/kotlin-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<p>转载：**<a href="https://www.cnblogs.com/Jetictors/p/7758828.html" target="_blank" rel="noopener">Kotlin——中级篇（一）：类（class）详解</a><strong>、</strong><a href="https://www.jianshu.com/p/5db34354d812" target="_blank" rel="noopener">kotlin之构造函数(constructor)
@@ -1208,26 +1222,6 @@
       <categories>
         <category>linux</category>
       </categories>
-  </entry>
-  <entry>
-    <title>IntelliJ IDEA激活</title>
-    <url>/2021/03/20/IntelliJ-IDEA%E6%BF%80%E6%B4%BB/</url>
-    <content><![CDATA[<p>可用方法：<a href="https://www.exception.site/essay/how-to-free-use-intellij-idea-2019-3" target="_blank" rel="noopener">IntelliJ IDEA 2020.3.3激活破解教程（亲测激活至 2099 年，长期更新）</a>，或者一直白嫖试用30天（<em>rm -rf ～&#x2F;.config&#x2F;Jetbrains&#x2F;IntelliJIdea2020.3&#x2F;eval&#x2F;</em> 可重置30天）。</p>
-<a id="more"></a>
-
-<p>ps: 后重装系统，从走了一遍激活(白嫖有罪…)，记录下：</p>
-<ul>
-<li>下载插件ja-netfilter-all（重装前已备份数据，跳过）</li>
-<li>在idea(全家桶其他软件类似)目录下的“&#x2F;bin&#x2F;idea64.vmoptions”文件中，添加</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-javaagent:&#x2F;home&#x2F;zzl&#x2F;.local&#x2F;app&#x2F;idea-IU-213.7172.25&#x2F;ja-netfilter-all&#x2F;ja-netfilter.jar                 │</span><br></pre></td></tr></table></figure>
-<ul>
-<li>启动idea，激活码中复制该网站提供的激活码，激活成功</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>idea</tag>
-      </tags>
   </entry>
   <entry>
     <title>linux常用命令</title>
@@ -1753,27 +1747,19 @@
       </tags>
   </entry>
   <entry>
-    <title>ubuntu下使用微信、QQ等</title>
-    <url>/2021/03/18/new/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ubuntu下使用微信，网页版的登录不了，只能考虑客户端了。考虑了下，还是在docker里，无论怎么折腾，也不会污染系统。</p>
+    <title>pac.txt---url通配规则</title>
+    <url>/2020/01/30/pac/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>科学上网PAC模式，有时会需要自己在pac.txt里添加一些被墙的URL，记录一下url通配的规则，以备以后使用。</p>
 <a id="more"></a>
-<p>网上教程多如牛毛，但不是坑，就是坑，找了个自己能用的，记录下备用<br>1、安装docker docker-compose，网上教程一大把，自己搜<br>2、执行如下命令<br>首先要允许所有用户访问X11服务,运行:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xhost +</span><br></pre></td></tr></table></figure>
-<p>拉取镜像（注意docker设置国内镜像地址，用科大的就行）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull bestwu&#x2F;wechat</span><br></pre></td></tr></table></figure>
-<p>在你指定的文件夹下创建 docker-compose.yml</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">version: &#39;2&#39;</span><br><span class="line">services:</span><br><span class="line">  wechat:</span><br><span class="line">    image: bestwu&#x2F;wechat</span><br><span class="line">    container_name: wechat</span><br><span class="line">    devices:</span><br><span class="line">      - &#x2F;dev&#x2F;snd</span><br><span class="line">    volumes:</span><br><span class="line">      - &#x2F;tmp&#x2F;.X11-unix:&#x2F;tmp&#x2F;.X11-unix</span><br><span class="line">      - $PWD&#x2F;WeChatFiles:&#x2F;WeChatFiles</span><br><span class="line">    environment:</span><br><span class="line">      - DISPLAY&#x3D;unix$DISPLAY</span><br><span class="line">      - QT_IM_MODULE&#x3D;fcitx</span><br><span class="line">      - XMODIFIERS&#x3D;@im&#x3D;fcitx</span><br><span class="line">      - GTK_IM_MODULE&#x3D;fcitx</span><br><span class="line">      - AUDIO_GID&#x3D;26 # 可选 默认63（在终端用getent group video | cut -d: -f3查） 主机audio gid 解决声音设备访问权限问题</span><br><span class="line">      - GID&#x3D;1000 # 可选 默认1000 主机当前用户 gid 解决挂载目录访问权限问题</span><br><span class="line">      - UID&#x3D;1000 # 可选 默认1000 主机当前用户 uid 解决挂载目录访问权限问题</span><br><span class="line">    ipc: host</span><br></pre></td></tr></table></figure>
-<p>启动</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
-<p>停止</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose stop</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>linux</category>
-        <category>ubuntu</category>
-      </categories>
-      <tags>
-        <tag>wechat</tag>
-      </tags>
+<ol>
+<li>通配符支持。比如 .example.com&#x2F; 实际书写时可省略 * ， 如 .example.com&#x2F; ， 和 *.example.com&#x2F; 效果一样</li>
+<li>正则表达式支持。以 \ 开始和结束， 如 [\w]+://example.com\</li>
+<li>例外规则 @@ ，如 @@.example.com&#x2F; 满足 @@ 后规则的地址不使用代理</li>
+<li>匹配地址开始和结尾 | ，如 |<a href="http://example.com/" target="_blank" rel="noopener">http://example.com</a> 、 example.com| 分别表示以 <a href="http://example.com/" target="_blank" rel="noopener">http://example.com</a> 开始和以 example.com 结束的地址</li>
+<li>|| 标记，如 ||example.com 则 <a href="http://example.com/" target="_blank" rel="noopener">http://example.com</a> 、 <a href="https://example.com/" target="_blank" rel="noopener">https://example.com</a> 、 <a href="ftp://example.com/">ftp://example.com</a> 等地址均满足条件</li>
+<li>注释 ! 。 如 !我是注释<br>v2rayN需重启生效。</li>
+</ol>
+]]></content>
   </entry>
   <entry>
     <title>nginx conf location</title>
@@ -1837,19 +1823,27 @@
       </tags>
   </entry>
   <entry>
-    <title>pac.txt---url通配规则</title>
-    <url>/2020/01/30/pac/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>科学上网PAC模式，有时会需要自己在pac.txt里添加一些被墙的URL，记录一下url通配的规则，以备以后使用。</p>
+    <title>ubuntu下使用微信、QQ等</title>
+    <url>/2021/03/18/new/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ubuntu下使用微信，网页版的登录不了，只能考虑客户端了。考虑了下，还是在docker里，无论怎么折腾，也不会污染系统。</p>
 <a id="more"></a>
-<ol>
-<li>通配符支持。比如 .example.com&#x2F; 实际书写时可省略 * ， 如 .example.com&#x2F; ， 和 *.example.com&#x2F; 效果一样</li>
-<li>正则表达式支持。以 \ 开始和结束， 如 [\w]+://example.com\</li>
-<li>例外规则 @@ ，如 @@.example.com&#x2F; 满足 @@ 后规则的地址不使用代理</li>
-<li>匹配地址开始和结尾 | ，如 |<a href="http://example.com/" target="_blank" rel="noopener">http://example.com</a> 、 example.com| 分别表示以 <a href="http://example.com/" target="_blank" rel="noopener">http://example.com</a> 开始和以 example.com 结束的地址</li>
-<li>|| 标记，如 ||example.com 则 <a href="http://example.com/" target="_blank" rel="noopener">http://example.com</a> 、 <a href="https://example.com/" target="_blank" rel="noopener">https://example.com</a> 、 <a href="ftp://example.com/">ftp://example.com</a> 等地址均满足条件</li>
-<li>注释 ! 。 如 !我是注释<br>v2rayN需重启生效。</li>
-</ol>
-]]></content>
+<p>网上教程多如牛毛，但不是坑，就是坑，找了个自己能用的，记录下备用<br>1、安装docker docker-compose，网上教程一大把，自己搜<br>2、执行如下命令<br>首先要允许所有用户访问X11服务,运行:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xhost +</span><br></pre></td></tr></table></figure>
+<p>拉取镜像（注意docker设置国内镜像地址，用科大的就行）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull bestwu&#x2F;wechat</span><br></pre></td></tr></table></figure>
+<p>在你指定的文件夹下创建 docker-compose.yml</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">version: &#39;2&#39;</span><br><span class="line">services:</span><br><span class="line">  wechat:</span><br><span class="line">    image: bestwu&#x2F;wechat</span><br><span class="line">    container_name: wechat</span><br><span class="line">    devices:</span><br><span class="line">      - &#x2F;dev&#x2F;snd</span><br><span class="line">    volumes:</span><br><span class="line">      - &#x2F;tmp&#x2F;.X11-unix:&#x2F;tmp&#x2F;.X11-unix</span><br><span class="line">      - $PWD&#x2F;WeChatFiles:&#x2F;WeChatFiles</span><br><span class="line">    environment:</span><br><span class="line">      - DISPLAY&#x3D;unix$DISPLAY</span><br><span class="line">      - QT_IM_MODULE&#x3D;fcitx</span><br><span class="line">      - XMODIFIERS&#x3D;@im&#x3D;fcitx</span><br><span class="line">      - GTK_IM_MODULE&#x3D;fcitx</span><br><span class="line">      - AUDIO_GID&#x3D;26 # 可选 默认63（在终端用getent group video | cut -d: -f3查） 主机audio gid 解决声音设备访问权限问题</span><br><span class="line">      - GID&#x3D;1000 # 可选 默认1000 主机当前用户 gid 解决挂载目录访问权限问题</span><br><span class="line">      - UID&#x3D;1000 # 可选 默认1000 主机当前用户 uid 解决挂载目录访问权限问题</span><br><span class="line">    ipc: host</span><br></pre></td></tr></table></figure>
+<p>启动</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+<p>停止</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose stop</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+        <category>ubuntu</category>
+      </categories>
+      <tags>
+        <tag>wechat</tag>
+      </tags>
   </entry>
   <entry>
     <title>spring 线程安全</title>
@@ -1991,20 +1985,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Rust是基于表达式的语言</title>
-    <url>/2022/03/16/rust-%E8%AF%AD%E5%8F%A5%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
-    <content><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch1/01_expression.html" target="_blank" rel="noopener">Rust是基于表达式的语言</a></p>
-<a id="more"></a>
-
-<p>除了在表达式尾部加分号的代码是语句之外，还有另外一种情况的代码是语句而非表达式：<strong>用于声明或定义</strong>。例如let声明变量、fn定义函数、struct声明结构体等。</p>
-<p>Rust很多地方都会结合表达式和语句来做变量赋值。例如，if结构也是一个表达式，所以它有返回值，可以将if的返回值赋值给变量，而<strong>它的返回值来自于它的大括号</strong>：当大括号最后执行的一条代码不加分号结尾时，该代码的计算结果就是if结构的返回值。</p>
-<p>————————————————《rust入门秘籍》</p>
-]]></content>
-      <tags>
-        <tag>rust</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>shell脚本检查nginx服务状态</title>
     <url>/2021/04/08/shell%E8%84%9A%E6%9C%AC%E6%A3%80%E6%9F%A5nginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
@@ -2038,10 +2018,18 @@
       </tags>
   </entry>
   <entry>
-    <title>ssh 复用(避免重输密码)</title>
-    <url>/2022/04/10/ssh-%E5%A4%8D%E7%94%A8/</url>
-    <content><![CDATA[<p><a href="https://github.com/int32bit/notes/blob/master/linux/%E8%AE%BE%E7%BD%AEssh%E8%BF%9E%E6%8E%A5%E4%BC%9A%E8%AF%9D%E5%A4%8D%E7%94%A8.md" target="_blank" rel="noopener">设置ssh连接会话复用</a></p>
+    <title>Rust是基于表达式的语言</title>
+    <url>/2022/03/16/rust-%E8%AF%AD%E5%8F%A5%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
+    <content><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch1/01_expression.html" target="_blank" rel="noopener">Rust是基于表达式的语言</a></p>
+<a id="more"></a>
+
+<p>除了在表达式尾部加分号的代码是语句之外，还有另外一种情况的代码是语句而非表达式：<strong>用于声明或定义</strong>。例如let声明变量、fn定义函数、struct声明结构体等。</p>
+<p>Rust很多地方都会结合表达式和语句来做变量赋值。例如，if结构也是一个表达式，所以它有返回值，可以将if的返回值赋值给变量，而<strong>它的返回值来自于它的大括号</strong>：当大括号最后执行的一条代码不加分号结尾时，该代码的计算结果就是if结构的返回值。</p>
+<p>————————————————《rust入门秘籍》</p>
 ]]></content>
+      <tags>
+        <tag>rust</tag>
+      </tags>
   </entry>
   <entry>
     <title>shell脚本监测nginx服务状态</title>
@@ -2077,6 +2065,13 @@
       </tags>
   </entry>
   <entry>
+    <title>Java动态代理机制详解（JDK 和CGLIB，Javassist，ASM）</title>
+    <url>/2020/03/11/spring-struts2-action%E5%8D%95%E4%BE%8B%E8%BF%98%E6%98%AF%E5%A4%9A%E4%BE%8B/</url>
+    <content><![CDATA[<p>转载：**<a href="https://blog.csdn.net/luanlouis/article/details/24589193" target="_blank" rel="noopener">Java动态代理机制详解（JDK 和CGLIB，Javassist，ASM）
+</a>**</p>
+]]></content>
+  </entry>
+  <entry>
     <title>spring security 处理filter chain抛出的异常</title>
     <url>/2021/12/15/spring-security-%E5%A4%84%E7%90%86filter-chain%E6%8A%9B%E5%87%BA%E7%9A%84%E5%BC%82%E5%B8%B8/</url>
     <content><![CDATA[<p>springboot异常处理默认会redirect &#x2F;error,但前后分离后, 异常处理就要返回json<br>异常一种是controller抛出的异常, 可以通过@RestControllerAdvice @ExceptionHandler全局处理,<br>另一种是spring security filter chain 抛出的异常,由于在@RestControllerAdvice之前,所以需要其它方式处理.<br>1: 自定义MyErrorController ,overriding default Spring Boot &#x2F;error handler<br>2:在filter chain里第一的位置新增自定义filter,处理后面没有处理掉的异常.</p>
@@ -2086,13 +2081,6 @@
         <tag>spring security</tag>
         <tag>filter chain</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Java动态代理机制详解（JDK 和CGLIB，Javassist，ASM）</title>
-    <url>/2020/03/11/spring-struts2-action%E5%8D%95%E4%BE%8B%E8%BF%98%E6%98%AF%E5%A4%9A%E4%BE%8B/</url>
-    <content><![CDATA[<p>转载：**<a href="https://blog.csdn.net/luanlouis/article/details/24589193" target="_blank" rel="noopener">Java动态代理机制详解（JDK 和CGLIB，Javassist，ASM）
-</a>**</p>
-]]></content>
   </entry>
   <entry>
     <title>ssh 密码登录脚本</title>
@@ -2115,42 +2103,10 @@
       </tags>
   </entry>
   <entry>
-    <title>锁、synchronized、CAS、volatile</title>
-    <url>/2020/04/06/synchronized%E3%80%81CAS%E3%80%81volatile/</url>
-    <content><![CDATA[<p>转载：**<a href="https://tech.meituan.com/2018/11/15/java-lock.html" target="_blank" rel="noopener">不可不说的Java“锁”事</a><strong>、</strong><a href="https://blog.csdn.net/javazejian/article/details/72828483" target="_blank" rel="noopener">深入理解Java并发之synchronized实现原理</a><strong>、</strong><a href="https://juejin.im/post/5a73cbbff265da4e807783f5" target="_blank" rel="noopener">Java CAS 原理剖析
-</a><strong>、</strong><a href="https://www.cnblogs.com/theRhyme/p/12129120.html" target="_blank" rel="noopener">从原子类和UNSAFE来理解JAVA内存模型，ATOMICINTEGER的INCREMENTANDGET方法和UNSAFE部分源码介绍，VALUEOFFSET偏移量的理解</a><strong>、</strong><a href="https://www.cnblogs.com/theRhyme/p/9396834.html" target="_blank" rel="noopener">JAVA内存模型中VOLATILE关键字的作用
-</a><strong>、</strong><a href="https://www.cnblogs.com/theRhyme/p/9399881.html" target="_blank" rel="noopener">JAVA内存模型，为啥线程要有自己的本地内存，CPU高速缓存
-</a>**</p>
+    <title>ssh 复用(避免重输密码)</title>
+    <url>/2022/04/10/ssh-%E5%A4%8D%E7%94%A8/</url>
+    <content><![CDATA[<p><a href="https://github.com/int32bit/notes/blob/master/linux/%E8%AE%BE%E7%BD%AEssh%E8%BF%9E%E6%8E%A5%E4%BC%9A%E8%AF%9D%E5%A4%8D%E7%94%A8.md" target="_blank" rel="noopener">设置ssh连接会话复用</a></p>
 ]]></content>
-      <tags>
-        <tag>lock</tag>
-        <tag>synchronized</tag>
-        <tag>CAS</tag>
-        <tag>volatile</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ubuntu terminal 打开后的默认位置和大小</title>
-    <url>/2021/03/18/ubuntu-terminal-location/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>经常一边儿搜着浏览器，一边儿操作终端，这时候终端打开的默认位置大小就很重要，能节省不少步骤，下面介绍一下怎么设置。</p>
-<a id="more"></a>
-<p>网传的一般有两种，一种是自定义快捷键，一种是修改*&#x2F;usr&#x2F;share&#x2F;applications&#x2F;gnome-terminal.desktop<em>。第二种效果只是修改了“通过菜单栏或鼠标点击进入终端时的位置”，用</em>Ctrl+Alt+T*进入时，没有效果，所以本文选择第一种，步骤如下：</p>
-<p>1、打开一个终端，把它调整到自己想要的大小和位置</p>
-<p>2、在终端内执行xwininfo，鼠标变成十字，然后鼠标点击终端，出现终端窗口的信息，注意最后一行： -geometry 80x24-4+168</p>
-<p><img src="/images/pasted-29.png" alt="upload successful"></p>
-<p>3、依次进入Setting - Devices - keyboard，可以看到系统的所有快捷键设置，包括<em>Launch terminal Ctrl+Alt+T</em>。拉到最下面，点击+号</p>
-<p><img src="/images/pasted-31.png" alt="upload successful"></p>
-<p>Name自己取，主要是Command,输入步骤2的大小坐标信息，  <em>gnome-terminal –geometry 80x24-4+168</em><br>PS:重装20.04后，格式为</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gnome-terminal --geometry 80x32--45+100  #注意geometry及数字45前，均为两个“-”</span><br></pre></td></tr></table></figure>
-<p>Shortcut自定义即可，注意不要跟现存的快捷键冲突。我自己是用的Super+T。</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-        <category>ubuntu</category>
-      </categories>
-      <tags>
-        <tag>terminal</tag>
-      </tags>
   </entry>
   <entry>
     <title>tmux 使用</title>
@@ -2183,6 +2139,60 @@
 </ul>
 <p><a href="https://developer.aliyun.com/article/789729" target="_blank" rel="noopener">tmux简介</a>、<br><a href="http://www.ruanyifeng.com/blog/2019/10/tmux.html" target="_blank" rel="noopener">Tmux 使用教程</a>、<br><a href="https://developer.aliyun.com/article/789729" target="_blank" rel="noopener">Tmux 修改前缀快捷键</a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>锁、synchronized、CAS、volatile</title>
+    <url>/2020/04/06/synchronized%E3%80%81CAS%E3%80%81volatile/</url>
+    <content><![CDATA[<p>转载：**<a href="https://tech.meituan.com/2018/11/15/java-lock.html" target="_blank" rel="noopener">不可不说的Java“锁”事</a><strong>、</strong><a href="https://blog.csdn.net/javazejian/article/details/72828483" target="_blank" rel="noopener">深入理解Java并发之synchronized实现原理</a><strong>、</strong><a href="https://juejin.im/post/5a73cbbff265da4e807783f5" target="_blank" rel="noopener">Java CAS 原理剖析
+</a><strong>、</strong><a href="https://www.cnblogs.com/theRhyme/p/12129120.html" target="_blank" rel="noopener">从原子类和UNSAFE来理解JAVA内存模型，ATOMICINTEGER的INCREMENTANDGET方法和UNSAFE部分源码介绍，VALUEOFFSET偏移量的理解</a><strong>、</strong><a href="https://www.cnblogs.com/theRhyme/p/9396834.html" target="_blank" rel="noopener">JAVA内存模型中VOLATILE关键字的作用
+</a><strong>、</strong><a href="https://www.cnblogs.com/theRhyme/p/9399881.html" target="_blank" rel="noopener">JAVA内存模型，为啥线程要有自己的本地内存，CPU高速缓存
+</a>**</p>
+]]></content>
+      <tags>
+        <tag>lock</tag>
+        <tag>synchronized</tag>
+        <tag>CAS</tag>
+        <tag>volatile</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>node升级提示(sudo: npm: command not found)</title>
+    <url>/2021/08/12/sudo-npm-command-not-found/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>重拿前端项目，要把以前ubuntu的node、npm升级到最新版本，按照网上找来的方法，输入：<em>sudo npm install n -g</em>，结果提示：<em>sudo : npm :command not found</em>。</p>
+<a id="more"></a>
+
+<h3 id="node、npm升级"><a href="#node、npm升级" class="headerlink" title="node、npm升级"></a>node、npm升级</h3><p>正常情况下，先安装工具<em>n</em>，然后通过它升级</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo npm install n -g</span><br><span class="line"></span><br><span class="line">sudo n stable  # 安装最新版本</span><br></pre></td></tr></table></figure>
+<p>但出现了前言里的错误，不加sudo，权限不够，加了又无法识别命令。</p>
+<p><img src="/images/pasted-50.png" alt="upload successful"></p>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>这是什么原因呢？<br>输入<em>which npm</em>可以得到*&#x2F;home&#x2F;zzl&#x2F;.nvm&#x2F;versions&#x2F;node&#x2F;v12.21.0&#x2F;bin&#x2F;npm*，这个是普通用户的目录。<br>而sudo执行的是&#x2F;usr&#x2F;bin目录，这是root用户的目录,<br>所以使用sudo命令是识别不到这个命令的，我们可以使用软链接来处理这个问题</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo ln -s &#x2F;mydata&#x2F;nodejs&#x2F;bin&#x2F;node &#x2F;usr&#x2F;bin&#x2F;node</span><br><span class="line">sudo ln -s &#x2F;mydata&#x2F;nodejs&#x2F;bin&#x2F;npm &#x2F;usr&#x2F;bin&#x2F;npm</span><br></pre></td></tr></table></figure>
+<p>将上面左边的命令位置，替换用which npm查询出来的就行了。</p>
+<p><strong>当然我用了which node之后就意识到我以前是用的nvm管理node的版本，差点儿就用n在另外的位置重新下了个版本，而且还发现以前用apt-get下了个更早的版本，每个工具下载的位置都不同，混乱不堪，统统删了，以后只用nvm管理node版本！教训啊～</strong></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>ubuntu terminal 打开后的默认位置和大小</title>
+    <url>/2021/03/18/ubuntu-terminal-location/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>经常一边儿搜着浏览器，一边儿操作终端，这时候终端打开的默认位置大小就很重要，能节省不少步骤，下面介绍一下怎么设置。</p>
+<a id="more"></a>
+<p>网传的一般有两种，一种是自定义快捷键，一种是修改*&#x2F;usr&#x2F;share&#x2F;applications&#x2F;gnome-terminal.desktop<em>。第二种效果只是修改了“通过菜单栏或鼠标点击进入终端时的位置”，用</em>Ctrl+Alt+T*进入时，没有效果，所以本文选择第一种，步骤如下：</p>
+<p>1、打开一个终端，把它调整到自己想要的大小和位置</p>
+<p>2、在终端内执行xwininfo，鼠标变成十字，然后鼠标点击终端，出现终端窗口的信息，注意最后一行： -geometry 80x24-4+168</p>
+<p><img src="/images/pasted-29.png" alt="upload successful"></p>
+<p>3、依次进入Setting - Devices - keyboard，可以看到系统的所有快捷键设置，包括<em>Launch terminal Ctrl+Alt+T</em>。拉到最下面，点击+号</p>
+<p><img src="/images/pasted-31.png" alt="upload successful"></p>
+<p>Name自己取，主要是Command,输入步骤2的大小坐标信息，  <em>gnome-terminal –geometry 80x24-4+168</em><br>PS:重装20.04后，格式为</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gnome-terminal --geometry 80x32--45+100  #注意geometry及数字45前，均为两个“-”</span><br></pre></td></tr></table></figure>
+<p>Shortcut自定义即可，注意不要跟现存的快捷键冲突。我自己是用的Super+T。</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+        <category>ubuntu</category>
+      </categories>
+      <tags>
+        <tag>terminal</tag>
+      </tags>
   </entry>
   <entry>
     <title>ubuntu 开机启动管理</title>
@@ -2239,6 +2249,29 @@
       </categories>
   </entry>
   <entry>
+    <title>ubuntu 搜狗拼音 繁简切换快捷键冲突</title>
+    <url>/2022/03/27/ubuntu-%E6%90%9C%E7%8B%97%E6%8B%BC%E9%9F%B3-%E7%B9%81%E7%AE%80%E5%88%87%E6%8D%A2%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%86%B2%E7%AA%81/</url>
+    <content><![CDATA[<p>在用idea（vscode）搜索时，按Ctlr +Shift +F ,没反应，后打字发现触发了搜狗拼音的繁简切换，盘它~</p>
+<a id="more"></a>
+
+<h4 id="修改搜狗拼音的配置文件"><a href="#修改搜狗拼音的配置文件" class="headerlink" title="修改搜狗拼音的配置文件"></a>修改搜狗拼音的配置文件</h4><p>首先打开搜狗拼音的配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim ~&#x2F;.config&#x2F;sogoupinyin&#x2F;conf&#x2F;env.ini</span><br></pre></td></tr></table></figure>
+
+<p>然后找到下面这行，将后面的值改为0，保存文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ShortCutFanJian&#x3D;1</span><br></pre></td></tr></table></figure>
+
+<p>完成这一步还没结束，还需要修改fcitx的配置文件</p>
+<h4 id="修改-fcitx-的配置文件"><a href="#修改-fcitx-的配置文件" class="headerlink" title="修改 fcitx 的配置文件"></a>修改 fcitx 的配置文件</h4><p>打开 fcitx 的相关配置文件：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim ~&#x2F;.config&#x2F;fcitx&#x2F;conf&#x2F;fcitx-chttrans.config</span><br></pre></td></tr></table></figure>
+<p>然后找到下面这行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#Hotkey&#x3D;CTRL_SHIFT_F</span><br></pre></td></tr></table></figure>
+<p>将前面的注释取消，随便修改一个不常用的快捷键，比如</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Hotkey&#x3D;CTRL_SHIFT_]</span><br></pre></td></tr></table></figure>
+<p>保存文件，重新登录一下账户即可。</p>
+<p><a href="https://www.cnblogs.com/FengZeng666/p/15504636.html" target="_blank" rel="noopener">Ubuntu 禁用搜狗输入法Linux版的简繁切换快捷键</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>ubuntu 桌面死机(重启gnome-shell)</title>
     <url>/2021/04/19/ubuntu-%E6%A1%8C%E9%9D%A2%E6%AD%BB%E6%9C%BA/</url>
     <content><![CDATA[<p>ubuntu有时桌面会卡死，鼠标点击失灵，解决方法：重启gnome-shell。<br>建议以下两种二选一：</p>
@@ -2265,29 +2298,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ubuntu 搜狗拼音 繁简切换快捷键冲突</title>
-    <url>/2022/03/27/ubuntu-%E6%90%9C%E7%8B%97%E6%8B%BC%E9%9F%B3-%E7%B9%81%E7%AE%80%E5%88%87%E6%8D%A2%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%86%B2%E7%AA%81/</url>
-    <content><![CDATA[<p>在用idea（vscode）搜索时，按Ctlr +Shift +F ,没反应，后打字发现触发了搜狗拼音的繁简切换，盘它~</p>
-<a id="more"></a>
-
-<h4 id="修改搜狗拼音的配置文件"><a href="#修改搜狗拼音的配置文件" class="headerlink" title="修改搜狗拼音的配置文件"></a>修改搜狗拼音的配置文件</h4><p>首先打开搜狗拼音的配置文件：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim ~&#x2F;.config&#x2F;sogoupinyin&#x2F;conf&#x2F;env.ini</span><br></pre></td></tr></table></figure>
-
-<p>然后找到下面这行，将后面的值改为0，保存文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ShortCutFanJian&#x3D;1</span><br></pre></td></tr></table></figure>
-
-<p>完成这一步还没结束，还需要修改fcitx的配置文件</p>
-<h4 id="修改-fcitx-的配置文件"><a href="#修改-fcitx-的配置文件" class="headerlink" title="修改 fcitx 的配置文件"></a>修改 fcitx 的配置文件</h4><p>打开 fcitx 的相关配置文件：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim ~&#x2F;.config&#x2F;fcitx&#x2F;conf&#x2F;fcitx-chttrans.config</span><br></pre></td></tr></table></figure>
-<p>然后找到下面这行</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#Hotkey&#x3D;CTRL_SHIFT_F</span><br></pre></td></tr></table></figure>
-<p>将前面的注释取消，随便修改一个不常用的快捷键，比如</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Hotkey&#x3D;CTRL_SHIFT_]</span><br></pre></td></tr></table></figure>
-<p>保存文件，重新登录一下账户即可。</p>
-<p><a href="https://www.cnblogs.com/FengZeng666/p/15504636.html" target="_blank" rel="noopener">Ubuntu 禁用搜狗输入法Linux版的简繁切换快捷键</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>Ubuntu20.04 标题栏实时显示上下行网速、CPU及内存使用率</title>
     <url>/1970/01/01/ubuntu-%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E5%85%B6%E4%BB%96%E7%9B%98/</url>
     <content><![CDATA[<p><a href="https://www.tuziang.com/combat/1106.html" target="_blank" rel="noopener">Ubuntu18.04安装indicator-sysmonitor显示CPU、网速</a></p>
@@ -2298,28 +2308,6 @@
       </categories>
   </entry>
   <entry>
-    <title>node升级提示(sudo: npm: command not found)</title>
-    <url>/2021/08/12/sudo-npm-command-not-found/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>重拿前端项目，要把以前ubuntu的node、npm升级到最新版本，按照网上找来的方法，输入：<em>sudo npm install n -g</em>，结果提示：<em>sudo : npm :command not found</em>。</p>
-<a id="more"></a>
-
-<h3 id="node、npm升级"><a href="#node、npm升级" class="headerlink" title="node、npm升级"></a>node、npm升级</h3><p>正常情况下，先安装工具<em>n</em>，然后通过它升级</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo npm install n -g</span><br><span class="line"></span><br><span class="line">sudo n stable  # 安装最新版本</span><br></pre></td></tr></table></figure>
-<p>但出现了前言里的错误，不加sudo，权限不够，加了又无法识别命令。</p>
-<p><img src="/images/pasted-50.png" alt="upload successful"></p>
-<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>这是什么原因呢？<br>输入<em>which npm</em>可以得到*&#x2F;home&#x2F;zzl&#x2F;.nvm&#x2F;versions&#x2F;node&#x2F;v12.21.0&#x2F;bin&#x2F;npm*，这个是普通用户的目录。<br>而sudo执行的是&#x2F;usr&#x2F;bin目录，这是root用户的目录,<br>所以使用sudo命令是识别不到这个命令的，我们可以使用软链接来处理这个问题</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo ln -s &#x2F;mydata&#x2F;nodejs&#x2F;bin&#x2F;node &#x2F;usr&#x2F;bin&#x2F;node</span><br><span class="line">sudo ln -s &#x2F;mydata&#x2F;nodejs&#x2F;bin&#x2F;npm &#x2F;usr&#x2F;bin&#x2F;npm</span><br></pre></td></tr></table></figure>
-<p>将上面左边的命令位置，替换用which npm查询出来的就行了。</p>
-<p><strong>当然我用了which node之后就意识到我以前是用的nvm管理node的版本，差点儿就用n在另外的位置重新下了个版本，而且还发现以前用apt-get下了个更早的版本，每个工具下载的位置都不同，混乱不堪，统统删了，以后只用nvm管理node版本！教训啊～</strong></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>java类加载</title>
-    <url>/2020/03/03/va-class/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这里贴一个介绍类加载的介绍链接：<a href="https://juejin.im/post/5dac4edff265da5b5f7588d1#heading-0" target="_blank" rel="noopener">java 的类加载</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>ubuntu登录界面美化</title>
     <url>/2021/04/14/ubuntu%E5%BC%80%E6%9C%BA%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96/</url>
     <content><![CDATA[<p>**<a href="https://blog.csdn.net/vselfdom/article/details/88546349" target="_blank" rel="noopener">Ubuntu 18.04 用户登录界面优化</a>**，备用。</p>
@@ -2328,6 +2316,12 @@
         <category>linux</category>
         <category>ubuntu</category>
       </categories>
+  </entry>
+  <entry>
+    <title>java类加载</title>
+    <url>/2020/03/03/va-class/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这里贴一个介绍类加载的介绍链接：<a href="https://juejin.im/post/5dac4edff265da5b5f7588d1#heading-0" target="_blank" rel="noopener">java 的类加载</a></p>
+]]></content>
   </entry>
   <entry>
     <title>vim常用命令、快捷键</title>
@@ -2788,17 +2782,6 @@
       </tags>
   </entry>
   <entry>
-    <title>vue cli 前端跨域设置</title>
-    <url>/2021/11/27/vue-cli-%E5%89%8D%E7%AB%AF%E8%B7%A8%E5%9F%9F%E8%AE%BE%E7%BD%AE/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>前后分离的前端开发时,一般都缺少后端的支持,开发阶段可以用mock模拟后端的返回请求, 但后续总要访问后端联调, 此时就涉及到前端的跨越了(只有开发阶段,部署的时候统一部署). 本质上就是在前端开一个代理服务,服务器访问服务器就没有浏览器访问后端的跨域限制了.</p>
-<a id="more"></a>
-<p><strong><a href="https://blog.csdn.net/qq_34450741/article/details/107444815?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-2.no_search_link&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-2.no_search_link" target="_blank" rel="noopener">[vue] vue cli 4.0+ 解决前端跨域问题</a></strong> &amp;nbsp;&amp;nbsp;<strong><a href="https://blog.csdn.net/weixin_39553363/article/details/104152142" target="_blank" rel="noopener">图解vue3.0&#x2F;vueCli4解决跨域问题</a></strong></p>
-]]></content>
-      <tags>
-        <tag>跨域</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Ubuntu中vim的粘帖复制</title>
     <url>/2021/03/17/vim-%E7%B2%98%E5%B8%96%E5%A4%8D%E5%88%B6%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>想要从浏览器中把Ctrl+c的内容复制到Vim中，要搞懂Ubuntu18中vim的复制粘帖原理及使用。</p>
@@ -2840,6 +2823,27 @@
       </tags>
   </entry>
   <entry>
+    <title>vue cli 前端跨域设置</title>
+    <url>/2021/11/27/vue-cli-%E5%89%8D%E7%AB%AF%E8%B7%A8%E5%9F%9F%E8%AE%BE%E7%BD%AE/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>前后分离的前端开发时,一般都缺少后端的支持,开发阶段可以用mock模拟后端的返回请求, 但后续总要访问后端联调, 此时就涉及到前端的跨越了(只有开发阶段,部署的时候统一部署). 本质上就是在前端开一个代理服务,服务器访问服务器就没有浏览器访问后端的跨域限制了.</p>
+<a id="more"></a>
+<p><strong><a href="https://blog.csdn.net/qq_34450741/article/details/107444815?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-2.no_search_link&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-2.no_search_link" target="_blank" rel="noopener">[vue] vue cli 4.0+ 解决前端跨域问题</a></strong> &amp;nbsp;&amp;nbsp;<strong><a href="https://blog.csdn.net/weixin_39553363/article/details/104152142" target="_blank" rel="noopener">图解vue3.0&#x2F;vueCli4解决跨域问题</a></strong></p>
+]]></content>
+      <tags>
+        <tag>跨域</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vue nginx 压缩</title>
+    <url>/2022/02/10/vue-nginx-%E5%8E%8B%E7%BC%A9/</url>
+    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/qq_43363884/article/details/108195408" target="_blank" rel="noopener">vue打包时gzip压缩的两种方案</a></strong>  ,   &amp;nbsp;&amp;nbsp;<strong><a href="https://blog.csdn.net/github_38924695/article/details/108773173" target="_blank" rel="noopener">nginx中配置gzip_static on</a></strong></p>
+]]></content>
+      <tags>
+        <tag>nginx</tag>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>websocket --Token Authentication</title>
     <url>/2020/06/07/websocket-Token-Authentication/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>链接：<a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#websocket-stomp-authentication" target="_blank" rel="noopener">STOMP–Token Authentication</a></p>
@@ -2875,13 +2879,17 @@
       </categories>
   </entry>
   <entry>
-    <title>vue nginx 压缩</title>
-    <url>/2022/02/10/vue-nginx-%E5%8E%8B%E7%BC%A9/</url>
-    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/qq_43363884/article/details/108195408" target="_blank" rel="noopener">vue打包时gzip压缩的两种方案</a></strong>  ,   &amp;nbsp;&amp;nbsp;<strong><a href="https://blog.csdn.net/github_38924695/article/details/108773173" target="_blank" rel="noopener">nginx中配置gzip_static on</a></strong></p>
+    <title>RxJava --学习链接</title>
+    <url>/2020/02/18/xJava/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Rx（Reactive Extensions）是一个使用<code>可观察数据流</code>进行<code>异步编程</code>的编程接口，ReactiveX结合了<code>观察者模式</code>、<code>迭代器模式</code>和<code>函数式编程</code>的精华。Rx的语言库比较流行的有RxJava&#x2F;RxJS&#x2F;Rx.NET，这里贴一些有关RxJava的链接，以便后续查找。</p>
+<a id="more"></a>
+<p><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/" target="_blank" rel="noopener">Rx中文文档</a><br><a href="https://www.jianshu.com/p/03a72a5a2049" target="_blank" rel="noopener">RxJava心得</a><br><a href="https://blog.lixplor.com/2016/10/16/rxjava/" target="_blank" rel="noopener">RxJava操作符</a></p>
 ]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
       <tags>
-        <tag>nginx</tag>
-        <tag>vue</tag>
+        <tag>RxJava</tag>
       </tags>
   </entry>
   <entry>
@@ -2917,20 +2925,6 @@
       </tags>
   </entry>
   <entry>
-    <title>RxJava --学习链接</title>
-    <url>/2020/02/18/xJava/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Rx（Reactive Extensions）是一个使用<code>可观察数据流</code>进行<code>异步编程</code>的编程接口，ReactiveX结合了<code>观察者模式</code>、<code>迭代器模式</code>和<code>函数式编程</code>的精华。Rx的语言库比较流行的有RxJava&#x2F;RxJS&#x2F;Rx.NET，这里贴一些有关RxJava的链接，以便后续查找。</p>
-<a id="more"></a>
-<p><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/" target="_blank" rel="noopener">Rx中文文档</a><br><a href="https://www.jianshu.com/p/03a72a5a2049" target="_blank" rel="noopener">RxJava心得</a><br><a href="https://blog.lixplor.com/2016/10/16/rxjava/" target="_blank" rel="noopener">RxJava操作符</a></p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>RxJava</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>你真的会用Gson吗?Gson使用指南（一）</title>
     <url>/2021/12/23/%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BC%9A%E7%94%A8Gson%E5%90%97-Gson%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%EF%BC%88%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<p><strong><a href="https://www.jianshu.com/p/e740196225a4" target="_blank" rel="noopener">你真的会用Gson吗?Gson使用指南（一）</a></strong>&amp;nbsp;&amp;nbsp;<strong><a href="https://blog.csdn.net/majalis_c/article/details/79801863?utm_term=gsonjsonobject%E8%BD%ACstring&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-0-79801863&spm=3001.4430" target="_blank" rel="noopener">Gson基本操作，JsonObject，JsonArray，String，JavaBean，List互转</a></strong></p>
@@ -2940,6 +2934,12 @@
     <title>图解--函数调用过程及栈帧分析</title>
     <url>/2022/02/11/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B%E5%8F%8A%E6%A0%88%E5%B8%A7%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/yishizuofei/article/details/78282958" target="_blank" rel="noopener">函数调用过程原理及函数栈帧分析</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>二叉树</title>
+    <url>/2021/02/04/%E5%8F%89%E6%A0%91/</url>
+    <content><![CDATA[<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><p><a href="https://www.kukuxiaai.com/blog/2019-07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E6%A0%91/" target="_blank" rel="noopener">数据结构与算法-树</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -2964,6 +2964,12 @@
 ]]></content>
   </entry>
   <entry>
+    <title>查找算法</title>
+    <url>/2021/02/23/%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/yw09041432/p/5908444.html" target="_blank" rel="noopener">七大查找算法</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>补码原理的个人理解</title>
     <url>/2020/03/20/%E8%A1%A5%E7%A0%81%E5%8E%9F%E7%90%86%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%90%86%E8%A7%A3/</url>
     <content><![CDATA[<p>转载：**<a href="https://blog.csdn.net/jiaobuchong/article/details/83188674" target="_blank" rel="noopener">补码原理的个人理解</a>**</p>
@@ -2974,18 +2980,6 @@
       <tags>
         <tag>补码</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>二叉树</title>
-    <url>/2021/02/04/%E5%8F%89%E6%A0%91/</url>
-    <content><![CDATA[<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><p><a href="https://www.kukuxiaai.com/blog/2019-07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E6%A0%91/" target="_blank" rel="noopener">数据结构与算法-树</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>查找算法</title>
-    <url>/2021/02/23/%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/yw09041432/p/5908444.html" target="_blank" rel="noopener">七大查找算法</a></p>
-]]></content>
   </entry>
   <entry>
     <title>计算机网络之IP、MAC</title>
@@ -3014,6 +3008,12 @@
 <p>现在就可以执行这个文件了 .&#x2F;woeusb-5.2.4.bash 可以看到命令提示，只需要制定一个windows镜像文件地址 和 u盘的位置即可</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo fdisk -l #查看U盘</span><br><span class="line">umount &#x2F;dev&#x2F;sdb  #卸载u盘</span><br><span class="line">sudo mkfs.ntfs -F &#x2F;dev&#x2F;sdb #格式化U盘</span><br><span class="line">sudo .&#x2F;woeusb-5.2.4.bash --device &#39;WinPE.iso&#39;  &#x2F;dev&#x2F;sdb  --tgt-fs  NTFS #刻盘</span><br></pre></td></tr></table></figure>
 <h3 id="WIN10-引导修复"><a href="#WIN10-引导修复" class="headerlink" title="WIN10 引导修复"></a>WIN10 引导修复</h3><p>拿着刻好的U盘，重新开机，狂按F12,进入WINPE，接来下的修复过程，严格参照下面的链接（C盘和D盘，我的也是反着的）<br><a href="https://blog.csdn.net/A_Sen_A/article/details/89545311" target="_blank" rel="noopener">win10 UEFI引导恢复</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Wireshark抓包原理（ARP劫持、MAC泛洪）及数据流追踪和图像抓取</title>
+    <url>/2021/05/31/Wireshark%E6%8A%93%E5%8C%85%E5%8E%9F%E7%90%86%EF%BC%88ARP%E5%8A%AB%E6%8C%81%E3%80%81MAC%E6%B3%9B%E6%B4%AA%EF%BC%89%E5%8F%8A%E6%95%B0%E6%8D%AE%E6%B5%81%E8%BF%BD%E8%B8%AA%E5%92%8C%E5%9B%BE%E5%83%8F%E6%8A%93%E5%8F%96/</url>
+    <content><![CDATA[<p>转载：<a href="https://cloud.tencent.com/developer/article/1626729" target="_blank" rel="noopener">Wireshark抓包原理（ARP劫持、MAC泛洪）及数据流追踪和图像抓取</a></p>
 ]]></content>
   </entry>
 </search>
