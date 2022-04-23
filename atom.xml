@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglinagain.xyz/"/>
-  <updated>2022-04-09T20:20:20.280Z</updated>
+  <updated>2022-04-23T15:27:08.837Z</updated>
   <id>http://blog.zhangzonglinagain.xyz/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hard Links VS Soft Links in Linux: What’s the Difference</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2022/04/23/Hard-Links-VS-Soft-Links-in-Linux-What%E2%80%99s-the-Difference/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2022/04/23/Hard-Links-VS-Soft-Links-in-Linux-What%E2%80%99s-the-Difference/</id>
+    <published>2022-04-23T15:12:15.000Z</published>
+    <updated>2022-04-23T15:27:08.837Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://medium.com/techtofreedom/hard-links-vs-soft-links-in-linux-whats-the-difference-bbd3dfbe24f7" target="_blank" rel="noopener">Hard Links VS Soft Links in Linux: What’s the Difference</a></p><a id="more"></a><p>总结：</p><ul><li>A hard link is a link pointing to an existing file’s inode, One or more hard links for an existing file can be created, and they have the <strong>same  inode number</strong>. </li><li>A soft link is a pointer to a file or directory.Unlike a hard link, a soft link has its own inode and inode number. </li><li>A hard link: <ul><li>A file can be accessed with different filenames.</li><li>Modifications of a file by one of its filenames will affect all filenames.</li><li>Deleting one filename does not affect access to other filenames.</li></ul></li><li>A soft link points to another existing file’s content. This means that a soft link depends on its “host file” to exist. If its host file is deleted, opening the soft link will report an error: “No such file or directory”. (This is totally different with hard links.)</li><li>Hard links, by the way, <strong>cannot</strong> be created for directories and files on a different filesystem, cause different filesystems manage their own inodes.</li><li>A soft link is a pointer and there’s nothing about inodes, a soft link can point to a file or a directory on a different filesystem or partition.</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://medium.com/techtofreedom/hard-links-vs-soft-links-in-linux-whats-the-difference-bbd3dfbe24f7&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hard Links VS Soft Links in Linux: What’s the Difference&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>ssh 复用(避免重输密码)</title>
@@ -438,32 +457,6 @@
     </summary>
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>spring security 处理filter chain抛出的异常</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2021/12/15/spring-security-%E5%A4%84%E7%90%86filter-chain%E6%8A%9B%E5%87%BA%E7%9A%84%E5%BC%82%E5%B8%B8/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2021/12/15/spring-security-%E5%A4%84%E7%90%86filter-chain%E6%8A%9B%E5%87%BA%E7%9A%84%E5%BC%82%E5%B8%B8/</id>
-    <published>2021-12-15T14:55:00.000Z</published>
-    <updated>2021-12-15T15:13:43.565Z</updated>
-    
-    <content type="html"><![CDATA[<p>springboot异常处理默认会redirect &#x2F;error,但前后分离后, 异常处理就要返回json<br>异常一种是controller抛出的异常, 可以通过@RestControllerAdvice @ExceptionHandler全局处理,<br>另一种是spring security filter chain 抛出的异常,由于在@RestControllerAdvice之前,所以需要其它方式处理.<br>1: 自定义MyErrorController ,overriding default Spring Boot &#x2F;error handler<br>2:在filter chain里第一的位置新增自定义filter,处理后面没有处理掉的异常.</p><p><strong><a href="https://blog.csdn.net/muyuanjin67/article/details/120373168" target="_blank" rel="noopener">Spring和SpringSecurity 的全局异常处理</a></strong>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;,<strong><a href="https://stackoverflow.com/questions/34595605/how-to-manage-exceptions-thrown-in-filters-in-spring" target="_blank" rel="noopener">How to manage exceptions thrown in filters in Spring?</a></strong>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;,<strong><a href="https://www.jianshu.com/p/f528fe2377e2" target="_blank" rel="noopener">Spring security restful like 服务下的异常处理</a></strong></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;springboot异常处理默认会redirect &amp;#x2F;error,但前后分离后, 异常处理就要返回json&lt;br&gt;异常一种是controller抛出的异常, 可以通过@RestControllerAdvice @ExceptionHandler全局处理,&lt;br&gt;另
-      
-    
-    </summary>
-    
-    
-    
-      <category term="spring security" scheme="http://blog.zhangzonglinagain.xyz/tags/spring-security/"/>
-    
-      <category term="filter chain" scheme="http://blog.zhangzonglinagain.xyz/tags/filter-chain/"/>
     
   </entry>
   
