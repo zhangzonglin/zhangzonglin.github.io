@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Async/await</title>
-    <url>/2021/04/14/Async-await/</url>
-    <content><![CDATA[<p><a href="https://javascript.info/async-await" target="_blank" rel="noopener">Async&#x2F;await</a></p>
-]]></content>
-      <categories>
-        <category>javascript</category>
-      </categories>
-  </entry>
-  <entry>
     <title>TCP/IP协议族的网络层基础（6）——NAT和NAPT</title>
     <url>/2020/03/27/CP-IP%E4%B9%8BNAT/</url>
     <content><![CDATA[<p>转载：**<a href="https://blog.csdn.net/lvyibin890/article/details/80206979" target="_blank" rel="noopener">TCP&#x2F;IP协议族的网络层基础（6）——NAT和NAPT</a>**。</p>
@@ -107,29 +98,13 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Filter和Interceptor的比较</title>
-    <url>/2021/11/15/Filter%E5%92%8CInterceptor%E7%9A%84%E6%AF%94%E8%BE%83/</url>
-    <content><![CDATA[<p><a href="https://www.jianshu.com/p/5f5e5211bbdb" target="_blank" rel="noopener">Filter和Interceptor的比较</a>, &amp;nbsp;&amp;nbsp;&amp;nbsp;<a href="https://www.cnblogs.com/hellovoyager1/p/9152292.html" target="_blank" rel="noopener">Listener、Filter 和Interceptor 总结</a>, &amp;nbsp;&amp;nbsp;<a href="https://www.cnblogs.com/hhhshct/p/8808115.html" target="_blank" rel="noopener">springboot配置监听器、过滤器和拦截器</a></p>
+    <title>Async/await</title>
+    <url>/2021/04/14/Async-await/</url>
+    <content><![CDATA[<p><a href="https://javascript.info/async-await" target="_blank" rel="noopener">Async&#x2F;await</a></p>
 ]]></content>
       <categories>
-        <category>spring</category>
-        <category>java</category>
+        <category>javascript</category>
       </categories>
-      <tags>
-        <tag>interceptor</tag>
-        <tag>filter</tag>
-        <tag>listener</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Form Data &amp; Request Payload</title>
-    <url>/2021/11/27/Form-Data-Request-Payload/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>简单来说,request headers里的Content-Type: application&#x2F;json 表明request body里是json数据; Content-Type: application&#x2F;x-www-form-urlencoded表明request body里是Form Data数据(以key1&#x3D;value1&amp;key2&#x3D;value2形式). 根据content-type的不同, 后端也要相应处理,或@RequestParam 处理表单数据, 或@RequestBody处理json数据等.<br><strong><a href="https://segmentfault.com/a/1190000018774494" target="_blank" rel="noopener">前后端联调之Form Data与Request Payload，你真的了解吗？</a></strong> &amp;nbsp;&amp;nbsp;<strong><a href="https://www.cnblogs.com/zoro-zero/p/11608491.html" target="_blank" rel="noopener">SpringBoot 传入JSON对象参数</a></strong></p>
-]]></content>
-      <tags>
-        <tag>application/x-www-form-urlencoded</tag>
-        <tag>application/json</tag>
-      </tags>
   </entry>
   <entry>
     <title>H5页面在微信浏览器中通过网页授权获取用户信息(openid、昵称、头像等)</title>
@@ -170,12 +145,6 @@
       </tags>
   </entry>
   <entry>
-    <title>IDEA中的后缀补全</title>
-    <url>/2022/04/24/IDEA%E4%B8%AD%E7%9A%84%E5%90%8E%E7%BC%80%E8%A1%A5%E5%85%A8/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/correlate/article/details/109578810" target="_blank" rel="noopener">IDEA中的后缀补全</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>Hard Links VS Soft Links in Linux: What’s the Difference</title>
     <url>/2022/04/23/Hard-Links-VS-Soft-Links-in-Linux-What%E2%80%99s-the-Difference/</url>
     <content><![CDATA[<p><a href="https://medium.com/techtofreedom/hard-links-vs-soft-links-in-linux-whats-the-difference-bbd3dfbe24f7" target="_blank" rel="noopener">Hard Links VS Soft Links in Linux: What’s the Difference</a></p>
@@ -196,6 +165,55 @@
 <li>A soft link is a pointer and there’s nothing about inodes, a soft link can point to a file or a directory on a different filesystem or partition.</li>
 </ul>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Filter和Interceptor的比较</title>
+    <url>/2021/11/15/Filter%E5%92%8CInterceptor%E7%9A%84%E6%AF%94%E8%BE%83/</url>
+    <content><![CDATA[<p><a href="https://www.jianshu.com/p/5f5e5211bbdb" target="_blank" rel="noopener">Filter和Interceptor的比较</a>, &amp;nbsp;&amp;nbsp;&amp;nbsp;<a href="https://www.cnblogs.com/hellovoyager1/p/9152292.html" target="_blank" rel="noopener">Listener、Filter 和Interceptor 总结</a>, &amp;nbsp;&amp;nbsp;<a href="https://www.cnblogs.com/hhhshct/p/8808115.html" target="_blank" rel="noopener">springboot配置监听器、过滤器和拦截器</a></p>
+]]></content>
+      <categories>
+        <category>spring</category>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>interceptor</tag>
+        <tag>filter</tag>
+        <tag>listener</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Form Data &amp; Request Payload</title>
+    <url>/2021/11/27/Form-Data-Request-Payload/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>简单来说,request headers里的Content-Type: application&#x2F;json 表明request body里是json数据; Content-Type: application&#x2F;x-www-form-urlencoded表明request body里是Form Data数据(以key1&#x3D;value1&amp;key2&#x3D;value2形式). 根据content-type的不同, 后端也要相应处理,或@RequestParam 处理表单数据, 或@RequestBody处理json数据等.<br><strong><a href="https://segmentfault.com/a/1190000018774494" target="_blank" rel="noopener">前后端联调之Form Data与Request Payload，你真的了解吗？</a></strong> &amp;nbsp;&amp;nbsp;<strong><a href="https://www.cnblogs.com/zoro-zero/p/11608491.html" target="_blank" rel="noopener">SpringBoot 传入JSON对象参数</a></strong></p>
+]]></content>
+      <tags>
+        <tag>application/x-www-form-urlencoded</tag>
+        <tag>application/json</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>IDEA中的后缀补全</title>
+    <url>/2022/04/24/IDEA%E4%B8%AD%E7%9A%84%E5%90%8E%E7%BC%80%E8%A1%A5%E5%85%A8/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/correlate/article/details/109578810" target="_blank" rel="noopener">IDEA中的后缀补全</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Java泛型详解：&lt;T&gt;和Class&lt;T&gt;的使用。泛型类，泛型方法的详细使用实例 </title>
+    <url>/2021/12/17/Java%E6%B3%9B%E5%9E%8B%E8%AF%A6%E8%A7%A3%EF%BC%9A-T-%E5%92%8CClass-T-%E7%9A%84%E4%BD%BF%E7%94%A8%E3%80%82%E6%B3%9B%E5%9E%8B%E7%B1%BB%EF%BC%8C%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95%E7%9A%84%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/jpfss/p/9928747.html" target="_blank" rel="noopener">Java泛型详解：<T>和Class<T>的使用。泛型类，泛型方法的详细使用实例 </T></T></a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Let’sEncrypt 证书自动更新脚本</title>
+    <url>/2021/04/08/Let%E2%80%99sEncrypt-%E8%AF%81%E4%B9%A6%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E8%84%9A%E6%9C%AC/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>vps科学上网用的Let’sEncrypt免费证书，有效期一般是3个月，需要定期更新。写个脚本，定时更新。</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">#Version:1.0</span><br><span class="line">#Author:zzl</span><br><span class="line">#Automatically renew Let&#39;s Encrypt certificates</span><br><span class="line">#A cron job will run this shell script everyday</span><br><span class="line">i&#x3D;0</span><br><span class="line">while [[ $i -lt 10]]</span><br><span class="line">do</span><br><span class="line">  let &quot;i++&quot;</span><br><span class="line">  if [ $(ps -C nginx --no-header | wc -l) -ne 0];then</span><br><span class="line">    service nginx stop</span><br><span class="line">    sleep 3s</span><br><span class="line">    if [ $(ps -C nginx --no-header | wc -l) -eq 0];then</span><br><span class="line">      break</span><br><span class="line">    fi</span><br><span class="line">  fi</span><br><span class="line">done</span><br><span class="line">certbot renew </span><br><span class="line">service nginx start</span><br></pre></td></tr></table></figure>
+<p>或者直接用certbot renew command，详情如下<br>        <strong><a href="https://certbot.eff.org/docs/using.html?highlight=hooks#renewing-certificates" target="_blank" rel="noopener">Certbot documentation on renewing certificates</a></strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">certbot renew --pre-hook &quot;service nginx stop&quot; --post-hook &quot;service nginx start&quot;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
   </entry>
   <entry>
     <title>Hashtable、HashMap、ConcurrentHashMap</title>
@@ -224,60 +242,34 @@
       </tags>
   </entry>
   <entry>
-    <title>Let’sEncrypt 证书自动更新脚本</title>
-    <url>/2021/04/08/Let%E2%80%99sEncrypt-%E8%AF%81%E4%B9%A6%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E8%84%9A%E6%9C%AC/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>vps科学上网用的Let’sEncrypt免费证书，有效期一般是3个月，需要定期更新。写个脚本，定时更新。</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">#Version:1.0</span><br><span class="line">#Author:zzl</span><br><span class="line">#Automatically renew Let&#39;s Encrypt certificates</span><br><span class="line">#A cron job will run this shell script everyday</span><br><span class="line">i&#x3D;0</span><br><span class="line">while [[ $i -lt 10]]</span><br><span class="line">do</span><br><span class="line">  let &quot;i++&quot;</span><br><span class="line">  if [ $(ps -C nginx --no-header | wc -l) -ne 0];then</span><br><span class="line">    service nginx stop</span><br><span class="line">    sleep 3s</span><br><span class="line">    if [ $(ps -C nginx --no-header | wc -l) -eq 0];then</span><br><span class="line">      break</span><br><span class="line">    fi</span><br><span class="line">  fi</span><br><span class="line">done</span><br><span class="line">certbot renew </span><br><span class="line">service nginx start</span><br></pre></td></tr></table></figure>
-<p>或者直接用certbot renew command，详情如下<br>        <strong><a href="https://certbot.eff.org/docs/using.html?highlight=hooks#renewing-certificates" target="_blank" rel="noopener">Certbot documentation on renewing certificates</a></strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">certbot renew --pre-hook &quot;service nginx stop&quot; --post-hook &quot;service nginx start&quot;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Java泛型详解：&lt;T&gt;和Class&lt;T&gt;的使用。泛型类，泛型方法的详细使用实例 </title>
-    <url>/2021/12/17/Java%E6%B3%9B%E5%9E%8B%E8%AF%A6%E8%A7%A3%EF%BC%9A-T-%E5%92%8CClass-T-%E7%9A%84%E4%BD%BF%E7%94%A8%E3%80%82%E6%B3%9B%E5%9E%8B%E7%B1%BB%EF%BC%8C%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95%E7%9A%84%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/jpfss/p/9928747.html" target="_blank" rel="noopener">Java泛型详解：<T>和Class<T>的使用。泛型类，泛型方法的详细使用实例 </T></T></a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>Nacos</title>
     <url>/2022/04/01/Nacos/</url>
     <content><![CDATA[<p>Nacos(Dynamic Naming and Configuration Service)，Na为naming&#x2F;nameServer即注册中心,co为configuration即配置中心，service是指该注册&#x2F;配置中心都是以服务为核心。操作起来比eureka简单且功能强大。<br><strong><a href="https://nacos.io/zh-cn/docs/quick-start-spring-cloud.html" target="_blank" rel="noopener">Nacos Spring Cloud 快速开始</a><strong>、</strong><a href="https://www.jianshu.com/p/39ade28c150d" target="_blank" rel="noopener">什么是Nacos？Nacos注册配置中心介绍</a></strong></p>
 ]]></content>
   </entry>
   <entry>
-    <title>@PostConstruct注解原理解析</title>
-    <url>/2021/11/16/PostConstruct%E6%B3%A8%E8%A7%A3%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/lay2017/p/11735802.html" target="_blank" rel="noopener">@PostConstruct注解原理解析</a></p>
+    <title>Rust引用</title>
+    <url>/2022/03/17/Rust%E5%BC%95%E7%94%A8/</url>
+    <content><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch3/07_reference_type.html" target="_blank" rel="noopener">Rust中的引用</a></p>
+<a id="more"></a>
+
+<h3 id="解引用"><a href="#解引用" class="headerlink" title="解引用"></a>解引用</h3><p>Rust绝大多数时候不会自动地解除引用。但在某些环境下，Rust会自动进行解引用。</p>
+<p>自动解引用的情况有(结论先总结在此，混脸熟，以后涉及到时再来)：</p>
+<ol>
+<li><p>使用.操作符时(包括取属性值和方法调用)，会隐式地尽可能解除或创建多层引用</p>
+</li>
+<li><p>使用比较操作符时，若比较的两边是相同类型的引用，则会自动解除引用到它们的值然后比较<br>对于(1)，Rust会自动分析func()的参数，并在需要的时候自动创建或自动解除引用。例如以abc.func()有可能会自动转换为&amp;abc.func()，反之，&amp;abc.func()也有可能会自动转换为abc.func()。</p>
+</li>
+</ol>
+<p>对于(2)，例如有引用类型的变量n，那么n &gt; &amp;30和*n &gt; 30的效果是一样的。</p>
+<p>————————————————《rust入门秘籍》</p>
 ]]></content>
       <categories>
-        <category>java</category>
+        <category>rust</category>
       </categories>
       <tags>
-        <tag>PostConstruct</tag>
+        <tag>references</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>ProcessExecutor、ProcessBuilder、Runtime.getRuntime().exec(...) </title>
-    <url>/2021/05/02/ProcessExecutor%E3%80%81ProcessBuilder%E3%80%81Runtime-getRuntime-exec/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>There are many approaches to take when running external processes from Java. There are the JRE options such as the Runtime.exec() 、 ProcessBuilder、  Apache Commons Exec and ZT Process Executor. 其中ZT Process Executor是一个更为强大的进程库（process library），能够通过使用一个单一的 ProcessExecutor 类来调用 java.lang.ProcessBuilder 和 Apache Commons Exec 中的接口。</p>
-<a id="more"></a>
-<h3 id="Runtime-amp-ProcessBuilder"><a href="#Runtime-amp-ProcessBuilder" class="headerlink" title="Runtime&amp;ProcessBuilder"></a>Runtime&amp;ProcessBuilder</h3><p>*Runtime.getInstance().exec (String cmd)<em>和</em>new ProcessBuilder(String cmd).start()*都可以产生子进程对象Process。通过调用Process对象的waitFor()方法可以使主进程进入等待状态，直至子进程执行完毕，再进行下一步工作。如果对子进程处理不当，有可能造成主进程阻塞，整个程序死掉。(A program is executed with command(). With waitFor() we can wait for the process to finish.)<br><strong>通过查看JDK源码可知，Runtime.exec最终是通过调用ProcessBuilder来真正执行操作的</strong>，如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public Process exec(String command) throws IOException &#123;</span><br><span class="line">    return exec(command, null, null);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Process exec(String command, String[] envp, File dir)</span><br><span class="line">    throws IOException &#123;</span><br><span class="line">    if (command.length() &#x3D;&#x3D; 0)</span><br><span class="line">        throw new IllegalArgumentException(&quot;Empty command&quot;);</span><br><span class="line"></span><br><span class="line">    StringTokenizer st &#x3D; new StringTokenizer(command);</span><br><span class="line">    String[] cmdarray &#x3D; new String[st.countTokens()];</span><br><span class="line">    for (int i &#x3D; 0; st.hasMoreTokens(); i++)</span><br><span class="line">        cmdarray[i] &#x3D; st.nextToken();</span><br><span class="line">    return exec(cmdarray, envp, dir);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Process exec(String[] cmdarray, String[] envp, File dir)</span><br><span class="line">    throws IOException &#123;</span><br><span class="line">    return new ProcessBuilder(cmdarray)</span><br><span class="line">        .environment(envp)</span><br><span class="line">        .directory(dir)</span><br><span class="line">        .start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="ProcessExecutor-amp-ProcessBuilder"><a href="#ProcessExecutor-amp-ProcessBuilder" class="headerlink" title="ProcessExecutor&amp;ProcessBuilder"></a>ProcessExecutor&amp;ProcessBuilder</h3><p>ProcessExecutor is implemented as a wrapper of <em>ProcessBuilder</em> complementing it with additional features.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class ProcessExecutor &#123;</span><br><span class="line"></span><br><span class="line">  private static final Logger log &#x3D; LoggerFactory.getLogger(ProcessExecutor.class);</span><br><span class="line"></span><br><span class="line">  private static final boolean IS_OS_WINDOWS &#x3D; System.getProperty(&quot;os.name&quot;).startsWith(&quot;Windows&quot;);</span><br><span class="line"></span><br><span class="line">  public static final Integer[] DEFAULT_EXIT_VALUES &#x3D; null;</span><br><span class="line"></span><br><span class="line">  private static final Integer NORMAL_EXIT_VALUE &#x3D; 0;</span><br><span class="line"></span><br><span class="line">  public static final boolean DEFAULT_REDIRECT_ERROR_STREAM &#x3D; true;</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Process builder used by this executor.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private final ProcessBuilder builder &#x3D; new ProcessBuilder();</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Environment variables which are added (removed in case of &lt;code&gt;null&lt;&#x2F;code&gt; values) to the process being started.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private final Map&lt;String, String&gt; environment &#x3D; new LinkedHashMap&lt;String, String&gt;();</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Set of accepted exit codes or &lt;code&gt;null&lt;&#x2F;code&gt; if all exit codes are allowed.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private Set&lt;Integer&gt; allowedExitValues;</span><br><span class="line">  ...</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-
-<p>ProcessExecutor在后台运行进程（不阻塞当前代码对执行）:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void runInBackground() throws IOException, InterruptedException, ExecutionException, TimeoutException &#123;</span><br><span class="line">    List&lt;Future&lt;ProcessResult&gt;&gt; tasks &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">    for (int i &#x3D; 0; i &lt; 5; i++) &#123;</span><br><span class="line">        Future&lt;ProcessResult&gt; future &#x3D; new ProcessExecutor().command(&quot;java&quot;, &quot;-version&quot;)</span><br><span class="line">                .start().getFuture();</span><br><span class="line">        tasks.add(future);</span><br><span class="line">    &#125;</span><br><span class="line">    for (Future&lt;ProcessResult&gt; future : tasks) &#123;</span><br><span class="line">        ProcessResult processResult &#x3D; future.get(1, TimeUnit.SECONDS);</span><br><span class="line">        int exitValue &#x3D; processResult.getExitValue();</span><br><span class="line">        log.info(&quot;The exit value of the finished process is &#123;&#125;&quot;, exitValue);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>参考：**<a href="https://github.com/zeroturnaround/zt-exec" target="_blank" rel="noopener">GitHub: ZT Process Executor</a>**</p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
   </entry>
   <entry>
     <title>Rust copy 、move、clone</title>
@@ -335,28 +327,49 @@
       </tags>
   </entry>
   <entry>
-    <title>Rust引用</title>
-    <url>/2022/03/17/Rust%E5%BC%95%E7%94%A8/</url>
-    <content><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch3/07_reference_type.html" target="_blank" rel="noopener">Rust中的引用</a></p>
-<a id="more"></a>
-
-<h3 id="解引用"><a href="#解引用" class="headerlink" title="解引用"></a>解引用</h3><p>Rust绝大多数时候不会自动地解除引用。但在某些环境下，Rust会自动进行解引用。</p>
-<p>自动解引用的情况有(结论先总结在此，混脸熟，以后涉及到时再来)：</p>
-<ol>
-<li><p>使用.操作符时(包括取属性值和方法调用)，会隐式地尽可能解除或创建多层引用</p>
-</li>
-<li><p>使用比较操作符时，若比较的两边是相同类型的引用，则会自动解除引用到它们的值然后比较<br>对于(1)，Rust会自动分析func()的参数，并在需要的时候自动创建或自动解除引用。例如以abc.func()有可能会自动转换为&amp;abc.func()，反之，&amp;abc.func()也有可能会自动转换为abc.func()。</p>
-</li>
-</ol>
-<p>对于(2)，例如有引用类型的变量n，那么n &gt; &amp;30和*n &gt; 30的效果是一样的。</p>
-<p>————————————————《rust入门秘籍》</p>
+    <title>@PostConstruct注解原理解析</title>
+    <url>/2021/11/16/PostConstruct%E6%B3%A8%E8%A7%A3%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/lay2017/p/11735802.html" target="_blank" rel="noopener">@PostConstruct注解原理解析</a></p>
 ]]></content>
       <categories>
-        <category>rust</category>
+        <category>java</category>
       </categories>
       <tags>
-        <tag>references</tag>
+        <tag>PostConstruct</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>《Spring设计思想-事务篇》2.数据库隔离级别</title>
+    <url>/2020/03/12/Spring%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3-%E4%BA%8B%E5%8A%A1%E7%AF%87%E3%80%8B2-%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</url>
+    <content><![CDATA[<p>转载：**<a href="https://blog.csdn.net/luanlouis/article/details/95319795" target="_blank" rel="noopener">《Spring设计思想-事务篇》2.数据库隔离级别
+</a><strong>，</strong><a href="http://www.hollischuang.com/archives/943" target="_blank" rel="noopener">深入分析事务的隔离级别</a><strong>，</strong><a href="https://www.hollischuang.com/archives/923" target="_blank" rel="noopener">MySQL中的共享锁与排他锁</a>**</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>对上述的四种事务隔离级别的阐述中，我们使用了从资源互斥访问的角度做了解释。资源互斥粒度控制的越细，客户端事务的并发能力就越高，但是与此同时，会相应地降低数据的一致性。</p>
+<a id="more"></a>
+
+<p>事务的并发数和数据数据一致性这两个是两个相反的理想指标。而数据库研发的方向就是尽可能提高同时提高两个指标，尽可能减少之间的反作用影响。</p>
+<p>SERIALIZABLE 序列化读，隔离级别最高，客户端以互斥的方式访问数据库资源，统一时间内，同一个资源只能被一个客户端访问，好像客户端在排队请求访问，所以称为序列化读。<br>REPEATABLE_READ 可重复读，可重复读能够保证，一个客户端在一个事务内，多次访问同一个资源时，返回结果是一样的，顾名思义，称为可重复读，这种隔离级别可能会造成幻读现象。<br>READ_COMMITTED 读已提交，即客户端在一个事务内，每次查询读取的数据都是从数据库读取最新的已提交的数据；这种隔离界别可能会造成不可重复读和幻读现象。<br>READ_UNCOMMITTED 读未提交，即客户端在一个事务内，可以读取到其他客户端事务的尚未提交的数据；这种隔离级别可能会造成脏读、不可重复读、幻读 现象。</p>
+<p><img src="/images/pasted-23.png" alt="upload successful"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>ProcessExecutor、ProcessBuilder、Runtime.getRuntime().exec(...) </title>
+    <url>/2021/05/02/ProcessExecutor%E3%80%81ProcessBuilder%E3%80%81Runtime-getRuntime-exec/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>There are many approaches to take when running external processes from Java. There are the JRE options such as the Runtime.exec() 、 ProcessBuilder、  Apache Commons Exec and ZT Process Executor. 其中ZT Process Executor是一个更为强大的进程库（process library），能够通过使用一个单一的 ProcessExecutor 类来调用 java.lang.ProcessBuilder 和 Apache Commons Exec 中的接口。</p>
+<a id="more"></a>
+<h3 id="Runtime-amp-ProcessBuilder"><a href="#Runtime-amp-ProcessBuilder" class="headerlink" title="Runtime&amp;ProcessBuilder"></a>Runtime&amp;ProcessBuilder</h3><p>*Runtime.getInstance().exec (String cmd)<em>和</em>new ProcessBuilder(String cmd).start()*都可以产生子进程对象Process。通过调用Process对象的waitFor()方法可以使主进程进入等待状态，直至子进程执行完毕，再进行下一步工作。如果对子进程处理不当，有可能造成主进程阻塞，整个程序死掉。(A program is executed with command(). With waitFor() we can wait for the process to finish.)<br><strong>通过查看JDK源码可知，Runtime.exec最终是通过调用ProcessBuilder来真正执行操作的</strong>，如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public Process exec(String command) throws IOException &#123;</span><br><span class="line">    return exec(command, null, null);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Process exec(String command, String[] envp, File dir)</span><br><span class="line">    throws IOException &#123;</span><br><span class="line">    if (command.length() &#x3D;&#x3D; 0)</span><br><span class="line">        throw new IllegalArgumentException(&quot;Empty command&quot;);</span><br><span class="line"></span><br><span class="line">    StringTokenizer st &#x3D; new StringTokenizer(command);</span><br><span class="line">    String[] cmdarray &#x3D; new String[st.countTokens()];</span><br><span class="line">    for (int i &#x3D; 0; st.hasMoreTokens(); i++)</span><br><span class="line">        cmdarray[i] &#x3D; st.nextToken();</span><br><span class="line">    return exec(cmdarray, envp, dir);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Process exec(String[] cmdarray, String[] envp, File dir)</span><br><span class="line">    throws IOException &#123;</span><br><span class="line">    return new ProcessBuilder(cmdarray)</span><br><span class="line">        .environment(envp)</span><br><span class="line">        .directory(dir)</span><br><span class="line">        .start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ProcessExecutor-amp-ProcessBuilder"><a href="#ProcessExecutor-amp-ProcessBuilder" class="headerlink" title="ProcessExecutor&amp;ProcessBuilder"></a>ProcessExecutor&amp;ProcessBuilder</h3><p>ProcessExecutor is implemented as a wrapper of <em>ProcessBuilder</em> complementing it with additional features.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class ProcessExecutor &#123;</span><br><span class="line"></span><br><span class="line">  private static final Logger log &#x3D; LoggerFactory.getLogger(ProcessExecutor.class);</span><br><span class="line"></span><br><span class="line">  private static final boolean IS_OS_WINDOWS &#x3D; System.getProperty(&quot;os.name&quot;).startsWith(&quot;Windows&quot;);</span><br><span class="line"></span><br><span class="line">  public static final Integer[] DEFAULT_EXIT_VALUES &#x3D; null;</span><br><span class="line"></span><br><span class="line">  private static final Integer NORMAL_EXIT_VALUE &#x3D; 0;</span><br><span class="line"></span><br><span class="line">  public static final boolean DEFAULT_REDIRECT_ERROR_STREAM &#x3D; true;</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Process builder used by this executor.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private final ProcessBuilder builder &#x3D; new ProcessBuilder();</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Environment variables which are added (removed in case of &lt;code&gt;null&lt;&#x2F;code&gt; values) to the process being started.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private final Map&lt;String, String&gt; environment &#x3D; new LinkedHashMap&lt;String, String&gt;();</span><br><span class="line"></span><br><span class="line">  &#x2F;**</span><br><span class="line">   * Set of accepted exit codes or &lt;code&gt;null&lt;&#x2F;code&gt; if all exit codes are allowed.</span><br><span class="line">   *&#x2F;</span><br><span class="line">  private Set&lt;Integer&gt; allowedExitValues;</span><br><span class="line">  ...</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>ProcessExecutor在后台运行进程（不阻塞当前代码对执行）:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void runInBackground() throws IOException, InterruptedException, ExecutionException, TimeoutException &#123;</span><br><span class="line">    List&lt;Future&lt;ProcessResult&gt;&gt; tasks &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">    for (int i &#x3D; 0; i &lt; 5; i++) &#123;</span><br><span class="line">        Future&lt;ProcessResult&gt; future &#x3D; new ProcessExecutor().command(&quot;java&quot;, &quot;-version&quot;)</span><br><span class="line">                .start().getFuture();</span><br><span class="line">        tasks.add(future);</span><br><span class="line">    &#125;</span><br><span class="line">    for (Future&lt;ProcessResult&gt; future : tasks) &#123;</span><br><span class="line">        ProcessResult processResult &#x3D; future.get(1, TimeUnit.SECONDS);</span><br><span class="line">        int exitValue &#x3D; processResult.getExitValue();</span><br><span class="line">        log.info(&quot;The exit value of the finished process is &#123;&#125;&quot;, exitValue);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>参考：**<a href="https://github.com/zeroturnaround/zt-exec" target="_blank" rel="noopener">GitHub: ZT Process Executor</a>**</p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
   </entry>
   <entry>
     <title>Shell脚本检测Nginx服务状态</title>
@@ -392,24 +405,16 @@
       </tags>
   </entry>
   <entry>
-    <title>SkipList (跳跃表)的那点事儿</title>
-    <url>/2021/02/23/SkipList-%E7%9A%84%E9%82%A3%E7%82%B9%E4%BA%8B%E5%84%BF/</url>
-    <content><![CDATA[<p><a href="https://mp.weixin.qq.com/s/fNBjlpzqvNkmei0cHhNcog?article_exclude_marked=ea8284506ea5ccac099671313574ba5c" target="_blank" rel="noopener">SkipList 的那点事儿</a></p>
-]]></content>
-      <tags>
-        <tag>SkipList</tag>
-      </tags>
-  </entry>
-  <entry>
     <title> ThreadLocal 详解</title>
     <url>/2021/11/13/ThreadLocal-%E8%AF%A6%E8%A7%A3/</url>
     <content><![CDATA[<p><a href="https://www.pdai.tech/md/java/thread/java-thread-x-threadlocal.html" target="_blank" rel="noopener">ThreadLocal原理</a>  ,&amp;nbsp;&amp;nbsp;&amp;nbsp; <a href="https://juejin.cn/post/6844903487193481224" target="_blank" rel="noopener">Java 之 ThreadLocal 详解: 内存泄漏</a></p>
 ]]></content>
   </entry>
   <entry>
-    <title>Ubuntu 20.04优化</title>
-    <url>/1970/01/01/Ubuntu-18-04-%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E4%BC%98%E5%8C%96/</url>
-    <content><![CDATA[<p>**<a href="https://ratimechen.github.io/posts/1490628848/#%E5%AE%89%E8%A3%9D%E5%BF%85%E8%A3%9D%E5%B7%A5%E5%85%B7" target="_blank" rel="noopener">把 Ubuntu 20.04 打造成 macOS 風格</a>**，备用。 ps: 安装Dash to Dock插件时，一直Error，后电脑重启，不知道是重启前卸除“gnome-shell-extension-dock”起的作用，还是重启大法威力无边…</p>
+    <title>Ulauncher</title>
+    <url>/2022/04/10/Ulauncher/</url>
+    <content><![CDATA[<p>Ulauncher(Application launcher for Linux)效率提升工具…</p>
+<p><a href="https://ulauncher.io/#Download" target="_blank" rel="noopener">官网</a>、<a href="https://www.geeksforgeeks.org/how-to-install-ulauncher-in-ubuntu/" target="_blank" rel="noopener">How to Install Ulauncher in Ubuntu?</a>、<a href="https://www.makeuseof.com/install-ulauncher-on-linux/" target="_blank" rel="noopener">How to Install Extensions And Best Ulauncher Extensions</a>.<br>实测好用的插件：Terminal Runner(关机重启方便)、IpCopy（查看自己内网外网IP并复制）、Better file browser（文件浏览及搜索）、Translate（翻译。默认翻译成en，如果是英译汉格式为“tr :zh english”）、Calculate Anything</p>
 ]]></content>
   </entry>
   <entry>
@@ -457,11 +462,19 @@
       </tags>
   </entry>
   <entry>
-    <title>Ulauncher</title>
-    <url>/2022/04/10/Ulauncher/</url>
-    <content><![CDATA[<p>Ulauncher(Application launcher for Linux)效率提升工具…</p>
-<p><a href="https://ulauncher.io/#Download" target="_blank" rel="noopener">官网</a>、<a href="https://www.geeksforgeeks.org/how-to-install-ulauncher-in-ubuntu/" target="_blank" rel="noopener">How to Install Ulauncher in Ubuntu?</a>、<a href="https://www.makeuseof.com/install-ulauncher-on-linux/" target="_blank" rel="noopener">How to Install Extensions And Best Ulauncher Extensions</a>.<br>实测好用的插件：Terminal Runner(关机重启方便)、IpCopy（查看自己内网外网IP并复制）、Better file browser（文件浏览及搜索）、Translate（翻译。默认翻译成en，如果是英译汉格式为“tr :zh english”）、Calculate Anything</p>
+    <title>Ubuntu 20.04优化</title>
+    <url>/1970/01/01/Ubuntu-18-04-%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<p>**<a href="https://ratimechen.github.io/posts/1490628848/#%E5%AE%89%E8%A3%9D%E5%BF%85%E8%A3%9D%E5%B7%A5%E5%85%B7" target="_blank" rel="noopener">把 Ubuntu 20.04 打造成 macOS 風格</a>**，备用。 ps: 安装Dash to Dock插件时，一直Error，后电脑重启，不知道是重启前卸除“gnome-shell-extension-dock”起的作用，还是重启大法威力无边…</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>SkipList (跳跃表)的那点事儿</title>
+    <url>/2021/02/23/SkipList-%E7%9A%84%E9%82%A3%E7%82%B9%E4%BA%8B%E5%84%BF/</url>
+    <content><![CDATA[<p><a href="https://mp.weixin.qq.com/s/fNBjlpzqvNkmei0cHhNcog?article_exclude_marked=ea8284506ea5ccac099671313574ba5c" target="_blank" rel="noopener">SkipList 的那点事儿</a></p>
+]]></content>
+      <tags>
+        <tag>SkipList</tag>
+      </tags>
   </entry>
   <entry>
     <title>Ubuntu18.04下通过zssh与服务器进行上传/下载文件操作</title>
@@ -479,39 +492,6 @@
   </entry>
   <entry>
     <title>Using the Switch(true) Pattern in JavaScript</title>
-    <url>/1970/01/01/Using-the-Switch-true-Pattern-in-JavaScript/</url>
-    <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
-]]></content>
-      <categories>
-        <category>javascript</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Wireshark抓包原理（ARP劫持、MAC泛洪）及数据流追踪和图像抓取</title>
-    <url>/2021/05/31/Wireshark%E6%8A%93%E5%8C%85%E5%8E%9F%E7%90%86%EF%BC%88ARP%E5%8A%AB%E6%8C%81%E3%80%81MAC%E6%B3%9B%E6%B4%AA%EF%BC%89%E5%8F%8A%E6%95%B0%E6%8D%AE%E6%B5%81%E8%BF%BD%E8%B8%AA%E5%92%8C%E5%9B%BE%E5%83%8F%E6%8A%93%E5%8F%96/</url>
-    <content><![CDATA[<p>转载：<a href="https://cloud.tencent.com/developer/article/1626729" target="_blank" rel="noopener">Wireshark抓包原理（ARP劫持、MAC泛洪）及数据流追踪和图像抓取</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>android studio http proxy for sdk </title>
-    <url>/2020/02/02/andorid-studio-proxy-setting/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>闲来无事，研究一下安卓的开发，并记录一下开发工具android studio的配置，主要是安装时要下载android sdk，又因长城的原因，需要设置国内镜像，或者如果你能科学上网的话，设置http proxy也可。</p>
-<a id="more"></a>
-
-<h3 id="镜像设置"><a href="#镜像设置" class="headerlink" title="镜像设置"></a>镜像设置</h3><p>这里用的是电子科技大学的镜像网站：mirrors.dormforce.net 端口：80<br>通过File–&gt;Setting–&gt;Appearance &amp; Behavior –&gt;System Settings –&gt;Http Proxy，选择Auto-detect proxy settings，并且填写URL为：mirrors.dormforce.net :80，点击clear passwords<br><img src="/images/pasted-0.png" alt="upload successful"></p>
-<h3 id="Http-proxy设置"><a href="#Http-proxy设置" class="headerlink" title="Http proxy设置"></a>Http proxy设置</h3><p>这个适合可以科学上网的同学，我用的是trojan,配置如下：<br>Manual proxy configuration–&gt;SOCKS–&gt;Host name:127.0.0.1 Port number:1080<br>完成后点击Check connection，输入网址*<a href="https://www.android.com/*%EF%BC%8C%E6%B5%8B%E8%AF%95%E8%BF%9E%E6%8E%A5%E3%80%82" target="_blank" rel="noopener">https://www.android.com/*，测试连接。</a></p>
-<p><img src="/images/pasted-2.png" alt="upload successful"></p>
-<p>通过上述两种之一的方式设置后，点击Android SDK,点击SDK Update Sites，下面勾选<em>『Force https:&#x2F;&#x2F;… sources to be fetched using http:&#x2F;&#x2F;…』</em>，点击Apply，完成后返回主页面即可。</p>
-]]></content>
-      <categories>
-        <category>android</category>
-      </categories>
-      <tags>
-        <tag>proxy</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Using the Switch(true) Pattern in JavaScript</title>
     <url>/2021/04/13/Using-the-Switch-true-Pattern-in-JavaScript-https-seanbarry-dev-posts-switch-true-pattern/</url>
     <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
 ]]></content>
@@ -523,17 +503,13 @@
       </tags>
   </entry>
   <entry>
-    <title>《Spring设计思想-事务篇》2.数据库隔离级别</title>
-    <url>/2020/03/12/Spring%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3-%E4%BA%8B%E5%8A%A1%E7%AF%87%E3%80%8B2-%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</url>
-    <content><![CDATA[<p>转载：**<a href="https://blog.csdn.net/luanlouis/article/details/95319795" target="_blank" rel="noopener">《Spring设计思想-事务篇》2.数据库隔离级别
-</a><strong>，</strong><a href="http://www.hollischuang.com/archives/943" target="_blank" rel="noopener">深入分析事务的隔离级别</a><strong>，</strong><a href="https://www.hollischuang.com/archives/923" target="_blank" rel="noopener">MySQL中的共享锁与排他锁</a>**</p>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>对上述的四种事务隔离级别的阐述中，我们使用了从资源互斥访问的角度做了解释。资源互斥粒度控制的越细，客户端事务的并发能力就越高，但是与此同时，会相应地降低数据的一致性。</p>
-<a id="more"></a>
-
-<p>事务的并发数和数据数据一致性这两个是两个相反的理想指标。而数据库研发的方向就是尽可能提高同时提高两个指标，尽可能减少之间的反作用影响。</p>
-<p>SERIALIZABLE 序列化读，隔离级别最高，客户端以互斥的方式访问数据库资源，统一时间内，同一个资源只能被一个客户端访问，好像客户端在排队请求访问，所以称为序列化读。<br>REPEATABLE_READ 可重复读，可重复读能够保证，一个客户端在一个事务内，多次访问同一个资源时，返回结果是一样的，顾名思义，称为可重复读，这种隔离级别可能会造成幻读现象。<br>READ_COMMITTED 读已提交，即客户端在一个事务内，每次查询读取的数据都是从数据库读取最新的已提交的数据；这种隔离界别可能会造成不可重复读和幻读现象。<br>READ_UNCOMMITTED 读未提交，即客户端在一个事务内，可以读取到其他客户端事务的尚未提交的数据；这种隔离级别可能会造成脏读、不可重复读、幻读 现象。</p>
-<p><img src="/images/pasted-23.png" alt="upload successful"></p>
+    <title>Using the Switch(true) Pattern in JavaScript</title>
+    <url>/1970/01/01/Using-the-Switch-true-Pattern-in-JavaScript/</url>
+    <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
 ]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
   </entry>
   <entry>
     <title>android studio 真机调试</title>
@@ -557,6 +533,30 @@
       </categories>
       <tags>
         <tag>android-studio</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Wireshark抓包原理（ARP劫持、MAC泛洪）及数据流追踪和图像抓取</title>
+    <url>/2021/05/31/Wireshark%E6%8A%93%E5%8C%85%E5%8E%9F%E7%90%86%EF%BC%88ARP%E5%8A%AB%E6%8C%81%E3%80%81MAC%E6%B3%9B%E6%B4%AA%EF%BC%89%E5%8F%8A%E6%95%B0%E6%8D%AE%E6%B5%81%E8%BF%BD%E8%B8%AA%E5%92%8C%E5%9B%BE%E5%83%8F%E6%8A%93%E5%8F%96/</url>
+    <content><![CDATA[<p>转载：<a href="https://cloud.tencent.com/developer/article/1626729" target="_blank" rel="noopener">Wireshark抓包原理（ARP劫持、MAC泛洪）及数据流追踪和图像抓取</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>android studio http proxy for sdk </title>
+    <url>/2020/02/02/andorid-studio-proxy-setting/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>闲来无事，研究一下安卓的开发，并记录一下开发工具android studio的配置，主要是安装时要下载android sdk，又因长城的原因，需要设置国内镜像，或者如果你能科学上网的话，设置http proxy也可。</p>
+<a id="more"></a>
+
+<h3 id="镜像设置"><a href="#镜像设置" class="headerlink" title="镜像设置"></a>镜像设置</h3><p>这里用的是电子科技大学的镜像网站：mirrors.dormforce.net 端口：80<br>通过File–&gt;Setting–&gt;Appearance &amp; Behavior –&gt;System Settings –&gt;Http Proxy，选择Auto-detect proxy settings，并且填写URL为：mirrors.dormforce.net :80，点击clear passwords<br><img src="/images/pasted-0.png" alt="upload successful"></p>
+<h3 id="Http-proxy设置"><a href="#Http-proxy设置" class="headerlink" title="Http proxy设置"></a>Http proxy设置</h3><p>这个适合可以科学上网的同学，我用的是trojan,配置如下：<br>Manual proxy configuration–&gt;SOCKS–&gt;Host name:127.0.0.1 Port number:1080<br>完成后点击Check connection，输入网址*<a href="https://www.android.com/*%EF%BC%8C%E6%B5%8B%E8%AF%95%E8%BF%9E%E6%8E%A5%E3%80%82" target="_blank" rel="noopener">https://www.android.com/*，测试连接。</a></p>
+<p><img src="/images/pasted-2.png" alt="upload successful"></p>
+<p>通过上述两种之一的方式设置后，点击Android SDK,点击SDK Update Sites，下面勾选<em>『Force https:&#x2F;&#x2F;… sources to be fetched using http:&#x2F;&#x2F;…』</em>，点击Apply，完成后返回主页面即可。</p>
+]]></content>
+      <categories>
+        <category>android</category>
+      </categories>
+      <tags>
+        <tag>proxy</tag>
       </tags>
   </entry>
   <entry>
@@ -599,15 +599,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>java底层机制（堆/栈/方法区/GC/类加载）</title>
-    <url>/2020/03/08/ava%E5%BA%95%E5%B1%82%E6%9C%BA%E5%88%B6/</url>
-    <content><![CDATA[<p>转载:<strong><a href="https://www.jianshu.com/p/ae97b692614e?from=timeline" target="_blank" rel="noopener">java底层机制</a><strong>、</strong><a href="https://blog.csdn.net/luanlouis/article/details/40043991" target="_blank" rel="noopener">《Java虚拟机原理图解》3、JVM运行时数据区</a></strong></p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-  </entry>
-  <entry>
     <title>bash快捷键 光标移动</title>
     <url>/2020/01/16/bash-hot-key/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>用xshell登录并操作系统的时候，光标移动的快捷键用起来很方便，记录一下，方便以后查询</p>
@@ -642,6 +633,29 @@
       <tags>
         <tag>vertx-plugin</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>ubuntu自动挂载其他盘</title>
+    <url>/2021/03/18/ceshi/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>双系统，ubuntu和win10装在同一个固态盘，还有另外一个机械盘，平时放些资料啥的，设置给ubuntu开机自动挂载另一个机械盘。</p>
+<a id="more"></a>
+
+<p>1、查询挂载硬盘UUID</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo blkid &#x2F;dev&#x2F;sda2</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-32.png" alt="upload successful"><br>Secert和WorkSpace盘信息如上，下面用到两个盘的UUID。</p>
+<p>2、打开文件&#x2F;etc&#x2F;fstab文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;fstab</span><br></pre></td></tr></table></figure>
+<p>在文档末尾添加相应磁盘的信息。格式为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[UUID&#x3D;************] [挂载磁盘分区]  [挂载磁盘格式]  0  2</span><br><span class="line"></span><br><span class="line">UUID&#x3D;4D55CFC14D016D60 &#x2F;mnt&#x2F;workspace ntfs defaults  0  2</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-33.png" alt="upload successful"><br>第一个数字：0表示开机不检查磁盘，1表示开机检查磁盘；<br>第二个数字：0表示交换分区，1代表启动分区（Linux），2表示普通分区</p>
+<p>3、重启生效</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+        <category>ubuntu</category>
+      </categories>
   </entry>
   <entry>
     <title>centos 免密切换root</title>
@@ -701,6 +715,68 @@
       </categories>
   </entry>
   <entry>
+    <title>git学习笔记</title>
+    <url>/2020/01/18/git-command/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>以前使用SVN,切换到分布式版本控制系统Git，此笔记记录一下学习心得，备询。**<a href="https://gist.github.com/guweigang/9848271" target="_blank" rel="noopener">git命令大全</a><strong>，贴个链接，比较</strong><a href="https://www.liaoxuefeng.com/wiki/896043488029600/896067008724000" target="_blank" rel="noopener">适合初次接触者</a><strong>，</strong><a href="https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1" target="_blank" rel="noopener">动画演示Git命令</a>**</p>
+<a id="more"></a>
+<h3 id="git配置代理"><a href="#git配置代理" class="headerlink" title="git配置代理"></a>git配置代理</h3><p>天朝特色，使用git clone下载同性交友网站（github）的仓库时，巨慢！如果可以科学上网的话，设置一下代理，加一下速…<br>本文用的trojan科学上网，利用它的socks5代理加速。配置命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global http.proxy &#39;socks5:&#x2F;&#x2F;127.0.0.1:1080&#39; </span><br><span class="line">git config --global https.proxy &#39;socks5:&#x2F;&#x2F;127.0.0.1:1080&#39;</span><br></pre></td></tr></table></figure>
+
+<p>取消代理的命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>
+
+<h3 id="git提交到多个remote"><a href="#git提交到多个remote" class="headerlink" title="git提交到多个remote"></a>git提交到多个remote</h3><p>本地生成博客页面，git部署到VPS远端，也顺便也部署到github。下面就通过把本地的文件提交到两个git远端(Remote)的事例，了解git命令的使用。<br>切换到指定目录（以目录hexo下的.deploy_git文件夹为例）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git init        &#x2F;&#x2F;初始化一个git的本地仓库(以前hexo deploy的时候已经有了本地仓库，配置信息在隐藏文件夹.git里)</span><br><span class="line">git add myfile. &#x2F;&#x2F;将myfile加入暂存区index（</span><br><span class="line">git commit -m “first commit” &#x2F;&#x2F;把暂存区的文件提交到本地仓库</span><br><span class="line">git remote add Name1 git@vps的IP:hexo.git &#x2F;&#x2F;增加一个新的远程仓库，并命名为Name1</span><br><span class="line">git push -u Name1 master &#x2F;&#x2F;把分支master的内容push到远程仓库</span><br><span class="line">git remote add Name2 git@github.com:yourname&#x2F;yourname.github.io.git</span><br><span class="line"> &#x2F;&#x2F;添加第二个远程仓库，并命名为Name2</span><br><span class="line">git push -u Name2 master &#x2F;&#x2F;将分支master的内容push到第二个远程仓库</span><br></pre></td></tr></table></figure>
+<p>至此，就将本地文件提交到两个远端仓库了。<br>ps:由于我的github的yourname.github.io仓库里已经有了文件，所以push的时候会报错：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">error: failed to push some refs to &#39;git@github.com:yourname&#x2F;yourname.github.io.git&#39;</span><br><span class="line">hint: Updates were rejected because the remote contains work that you do</span><br><span class="line">hint: not have locally. This is usually caused by another repository pushing</span><br><span class="line">hint: to the same ref. You may want to first integrate the remote changes</span><br><span class="line">hint: (e.g., &#39;git pull ...&#39;) before pushing again.</span><br><span class="line">hint: See the &#39;Note about fast-forwards&#39; in &#39;git push --help&#39; for details.</span><br></pre></td></tr></table></figure>
+<p>解决方法：<br>$ git push -f Name2 master</p>
+<h3 id="git-pull冲突"><a href="#git-pull冲突" class="headerlink" title="git pull冲突"></a>git pull冲突</h3><p>从github上fork了一个项目，并clone到本地，做了一些删改后，想要提交到github个人仓库，但发现作者项目更新了，便把fork来的项目通过New pull request和原项目同步更新了。这时本地在用git pull更新项目时，遇到了下面的问题：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">error: Your local changes to the following files would be overwritten by merge: xxx&#x2F;xxx&#x2F;xxx </span><br><span class="line">Please, commit your changes or stash them before you can merge. </span><br><span class="line">Aborting</span><br></pre></td></tr></table></figure>
+<p>解决方法两种：</p>
+<h4 id="覆盖本地修改"><a href="#覆盖本地修改" class="headerlink" title="覆盖本地修改"></a>覆盖本地修改</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git reset --hard</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
+<p>这种会放弃本地修改的代码，看情况使用。</p>
+<h4 id="使用git-stash"><a href="#使用git-stash" class="headerlink" title="使用git stash"></a>使用git stash</h4><p>这种会保留自己本地修改</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git stash</span><br><span class="line">git pull</span><br><span class="line">git stash pop</span><br></pre></td></tr></table></figure>
+<p>git stash: 备份当前的工作区的内容，从最近的一次提交中读取相关内容，让工作区保证和上次提交的内容一致。同时，将当前的工作区内容保存到Git栈中。<br>git stash pop: 从Git栈中读取最近一次保存的内容，恢复工作区的相关内容。由于可能存在多个Stash的内容，所以用栈来管理，pop会从最近的一个stash中读取内容并恢复。<br>git stash list: 显示Git栈内的所有备份，可以利用这个列表来决定从那个地方恢复。<br>git stash clear: 清空Git栈。此时使用gitg等图形化工具会发现，原来stash的哪些节点都消失了。</p>
+<p>最后就可以diff一下文件看看自动合并的情况，并对解决冲突文件做相应修改后提交即可。</p>
+<p><strong><a href="https://blog.csdn.net/stone_yw/article/details/80795669" target="_blank" rel="noopener">git stash详解</a></strong></p>
+<h3 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h3><p><strong><a href="https://blog.csdn.net/qq_39505245/article/details/119899171" target="_blank" rel="noopener">git diff 比较文件的差异</a></strong></p>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>centos 定时任务（cron）通过第三方邮件服务器（MTA）发送邮件</title>
+    <url>/2020/01/13/corn-mail/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>有时会需要把一些日志或者任务结果发送到用户邮箱，特此记录一下定时任务和邮箱信息的配置。</p>
+<a id="more"></a>
+<h3 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h3><p>守护进程 crond定期(每分钟)检查是否有要执行的任务，任务调度分为两类：<strong>系统任务调度</strong>和<strong>用户任务调度</strong>。</p>
+<p><strong>系统任务调度</strong>：系统周期性所要执行的工作，比如写缓存数据到硬盘、日志清理等。配置文件<code>/etc/crontab</code>。（若要配置定时reboot任务，需配置在此）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SHELL&#x3D;&#x2F;bin&#x2F;bash</span><br><span class="line">PATH&#x3D;&#x2F;sbin:&#x2F;bin:&#x2F;usr&#x2F;sbin:&#x2F;usr&#x2F;bin</span><br><span class="line">MAILTO&#x3D;root</span><br><span class="line">HOME&#x3D;&#x2F;</span><br><span class="line"># For details see man 4 crontabs</span><br><span class="line"># Example of job definition:</span><br><span class="line"># .---------------- minute (0 - 59)</span><br><span class="line"># |  .------------- hour (0 - 23)</span><br><span class="line"># |  |  .---------- day of month (1 - 31)</span><br><span class="line"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span><br><span class="line"># |  |  |  |  .---- day of week (0 - 6) (Sunday&#x3D;0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span><br><span class="line"># |  |  |  |  |</span><br><span class="line"># *  *  *  *  * user-name command to be executed</span><br><span class="line">  10 21 *  *  * root reboot</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>用户任务调度</strong>：用户定期要执行的工作，比如用户数据备份、定时邮件提醒、自定义脚本等。配置文件<code>/var/spool/cron/usernamne</code>，用户亦可以用命令crontab定制自己的计划任务。如每隔一分钟给指定邮箱发信息，<code>crontab -u username -e</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">MAILTO&#x3D;&quot;yourmailaddress@**.com&quot;</span><br><span class="line">*&#x2F;1 * * * *  echo &#39;message&#39;</span><br></pre></td></tr></table></figure>
+<p><em>ps</em>：crontab中任何程序产生的输出都会以邮件的形式发送给由MAILTO指定的对象，若未指定则发给任务运行的用户（可于<code>/var/spool/mail/username</code>中查看），此时可通过<code>.forward</code> 或配置<code>/etc/aliases</code> 发送到外部邮箱。</p>
+<h3 id="邮件配置"><a href="#邮件配置" class="headerlink" title="邮件配置"></a>邮件配置</h3><p>用系统自带的postfix配置MTA太费事儿，所以采用163邮箱的SMTP服务。</p>
+<p>  1.邮箱开启SMTP服务</p>
+<p>  登录邮箱，在<code>设置</code>里打开<code>POP3/SMTP/IMAP</code>，勾选<code>POP3/SMTP服务</code>和<code>IMAP/SMTP服务</code>，并设置自己的<code>客户端授权密码</code>。</p>
+<p>  2.centos安装mailx(相当于MUA)<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install mailx</span><br></pre></td></tr></table></figure><br>  3.centos配置163邮箱信息，在文件 <code>/etc/mail.rc</code>末尾添加如下信息<br>    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set from&#x3D;&quot;*********@163.com&quot;</span><br><span class="line">set smtp&#x3D;smtp.163.com</span><br><span class="line">set smtp-auth-user&#x3D;*********@163.com</span><br><span class="line">set smtp-auth-password&#x3D;客户端授权密码</span><br><span class="line">set smtp-auth&#x3D;login</span><br></pre></td></tr></table></figure></p>
+<p>  <em>ps</em>:防火墙配置（vultr要联系客服“开光”25端口）</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>mail</tag>
+        <tag>crontab</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>trojan科学上网</title>
     <url>/2020/01/29/gfw/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>一直用的ssr科学上网，侥幸挺过了去年国庆等的各种严打，一直傲娇地活跃到年底，没想到值此新春佳节之际，终于不出预料地被封了，丧事喜办，旧的不去新的不来，正好试试trojan，希望他能接过前辈的火种，超神带我飞，直直挺到2021吖，本文记录一下vps、windows pc以及android手机的配置。</p>
@@ -733,87 +809,13 @@
       </tags>
   </entry>
   <entry>
-    <title>ubuntu自动挂载其他盘</title>
-    <url>/2021/03/18/ceshi/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>双系统，ubuntu和win10装在同一个固态盘，还有另外一个机械盘，平时放些资料啥的，设置给ubuntu开机自动挂载另一个机械盘。</p>
-<a id="more"></a>
-
-<p>1、查询挂载硬盘UUID</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo blkid &#x2F;dev&#x2F;sda2</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/pasted-32.png" alt="upload successful"><br>Secert和WorkSpace盘信息如上，下面用到两个盘的UUID。</p>
-<p>2、打开文件&#x2F;etc&#x2F;fstab文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;fstab</span><br></pre></td></tr></table></figure>
-<p>在文档末尾添加相应磁盘的信息。格式为：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[UUID&#x3D;************] [挂载磁盘分区]  [挂载磁盘格式]  0  2</span><br><span class="line"></span><br><span class="line">UUID&#x3D;4D55CFC14D016D60 &#x2F;mnt&#x2F;workspace ntfs defaults  0  2</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/pasted-33.png" alt="upload successful"><br>第一个数字：0表示开机不检查磁盘，1表示开机检查磁盘；<br>第二个数字：0表示交换分区，1代表启动分区（Linux），2表示普通分区</p>
-<p>3、重启生效</p>
+    <title>java底层机制（堆/栈/方法区/GC/类加载）</title>
+    <url>/2020/03/08/ava%E5%BA%95%E5%B1%82%E6%9C%BA%E5%88%B6/</url>
+    <content><![CDATA[<p>转载:<strong><a href="https://www.jianshu.com/p/ae97b692614e?from=timeline" target="_blank" rel="noopener">java底层机制</a><strong>、</strong><a href="https://blog.csdn.net/luanlouis/article/details/40043991" target="_blank" rel="noopener">《Java虚拟机原理图解》3、JVM运行时数据区</a></strong></p>
 ]]></content>
       <categories>
-        <category>linux</category>
-        <category>ubuntu</category>
+        <category>java</category>
       </categories>
-  </entry>
-  <entry>
-    <title>centos 定时任务（cron）通过第三方邮件服务器（MTA）发送邮件</title>
-    <url>/2020/01/13/corn-mail/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>有时会需要把一些日志或者任务结果发送到用户邮箱，特此记录一下定时任务和邮箱信息的配置。</p>
-<a id="more"></a>
-<h3 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h3><p>守护进程 crond定期(每分钟)检查是否有要执行的任务，任务调度分为两类：<strong>系统任务调度</strong>和<strong>用户任务调度</strong>。</p>
-<p><strong>系统任务调度</strong>：系统周期性所要执行的工作，比如写缓存数据到硬盘、日志清理等。配置文件<code>/etc/crontab</code>。（若要配置定时reboot任务，需配置在此）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SHELL&#x3D;&#x2F;bin&#x2F;bash</span><br><span class="line">PATH&#x3D;&#x2F;sbin:&#x2F;bin:&#x2F;usr&#x2F;sbin:&#x2F;usr&#x2F;bin</span><br><span class="line">MAILTO&#x3D;root</span><br><span class="line">HOME&#x3D;&#x2F;</span><br><span class="line"># For details see man 4 crontabs</span><br><span class="line"># Example of job definition:</span><br><span class="line"># .---------------- minute (0 - 59)</span><br><span class="line"># |  .------------- hour (0 - 23)</span><br><span class="line"># |  |  .---------- day of month (1 - 31)</span><br><span class="line"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span><br><span class="line"># |  |  |  |  .---- day of week (0 - 6) (Sunday&#x3D;0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span><br><span class="line"># |  |  |  |  |</span><br><span class="line"># *  *  *  *  * user-name command to be executed</span><br><span class="line">  10 21 *  *  * root reboot</span><br></pre></td></tr></table></figure>
-
-
-<p><strong>用户任务调度</strong>：用户定期要执行的工作，比如用户数据备份、定时邮件提醒、自定义脚本等。配置文件<code>/var/spool/cron/usernamne</code>，用户亦可以用命令crontab定制自己的计划任务。如每隔一分钟给指定邮箱发信息，<code>crontab -u username -e</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">MAILTO&#x3D;&quot;yourmailaddress@**.com&quot;</span><br><span class="line">*&#x2F;1 * * * *  echo &#39;message&#39;</span><br></pre></td></tr></table></figure>
-<p><em>ps</em>：crontab中任何程序产生的输出都会以邮件的形式发送给由MAILTO指定的对象，若未指定则发给任务运行的用户（可于<code>/var/spool/mail/username</code>中查看），此时可通过<code>.forward</code> 或配置<code>/etc/aliases</code> 发送到外部邮箱。</p>
-<h3 id="邮件配置"><a href="#邮件配置" class="headerlink" title="邮件配置"></a>邮件配置</h3><p>用系统自带的postfix配置MTA太费事儿，所以采用163邮箱的SMTP服务。</p>
-<p>  1.邮箱开启SMTP服务</p>
-<p>  登录邮箱，在<code>设置</code>里打开<code>POP3/SMTP/IMAP</code>，勾选<code>POP3/SMTP服务</code>和<code>IMAP/SMTP服务</code>，并设置自己的<code>客户端授权密码</code>。</p>
-<p>  2.centos安装mailx(相当于MUA)<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install mailx</span><br></pre></td></tr></table></figure><br>  3.centos配置163邮箱信息，在文件 <code>/etc/mail.rc</code>末尾添加如下信息<br>    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set from&#x3D;&quot;*********@163.com&quot;</span><br><span class="line">set smtp&#x3D;smtp.163.com</span><br><span class="line">set smtp-auth-user&#x3D;*********@163.com</span><br><span class="line">set smtp-auth-password&#x3D;客户端授权密码</span><br><span class="line">set smtp-auth&#x3D;login</span><br></pre></td></tr></table></figure></p>
-<p>  <em>ps</em>:防火墙配置（vultr要联系客服“开光”25端口）</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>mail</tag>
-        <tag>crontab</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git学习笔记</title>
-    <url>/2020/01/18/git-command/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>以前使用SVN,切换到分布式版本控制系统Git，此笔记记录一下学习心得，备询。**<a href="https://gist.github.com/guweigang/9848271" target="_blank" rel="noopener">git命令大全</a><strong>，贴个链接，比较</strong><a href="https://www.liaoxuefeng.com/wiki/896043488029600/896067008724000" target="_blank" rel="noopener">适合初次接触者</a><strong>，</strong><a href="https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1" target="_blank" rel="noopener">动画演示Git命令</a>**</p>
-<a id="more"></a>
-<h3 id="git配置代理"><a href="#git配置代理" class="headerlink" title="git配置代理"></a>git配置代理</h3><p>天朝特色，使用git clone下载同性交友网站（github）的仓库时，巨慢！如果可以科学上网的话，设置一下代理，加一下速…<br>本文用的trojan科学上网，利用它的socks5代理加速。配置命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global http.proxy &#39;socks5:&#x2F;&#x2F;127.0.0.1:1080&#39; </span><br><span class="line">git config --global https.proxy &#39;socks5:&#x2F;&#x2F;127.0.0.1:1080&#39;</span><br></pre></td></tr></table></figure>
-
-<p>取消代理的命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>
-
-<h3 id="git提交到多个remote"><a href="#git提交到多个remote" class="headerlink" title="git提交到多个remote"></a>git提交到多个remote</h3><p>本地生成博客页面，git部署到VPS远端，也顺便也部署到github。下面就通过把本地的文件提交到两个git远端(Remote)的事例，了解git命令的使用。<br>切换到指定目录（以目录hexo下的.deploy_git文件夹为例）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git init        &#x2F;&#x2F;初始化一个git的本地仓库(以前hexo deploy的时候已经有了本地仓库，配置信息在隐藏文件夹.git里)</span><br><span class="line">git add myfile. &#x2F;&#x2F;将myfile加入暂存区index（</span><br><span class="line">git commit -m “first commit” &#x2F;&#x2F;把暂存区的文件提交到本地仓库</span><br><span class="line">git remote add Name1 git@vps的IP:hexo.git &#x2F;&#x2F;增加一个新的远程仓库，并命名为Name1</span><br><span class="line">git push -u Name1 master &#x2F;&#x2F;把分支master的内容push到远程仓库</span><br><span class="line">git remote add Name2 git@github.com:yourname&#x2F;yourname.github.io.git</span><br><span class="line"> &#x2F;&#x2F;添加第二个远程仓库，并命名为Name2</span><br><span class="line">git push -u Name2 master &#x2F;&#x2F;将分支master的内容push到第二个远程仓库</span><br></pre></td></tr></table></figure>
-<p>至此，就将本地文件提交到两个远端仓库了。<br>ps:由于我的github的yourname.github.io仓库里已经有了文件，所以push的时候会报错：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">error: failed to push some refs to &#39;git@github.com:yourname&#x2F;yourname.github.io.git&#39;</span><br><span class="line">hint: Updates were rejected because the remote contains work that you do</span><br><span class="line">hint: not have locally. This is usually caused by another repository pushing</span><br><span class="line">hint: to the same ref. You may want to first integrate the remote changes</span><br><span class="line">hint: (e.g., &#39;git pull ...&#39;) before pushing again.</span><br><span class="line">hint: See the &#39;Note about fast-forwards&#39; in &#39;git push --help&#39; for details.</span><br></pre></td></tr></table></figure>
-<p>解决方法：<br>$ git push -f Name2 master</p>
-<h3 id="git-pull冲突"><a href="#git-pull冲突" class="headerlink" title="git pull冲突"></a>git pull冲突</h3><p>从github上fork了一个项目，并clone到本地，做了一些删改后，想要提交到github个人仓库，但发现作者项目更新了，便把fork来的项目通过New pull request和原项目同步更新了。这时本地在用git pull更新项目时，遇到了下面的问题：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">error: Your local changes to the following files would be overwritten by merge: xxx&#x2F;xxx&#x2F;xxx </span><br><span class="line">Please, commit your changes or stash them before you can merge. </span><br><span class="line">Aborting</span><br></pre></td></tr></table></figure>
-<p>解决方法两种：</p>
-<h4 id="覆盖本地修改"><a href="#覆盖本地修改" class="headerlink" title="覆盖本地修改"></a>覆盖本地修改</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git reset --hard</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
-<p>这种会放弃本地修改的代码，看情况使用。</p>
-<h4 id="使用git-stash"><a href="#使用git-stash" class="headerlink" title="使用git stash"></a>使用git stash</h4><p>这种会保留自己本地修改</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git stash</span><br><span class="line">git pull</span><br><span class="line">git stash pop</span><br></pre></td></tr></table></figure>
-<p>git stash: 备份当前的工作区的内容，从最近的一次提交中读取相关内容，让工作区保证和上次提交的内容一致。同时，将当前的工作区内容保存到Git栈中。<br>git stash pop: 从Git栈中读取最近一次保存的内容，恢复工作区的相关内容。由于可能存在多个Stash的内容，所以用栈来管理，pop会从最近的一个stash中读取内容并恢复。<br>git stash list: 显示Git栈内的所有备份，可以利用这个列表来决定从那个地方恢复。<br>git stash clear: 清空Git栈。此时使用gitg等图形化工具会发现，原来stash的哪些节点都消失了。</p>
-<p>最后就可以diff一下文件看看自动合并的情况，并对解决冲突文件做相应修改后提交即可。</p>
-]]></content>
-      <categories>
-        <category>git</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-      </tags>
   </entry>
   <entry>
     <title>随笔有感</title>
@@ -851,6 +853,18 @@
       </tags>
   </entry>
   <entry>
+    <title>int&amp;Integer、 double&amp;Double&amp;BigDecimal</title>
+    <url>/2022/03/09/int%E5%92%8CInteger%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/guodongdidi/p/6953217.html" target="_blank" rel="noopener">int和Integer的区别</a>&amp;nbsp;&amp;nbsp;<a href="http://www.louisvv.com/archives/2514.html" target="_blank" rel="noopener">double、Double与BigDecimal</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>@interface 简介</title>
+    <url>/2021/11/11/interface/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/zhangbeizhen18/article/details/87885441/" target="_blank" rel="noopener">自定义注释@interface的用法理解</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>intellij-idea的快捷键</title>
     <url>/2020/12/23/intellij-idea%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
     <content><![CDATA[<p><a href="https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf" target="_blank" rel="noopener">Intellij-idea的快捷键</a></p>
@@ -860,16 +874,19 @@
       </tags>
   </entry>
   <entry>
-    <title>@interface 简介</title>
-    <url>/2021/11/11/interface/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/zhangbeizhen18/article/details/87885441/" target="_blank" rel="noopener">自定义注释@interface的用法理解</a></p>
+    <title>java中的乱码</title>
+    <url>/2020/12/08/java%E4%B8%AD%E7%9A%84%E4%B9%B1%E7%A0%81/</url>
+    <content><![CDATA[<p><a href="https://developer.ibm.com/zh/languages/java/articles/j-lo-chinesecoding/" target="_blank" rel="noopener">深入分析 Java 中的中文编码问题</a>、<a href="https://blog.csdn.net/u010234516/article/details/52853214" target="_blank" rel="noopener">锟斤拷？UTF-8与GBK互转，为什么会乱码？</a></p>
+<p>附图一张:</p>
+<a id="more"></a>
+<p><img src="/images/crazyCode.jpg" alt="upload successful"></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>int&amp;Integer、 double&amp;Double&amp;BigDecimal</title>
-    <url>/2022/03/09/int%E5%92%8CInteger%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/guodongdidi/p/6953217.html" target="_blank" rel="noopener">int和Integer的区别</a>&amp;nbsp;&amp;nbsp;<a href="http://www.louisvv.com/archives/2514.html" target="_blank" rel="noopener">double、Double与BigDecimal</a></p>
-]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>乱码</tag>
+      </tags>
   </entry>
   <entry>
     <title>spring boot注解基本了解</title>
@@ -881,6 +898,19 @@
       </categories>
       <tags>
         <tag>annotation</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>json web token(jwt)</title>
+    <url>/2020/05/02/json-web-token-jwt/</url>
+    <content><![CDATA[<p>转载：**<a href="https://learnku.com/articles/22616" target="_blank" rel="noopener">别再使用 JWT 作为 Session 系统！问题重重且很危险。
+</a>**<br>结论：无状态 JWT Tokens 无法被单独地销毁或更新，取决于你如何存储，可能还会导致长度问题、安全隐患。有状态 JWT Tokens 在功能方面与 Session cookies 无异，但缺乏生产环境的验证、经过大量 Review 的实现，以及良好的客户端支持。<br>JWT 特别有效的使用例子通常是作为一次性的授权令牌。</p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>jwt</tag>
       </tags>
   </entry>
   <entry>
@@ -1133,21 +1163,6 @@
       </categories>
   </entry>
   <entry>
-    <title>java中的乱码</title>
-    <url>/2020/12/08/java%E4%B8%AD%E7%9A%84%E4%B9%B1%E7%A0%81/</url>
-    <content><![CDATA[<p><a href="https://developer.ibm.com/zh/languages/java/articles/j-lo-chinesecoding/" target="_blank" rel="noopener">深入分析 Java 中的中文编码问题</a>、<a href="https://blog.csdn.net/u010234516/article/details/52853214" target="_blank" rel="noopener">锟斤拷？UTF-8与GBK互转，为什么会乱码？</a></p>
-<p>附图一张:</p>
-<a id="more"></a>
-<p><img src="/images/crazyCode.jpg" alt="upload successful"></p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>乱码</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>linux 查看登录历史 操作用户</title>
     <url>/2021/02/26/linux-%E6%9F%A5%E7%9C%8B%E7%99%BB%E5%BD%95%E5%8E%86%E5%8F%B2-%E6%93%8D%E4%BD%9C%E7%94%A8%E6%88%B7/</url>
     <content><![CDATA[<p>linux 查看登录历史 操作用户</p>
@@ -1167,19 +1182,6 @@
       <categories>
         <category>linux</category>
       </categories>
-  </entry>
-  <entry>
-    <title>json web token(jwt)</title>
-    <url>/2020/05/02/json-web-token-jwt/</url>
-    <content><![CDATA[<p>转载：**<a href="https://learnku.com/articles/22616" target="_blank" rel="noopener">别再使用 JWT 作为 Session 系统！问题重重且很危险。
-</a>**<br>结论：无状态 JWT Tokens 无法被单独地销毁或更新，取决于你如何存储，可能还会导致长度问题、安全隐患。有状态 JWT Tokens 在功能方面与 Session cookies 无异，但缺乏生产环境的验证、经过大量 Review 的实现，以及良好的客户端支持。<br>JWT 特别有效的使用例子通常是作为一次性的授权令牌。</p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>jwt</tag>
-      </tags>
   </entry>
   <entry>
     <title>linux常用命令</title>
@@ -1546,74 +1548,6 @@
       </categories>
   </entry>
   <entry>
-    <title>本地Hexo生成的博客部署到VPS</title>
-    <url>/2020/01/17/localblog-git-vps/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>为了科学上网搭建了vps，顺便跑一下自己的博客，但vps只有500M内存，所以决定本地windows跑hexo生成网页，然后git到vps，记录一下本地和vps的git配置。</p>
-<a id="more"></a>
-<h3 id="本地配置"><a href="#本地配置" class="headerlink" title="本地配置"></a>本地配置</h3><p>本地windows安装Node.js hexo git，过程不提。</p>
-<h4 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h4><p>安装后打开 Git Bash 输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;你的用户名&quot;</span><br><span class="line">git config --global user.email &quot;你的电子邮箱&quot;</span><br></pre></td></tr></table></figure>
-<p>由于 Hexo 的 Git 部署不支持使用密码登陆，所以需要配置 SSH 公钥：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~</span><br><span class="line">mkdir .ssh</span><br><span class="line">cd .ssh</span><br><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
-<p>由此便在系统当前用户文件夹下生成了私钥 id_rsa 和公钥 id_rsa.pub。</p>
-<p>在上面建立的.ssh文件中新建config文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~&#x2F;.ssh</span><br><span class="line">vim config</span><br></pre></td></tr></table></figure>
-<p>内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Host 服务器IP</span><br><span class="line">HostName 服务器IP</span><br><span class="line">User git</span><br><span class="line">Port 端口号</span><br><span class="line">IdentityFile ~&#x2F;.ssh&#x2F;id_rsa</span><br></pre></td></tr></table></figure>
-<h4 id="hexo配置"><a href="#hexo配置" class="headerlink" title="hexo配置"></a>hexo配置</h4><p>安装插件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
-<p>打开位于 hexo 文件夹下的 _config.yml，修改 deploy 参数：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@vps的IP:hexo.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<h3 id="VPS-配置"><a href="#VPS-配置" class="headerlink" title="VPS 配置"></a>VPS 配置</h3><h4 id="新建用户"><a href="#新建用户" class="headerlink" title="新建用户"></a>新建用户</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adduser git</span><br><span class="line">passwd git</span><br></pre></td></tr></table></figure>
-<h4 id="为用户git添加-sudo-权限"><a href="#为用户git添加-sudo-权限" class="headerlink" title="为用户git添加 sudo 权限"></a>为用户git添加 sudo 权限</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod 740 &#x2F;etc&#x2F;sudoers</span><br><span class="line">vim &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure>
-<p>找到以下内容</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL:ALL) ALL</span><br></pre></td></tr></table></figure>
-<p>添加修改为</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL:ALL) ALL</span><br><span class="line">git     ALL&#x3D;(ALL:ALL) ALL</span><br></pre></td></tr></table></figure>
-<p>假如是</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL) ALL</span><br></pre></td></tr></table></figure>
-<p>则修改为</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL) ALL</span><br><span class="line">git     ALL&#x3D;(ALL) ALL</span><br></pre></td></tr></table></figure>
-<p>保存,退出</p>
-<p>然后修改回文件的权限</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod 440 &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure>
-<h4 id="关闭-git-用户-shell-权限"><a href="#关闭-git-用户-shell-权限" class="headerlink" title="关闭 git 用户 shell 权限"></a>关闭 git 用户 shell 权限</h4><p>至此我们可以在本地通过：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh git@VPS IP</span><br></pre></td></tr></table></figure>
-<p>ssh 连接服务器，登录到服务器上，对服务器进行各种操作，这通常很不安全，也不合适，我们只需要能对仓库操作就可以了，不需要更大的权限。</p>
-<p>因此我们关闭 git 用户 shell 权限，执行：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;passwd</span><br></pre></td></tr></table></figure>
-<p>找到git用户的一行：<em>git:x:1001:1001:,,,:&#x2F;home&#x2F;git:&#x2F;bin&#x2F;bash</em><br>改为：<em>git:x:1001:1001:,,,:&#x2F;home&#x2F;git:&#x2F;usr&#x2F;bin&#x2F;git-shell</em></p>
-<p>这样，git 用户可以正常通过 ssh 使用 git，但无法登录 shell，因为我们为 git 用户指定的 git-shell 每次一登录就自动退出。</p>
-<h4 id="初始化-git-仓库"><a href="#初始化-git-仓库" class="headerlink" title="初始化 git 仓库"></a>初始化 git 仓库</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git                &#x2F;&#x2F;切换到git用户目录</span><br><span class="line">mkdir blog.git              &#x2F;&#x2F;创建git仓库文件夹，以blog.git为例</span><br><span class="line">cd blog.git                 &#x2F;&#x2F;进入仓库目录</span><br><span class="line">git init --bare             &#x2F;&#x2F;使用--bare参数初始化为裸仓库，这样创建的仓库不包含工作区</span><br></pre></td></tr></table></figure>
-<p>注意：裸仓库没有工作区，因为服务器上的 Git 仓库纯粹是为了共享，所以不让用户直接登录到服务器上去改工作区，并且服务器上的 Git 仓库通常都以.git 结尾。</p>
-<h4 id="配置-SSH"><a href="#配置-SSH" class="headerlink" title="配置 SSH"></a>配置 SSH</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git                &#x2F;&#x2F;切换到git用户目录</span><br><span class="line">mkdir .ssh                  &#x2F;&#x2F;创建.ssh目录</span><br><span class="line">cd .ssh</span><br><span class="line">vim authorized_keys</span><br></pre></td></tr></table></figure>
-<p>然后将本地的公钥复制到 authorized_keys 文件里 (公钥即上文生成的公钥，可通过 <em>cat ~&#x2F;.ssh&#x2F;id_rsa.pub</em> 查看)。</p>
-<p>注意：收集所有需要登录的用户的公钥，就是他们自己的 id_rsa.pub 文件，把所有公钥导入到 <em>&#x2F;home&#x2F;git&#x2F;.ssh&#x2F;authorized_keys</em> 文件里，一行一个。</p>
-<h4 id="用户组管理"><a href="#用户组管理" class="headerlink" title="用户组管理"></a>用户组管理</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ll &#x2F;home&#x2F;git&#x2F;</span><br><span class="line">ll &#x2F;var&#x2F;www&#x2F;</span><br></pre></td></tr></table></figure>
-<p>确保 blog.git、.ssh、blog 目录的用户组权限为 git:git，若不是，执行下列命令：</p>
-<p>修改用户权限的命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chown -R git.git &#x2F;home&#x2F;git&#x2F;blog.git&#x2F;</span><br><span class="line">chown -R git.git &#x2F;home&#x2F;git&#x2F;.ssh&#x2F;</span><br><span class="line">chown -R git.git &#x2F;var&#x2F;www&#x2F;blog&#x2F;</span><br></pre></td></tr></table></figure>
-
-<h4 id="配置-Git-Hooks"><a href="#配置-Git-Hooks" class="headerlink" title="配置 Git Hooks"></a>配置 Git Hooks</h4><p>创建 post-receive 文件<br>git 用户下执行（这里由于禁止了git用户shell权限，所以我用 root 用户执行上述命令，然后更改了文件所有者为 git.git）：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git&#x2F;blog.git&#x2F;hooks     &#x2F;&#x2F;切换到hooks目录下</span><br><span class="line">vim post-receive            &#x2F;&#x2F;创建文件</span><br></pre></td></tr></table></figure>
-<p>复制下面的内容到 post-receive 文件中：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">echo &quot;post-receive hook is running...&quot;</span><br><span class="line"></span><br><span class="line">GIT_REPO&#x3D;&#x2F;home&#x2F;git&#x2F;blog.git</span><br><span class="line">TMP_GIT_CLONE&#x3D;&#x2F;tmp&#x2F;blog</span><br><span class="line">PUBLIC_WWW&#x3D;&#x2F;var&#x2F;www&#x2F;blog</span><br><span class="line"></span><br><span class="line">rm -rf $&#123;TMP_GIT_CLONE&#125;</span><br><span class="line">git clone $GIT_REPO $TMP_GIT_CLONE</span><br><span class="line">rm -rf $&#123;PUBLIC_WWW&#125;&#x2F;*</span><br><span class="line">cp -rf $&#123;TMP_GIT_CLONE&#125;&#x2F;* $&#123;PUBLIC_WWW&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>为什么不直接将裸仓库克隆到 Web 根目录下呢？我之前也一直被这个问题困扰，感觉先&gt;克隆到 tmp 目录再拷贝到 Web 根目录是多此一举。后来我觉得可能是出于项目安全的&gt;考虑，在执行 cp 命令的时候，.git 作为隐藏目录不会被拷贝到 Web 根目录下，也就&gt;避免了将整个仓库历史暴露在 Web 服务中。</p>
-</blockquote>
-<p>赋予可执行权限：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod +x post-receive</span><br></pre></td></tr></table></figure>
-<p>ok，至此配置完毕，可以本地hexo d直接发布到vps了。</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>git hooks</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>linux小技巧</title>
     <url>/2021/04/16/linux%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
     <content><![CDATA[<h3 id="linux小技巧"><a href="#linux小技巧" class="headerlink" title="linux小技巧"></a>linux小技巧</h3><p>linux有用的小技巧，随时添加。</p>
@@ -1690,6 +1624,74 @@
       </categories>
   </entry>
   <entry>
+    <title>本地Hexo生成的博客部署到VPS</title>
+    <url>/2020/01/17/localblog-git-vps/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>为了科学上网搭建了vps，顺便跑一下自己的博客，但vps只有500M内存，所以决定本地windows跑hexo生成网页，然后git到vps，记录一下本地和vps的git配置。</p>
+<a id="more"></a>
+<h3 id="本地配置"><a href="#本地配置" class="headerlink" title="本地配置"></a>本地配置</h3><p>本地windows安装Node.js hexo git，过程不提。</p>
+<h4 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h4><p>安装后打开 Git Bash 输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;你的用户名&quot;</span><br><span class="line">git config --global user.email &quot;你的电子邮箱&quot;</span><br></pre></td></tr></table></figure>
+<p>由于 Hexo 的 Git 部署不支持使用密码登陆，所以需要配置 SSH 公钥：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~</span><br><span class="line">mkdir .ssh</span><br><span class="line">cd .ssh</span><br><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+<p>由此便在系统当前用户文件夹下生成了私钥 id_rsa 和公钥 id_rsa.pub。</p>
+<p>在上面建立的.ssh文件中新建config文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~&#x2F;.ssh</span><br><span class="line">vim config</span><br></pre></td></tr></table></figure>
+<p>内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Host 服务器IP</span><br><span class="line">HostName 服务器IP</span><br><span class="line">User git</span><br><span class="line">Port 端口号</span><br><span class="line">IdentityFile ~&#x2F;.ssh&#x2F;id_rsa</span><br></pre></td></tr></table></figure>
+<h4 id="hexo配置"><a href="#hexo配置" class="headerlink" title="hexo配置"></a>hexo配置</h4><p>安装插件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>打开位于 hexo 文件夹下的 _config.yml，修改 deploy 参数：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@vps的IP:hexo.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<h3 id="VPS-配置"><a href="#VPS-配置" class="headerlink" title="VPS 配置"></a>VPS 配置</h3><h4 id="新建用户"><a href="#新建用户" class="headerlink" title="新建用户"></a>新建用户</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adduser git</span><br><span class="line">passwd git</span><br></pre></td></tr></table></figure>
+<h4 id="为用户git添加-sudo-权限"><a href="#为用户git添加-sudo-权限" class="headerlink" title="为用户git添加 sudo 权限"></a>为用户git添加 sudo 权限</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod 740 &#x2F;etc&#x2F;sudoers</span><br><span class="line">vim &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure>
+<p>找到以下内容</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL:ALL) ALL</span><br></pre></td></tr></table></figure>
+<p>添加修改为</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL:ALL) ALL</span><br><span class="line">git     ALL&#x3D;(ALL:ALL) ALL</span><br></pre></td></tr></table></figure>
+<p>假如是</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL) ALL</span><br></pre></td></tr></table></figure>
+<p>则修改为</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL) ALL</span><br><span class="line">git     ALL&#x3D;(ALL) ALL</span><br></pre></td></tr></table></figure>
+<p>保存,退出</p>
+<p>然后修改回文件的权限</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod 440 &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure>
+<h4 id="关闭-git-用户-shell-权限"><a href="#关闭-git-用户-shell-权限" class="headerlink" title="关闭 git 用户 shell 权限"></a>关闭 git 用户 shell 权限</h4><p>至此我们可以在本地通过：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh git@VPS IP</span><br></pre></td></tr></table></figure>
+<p>ssh 连接服务器，登录到服务器上，对服务器进行各种操作，这通常很不安全，也不合适，我们只需要能对仓库操作就可以了，不需要更大的权限。</p>
+<p>因此我们关闭 git 用户 shell 权限，执行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;passwd</span><br></pre></td></tr></table></figure>
+<p>找到git用户的一行：<em>git:x:1001:1001:,,,:&#x2F;home&#x2F;git:&#x2F;bin&#x2F;bash</em><br>改为：<em>git:x:1001:1001:,,,:&#x2F;home&#x2F;git:&#x2F;usr&#x2F;bin&#x2F;git-shell</em></p>
+<p>这样，git 用户可以正常通过 ssh 使用 git，但无法登录 shell，因为我们为 git 用户指定的 git-shell 每次一登录就自动退出。</p>
+<h4 id="初始化-git-仓库"><a href="#初始化-git-仓库" class="headerlink" title="初始化 git 仓库"></a>初始化 git 仓库</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git                &#x2F;&#x2F;切换到git用户目录</span><br><span class="line">mkdir blog.git              &#x2F;&#x2F;创建git仓库文件夹，以blog.git为例</span><br><span class="line">cd blog.git                 &#x2F;&#x2F;进入仓库目录</span><br><span class="line">git init --bare             &#x2F;&#x2F;使用--bare参数初始化为裸仓库，这样创建的仓库不包含工作区</span><br></pre></td></tr></table></figure>
+<p>注意：裸仓库没有工作区，因为服务器上的 Git 仓库纯粹是为了共享，所以不让用户直接登录到服务器上去改工作区，并且服务器上的 Git 仓库通常都以.git 结尾。</p>
+<h4 id="配置-SSH"><a href="#配置-SSH" class="headerlink" title="配置 SSH"></a>配置 SSH</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git                &#x2F;&#x2F;切换到git用户目录</span><br><span class="line">mkdir .ssh                  &#x2F;&#x2F;创建.ssh目录</span><br><span class="line">cd .ssh</span><br><span class="line">vim authorized_keys</span><br></pre></td></tr></table></figure>
+<p>然后将本地的公钥复制到 authorized_keys 文件里 (公钥即上文生成的公钥，可通过 <em>cat ~&#x2F;.ssh&#x2F;id_rsa.pub</em> 查看)。</p>
+<p>注意：收集所有需要登录的用户的公钥，就是他们自己的 id_rsa.pub 文件，把所有公钥导入到 <em>&#x2F;home&#x2F;git&#x2F;.ssh&#x2F;authorized_keys</em> 文件里，一行一个。</p>
+<h4 id="用户组管理"><a href="#用户组管理" class="headerlink" title="用户组管理"></a>用户组管理</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ll &#x2F;home&#x2F;git&#x2F;</span><br><span class="line">ll &#x2F;var&#x2F;www&#x2F;</span><br></pre></td></tr></table></figure>
+<p>确保 blog.git、.ssh、blog 目录的用户组权限为 git:git，若不是，执行下列命令：</p>
+<p>修改用户权限的命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chown -R git.git &#x2F;home&#x2F;git&#x2F;blog.git&#x2F;</span><br><span class="line">chown -R git.git &#x2F;home&#x2F;git&#x2F;.ssh&#x2F;</span><br><span class="line">chown -R git.git &#x2F;var&#x2F;www&#x2F;blog&#x2F;</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置-Git-Hooks"><a href="#配置-Git-Hooks" class="headerlink" title="配置 Git Hooks"></a>配置 Git Hooks</h4><p>创建 post-receive 文件<br>git 用户下执行（这里由于禁止了git用户shell权限，所以我用 root 用户执行上述命令，然后更改了文件所有者为 git.git）：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git&#x2F;blog.git&#x2F;hooks     &#x2F;&#x2F;切换到hooks目录下</span><br><span class="line">vim post-receive            &#x2F;&#x2F;创建文件</span><br></pre></td></tr></table></figure>
+<p>复制下面的内容到 post-receive 文件中：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">echo &quot;post-receive hook is running...&quot;</span><br><span class="line"></span><br><span class="line">GIT_REPO&#x3D;&#x2F;home&#x2F;git&#x2F;blog.git</span><br><span class="line">TMP_GIT_CLONE&#x3D;&#x2F;tmp&#x2F;blog</span><br><span class="line">PUBLIC_WWW&#x3D;&#x2F;var&#x2F;www&#x2F;blog</span><br><span class="line"></span><br><span class="line">rm -rf $&#123;TMP_GIT_CLONE&#125;</span><br><span class="line">git clone $GIT_REPO $TMP_GIT_CLONE</span><br><span class="line">rm -rf $&#123;PUBLIC_WWW&#125;&#x2F;*</span><br><span class="line">cp -rf $&#123;TMP_GIT_CLONE&#125;&#x2F;* $&#123;PUBLIC_WWW&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>为什么不直接将裸仓库克隆到 Web 根目录下呢？我之前也一直被这个问题困扰，感觉先&gt;克隆到 tmp 目录再拷贝到 Web 根目录是多此一举。后来我觉得可能是出于项目安全的&gt;考虑，在执行 cp 命令的时候，.git 作为隐藏目录不会被拷贝到 Web 根目录下，也就&gt;避免了将整个仓库历史暴露在 Web 服务中。</p>
+</blockquote>
+<p>赋予可执行权限：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod +x post-receive</span><br></pre></td></tr></table></figure>
+<p>ok，至此配置完毕，可以本地hexo d直接发布到vps了。</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>git hooks</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>markdown的html标签应用及常用语法</title>
     <url>/2021/04/19/markdown%E5%86%85%E5%AE%B9%E6%8A%98%E5%8F%A0/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Markdown 是一种轻量级标记语言，非常适合网络书写。同时，Markdown支持嵌入html标签，我们就可以借此实现markdown不具有的某些功能，如代码折叠和文字样式等。</p>
@@ -1736,12 +1738,6 @@
       </categories>
   </entry>
   <entry>
-    <title>mybatis mysql in (#{list}) 只能查询/删除第一条的问题</title>
-    <url>/2021/12/30/mybatis-mysql-in-list-%E5%8F%AA%E8%83%BD%E6%9F%A5%E8%AF%A2-%E5%88%A0%E9%99%A4%E7%AC%AC%E4%B8%80%E6%9D%A1%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/do-your-best/p/9513194.html" target="_blank" rel="noopener">mysql in (#{list}) 只能查询&#x2F;删除第一条的问题</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>android studio多语言(中英)适配</title>
     <url>/2020/02/14/ndroid-studio%E4%B8%AD%E8%8B%B1%E6%96%87%E9%80%82%E9%85%8D/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>strings.xml在目录res相应的value文件夹下,用来显示文本，避免硬编码，要添加新的语言支持，就要在不同的 value 文件夹下（如value 、values-zh-rCN）添加不同语言的 string.xml 文件。本文以简体中文为例,描述一下Android studio下相应strings.xml(zh-rCN)的生成方式，其他语言类似。</p>
@@ -1756,27 +1752,10 @@
 ]]></content>
   </entry>
   <entry>
-    <title>ubuntu下使用微信、QQ等</title>
-    <url>/2021/03/18/new/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ubuntu下使用微信，网页版的登录不了，只能考虑客户端了。考虑了下，还是在docker里，无论怎么折腾，也不会污染系统。</p>
-<a id="more"></a>
-<p>网上教程多如牛毛，但不是坑，就是坑，找了个自己能用的，记录下备用<br>1、安装docker docker-compose，网上教程一大把，自己搜<br>2、执行如下命令<br>首先要允许所有用户访问X11服务,运行:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xhost +</span><br></pre></td></tr></table></figure>
-<p>拉取镜像（注意docker设置国内镜像地址，用科大的就行）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull bestwu&#x2F;wechat</span><br></pre></td></tr></table></figure>
-<p>在你指定的文件夹下创建 docker-compose.yml</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">version: &#39;2&#39;</span><br><span class="line">services:</span><br><span class="line">  wechat:</span><br><span class="line">    image: bestwu&#x2F;wechat</span><br><span class="line">    container_name: wechat</span><br><span class="line">    devices:</span><br><span class="line">      - &#x2F;dev&#x2F;snd</span><br><span class="line">    volumes:</span><br><span class="line">      - &#x2F;tmp&#x2F;.X11-unix:&#x2F;tmp&#x2F;.X11-unix</span><br><span class="line">      - $PWD&#x2F;WeChatFiles:&#x2F;WeChatFiles</span><br><span class="line">    environment:</span><br><span class="line">      - DISPLAY&#x3D;unix$DISPLAY</span><br><span class="line">      - QT_IM_MODULE&#x3D;fcitx</span><br><span class="line">      - XMODIFIERS&#x3D;@im&#x3D;fcitx</span><br><span class="line">      - GTK_IM_MODULE&#x3D;fcitx</span><br><span class="line">      - AUDIO_GID&#x3D;26 # 可选 默认63（在终端用getent group video | cut -d: -f3查） 主机audio gid 解决声音设备访问权限问题</span><br><span class="line">      - GID&#x3D;1000 # 可选 默认1000 主机当前用户 gid 解决挂载目录访问权限问题</span><br><span class="line">      - UID&#x3D;1000 # 可选 默认1000 主机当前用户 uid 解决挂载目录访问权限问题</span><br><span class="line">    ipc: host</span><br></pre></td></tr></table></figure>
-<p>启动</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
-<p>停止</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose stop</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>linux</category>
-        <category>ubuntu</category>
-      </categories>
-      <tags>
-        <tag>wechat</tag>
-      </tags>
+    <title>mybatis mysql in (#{list}) 只能查询/删除第一条的问题</title>
+    <url>/2021/12/30/mybatis-mysql-in-list-%E5%8F%AA%E8%83%BD%E6%9F%A5%E8%AF%A2-%E5%88%A0%E9%99%A4%E7%AC%AC%E4%B8%80%E6%9D%A1%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/do-your-best/p/9513194.html" target="_blank" rel="noopener">mysql in (#{list}) 只能查询&#x2F;删除第一条的问题</a></p>
+]]></content>
   </entry>
   <entry>
     <title>netstat 命令</title>
@@ -1804,19 +1783,27 @@
       </tags>
   </entry>
   <entry>
-    <title>pac.txt---url通配规则</title>
-    <url>/2020/01/30/pac/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>科学上网PAC模式，有时会需要自己在pac.txt里添加一些被墙的URL，记录一下url通配的规则，以备以后使用。</p>
+    <title>ubuntu下使用微信、QQ等</title>
+    <url>/2021/03/18/new/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ubuntu下使用微信，网页版的登录不了，只能考虑客户端了。考虑了下，还是在docker里，无论怎么折腾，也不会污染系统。</p>
 <a id="more"></a>
-<ol>
-<li>通配符支持。比如 .example.com&#x2F; 实际书写时可省略 * ， 如 .example.com&#x2F; ， 和 *.example.com&#x2F; 效果一样</li>
-<li>正则表达式支持。以 \ 开始和结束， 如 [\w]+://example.com\</li>
-<li>例外规则 @@ ，如 @@.example.com&#x2F; 满足 @@ 后规则的地址不使用代理</li>
-<li>匹配地址开始和结尾 | ，如 |<a href="http://example.com/" target="_blank" rel="noopener">http://example.com</a> 、 example.com| 分别表示以 <a href="http://example.com/" target="_blank" rel="noopener">http://example.com</a> 开始和以 example.com 结束的地址</li>
-<li>|| 标记，如 ||example.com 则 <a href="http://example.com/" target="_blank" rel="noopener">http://example.com</a> 、 <a href="https://example.com/" target="_blank" rel="noopener">https://example.com</a> 、 <a href="ftp://example.com/">ftp://example.com</a> 等地址均满足条件</li>
-<li>注释 ! 。 如 !我是注释<br>v2rayN需重启生效。</li>
-</ol>
-]]></content>
+<p>网上教程多如牛毛，但不是坑，就是坑，找了个自己能用的，记录下备用<br>1、安装docker docker-compose，网上教程一大把，自己搜<br>2、执行如下命令<br>首先要允许所有用户访问X11服务,运行:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xhost +</span><br></pre></td></tr></table></figure>
+<p>拉取镜像（注意docker设置国内镜像地址，用科大的就行）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull bestwu&#x2F;wechat</span><br></pre></td></tr></table></figure>
+<p>在你指定的文件夹下创建 docker-compose.yml</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">version: &#39;2&#39;</span><br><span class="line">services:</span><br><span class="line">  wechat:</span><br><span class="line">    image: bestwu&#x2F;wechat</span><br><span class="line">    container_name: wechat</span><br><span class="line">    devices:</span><br><span class="line">      - &#x2F;dev&#x2F;snd</span><br><span class="line">    volumes:</span><br><span class="line">      - &#x2F;tmp&#x2F;.X11-unix:&#x2F;tmp&#x2F;.X11-unix</span><br><span class="line">      - $PWD&#x2F;WeChatFiles:&#x2F;WeChatFiles</span><br><span class="line">    environment:</span><br><span class="line">      - DISPLAY&#x3D;unix$DISPLAY</span><br><span class="line">      - QT_IM_MODULE&#x3D;fcitx</span><br><span class="line">      - XMODIFIERS&#x3D;@im&#x3D;fcitx</span><br><span class="line">      - GTK_IM_MODULE&#x3D;fcitx</span><br><span class="line">      - AUDIO_GID&#x3D;26 # 可选 默认63（在终端用getent group video | cut -d: -f3查） 主机audio gid 解决声音设备访问权限问题</span><br><span class="line">      - GID&#x3D;1000 # 可选 默认1000 主机当前用户 gid 解决挂载目录访问权限问题</span><br><span class="line">      - UID&#x3D;1000 # 可选 默认1000 主机当前用户 uid 解决挂载目录访问权限问题</span><br><span class="line">    ipc: host</span><br></pre></td></tr></table></figure>
+<p>启动</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+<p>停止</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose stop</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+        <category>ubuntu</category>
+      </categories>
+      <tags>
+        <tag>wechat</tag>
+      </tags>
   </entry>
   <entry>
     <title>nginx conf location</title>
@@ -1878,6 +1865,21 @@
         <tag>location</tag>
         <tag>nginx</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>pac.txt---url通配规则</title>
+    <url>/2020/01/30/pac/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>科学上网PAC模式，有时会需要自己在pac.txt里添加一些被墙的URL，记录一下url通配的规则，以备以后使用。</p>
+<a id="more"></a>
+<ol>
+<li>通配符支持。比如 .example.com&#x2F; 实际书写时可省略 * ， 如 .example.com&#x2F; ， 和 *.example.com&#x2F; 效果一样</li>
+<li>正则表达式支持。以 \ 开始和结束， 如 [\w]+://example.com\</li>
+<li>例外规则 @@ ，如 @@.example.com&#x2F; 满足 @@ 后规则的地址不使用代理</li>
+<li>匹配地址开始和结尾 | ，如 |<a href="http://example.com/" target="_blank" rel="noopener">http://example.com</a> 、 example.com| 分别表示以 <a href="http://example.com/" target="_blank" rel="noopener">http://example.com</a> 开始和以 example.com 结束的地址</li>
+<li>|| 标记，如 ||example.com 则 <a href="http://example.com/" target="_blank" rel="noopener">http://example.com</a> 、 <a href="https://example.com/" target="_blank" rel="noopener">https://example.com</a> 、 <a href="ftp://example.com/">ftp://example.com</a> 等地址均满足条件</li>
+<li>注释 ! 。 如 !我是注释<br>v2rayN需重启生效。</li>
+</ol>
+]]></content>
   </entry>
   <entry>
     <title>spring 线程安全</title>
@@ -2143,6 +2145,21 @@
       </tags>
   </entry>
   <entry>
+    <title>锁、synchronized、CAS、volatile</title>
+    <url>/2020/04/06/synchronized%E3%80%81CAS%E3%80%81volatile/</url>
+    <content><![CDATA[<p>转载：**<a href="https://tech.meituan.com/2018/11/15/java-lock.html" target="_blank" rel="noopener">不可不说的Java“锁”事</a><strong>、</strong><a href="https://blog.csdn.net/javazejian/article/details/72828483" target="_blank" rel="noopener">深入理解Java并发之synchronized实现原理</a><strong>、</strong><a href="https://juejin.im/post/5a73cbbff265da4e807783f5" target="_blank" rel="noopener">Java CAS 原理剖析
+</a><strong>、</strong><a href="https://www.cnblogs.com/theRhyme/p/12129120.html" target="_blank" rel="noopener">从原子类和UNSAFE来理解JAVA内存模型，ATOMICINTEGER的INCREMENTANDGET方法和UNSAFE部分源码介绍，VALUEOFFSET偏移量的理解</a><strong>、</strong><a href="https://www.cnblogs.com/theRhyme/p/9396834.html" target="_blank" rel="noopener">JAVA内存模型中VOLATILE关键字的作用
+</a><strong>、</strong><a href="https://www.cnblogs.com/theRhyme/p/9399881.html" target="_blank" rel="noopener">JAVA内存模型，为啥线程要有自己的本地内存，CPU高速缓存
+</a>**</p>
+]]></content>
+      <tags>
+        <tag>lock</tag>
+        <tag>synchronized</tag>
+        <tag>CAS</tag>
+        <tag>volatile</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>node升级提示(sudo: npm: command not found)</title>
     <url>/2021/08/12/sudo-npm-command-not-found/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>重拿前端项目，要把以前ubuntu的node、npm升级到最新版本，按照网上找来的方法，输入：<em>sudo npm install n -g</em>，结果提示：<em>sudo : npm :command not found</em>。</p>
@@ -2157,21 +2174,6 @@
 <p>将上面左边的命令位置，替换用which npm查询出来的就行了。</p>
 <p><strong>当然我用了which node之后就意识到我以前是用的nvm管理node的版本，差点儿就用n在另外的位置重新下了个版本，而且还发现以前用apt-get下了个更早的版本，每个工具下载的位置都不同，混乱不堪，统统删了，以后只用nvm管理node版本！教训啊～</strong></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>锁、synchronized、CAS、volatile</title>
-    <url>/2020/04/06/synchronized%E3%80%81CAS%E3%80%81volatile/</url>
-    <content><![CDATA[<p>转载：**<a href="https://tech.meituan.com/2018/11/15/java-lock.html" target="_blank" rel="noopener">不可不说的Java“锁”事</a><strong>、</strong><a href="https://blog.csdn.net/javazejian/article/details/72828483" target="_blank" rel="noopener">深入理解Java并发之synchronized实现原理</a><strong>、</strong><a href="https://juejin.im/post/5a73cbbff265da4e807783f5" target="_blank" rel="noopener">Java CAS 原理剖析
-</a><strong>、</strong><a href="https://www.cnblogs.com/theRhyme/p/12129120.html" target="_blank" rel="noopener">从原子类和UNSAFE来理解JAVA内存模型，ATOMICINTEGER的INCREMENTANDGET方法和UNSAFE部分源码介绍，VALUEOFFSET偏移量的理解</a><strong>、</strong><a href="https://www.cnblogs.com/theRhyme/p/9396834.html" target="_blank" rel="noopener">JAVA内存模型中VOLATILE关键字的作用
-</a><strong>、</strong><a href="https://www.cnblogs.com/theRhyme/p/9399881.html" target="_blank" rel="noopener">JAVA内存模型，为啥线程要有自己的本地内存，CPU高速缓存
-</a>**</p>
-]]></content>
-      <tags>
-        <tag>lock</tag>
-        <tag>synchronized</tag>
-        <tag>CAS</tag>
-        <tag>volatile</tag>
-      </tags>
   </entry>
   <entry>
     <title>tmux 使用</title>
@@ -2306,6 +2308,16 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Ubuntu20.04 标题栏实时显示上下行网速、CPU及内存使用率</title>
+    <url>/1970/01/01/ubuntu-%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E5%85%B6%E4%BB%96%E7%9B%98/</url>
+    <content><![CDATA[<p><a href="https://www.tuziang.com/combat/1106.html" target="_blank" rel="noopener">Ubuntu18.04安装indicator-sysmonitor显示CPU、网速</a></p>
+]]></content>
+      <categories>
+        <category>linux</category>
+        <category>ubuntu</category>
+      </categories>
+  </entry>
+  <entry>
     <title>ubuntu 桌面死机(重启gnome-shell)</title>
     <url>/2021/04/19/ubuntu-%E6%A1%8C%E9%9D%A2%E6%AD%BB%E6%9C%BA/</url>
     <content><![CDATA[<p>ubuntu有时桌面会卡死，鼠标点击失灵，解决方法：重启gnome-shell。<br>建议以下两种二选一：</p>
@@ -2332,16 +2344,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Ubuntu20.04 标题栏实时显示上下行网速、CPU及内存使用率</title>
-    <url>/1970/01/01/ubuntu-%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E5%85%B6%E4%BB%96%E7%9B%98/</url>
-    <content><![CDATA[<p><a href="https://www.tuziang.com/combat/1106.html" target="_blank" rel="noopener">Ubuntu18.04安装indicator-sysmonitor显示CPU、网速</a></p>
-]]></content>
-      <categories>
-        <category>linux</category>
-        <category>ubuntu</category>
-      </categories>
-  </entry>
-  <entry>
     <title>ubuntu登录界面美化</title>
     <url>/2021/04/14/ubuntu%E5%BC%80%E6%9C%BA%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96/</url>
     <content><![CDATA[<p>**<a href="https://blog.csdn.net/vselfdom/article/details/88546349" target="_blank" rel="noopener">Ubuntu 18.04 用户登录界面优化</a>**，备用。</p>
@@ -2350,12 +2352,6 @@
         <category>linux</category>
         <category>ubuntu</category>
       </categories>
-  </entry>
-  <entry>
-    <title>java类加载</title>
-    <url>/2020/03/03/va-class/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这里贴一个介绍类加载的介绍链接：<a href="https://juejin.im/post/5dac4edff265da5b5f7588d1#heading-0" target="_blank" rel="noopener">java 的类加载</a></p>
-]]></content>
   </entry>
   <entry>
     <title>vim常用命令、快捷键</title>
@@ -2800,20 +2796,10 @@
       </tags>
   </entry>
   <entry>
-    <title>jvm-invokeinterface</title>
-    <url>/2020/03/09/vm-invokeinterface/</url>
-    <content><![CDATA[<p>转载：<a href="https://blog.csdn.net/kang389110772/article/details/50723127" target="_blank" rel="noopener">Spring为什么Autowired注入的是接口
-</a>、</p>
-<p><a href="https://github.com/1993hzh/thoughts/issues/5" target="_blank" rel="noopener">浅析JVM中invokevirtual与invokeinterface的区别 #5
-</a>、</p>
-<p><a href="https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.6.3" target="_blank" rel="noopener">Java Virtual Machine Specification</a></p>
+    <title>java类加载</title>
+    <url>/2020/03/03/va-class/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这里贴一个介绍类加载的介绍链接：<a href="https://juejin.im/post/5dac4edff265da5b5f7588d1#heading-0" target="_blank" rel="noopener">java 的类加载</a></p>
 ]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>jvm</tag>
-      </tags>
   </entry>
   <entry>
     <title>Ubuntu中vim的粘帖复制</title>
@@ -2857,6 +2843,22 @@
       </tags>
   </entry>
   <entry>
+    <title>jvm-invokeinterface</title>
+    <url>/2020/03/09/vm-invokeinterface/</url>
+    <content><![CDATA[<p>转载：<a href="https://blog.csdn.net/kang389110772/article/details/50723127" target="_blank" rel="noopener">Spring为什么Autowired注入的是接口
+</a>、</p>
+<p><a href="https://github.com/1993hzh/thoughts/issues/5" target="_blank" rel="noopener">浅析JVM中invokevirtual与invokeinterface的区别 #5
+</a>、</p>
+<p><a href="https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.6.3" target="_blank" rel="noopener">Java Virtual Machine Specification</a></p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>jvm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>vue cli 前端跨域设置</title>
     <url>/2021/11/27/vue-cli-%E5%89%8D%E7%AB%AF%E8%B7%A8%E5%9F%9F%E8%AE%BE%E7%BD%AE/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>前后分离的前端开发时,一般都缺少后端的支持,开发阶段可以用mock模拟后端的返回请求, 但后续总要访问后端联调, 此时就涉及到前端的跨越了(只有开发阶段,部署的时候统一部署). 本质上就是在前端开一个代理服务,服务器访问服务器就没有浏览器访问后端的跨域限制了.</p>
@@ -2876,6 +2878,12 @@
         <tag>nginx</tag>
         <tag>vue</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>websocket --Token Authentication</title>
+    <url>/2020/06/07/websocket-Token-Authentication/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>链接：<a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#websocket-stomp-authentication" target="_blank" rel="noopener">STOMP–Token Authentication</a></p>
+]]></content>
   </entry>
   <entry>
     <title>websocket data transfer</title>
@@ -2905,12 +2913,6 @@
       <categories>
         <category>websocket</category>
       </categories>
-  </entry>
-  <entry>
-    <title>websocket --Token Authentication</title>
-    <url>/2020/06/07/websocket-Token-Authentication/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>链接：<a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#websocket-stomp-authentication" target="_blank" rel="noopener">STOMP–Token Authentication</a></p>
-]]></content>
   </entry>
   <entry>
     <title>websocket data transfer </title>
@@ -2959,6 +2961,12 @@
       </tags>
   </entry>
   <entry>
+    <title>二叉树</title>
+    <url>/2021/02/04/%E5%8F%89%E6%A0%91/</url>
+    <content><![CDATA[<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><p><a href="https://www.kukuxiaai.com/blog/2019-07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E6%A0%91/" target="_blank" rel="noopener">数据结构与算法-树</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>图解--函数调用过程及栈帧分析</title>
     <url>/2022/02/11/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B%E5%8F%8A%E6%A0%88%E5%B8%A7%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/yishizuofei/article/details/78282958" target="_blank" rel="noopener">函数调用过程原理及函数栈帧分析</a></p>
@@ -2980,15 +2988,21 @@
       </categories>
   </entry>
   <entry>
-    <title>二叉树</title>
-    <url>/2021/02/04/%E5%8F%89%E6%A0%91/</url>
-    <content><![CDATA[<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><p><a href="https://www.kukuxiaai.com/blog/2019-07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E6%A0%91/" target="_blank" rel="noopener">数据结构与算法-树</a></p>
+    <title>微信内置浏览器缓存清理</title>
+    <url>/2022/03/30/%E5%BE%AE%E4%BF%A1%E5%86%85%E7%BD%AE%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E6%B8%85%E7%90%86/</url>
+    <content><![CDATA[<p>单页面应用在微信浏览器里是个巨坑，它会缓存你的index.html，导致版本更新失效…</p>
+<a id="more"></a>
+
+
+
+<p> 调试时，可以手动清除微信缓存， 在安卓版微信内打开链接  <em><a href="http://debugtbs.qq.com/" target="_blank" rel="noopener">http://debugtbs.qq.com</a></em><br> 按照它提示的再打开<em>debugmm.qq.com&#x2F;?forcex5&#x3D;true</em>，再重新打开<em><a href="http://debugtbs.qq.com/" target="_blank" rel="noopener">http://debugtbs.qq.com</a></em>，点击清楚本地缓存….</p>
+<p><a href="https://blog.csdn.net/weixin_40136189/article/details/81485171" target="_blank" rel="noopener">微信内置浏览器缓存清理</a></p>
 ]]></content>
   </entry>
   <entry>
-    <title>查找算法</title>
-    <url>/2021/02/23/%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/yw09041432/p/5908444.html" target="_blank" rel="noopener">七大查找算法</a></p>
+    <title>网络抓包常用命令</title>
+    <url>/2022/05/04/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<p><a href="https://plantegg.github.io/2022/01/01/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" target="_blank" rel="noopener">网络抓包常用命令</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -3004,15 +3018,9 @@
       </tags>
   </entry>
   <entry>
-    <title>微信内置浏览器缓存清理</title>
-    <url>/2022/03/30/%E5%BE%AE%E4%BF%A1%E5%86%85%E7%BD%AE%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E6%B8%85%E7%90%86/</url>
-    <content><![CDATA[<p>单页面应用在微信浏览器里是个巨坑，它会缓存你的index.html，导致版本更新失效…</p>
-<a id="more"></a>
-
-
-
-<p> 调试时，可以手动清除微信缓存， 在安卓版微信内打开链接  <em><a href="http://debugtbs.qq.com/" target="_blank" rel="noopener">http://debugtbs.qq.com</a></em><br> 按照它提示的再打开<em>debugmm.qq.com&#x2F;?forcex5&#x3D;true</em>，再重新打开<em><a href="http://debugtbs.qq.com/" target="_blank" rel="noopener">http://debugtbs.qq.com</a></em>，点击清楚本地缓存….</p>
-<p><a href="https://blog.csdn.net/weixin_40136189/article/details/81485171" target="_blank" rel="noopener">微信内置浏览器缓存清理</a></p>
+    <title>查找算法</title>
+    <url>/2021/02/23/%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/yw09041432/p/5908444.html" target="_blank" rel="noopener">七大查找算法</a></p>
 ]]></content>
   </entry>
   <entry>
