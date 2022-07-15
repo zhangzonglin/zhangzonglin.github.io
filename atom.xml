@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglinagain.xyz/"/>
-  <updated>2022-06-25T07:50:44.544Z</updated>
+  <updated>2022-07-02T10:44:17.968Z</updated>
   <id>http://blog.zhangzonglinagain.xyz/</id>
   
   <author>
@@ -17,19 +17,42 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>ES6中js的运算符（?.、?:、? ?、? ?=、）</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2022/06/25/ES6%E4%B8%ADjs%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%88-%E3%80%81-%E3%80%81-%E3%80%81-%E3%80%81%EF%BC%89/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2022/06/25/ES6%E4%B8%ADjs%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%88-%E3%80%81-%E3%80%81-%E3%80%81-%E3%80%81%EF%BC%89/</id>
-    <published>2022-06-25T07:50:33.000Z</published>
-    <updated>2022-06-25T07:50:44.544Z</updated>
+    <title>Java内存使用情况查看工具(jmap,jinfo,jstack...)</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2022/07/02/Java%E5%86%85%E5%AD%98%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5%E6%9F%A5%E7%9C%8B%E5%B7%A5%E5%85%B7/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2022/07/02/Java%E5%86%85%E5%AD%98%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5%E6%9F%A5%E7%9C%8B%E5%B7%A5%E5%85%B7/</id>
+    <published>2022-07-02T10:43:19.000Z</published>
+    <updated>2022-07-02T10:44:17.968Z</updated>
     
-    <content type="html"><![CDATA[<p><a href="https://blog.csdn.net/ShIcily/article/details/121673976" target="_blank" rel="noopener">ES6中js的运算符（?.、?:、? ?、? ?&#x3D;、）</a></p>]]></content>
+    <content type="html"><![CDATA[<p><a href="https://blog.csdn.net/hellozhxy/article/details/80496550" target="_blank" rel="noopener">Java内存使用情况查看工具</a></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/ShIcily/article/details/121673976&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;ES6中js的运算符（?.、?:、? ?、? ?&amp;#x3D;、）&lt;/a&gt;&lt;/p&gt;
+        &lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/hellozhxy/article/details/80496550&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Java内存使用情况查看工具&lt;/a&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ES6中js的运算符（?.、?:、? ?、? ?=、）</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2022/06/25/ES6%E4%B8%ADjs%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%88-%E3%80%81-%E3%80%81-%E3%80%81-%E3%80%81%EF%BC%89/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2022/06/25/ES6%E4%B8%ADjs%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%88-%E3%80%81-%E3%80%81-%E3%80%81-%E3%80%81%EF%BC%89/</id>
+    <published>2022-06-25T07:50:33.000Z</published>
+    <updated>2022-07-15T20:58:25.094Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://blog.csdn.net/ShIcily/article/details/121673976" target="_blank" rel="noopener">ES6中js的运算符（?.、?:、? ?、? ?&#x3D;、）</a>、<a href="https://blog.csdn.net/sinat_36146776/article/details/112170829" target="_blank" rel="noopener">JavaScript表达式和运算符之：逻辑或赋值（||&#x3D; ），逻辑空赋值（??&#x3D;） ，逻辑与赋值（&amp;&amp;&#x3D;），空值合并操作符（??），可选链式操作符（?.）</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/ShIcily/article/details/121673976&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;ES6中js的运算符（?.、?:、? ?、? ?&amp;#x3D;、）&lt;/a&gt;、&lt;a 
       
     
     </summary>
@@ -432,29 +455,6 @@
     
     
       <category term="linux command" scheme="http://blog.zhangzonglinagain.xyz/tags/linux-command/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>图解--函数调用过程及栈帧分析</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2022/02/11/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B%E5%8F%8A%E6%A0%88%E5%B8%A7%E5%88%86%E6%9E%90/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2022/02/11/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B%E5%8F%8A%E6%A0%88%E5%B8%A7%E5%88%86%E6%9E%90/</id>
-    <published>2022-02-10T16:15:09.000Z</published>
-    <updated>2022-02-10T16:27:51.268Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://blog.csdn.net/yishizuofei/article/details/78282958" target="_blank" rel="noopener">函数调用过程原理及函数栈帧分析</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/yishizuofei/article/details/78282958&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;函数调用过程原理及函数栈帧分析&lt;/a&gt;&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-    
     
   </entry>
   
