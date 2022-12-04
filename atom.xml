@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglinagain.xyz/"/>
-  <updated>2022-07-02T10:44:17.968Z</updated>
+  <updated>2022-12-04T19:08:13.656Z</updated>
   <id>http://blog.zhangzonglinagain.xyz/</id>
   
   <author>
@@ -17,20 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>centos 命令补全失效(硬盘满了)</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2022/12/04/centos-%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%A8%E5%A4%B1%E6%95%88-%E7%A1%AC%E7%9B%98%E6%BB%A1%E4%BA%86/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2022/12/04/centos-%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%A8%E5%A4%B1%E6%95%88-%E7%A1%AC%E7%9B%98%E6%BB%A1%E4%BA%86/</id>
+    <published>2022-12-04T14:37:32.000Z</published>
+    <updated>2022-12-04T19:08:13.656Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Tab补全失效"><a href="#Tab补全失效" class="headerlink" title="Tab补全失效"></a>Tab补全失效</h3><p>登录服务器，cd 相应路径按Tab补全时，提示*-bash: cannot create temp file for here-document: No space left on device*。</p><a id="more"></a><p>如图所示：<br><img src="/images/pasted-52.png" alt="upload successful"><br>谷歌查询是硬盘满了。df命令查看，果然如此：</p><p><img src="/images/pasted-54.png" alt="upload successful"></p><p>然后用du命令查看可以目录</p><p><img src="/images/pasted-55.png" alt="upload successful"></p><p>发现可以目录&#x2F;var &#x2F;app &#x2F;sftproot,继续用du命令挨个查看，最后发现&#x2F;var&#x2F;log目录占用12G</p><p><img src="/images/pasted-56.png" alt="upload successful"></p><p>进入log继续du加sort排序查看(ll -h也可)</p><p><img src="/images/pasted-57.png" alt="upload successful"></p><p>就是这几个messages文件占了10多G，且都是最近产生的，随便打开进去一看都是如下内容：</p><p><img src="/images/pasted-58.png" alt="upload successful"></p><p>是crond产生的垃圾日志，不管它，先来个重启大法<em>service crond stop</em>、<em>service crond start</em>，再瞧问题依旧。谷歌之，<em>No configuration file found at &#x2F;root&#x2F;.esmtprc or &#x2F;etc&#x2F;esmtprc</em>,没找到问题原因，只看到个解决方法 <a href="https://www.axinblog.com/2022/02/16/Linux-%E6%97%A5%E5%BF%97%E6%B8%85%E7%90%86/" target="_blank" rel="noopener">Linux 日志清理</a>，先暂且安装重启crond，记下来以观后效，明天再查…</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Tab补全失效&quot;&gt;&lt;a href=&quot;#Tab补全失效&quot; class=&quot;headerlink&quot; title=&quot;Tab补全失效&quot;&gt;&lt;/a&gt;Tab补全失效&lt;/h3&gt;&lt;p&gt;登录服务器，cd 相应路径按Tab补全时，提示*-bash: cannot create temp file for here-document: No space left on device*。&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>Java内存使用情况查看工具(jmap,jinfo,jstack...)</title>
     <link href="http://blog.zhangzonglinagain.xyz/2022/07/02/Java%E5%86%85%E5%AD%98%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5%E6%9F%A5%E7%9C%8B%E5%B7%A5%E5%85%B7/"/>
     <id>http://blog.zhangzonglinagain.xyz/2022/07/02/Java%E5%86%85%E5%AD%98%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5%E6%9F%A5%E7%9C%8B%E5%B7%A5%E5%85%B7/</id>
     <published>2022-07-02T10:43:19.000Z</published>
-    <updated>2022-07-02T10:44:17.968Z</updated>
+    <updated>2022-12-04T19:29:57.085Z</updated>
     
-    <content type="html"><![CDATA[<p><a href="https://blog.csdn.net/hellozhxy/article/details/80496550" target="_blank" rel="noopener">Java内存使用情况查看工具</a></p>]]></content>
+    <content type="html"><![CDATA[<p><a href="https://blog.csdn.net/hellozhxy/article/details/80496550" target="_blank" rel="noopener">Java内存使用情况查看工具</a>、或者直接采用阿里的开源工具<a href="https://developer.aliyun.com/article/764933" target="_blank" rel="noopener">Java 线上问题排查神器 Arthas 快速上手与原理浅谈</a>&amp;&amp;<a href="https://cloud.tencent.com/developer/article/1534894" target="_blank" rel="noopener">Arthas - Java 线上问题定位处理的终极利器</a></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/hellozhxy/article/details/80496550&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Java内存使用情况查看工具&lt;/a&gt;&lt;/p&gt;
-
+        &lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/hellozhxy/article/details/80496550&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Java内存使用情况查看工具&lt;/a&gt;、或者直接采用阿里的开源工具&lt;a href
       
     
     </summary>
@@ -432,29 +450,6 @@
     </summary>
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>netstat 命令</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2022/02/15/netstat-%E5%91%BD%E4%BB%A4/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2022/02/15/netstat-%E5%91%BD%E4%BB%A4/</id>
-    <published>2022-02-14T18:23:00.000Z</published>
-    <updated>2022-02-14T18:42:53.179Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ntu|awk &#39;&#123;pring $5&#125;&#39;|cut -d : -f 1|sort|uniq -c</span><br></pre></td></tr></table></figure><a id="more"></a><h4 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h4><p>-n 显示数字IP, -t tcp连接, -u udp连接, -a 全部连接…</p><p><strong><a href="https://blog.csdn.net/qq_42014600/article/details/90372315" target="_blank" rel="noopener">netstat详解</a></strong></p><h4 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h4><p>-F 指定分割符(如 awk -F: ), 如不显示指定字段分隔符，awk的默认字段分隔符为任意空白字符，包括制表符、空格符、换行符等</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$0表示整行文本</span><br><span class="line">$1表示文本行中第一个数据字段</span><br><span class="line">$2表示文本行中第二个数据字段</span><br><span class="line">$n表示文本行中第n个数据字段</span><br></pre></td></tr></table></figure><p><strong><a href="https://blog.csdn.net/u010502101/article/details/81839519" target="_blank" rel="noopener">awk详解</a></strong></p><h4 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h4><p>cut -[n]b file</p><p>cut -c file</p><p>cut -d[分隔符] -f[域] file</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-b(bytes) ：以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志。</span><br><span class="line">-c(characters) ：以字符为单位进行分割。</span><br><span class="line">-d ：自定义分隔符，默认为制表符。</span><br><span class="line">-f(filed) ：与-d一起使用，指定显示哪个区域。</span><br><span class="line">-n ：取消分割多字节字符。仅和 -b 标志一起使用。如果字符的最后一个字节落在由 -b 标志的 List 参数指示的</span><br><span class="line">范围之内，该字符将被写出；否则，该字符将被排除。</span><br></pre></td></tr></table></figure><p><strong><a href="https://blog.csdn.net/u011003120/article/details/52190187" target="_blank" rel="noopener">cut用法</a></strong></p><h4 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a>uniq</h4><p>　报告或删除文件中重复的行。<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> -c, --count           在每行前加上表示相应行目出现次数的前缀编号</span><br><span class="line">-d, --repeated        只输出重复的行</span><br><span class="line">-D, --all-repeated[&#x3D;delimit-method    显示所有重复的行</span><br><span class="line">                      delimit-method&#x3D;&#123;none(default),prepend,separate&#125;</span><br><span class="line">                      以空行为界限</span><br><span class="line">-f, --skip-fields&#x3D;N   比较时跳过前N 列</span><br><span class="line">-i, --ignore-case     在比较的时候不区分大小写</span><br><span class="line">-s, --skip-chars&#x3D;N    比较时跳过前N 个字符</span><br><span class="line">-u, --unique          只显示唯一的行</span><br><span class="line">-z, --zero-terminated 使用&#39;\0&#39;作为行结束符，而不是新换行</span><br><span class="line">-w, --check-chars&#x3D;N   对每行第N 个字符以后的内容不作对照</span><br><span class="line">    --help            显示此帮助信息并退出</span><br><span class="line">    --version         显示版本信息并退出</span><br></pre></td></tr></table></figure></p><p> <strong><a href="https://www.cnblogs.com/ftl1012/p/uniq.html" target="_blank" rel="noopener">uniq详解</a></strong></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;netstat -ntu|awk &amp;#39;&amp;#123;pring $5&amp;#125;&amp;#39;|cut -d : -f 1|sort|uniq -c&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="http://blog.zhangzonglinagain.xyz/categories/linux/"/>
-    
-    
-      <category term="linux command" scheme="http://blog.zhangzonglinagain.xyz/tags/linux-command/"/>
     
   </entry>
   
