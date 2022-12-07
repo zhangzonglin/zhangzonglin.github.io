@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglinagain.xyz/"/>
-  <updated>2022-12-07T16:53:31.310Z</updated>
+  <updated>2022-12-07T19:50:42.482Z</updated>
   <id>http://blog.zhangzonglinagain.xyz/</id>
   
   <author>
@@ -21,16 +21,13 @@
     <link href="http://blog.zhangzonglinagain.xyz/2022/12/07/SQL%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/"/>
     <id>http://blog.zhangzonglinagain.xyz/2022/12/07/SQL%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/</id>
     <published>2022-12-07T15:31:52.000Z</published>
-    <updated>2022-12-07T16:53:31.310Z</updated>
+    <updated>2022-12-07T19:50:42.482Z</updated>
     
-    <content type="html"><![CDATA[<p><a href="https://blog.csdn.net/dz77dz/article/details/115111559" target="_blank" rel="noopener">SQL的执行顺序</a>、 <strong><em><strong><a href="https://www.cnblogs.com/20160501a/articles/5505494.html" target="_blank" rel="noopener">MySQL – join , on , where 的执行顺序</a></strong></em> </strong>、<a href="https://www.cnblogs.com/youzhibing/p/12004986.html" target="_blank" rel="noopener">神奇的 SQL 之 联表细节 → MySQL JOIN 的执行过程（一）</a></p>]]></content>
+    <content type="html"><![CDATA[<p>Logical Query Processing Phases in Brief—《Microsoft SQL Server 2008技术内幕T-SQL语言基础.pdf》p27</p><a id="more"></a><h3 id="FROM"><a href="#FROM" class="headerlink" title="FROM"></a>FROM</h3><p>  The FROM phase identifi es the query’s source tables and processes table operators. Each table operator applies a series of subphases. For example, the phases involved in a join are (1-J1) Cartesian Product, (1-J2) ON Filter, (1-J3) Add Outer Rows. The FROM phase generates virtual table VT1. </p><h4 id="Cartesian-Product"><a href="#Cartesian-Product" class="headerlink" title="Cartesian Product"></a><em>Cartesian Product</em></h4><p>This phase performs a Cartesian product (cross join) between the two tables involved in the table operator, generating VT1-J1. </p><h4 id="ON-Filter"><a href="#ON-Filter" class="headerlink" title="ON Filter"></a><em>ON Filter</em></h4><p>This phase fi lters the rows from VT1-J1 based on the predicate that appears in the ON clause (<on_predicate>). Only rows for which the predicate evaluates to TRUE are inserted into VT1-J2.</on_predicate></p><h4 id="Add-Outer-Rows"><a href="#Add-Outer-Rows" class="headerlink" title="Add Outer Rows"></a><em>Add Outer Rows</em></h4><p>If OUTER JOIN is specifi ed (as opposed to CROSS JOIN or INNER JOIN), rows from the preserved table or tables for which a match was not found are added to the rows from VT1-J2 as outer rows, generating VT1-J3.</p><p><img src="/images/pasted-59.png" alt="upload successful"></p><h3 id="WHERE"><a href="#WHERE" class="headerlink" title="WHERE"></a>WHERE</h3><p>This phase fi lters the rows from VT1 based on the predicate that appears in the WHERE clause (<where_predicate>). Only rows for which the predicate evaluates to TRUE are inserted into VT2. </where_predicate></p><h3 id="GROUP-BY"><a href="#GROUP-BY" class="headerlink" title="GROUP BY"></a>GROUP BY</h3><p>This phase arranges the rows from VT2 in groups based on the column list specifi ed in the GROUP BY clause, generating VT3. Ultimately, there will be one result row per group. </p><h3 id="HAVING"><a href="#HAVING" class="headerlink" title="HAVING"></a>HAVING</h3><p>This phase fi lters the groups from VT3 based on the predicate that appears in the HAVING clause (<having_predicate>). Only groups for which the predicate evaluates to TRUE are inserted into VT4. </having_predicate></p><h3 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h3><p>This phase processes the elements in the SELECT clause, generating VT5. </p><h4 id="Evaluate-Expressions"><a href="#Evaluate-Expressions" class="headerlink" title="Evaluate Expressions"></a><em>Evaluate Expressions</em></h4><p>This phase evaluates the expressions in the SELECT list, generating VT5-1. </p><h4 id="DISTINCT"><a href="#DISTINCT" class="headerlink" title="DISTINCT"></a><em>DISTINCT</em></h4><p>This phase removes duplicate rows from VT5-1, generating VT5-2. </p><h4 id="TOP"><a href="#TOP" class="headerlink" title="TOP"></a><em>TOP</em></h4><p>This phase fi lters the specifi ed top number or percentage of rows from VT5-2 based on the logical ordering defi ned by the ORDER BY clause, generating the table VT5-3. </p><h3 id="ORDER-BY"><a href="#ORDER-BY" class="headerlink" title="ORDER BY"></a>ORDER BY</h3><p>This phase sorts the rows from VT5-3 according to the column list specifi ed in the ORDER BY clause, generating the cursor VC6.</p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/dz77dz/article/details/115111559&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;SQL的执行顺序&lt;/a&gt;、 &lt;strong&gt;&lt;em&gt;&lt;strong&gt;&lt;a href
-      
+      &lt;p&gt;Logical Query Processing Phases in Brief—《Microsoft SQL Server 2008技术内幕T-SQL语言基础.pdf》p27&lt;/p&gt;
     
     </summary>
     
