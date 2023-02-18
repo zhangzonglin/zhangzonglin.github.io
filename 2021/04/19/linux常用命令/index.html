@@ -57,7 +57,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://blog.zhangzonglinagain.xyz/images/pasted-35.png">
 <meta property="article:published_time" content="2021-04-19T06:49:00.000Z">
-<meta property="article:modified_time" content="2023-02-16T14:52:02.281Z">
+<meta property="article:modified_time" content="2023-02-18T10:21:26.956Z">
 <meta property="article:author" content="zzl">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://blog.zhangzonglinagain.xyz/images/pasted-35.png">
@@ -252,7 +252,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-02-16 22:52:02" itemprop="dateModified" datetime="2023-02-16T22:52:02+08:00">2023-02-16</time>
+                <time title="修改时间：2023-02-18 18:21:26" itemprop="dateModified" datetime="2023-02-18T18:21:26+08:00">2023-02-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -286,14 +286,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>20k</span>
+              <span>25k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>18 分钟</span>
+              <span>23 分钟</span>
             </span>
 
         </div>
@@ -666,6 +666,79 @@
 <li><p>And for more help, you can use –help option.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df --help</span><br></pre></td></tr></table></figure></li>
 </ol>
+<h3 id="rsync-amp-cp"><a href="#rsync-amp-cp" class="headerlink" title="rsync&amp;cp"></a>rsync&amp;cp</h3><p>Copying files and directories is one of the most common tasks for any system administrator.</p>
+<p>The cp command is a very simple command used to copy files and directories in Linux.</p>
+<p>You can also use Rsync command to backup and copy files and directories. In order to copy files and directories, you must have write permission on the target directory.</p>
+<h4 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h4><p>The basic syntax for cp command is shown below:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp [option] [source] [destination]</span><br></pre></td></tr></table></figure>
+
+<p>A brief explanation of each option is shown below (Note that these are Case Sensitive):</p>
+<blockquote>
+<ul>
+<li>-i : Used to prompt before copying.</li>
+<li>-v : Display verbose output during the copying process.</li>
+<li>-d : Used to copy a link file.</li>
+<li>-b : Create a backup copy of the destination file before overwriting.</li>
+<li>-n : Don’t overwrite an existing file.</li>
+<li>-R : Used to copy directory recursively.</li>
+<li>-p : Used to keeps the file creation date and file permissions.</li>
+<li>-u : update - copy when source is newer than dest</li>
+</ul>
+</blockquote>
+<h4 id="rsync"><a href="#rsync" class="headerlink" title="rsync"></a>rsync</h4><p><em>rsync</em> is a fast and versatile command-line utility for synchronizing files and directories between two locations over a remote shell, or from&#x2F;to a remote Rsync daemon. It provides fast incremental file transfer by transferring only the differences between the source and the destination.</p>
+<p>Rsync can be used for mirroring data, incremental backups, copying files between systems, and as a replacement for <em>scp</em> , <em>sftp</em> , and <em>cp</em> commands.</p>
+<p>Local use:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync [OPTION...] SRC... [DEST]</span><br></pre></td></tr></table></figure>
+<p>Access via remote shell (PULL):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync [OPTION...] [USER@]HOST:SRC... [DEST]</span><br></pre></td></tr></table></figure>
+<p>Access via remote shell (PUSH):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync [OPTION...] SRC... [USER@]HOST:DEST</span><br></pre></td></tr></table></figure>
+<p>Access via rsync daemon (PULL):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rsync [OPTION...] [USER@]HOST::SRC... [DEST]</span><br><span class="line">rsync [OPTION...] rsync:&#x2F;&#x2F;[USER@]HOST[:PORT]&#x2F;SRC... [DEST]</span><br></pre></td></tr></table></figure>
+<p>Access via rsync daemon (PUSH):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rsync [OPTION...] SRC... [USER@]HOST::DEST</span><br><span class="line">rsync [OPTION...] SRC... rsync:&#x2F;&#x2F;[USER@]HOST[:PORT]&#x2F;DEST</span><br></pre></td></tr></table></figure>
+<p>Usages with only one SRC argument and no DEST argument list the source files instead of copying.</p>
+<p><em>rsync</em> provides a number of options that control how the command behaves. The most widely used options are:</p>
+<blockquote>
+<ul>
+<li>-a, –archive, archive mode, equivalent to -rlptgoD. This option tells rsync to syncs directories recursively, transfer special and block devices, preserve symbolic links, modification times, groups, ownership, and permissions.</li>
+<li>-z, –compress. This option forces rsync to compresses the data as it is sent to the destination machine. Use this option only if the connection to the remote machine is slow.</li>
+<li>-P, equivalent to –partial –progress. When this option is used, rsync shows a progress bar during the transfer and keeps the partially transferred files. It is useful when transferring large files over slow or unstable network connections.</li>
+<li>–delete. When this option is used, rsync deletes extraneous files from the destination location. It is useful for mirroring.</li>
+<li>-q, –quiet. Use this option if you want to suppress non-error messages.</li>
+<li>-e. This option allows you to choose a different remote shell. By default, rsync is configured to use ssh.</li>
+</ul>
+</blockquote>
+<p><a href="https://www.computerhope.com/unix/rsync.htm" target="_blank" rel="noopener">for more optios</a></p>
+<h5 id="Basic-Rsync-Usage"><a href="#Basic-Rsync-Usage" class="headerlink" title="Basic Rsync Usage"></a>Basic Rsync Usage</h5><p>The most basic use case of rsync is to copy a single file from one to another local location. Here is an example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -a &#x2F;opt&#x2F;filename.zip &#x2F;tmp&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>The user running the command must have read permissions on the source location and write permissions on the destination.</p>
+<p>Omitting the filename from the destination location copies the file with the current name. If you want to save the file under a different name, specify the new name on the destination part:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -a &#x2F;opt&#x2F;filename.zip &#x2F;tmp&#x2F;newfilename.zip</span><br></pre></td></tr></table></figure>
+
+<p>The real power of rsync comes when synchronizing directories. The example below shows how to create a local backup of website files:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -a &#x2F;var&#x2F;www&#x2F;domain.com&#x2F;public_html&#x2F; &#x2F;var&#x2F;www&#x2F;domain.com&#x2F;public_html_backup&#x2F;</span><br></pre></td></tr></table></figure>
+<p>If the destination directory doesn’t exist, rsync will create it.</p>
+<p>It is worth mentioning that rsync gives different treatment to the source directories with a trailing <strong>slash (&#x2F;)</strong>. If the source directory has a trailing slash, the command will copy only the directory contents to the destination directory. When the trailing slash is omitted, rsync copies the source directory inside the destination directory.</p>
+<h5 id="Using-rsync-to-Sync-Data-from-x2F-to-a-remote-Machine"><a href="#Using-rsync-to-Sync-Data-from-x2F-to-a-remote-Machine" class="headerlink" title="Using rsync to Sync Data from&#x2F;to a remote Machine"></a>Using rsync to Sync Data from&#x2F;to a remote Machine</h5><p>When using rsync to transfer data remotely , it must be installed on both the source and the destination machine. The new versions of rsync are configured to use SSH as default remote shell.</p>
+<p>In the following example, we are transferring a directory from a local to a remote machine:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -a &#x2F;opt&#x2F;media&#x2F; remote_user@remote_host_or_ip:&#x2F;opt&#x2F;media&#x2F;</span><br></pre></td></tr></table></figure>
+<p>If you haven’t set a passwordless SSH login to the remote machine, you will be asked to enter the user password.<br>To transfer data from a remote to a local machine, use the remote location as a source:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -a remote_user@remote_host_or_ip:&#x2F;opt&#x2F;media&#x2F; &#x2F;opt&#x2F;media&#x2F;</span><br></pre></td></tr></table></figure>
+<p>If SSH on the remote host is listening on a port other than the default 22 , specify the port using the -e option:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -a -e &quot;ssh -p 2322&quot; &#x2F;opt&#x2F;media&#x2F; remote_user@remote_host_or_ip:&#x2F;opt&#x2F;media&#x2F;</span><br></pre></td></tr></table></figure>
+<p>When transferring large amounts of data it is recommended to run the rsync command inside a screen session or to use the -P option:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -a -P remote_user@remote_host_or_ip:&#x2F;opt&#x2F;media&#x2F; &#x2F;opt&#x2F;media&#x2F;</span><br></pre></td></tr></table></figure>
+
+<h5 id="Exclude-Files-and-Directories"><a href="#Exclude-Files-and-Directories" class="headerlink" title="Exclude Files and Directories"></a>Exclude Files and Directories</h5><p>There are two options to exclude files and directories. The first option is to use the –exclude argument and specify the files and directories you want to exclude on the command line.</p>
+<p>When excluding files or directories , you need to use their relative paths to the source location.</p>
+<p>In the following example shows how exclude the node_modules and tmp directories:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -a --exclude&#x3D;node_modules --exclude&#x3D;tmp &#x2F;src_directory&#x2F; &#x2F;dst_directory&#x2F;</span><br></pre></td></tr></table></figure>
+<p>The second option is to use the –exclude-from option and specify the files and directories you want to exclude in a file.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rsync -a --exclude-from&#x3D;&#39;&#x2F;exclude-file.txt&#39; &#x2F;src_directory&#x2F; &#x2F;dst_directory&#x2F;</span><br><span class="line">&#x2F;exclude-file.txt</span><br></pre></td></tr></table></figure>
+
+<h5 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h5><p>We have shown you how to use Rsync to copy and synchronize files and directories. There’s lots more to learn about Rsync at <strong><a href="https://download.samba.org/pub/rsync/rsync.html" target="_blank" rel="noopener">Rsync User’s Manual page</a></strong>.</p>
 
     </div>
 
@@ -765,7 +838,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#type"><span class="nav-number">2.</span> <span class="nav-text">type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ll-amp-ls"><span class="nav-number">3.</span> <span class="nav-text">ll&amp;ls</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xdg-open"><span class="nav-number">4.</span> <span class="nav-text">xdg-open</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sort-uniq"><span class="nav-number">5.</span> <span class="nav-text">sort uniq</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sort"><span class="nav-number">5.1.</span> <span class="nav-text">sort</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sort的-o选项"><span class="nav-number">5.2.</span> <span class="nav-text">sort的-o选项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sort的-t选项和-k选项"><span class="nav-number">5.3.</span> <span class="nav-text">sort的-t选项和-k选项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多列排序"><span class="nav-number">5.4.</span> <span class="nav-text">多列排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#uniq"><span class="nav-number">5.5.</span> <span class="nav-text">uniq</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">5.6.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考"><span class="nav-number">5.7.</span> <span class="nav-text">参考</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tar-amp-gzip"><span class="nav-number">6.</span> <span class="nav-text">tar&amp;gzip</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#tar"><span class="nav-number">6.1.</span> <span class="nav-text">tar</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gzip"><span class="nav-number">6.2.</span> <span class="nav-text">gzip</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#gzip-Command-Syntax"><span class="nav-number">6.2.1.</span> <span class="nav-text">gzip Command Syntax</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Compressing-Files-with-gzip"><span class="nav-number">6.2.2.</span> <span class="nav-text">Compressing Files with gzip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Verbose-output"><span class="nav-number">6.2.3.</span> <span class="nav-text">Verbose output</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Compress-multiple-files"><span class="nav-number">6.2.4.</span> <span class="nav-text">Compress multiple files</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Compress-all-files-in-a-directory"><span class="nav-number">6.2.5.</span> <span class="nav-text">Compress all files in a directory</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Change-the-compression-level"><span class="nav-number">6.2.6.</span> <span class="nav-text">Change the compression level</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Using-standard-input"><span class="nav-number">6.2.7.</span> <span class="nav-text">Using standard input</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Decompressing-Files-with-gzip"><span class="nav-number">6.2.8.</span> <span class="nav-text">Decompressing Files with gzip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Keep-the-compressed-file"><span class="nav-number">6.2.9.</span> <span class="nav-text">Keep the compressed file</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Decompress-multiple-files"><span class="nav-number">6.2.10.</span> <span class="nav-text">Decompress multiple files</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Decompress-all-files-in-a-directory"><span class="nav-number">6.2.11.</span> <span class="nav-text">Decompress all files in a directory</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#List-the-Compressed-File-Contents"><span class="nav-number">6.2.12.</span> <span class="nav-text">List the Compressed File Contents</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#du-amp-df"><span class="nav-number">7.</span> <span class="nav-text">du&amp;df</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#du"><span class="nav-number">7.1.</span> <span class="nav-text">du</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#df"><span class="nav-number">7.2.</span> <span class="nav-text">df</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#type"><span class="nav-number">2.</span> <span class="nav-text">type</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ll-amp-ls"><span class="nav-number">3.</span> <span class="nav-text">ll&amp;ls</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xdg-open"><span class="nav-number">4.</span> <span class="nav-text">xdg-open</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sort-uniq"><span class="nav-number">5.</span> <span class="nav-text">sort uniq</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sort"><span class="nav-number">5.1.</span> <span class="nav-text">sort</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sort的-o选项"><span class="nav-number">5.2.</span> <span class="nav-text">sort的-o选项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sort的-t选项和-k选项"><span class="nav-number">5.3.</span> <span class="nav-text">sort的-t选项和-k选项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多列排序"><span class="nav-number">5.4.</span> <span class="nav-text">多列排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#uniq"><span class="nav-number">5.5.</span> <span class="nav-text">uniq</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">5.6.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考"><span class="nav-number">5.7.</span> <span class="nav-text">参考</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tar-amp-gzip"><span class="nav-number">6.</span> <span class="nav-text">tar&amp;gzip</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#tar"><span class="nav-number">6.1.</span> <span class="nav-text">tar</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gzip"><span class="nav-number">6.2.</span> <span class="nav-text">gzip</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#gzip-Command-Syntax"><span class="nav-number">6.2.1.</span> <span class="nav-text">gzip Command Syntax</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Compressing-Files-with-gzip"><span class="nav-number">6.2.2.</span> <span class="nav-text">Compressing Files with gzip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Verbose-output"><span class="nav-number">6.2.3.</span> <span class="nav-text">Verbose output</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Compress-multiple-files"><span class="nav-number">6.2.4.</span> <span class="nav-text">Compress multiple files</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Compress-all-files-in-a-directory"><span class="nav-number">6.2.5.</span> <span class="nav-text">Compress all files in a directory</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Change-the-compression-level"><span class="nav-number">6.2.6.</span> <span class="nav-text">Change the compression level</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Using-standard-input"><span class="nav-number">6.2.7.</span> <span class="nav-text">Using standard input</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Decompressing-Files-with-gzip"><span class="nav-number">6.2.8.</span> <span class="nav-text">Decompressing Files with gzip</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Keep-the-compressed-file"><span class="nav-number">6.2.9.</span> <span class="nav-text">Keep the compressed file</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Decompress-multiple-files"><span class="nav-number">6.2.10.</span> <span class="nav-text">Decompress multiple files</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Decompress-all-files-in-a-directory"><span class="nav-number">6.2.11.</span> <span class="nav-text">Decompress all files in a directory</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#List-the-Compressed-File-Contents"><span class="nav-number">6.2.12.</span> <span class="nav-text">List the Compressed File Contents</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#du-amp-df"><span class="nav-number">7.</span> <span class="nav-text">du&amp;df</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#du"><span class="nav-number">7.1.</span> <span class="nav-text">du</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#df"><span class="nav-number">7.2.</span> <span class="nav-text">df</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rsync-amp-cp"><span class="nav-number">8.</span> <span class="nav-text">rsync&amp;cp</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cp"><span class="nav-number">8.1.</span> <span class="nav-text">cp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rsync"><span class="nav-number">8.2.</span> <span class="nav-text">rsync</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Basic-Rsync-Usage"><span class="nav-number">8.2.1.</span> <span class="nav-text">Basic Rsync Usage</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Using-rsync-to-Sync-Data-from-x2F-to-a-remote-Machine"><span class="nav-number">8.2.2.</span> <span class="nav-text">Using rsync to Sync Data from&#x2F;to a remote Machine</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Exclude-Files-and-Directories"><span class="nav-number">8.2.3.</span> <span class="nav-text">Exclude Files and Directories</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Conclusion"><span class="nav-number">8.2.4.</span> <span class="nav-text">Conclusion</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -847,13 +920,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">116k</span>
+    <span title="站点总字数">121k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:45</span>
+    <span title="站点阅读时长">1:50</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
   </div>
