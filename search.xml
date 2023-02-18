@@ -10,52 +10,6 @@
       </categories>
   </entry>
   <entry>
-    <title>ES6中js的运算符（?.、?:、? ?、? ?=、）</title>
-    <url>/2022/06/25/ES6%E4%B8%ADjs%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%88-%E3%80%81-%E3%80%81-%E3%80%81-%E3%80%81%EF%BC%89/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/ShIcily/article/details/121673976" target="_blank" rel="noopener">ES6中js的运算符（?.、?:、? ?、? ?&#x3D;、）</a>、<a href="https://blog.csdn.net/sinat_36146776/article/details/112170829" target="_blank" rel="noopener">JavaScript表达式和运算符之：逻辑或赋值（||&#x3D; ），逻辑空赋值（??&#x3D;） ，逻辑与赋值（&amp;&amp;&#x3D;），空值合并操作符（??），可选链式操作符（?.）</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Filter和Interceptor的比较</title>
-    <url>/2021/11/15/Filter%E5%92%8CInterceptor%E7%9A%84%E6%AF%94%E8%BE%83/</url>
-    <content><![CDATA[<p><a href="https://www.jianshu.com/p/5f5e5211bbdb" target="_blank" rel="noopener">Filter和Interceptor的比较</a>, &amp;nbsp;&amp;nbsp;&amp;nbsp;<a href="https://www.cnblogs.com/hellovoyager1/p/9152292.html" target="_blank" rel="noopener">Listener、Filter 和Interceptor 总结</a>, &amp;nbsp;&amp;nbsp;<a href="https://www.cnblogs.com/hhhshct/p/8808115.html" target="_blank" rel="noopener">springboot配置监听器、过滤器和拦截器</a></p>
-]]></content>
-      <categories>
-        <category>spring</category>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>interceptor</tag>
-        <tag>filter</tag>
-        <tag>listener</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>IOC的实现原理—反射与工厂模式(转载)</title>
-    <url>/2020/03/03/C%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E2%80%94%E5%8F%8D%E5%B0%84%E4%B8%8E%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<h3 id="反射与工厂模式实现IOC"><a href="#反射与工厂模式实现IOC" class="headerlink" title="反射与工厂模式实现IOC"></a>反射与工厂模式实现IOC</h3><p>   &amp;emsp;Spring中的IoC的实现原理就是工厂模式加反射机制。 我们首先看一下不用反射机制时的工厂模式：<br>   <a id="more"></a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface fruit&#123;</span><br><span class="line">    public abstract void eat();</span><br><span class="line">&#125; </span><br><span class="line">class Apple implements fruit&#123;</span><br><span class="line">     public void eat()&#123;</span><br><span class="line">         System.out.println(&quot;Apple&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">&#125; </span><br><span class="line">class Orange implements fruit&#123;</span><br><span class="line">     public void eat()&#123;</span><br><span class="line">         System.out.println(&quot;Orange&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;构造工厂类</span><br><span class="line">&#x2F;&#x2F;也就是说以后如果我们在添加其他的实例的时候只需要修改工厂类就行了</span><br><span class="line">class Factory&#123;</span><br><span class="line">     public static fruit getInstance(String fruitName)&#123;</span><br><span class="line">         fruit f&#x3D;null;</span><br><span class="line">         if(&quot;Apple&quot;.equals(fruitName))&#123;</span><br><span class="line">             f&#x3D;new Apple();</span><br><span class="line">         &#125;</span><br><span class="line">         if(&quot;Orange&quot;.equals(fruitName))&#123;</span><br><span class="line">             f&#x3D;new Orange();</span><br><span class="line">         &#125;</span><br><span class="line">         return f;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">class hello&#123;</span><br><span class="line">     public static void main(String[] a)&#123;</span><br><span class="line">         fruit f&#x3D;Factory.getInstance(&quot;Orange&quot;);</span><br><span class="line">         f.eat();</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>   &amp;emsp;上面写法的缺点是当我们再添加一个子类的时候，就需要修改工厂类了。如果我们添加太多的子类的时候，改动就会很多。下面用反射机制实现工厂模式：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface fruit&#123;</span><br><span class="line">     public abstract void eat();</span><br><span class="line">&#125;</span><br><span class="line">class Apple implements fruit&#123;</span><br><span class="line">public void eat()&#123;</span><br><span class="line">         System.out.println(&quot;Apple&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Orange implements fruit&#123;</span><br><span class="line">public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;Orange&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Factory&#123;</span><br><span class="line">    public static fruit getInstance(String ClassName)&#123;</span><br><span class="line">        fruit f&#x3D;null;</span><br><span class="line">        try&#123;</span><br><span class="line">            f&#x3D;(fruit)Class.forName(ClassName).newInstance();</span><br><span class="line">        &#125;catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return f;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class hello&#123;</span><br><span class="line">    public static void main(String[] a)&#123;</span><br><span class="line">        fruit f&#x3D;Factory.getInstance(&quot;Reflect.Apple&quot;);</span><br><span class="line">        if(f!&#x3D;null)&#123;</span><br><span class="line">            f.eat();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>  &amp;emsp;现在就算我们添加任意多个子类的时候，工厂类都不需要修改。使用反射机制实现的工厂模式可以通过反射取得接口的实例，但是需要传入完整的包和类名。而且用户也无法知道一个接口有多少个可以使用的子类，所以我们通过属性文件的形式配置所需要的子类。</p>
-<p>   &amp;emsp;下面编写使用反射机制并结合属性文件的工厂模式（即IoC）。首先创建一个fruit.properties的资源文件：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apple&#x3D;Reflect.Apple</span><br><span class="line">orange&#x3D;Reflect.Orange</span><br></pre></td></tr></table></figure>
-<p>   &amp;emsp;然后编写主类代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface fruit&#123;</span><br><span class="line">    public abstract void eat();</span><br><span class="line">&#125;</span><br><span class="line">class Apple implements fruit&#123;</span><br><span class="line">    public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;Apple&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Orange implements fruit&#123;</span><br><span class="line">    public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;Orange&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;操作属性文件类</span><br><span class="line">class init&#123;</span><br><span class="line">    public static Properties getPro() throws FileNotFoundException, IOException&#123;</span><br><span class="line">        Properties pro&#x3D;new Properties();</span><br><span class="line">        File f&#x3D;new File(&quot;fruit.properties&quot;);</span><br><span class="line">        if(f.exists())&#123;</span><br><span class="line">            pro.load(new FileInputStream(f));</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            pro.setProperty(&quot;apple&quot;, &quot;Reflect.Apple&quot;);</span><br><span class="line">            pro.setProperty(&quot;orange&quot;, &quot;Reflect.Orange&quot;);</span><br><span class="line">            pro.store(new FileOutputStream(f), &quot;FRUIT CLASS&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        return pro;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Factory&#123;</span><br><span class="line">    public static fruit getInstance(String ClassName)&#123;</span><br><span class="line">        fruit f&#x3D;null;</span><br><span class="line">        try&#123;</span><br><span class="line">            f&#x3D;(fruit)Class.forName(ClassName).newInstance();</span><br><span class="line">        &#125;catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return f;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class hello&#123;</span><br><span class="line">    public static void main(String[] a) throws FileNotFoundException, IOException&#123;</span><br><span class="line">        Properties pro&#x3D;init.getPro();</span><br><span class="line">        fruit f&#x3D;Factory.getInstance(pro.getProperty(&quot;apple&quot;));</span><br><span class="line">        if(f!&#x3D;null)&#123;</span><br><span class="line">            f.eat();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>&amp;emsp;运行结果：Apple</p>
-<h3 id="IOC容器的技术剖析"><a href="#IOC容器的技术剖析" class="headerlink" title="IOC容器的技术剖析"></a>IOC容器的技术剖析</h3><p> &amp;emsp;IOC中最基本的技术就是“反射(Reflection)”编程，通俗来讲就是根据给出的类名（字符串方式）来动态地生成对象，这种编程方式可以让对象在生成时才被决定到底是哪一种对象。只是在Spring中要生产的对象都在配置文件中给出定义，目的就是提高灵活性和可维护性。</p>
-<p> &amp;emsp;目前C#、Java和PHP5等语言均支持反射，其中PHP5的技术书籍中，有时候也被翻译成“映射”。有关反射的概念和用法，大家应该都很清楚。反射的应用是很广泛的，很多的成熟的框架，比如像Java中的Hibernate、Spring框架，.Net中NHibernate、Spring.NET框架都是把”反射“做为最基本的技术手段。</p>
-<p>&amp;emsp;反射技术其实很早就出现了，但一直被忽略，没有被进一步的利用。当时的反射编程方式相对于正常的对象生成方式要慢至少得10倍。现在的反射技术经过改良优化，已经非常成熟，反射方式生成对象和通常对象生成方式，速度已经相差不大了，大约为1-2倍的差距。</p>
-<p>&amp;emsp;我们可以把IOC容器的工作模式看做是工厂模式的升华，可以把IOC容器看作是一个工厂，这个工厂里要生产的对象都在配置文件中给出定义，然后利用编程语言提供的反射机制，根据配置文件中给出的类名生成相应的对象。从实现来看，IOC是把以前在工厂方法里写死的对象生成代码，改变为由配置文件来定义，也就是把工厂和对象生成这两者独立分隔开来，目的就是提高灵活性和可维护性。</p>
-<h3 id="使用IOC框架应该注意什么"><a href="#使用IOC框架应该注意什么" class="headerlink" title="使用IOC框架应该注意什么"></a>使用IOC框架应该注意什么</h3><p>&amp;emsp;使用IOC框架产品能够给我们的开发过程带来很大的好处，但是也要充分认识引入IOC框架的缺点，做到心中有数，杜绝滥用框架。</p>
-<p>&amp;emsp;1）软件系统中由于引入了第三方IOC容器，生成对象的步骤变得有些复杂，本来是两者之间的事情，又凭空多出一道手续，所以，我们在刚开始使用IOC框架的时候，会感觉系统变得不太直观。所以，引入了一个全新的框架，就会增加团队成员学习和认识的培训成本，并且在以后的运行维护中，还得让新加入者具备同样的知识体系。</p>
-<p>&amp;emsp;2）由于IOC容器生成对象是通过反射方式，在运行效率上有一定的损耗。如果你要追求运行效率的话，就必须对此进行权衡。</p>
-<p>&amp;emsp;3）具体到IOC框架产品（比如Spring）来讲，需要进行大量的配制工作，比较繁琐，对于一些小的项目而言，客观上也可能加大一些工作成本。</p>
-<p>&amp;emsp;4）IOC框架产品本身的成熟度需要进行评估，如果引入一个不成熟的IOC框架产品，那么会影响到整个项目，所以这也是一个隐性的风险。</p>
-<p>&amp;emsp;我们大体可以得出这样的结论：一些工作量不大的项目或者产品，不太适合使用IOC框架产品。另外，如果团队成员的知识能力欠缺，对于IOC框架产品缺乏深入的理解，也不要贸然引入。最后，特别强调运行效率的项目或者产品，也不太适合引入IOC框架产品，像WEB2.0网站就是这种情况。<br>————————————————<br>版权声明：本文为CSDN博主「fuzhongmin05」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br><a href="https://blog.csdn.net/fuzhongmin05/article/details/61614873" target="_blank" rel="noopener">原文链接</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>TCP/IP协议族的网络层基础（6）——NAT和NAPT</title>
     <url>/2020/03/27/CP-IP%E4%B9%8BNAT/</url>
     <content><![CDATA[<p>转载：**<a href="https://blog.csdn.net/lvyibin890/article/details/80206979" target="_blank" rel="noopener">TCP&#x2F;IP协议族的网络层基础（6）——NAT和NAPT</a>**。</p>
@@ -128,9 +82,49 @@
       </tags>
   </entry>
   <entry>
-    <title>Hashtable、HashMap、ConcurrentHashMap</title>
-    <url>/2021/12/01/Hashtable%E3%80%81HashMap%E3%80%81ConcurrentHashMap/</url>
-    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/Mr_YanMingXin/article/details/118601591" target="_blank" rel="noopener">详解Java中HashMap、HashTable、ConcurrentHashMap常见问题</a></strong> &amp;nbsp;;&amp;nbsp;<strong><a href="https://blog.csdn.net/amunamuna/article/details/107773902" target="_blank" rel="noopener">Hashtable、HashMap、ConcurrentHashMap等及常用阻塞队列</a></strong> &amp;nbsp;&amp;nbsp;</p>
+    <title>ES6中js的运算符（?.、?:、? ?、? ?=、）</title>
+    <url>/2022/06/25/ES6%E4%B8%ADjs%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%88-%E3%80%81-%E3%80%81-%E3%80%81-%E3%80%81%EF%BC%89/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/ShIcily/article/details/121673976" target="_blank" rel="noopener">ES6中js的运算符（?.、?:、? ?、? ?&#x3D;、）</a>、<a href="https://blog.csdn.net/sinat_36146776/article/details/112170829" target="_blank" rel="noopener">JavaScript表达式和运算符之：逻辑或赋值（||&#x3D; ），逻辑空赋值（??&#x3D;） ，逻辑与赋值（&amp;&amp;&#x3D;），空值合并操作符（??），可选链式操作符（?.）</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Filter和Interceptor的比较</title>
+    <url>/2021/11/15/Filter%E5%92%8CInterceptor%E7%9A%84%E6%AF%94%E8%BE%83/</url>
+    <content><![CDATA[<p><a href="https://www.jianshu.com/p/5f5e5211bbdb" target="_blank" rel="noopener">Filter和Interceptor的比较</a>, &amp;nbsp;&amp;nbsp;&amp;nbsp;<a href="https://www.cnblogs.com/hellovoyager1/p/9152292.html" target="_blank" rel="noopener">Listener、Filter 和Interceptor 总结</a>, &amp;nbsp;&amp;nbsp;<a href="https://www.cnblogs.com/hhhshct/p/8808115.html" target="_blank" rel="noopener">springboot配置监听器、过滤器和拦截器</a></p>
+]]></content>
+      <categories>
+        <category>spring</category>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>interceptor</tag>
+        <tag>filter</tag>
+        <tag>listener</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>IOC的实现原理—反射与工厂模式(转载)</title>
+    <url>/2020/03/03/C%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E2%80%94%E5%8F%8D%E5%B0%84%E4%B8%8E%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<h3 id="反射与工厂模式实现IOC"><a href="#反射与工厂模式实现IOC" class="headerlink" title="反射与工厂模式实现IOC"></a>反射与工厂模式实现IOC</h3><p>   &amp;emsp;Spring中的IoC的实现原理就是工厂模式加反射机制。 我们首先看一下不用反射机制时的工厂模式：<br>   <a id="more"></a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface fruit&#123;</span><br><span class="line">    public abstract void eat();</span><br><span class="line">&#125; </span><br><span class="line">class Apple implements fruit&#123;</span><br><span class="line">     public void eat()&#123;</span><br><span class="line">         System.out.println(&quot;Apple&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">&#125; </span><br><span class="line">class Orange implements fruit&#123;</span><br><span class="line">     public void eat()&#123;</span><br><span class="line">         System.out.println(&quot;Orange&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;构造工厂类</span><br><span class="line">&#x2F;&#x2F;也就是说以后如果我们在添加其他的实例的时候只需要修改工厂类就行了</span><br><span class="line">class Factory&#123;</span><br><span class="line">     public static fruit getInstance(String fruitName)&#123;</span><br><span class="line">         fruit f&#x3D;null;</span><br><span class="line">         if(&quot;Apple&quot;.equals(fruitName))&#123;</span><br><span class="line">             f&#x3D;new Apple();</span><br><span class="line">         &#125;</span><br><span class="line">         if(&quot;Orange&quot;.equals(fruitName))&#123;</span><br><span class="line">             f&#x3D;new Orange();</span><br><span class="line">         &#125;</span><br><span class="line">         return f;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">class hello&#123;</span><br><span class="line">     public static void main(String[] a)&#123;</span><br><span class="line">         fruit f&#x3D;Factory.getInstance(&quot;Orange&quot;);</span><br><span class="line">         f.eat();</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>   &amp;emsp;上面写法的缺点是当我们再添加一个子类的时候，就需要修改工厂类了。如果我们添加太多的子类的时候，改动就会很多。下面用反射机制实现工厂模式：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface fruit&#123;</span><br><span class="line">     public abstract void eat();</span><br><span class="line">&#125;</span><br><span class="line">class Apple implements fruit&#123;</span><br><span class="line">public void eat()&#123;</span><br><span class="line">         System.out.println(&quot;Apple&quot;);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Orange implements fruit&#123;</span><br><span class="line">public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;Orange&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Factory&#123;</span><br><span class="line">    public static fruit getInstance(String ClassName)&#123;</span><br><span class="line">        fruit f&#x3D;null;</span><br><span class="line">        try&#123;</span><br><span class="line">            f&#x3D;(fruit)Class.forName(ClassName).newInstance();</span><br><span class="line">        &#125;catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return f;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class hello&#123;</span><br><span class="line">    public static void main(String[] a)&#123;</span><br><span class="line">        fruit f&#x3D;Factory.getInstance(&quot;Reflect.Apple&quot;);</span><br><span class="line">        if(f!&#x3D;null)&#123;</span><br><span class="line">            f.eat();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  &amp;emsp;现在就算我们添加任意多个子类的时候，工厂类都不需要修改。使用反射机制实现的工厂模式可以通过反射取得接口的实例，但是需要传入完整的包和类名。而且用户也无法知道一个接口有多少个可以使用的子类，所以我们通过属性文件的形式配置所需要的子类。</p>
+<p>   &amp;emsp;下面编写使用反射机制并结合属性文件的工厂模式（即IoC）。首先创建一个fruit.properties的资源文件：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apple&#x3D;Reflect.Apple</span><br><span class="line">orange&#x3D;Reflect.Orange</span><br></pre></td></tr></table></figure>
+<p>   &amp;emsp;然后编写主类代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">interface fruit&#123;</span><br><span class="line">    public abstract void eat();</span><br><span class="line">&#125;</span><br><span class="line">class Apple implements fruit&#123;</span><br><span class="line">    public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;Apple&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Orange implements fruit&#123;</span><br><span class="line">    public void eat()&#123;</span><br><span class="line">        System.out.println(&quot;Orange&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;操作属性文件类</span><br><span class="line">class init&#123;</span><br><span class="line">    public static Properties getPro() throws FileNotFoundException, IOException&#123;</span><br><span class="line">        Properties pro&#x3D;new Properties();</span><br><span class="line">        File f&#x3D;new File(&quot;fruit.properties&quot;);</span><br><span class="line">        if(f.exists())&#123;</span><br><span class="line">            pro.load(new FileInputStream(f));</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            pro.setProperty(&quot;apple&quot;, &quot;Reflect.Apple&quot;);</span><br><span class="line">            pro.setProperty(&quot;orange&quot;, &quot;Reflect.Orange&quot;);</span><br><span class="line">            pro.store(new FileOutputStream(f), &quot;FRUIT CLASS&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        return pro;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class Factory&#123;</span><br><span class="line">    public static fruit getInstance(String ClassName)&#123;</span><br><span class="line">        fruit f&#x3D;null;</span><br><span class="line">        try&#123;</span><br><span class="line">            f&#x3D;(fruit)Class.forName(ClassName).newInstance();</span><br><span class="line">        &#125;catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return f;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class hello&#123;</span><br><span class="line">    public static void main(String[] a) throws FileNotFoundException, IOException&#123;</span><br><span class="line">        Properties pro&#x3D;init.getPro();</span><br><span class="line">        fruit f&#x3D;Factory.getInstance(pro.getProperty(&quot;apple&quot;));</span><br><span class="line">        if(f!&#x3D;null)&#123;</span><br><span class="line">            f.eat();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&amp;emsp;运行结果：Apple</p>
+<h3 id="IOC容器的技术剖析"><a href="#IOC容器的技术剖析" class="headerlink" title="IOC容器的技术剖析"></a>IOC容器的技术剖析</h3><p> &amp;emsp;IOC中最基本的技术就是“反射(Reflection)”编程，通俗来讲就是根据给出的类名（字符串方式）来动态地生成对象，这种编程方式可以让对象在生成时才被决定到底是哪一种对象。只是在Spring中要生产的对象都在配置文件中给出定义，目的就是提高灵活性和可维护性。</p>
+<p> &amp;emsp;目前C#、Java和PHP5等语言均支持反射，其中PHP5的技术书籍中，有时候也被翻译成“映射”。有关反射的概念和用法，大家应该都很清楚。反射的应用是很广泛的，很多的成熟的框架，比如像Java中的Hibernate、Spring框架，.Net中NHibernate、Spring.NET框架都是把”反射“做为最基本的技术手段。</p>
+<p>&amp;emsp;反射技术其实很早就出现了，但一直被忽略，没有被进一步的利用。当时的反射编程方式相对于正常的对象生成方式要慢至少得10倍。现在的反射技术经过改良优化，已经非常成熟，反射方式生成对象和通常对象生成方式，速度已经相差不大了，大约为1-2倍的差距。</p>
+<p>&amp;emsp;我们可以把IOC容器的工作模式看做是工厂模式的升华，可以把IOC容器看作是一个工厂，这个工厂里要生产的对象都在配置文件中给出定义，然后利用编程语言提供的反射机制，根据配置文件中给出的类名生成相应的对象。从实现来看，IOC是把以前在工厂方法里写死的对象生成代码，改变为由配置文件来定义，也就是把工厂和对象生成这两者独立分隔开来，目的就是提高灵活性和可维护性。</p>
+<h3 id="使用IOC框架应该注意什么"><a href="#使用IOC框架应该注意什么" class="headerlink" title="使用IOC框架应该注意什么"></a>使用IOC框架应该注意什么</h3><p>&amp;emsp;使用IOC框架产品能够给我们的开发过程带来很大的好处，但是也要充分认识引入IOC框架的缺点，做到心中有数，杜绝滥用框架。</p>
+<p>&amp;emsp;1）软件系统中由于引入了第三方IOC容器，生成对象的步骤变得有些复杂，本来是两者之间的事情，又凭空多出一道手续，所以，我们在刚开始使用IOC框架的时候，会感觉系统变得不太直观。所以，引入了一个全新的框架，就会增加团队成员学习和认识的培训成本，并且在以后的运行维护中，还得让新加入者具备同样的知识体系。</p>
+<p>&amp;emsp;2）由于IOC容器生成对象是通过反射方式，在运行效率上有一定的损耗。如果你要追求运行效率的话，就必须对此进行权衡。</p>
+<p>&amp;emsp;3）具体到IOC框架产品（比如Spring）来讲，需要进行大量的配制工作，比较繁琐，对于一些小的项目而言，客观上也可能加大一些工作成本。</p>
+<p>&amp;emsp;4）IOC框架产品本身的成熟度需要进行评估，如果引入一个不成熟的IOC框架产品，那么会影响到整个项目，所以这也是一个隐性的风险。</p>
+<p>&amp;emsp;我们大体可以得出这样的结论：一些工作量不大的项目或者产品，不太适合使用IOC框架产品。另外，如果团队成员的知识能力欠缺，对于IOC框架产品缺乏深入的理解，也不要贸然引入。最后，特别强调运行效率的项目或者产品，也不太适合引入IOC框架产品，像WEB2.0网站就是这种情况。<br>————————————————<br>版权声明：本文为CSDN博主「fuzhongmin05」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br><a href="https://blog.csdn.net/fuzhongmin05/article/details/61614873" target="_blank" rel="noopener">原文链接</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -142,34 +136,6 @@
         <tag>application/x-www-form-urlencoded</tag>
         <tag>application/json</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hard Links VS Soft Links in Linux: What’s the Difference</title>
-    <url>/2022/04/23/Hard-Links-VS-Soft-Links-in-Linux-What%E2%80%99s-the-Difference/</url>
-    <content><![CDATA[<p><a href="https://medium.com/techtofreedom/hard-links-vs-soft-links-in-linux-whats-the-difference-bbd3dfbe24f7" target="_blank" rel="noopener">Hard Links VS Soft Links in Linux: What’s the Difference</a></p>
-<a id="more"></a>
-
-<p>总结：</p>
-<ul>
-<li>A hard link is a link pointing to an existing file’s inode, One or more hard links for an existing file can be created, and they have the <strong>same  inode number</strong>. </li>
-<li>A soft link is a pointer to a file or directory.Unlike a hard link, a soft link has its own inode and inode number. </li>
-<li>A hard link: <ul>
-<li>A file can be accessed with different filenames.</li>
-<li>Modifications of a file by one of its filenames will affect all filenames.</li>
-<li>Deleting one filename does not affect access to other filenames.</li>
-</ul>
-</li>
-<li>A soft link points to another existing file’s content. This means that a soft link depends on its “host file” to exist. If its host file is deleted, opening the soft link will report an error: “No such file or directory”. (This is totally different with hard links.)</li>
-<li>Hard links, by the way, <strong>cannot</strong> be created for directories and files on a different filesystem, cause different filesystems manage their own inodes.</li>
-<li>A soft link is a pointer and there’s nothing about inodes, a soft link can point to a file or a directory on a different filesystem or partition.</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>IDEA中的后缀补全</title>
-    <url>/2022/04/24/IDEA%E4%B8%AD%E7%9A%84%E5%90%8E%E7%BC%80%E8%A1%A5%E5%85%A8/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/correlate/article/details/109578810" target="_blank" rel="noopener">IDEA中的后缀补全</a></p>
-]]></content>
   </entry>
   <entry>
     <title>H5页面在微信浏览器中通过网页授权获取用户信息(openid、昵称、头像等)</title>
@@ -210,6 +176,40 @@
       </tags>
   </entry>
   <entry>
+    <title>Hard Links VS Soft Links in Linux: What’s the Difference</title>
+    <url>/2022/04/23/Hard-Links-VS-Soft-Links-in-Linux-What%E2%80%99s-the-Difference/</url>
+    <content><![CDATA[<p><a href="https://medium.com/techtofreedom/hard-links-vs-soft-links-in-linux-whats-the-difference-bbd3dfbe24f7" target="_blank" rel="noopener">Hard Links VS Soft Links in Linux: What’s the Difference</a></p>
+<a id="more"></a>
+
+<p>总结：</p>
+<ul>
+<li>A hard link is a link pointing to an existing file’s inode, One or more hard links for an existing file can be created, and they have the <strong>same  inode number</strong>. </li>
+<li>A soft link is a pointer to a file or directory.Unlike a hard link, a soft link has its own inode and inode number. </li>
+<li>A hard link: <ul>
+<li>A file can be accessed with different filenames.</li>
+<li>Modifications of a file by one of its filenames will affect all filenames.</li>
+<li>Deleting one filename does not affect access to other filenames.</li>
+</ul>
+</li>
+<li>A soft link points to another existing file’s content. This means that a soft link depends on its “host file” to exist. If its host file is deleted, opening the soft link will report an error: “No such file or directory”. (This is totally different with hard links.)</li>
+<li>Hard links, by the way, <strong>cannot</strong> be created for directories and files on a different filesystem, cause different filesystems manage their own inodes.</li>
+<li>A soft link is a pointer and there’s nothing about inodes, a soft link can point to a file or a directory on a different filesystem or partition.</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>Hashtable、HashMap、ConcurrentHashMap</title>
+    <url>/2021/12/01/Hashtable%E3%80%81HashMap%E3%80%81ConcurrentHashMap/</url>
+    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/Mr_YanMingXin/article/details/118601591" target="_blank" rel="noopener">详解Java中HashMap、HashTable、ConcurrentHashMap常见问题</a></strong> &amp;nbsp;;&amp;nbsp;<strong><a href="https://blog.csdn.net/amunamuna/article/details/107773902" target="_blank" rel="noopener">Hashtable、HashMap、ConcurrentHashMap等及常用阻塞队列</a></strong> &amp;nbsp;&amp;nbsp;</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>IDEA中的后缀补全</title>
+    <url>/2022/04/24/IDEA%E4%B8%AD%E7%9A%84%E5%90%8E%E7%BC%80%E8%A1%A5%E5%85%A8/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/correlate/article/details/109578810" target="_blank" rel="noopener">IDEA中的后缀补全</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Java 内部类详解</title>
     <url>/2022/05/15/Java-%E5%86%85%E9%83%A8%E7%B1%BB%E8%AF%A6%E8%A7%A3/</url>
     <content><![CDATA[<p><a href="https://www.runoob.com/w3cnote/java-inner-class-intro.html" target="_blank" rel="noopener">Java 内部类详解</a></p>
@@ -248,6 +248,18 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Let’sEncrypt 证书自动更新脚本</title>
+    <url>/2021/04/08/Let%E2%80%99sEncrypt-%E8%AF%81%E4%B9%A6%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E8%84%9A%E6%9C%AC/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>vps科学上网用的Let’sEncrypt免费证书，有效期一般是3个月，需要定期更新。写个脚本，定时更新。</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">#Version:1.0</span><br><span class="line">#Author:zzl</span><br><span class="line">#Automatically renew Let&#39;s Encrypt certificates</span><br><span class="line">#A cron job will run this shell script everyday</span><br><span class="line">i&#x3D;0</span><br><span class="line">while [[ $i -lt 10]]</span><br><span class="line">do</span><br><span class="line">  let &quot;i++&quot;</span><br><span class="line">  if [ $(ps -C nginx --no-header | wc -l) -ne 0];then</span><br><span class="line">    service nginx stop</span><br><span class="line">    sleep 3s</span><br><span class="line">    if [ $(ps -C nginx --no-header | wc -l) -eq 0];then</span><br><span class="line">      break</span><br><span class="line">    fi</span><br><span class="line">  fi</span><br><span class="line">done</span><br><span class="line">certbot renew </span><br><span class="line">service nginx start</span><br></pre></td></tr></table></figure>
+<p>或者直接用certbot renew command，详情如下<br>        <strong><a href="https://certbot.eff.org/docs/using.html?highlight=hooks#renewing-certificates" target="_blank" rel="noopener">Certbot documentation on renewing certificates</a></strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">certbot renew --pre-hook &quot;service nginx stop&quot; --post-hook &quot;service nginx start&quot;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Java泛型详解：&lt;T&gt;和Class&lt;T&gt;的使用。泛型类，泛型方法的详细使用实例 </title>
     <url>/2021/12/17/Java%E6%B3%9B%E5%9E%8B%E8%AF%A6%E8%A7%A3%EF%BC%9A-T-%E5%92%8CClass-T-%E7%9A%84%E4%BD%BF%E7%94%A8%E3%80%82%E6%B3%9B%E5%9E%8B%E7%B1%BB%EF%BC%8C%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95%E7%9A%84%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B/</url>
     <content><![CDATA[<p><a href="https://www.cnblogs.com/jpfss/p/9928747.html" target="_blank" rel="noopener">Java泛型详解：<T>和Class<T>的使用。泛型类，泛型方法的详细使用实例 </T></T></a></p>
@@ -272,18 +284,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Let’sEncrypt 证书自动更新脚本</title>
-    <url>/2021/04/08/Let%E2%80%99sEncrypt-%E8%AF%81%E4%B9%A6%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E8%84%9A%E6%9C%AC/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>vps科学上网用的Let’sEncrypt免费证书，有效期一般是3个月，需要定期更新。写个脚本，定时更新。</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">#Version:1.0</span><br><span class="line">#Author:zzl</span><br><span class="line">#Automatically renew Let&#39;s Encrypt certificates</span><br><span class="line">#A cron job will run this shell script everyday</span><br><span class="line">i&#x3D;0</span><br><span class="line">while [[ $i -lt 10]]</span><br><span class="line">do</span><br><span class="line">  let &quot;i++&quot;</span><br><span class="line">  if [ $(ps -C nginx --no-header | wc -l) -ne 0];then</span><br><span class="line">    service nginx stop</span><br><span class="line">    sleep 3s</span><br><span class="line">    if [ $(ps -C nginx --no-header | wc -l) -eq 0];then</span><br><span class="line">      break</span><br><span class="line">    fi</span><br><span class="line">  fi</span><br><span class="line">done</span><br><span class="line">certbot renew </span><br><span class="line">service nginx start</span><br></pre></td></tr></table></figure>
-<p>或者直接用certbot renew command，详情如下<br>        <strong><a href="https://certbot.eff.org/docs/using.html?highlight=hooks#renewing-certificates" target="_blank" rel="noopener">Certbot documentation on renewing certificates</a></strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">certbot renew --pre-hook &quot;service nginx stop&quot; --post-hook &quot;service nginx start&quot;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-  </entry>
-  <entry>
     <title>ProcessExecutor、ProcessBuilder、Runtime.getRuntime().exec(...) </title>
     <url>/2021/05/02/ProcessExecutor%E3%80%81ProcessBuilder%E3%80%81Runtime-getRuntime-exec/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>There are many approaches to take when running external processes from Java. There are the JRE options such as the Runtime.exec() 、 ProcessBuilder、  Apache Commons Exec and ZT Process Executor. 其中ZT Process Executor是一个更为强大的进程库（process library），能够通过使用一个单一的 ProcessExecutor 类来调用 java.lang.ProcessBuilder 和 Apache Commons Exec 中的接口。</p>
@@ -304,46 +304,27 @@
       </categories>
   </entry>
   <entry>
-    <title>SQL语句的执行顺序</title>
-    <url>/2022/12/07/SQL%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/</url>
-    <content><![CDATA[<p>Logical Query Processing Phases in Brief—《Microsoft SQL Server 2008技术内幕T-SQL语言基础.pdf》p27</p>
+    <title>Rust引用</title>
+    <url>/2022/03/17/Rust%E5%BC%95%E7%94%A8/</url>
+    <content><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch3/07_reference_type.html" target="_blank" rel="noopener">Rust中的引用</a></p>
 <a id="more"></a>
 
-<h3 id="FROM"><a href="#FROM" class="headerlink" title="FROM"></a>FROM</h3><p>  The FROM phase identifi es the query’s source tables and processes table operators. Each table operator applies a series of subphases. For example, the phases involved in a join are (1-J1) Cartesian Product, (1-J2) ON Filter, (1-J3) Add Outer Rows. The FROM phase generates virtual table VT1. </p>
-<h4 id="Cartesian-Product"><a href="#Cartesian-Product" class="headerlink" title="Cartesian Product"></a><em>Cartesian Product</em></h4><p>This phase performs a Cartesian product (cross join) between the two tables involved in the table operator, generating VT1-J1. </p>
-<h4 id="ON-Filter"><a href="#ON-Filter" class="headerlink" title="ON Filter"></a><em>ON Filter</em></h4><p>This phase fi lters the rows from VT1-J1 based on the predicate that appears in the ON clause (<on_predicate>). Only rows for which the predicate evaluates to TRUE are inserted into VT1-J2.</on_predicate></p>
-<h4 id="Add-Outer-Rows"><a href="#Add-Outer-Rows" class="headerlink" title="Add Outer Rows"></a><em>Add Outer Rows</em></h4><p>If OUTER JOIN is specifi ed (as opposed to CROSS JOIN or INNER JOIN), rows from the preserved table or tables for which a match was not found are added to the rows from VT1-J2 as outer rows, generating VT1-J3.</p>
-<p><img src="/images/pasted-59.png" alt="upload successful"></p>
-<h3 id="WHERE"><a href="#WHERE" class="headerlink" title="WHERE"></a>WHERE</h3><p>This phase fi lters the rows from VT1 based on the predicate that appears in the WHERE clause (<where_predicate>). Only rows for which the predicate evaluates to TRUE are inserted into VT2. </where_predicate></p>
-<h3 id="GROUP-BY"><a href="#GROUP-BY" class="headerlink" title="GROUP BY"></a>GROUP BY</h3><p>This phase arranges the rows from VT2 in groups based on the column list specifi ed in the GROUP BY clause, generating VT3. Ultimately, there will be one result row per group. </p>
-<h3 id="HAVING"><a href="#HAVING" class="headerlink" title="HAVING"></a>HAVING</h3><p>This phase fi lters the groups from VT3 based on the predicate that appears in the HAVING clause (<having_predicate>). Only groups for which the predicate evaluates to TRUE are inserted into VT4. </having_predicate></p>
-<h3 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h3><p>This phase processes the elements in the SELECT clause, generating VT5. </p>
-<h4 id="Evaluate-Expressions"><a href="#Evaluate-Expressions" class="headerlink" title="Evaluate Expressions"></a><em>Evaluate Expressions</em></h4><p>This phase evaluates the expressions in the SELECT list, generating VT5-1. </p>
-<h4 id="DISTINCT"><a href="#DISTINCT" class="headerlink" title="DISTINCT"></a><em>DISTINCT</em></h4><p>This phase removes duplicate rows from VT5-1, generating VT5-2. </p>
-<h4 id="TOP"><a href="#TOP" class="headerlink" title="TOP"></a><em>TOP</em></h4><p>This phase fi lters the specifi ed top number or percentage of rows from VT5-2 based on the logical ordering defi ned by the ORDER BY clause, generating the table VT5-3. </p>
-<h3 id="ORDER-BY"><a href="#ORDER-BY" class="headerlink" title="ORDER BY"></a>ORDER BY</h3><p>This phase sorts the rows from VT5-3 according to the column list specifi ed in the ORDER BY clause, generating the cursor VC6.</p>
+<h3 id="解引用"><a href="#解引用" class="headerlink" title="解引用"></a>解引用</h3><p>Rust绝大多数时候不会自动地解除引用。但在某些环境下，Rust会自动进行解引用。</p>
+<p>自动解引用的情况有(结论先总结在此，混脸熟，以后涉及到时再来)：</p>
+<ol>
+<li><p>使用.操作符时(包括取属性值和方法调用)，会隐式地尽可能解除或创建多层引用</p>
+</li>
+<li><p>使用比较操作符时，若比较的两边是相同类型的引用，则会自动解除引用到它们的值然后比较<br>对于(1)，Rust会自动分析func()的参数，并在需要的时候自动创建或自动解除引用。例如以abc.func()有可能会自动转换为&amp;abc.func()，反之，&amp;abc.func()也有可能会自动转换为abc.func()。</p>
+</li>
+</ol>
+<p>对于(2)，例如有引用类型的变量n，那么n &gt; &amp;30和*n &gt; 30的效果是一样的。</p>
+<p>————————————————《rust入门秘籍》</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>《Spring设计思想-事务篇》2.数据库隔离级别</title>
-    <url>/2020/03/12/Spring%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3-%E4%BA%8B%E5%8A%A1%E7%AF%87%E3%80%8B2-%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</url>
-    <content><![CDATA[<p>转载：**<a href="https://blog.csdn.net/luanlouis/article/details/95319795" target="_blank" rel="noopener">《Spring设计思想-事务篇》2.数据库隔离级别
-</a><strong>，</strong><a href="http://www.hollischuang.com/archives/943" target="_blank" rel="noopener">深入分析事务的隔离级别</a><strong>，</strong><a href="https://www.hollischuang.com/archives/923" target="_blank" rel="noopener">MySQL中的共享锁与排他锁</a>**</p>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>对上述的四种事务隔离级别的阐述中，我们使用了从资源互斥访问的角度做了解释。资源互斥粒度控制的越细，客户端事务的并发能力就越高，但是与此同时，会相应地降低数据的一致性。</p>
-<a id="more"></a>
-
-<p>事务的并发数和数据数据一致性这两个是两个相反的理想指标。而数据库研发的方向就是尽可能提高同时提高两个指标，尽可能减少之间的反作用影响。</p>
-<p>SERIALIZABLE 序列化读，隔离级别最高，客户端以互斥的方式访问数据库资源，统一时间内，同一个资源只能被一个客户端访问，好像客户端在排队请求访问，所以称为序列化读。<br>REPEATABLE_READ 可重复读，可重复读能够保证，一个客户端在一个事务内，多次访问同一个资源时，返回结果是一样的，顾名思义，称为可重复读，这种隔离级别可能会造成幻读现象。<br>READ_COMMITTED 读已提交，即客户端在一个事务内，每次查询读取的数据都是从数据库读取最新的已提交的数据；这种隔离界别可能会造成不可重复读和幻读现象。<br>READ_UNCOMMITTED 读未提交，即客户端在一个事务内，可以读取到其他客户端事务的尚未提交的数据；这种隔离级别可能会造成脏读、不可重复读、幻读 现象。</p>
-<p><img src="/images/pasted-23.png" alt="upload successful"></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>SkipList (跳跃表)的那点事儿</title>
-    <url>/2021/02/23/SkipList-%E7%9A%84%E9%82%A3%E7%82%B9%E4%BA%8B%E5%84%BF/</url>
-    <content><![CDATA[<p><a href="https://mp.weixin.qq.com/s/fNBjlpzqvNkmei0cHhNcog?article_exclude_marked=ea8284506ea5ccac099671313574ba5c" target="_blank" rel="noopener">SkipList 的那点事儿</a></p>
-]]></content>
+      <categories>
+        <category>rust</category>
+      </categories>
       <tags>
-        <tag>SkipList</tag>
+        <tag>references</tag>
       </tags>
   </entry>
   <entry>
@@ -402,39 +383,46 @@
       </tags>
   </entry>
   <entry>
-    <title>Rust引用</title>
-    <url>/2022/03/17/Rust%E5%BC%95%E7%94%A8/</url>
-    <content><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch3/07_reference_type.html" target="_blank" rel="noopener">Rust中的引用</a></p>
-<a id="more"></a>
-
-<h3 id="解引用"><a href="#解引用" class="headerlink" title="解引用"></a>解引用</h3><p>Rust绝大多数时候不会自动地解除引用。但在某些环境下，Rust会自动进行解引用。</p>
-<p>自动解引用的情况有(结论先总结在此，混脸熟，以后涉及到时再来)：</p>
-<ol>
-<li><p>使用.操作符时(包括取属性值和方法调用)，会隐式地尽可能解除或创建多层引用</p>
-</li>
-<li><p>使用比较操作符时，若比较的两边是相同类型的引用，则会自动解除引用到它们的值然后比较<br>对于(1)，Rust会自动分析func()的参数，并在需要的时候自动创建或自动解除引用。例如以abc.func()有可能会自动转换为&amp;abc.func()，反之，&amp;abc.func()也有可能会自动转换为abc.func()。</p>
-</li>
-</ol>
-<p>对于(2)，例如有引用类型的变量n，那么n &gt; &amp;30和*n &gt; 30的效果是一样的。</p>
-<p>————————————————《rust入门秘籍》</p>
+    <title>SkipList (跳跃表)的那点事儿</title>
+    <url>/2021/02/23/SkipList-%E7%9A%84%E9%82%A3%E7%82%B9%E4%BA%8B%E5%84%BF/</url>
+    <content><![CDATA[<p><a href="https://mp.weixin.qq.com/s/fNBjlpzqvNkmei0cHhNcog?article_exclude_marked=ea8284506ea5ccac099671313574ba5c" target="_blank" rel="noopener">SkipList 的那点事儿</a></p>
 ]]></content>
-      <categories>
-        <category>rust</category>
-      </categories>
       <tags>
-        <tag>references</tag>
+        <tag>SkipList</tag>
       </tags>
   </entry>
   <entry>
-    <title>Ubuntu 20.04优化</title>
-    <url>/1970/01/01/Ubuntu-18-04-%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E4%BC%98%E5%8C%96/</url>
-    <content><![CDATA[<p>**<a href="https://ratimechen.github.io/posts/1490628848/#%E5%AE%89%E8%A3%9D%E5%BF%85%E8%A3%9D%E5%B7%A5%E5%85%B7" target="_blank" rel="noopener">把 Ubuntu 20.04 打造成 macOS 風格</a>**，备用。 ps: 安装Dash to Dock插件时，一直Error，后电脑重启，不知道是重启前卸除“gnome-shell-extension-dock”起的作用，还是重启大法威力无边…</p>
+    <title>SQL语句的执行顺序</title>
+    <url>/2022/12/07/SQL%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/</url>
+    <content><![CDATA[<p>Logical Query Processing Phases in Brief—《Microsoft SQL Server 2008技术内幕T-SQL语言基础.pdf》p27</p>
+<a id="more"></a>
+
+<h3 id="FROM"><a href="#FROM" class="headerlink" title="FROM"></a>FROM</h3><p>  The FROM phase identifi es the query’s source tables and processes table operators. Each table operator applies a series of subphases. For example, the phases involved in a join are (1-J1) Cartesian Product, (1-J2) ON Filter, (1-J3) Add Outer Rows. The FROM phase generates virtual table VT1. </p>
+<h4 id="Cartesian-Product"><a href="#Cartesian-Product" class="headerlink" title="Cartesian Product"></a><em>Cartesian Product</em></h4><p>This phase performs a Cartesian product (cross join) between the two tables involved in the table operator, generating VT1-J1. </p>
+<h4 id="ON-Filter"><a href="#ON-Filter" class="headerlink" title="ON Filter"></a><em>ON Filter</em></h4><p>This phase fi lters the rows from VT1-J1 based on the predicate that appears in the ON clause (<on_predicate>). Only rows for which the predicate evaluates to TRUE are inserted into VT1-J2.</on_predicate></p>
+<h4 id="Add-Outer-Rows"><a href="#Add-Outer-Rows" class="headerlink" title="Add Outer Rows"></a><em>Add Outer Rows</em></h4><p>If OUTER JOIN is specifi ed (as opposed to CROSS JOIN or INNER JOIN), rows from the preserved table or tables for which a match was not found are added to the rows from VT1-J2 as outer rows, generating VT1-J3.</p>
+<p><img src="/images/pasted-59.png" alt="upload successful"></p>
+<h3 id="WHERE"><a href="#WHERE" class="headerlink" title="WHERE"></a>WHERE</h3><p>This phase fi lters the rows from VT1 based on the predicate that appears in the WHERE clause (<where_predicate>). Only rows for which the predicate evaluates to TRUE are inserted into VT2. </where_predicate></p>
+<h3 id="GROUP-BY"><a href="#GROUP-BY" class="headerlink" title="GROUP BY"></a>GROUP BY</h3><p>This phase arranges the rows from VT2 in groups based on the column list specifi ed in the GROUP BY clause, generating VT3. Ultimately, there will be one result row per group. </p>
+<h3 id="HAVING"><a href="#HAVING" class="headerlink" title="HAVING"></a>HAVING</h3><p>This phase fi lters the groups from VT3 based on the predicate that appears in the HAVING clause (<having_predicate>). Only groups for which the predicate evaluates to TRUE are inserted into VT4. </having_predicate></p>
+<h3 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h3><p>This phase processes the elements in the SELECT clause, generating VT5. </p>
+<h4 id="Evaluate-Expressions"><a href="#Evaluate-Expressions" class="headerlink" title="Evaluate Expressions"></a><em>Evaluate Expressions</em></h4><p>This phase evaluates the expressions in the SELECT list, generating VT5-1. </p>
+<h4 id="DISTINCT"><a href="#DISTINCT" class="headerlink" title="DISTINCT"></a><em>DISTINCT</em></h4><p>This phase removes duplicate rows from VT5-1, generating VT5-2. </p>
+<h4 id="TOP"><a href="#TOP" class="headerlink" title="TOP"></a><em>TOP</em></h4><p>This phase fi lters the specifi ed top number or percentage of rows from VT5-2 based on the logical ordering defi ned by the ORDER BY clause, generating the table VT5-3. </p>
+<h3 id="ORDER-BY"><a href="#ORDER-BY" class="headerlink" title="ORDER BY"></a>ORDER BY</h3><p>This phase sorts the rows from VT5-3 according to the column list specifi ed in the ORDER BY clause, generating the cursor VC6.</p>
 ]]></content>
   </entry>
   <entry>
-    <title> ThreadLocal 详解</title>
-    <url>/2021/11/13/ThreadLocal-%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[<p><a href="https://www.pdai.tech/md/java/thread/java-thread-x-threadlocal.html" target="_blank" rel="noopener">ThreadLocal原理</a>  ,&amp;nbsp;&amp;nbsp;&amp;nbsp; <a href="https://juejin.cn/post/6844903487193481224" target="_blank" rel="noopener">Java 之 ThreadLocal 详解: 内存泄漏</a></p>
+    <title>《Spring设计思想-事务篇》2.数据库隔离级别</title>
+    <url>/2020/03/12/Spring%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3-%E4%BA%8B%E5%8A%A1%E7%AF%87%E3%80%8B2-%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</url>
+    <content><![CDATA[<p>转载：**<a href="https://blog.csdn.net/luanlouis/article/details/95319795" target="_blank" rel="noopener">《Spring设计思想-事务篇》2.数据库隔离级别
+</a><strong>，</strong><a href="http://www.hollischuang.com/archives/943" target="_blank" rel="noopener">深入分析事务的隔离级别</a><strong>，</strong><a href="https://www.hollischuang.com/archives/923" target="_blank" rel="noopener">MySQL中的共享锁与排他锁</a>**</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>对上述的四种事务隔离级别的阐述中，我们使用了从资源互斥访问的角度做了解释。资源互斥粒度控制的越细，客户端事务的并发能力就越高，但是与此同时，会相应地降低数据的一致性。</p>
+<a id="more"></a>
+
+<p>事务的并发数和数据数据一致性这两个是两个相反的理想指标。而数据库研发的方向就是尽可能提高同时提高两个指标，尽可能减少之间的反作用影响。</p>
+<p>SERIALIZABLE 序列化读，隔离级别最高，客户端以互斥的方式访问数据库资源，统一时间内，同一个资源只能被一个客户端访问，好像客户端在排队请求访问，所以称为序列化读。<br>REPEATABLE_READ 可重复读，可重复读能够保证，一个客户端在一个事务内，多次访问同一个资源时，返回结果是一样的，顾名思义，称为可重复读，这种隔离级别可能会造成幻读现象。<br>READ_COMMITTED 读已提交，即客户端在一个事务内，每次查询读取的数据都是从数据库读取最新的已提交的数据；这种隔离界别可能会造成不可重复读和幻读现象。<br>READ_UNCOMMITTED 读未提交，即客户端在一个事务内，可以读取到其他客户端事务的尚未提交的数据；这种隔离级别可能会造成脏读、不可重复读、幻读 现象。</p>
+<p><img src="/images/pasted-23.png" alt="upload successful"></p>
 ]]></content>
   </entry>
   <entry>
@@ -471,10 +459,15 @@
       </tags>
   </entry>
   <entry>
-    <title>Ulauncher</title>
-    <url>/2022/04/10/Ulauncher/</url>
-    <content><![CDATA[<p>Ulauncher(Application launcher for Linux)效率提升工具…</p>
-<p><a href="https://ulauncher.io/#Download" target="_blank" rel="noopener">官网</a>、<a href="https://www.geeksforgeeks.org/how-to-install-ulauncher-in-ubuntu/" target="_blank" rel="noopener">How to Install Ulauncher in Ubuntu?</a>、<a href="https://www.makeuseof.com/install-ulauncher-on-linux/" target="_blank" rel="noopener">How to Install Extensions And Best Ulauncher Extensions</a>.<br>实测好用的插件：Terminal Runner(关机重启方便)、IpCopy（查看自己内网外网IP并复制）、Better file browser（文件浏览及搜索）、Translate（翻译。默认翻译成en，如果是英译汉格式为“tr :zh english”）、Calculate Anything</p>
+    <title> ThreadLocal 详解</title>
+    <url>/2021/11/13/ThreadLocal-%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<p><a href="https://www.pdai.tech/md/java/thread/java-thread-x-threadlocal.html" target="_blank" rel="noopener">ThreadLocal原理</a>  ,&amp;nbsp;&amp;nbsp;&amp;nbsp; <a href="https://juejin.cn/post/6844903487193481224" target="_blank" rel="noopener">Java 之 ThreadLocal 详解: 内存泄漏</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Ubuntu 20.04优化</title>
+    <url>/1970/01/01/Ubuntu-18-04-%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<p>**<a href="https://ratimechen.github.io/posts/1490628848/#%E5%AE%89%E8%A3%9D%E5%BF%85%E8%A3%9D%E5%B7%A5%E5%85%B7" target="_blank" rel="noopener">把 Ubuntu 20.04 打造成 macOS 風格</a>**，备用。 ps: 安装Dash to Dock插件时，一直Error，后电脑重启，不知道是重启前卸除“gnome-shell-extension-dock”起的作用，还是重启大法威力无边…</p>
 ]]></content>
   </entry>
   <entry>
@@ -522,27 +515,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Using the Switch(true) Pattern in JavaScript</title>
-    <url>/2021/04/13/Using-the-Switch-true-Pattern-in-JavaScript-https-seanbarry-dev-posts-switch-true-pattern/</url>
-    <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
-]]></content>
-      <categories>
-        <category>javascript</category>
-      </categories>
-      <tags>
-        <tag>javascript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Using the Switch(true) Pattern in JavaScript</title>
-    <url>/1970/01/01/Using-the-Switch-true-Pattern-in-JavaScript/</url>
-    <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
-]]></content>
-      <categories>
-        <category>javascript</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Ubuntu18.04下通过zssh与服务器进行上传/下载文件操作</title>
     <url>/2021/11/29/Ubuntu18-04%E4%B8%8B%E9%80%9A%E8%BF%87zssh%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9B%E8%A1%8C%E4%B8%8A%E4%BC%A0-%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[<p>把本地文件上传到远程：</p>
@@ -557,10 +529,38 @@
       </tags>
   </entry>
   <entry>
+    <title>Ulauncher</title>
+    <url>/2022/04/10/Ulauncher/</url>
+    <content><![CDATA[<p>Ulauncher(Application launcher for Linux)效率提升工具…</p>
+<p><a href="https://ulauncher.io/#Download" target="_blank" rel="noopener">官网</a>、<a href="https://www.geeksforgeeks.org/how-to-install-ulauncher-in-ubuntu/" target="_blank" rel="noopener">How to Install Ulauncher in Ubuntu?</a>、<a href="https://www.makeuseof.com/install-ulauncher-on-linux/" target="_blank" rel="noopener">How to Install Extensions And Best Ulauncher Extensions</a>.<br>实测好用的插件：Terminal Runner(关机重启方便)、IpCopy（查看自己内网外网IP并复制）、Better file browser（文件浏览及搜索）、Translate（翻译。默认翻译成en，如果是英译汉格式为“tr :zh english”）、Calculate Anything</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Using the Switch(true) Pattern in JavaScript</title>
+    <url>/1970/01/01/Using-the-Switch-true-Pattern-in-JavaScript/</url>
+    <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
+]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Wireshark抓包原理（ARP劫持、MAC泛洪）及数据流追踪和图像抓取</title>
     <url>/2021/05/31/Wireshark%E6%8A%93%E5%8C%85%E5%8E%9F%E7%90%86%EF%BC%88ARP%E5%8A%AB%E6%8C%81%E3%80%81MAC%E6%B3%9B%E6%B4%AA%EF%BC%89%E5%8F%8A%E6%95%B0%E6%8D%AE%E6%B5%81%E8%BF%BD%E8%B8%AA%E5%92%8C%E5%9B%BE%E5%83%8F%E6%8A%93%E5%8F%96/</url>
     <content><![CDATA[<p>转载：<a href="https://cloud.tencent.com/developer/article/1626729" target="_blank" rel="noopener">Wireshark抓包原理（ARP劫持、MAC泛洪）及数据流追踪和图像抓取</a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Using the Switch(true) Pattern in JavaScript</title>
+    <url>/2021/04/13/Using-the-Switch-true-Pattern-in-JavaScript-https-seanbarry-dev-posts-switch-true-pattern/</url>
+    <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
+]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+      </tags>
   </entry>
   <entry>
     <title>android studio http proxy for sdk </title>
@@ -579,29 +579,6 @@
       <tags>
         <tag>proxy</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Java反射机制</title>
-    <url>/2020/03/03/ava-reflection/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Java反射机制可以让我们在编译期（Compile Time）之外的运行期（Run Time）检查类、接口、变量以及方法的信息，即动态的调用某个对象的方法&#x2F;构造函数、获取某个对象的属性等，而无需在编码时确定调用的对象。这种机制在我们常用的框架中也非常常见，如spring的IOC对bean的注入管理。</p>
-<a id="more"></a>
-
-
-<h3 id="反射回顾"><a href="#反射回顾" class="headerlink" title="反射回顾"></a>反射回顾</h3><p>反射 (Reflection) 是 Java 的特征之一，它允许运行中的 Java 程序获取自身的信息，并且可以操作类或对象的内部属性。</p>
-<p>Oracle 官方对反射的解释是：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Reflection enables Java code to discover information about the fields, methods and constructors of loaded classes, and to use reflected fields, methods, and constructors to operate on their underlying counterparts, within security restrictions.</span><br><span class="line">The API accommodates applications that need access to either the public members of a target object (based on its runtime class) or the members declared by a given class. It also allows programs to suppress default reflective access control.</span><br></pre></td></tr></table></figure>
-<p>简而言之，通过反射，我们可以在运行时获得程序或程序集中每一个类型的成员和成员的信息。程序中一般的对象的类型都是在编译期就确定下来的，而 Java 反射机制可以动态地创建对象并调用其属性，这样的对象的类型在编译期是未知的。所以我们可以通过反射机制直接创建对象，即使这个对象的类型在编译期是未知的。</p>
-<p>反射的核心是 JVM 在运行时才动态加载类或调用方法&#x2F;访问属性，它不需要事先（写代码的时候或编译期）知道运行对象是谁。</p>
-<p>Java 反射主要提供以下功能：</p>
-<p>在运行时判断任意一个对象所属的类；<br>在运行时构造任意一个类的对象；<br>在运行时判断任意一个类所具有的成员变量和方法（通过反射甚至可以调用private方法）；<br>在运行时调用任意一个对象的方法<br>重点：是运行时而不是编译时</p>
-<h3 id="反射的主要用途"><a href="#反射的主要用途" class="headerlink" title="反射的主要用途"></a>反射的主要用途</h3><p>很多人都认为反射在实际的 Java 开发应用中并不广泛，其实不然。当我们在使用 IDE(如 Eclipse，IDEA)时，当我们输入一个对象或类并想调用它的属性或方法时，一按点号，编译器就会自动列出它的属性或方法，这里就会用到反射。</p>
-<p>反射最重要的用途就是开发各种通用框架。很多框架（比如 Spring）都是配置化的（比如通过 XML 文件配置 Bean），为了保证框架的通用性，它们可能需要根据配置文件加载不同的对象或类，调用不同的方法，这个时候就必须用到反射，运行时动态加载需要加载的对象。</p>
-<p>举一个例子，在运用 Struts 2 框架的开发中我们一般会在 struts.xml 里去配置 Action，比如：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;action name&#x3D;&quot;login&quot;</span><br><span class="line">               class&#x3D;&quot;org.ScZyhSoft.test.action.SimpleLoginAction&quot;</span><br><span class="line">               method&#x3D;&quot;execute&quot;&gt;</span><br><span class="line">           &lt;result&gt;&#x2F;shop&#x2F;shop-index.jsp&lt;&#x2F;result&gt;</span><br><span class="line">           &lt;result name&#x3D;&quot;error&quot;&gt;login.jsp&lt;&#x2F;result&gt; </span><br><span class="line">&lt;&#x2F;action&gt;</span><br></pre></td></tr></table></figure>
-<p>配置文件与 Action 建立了一种映射关系，当 View 层发出请求时，请求会被 StrutsPrepareAndExecuteFilter 拦截，然后 StrutsPrepareAndExecuteFilter 会去动态地创建 Action 实例。比如我们请求 login.action，那么 StrutsPrepareAndExecuteFilter就会去解析struts.xml文件，检索action中name为login的Action，并根据class属性创建SimpleLoginAction实例，并用invoke方法来调用execute方法，这个过程离不开反射。</p>
-<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.iteye.com/blog/rednaxelafx-548536" target="_blank" rel="noopener">反射调用的一个Log</a><br><a href="http://www.fanyilun.me/2015/10/29/Java%E5%8F%8D%E5%B0%84%E5%8E%9F%E7%90%86/" target="_blank" rel="noopener">Java反射原理简析</a></p>
-<p>对与框架开发人员来说，反射虽小但作用非常大，它是各种容器实现的核心。而对于一般的开发者来说，不深入框架开发则用反射用的就会少一点，不过了解一下框架的底层机制有助于丰富自己的编程思想，也是很有益的。</p>
-]]></content>
   </entry>
   <entry>
     <title>android studio 真机调试</title>
@@ -628,6 +605,22 @@
       </tags>
   </entry>
   <entry>
+    <title>java自定义类equal重写</title>
+    <url>/2020/02/27/ava-equal/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>判断两个对象在逻辑上是否相等，有时需要根据类的某些成员变量来判断两个实例是否相等，而继承Object中的equals方法比较的只是对象的引用是否指向同一块内存地址。这时候便需要重写equals()方法了。</p>
+<a id="more"></a>
+<p>比较的常用对象如int，float和String等，已重写了equals和hashcode方法，默认比较的是值，而其它自定义对象在用equal时都是比较的引用地址，故此有需要的时候需要重写equal方法。</p>
+<h3 id="重写equal的要求"><a href="#重写equal的要求" class="headerlink" title="重写equal的要求"></a>重写equal的要求</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Override</span><br><span class="line">public boolean equals(Object obj) &#123;  </span><br><span class="line">        if(this &#x3D;&#x3D; obj) &#123;  </span><br><span class="line">            return true;  </span><br><span class="line">        &#125;  </span><br><span class="line">        if(null &#x3D;&#x3D; obj) &#123;  </span><br><span class="line">            return false;  </span><br><span class="line">        &#125;  </span><br><span class="line">       if (obj instanceof Test)&#123;</span><br><span class="line">            Test o &#x3D; (Test) obj;</span><br><span class="line">            return this.id &#x3D;&#x3D; o.id;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>重写equals方法的要求：<br>1、自反性：对于任何非空引用x，x.equals(x)应该返回true。<br>2、对称性：对于任何引用x和y，如果x.equals(y)返回true，那么y.equals(x)也应该返回true。<br>3、传递性：对于任何引用x、y和z，如果x.equals(y)返回true，y.equals(z)返回true，那么x.equals(z)也应该返回true。<br>4、一致性：如果x和y引用的对象没有发生变化，那么反复调用x.equals(y)应该返回同样的结果。<br>5、非空性：对于任意非空引用x，x.equals(null)应该返回false。</p>
+<h3 id="hashCode方法也要重写"><a href="#hashCode方法也要重写" class="headerlink" title="hashCode方法也要重写"></a>hashCode方法也要重写</h3><p>问什么说<strong>重写了equals方法都要进而重写Hashcode方法</strong>呢？</p>
+<p>原因如下：当equals此方法被重写时，通常有必要重写 hashCode 方法，以维护 hashCode 方法的常规协定，该协定声明相等对象必须具有相等的哈希码。如下：</p>
+<p>(1)当obj1.equals(obj2)为true时，obj1.hashCode() &#x3D;&#x3D; obj2.hashCode()必须为true<br>(2)当obj1.hashCode() &#x3D;&#x3D; obj2.hashCode()为false时，obj1.equals(obj2)必须为false</p>
+<p>   &amp;emsp;&amp;emsp;hashcode是用于散列数据的快速存取，如利用HashSet&#x2F;HashMap&#x2F;Hashtable类来存储数据时，都是根据存储对象的hashcode值来进行判断是否相同的。</p>
+<p>   &amp;emsp;&amp;emsp;以HashMap为例说一下的原理，HashMap存储数据的时候，是取的key值的哈希值，然后计算数组下标，采用链地址法解决冲突，然后进行存储；取数据的时候，依然是先要获取到hash值，找到数组下标，然后for遍历链表集合，进行比较是否有对应的key。比较关心的有2点：<br>  &amp;emsp;&amp;emsp; 1.不管是put还是get的时候，都需要得到key的哈希值，去定位key的数组下标；<br>   &amp;emsp;&amp;emsp;2.在get的时候，需要调用equals方法比较是否有相等的key存储过。</p>
+<p>   更详细具体的可以看<a href="https://www.jianshu.com/p/75d9c2c3d0c1" target="_blank" rel="noopener">这篇博文</a>或者<a href="https://www.cnblogs.com/silence-hust/p/4510574.html" target="_blank" rel="noopener">这一篇</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>java底层机制（堆/栈/方法区/GC/类加载）</title>
     <url>/2020/03/08/ava%E5%BA%95%E5%B1%82%E6%9C%BA%E5%88%B6/</url>
     <content><![CDATA[<p>转载:<strong><a href="https://www.jianshu.com/p/ae97b692614e?from=timeline" target="_blank" rel="noopener">java底层机制</a><strong>、</strong><a href="https://blog.csdn.net/luanlouis/article/details/40043991" target="_blank" rel="noopener">《Java虚拟机原理图解》3、JVM运行时数据区</a></strong></p>
@@ -637,27 +630,27 @@
       </categories>
   </entry>
   <entry>
-    <title>ubuntu自动挂载其他盘</title>
-    <url>/2021/03/18/ceshi/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>双系统，ubuntu和win10装在同一个固态盘，还有另外一个机械盘，平时放些资料啥的，设置给ubuntu开机自动挂载另一个机械盘。</p>
+    <title>Java反射机制</title>
+    <url>/2020/03/03/ava-reflection/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Java反射机制可以让我们在编译期（Compile Time）之外的运行期（Run Time）检查类、接口、变量以及方法的信息，即动态的调用某个对象的方法&#x2F;构造函数、获取某个对象的属性等，而无需在编码时确定调用的对象。这种机制在我们常用的框架中也非常常见，如spring的IOC对bean的注入管理。</p>
 <a id="more"></a>
 
-<p>1、查询挂载硬盘UUID</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo blkid &#x2F;dev&#x2F;sda2</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/pasted-32.png" alt="upload successful"><br>Secert和WorkSpace盘信息如上，下面用到两个盘的UUID。</p>
-<p>2、打开文件&#x2F;etc&#x2F;fstab文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;fstab</span><br></pre></td></tr></table></figure>
-<p>在文档末尾添加相应磁盘的信息。格式为：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[UUID&#x3D;************] [挂载磁盘分区]  [挂载磁盘格式]  0  2</span><br><span class="line"></span><br><span class="line">UUID&#x3D;4D55CFC14D016D60 &#x2F;mnt&#x2F;workspace ntfs defaults  0  2</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/pasted-33.png" alt="upload successful"><br>第一个数字：0表示开机不检查磁盘，1表示开机检查磁盘；<br>第二个数字：0表示交换分区，1代表启动分区（Linux），2表示普通分区</p>
-<p>3、重启生效</p>
+<h3 id="反射回顾"><a href="#反射回顾" class="headerlink" title="反射回顾"></a>反射回顾</h3><p>反射 (Reflection) 是 Java 的特征之一，它允许运行中的 Java 程序获取自身的信息，并且可以操作类或对象的内部属性。</p>
+<p>Oracle 官方对反射的解释是：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Reflection enables Java code to discover information about the fields, methods and constructors of loaded classes, and to use reflected fields, methods, and constructors to operate on their underlying counterparts, within security restrictions.</span><br><span class="line">The API accommodates applications that need access to either the public members of a target object (based on its runtime class) or the members declared by a given class. It also allows programs to suppress default reflective access control.</span><br></pre></td></tr></table></figure>
+<p>简而言之，通过反射，我们可以在运行时获得程序或程序集中每一个类型的成员和成员的信息。程序中一般的对象的类型都是在编译期就确定下来的，而 Java 反射机制可以动态地创建对象并调用其属性，这样的对象的类型在编译期是未知的。所以我们可以通过反射机制直接创建对象，即使这个对象的类型在编译期是未知的。</p>
+<p>反射的核心是 JVM 在运行时才动态加载类或调用方法&#x2F;访问属性，它不需要事先（写代码的时候或编译期）知道运行对象是谁。</p>
+<p>Java 反射主要提供以下功能：</p>
+<p>在运行时判断任意一个对象所属的类；<br>在运行时构造任意一个类的对象；<br>在运行时判断任意一个类所具有的成员变量和方法（通过反射甚至可以调用private方法）；<br>在运行时调用任意一个对象的方法<br>重点：是运行时而不是编译时</p>
+<h3 id="反射的主要用途"><a href="#反射的主要用途" class="headerlink" title="反射的主要用途"></a>反射的主要用途</h3><p>很多人都认为反射在实际的 Java 开发应用中并不广泛，其实不然。当我们在使用 IDE(如 Eclipse，IDEA)时，当我们输入一个对象或类并想调用它的属性或方法时，一按点号，编译器就会自动列出它的属性或方法，这里就会用到反射。</p>
+<p>反射最重要的用途就是开发各种通用框架。很多框架（比如 Spring）都是配置化的（比如通过 XML 文件配置 Bean），为了保证框架的通用性，它们可能需要根据配置文件加载不同的对象或类，调用不同的方法，这个时候就必须用到反射，运行时动态加载需要加载的对象。</p>
+<p>举一个例子，在运用 Struts 2 框架的开发中我们一般会在 struts.xml 里去配置 Action，比如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;action name&#x3D;&quot;login&quot;</span><br><span class="line">               class&#x3D;&quot;org.ScZyhSoft.test.action.SimpleLoginAction&quot;</span><br><span class="line">               method&#x3D;&quot;execute&quot;&gt;</span><br><span class="line">           &lt;result&gt;&#x2F;shop&#x2F;shop-index.jsp&lt;&#x2F;result&gt;</span><br><span class="line">           &lt;result name&#x3D;&quot;error&quot;&gt;login.jsp&lt;&#x2F;result&gt; </span><br><span class="line">&lt;&#x2F;action&gt;</span><br></pre></td></tr></table></figure>
+<p>配置文件与 Action 建立了一种映射关系，当 View 层发出请求时，请求会被 StrutsPrepareAndExecuteFilter 拦截，然后 StrutsPrepareAndExecuteFilter 会去动态地创建 Action 实例。比如我们请求 login.action，那么 StrutsPrepareAndExecuteFilter就会去解析struts.xml文件，检索action中name为login的Action，并根据class属性创建SimpleLoginAction实例，并用invoke方法来调用execute方法，这个过程离不开反射。</p>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><a href="https://www.iteye.com/blog/rednaxelafx-548536" target="_blank" rel="noopener">反射调用的一个Log</a><br><a href="http://www.fanyilun.me/2015/10/29/Java%E5%8F%8D%E5%B0%84%E5%8E%9F%E7%90%86/" target="_blank" rel="noopener">Java反射原理简析</a></p>
+<p>对与框架开发人员来说，反射虽小但作用非常大，它是各种容器实现的核心。而对于一般的开发者来说，不深入框架开发则用反射用的就会少一点，不过了解一下框架的底层机制有助于丰富自己的编程思想，也是很有益的。</p>
 ]]></content>
-      <categories>
-        <category>linux</category>
-        <category>ubuntu</category>
-      </categories>
   </entry>
   <entry>
     <title>bash快捷键 光标移动</title>
@@ -673,6 +666,45 @@
       <tags>
         <tag>bash-hotkey</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>vertx-plugin build vertx app with gradle</title>
+    <url>/2021/05/06/build-vertx-app-with-gradle/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><a href="https://plugins.gradle.org/plugin/io.vertx.vertx-plugin" target="_blank" rel="noopener">io.vertx.vertx-plugin</a> 介绍，gradle 添加vertx-plugin，脚本启动vertx application.</p>
+<a id="more"></a>
+<ol>
+<li>build.gradle</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id &#39;io.vertx.vertx-plugin&#39; version &#39;1.2.0&#39;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">group &#39;org.example&#39;</span><br><span class="line">version &#39;1.0-SNAPSHOT&#39;</span><br><span class="line"></span><br><span class="line">repositories &#123;</span><br><span class="line">    mavenCentral()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">![upload successful](&#x2F;images&#x2F;pasted-45.png)</span><br><span class="line">    testImplementation &#39;org.junit.jupiter:junit-jupiter-api:5.6.0&#39;</span><br><span class="line">    testRuntimeOnly &#39;org.junit.jupiter:junit-jupiter-engine&#39;</span><br><span class="line">    compile &quot;io.vertx:vertx-core:4.0.3&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vertx &#123;</span><br><span class="line">  mainVerticle &#x3D; &quot;MainVerticle&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test &#123;</span><br><span class="line">    useJUnitPlatform()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>idea Run&#x2F;Debug configurations</li>
+</ol>
+<p><img src="/images/pasted-46.png" alt="upload successful"></p>
+]]></content>
+      <categories>
+        <category>vertx</category>
+      </categories>
+      <tags>
+        <tag>vertx-plugin</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>centos 命令补全失效(硬盘满了)</title>
+    <url>/2022/12/04/centos-%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%A8%E5%A4%B1%E6%95%88-%E7%A1%AC%E7%9B%98%E6%BB%A1%E4%BA%86/</url>
+    <content><![CDATA[<h3 id="Tab补全失效"><a href="#Tab补全失效" class="headerlink" title="Tab补全失效"></a>Tab补全失效</h3><p>登录服务器，cd 相应路径按Tab补全时，提示*-bash: cannot create temp file for here-document: No space left on device*。</p>
+<a id="more"></a>
+<p>如图所示：<br><img src="/images/pasted-52.png" alt="upload successful"><br>谷歌查询是硬盘满了。df命令查看，果然如此：</p>
+<p><img src="/images/pasted-54.png" alt="upload successful"></p>
+<p>然后用du命令查看可以目录</p>
+<p><img src="/images/pasted-55.png" alt="upload successful"></p>
+<p>发现可以目录&#x2F;var &#x2F;app &#x2F;sftproot,继续用du命令挨个查看，最后发现&#x2F;var&#x2F;log目录占用12G</p>
+<p><img src="/images/pasted-56.png" alt="upload successful"></p>
+<p>进入log继续du加sort排序查看(ll -h也可)</p>
+<p><img src="/images/pasted-57.png" alt="upload successful"></p>
+<p>就是这几个messages文件占了10多G，且都是最近产生的，随便打开进去一看都是如下内容：</p>
+<p><img src="/images/pasted-58.png" alt="upload successful"></p>
+<p>是crond产生的垃圾日志，不管它，先来个重启大法<em>service crond stop</em>、<em>service crond start</em>，再瞧问题依旧。谷歌之，<em>No configuration file found at &#x2F;root&#x2F;.esmtprc or &#x2F;etc&#x2F;esmtprc</em>,没找到问题原因，只看到个解决方法 <a href="https://www.axinblog.com/2022/02/16/Linux-%E6%97%A5%E5%BF%97%E6%B8%85%E7%90%86/" target="_blank" rel="noopener">Linux 日志清理</a>，先暂且安装重启crond，记下来以观后效，明天再查…</p>
+]]></content>
   </entry>
   <entry>
     <title>centos 免密切换root</title>
@@ -732,43 +764,6 @@
       </categories>
   </entry>
   <entry>
-    <title>vertx-plugin build vertx app with gradle</title>
-    <url>/2021/05/06/build-vertx-app-with-gradle/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><a href="https://plugins.gradle.org/plugin/io.vertx.vertx-plugin" target="_blank" rel="noopener">io.vertx.vertx-plugin</a> 介绍，gradle 添加vertx-plugin，脚本启动vertx application.</p>
-<a id="more"></a>
-<ol>
-<li>build.gradle</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id &#39;io.vertx.vertx-plugin&#39; version &#39;1.2.0&#39;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">group &#39;org.example&#39;</span><br><span class="line">version &#39;1.0-SNAPSHOT&#39;</span><br><span class="line"></span><br><span class="line">repositories &#123;</span><br><span class="line">    mavenCentral()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">![upload successful](&#x2F;images&#x2F;pasted-45.png)</span><br><span class="line">    testImplementation &#39;org.junit.jupiter:junit-jupiter-api:5.6.0&#39;</span><br><span class="line">    testRuntimeOnly &#39;org.junit.jupiter:junit-jupiter-engine&#39;</span><br><span class="line">    compile &quot;io.vertx:vertx-core:4.0.3&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vertx &#123;</span><br><span class="line">  mainVerticle &#x3D; &quot;MainVerticle&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test &#123;</span><br><span class="line">    useJUnitPlatform()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>idea Run&#x2F;Debug configurations</li>
-</ol>
-<p><img src="/images/pasted-46.png" alt="upload successful"></p>
-]]></content>
-      <categories>
-        <category>vertx</category>
-      </categories>
-      <tags>
-        <tag>vertx-plugin</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>java自定义类equal重写</title>
-    <url>/2020/02/27/ava-equal/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>判断两个对象在逻辑上是否相等，有时需要根据类的某些成员变量来判断两个实例是否相等，而继承Object中的equals方法比较的只是对象的引用是否指向同一块内存地址。这时候便需要重写equals()方法了。</p>
-<a id="more"></a>
-<p>比较的常用对象如int，float和String等，已重写了equals和hashcode方法，默认比较的是值，而其它自定义对象在用equal时都是比较的引用地址，故此有需要的时候需要重写equal方法。</p>
-<h3 id="重写equal的要求"><a href="#重写equal的要求" class="headerlink" title="重写equal的要求"></a>重写equal的要求</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@Override</span><br><span class="line">public boolean equals(Object obj) &#123;  </span><br><span class="line">        if(this &#x3D;&#x3D; obj) &#123;  </span><br><span class="line">            return true;  </span><br><span class="line">        &#125;  </span><br><span class="line">        if(null &#x3D;&#x3D; obj) &#123;  </span><br><span class="line">            return false;  </span><br><span class="line">        &#125;  </span><br><span class="line">       if (obj instanceof Test)&#123;</span><br><span class="line">            Test o &#x3D; (Test) obj;</span><br><span class="line">            return this.id &#x3D;&#x3D; o.id;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>重写equals方法的要求：<br>1、自反性：对于任何非空引用x，x.equals(x)应该返回true。<br>2、对称性：对于任何引用x和y，如果x.equals(y)返回true，那么y.equals(x)也应该返回true。<br>3、传递性：对于任何引用x、y和z，如果x.equals(y)返回true，y.equals(z)返回true，那么x.equals(z)也应该返回true。<br>4、一致性：如果x和y引用的对象没有发生变化，那么反复调用x.equals(y)应该返回同样的结果。<br>5、非空性：对于任意非空引用x，x.equals(null)应该返回false。</p>
-<h3 id="hashCode方法也要重写"><a href="#hashCode方法也要重写" class="headerlink" title="hashCode方法也要重写"></a>hashCode方法也要重写</h3><p>问什么说<strong>重写了equals方法都要进而重写Hashcode方法</strong>呢？</p>
-<p>原因如下：当equals此方法被重写时，通常有必要重写 hashCode 方法，以维护 hashCode 方法的常规协定，该协定声明相等对象必须具有相等的哈希码。如下：</p>
-<p>(1)当obj1.equals(obj2)为true时，obj1.hashCode() &#x3D;&#x3D; obj2.hashCode()必须为true<br>(2)当obj1.hashCode() &#x3D;&#x3D; obj2.hashCode()为false时，obj1.equals(obj2)必须为false</p>
-<p>   &amp;emsp;&amp;emsp;hashcode是用于散列数据的快速存取，如利用HashSet&#x2F;HashMap&#x2F;Hashtable类来存储数据时，都是根据存储对象的hashcode值来进行判断是否相同的。</p>
-<p>   &amp;emsp;&amp;emsp;以HashMap为例说一下的原理，HashMap存储数据的时候，是取的key值的哈希值，然后计算数组下标，采用链地址法解决冲突，然后进行存储；取数据的时候，依然是先要获取到hash值，找到数组下标，然后for遍历链表集合，进行比较是否有对应的key。比较关心的有2点：<br>  &amp;emsp;&amp;emsp; 1.不管是put还是get的时候，都需要得到key的哈希值，去定位key的数组下标；<br>   &amp;emsp;&amp;emsp;2.在get的时候，需要调用equals方法比较是否有相等的key存储过。</p>
-<p>   更详细具体的可以看<a href="https://www.jianshu.com/p/75d9c2c3d0c1" target="_blank" rel="noopener">这篇博文</a>或者<a href="https://www.cnblogs.com/silence-hust/p/4510574.html" target="_blank" rel="noopener">这一篇</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>centos 定时任务（cron）通过第三方邮件服务器（MTA）发送邮件</title>
     <url>/2020/01/13/corn-mail/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>有时会需要把一些日志或者任务结果发送到用户邮箱，特此记录一下定时任务和邮箱信息的配置。</p>
@@ -793,6 +788,61 @@
       <tags>
         <tag>mail</tag>
         <tag>crontab</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ubuntu自动挂载其他盘</title>
+    <url>/2021/03/18/ceshi/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>双系统，ubuntu和win10装在同一个固态盘，还有另外一个机械盘，平时放些资料啥的，设置给ubuntu开机自动挂载另一个机械盘。</p>
+<a id="more"></a>
+
+<p>1、查询挂载硬盘UUID</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo blkid &#x2F;dev&#x2F;sda2</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-32.png" alt="upload successful"><br>Secert和WorkSpace盘信息如上，下面用到两个盘的UUID。</p>
+<p>2、打开文件&#x2F;etc&#x2F;fstab文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;fstab</span><br></pre></td></tr></table></figure>
+<p>在文档末尾添加相应磁盘的信息。格式为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[UUID&#x3D;************] [挂载磁盘分区]  [挂载磁盘格式]  0  2</span><br><span class="line"></span><br><span class="line">UUID&#x3D;4D55CFC14D016D60 &#x2F;mnt&#x2F;workspace ntfs defaults  0  2</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-33.png" alt="upload successful"><br>第一个数字：0表示开机不检查磁盘，1表示开机检查磁盘；<br>第二个数字：0表示交换分区，1代表启动分区（Linux），2表示普通分区</p>
+<p>3、重启生效</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+        <category>ubuntu</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>trojan科学上网</title>
+    <url>/2020/01/29/gfw/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>一直用的ssr科学上网，侥幸挺过了去年国庆等的各种严打，一直傲娇地活跃到年底，没想到值此新春佳节之际，终于不出预料地被封了，丧事喜办，旧的不去新的不来，正好试试trojan，希望他能接过前辈的火种，超神带我飞，直直挺到2021吖，本文记录一下vps、windows pc以及android手机的配置。</p>
+<a id="more"></a>
+<h3 id="vps配置"><a href="#vps配置" class="headerlink" title="vps配置"></a>vps配置</h3><h4 id="脚本安装"><a href="#脚本安装" class="headerlink" title="脚本安装"></a>脚本安装</h4><p>系统centos7，网上荡来的一键安装脚本：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -O https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;atrandys&#x2F;trojan&#x2F;master&#x2F;trojan_mult.sh &amp;&amp; chmod +x trojan_mult.sh &amp;&amp; .&#x2F;trojan_mult.sh</span><br></pre></td></tr></table></figure>
+<p>根据脚本提示，该输入数字输入数字，该输入域名输入域名，一撸到底，成功后屏幕会显示一个客户端的链接，弃之不用。</p>
+<h4 id="bbr加速"><a href="#bbr加速" class="headerlink" title="bbr加速"></a>bbr加速</h4><p>先查看系统内核版本</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure>
+<p>低于4.10的需升级内核</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rpm --import https:&#x2F;&#x2F;www.elrepo.org&#x2F;RPM-GPG-KEY-elrepo.org</span><br><span class="line">rpm -Uvh http:&#x2F;&#x2F;www.elrepo.org&#x2F;elrepo-release-7.0-2.el7.elrepo.noarch.rpm</span><br><span class="line">yum --enablerepo&#x3D;elrepo-kernel install kernel-ml -y</span><br></pre></td></tr></table></figure>
+<p>安装完毕后查看已安装内核</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">awk -F\&#39; &#39;$1&#x3D;&#x3D;&quot;menuentry &quot; &#123;print i++ &quot; : &quot; $2&#125;&#39; &#x2F;etc&#x2F;grub2.cfg</span><br></pre></td></tr></table></figure>
+<p>返回：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0 : CentOS Linux 7 Rescue f128bc3705574dfab442f23fb7245e0b (5.5.0-1.el7.elrepo.x86_64)</span><br><span class="line">1 : CentOS Linux (5.5.0-1.el7.elrepo.x86_64) 7 (Core)</span><br><span class="line">2 : CentOS Linux (3.10.0-1062.9.1.el7.x86_64) 7 (Core)</span><br><span class="line">3 : CentOS Linux (3.10.0-1062.el7.x86_64) 7 (Core)</span><br><span class="line">4 : CentOS Linux (0-rescue-7bd68357fb1f47688c0f1b0a48330334) 7 (Core)</span><br></pre></td></tr></table></figure>
+<p>根据序号设置默认内核：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">grub2-set-default 1</span><br></pre></td></tr></table></figure>
+<p>重启服务器。<br>修改sysctl配置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &#39;net.core.default_qdisc&#x3D;fq&#39; | tee -a &#x2F;etc&#x2F;sysctl.conf</span><br><span class="line">echo &#39;net.ipv4.tcp_congestion_control&#x3D;bbr&#39; |  tee -a &#x2F;etc&#x2F;sysctl.conf</span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
+<p>检查是否加载BBR</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">lsmod | grep bbr</span><br></pre></td></tr></table></figure>
+<p>如果输出结果包含tcp_bbr，则表示开启成功</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tcp_bbr   20480  35</span><br></pre></td></tr></table></figure>
+<p>值此，VPS配置完毕。</p>
+<h3 id="windows配置"><a href="#windows配置" class="headerlink" title="windows配置"></a>windows配置</h3><p>下载v2rayN客户端：<a href="https://github.com/2dust/v2rayN/releases/download/3.5/v2rayN.zip" target="_blank" rel="noopener">v2rayN</a><br>运行v2rayN.exe，服务器–&gt;Add [trojan]server–&gt;输入VPS IP，密码以及端口443–&gt;右击任务栏上v2rayN,启用Http代理，Http模式选择pac。<br>密码可以在vps（cat &#x2F;usr&#x2F;src&#x2F;trojan&#x2F;server.conf）trojan配置文件中查看。<br>至此，便可以在浏览器里科学上网了，至于其他电脑程序要科学上网，可以配置本机socks5代理，监听1080端口。</p>
+<h3 id="android配置"><a href="#android配置" class="headerlink" title="android配置"></a>android配置</h3><p>现在只找到<a href="https://github.com/trojan-gfw/igniter/releases/download/v0.1.0-pre-alpha13/app-release.apk" target="_blank" rel="noopener">Igniter</a>，不太好用，静待更新。。。</p>
+]]></content>
+      <tags>
+        <tag>trojan</tag>
       </tags>
   </entry>
   <entry>
@@ -832,38 +882,6 @@
       </tags>
   </entry>
   <entry>
-    <title>trojan科学上网</title>
-    <url>/2020/01/29/gfw/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>一直用的ssr科学上网，侥幸挺过了去年国庆等的各种严打，一直傲娇地活跃到年底，没想到值此新春佳节之际，终于不出预料地被封了，丧事喜办，旧的不去新的不来，正好试试trojan，希望他能接过前辈的火种，超神带我飞，直直挺到2021吖，本文记录一下vps、windows pc以及android手机的配置。</p>
-<a id="more"></a>
-<h3 id="vps配置"><a href="#vps配置" class="headerlink" title="vps配置"></a>vps配置</h3><h4 id="脚本安装"><a href="#脚本安装" class="headerlink" title="脚本安装"></a>脚本安装</h4><p>系统centos7，网上荡来的一键安装脚本：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">curl -O https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;atrandys&#x2F;trojan&#x2F;master&#x2F;trojan_mult.sh &amp;&amp; chmod +x trojan_mult.sh &amp;&amp; .&#x2F;trojan_mult.sh</span><br></pre></td></tr></table></figure>
-<p>根据脚本提示，该输入数字输入数字，该输入域名输入域名，一撸到底，成功后屏幕会显示一个客户端的链接，弃之不用。</p>
-<h4 id="bbr加速"><a href="#bbr加速" class="headerlink" title="bbr加速"></a>bbr加速</h4><p>先查看系统内核版本</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure>
-<p>低于4.10的需升级内核</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rpm --import https:&#x2F;&#x2F;www.elrepo.org&#x2F;RPM-GPG-KEY-elrepo.org</span><br><span class="line">rpm -Uvh http:&#x2F;&#x2F;www.elrepo.org&#x2F;elrepo-release-7.0-2.el7.elrepo.noarch.rpm</span><br><span class="line">yum --enablerepo&#x3D;elrepo-kernel install kernel-ml -y</span><br></pre></td></tr></table></figure>
-<p>安装完毕后查看已安装内核</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">awk -F\&#39; &#39;$1&#x3D;&#x3D;&quot;menuentry &quot; &#123;print i++ &quot; : &quot; $2&#125;&#39; &#x2F;etc&#x2F;grub2.cfg</span><br></pre></td></tr></table></figure>
-<p>返回：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0 : CentOS Linux 7 Rescue f128bc3705574dfab442f23fb7245e0b (5.5.0-1.el7.elrepo.x86_64)</span><br><span class="line">1 : CentOS Linux (5.5.0-1.el7.elrepo.x86_64) 7 (Core)</span><br><span class="line">2 : CentOS Linux (3.10.0-1062.9.1.el7.x86_64) 7 (Core)</span><br><span class="line">3 : CentOS Linux (3.10.0-1062.el7.x86_64) 7 (Core)</span><br><span class="line">4 : CentOS Linux (0-rescue-7bd68357fb1f47688c0f1b0a48330334) 7 (Core)</span><br></pre></td></tr></table></figure>
-<p>根据序号设置默认内核：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">grub2-set-default 1</span><br></pre></td></tr></table></figure>
-<p>重启服务器。<br>修改sysctl配置</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &#39;net.core.default_qdisc&#x3D;fq&#39; | tee -a &#x2F;etc&#x2F;sysctl.conf</span><br><span class="line">echo &#39;net.ipv4.tcp_congestion_control&#x3D;bbr&#39; |  tee -a &#x2F;etc&#x2F;sysctl.conf</span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
-<p>检查是否加载BBR</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">lsmod | grep bbr</span><br></pre></td></tr></table></figure>
-<p>如果输出结果包含tcp_bbr，则表示开启成功</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tcp_bbr   20480  35</span><br></pre></td></tr></table></figure>
-<p>值此，VPS配置完毕。</p>
-<h3 id="windows配置"><a href="#windows配置" class="headerlink" title="windows配置"></a>windows配置</h3><p>下载v2rayN客户端：<a href="https://github.com/2dust/v2rayN/releases/download/3.5/v2rayN.zip" target="_blank" rel="noopener">v2rayN</a><br>运行v2rayN.exe，服务器–&gt;Add [trojan]server–&gt;输入VPS IP，密码以及端口443–&gt;右击任务栏上v2rayN,启用Http代理，Http模式选择pac。<br>密码可以在vps（cat &#x2F;usr&#x2F;src&#x2F;trojan&#x2F;server.conf）trojan配置文件中查看。<br>至此，便可以在浏览器里科学上网了，至于其他电脑程序要科学上网，可以配置本机socks5代理，监听1080端口。</p>
-<h3 id="android配置"><a href="#android配置" class="headerlink" title="android配置"></a>android配置</h3><p>现在只找到<a href="https://github.com/trojan-gfw/igniter/releases/download/v0.1.0-pre-alpha13/app-release.apk" target="_blank" rel="noopener">Igniter</a>，不太好用，静待更新。。。</p>
-]]></content>
-      <tags>
-        <tag>trojan</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>随笔有感</title>
     <url>/2020/01/13/hello-world/</url>
     <content><![CDATA[<p>一个不读书之人的胡思胡想</p>
@@ -899,30 +917,6 @@
       </tags>
   </entry>
   <entry>
-    <title>centos 命令补全失效(硬盘满了)</title>
-    <url>/2022/12/04/centos-%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%A8%E5%A4%B1%E6%95%88-%E7%A1%AC%E7%9B%98%E6%BB%A1%E4%BA%86/</url>
-    <content><![CDATA[<h3 id="Tab补全失效"><a href="#Tab补全失效" class="headerlink" title="Tab补全失效"></a>Tab补全失效</h3><p>登录服务器，cd 相应路径按Tab补全时，提示*-bash: cannot create temp file for here-document: No space left on device*。</p>
-<a id="more"></a>
-<p>如图所示：<br><img src="/images/pasted-52.png" alt="upload successful"><br>谷歌查询是硬盘满了。df命令查看，果然如此：</p>
-<p><img src="/images/pasted-54.png" alt="upload successful"></p>
-<p>然后用du命令查看可以目录</p>
-<p><img src="/images/pasted-55.png" alt="upload successful"></p>
-<p>发现可以目录&#x2F;var &#x2F;app &#x2F;sftproot,继续用du命令挨个查看，最后发现&#x2F;var&#x2F;log目录占用12G</p>
-<p><img src="/images/pasted-56.png" alt="upload successful"></p>
-<p>进入log继续du加sort排序查看(ll -h也可)</p>
-<p><img src="/images/pasted-57.png" alt="upload successful"></p>
-<p>就是这几个messages文件占了10多G，且都是最近产生的，随便打开进去一看都是如下内容：</p>
-<p><img src="/images/pasted-58.png" alt="upload successful"></p>
-<p>是crond产生的垃圾日志，不管它，先来个重启大法<em>service crond stop</em>、<em>service crond start</em>，再瞧问题依旧。谷歌之，<em>No configuration file found at &#x2F;root&#x2F;.esmtprc or &#x2F;etc&#x2F;esmtprc</em>,没找到问题原因，只看到个解决方法 <a href="https://www.axinblog.com/2022/02/16/Linux-%E6%97%A5%E5%BF%97%E6%B8%85%E7%90%86/" target="_blank" rel="noopener">Linux 日志清理</a>，先暂且安装重启crond，记下来以观后效，明天再查…</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>@interface 简介</title>
-    <url>/2021/11/11/interface/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/zhangbeizhen18/article/details/87885441/" target="_blank" rel="noopener">自定义注释@interface的用法理解</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>intellij-idea的快捷键</title>
     <url>/2020/12/23/intellij-idea%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
     <content><![CDATA[<p><a href="https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf" target="_blank" rel="noopener">Intellij-idea的快捷键</a></p>
@@ -938,6 +932,12 @@
 ]]></content>
   </entry>
   <entry>
+    <title>@interface 简介</title>
+    <url>/2021/11/11/interface/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/zhangbeizhen18/article/details/87885441/" target="_blank" rel="noopener">自定义注释@interface的用法理解</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>spring boot注解基本了解</title>
     <url>/2020/03/06/java-annotation/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这里放两篇对Java注解的文章，以备后面查询。<a href="https://www.jianshu.com/p/d74ed7374841" target="_blank" rel="noopener"><strong>Spring Boot 注解—基本知识</strong></a>以及<a href="https://www.cnblogs.com/liaojie970/p/7879917.html" target="_blank" rel="noopener"><strong>Java注释@interface的用法</strong></a></p>
@@ -947,6 +947,34 @@
       </categories>
       <tags>
         <tag>annotation</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java中的乱码</title>
+    <url>/2020/12/08/java%E4%B8%AD%E7%9A%84%E4%B9%B1%E7%A0%81/</url>
+    <content><![CDATA[<p><a href="https://developer.ibm.com/zh/languages/java/articles/j-lo-chinesecoding/" target="_blank" rel="noopener">深入分析 Java 中的中文编码问题</a>、<a href="https://blog.csdn.net/u010234516/article/details/52853214" target="_blank" rel="noopener">锟斤拷？UTF-8与GBK互转，为什么会乱码？</a></p>
+<p>附图一张:</p>
+<a id="more"></a>
+<p><img src="/images/crazyCode.jpg" alt="upload successful"></p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>乱码</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>json web token(jwt)</title>
+    <url>/2020/05/02/json-web-token-jwt/</url>
+    <content><![CDATA[<p>转载：**<a href="https://learnku.com/articles/22616" target="_blank" rel="noopener">别再使用 JWT 作为 Session 系统！问题重重且很危险。
+</a>**<br>结论：无状态 JWT Tokens 无法被单独地销毁或更新，取决于你如何存储，可能还会导致长度问题、安全隐患。有状态 JWT Tokens 在功能方面与 Session cookies 无异，但缺乏生产环境的验证、经过大量 Review 的实现，以及良好的客户端支持。<br>JWT 特别有效的使用例子通常是作为一次性的授权令牌。</p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>jwt</tag>
       </tags>
   </entry>
   <entry>
@@ -1220,21 +1248,6 @@
       </categories>
   </entry>
   <entry>
-    <title>java中的乱码</title>
-    <url>/2020/12/08/java%E4%B8%AD%E7%9A%84%E4%B9%B1%E7%A0%81/</url>
-    <content><![CDATA[<p><a href="https://developer.ibm.com/zh/languages/java/articles/j-lo-chinesecoding/" target="_blank" rel="noopener">深入分析 Java 中的中文编码问题</a>、<a href="https://blog.csdn.net/u010234516/article/details/52853214" target="_blank" rel="noopener">锟斤拷？UTF-8与GBK互转，为什么会乱码？</a></p>
-<p>附图一张:</p>
-<a id="more"></a>
-<p><img src="/images/crazyCode.jpg" alt="upload successful"></p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>乱码</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>linux小技巧</title>
     <url>/2021/04/16/linux%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
     <content><![CDATA[<h3 id="linux小技巧"><a href="#linux小技巧" class="headerlink" title="linux小技巧"></a>linux小技巧</h3><p>linux有用的小技巧，随时添加。</p>
@@ -1311,6 +1324,80 @@
       </categories>
   </entry>
   <entry>
+    <title>本地Hexo生成的博客部署到VPS</title>
+    <url>/2020/01/17/localblog-git-vps/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>为了科学上网搭建了vps，顺便跑一下自己的博客，但vps只有500M内存，所以决定本地windows跑hexo生成网页，然后git到vps，记录一下本地和vps的git配置。</p>
+<a id="more"></a>
+<h3 id="本地配置"><a href="#本地配置" class="headerlink" title="本地配置"></a>本地配置</h3><p>本地windows安装Node.js hexo git，过程不提。</p>
+<h4 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h4><p>安装后打开 Git Bash 输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;你的用户名&quot;</span><br><span class="line">git config --global user.email &quot;你的电子邮箱&quot;</span><br></pre></td></tr></table></figure>
+<p>由于 Hexo 的 Git 部署不支持使用密码登陆，所以需要配置 SSH 公钥：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~</span><br><span class="line">mkdir .ssh</span><br><span class="line">cd .ssh</span><br><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+<p>由此便在系统当前用户文件夹下生成了私钥 id_rsa 和公钥 id_rsa.pub。</p>
+<p>在上面建立的.ssh文件中新建config文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~&#x2F;.ssh</span><br><span class="line">vim config</span><br></pre></td></tr></table></figure>
+<p>内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Host 服务器IP</span><br><span class="line">HostName 服务器IP</span><br><span class="line">User git</span><br><span class="line">Port 端口号</span><br><span class="line">IdentityFile ~&#x2F;.ssh&#x2F;id_rsa</span><br></pre></td></tr></table></figure>
+<h4 id="hexo配置"><a href="#hexo配置" class="headerlink" title="hexo配置"></a>hexo配置</h4><p>安装插件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>打开位于 hexo 文件夹下的 _config.yml，修改 deploy 参数：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@vps的IP:hexo.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<h3 id="VPS-配置"><a href="#VPS-配置" class="headerlink" title="VPS 配置"></a>VPS 配置</h3><h4 id="新建用户"><a href="#新建用户" class="headerlink" title="新建用户"></a>新建用户</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adduser git</span><br><span class="line">passwd git</span><br></pre></td></tr></table></figure>
+<h4 id="为用户git添加-sudo-权限"><a href="#为用户git添加-sudo-权限" class="headerlink" title="为用户git添加 sudo 权限"></a>为用户git添加 sudo 权限</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod 740 &#x2F;etc&#x2F;sudoers</span><br><span class="line">vim &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure>
+<p>找到以下内容</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL:ALL) ALL</span><br></pre></td></tr></table></figure>
+<p>添加修改为</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL:ALL) ALL</span><br><span class="line">git     ALL&#x3D;(ALL:ALL) ALL</span><br></pre></td></tr></table></figure>
+<p>假如是</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL) ALL</span><br></pre></td></tr></table></figure>
+<p>则修改为</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL) ALL</span><br><span class="line">git     ALL&#x3D;(ALL) ALL</span><br></pre></td></tr></table></figure>
+<p>保存,退出</p>
+<p>然后修改回文件的权限</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod 440 &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure>
+<h4 id="关闭-git-用户-shell-权限"><a href="#关闭-git-用户-shell-权限" class="headerlink" title="关闭 git 用户 shell 权限"></a>关闭 git 用户 shell 权限</h4><p>至此我们可以在本地通过：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh git@VPS IP</span><br></pre></td></tr></table></figure>
+<p>ssh 连接服务器，登录到服务器上，对服务器进行各种操作，这通常很不安全，也不合适，我们只需要能对仓库操作就可以了，不需要更大的权限。</p>
+<p>因此我们关闭 git 用户 shell 权限，执行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;passwd</span><br></pre></td></tr></table></figure>
+<p>找到git用户的一行：<em>git:x:1001:1001:,,,:&#x2F;home&#x2F;git:&#x2F;bin&#x2F;bash</em><br>改为：<em>git:x:1001:1001:,,,:&#x2F;home&#x2F;git:&#x2F;usr&#x2F;bin&#x2F;git-shell</em></p>
+<p>这样，git 用户可以正常通过 ssh 使用 git，但无法登录 shell，因为我们为 git 用户指定的 git-shell 每次一登录就自动退出。</p>
+<h4 id="初始化-git-仓库"><a href="#初始化-git-仓库" class="headerlink" title="初始化 git 仓库"></a>初始化 git 仓库</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git                &#x2F;&#x2F;切换到git用户目录</span><br><span class="line">mkdir blog.git              &#x2F;&#x2F;创建git仓库文件夹，以blog.git为例</span><br><span class="line">cd blog.git                 &#x2F;&#x2F;进入仓库目录</span><br><span class="line">git init --bare             &#x2F;&#x2F;使用--bare参数初始化为裸仓库，这样创建的仓库不包含工作区</span><br></pre></td></tr></table></figure>
+<p>注意：裸仓库没有工作区，因为服务器上的 Git 仓库纯粹是为了共享，所以不让用户直接登录到服务器上去改工作区，并且服务器上的 Git 仓库通常都以.git 结尾。</p>
+<h4 id="配置-SSH"><a href="#配置-SSH" class="headerlink" title="配置 SSH"></a>配置 SSH</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git                &#x2F;&#x2F;切换到git用户目录</span><br><span class="line">mkdir .ssh                  &#x2F;&#x2F;创建.ssh目录</span><br><span class="line">cd .ssh</span><br><span class="line">vim authorized_keys</span><br></pre></td></tr></table></figure>
+<p>然后将本地的公钥复制到 authorized_keys 文件里 (公钥即上文生成的公钥，可通过 <em>cat ~&#x2F;.ssh&#x2F;id_rsa.pub</em> 查看)。</p>
+<p>注意：收集所有需要登录的用户的公钥，就是他们自己的 id_rsa.pub 文件，把所有公钥导入到 <em>&#x2F;home&#x2F;git&#x2F;.ssh&#x2F;authorized_keys</em> 文件里，一行一个。</p>
+<h4 id="用户组管理"><a href="#用户组管理" class="headerlink" title="用户组管理"></a>用户组管理</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ll &#x2F;home&#x2F;git&#x2F;</span><br><span class="line">ll &#x2F;var&#x2F;www&#x2F;</span><br></pre></td></tr></table></figure>
+<p>确保 blog.git、.ssh、blog 目录的用户组权限为 git:git，若不是，执行下列命令：</p>
+<p>修改用户权限的命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chown -R git.git &#x2F;home&#x2F;git&#x2F;blog.git&#x2F;</span><br><span class="line">chown -R git.git &#x2F;home&#x2F;git&#x2F;.ssh&#x2F;</span><br><span class="line">chown -R git.git &#x2F;var&#x2F;www&#x2F;blog&#x2F;</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置-Git-Hooks"><a href="#配置-Git-Hooks" class="headerlink" title="配置 Git Hooks"></a>配置 Git Hooks</h4><p>创建 post-receive 文件<br>git 用户下执行（这里由于禁止了git用户shell权限，所以我用 root 用户执行上述命令，然后更改了文件所有者为 git.git）：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git&#x2F;blog.git&#x2F;hooks     &#x2F;&#x2F;切换到hooks目录下</span><br><span class="line">vim post-receive            &#x2F;&#x2F;创建文件</span><br></pre></td></tr></table></figure>
+<p>复制下面的内容到 post-receive 文件中：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">echo &quot;post-receive hook is running...&quot;</span><br><span class="line"></span><br><span class="line">GIT_REPO&#x3D;&#x2F;home&#x2F;git&#x2F;blog.git</span><br><span class="line">TMP_GIT_CLONE&#x3D;&#x2F;tmp&#x2F;blog</span><br><span class="line">PUBLIC_WWW&#x3D;&#x2F;var&#x2F;www&#x2F;blog</span><br><span class="line"></span><br><span class="line">rm -rf $&#123;TMP_GIT_CLONE&#125;</span><br><span class="line">git clone $GIT_REPO $TMP_GIT_CLONE</span><br><span class="line">rm -rf $&#123;PUBLIC_WWW&#125;&#x2F;*</span><br><span class="line">cp -rf $&#123;TMP_GIT_CLONE&#125;&#x2F;* $&#123;PUBLIC_WWW&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>为什么不直接将裸仓库克隆到 Web 根目录下呢？我之前也一直被这个问题困扰，感觉先&gt;克隆到 tmp 目录再拷贝到 Web 根目录是多此一举。后来我觉得可能是出于项目安全的&gt;考虑，在执行 cp 命令的时候，.git 作为隐藏目录不会被拷贝到 Web 根目录下，也就&gt;避免了将整个仓库历史暴露在 Web 服务中。</p>
+</blockquote>
+<p>赋予可执行权限：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod +x post-receive</span><br></pre></td></tr></table></figure>
+<p>ok，至此配置完毕，可以本地hexo d直接发布到vps了。</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>git hooks</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mybatis mysql in (#{list}) 只能查询/删除第一条的问题</title>
+    <url>/2021/12/30/mybatis-mysql-in-list-%E5%8F%AA%E8%83%BD%E6%9F%A5%E8%AF%A2-%E5%88%A0%E9%99%A4%E7%AC%AC%E4%B8%80%E6%9D%A1%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/do-your-best/p/9513194.html" target="_blank" rel="noopener">mysql in (#{list}) 只能查询&#x2F;删除第一条的问题</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>markdown的html标签应用及常用语法</title>
     <url>/2021/04/19/markdown%E5%86%85%E5%AE%B9%E6%8A%98%E5%8F%A0/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Markdown 是一种轻量级标记语言，非常适合网络书写。同时，Markdown支持嵌入html标签，我们就可以借此实现markdown不具有的某些功能，如代码折叠和文字样式等。</p>
@@ -1355,6 +1442,43 @@
       <categories>
         <category>markdown</category>
       </categories>
+  </entry>
+  <entry>
+    <title>android studio多语言(中英)适配</title>
+    <url>/2020/02/14/ndroid-studio%E4%B8%AD%E8%8B%B1%E6%96%87%E9%80%82%E9%85%8D/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>strings.xml在目录res相应的value文件夹下,用来显示文本，避免硬编码，要添加新的语言支持，就要在不同的 value 文件夹下（如value 、values-zh-rCN）添加不同语言的 string.xml 文件。本文以简体中文为例,描述一下Android studio下相应strings.xml(zh-rCN)的生成方式，其他语言类似。</p>
+<a id="more"></a>
+<h3 id="手动建立文件"><a href="#手动建立文件" class="headerlink" title="手动建立文件"></a>手动建立文件</h3><p>选中res文件夹，右键New–&gt;Android Resource Directory,然后选中Locale,如下图所示：</p>
+<p><img src="/images/pasted-17.png" alt="upload successful"><br>选择相应语言和相应区域：</p>
+<p><img src="/images/pasted-18.png" alt="upload successful"><br>文件夹名称（values-zh-rCN）自动生成，最后在该文件夹生成strings.xml即可。项目视图如下：</p>
+<p><img src="/images/pasted-19.png" alt="upload successful"></p>
+<h3 id="自动生成"><a href="#自动生成" class="headerlink" title="自动生成"></a>自动生成</h3><p>打开Translations Editor（双击打开strings.xml，窗口右上角点击Open Editor），点击Add Locale，在下拉菜单中选择相应语言区域，系统会自动生成相应文件夹以及strings.xml文件。</p>
+<p><img src="/images/pasted-20.png" alt="upload successful"></p>
+<p><img src="/images/pasted-21.png" alt="upload successful"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>ubuntu下使用微信、QQ等</title>
+    <url>/2021/03/18/new/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ubuntu下使用微信，网页版的登录不了，只能考虑客户端了。考虑了下，还是在docker里，无论怎么折腾，也不会污染系统。</p>
+<a id="more"></a>
+<p>网上教程多如牛毛，但不是坑，就是坑，找了个自己能用的，记录下备用<br>1、安装docker docker-compose，网上教程一大把，自己搜<br>2、执行如下命令<br>首先要允许所有用户访问X11服务,运行:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xhost +</span><br></pre></td></tr></table></figure>
+<p>拉取镜像（注意docker设置国内镜像地址，用科大的就行）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull bestwu&#x2F;wechat</span><br></pre></td></tr></table></figure>
+<p>在你指定的文件夹下创建 docker-compose.yml</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">version: &#39;2&#39;</span><br><span class="line">services:</span><br><span class="line">  wechat:</span><br><span class="line">    image: bestwu&#x2F;wechat</span><br><span class="line">    container_name: wechat</span><br><span class="line">    devices:</span><br><span class="line">      - &#x2F;dev&#x2F;snd</span><br><span class="line">    volumes:</span><br><span class="line">      - &#x2F;tmp&#x2F;.X11-unix:&#x2F;tmp&#x2F;.X11-unix</span><br><span class="line">      - $PWD&#x2F;WeChatFiles:&#x2F;WeChatFiles</span><br><span class="line">    environment:</span><br><span class="line">      - DISPLAY&#x3D;unix$DISPLAY</span><br><span class="line">      - QT_IM_MODULE&#x3D;fcitx</span><br><span class="line">      - XMODIFIERS&#x3D;@im&#x3D;fcitx</span><br><span class="line">      - GTK_IM_MODULE&#x3D;fcitx</span><br><span class="line">      - AUDIO_GID&#x3D;26 # 可选 默认63（在终端用getent group video | cut -d: -f3查） 主机audio gid 解决声音设备访问权限问题</span><br><span class="line">      - GID&#x3D;1000 # 可选 默认1000 主机当前用户 gid 解决挂载目录访问权限问题</span><br><span class="line">      - UID&#x3D;1000 # 可选 默认1000 主机当前用户 uid 解决挂载目录访问权限问题</span><br><span class="line">    ipc: host</span><br></pre></td></tr></table></figure>
+<p>启动</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+<p>停止</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose stop</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+        <category>ubuntu</category>
+      </categories>
+      <tags>
+        <tag>wechat</tag>
+      </tags>
   </entry>
   <entry>
     <title>linux常用命令</title>
@@ -1799,62 +1923,6 @@
       </categories>
   </entry>
   <entry>
-    <title>mybatis mysql in (#{list}) 只能查询/删除第一条的问题</title>
-    <url>/2021/12/30/mybatis-mysql-in-list-%E5%8F%AA%E8%83%BD%E6%9F%A5%E8%AF%A2-%E5%88%A0%E9%99%A4%E7%AC%AC%E4%B8%80%E6%9D%A1%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/do-your-best/p/9513194.html" target="_blank" rel="noopener">mysql in (#{list}) 只能查询&#x2F;删除第一条的问题</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>android studio多语言(中英)适配</title>
-    <url>/2020/02/14/ndroid-studio%E4%B8%AD%E8%8B%B1%E6%96%87%E9%80%82%E9%85%8D/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>strings.xml在目录res相应的value文件夹下,用来显示文本，避免硬编码，要添加新的语言支持，就要在不同的 value 文件夹下（如value 、values-zh-rCN）添加不同语言的 string.xml 文件。本文以简体中文为例,描述一下Android studio下相应strings.xml(zh-rCN)的生成方式，其他语言类似。</p>
-<a id="more"></a>
-<h3 id="手动建立文件"><a href="#手动建立文件" class="headerlink" title="手动建立文件"></a>手动建立文件</h3><p>选中res文件夹，右键New–&gt;Android Resource Directory,然后选中Locale,如下图所示：</p>
-<p><img src="/images/pasted-17.png" alt="upload successful"><br>选择相应语言和相应区域：</p>
-<p><img src="/images/pasted-18.png" alt="upload successful"><br>文件夹名称（values-zh-rCN）自动生成，最后在该文件夹生成strings.xml即可。项目视图如下：</p>
-<p><img src="/images/pasted-19.png" alt="upload successful"></p>
-<h3 id="自动生成"><a href="#自动生成" class="headerlink" title="自动生成"></a>自动生成</h3><p>打开Translations Editor（双击打开strings.xml，窗口右上角点击Open Editor），点击Add Locale，在下拉菜单中选择相应语言区域，系统会自动生成相应文件夹以及strings.xml文件。</p>
-<p><img src="/images/pasted-20.png" alt="upload successful"></p>
-<p><img src="/images/pasted-21.png" alt="upload successful"></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>ubuntu下使用微信、QQ等</title>
-    <url>/2021/03/18/new/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ubuntu下使用微信，网页版的登录不了，只能考虑客户端了。考虑了下，还是在docker里，无论怎么折腾，也不会污染系统。</p>
-<a id="more"></a>
-<p>网上教程多如牛毛，但不是坑，就是坑，找了个自己能用的，记录下备用<br>1、安装docker docker-compose，网上教程一大把，自己搜<br>2、执行如下命令<br>首先要允许所有用户访问X11服务,运行:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xhost +</span><br></pre></td></tr></table></figure>
-<p>拉取镜像（注意docker设置国内镜像地址，用科大的就行）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull bestwu&#x2F;wechat</span><br></pre></td></tr></table></figure>
-<p>在你指定的文件夹下创建 docker-compose.yml</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">version: &#39;2&#39;</span><br><span class="line">services:</span><br><span class="line">  wechat:</span><br><span class="line">    image: bestwu&#x2F;wechat</span><br><span class="line">    container_name: wechat</span><br><span class="line">    devices:</span><br><span class="line">      - &#x2F;dev&#x2F;snd</span><br><span class="line">    volumes:</span><br><span class="line">      - &#x2F;tmp&#x2F;.X11-unix:&#x2F;tmp&#x2F;.X11-unix</span><br><span class="line">      - $PWD&#x2F;WeChatFiles:&#x2F;WeChatFiles</span><br><span class="line">    environment:</span><br><span class="line">      - DISPLAY&#x3D;unix$DISPLAY</span><br><span class="line">      - QT_IM_MODULE&#x3D;fcitx</span><br><span class="line">      - XMODIFIERS&#x3D;@im&#x3D;fcitx</span><br><span class="line">      - GTK_IM_MODULE&#x3D;fcitx</span><br><span class="line">      - AUDIO_GID&#x3D;26 # 可选 默认63（在终端用getent group video | cut -d: -f3查） 主机audio gid 解决声音设备访问权限问题</span><br><span class="line">      - GID&#x3D;1000 # 可选 默认1000 主机当前用户 gid 解决挂载目录访问权限问题</span><br><span class="line">      - UID&#x3D;1000 # 可选 默认1000 主机当前用户 uid 解决挂载目录访问权限问题</span><br><span class="line">    ipc: host</span><br></pre></td></tr></table></figure>
-<p>启动</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
-<p>停止</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose stop</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>linux</category>
-        <category>ubuntu</category>
-      </categories>
-      <tags>
-        <tag>wechat</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>json web token(jwt)</title>
-    <url>/2020/05/02/json-web-token-jwt/</url>
-    <content><![CDATA[<p>转载：**<a href="https://learnku.com/articles/22616" target="_blank" rel="noopener">别再使用 JWT 作为 Session 系统！问题重重且很危险。
-</a>**<br>结论：无状态 JWT Tokens 无法被单独地销毁或更新，取决于你如何存储，可能还会导致长度问题、安全隐患。有状态 JWT Tokens 在功能方面与 Session cookies 无异，但缺乏生产环境的验证、经过大量 Review 的实现，以及良好的客户端支持。<br>JWT 特别有效的使用例子通常是作为一次性的授权令牌。</p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>jwt</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>netstat 命令</title>
     <url>/2022/02/15/netstat-%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">netstat -ntu|awk &#39;&#123;pring $5&#125;&#39;|cut -d : -f 1|sort|uniq -c</span><br></pre></td></tr></table></figure>
@@ -1878,6 +1946,21 @@
       <tags>
         <tag>linux command</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>pac.txt---url通配规则</title>
+    <url>/2020/01/30/pac/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>科学上网PAC模式，有时会需要自己在pac.txt里添加一些被墙的URL，记录一下url通配的规则，以备以后使用。</p>
+<a id="more"></a>
+<ol>
+<li>通配符支持。比如 .example.com&#x2F; 实际书写时可省略 * ， 如 .example.com&#x2F; ， 和 *.example.com&#x2F; 效果一样</li>
+<li>正则表达式支持。以 \ 开始和结束， 如 [\w]+://example.com\</li>
+<li>例外规则 @@ ，如 @@.example.com&#x2F; 满足 @@ 后规则的地址不使用代理</li>
+<li>匹配地址开始和结尾 | ，如 |<a href="http://example.com/" target="_blank" rel="noopener">http://example.com</a> 、 example.com| 分别表示以 <a href="http://example.com/" target="_blank" rel="noopener">http://example.com</a> 开始和以 example.com 结束的地址</li>
+<li>|| 标记，如 ||example.com 则 <a href="http://example.com/" target="_blank" rel="noopener">http://example.com</a> 、 <a href="https://example.com/" target="_blank" rel="noopener">https://example.com</a> 、 <a href="ftp://example.com/">ftp://example.com</a> 等地址均满足条件</li>
+<li>注释 ! 。 如 !我是注释<br>v2rayN需重启生效。</li>
+</ol>
+]]></content>
   </entry>
   <entry>
     <title>nginx conf location</title>
@@ -1941,87 +2024,22 @@
       </tags>
   </entry>
   <entry>
-    <title>本地Hexo生成的博客部署到VPS</title>
-    <url>/2020/01/17/localblog-git-vps/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>为了科学上网搭建了vps，顺便跑一下自己的博客，但vps只有500M内存，所以决定本地windows跑hexo生成网页，然后git到vps，记录一下本地和vps的git配置。</p>
+    <title>spring 线程安全</title>
+    <url>/2020/03/09/pring-%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/</url>
+    <content><![CDATA[<p>转载：<a href="https://www.cnblogs.com/kismetv/p/8757260.html" target="_blank" rel="noopener"><strong>Spring中获取request的几种方法，及其线程安全性分析</strong></a>、**<a href="https://www.jianshu.com/p/e04491f3550f" target="_blank" rel="noopener">Spring 如何保证线程安全
+</a><strong>、</strong><a href="https://blog.csdn.net/cs408/article/details/48972653" target="_blank" rel="noopener">Spring中Singleton模式的线程安全
+</a>**</p>
+<h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><p>&amp;emsp;每启动一个线程，JVM都会为它分配一个Java栈，用于存放方法中的局部变量，操作</p>
 <a id="more"></a>
-<h3 id="本地配置"><a href="#本地配置" class="headerlink" title="本地配置"></a>本地配置</h3><p>本地windows安装Node.js hexo git，过程不提。</p>
-<h4 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h4><p>安装后打开 Git Bash 输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;你的用户名&quot;</span><br><span class="line">git config --global user.email &quot;你的电子邮箱&quot;</span><br></pre></td></tr></table></figure>
-<p>由于 Hexo 的 Git 部署不支持使用密码登陆，所以需要配置 SSH 公钥：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~</span><br><span class="line">mkdir .ssh</span><br><span class="line">cd .ssh</span><br><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
-<p>由此便在系统当前用户文件夹下生成了私钥 id_rsa 和公钥 id_rsa.pub。</p>
-<p>在上面建立的.ssh文件中新建config文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~&#x2F;.ssh</span><br><span class="line">vim config</span><br></pre></td></tr></table></figure>
-<p>内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Host 服务器IP</span><br><span class="line">HostName 服务器IP</span><br><span class="line">User git</span><br><span class="line">Port 端口号</span><br><span class="line">IdentityFile ~&#x2F;.ssh&#x2F;id_rsa</span><br></pre></td></tr></table></figure>
-<h4 id="hexo配置"><a href="#hexo配置" class="headerlink" title="hexo配置"></a>hexo配置</h4><p>安装插件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
-<p>打开位于 hexo 文件夹下的 _config.yml，修改 deploy 参数：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@vps的IP:hexo.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<h3 id="VPS-配置"><a href="#VPS-配置" class="headerlink" title="VPS 配置"></a>VPS 配置</h3><h4 id="新建用户"><a href="#新建用户" class="headerlink" title="新建用户"></a>新建用户</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adduser git</span><br><span class="line">passwd git</span><br></pre></td></tr></table></figure>
-<h4 id="为用户git添加-sudo-权限"><a href="#为用户git添加-sudo-权限" class="headerlink" title="为用户git添加 sudo 权限"></a>为用户git添加 sudo 权限</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod 740 &#x2F;etc&#x2F;sudoers</span><br><span class="line">vim &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure>
-<p>找到以下内容</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL:ALL) ALL</span><br></pre></td></tr></table></figure>
-<p>添加修改为</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL:ALL) ALL</span><br><span class="line">git     ALL&#x3D;(ALL:ALL) ALL</span><br></pre></td></tr></table></figure>
-<p>假如是</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL) ALL</span><br></pre></td></tr></table></figure>
-<p>则修改为</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL) ALL</span><br><span class="line">git     ALL&#x3D;(ALL) ALL</span><br></pre></td></tr></table></figure>
-<p>保存,退出</p>
-<p>然后修改回文件的权限</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod 440 &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure>
-<h4 id="关闭-git-用户-shell-权限"><a href="#关闭-git-用户-shell-权限" class="headerlink" title="关闭 git 用户 shell 权限"></a>关闭 git 用户 shell 权限</h4><p>至此我们可以在本地通过：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh git@VPS IP</span><br></pre></td></tr></table></figure>
-<p>ssh 连接服务器，登录到服务器上，对服务器进行各种操作，这通常很不安全，也不合适，我们只需要能对仓库操作就可以了，不需要更大的权限。</p>
-<p>因此我们关闭 git 用户 shell 权限，执行：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;passwd</span><br></pre></td></tr></table></figure>
-<p>找到git用户的一行：<em>git:x:1001:1001:,,,:&#x2F;home&#x2F;git:&#x2F;bin&#x2F;bash</em><br>改为：<em>git:x:1001:1001:,,,:&#x2F;home&#x2F;git:&#x2F;usr&#x2F;bin&#x2F;git-shell</em></p>
-<p>这样，git 用户可以正常通过 ssh 使用 git，但无法登录 shell，因为我们为 git 用户指定的 git-shell 每次一登录就自动退出。</p>
-<h4 id="初始化-git-仓库"><a href="#初始化-git-仓库" class="headerlink" title="初始化 git 仓库"></a>初始化 git 仓库</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git                &#x2F;&#x2F;切换到git用户目录</span><br><span class="line">mkdir blog.git              &#x2F;&#x2F;创建git仓库文件夹，以blog.git为例</span><br><span class="line">cd blog.git                 &#x2F;&#x2F;进入仓库目录</span><br><span class="line">git init --bare             &#x2F;&#x2F;使用--bare参数初始化为裸仓库，这样创建的仓库不包含工作区</span><br></pre></td></tr></table></figure>
-<p>注意：裸仓库没有工作区，因为服务器上的 Git 仓库纯粹是为了共享，所以不让用户直接登录到服务器上去改工作区，并且服务器上的 Git 仓库通常都以.git 结尾。</p>
-<h4 id="配置-SSH"><a href="#配置-SSH" class="headerlink" title="配置 SSH"></a>配置 SSH</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git                &#x2F;&#x2F;切换到git用户目录</span><br><span class="line">mkdir .ssh                  &#x2F;&#x2F;创建.ssh目录</span><br><span class="line">cd .ssh</span><br><span class="line">vim authorized_keys</span><br></pre></td></tr></table></figure>
-<p>然后将本地的公钥复制到 authorized_keys 文件里 (公钥即上文生成的公钥，可通过 <em>cat ~&#x2F;.ssh&#x2F;id_rsa.pub</em> 查看)。</p>
-<p>注意：收集所有需要登录的用户的公钥，就是他们自己的 id_rsa.pub 文件，把所有公钥导入到 <em>&#x2F;home&#x2F;git&#x2F;.ssh&#x2F;authorized_keys</em> 文件里，一行一个。</p>
-<h4 id="用户组管理"><a href="#用户组管理" class="headerlink" title="用户组管理"></a>用户组管理</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ll &#x2F;home&#x2F;git&#x2F;</span><br><span class="line">ll &#x2F;var&#x2F;www&#x2F;</span><br></pre></td></tr></table></figure>
-<p>确保 blog.git、.ssh、blog 目录的用户组权限为 git:git，若不是，执行下列命令：</p>
-<p>修改用户权限的命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chown -R git.git &#x2F;home&#x2F;git&#x2F;blog.git&#x2F;</span><br><span class="line">chown -R git.git &#x2F;home&#x2F;git&#x2F;.ssh&#x2F;</span><br><span class="line">chown -R git.git &#x2F;var&#x2F;www&#x2F;blog&#x2F;</span><br></pre></td></tr></table></figure>
-
-<h4 id="配置-Git-Hooks"><a href="#配置-Git-Hooks" class="headerlink" title="配置 Git Hooks"></a>配置 Git Hooks</h4><p>创建 post-receive 文件<br>git 用户下执行（这里由于禁止了git用户shell权限，所以我用 root 用户执行上述命令，然后更改了文件所有者为 git.git）：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git&#x2F;blog.git&#x2F;hooks     &#x2F;&#x2F;切换到hooks目录下</span><br><span class="line">vim post-receive            &#x2F;&#x2F;创建文件</span><br></pre></td></tr></table></figure>
-<p>复制下面的内容到 post-receive 文件中：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">echo &quot;post-receive hook is running...&quot;</span><br><span class="line"></span><br><span class="line">GIT_REPO&#x3D;&#x2F;home&#x2F;git&#x2F;blog.git</span><br><span class="line">TMP_GIT_CLONE&#x3D;&#x2F;tmp&#x2F;blog</span><br><span class="line">PUBLIC_WWW&#x3D;&#x2F;var&#x2F;www&#x2F;blog</span><br><span class="line"></span><br><span class="line">rm -rf $&#123;TMP_GIT_CLONE&#125;</span><br><span class="line">git clone $GIT_REPO $TMP_GIT_CLONE</span><br><span class="line">rm -rf $&#123;PUBLIC_WWW&#125;&#x2F;*</span><br><span class="line">cp -rf $&#123;TMP_GIT_CLONE&#125;&#x2F;* $&#123;PUBLIC_WWW&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>为什么不直接将裸仓库克隆到 Web 根目录下呢？我之前也一直被这个问题困扰，感觉先&gt;克隆到 tmp 目录再拷贝到 Web 根目录是多此一举。后来我觉得可能是出于项目安全的&gt;考虑，在执行 cp 命令的时候，.git 作为隐藏目录不会被拷贝到 Web 根目录下，也就&gt;避免了将整个仓库历史暴露在 Web 服务中。</p>
-</blockquote>
-<p>赋予可执行权限：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod +x post-receive</span><br></pre></td></tr></table></figure>
-<p>ok，至此配置完毕，可以本地hexo d直接发布到vps了。</p>
+<p>数以及异常数据等。当线程调用某个方法时，JVM会根据方法区中该方法的字节码组建一个栈帧。并将该栈帧压入Java栈中，方法执行完毕时，JVM会弹出该栈帧并释放掉。</p>
+<p>&amp;emsp;注意：Java栈中的数据是线程私有的，一个线程是无法访问另一个线程的Java栈的数据。这也就是为什么多线程编程时，两个相同线程执行同一方法时，对方法内的局部变量是不需要数据同步的原因。</p>
 ]]></content>
       <categories>
-        <category>linux</category>
+        <category>java</category>
       </categories>
       <tags>
-        <tag>git hooks</tag>
+        <tag>spring</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>pac.txt---url通配规则</title>
-    <url>/2020/01/30/pac/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>科学上网PAC模式，有时会需要自己在pac.txt里添加一些被墙的URL，记录一下url通配的规则，以备以后使用。</p>
-<a id="more"></a>
-<ol>
-<li>通配符支持。比如 .example.com&#x2F; 实际书写时可省略 * ， 如 .example.com&#x2F; ， 和 *.example.com&#x2F; 效果一样</li>
-<li>正则表达式支持。以 \ 开始和结束， 如 [\w]+://example.com\</li>
-<li>例外规则 @@ ，如 @@.example.com&#x2F; 满足 @@ 后规则的地址不使用代理</li>
-<li>匹配地址开始和结尾 | ，如 |<a href="http://example.com/" target="_blank" rel="noopener">http://example.com</a> 、 example.com| 分别表示以 <a href="http://example.com/" target="_blank" rel="noopener">http://example.com</a> 开始和以 example.com 结束的地址</li>
-<li>|| 标记，如 ||example.com 则 <a href="http://example.com/" target="_blank" rel="noopener">http://example.com</a> 、 <a href="https://example.com/" target="_blank" rel="noopener">https://example.com</a> 、 <a href="ftp://example.com/">ftp://example.com</a> 等地址均满足条件</li>
-<li>注释 ! 。 如 !我是注释<br>v2rayN需重启生效。</li>
-</ol>
-]]></content>
   </entry>
   <entry>
     <title>《Spring设计思想》AOP设计基本原理</title>
@@ -2039,21 +2057,101 @@
       </tags>
   </entry>
   <entry>
-    <title>spring 线程安全</title>
-    <url>/2020/03/09/pring-%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/</url>
-    <content><![CDATA[<p>转载：<a href="https://www.cnblogs.com/kismetv/p/8757260.html" target="_blank" rel="noopener"><strong>Spring中获取request的几种方法，及其线程安全性分析</strong></a>、**<a href="https://www.jianshu.com/p/e04491f3550f" target="_blank" rel="noopener">Spring 如何保证线程安全
-</a><strong>、</strong><a href="https://blog.csdn.net/cs408/article/details/48972653" target="_blank" rel="noopener">Spring中Singleton模式的线程安全
-</a>**</p>
-<h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><p>&amp;emsp;每启动一个线程，JVM都会为它分配一个Java栈，用于存放方法中的局部变量，操作</p>
+    <title>rust --堆栈(内存)</title>
+    <url>/2022/02/08/rust-%E7%9A%84%E5%A0%86%E6%A0%88-%E5%BC%95%E7%94%A8/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>类型的值默认都分布在栈中(即便是动态类型的数据，但也通过胖指针改变了该类型的值的表现形式)，所以<strong>创建某个变量的引用时，引用的是栈中的那个值</strong>.   </p>
 <a id="more"></a>
-<p>数以及异常数据等。当线程调用某个方法时，JVM会根据方法区中该方法的字节码组建一个栈帧。并将该栈帧压入Java栈中，方法执行完毕时，JVM会弹出该栈帧并释放掉。</p>
-<p>&amp;emsp;注意：Java栈中的数据是线程私有的，一个线程是无法访问另一个线程的Java栈的数据。这也就是为什么多线程编程时，两个相同线程执行同一方法时，对方法内的局部变量是不需要数据同步的原因。</p>
+
+<h4 id="Rust将哪些数据存放于栈中？"><a href="#Rust将哪些数据存放于栈中？" class="headerlink" title="Rust将哪些数据存放于栈中？"></a>Rust将哪些数据存放于栈中？</h4><p>Rust中各种类型的值默认都存储在栈中，除非显式地使用Box::new()将它们存放在堆上。</p>
+<p>但数据要存放在栈中，要求其数据类型的大小已知。对于静态大小的类型，可直接存储在栈上。</p>
+<p>例如如下类型的数据存放在栈中：</p>
+<ul>
+<li>裸指针(一个机器字长)、普通引用(一个机器字长)、胖指针(除了指针外还包含其他元数据信息，智能指针也是一种带有额外功能的胖指针，而胖指针实际上又是Struct结构)</li>
+<li>布尔值</li>
+<li>char</li>
+<li>各种整数、浮点数</li>
+<li>数组(Rust数组的元素数据类型和数组长度都是固定不变的)</li>
+<li>元组</li>
+</ul>
+<p>对于动态大小的类型(如Vec、String)，则数据部分分布在堆中(被称为allocate buffer)，并在栈中留下胖指针(Struct方式实现)指向实际的数据，栈中的那个胖指针结构是静态大小的(换句话说，动态类型以Vec为例，Vec类型的值理应是那些连续的元素，但因为这样的连续内存的大小是不确定的，所以改变了它的行为，它的值是那个栈中的胖指针，而不是存储在allocatge buffer中的实际数据)。</p>
+<p>以上分类需要注意几点：</p>
+<ul>
+<li>将栈中数据赋值给变量时，数据直接存放在栈中。比如i32类型的33，33直接存放在栈内，而不是在堆中存放33并在栈中存放指向33的指针</li>
+<li>因为类型的值默认都分布在栈中(即便是动态类型的数据，但也通过胖指针改变了该类型的值的表现形式)，所以<strong>创建某个变量的引用时，引用的是栈中的那个值</strong></li>
+<li>有些数据是0字节的，不需要占用空间，比如()</li>
+<li>尽管【容器】结构中(如数组、元组、Struct)可以存放任意数据，但保存在容器中的要么是原始类型的栈中值，要么是指向堆中数据的引用，所以这些容器类型的值也在栈中。例如，对于struct User {name: String}，name字段存储的是String类型的胖指针，String类型实际的数据则在堆中</li>
+<li>尽管Box::new(T)可以将类型T的数据放入堆中，但Box类型本身是一个struct，它是一个胖指针(更严格地说是智能指针)，它在栈中</li>
+</ul>
+<p>实际上，对于理解来说，只有Box才能让数据存放到堆中，但对于实现上，只有调用alloc才能申请堆内存并将数据存放在堆中。比如，自己想实现一个类型，将某些数据明确存放在堆中，那么必须要在实现代码中调用alloc来分配堆内存，但同时，要实现的这个类型本身，它的值是在栈中的。</p>
+<p>(5).Rust除了使用堆栈，还使用全局内存区(静态变量区和字面量区)。</p>
+<p>Rust编译器会将全局内存区的数据直接嵌入在二进制程序文件中，当启动并加载程序时，嵌入在全局内存区的数据被放入内存的某个位置。</p>
+<p>全局内存区的数据是编译期间就可确定的，且存活于整个程序运行期间。</p>
+<p>字符串字面量、static定义的静态变量(相当于全局变量)都会硬编码嵌入到二进制程序的全局内存区。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fn main()&#123;</span><br><span class="line">  let _s &#x3D; &quot;hello&quot;;     &#x2F;&#x2F; (1)</span><br><span class="line">  let _ss &#x3D; String::from(&quot;hello&quot;); &#x2F;&#x2F; (2)</span><br><span class="line">  let _arr &#x3D; [&quot;hello&quot;;3];    &#x2F;&#x2F; (3)</span><br><span class="line">  let _tuple &#x3D; (&quot;hello&quot;,);   &#x2F;&#x2F; (4)</span><br><span class="line">  &#x2F;&#x2F; ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码中的几个变量都使用了字符串字面量，且使用的都是相同的字面量”hello”，在编译期间，它们会共用同一个”hello”，该”hello”会硬编码到二进制程序文件中。当程序被加载到内存时，该被放入到全局内存区，它在全局内存区有自己的内存地址，当运行到以上各行代码时：</p>
+<ul>
+<li>代码(1)、(3)、(4)，将根据地址取得其引用，并分别保存到变量_s、_arr各元素、_tuple元素中</li>
+<li>代码(2)，将根据地址取得数据并将其拷贝到堆中(转换为Vec<u8>的方式存储，它是String类型的底层存储方式)</u8></li>
+</ul>
+<h4 id="Rust中允许使用const定义常量。"><a href="#Rust中允许使用const定义常量。" class="headerlink" title="Rust中允许使用const定义常量。"></a>Rust中允许使用const定义常量。</h4><p>常量将在编译期间直接以硬编码的方式内联(inline)插入到使用常量的地方。</p>
+<p>所谓内联，即将它代表的值直接替换到使用它的地方。</p>
+<p>比如，定义了常量ABC&#x3D;33，在第100行和第300行处都使用了常量ABC，那么在编译期间，会将33硬编码到第100行和第300行处。</p>
+<p>Rust中，除了const定义的常量会被内联，某些函数也可以被内联。将函数进行内联，表示将该函数对应的代码体直接展开并插入到调用该函数的地方，这样就没有函数调用的开销(比如没有调用函数时申请栈帧、在寄存器保存某些变量等的行为)，效率会更高一些。但只有那些频繁调用的短函数才适合被内联，并且内联会导致程序的代码膨胀。</p>
+<p>原地址: <strong><a href="https://rust-book.junmajinlong.com/ch5/02_rust_mem.html" target="_blank" rel="noopener">Rust如何使用堆和栈</a></strong></p>
 ]]></content>
       <categories>
-        <category>java</category>
+        <category>rust</category>
       </categories>
       <tags>
-        <tag>spring</tag>
+        <tag>引用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rust是基于表达式的语言</title>
+    <url>/2022/03/16/rust-%E8%AF%AD%E5%8F%A5%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
+    <content><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch1/01_expression.html" target="_blank" rel="noopener">Rust是基于表达式的语言</a></p>
+<a id="more"></a>
+
+<p>除了在表达式尾部加分号的代码是语句之外，还有另外一种情况的代码是语句而非表达式：<strong>用于声明或定义</strong>。例如let声明变量、fn定义函数、struct声明结构体等。</p>
+<p>Rust很多地方都会结合表达式和语句来做变量赋值。例如，if结构也是一个表达式，所以它有返回值，可以将if的返回值赋值给变量，而<strong>它的返回值来自于它的大括号</strong>：当大括号最后执行的一条代码不加分号结尾时，该代码的计算结果就是if结构的返回值。</p>
+<p>————————————————《rust入门秘籍》</p>
+]]></content>
+      <tags>
+        <tag>rust</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>shell脚本检查nginx服务状态</title>
+    <url>/2021/04/08/shell%E8%84%9A%E6%9C%AC%E6%A3%80%E6%9F%A5nginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A&#x3D;&#96;ps -C nginx --no-header |wc -l&#96;</span><br><span class="line">if [ $A -eq 0 ];then</span><br><span class="line">    service nginx start</span><br><span class="line">    sleep 2</span><br><span class="line">    if [ &#96;ps -C nginx --no-header |wc -l&#96; -eq 0 ];then</span><br><span class="line">        killall keepalived</span><br><span class="line">    fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<h3 id="脚本解析"><a href="#脚本解析" class="headerlink" title="脚本解析"></a>脚本解析</h3><p>以上是通过进程判断，也可以通过端口判断，如netstat -nlpt | grep nginx</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# netstat -nlpt | grep nginx</span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      8801&#x2F;nginx: master</span><br></pre></td></tr></table></figure>
+
+<p>以下，以进程为例详解，ps -C nginx –no-header<br>这里涉及ps 的用法，我们一般用ps查看相关进程，一般都是用ps -ef | grep XX 或 ps -aux| grep XX 的模式<br>如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br><span class="line">root     11660  5532  0 09:55 pts&#x2F;1    00:00:00 grep --color&#x3D;auto nginx</span><br></pre></td></tr></table></figure>
+<p>但是这样通常都会覆盖一个grep的进程。</p>
+<p>我们可以用ps -ef|grep nginx|grep -v grep的方式排除grep的进程，如</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# ps -ef|grep nginx|grep -v grep</span><br><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br></pre></td></tr></table></figure>
+
+<p>也可以直接用ps -C 或ps -c 的方式， -C 后面接命令的名字（推荐） ，如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx</span><br><span class="line">   PID TTY          TIME CMD</span><br><span class="line">  8801 ?        00:00:00 nginx</span><br><span class="line">  8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
+<p>–no-header 就是去挑title,如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx --no-header</span><br><span class="line"> 8801 ?        00:00:00 nginx</span><br><span class="line"> 8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
+<p>wc -l 这个很熟悉了，行数计算</p>
+<p>所以用这种方式可判断，如果<br>ps -C nginx –no-header|wc -l</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">值为0，即代表服务未启动</span><br><span class="line">值为非0，即代表服务已启动</span><br></pre></td></tr></table></figure>
+<p>最后，killall keepalived 这个是以服务名称杀死进程，日常中也用的挺多的</p>
+<p>上面那段完整的脚本意思即为：<br>判断nginx 服务是否启动<br>如果未启动，执行启动命令<br>再次判断，如果启动失败，关掉keepalived，进入从节点</p>
+]]></content>
+      <categories>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
       </tags>
   </entry>
   <entry>
@@ -2109,20 +2207,6 @@
         <tag>cors</tag>
         <tag>shiro</tag>
         <tag>spring boot</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Rust是基于表达式的语言</title>
-    <url>/2022/03/16/rust-%E8%AF%AD%E5%8F%A5%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
-    <content><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch1/01_expression.html" target="_blank" rel="noopener">Rust是基于表达式的语言</a></p>
-<a id="more"></a>
-
-<p>除了在表达式尾部加分号的代码是语句之外，还有另外一种情况的代码是语句而非表达式：<strong>用于声明或定义</strong>。例如let声明变量、fn定义函数、struct声明结构体等。</p>
-<p>Rust很多地方都会结合表达式和语句来做变量赋值。例如，if结构也是一个表达式，所以它有返回值，可以将if的返回值赋值给变量，而<strong>它的返回值来自于它的大括号</strong>：当大括号最后执行的一条代码不加分号结尾时，该代码的计算结果就是if结构的返回值。</p>
-<p>————————————————《rust入门秘籍》</p>
-]]></content>
-      <tags>
-        <tag>rust</tag>
       </tags>
   </entry>
   <entry>
@@ -2183,57 +2267,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>rust --堆栈(内存)</title>
-    <url>/2022/02/08/rust-%E7%9A%84%E5%A0%86%E6%A0%88-%E5%BC%95%E7%94%A8/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>类型的值默认都分布在栈中(即便是动态类型的数据，但也通过胖指针改变了该类型的值的表现形式)，所以<strong>创建某个变量的引用时，引用的是栈中的那个值</strong>.   </p>
-<a id="more"></a>
-
-<h4 id="Rust将哪些数据存放于栈中？"><a href="#Rust将哪些数据存放于栈中？" class="headerlink" title="Rust将哪些数据存放于栈中？"></a>Rust将哪些数据存放于栈中？</h4><p>Rust中各种类型的值默认都存储在栈中，除非显式地使用Box::new()将它们存放在堆上。</p>
-<p>但数据要存放在栈中，要求其数据类型的大小已知。对于静态大小的类型，可直接存储在栈上。</p>
-<p>例如如下类型的数据存放在栈中：</p>
-<ul>
-<li>裸指针(一个机器字长)、普通引用(一个机器字长)、胖指针(除了指针外还包含其他元数据信息，智能指针也是一种带有额外功能的胖指针，而胖指针实际上又是Struct结构)</li>
-<li>布尔值</li>
-<li>char</li>
-<li>各种整数、浮点数</li>
-<li>数组(Rust数组的元素数据类型和数组长度都是固定不变的)</li>
-<li>元组</li>
-</ul>
-<p>对于动态大小的类型(如Vec、String)，则数据部分分布在堆中(被称为allocate buffer)，并在栈中留下胖指针(Struct方式实现)指向实际的数据，栈中的那个胖指针结构是静态大小的(换句话说，动态类型以Vec为例，Vec类型的值理应是那些连续的元素，但因为这样的连续内存的大小是不确定的，所以改变了它的行为，它的值是那个栈中的胖指针，而不是存储在allocatge buffer中的实际数据)。</p>
-<p>以上分类需要注意几点：</p>
-<ul>
-<li>将栈中数据赋值给变量时，数据直接存放在栈中。比如i32类型的33，33直接存放在栈内，而不是在堆中存放33并在栈中存放指向33的指针</li>
-<li>因为类型的值默认都分布在栈中(即便是动态类型的数据，但也通过胖指针改变了该类型的值的表现形式)，所以<strong>创建某个变量的引用时，引用的是栈中的那个值</strong></li>
-<li>有些数据是0字节的，不需要占用空间，比如()</li>
-<li>尽管【容器】结构中(如数组、元组、Struct)可以存放任意数据，但保存在容器中的要么是原始类型的栈中值，要么是指向堆中数据的引用，所以这些容器类型的值也在栈中。例如，对于struct User {name: String}，name字段存储的是String类型的胖指针，String类型实际的数据则在堆中</li>
-<li>尽管Box::new(T)可以将类型T的数据放入堆中，但Box类型本身是一个struct，它是一个胖指针(更严格地说是智能指针)，它在栈中</li>
-</ul>
-<p>实际上，对于理解来说，只有Box才能让数据存放到堆中，但对于实现上，只有调用alloc才能申请堆内存并将数据存放在堆中。比如，自己想实现一个类型，将某些数据明确存放在堆中，那么必须要在实现代码中调用alloc来分配堆内存，但同时，要实现的这个类型本身，它的值是在栈中的。</p>
-<p>(5).Rust除了使用堆栈，还使用全局内存区(静态变量区和字面量区)。</p>
-<p>Rust编译器会将全局内存区的数据直接嵌入在二进制程序文件中，当启动并加载程序时，嵌入在全局内存区的数据被放入内存的某个位置。</p>
-<p>全局内存区的数据是编译期间就可确定的，且存活于整个程序运行期间。</p>
-<p>字符串字面量、static定义的静态变量(相当于全局变量)都会硬编码嵌入到二进制程序的全局内存区。</p>
-<p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fn main()&#123;</span><br><span class="line">  let _s &#x3D; &quot;hello&quot;;     &#x2F;&#x2F; (1)</span><br><span class="line">  let _ss &#x3D; String::from(&quot;hello&quot;); &#x2F;&#x2F; (2)</span><br><span class="line">  let _arr &#x3D; [&quot;hello&quot;;3];    &#x2F;&#x2F; (3)</span><br><span class="line">  let _tuple &#x3D; (&quot;hello&quot;,);   &#x2F;&#x2F; (4)</span><br><span class="line">  &#x2F;&#x2F; ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面代码中的几个变量都使用了字符串字面量，且使用的都是相同的字面量”hello”，在编译期间，它们会共用同一个”hello”，该”hello”会硬编码到二进制程序文件中。当程序被加载到内存时，该被放入到全局内存区，它在全局内存区有自己的内存地址，当运行到以上各行代码时：</p>
-<ul>
-<li>代码(1)、(3)、(4)，将根据地址取得其引用，并分别保存到变量_s、_arr各元素、_tuple元素中</li>
-<li>代码(2)，将根据地址取得数据并将其拷贝到堆中(转换为Vec<u8>的方式存储，它是String类型的底层存储方式)</u8></li>
-</ul>
-<h4 id="Rust中允许使用const定义常量。"><a href="#Rust中允许使用const定义常量。" class="headerlink" title="Rust中允许使用const定义常量。"></a>Rust中允许使用const定义常量。</h4><p>常量将在编译期间直接以硬编码的方式内联(inline)插入到使用常量的地方。</p>
-<p>所谓内联，即将它代表的值直接替换到使用它的地方。</p>
-<p>比如，定义了常量ABC&#x3D;33，在第100行和第300行处都使用了常量ABC，那么在编译期间，会将33硬编码到第100行和第300行处。</p>
-<p>Rust中，除了const定义的常量会被内联，某些函数也可以被内联。将函数进行内联，表示将该函数对应的代码体直接展开并插入到调用该函数的地方，这样就没有函数调用的开销(比如没有调用函数时申请栈帧、在寄存器保存某些变量等的行为)，效率会更高一些。但只有那些频繁调用的短函数才适合被内联，并且内联会导致程序的代码膨胀。</p>
-<p>原地址: <strong><a href="https://rust-book.junmajinlong.com/ch5/02_rust_mem.html" target="_blank" rel="noopener">Rust如何使用堆和栈</a></strong></p>
-]]></content>
-      <categories>
-        <category>rust</category>
-      </categories>
-      <tags>
-        <tag>引用</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ssh 密码登录脚本</title>
     <url>/2021/03/19/ssh-%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>脚本密码登录服务器</p>
@@ -2254,6 +2287,22 @@
       </tags>
   </entry>
   <entry>
+    <title>node升级提示(sudo: npm: command not found)</title>
+    <url>/2021/08/12/sudo-npm-command-not-found/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>重拿前端项目，要把以前ubuntu的node、npm升级到最新版本，按照网上找来的方法，输入：<em>sudo npm install n -g</em>，结果提示：<em>sudo : npm :command not found</em>。</p>
+<a id="more"></a>
+
+<h3 id="node、npm升级"><a href="#node、npm升级" class="headerlink" title="node、npm升级"></a>node、npm升级</h3><p>正常情况下，先安装工具<em>n</em>，然后通过它升级</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo npm install n -g</span><br><span class="line"></span><br><span class="line">sudo n stable  # 安装最新版本</span><br></pre></td></tr></table></figure>
+<p>但出现了前言里的错误，不加sudo，权限不够，加了又无法识别命令。</p>
+<p><img src="/images/pasted-50.png" alt="upload successful"></p>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>这是什么原因呢？<br>输入<em>which npm</em>可以得到*&#x2F;home&#x2F;zzl&#x2F;.nvm&#x2F;versions&#x2F;node&#x2F;v12.21.0&#x2F;bin&#x2F;npm*，这个是普通用户的目录。<br>而sudo执行的是&#x2F;usr&#x2F;bin目录，这是root用户的目录,<br>所以使用sudo命令是识别不到这个命令的，我们可以使用软链接来处理这个问题</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo ln -s &#x2F;mydata&#x2F;nodejs&#x2F;bin&#x2F;node &#x2F;usr&#x2F;bin&#x2F;node</span><br><span class="line">sudo ln -s &#x2F;mydata&#x2F;nodejs&#x2F;bin&#x2F;npm &#x2F;usr&#x2F;bin&#x2F;npm</span><br></pre></td></tr></table></figure>
+<p>将上面左边的命令位置，替换用which npm查询出来的就行了。</p>
+<p><strong>当然我用了which node之后就意识到我以前是用的nvm管理node的版本，差点儿就用n在另外的位置重新下了个版本，而且还发现以前用apt-get下了个更早的版本，每个工具下载的位置都不同，混乱不堪，统统删了，以后只用nvm管理node版本！教训啊～</strong></p>
+]]></content>
+  </entry>
+  <entry>
     <title>锁、synchronized、CAS、volatile</title>
     <url>/2020/04/06/synchronized%E3%80%81CAS%E3%80%81volatile/</url>
     <content><![CDATA[<p>转载：**<a href="https://tech.meituan.com/2018/11/15/java-lock.html" target="_blank" rel="noopener">不可不说的Java“锁”事</a><strong>、</strong><a href="https://blog.csdn.net/javazejian/article/details/72828483" target="_blank" rel="noopener">深入理解Java并发之synchronized实现原理</a><strong>、</strong><a href="https://www.cnblogs.com/zhangyinhua/p/14519190.html" target="_blank" rel="noopener">Java多线程之synchronized详解</a><strong>、</strong><a href="https://juejin.im/post/5a73cbbff265da4e807783f5" target="_blank" rel="noopener">Java CAS 原理剖析
@@ -2269,19 +2318,35 @@
       </tags>
   </entry>
   <entry>
-    <title>node升级提示(sudo: npm: command not found)</title>
-    <url>/2021/08/12/sudo-npm-command-not-found/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>重拿前端项目，要把以前ubuntu的node、npm升级到最新版本，按照网上找来的方法，输入：<em>sudo npm install n -g</em>，结果提示：<em>sudo : npm :command not found</em>。</p>
+    <title>tmux 使用</title>
+    <url>/2022/03/25/tmux-%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>只能说 tmux太香了…</p>
 <a id="more"></a>
-
-<h3 id="node、npm升级"><a href="#node、npm升级" class="headerlink" title="node、npm升级"></a>node、npm升级</h3><p>正常情况下，先安装工具<em>n</em>，然后通过它升级</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo npm install n -g</span><br><span class="line"></span><br><span class="line">sudo n stable  # 安装最新版本</span><br></pre></td></tr></table></figure>
-<p>但出现了前言里的错误，不加sudo，权限不够，加了又无法识别命令。</p>
-<p><img src="/images/pasted-50.png" alt="upload successful"></p>
-<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>这是什么原因呢？<br>输入<em>which npm</em>可以得到*&#x2F;home&#x2F;zzl&#x2F;.nvm&#x2F;versions&#x2F;node&#x2F;v12.21.0&#x2F;bin&#x2F;npm*，这个是普通用户的目录。<br>而sudo执行的是&#x2F;usr&#x2F;bin目录，这是root用户的目录,<br>所以使用sudo命令是识别不到这个命令的，我们可以使用软链接来处理这个问题</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo ln -s &#x2F;mydata&#x2F;nodejs&#x2F;bin&#x2F;node &#x2F;usr&#x2F;bin&#x2F;node</span><br><span class="line">sudo ln -s &#x2F;mydata&#x2F;nodejs&#x2F;bin&#x2F;npm &#x2F;usr&#x2F;bin&#x2F;npm</span><br></pre></td></tr></table></figure>
-<p>将上面左边的命令位置，替换用which npm查询出来的就行了。</p>
-<p><strong>当然我用了which node之后就意识到我以前是用的nvm管理node的版本，差点儿就用n在另外的位置重新下了个版本，而且还发现以前用apt-get下了个更早的版本，每个工具下载的位置都不同，混乱不堪，统统删了，以后只用nvm管理node版本！教训啊～</strong></p>
+<h3 id="vim配色在tmux中异常"><a href="#vim配色在tmux中异常" class="headerlink" title="vim配色在tmux中异常"></a>vim配色在tmux中异常</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim ~&#x2F;.tmux.conf</span><br><span class="line">set -g default-terminal &quot;xterm-256color&quot;</span><br><span class="line">source  ~&#x2F;.tmux.conf</span><br></pre></td></tr></table></figure>
+<p>ps：退出tmux再设置…</p>
+<h3 id="常用命令："><a href="#常用命令：" class="headerlink" title="常用命令："></a>常用命令：</h3><ul>
+<li>tmux：新建一个session和一个window</li>
+<li>tmux a：打开挂起的session</li>
+<li>tmux ls：显示所有挂起的session</li>
+</ul>
+<p>在tmux中的操作：</p>
+<ul>
+<li>按下 ctrl + b 后松开，再按 % 可将当前pane左右平分成两个pane</li>
+<li>按下 ctrl + b 后松开，再按 “ 可将当前pane上下平分成两个pane</li>
+<li>按下 ctrl + b 后松开，再按 d 可挂起当前的session</li>
+<li>按下 ctrl + b 后松开，再按 z 可将当前pane全屏或取消全屏</li>
+<li>按下 ctrl + b 后松开，再按 c 可在当前session中创建新的window</li>
+<li>按下 ctrl + b 后松开，再按 s 可选择其他session，用方向键操作</li>
+<li>按下 ctrl + b 后松开，再按 w 可选择其他window，同样用方向键操作</li>
+<li>按下 ctrl + b 后松开，再按 PageUp 或 PageDown 可翻阅当前pane中的内容</li>
+</ul>
+<p>tmux中的复制粘贴</p>
+<ul>
+<li>按下 ctrl + b 后松开，再按 [</li>
+<li>用鼠标选中文本，被选中的文本会被自动复制到tmux的剪贴板</li>
+<li>按下 ctrl + b 后松开，再按 ]，会将剪贴板的内容粘贴到光标处</li>
+</ul>
+<p><a href="https://developer.aliyun.com/article/789729" target="_blank" rel="noopener">tmux简介</a>、<br><a href="http://www.ruanyifeng.com/blog/2019/10/tmux.html" target="_blank" rel="noopener">Tmux 使用教程</a>、<br><a href="https://developer.aliyun.com/article/789729" target="_blank" rel="noopener">Tmux 修改前缀快捷键</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -2330,46 +2395,6 @@
       </categories>
   </entry>
   <entry>
-    <title>ubuntu 打开win10 txt中文乱码</title>
-    <url>/2021/03/19/ubuntu-%E6%89%93%E5%BC%80win10-txt%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>双系统，ubuntu打开win10的文本文件，中文乱码，明显是编码问题，记录之。</p>
-<a id="more"></a>
-
-<p>1、原因<br>ubuntu系统locale是utf-8（很多linux系统默认的locale形式），编辑的文档是GB2312或GBK形式的（Windows记事本默认保存形式，大部分编辑器也默认保存为这个形式，所以最常见），终端类型utf-8（也就是假定客户端是putty类的unicode软件）则vim打开文档后，encoding&#x3D;utf-8（locale决定的），fileencoding&#x3D;latin1（自动编码判断机制不准导致的），termencoding&#x3D;空（默认无需转换term编码），最终显示文件为乱码。</p>
-<p>2、解决办法<br>在*&#x2F;home&#x2F;user&#x2F;<em>下修改</em>.vimrc*文件（系统新装，默认情况下尚未创建）。 编辑 ~&#x2F;.vimrc 文件（ 添加如下几行即可</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set fileencodings&#x3D;utf-8,ucs-bom,gb18030,gbk,gb2312,cp936</span><br><span class="line">set termencoding&#x3D;utf-8</span><br><span class="line">set encoding&#x3D;utf-8</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>linux</category>
-        <category>ubuntu</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>ubuntu 桌面死机(重启gnome-shell)</title>
-    <url>/2021/04/19/ubuntu-%E6%A1%8C%E9%9D%A2%E6%AD%BB%E6%9C%BA/</url>
-    <content><![CDATA[<p>ubuntu有时桌面会卡死，鼠标点击失灵，解决方法：重启gnome-shell。<br>建议以下两种二选一：</p>
-<ul>
-<li><span style="color:red">alt + F2</span>  弹出的输入框里输入小写<span style="color:red">r</span> ，回车，如此重启gnome-shell桌面环境。</li>
-<li><span style="color:red">ctrl + alt + F3</span> 切换到其它虚拟终端tty3(Ubuntu18.04 默认tty1是选择用户登录界面，tty2往往就是对应卡死的桌面位置，我们选择tty3进行操作)，输入用户密码登录，输入<span style="color:red">ps -ef|grep gnome-shell</span> ，找到tty2对应的gnome-shell pid（一般有两个，一个是tty1的，一个是tty2的），<span style="color:red">kill -9 pidNum</span> ，系统自动重启gnome-shell,最后<span style="color:red">crl + alt +F2</span> 切换至tty2,这种方法的优点是不会干扰其他正在运行的程序。 <a id="more"></a>
- 其他方法还有（未验证）：</li>
-</ul>
-<h3 id="How-to-restart-GUI-on-Ubuntu-20-04-step-by-step-instructions"><a href="#How-to-restart-GUI-on-Ubuntu-20-04-step-by-step-instructions" class="headerlink" title="How to restart GUI on Ubuntu 20.04 step by step instructions"></a>How to restart GUI on Ubuntu 20.04 step by step instructions</h3><p>Sometimes you many need to restart&#x2F;reload GUI because you may have done some changes which require it. However, occasionally you are forced to restart GUI because it froze and you do not wish to restart the entire system. In any case you might find some of the bellow information helpful.</p>
-<h4 id="The-first-method-is-the-least-destructing-however-it-might-not-provide-the-expected-result"><a href="#The-first-method-is-the-least-destructing-however-it-might-not-provide-the-expected-result" class="headerlink" title="The first method is the least destructing, however, it might not provide the expected result."></a>The first method is the least destructing, however, it might not provide the expected result.</h4><p>Enter a restart gui Command</p>
-<p><img src="/images/pasted-36.png" alt="upload successful"></p>
-<p>While logged in to your GNOME desktop press <span style="color:red">ALT + F2</span> key combination. Into the Enter a Command box type <span style="color:red">r </span> and press <span style="color:red">Enter</span> .</p>
-<h4 id="Another-alternative-to-do-the-GUI-restart-trick-might-be-the-most-obvious-to-simply-re-login"><a href="#Another-alternative-to-do-the-GUI-restart-trick-might-be-the-most-obvious-to-simply-re-login" class="headerlink" title="Another alternative to do the GUI restart trick might be the most obvious to simply re-login."></a>Another alternative to do the GUI restart trick might be the most obvious to simply re-login.</h4><p><img src="/images/pasted-37.png" alt="upload successful"><br>Restart GUI by first Log Out and consequently Log In to your GUI desktop</p>
-<h4 id="In-this-scenario-we-simply-restart-the-gnome-shell-as-non-privileged-user"><a href="#In-this-scenario-we-simply-restart-the-gnome-shell-as-non-privileged-user" class="headerlink" title="In this scenario we simply restart the gnome-shell as non-privileged user."></a>In this scenario we simply restart the gnome-shell as non-privileged user.</h4><p><img src="/images/pasted-38.png" alt="upload successful"><br>Open up terminal and enter the <span style="color:red">gnome-shell –replace </span>command.</p>
-<h4 id="The-following-restart-GUI-solution-is-guaranteed-to-restart-your-desktop-even-if-your-GUI-froze-while-the-system-is-still-functioning-However-it-needs-administrative-sudo-privileges"><a href="#The-following-restart-GUI-solution-is-guaranteed-to-restart-your-desktop-even-if-your-GUI-froze-while-the-system-is-still-functioning-However-it-needs-administrative-sudo-privileges" class="headerlink" title="The following restart GUI solution is guaranteed to restart your desktop even if your GUI froze while the system is still functioning. However, it needs administrative sudo privileges."></a>The following restart GUI solution is guaranteed to restart your desktop even if your GUI froze while the system is still functioning. However, it needs administrative sudo privileges.</h4><p><img src="/images/pasted-39.png" alt="upload successful"><br>Either enter the <span style="color:red">sudo systemctl restart systemd-logind.service </span>command directly into the terminal while in GUI. However, if your GUI is frozen you may need to first change to TTY console using <span style="color:red">CTRL + ALT + F2</span>, login and execute command from there.</p>
-<h4 id="In-this-method-we-will-restart-the-Display-Manager-which-will-consequently-also-restart-GNOME-shell"><a href="#In-this-method-we-will-restart-the-Display-Manager-which-will-consequently-also-restart-GNOME-shell" class="headerlink" title="In this method we will restart the Display Manager which will consequently also restart GNOME shell."></a>In this method we will restart the Display Manager which will consequently also restart GNOME shell.</h4><p><img src="/images/pasted-40.png" alt="upload successful"><br>Either from GUI and TTY console <span style="color:red">CTRL + ALT + F2</span> execute <span style="color:red">sudo systemctl restart gdm</span> command. However, if you have deployed LightDM display manager in that case execute<span style="color:red"> sudo systemctl restart lightdm</span> command.</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-        <category>ubuntu</category>
-      </categories>
-      <tags>
-        <tag>gnome-shell</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ubuntu 开机启动管理</title>
     <url>/2021/03/21/ubuntu-%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%AE%A1%E7%90%86/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ubuntu自启服务管理命令</p>
@@ -2386,6 +2411,102 @@
       <categories>
         <category>linux</category>
       </categories>
+  </entry>
+  <entry>
+    <title>ubuntu 打开win10 txt中文乱码</title>
+    <url>/2021/03/19/ubuntu-%E6%89%93%E5%BC%80win10-txt%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>双系统，ubuntu打开win10的文本文件，中文乱码，明显是编码问题，记录之。</p>
+<a id="more"></a>
+
+<p>1、原因<br>ubuntu系统locale是utf-8（很多linux系统默认的locale形式），编辑的文档是GB2312或GBK形式的（Windows记事本默认保存形式，大部分编辑器也默认保存为这个形式，所以最常见），终端类型utf-8（也就是假定客户端是putty类的unicode软件）则vim打开文档后，encoding&#x3D;utf-8（locale决定的），fileencoding&#x3D;latin1（自动编码判断机制不准导致的），termencoding&#x3D;空（默认无需转换term编码），最终显示文件为乱码。</p>
+<p>2、解决办法<br>在*&#x2F;home&#x2F;user&#x2F;<em>下修改</em>.vimrc*文件（系统新装，默认情况下尚未创建）。 编辑 ~&#x2F;.vimrc 文件（ 添加如下几行即可</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set fileencodings&#x3D;utf-8,ucs-bom,gb18030,gbk,gb2312,cp936</span><br><span class="line">set termencoding&#x3D;utf-8</span><br><span class="line">set encoding&#x3D;utf-8</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+        <category>ubuntu</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>ubuntu20.04 mysql change data directory</title>
+    <url>/2023/02/18/ubuntu20-04-install-mysql-and-change-data-dir/</url>
+    <content><![CDATA[<p>安装mysql，主要是修改data directory。</p>
+<a id="more"></a>
+<h3 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install mysql-server</span><br><span class="line">sudo mysql_secure_installation</span><br></pre></td></tr></table></figure>
+<h3 id="change-data-directory"><a href="#change-data-directory" class="headerlink" title="change data directory"></a>change data directory</h3><h4 id="Moving-the-MySQL-Data-Directory"><a href="#Moving-the-MySQL-Data-Directory" class="headerlink" title="Moving the MySQL Data Directory"></a>Moving the MySQL Data Directory</h4><p>First, shut down mysql</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo service mysql stop</span><br></pre></td></tr></table></figure>
+
+<p>Now that the server is shut down, you can copy the existing database directory, &#x2F;var&#x2F;lib&#x2F;mysql&#x2F;, to the new location, &#x2F;mnt&#x2F;Secert&#x2F;ubuntu-mysql-data, with rsync. Using the -a flag preserves the permissions and other directory properties, while-v provides verbose output so you can follow the progress:</p>
+<blockquote>
+<p>Note: Be sure there is a trailing slash on the directory, which may be added if you use  tab completion. When there’s a trailing slash, rsync will dump the contents of the directory into the mount point instead of transferring it into a containing mysql directory.</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo rsync -av &#x2F;var&#x2F;lib&#x2F;mysql&#x2F; &#x2F;mnt&#x2F;Secert&#x2F;ubuntu-mysql-data</span><br></pre></td></tr></table></figure>
+<p>Once the rsync command is complete, rename the current folder with a .bak extension and keep it until you’ve confirmed the move was successful. By renaming it, you’ll avoid confusion that could arise from files in both the new and the old location:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo mv &#x2F;var&#x2F;lib&#x2F;mysql &#x2F;var&#x2F;lib&#x2F;mysql.bak</span><br></pre></td></tr></table></figure>
+<p>Now you’re ready to proceed with the next step and begin configuration.</p>
+<h4 id="Pointing-to-the-New-Data-Location"><a href="#Pointing-to-the-New-Data-Location" class="headerlink" title="Pointing to the New Data Location"></a>Pointing to the New Data Location</h4><p>MySQL has several ways to override configuration values. By default, the datadir is set to <em>&#x2F;var&#x2F;lib&#x2F;mysql</em> in the <em>&#x2F;etc&#x2F;mysql&#x2F;mysql.conf.d&#x2F;mysqld.cnf</em> file. Edit this file in your preferred text editor to reflect the new data directory. Here we’ll use vim:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;mysql&#x2F;mysql.conf.d&#x2F;mysqld.cnf</span><br></pre></td></tr></table></figure>
+<p>Find the line that begins with datadir&#x3D;. Uncomment the line by deleting the pound sign (#) and change the path to reflect the new location. In this case, the updated file(&#x2F;etc&#x2F;mysql&#x2F;mysql.conf.d&#x2F;mysqld.cnf) contents will be as follows:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">datadir &#x3D; &#x2F;mnt&#x2F;Secert&#x2F;ubuntu-mysql-data</span><br></pre></td></tr></table></figure>
+<p>Once you’ve made this update, save and exit the file.  Now it’s almost time to bring up MySQL again, but before that, there’s one more thing to configure in order to be successful.</p>
+<h4 id="Configuring-AppArmor-Access-Control-Rules"><a href="#Configuring-AppArmor-Access-Control-Rules" class="headerlink" title="Configuring AppArmor Access Control Rules"></a>Configuring AppArmor Access Control Rules</h4><p>In this step, you need to tell AppArmor to let MySQL write to the new directory by creating an alias between the default directory and the new location. AppArmor is a security module in the Linux kernel that allows system administrators to restrict program capabilities through program profiles, rather than users themselves. Start by opening up and editing the AppArmor alias file:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;apparmor.d&#x2F;tunables&#x2F;alias</span><br></pre></td></tr></table></figure>
+<p>At the bottom of the file, uncomment the following line and add the alias rule:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">alias &#x2F;var&#x2F;lib&#x2F;mysql&#x2F; -&gt; &#x2F;mnt&#x2F;Secert&#x2F;ubuntu-mysql-data&#x2F;,</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>Note: Don’t miss the last comma(,)</strong></p>
+</blockquote>
+<p>When you’re finished, save and exit the file.</p>
+<p>For the changes to take effect, restart AppArmor:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo systemctl restart apparmor</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Note: If you skipped the AppArmor configuration step, you will receive the following error message:</p>
+<blockquote>
+<p>Output<br>Job for mysql.service failed because the control process<br>exited with error code. See “systemctl status mysql.service”<br>and “journalctl -xe” for details.</p>
+</blockquote>
+<p>Since this message doesn’t make an explicit connection between AppArmor and the data directory, this error can take some time to figure out.</p>
+</blockquote>
+<p>Once you’ve properly configured AppArmor, you can move on to the next step.</p>
+<h4 id="Restarting-MySQL"><a href="#Restarting-MySQL" class="headerlink" title="Restarting MySQL"></a>Restarting MySQL</h4><p>由于我的ubuntu安装的是mysql8.0.32，脚本跟下面的并不一致(没用写死&#x2F;var&#x2F;lib&#x2F;mysql的方式判断是否data dir存在)，也就没有碰到下面的错误，直接就重启了，下面脚本的部分仅供参考。</p>
+<p>Now it’s time to start MySQL. If you do, however, you’ll run into another error. Instead of an AppArmor issue, this error is caused by mysql-systemd-start, a script that supports managing MySQL through systemd. You can inspect this script with the following command:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim &#x2F;usr&#x2F;share&#x2F;mysql&#x2F;mysql-systemd-start</span><br></pre></td></tr></table></figure>
+<p>This script checks for the existence of either a directory, -d, or a symbolic link, -L, that matches the default data directory path. If it doesn’t find either of these, the script(&#x2F;usr&#x2F;share&#x2F;mysql&#x2F;mysql-systemd-start) will trigger an error and prevent MySQL from starting:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if [ ! -d &#x2F;var&#x2F;lib&#x2F;mysql ] &amp;&amp; [ ! -L &#x2F;var&#x2F;lib&#x2F;mysql ]; then</span><br><span class="line"> echo &quot;MySQL data dir not found at &#x2F;var&#x2F;lib&#x2F;mysql. Please create one.&quot;</span><br><span class="line"> exit 1</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">if [ ! -d &#x2F;var&#x2F;lib&#x2F;mysql&#x2F;mysql ] &amp;&amp; [ ! -L &#x2F;var&#x2F;lib&#x2F;mysql&#x2F;mysql ]; then</span><br><span class="line"> echo &quot;MySQL system database not found. Please run mysql_install_db tool.&quot;</span><br><span class="line"> exit 1</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<p>After you’ve inspected this file, close it without making any changes.</p>
+<p>Since you need either an appropriate directory or symbolic link to start the server, you must create the minimal directory structure to pass the script’s environment check:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo mkdir &#x2F;var&#x2F;lib&#x2F;mysql&#x2F;mysql -p</span><br></pre></td></tr></table></figure>
+<p>Now you’re ready to start MySQL:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo systemctl start mysql</span><br></pre></td></tr></table></figure>
+<p>Confirm MySQL is running by checking the status:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo systemctl status mysql</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Output<br>● mysql.service - MySQL Community Server<br>     Loaded: loaded (&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;mysql.service; enabled; vendor preset:&gt;<br>     Active: active (running) since Wed 2022-03-23 20:51:18 UTC; 4s ago<br>    Process: 17145 ExecStartPre&#x3D;&#x2F;usr&#x2F;share&#x2F;mysql&#x2F;mysql-systemd-start pre (code&#x3D;&gt;<br>   Main PID: 17162 (mysqld)<br>     Status: “Server is operational”<br>      Tasks: 38 (limit: 1132)<br>     Memory: 376.7M<br>     CGroup: &#x2F;system.slice&#x2F;mysql.service<br>             └─17162 &#x2F;usr&#x2F;sbin&#x2F;mysqld</p>
+</blockquote>
+<p>To ensure that the new data directory is indeed in use, start the MySQL monitor:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysql -u sammy -p</span><br></pre></td></tr></table></figure>
+<p>Now query for the value of the data directory again:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT @@datadir;</span><br><span class="line">Output</span><br><span class="line">+----------------------------+</span><br><span class="line">| @@datadir                  |</span><br><span class="line">+----------------------------+</span><br><span class="line">| &#x2F;mnt&#x2F;volume-nyc1-01&#x2F;mysql&#x2F; |</span><br><span class="line">+----------------------------+</span><br><span class="line">1 row in set (0.01 sec)</span><br></pre></td></tr></table></figure>
+<p>After you’ve restarted MySQL and confirmed that it’s using the new location, take the opportunity to ensure that your database is fully functional. Once you’ve finished, exit the database as in the following and return to the command prompt:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">exit</span><br></pre></td></tr></table></figure>
+<p>Now that you’ve verified the integrity of any existing data, you can remove the backup data directory:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo rm -Rf &#x2F;var&#x2F;lib&#x2F;mysql.bak</span><br></pre></td></tr></table></figure>
+<p>Then restart MySQL one final time:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo systemctl restart mysql</span><br></pre></td></tr></table></figure>
+<p>And finally, confirm it’s working as expected by checking the status:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo systemctl status mysql</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Output<br>● mysql.service - MySQL Community Server<br>     Loaded: loaded (&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;mysql.service; enabled; vendor preset:&gt;<br>     Active: active (running) since Wed 2022-03-23 20:53:03 UTC; 4s ago<br>    Process: 17215 ExecStartPre&#x3D;&#x2F;usr&#x2F;share&#x2F;mysql&#x2F;mysql-systemd-start pre (code&#x3D;&gt;<br>   Main PID: 17234 (mysqld)<br>     Status: “Server is operational”<br>      Tasks: 38 (limit: 1132)<br>     Memory: 368.9M<br>     CGroup: &#x2F;system.slice&#x2F;mysql.service<br>             └─17234 &#x2F;usr&#x2F;sbin&#x2F;mysqld</p>
+</blockquote>
+<p>If the Active line states active(running) this confirms that MySQL is working.</p>
+<h4 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h4><p><a href="https://www.digitalocean.com/community/tutorials/how-to-move-a-mysql-data-directory-to-a-new-location-on-ubuntu-20-04" target="_blank" rel="noopener">原文链接</a></p>
+<p>In this tutorial, you learned how to move MySQL’s data directory to a new location and update Ubuntu’s AppArmor access control lists to accommodate the adjustment. Although we were using a block storage device, the instructions here should be suitable for redefining the location of the data directory regardless of the underlying technology.</p>
+<p>For more information on managing MySQL’s data directories, check out the following sections in the official MySQL documentation:</p>
+<p><a href="https://dev.mysql.com/doc/refman/5.7/en/data-directory.html" target="_blank" rel="noopener">The MySQL Data Directory</a></p>
+<p><a href="https://dev.mysql.com/doc/refman/5.7/en/multiple-data-directories.html" target="_blank" rel="noopener">Setting Up Multiple Data Directories</a></p>
+]]></content>
   </entry>
   <entry>
     <title>ubuntu 搜狗拼音 繁简切换快捷键冲突</title>
@@ -2421,35 +2542,35 @@
       </categories>
   </entry>
   <entry>
-    <title>tmux 使用</title>
-    <url>/2022/03/25/tmux-%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p>只能说 tmux太香了…</p>
-<a id="more"></a>
-<h3 id="vim配色在tmux中异常"><a href="#vim配色在tmux中异常" class="headerlink" title="vim配色在tmux中异常"></a>vim配色在tmux中异常</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim ~&#x2F;.tmux.conf</span><br><span class="line">set -g default-terminal &quot;xterm-256color&quot;</span><br><span class="line">source  ~&#x2F;.tmux.conf</span><br></pre></td></tr></table></figure>
-<p>ps：退出tmux再设置…</p>
-<h3 id="常用命令："><a href="#常用命令：" class="headerlink" title="常用命令："></a>常用命令：</h3><ul>
-<li>tmux：新建一个session和一个window</li>
-<li>tmux a：打开挂起的session</li>
-<li>tmux ls：显示所有挂起的session</li>
-</ul>
-<p>在tmux中的操作：</p>
+    <title>ubuntu 桌面死机(重启gnome-shell)</title>
+    <url>/2021/04/19/ubuntu-%E6%A1%8C%E9%9D%A2%E6%AD%BB%E6%9C%BA/</url>
+    <content><![CDATA[<p>ubuntu有时桌面会卡死，鼠标点击失灵，解决方法：重启gnome-shell。<br>建议以下两种二选一：</p>
 <ul>
-<li>按下 ctrl + b 后松开，再按 % 可将当前pane左右平分成两个pane</li>
-<li>按下 ctrl + b 后松开，再按 “ 可将当前pane上下平分成两个pane</li>
-<li>按下 ctrl + b 后松开，再按 d 可挂起当前的session</li>
-<li>按下 ctrl + b 后松开，再按 z 可将当前pane全屏或取消全屏</li>
-<li>按下 ctrl + b 后松开，再按 c 可在当前session中创建新的window</li>
-<li>按下 ctrl + b 后松开，再按 s 可选择其他session，用方向键操作</li>
-<li>按下 ctrl + b 后松开，再按 w 可选择其他window，同样用方向键操作</li>
-<li>按下 ctrl + b 后松开，再按 PageUp 或 PageDown 可翻阅当前pane中的内容</li>
+<li><span style="color:red">alt + F2</span>  弹出的输入框里输入小写<span style="color:red">r</span> ，回车，如此重启gnome-shell桌面环境。</li>
+<li><span style="color:red">ctrl + alt + F3</span> 切换到其它虚拟终端tty3(Ubuntu18.04 默认tty1是选择用户登录界面，tty2往往就是对应卡死的桌面位置，我们选择tty3进行操作)，输入用户密码登录，输入<span style="color:red">ps -ef|grep gnome-shell</span> ，找到tty2对应的gnome-shell pid（一般有两个，一个是tty1的，一个是tty2的），<span style="color:red">kill -9 pidNum</span> ，系统自动重启gnome-shell,最后<span style="color:red">crl + alt +F2</span> 切换至tty2,这种方法的优点是不会干扰其他正在运行的程序。 <a id="more"></a>
+ 其他方法还有（未验证）：</li>
 </ul>
-<p>tmux中的复制粘贴</p>
-<ul>
-<li>按下 ctrl + b 后松开，再按 [</li>
-<li>用鼠标选中文本，被选中的文本会被自动复制到tmux的剪贴板</li>
-<li>按下 ctrl + b 后松开，再按 ]，会将剪贴板的内容粘贴到光标处</li>
-</ul>
-<p><a href="https://developer.aliyun.com/article/789729" target="_blank" rel="noopener">tmux简介</a>、<br><a href="http://www.ruanyifeng.com/blog/2019/10/tmux.html" target="_blank" rel="noopener">Tmux 使用教程</a>、<br><a href="https://developer.aliyun.com/article/789729" target="_blank" rel="noopener">Tmux 修改前缀快捷键</a></p>
+<h3 id="How-to-restart-GUI-on-Ubuntu-20-04-step-by-step-instructions"><a href="#How-to-restart-GUI-on-Ubuntu-20-04-step-by-step-instructions" class="headerlink" title="How to restart GUI on Ubuntu 20.04 step by step instructions"></a>How to restart GUI on Ubuntu 20.04 step by step instructions</h3><p>Sometimes you many need to restart&#x2F;reload GUI because you may have done some changes which require it. However, occasionally you are forced to restart GUI because it froze and you do not wish to restart the entire system. In any case you might find some of the bellow information helpful.</p>
+<h4 id="The-first-method-is-the-least-destructing-however-it-might-not-provide-the-expected-result"><a href="#The-first-method-is-the-least-destructing-however-it-might-not-provide-the-expected-result" class="headerlink" title="The first method is the least destructing, however, it might not provide the expected result."></a>The first method is the least destructing, however, it might not provide the expected result.</h4><p>Enter a restart gui Command</p>
+<p><img src="/images/pasted-36.png" alt="upload successful"></p>
+<p>While logged in to your GNOME desktop press <span style="color:red">ALT + F2</span> key combination. Into the Enter a Command box type <span style="color:red">r </span> and press <span style="color:red">Enter</span> .</p>
+<h4 id="Another-alternative-to-do-the-GUI-restart-trick-might-be-the-most-obvious-to-simply-re-login"><a href="#Another-alternative-to-do-the-GUI-restart-trick-might-be-the-most-obvious-to-simply-re-login" class="headerlink" title="Another alternative to do the GUI restart trick might be the most obvious to simply re-login."></a>Another alternative to do the GUI restart trick might be the most obvious to simply re-login.</h4><p><img src="/images/pasted-37.png" alt="upload successful"><br>Restart GUI by first Log Out and consequently Log In to your GUI desktop</p>
+<h4 id="In-this-scenario-we-simply-restart-the-gnome-shell-as-non-privileged-user"><a href="#In-this-scenario-we-simply-restart-the-gnome-shell-as-non-privileged-user" class="headerlink" title="In this scenario we simply restart the gnome-shell as non-privileged user."></a>In this scenario we simply restart the gnome-shell as non-privileged user.</h4><p><img src="/images/pasted-38.png" alt="upload successful"><br>Open up terminal and enter the <span style="color:red">gnome-shell –replace </span>command.</p>
+<h4 id="The-following-restart-GUI-solution-is-guaranteed-to-restart-your-desktop-even-if-your-GUI-froze-while-the-system-is-still-functioning-However-it-needs-administrative-sudo-privileges"><a href="#The-following-restart-GUI-solution-is-guaranteed-to-restart-your-desktop-even-if-your-GUI-froze-while-the-system-is-still-functioning-However-it-needs-administrative-sudo-privileges" class="headerlink" title="The following restart GUI solution is guaranteed to restart your desktop even if your GUI froze while the system is still functioning. However, it needs administrative sudo privileges."></a>The following restart GUI solution is guaranteed to restart your desktop even if your GUI froze while the system is still functioning. However, it needs administrative sudo privileges.</h4><p><img src="/images/pasted-39.png" alt="upload successful"><br>Either enter the <span style="color:red">sudo systemctl restart systemd-logind.service </span>command directly into the terminal while in GUI. However, if your GUI is frozen you may need to first change to TTY console using <span style="color:red">CTRL + ALT + F2</span>, login and execute command from there.</p>
+<h4 id="In-this-method-we-will-restart-the-Display-Manager-which-will-consequently-also-restart-GNOME-shell"><a href="#In-this-method-we-will-restart-the-Display-Manager-which-will-consequently-also-restart-GNOME-shell" class="headerlink" title="In this method we will restart the Display Manager which will consequently also restart GNOME shell."></a>In this method we will restart the Display Manager which will consequently also restart GNOME shell.</h4><p><img src="/images/pasted-40.png" alt="upload successful"><br>Either from GUI and TTY console <span style="color:red">CTRL + ALT + F2</span> execute <span style="color:red">sudo systemctl restart gdm</span> command. However, if you have deployed LightDM display manager in that case execute<span style="color:red"> sudo systemctl restart lightdm</span> command.</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+        <category>ubuntu</category>
+      </categories>
+      <tags>
+        <tag>gnome-shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java类加载</title>
+    <url>/2020/03/03/va-class/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这里贴一个介绍类加载的介绍链接：<a href="https://juejin.im/post/5dac4edff265da5b5f7588d1#heading-0" target="_blank" rel="noopener">java 的类加载</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -2461,12 +2582,6 @@
         <category>linux</category>
         <category>ubuntu</category>
       </categories>
-  </entry>
-  <entry>
-    <title>java类加载</title>
-    <url>/2020/03/03/va-class/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这里贴一个介绍类加载的介绍链接：<a href="https://juejin.im/post/5dac4edff265da5b5f7588d1#heading-0" target="_blank" rel="noopener">java 的类加载</a></p>
-]]></content>
   </entry>
   <entry>
     <title>vim常用命令、快捷键</title>
@@ -2911,6 +3026,16 @@
       </tags>
   </entry>
   <entry>
+    <title>vue nginx 压缩</title>
+    <url>/2022/02/10/vue-nginx-%E5%8E%8B%E7%BC%A9/</url>
+    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/qq_43363884/article/details/108195408" target="_blank" rel="noopener">vue打包时gzip压缩的两种方案</a></strong>  ,   &amp;nbsp;&amp;nbsp;<strong><a href="https://blog.csdn.net/github_38924695/article/details/108773173" target="_blank" rel="noopener">nginx中配置gzip_static on</a></strong></p>
+]]></content>
+      <tags>
+        <tag>nginx</tag>
+        <tag>vue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Ubuntu中vim的粘帖复制</title>
     <url>/2021/03/17/vim-%E7%B2%98%E5%B8%96%E5%A4%8D%E5%88%B6%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>想要从浏览器中把Ctrl+c的内容复制到Vim中，要搞懂Ubuntu18中vim的复制粘帖原理及使用。</p>
@@ -2985,78 +3110,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>vue nginx 压缩</title>
-    <url>/2022/02/10/vue-nginx-%E5%8E%8B%E7%BC%A9/</url>
-    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/qq_43363884/article/details/108195408" target="_blank" rel="noopener">vue打包时gzip压缩的两种方案</a></strong>  ,   &amp;nbsp;&amp;nbsp;<strong><a href="https://blog.csdn.net/github_38924695/article/details/108773173" target="_blank" rel="noopener">nginx中配置gzip_static on</a></strong></p>
-]]></content>
-      <tags>
-        <tag>nginx</tag>
-        <tag>vue</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>shell脚本检查nginx服务状态</title>
-    <url>/2021/04/08/shell%E8%84%9A%E6%9C%AC%E6%A3%80%E6%9F%A5nginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A&#x3D;&#96;ps -C nginx --no-header |wc -l&#96;</span><br><span class="line">if [ $A -eq 0 ];then</span><br><span class="line">    service nginx start</span><br><span class="line">    sleep 2</span><br><span class="line">    if [ &#96;ps -C nginx --no-header |wc -l&#96; -eq 0 ];then</span><br><span class="line">        killall keepalived</span><br><span class="line">    fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-
-<h3 id="脚本解析"><a href="#脚本解析" class="headerlink" title="脚本解析"></a>脚本解析</h3><p>以上是通过进程判断，也可以通过端口判断，如netstat -nlpt | grep nginx</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# netstat -nlpt | grep nginx</span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      8801&#x2F;nginx: master</span><br></pre></td></tr></table></figure>
-
-<p>以下，以进程为例详解，ps -C nginx –no-header<br>这里涉及ps 的用法，我们一般用ps查看相关进程，一般都是用ps -ef | grep XX 或 ps -aux| grep XX 的模式<br>如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br><span class="line">root     11660  5532  0 09:55 pts&#x2F;1    00:00:00 grep --color&#x3D;auto nginx</span><br></pre></td></tr></table></figure>
-<p>但是这样通常都会覆盖一个grep的进程。</p>
-<p>我们可以用ps -ef|grep nginx|grep -v grep的方式排除grep的进程，如</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# ps -ef|grep nginx|grep -v grep</span><br><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br></pre></td></tr></table></figure>
-
-<p>也可以直接用ps -C 或ps -c 的方式， -C 后面接命令的名字（推荐） ，如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx</span><br><span class="line">   PID TTY          TIME CMD</span><br><span class="line">  8801 ?        00:00:00 nginx</span><br><span class="line">  8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
-<p>–no-header 就是去挑title,如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx --no-header</span><br><span class="line"> 8801 ?        00:00:00 nginx</span><br><span class="line"> 8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
-<p>wc -l 这个很熟悉了，行数计算</p>
-<p>所以用这种方式可判断，如果<br>ps -C nginx –no-header|wc -l</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">值为0，即代表服务未启动</span><br><span class="line">值为非0，即代表服务已启动</span><br></pre></td></tr></table></figure>
-<p>最后，killall keepalived 这个是以服务名称杀死进程，日常中也用的挺多的</p>
-<p>上面那段完整的脚本意思即为：<br>判断nginx 服务是否启动<br>如果未启动，执行启动命令<br>再次判断，如果启动失败，关掉keepalived，进入从节点</p>
-]]></content>
-      <categories>
-        <category>shell</category>
-      </categories>
-      <tags>
-        <tag>shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>websocket data transfer</title>
-    <url>/1970/01/01/websocket-data-transfer/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>websocket message type： text or binary byte. And for binary data, we can choose between Blob and ArrayBuffer formats.</p>
-<a id="more"></a>
-<h3 id="Receiving-Text-and-Binary-Data"><a href="#Receiving-Text-and-Binary-Data" class="headerlink" title="Receiving Text and Binary Data"></a>Receiving Text and Binary Data</h3><p><strong>参考：<a href="https://www.oreilly.com/library/view/high-performance-browser/9781449344757/ch17.html" target="_blank" rel="noopener">websocket receiving Text and Binary Data</a></strong></p>
-<p>WebSocket communication consists of messages and application code and does not need to worry about buffering, parsing, and reconstructing received data. For example, if the server sends a 1 MB payload, the application’s onmessage callback will be called only when the entire message is available on the client.</p>
-<p>Further, the WebSocket protocol makes no assumptions and places no constraints on the application payload: both text and binary data are fair game. Internally, the protocol tracks only two pieces of information about the message: the length of payload as a variable-length field and the type of payload to distinguish UTF-8 from binary transfers.</p>
-<p>When a new message is received by the browser, it is automatically converted to a DOMString object for text-based data, or a Blob object for binary data, and then passed directly to the application. The only other option, which acts as performance hint and optimization for the client, is to tell the browser to convert the received binary data to an ArrayBuffer instead of Blob:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var ws &#x3D; new WebSocket(&#39;wss:&#x2F;&#x2F;example.com&#x2F;socket&#39;);</span><br><span class="line">ws.binaryType &#x3D; &quot;arraybuffer&quot;; 1</span><br><span class="line"></span><br><span class="line">ws.onmessage &#x3D; function(msg) &#123;</span><br><span class="line">  if(msg.data instanceof ArrayBuffer) &#123;</span><br><span class="line">    processArrayBuffer(msg.data);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    processText(msg.data);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Data-transfer"><a href="#Data-transfer" class="headerlink" title="Data transfer"></a>Data transfer</h3><p><strong>参考：<a href="https://javascript.info/websocket#data-transfer" target="_blank" rel="noopener">websocket data transfer</a></strong></p>
-<p>WebSocket communication consists of “frames” – data fragments, that can be sent from either side, and can be of several kinds:</p>
-<ul>
-<li>“text frames” – contain text data that parties send to each other.</li>
-<li>“binary data frames” – contain binary data that parties send to each other.</li>
-<li>“ping&#x2F;pong frames” are used to check the connection, sent from the server, the browser responds to these automatically.</li>
-<li>there’s also “connection close frame” and a few other service frames.<br>In the browser, we directly work only with text or binary frames.</li>
-</ul>
-<p><em>WebSocket .send()</em> method can send either text or binary data.</p>
-<p>A call <em>socket.send(body)</em> allows body in string or a binary format, including Blob, ArrayBuffer, etc. No settings required: just send it out in any format.</p>
-<p>When we receive the data, text always comes as string. And for binary data, we can choose between Blob and ArrayBuffer formats.</p>
-<p>That’s set by <em>socket.binaryType</em> property, it’s “blob” by default, so binary data comes as Blob objects.</p>
-<p>Blob is a high-level binary object, it directly integrates with <a>, <img> and other tags, so that’s a sane default. But for binary processing, to access individual data bytes, we can change it to “arraybuffer”:</a></p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  ws.binaryType &#x3D; &quot;arraybuffer&quot;;</span><br><span class="line">  ws.onmessage &#x3D; (event) &#x3D;&gt; &#123;</span><br><span class="line">  &#x2F;&#x2F; event.data is either a string (if text) or arraybuffer (if binary)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>websocket</category>
-      </categories>
-  </entry>
-  <entry>
     <title>你真的会用Gson吗?Gson使用指南（一）</title>
     <url>/2021/12/23/%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BC%9A%E7%94%A8Gson%E5%90%97-Gson%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%EF%BC%88%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<p><strong><a href="https://www.jianshu.com/p/e740196225a4" target="_blank" rel="noopener">你真的会用Gson吗?Gson使用指南（一）</a></strong>&amp;nbsp;&amp;nbsp;<strong><a href="https://blog.csdn.net/majalis_c/article/details/79801863?utm_term=gsonjsonobject%E8%BD%ACstring&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-0-79801863&spm=3001.4430" target="_blank" rel="noopener">Gson基本操作，JsonObject，JsonArray，String，JavaBean，List互转</a></strong></p>
@@ -3121,12 +3174,32 @@
 ]]></content>
   </entry>
   <entry>
-    <title>巧记linux常用命令中的递归参数-r(R)和-p</title>
-    <url>/2021/03/09/%E5%B7%A7%E8%AE%B0linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B8%AD%E7%9A%84%E9%80%92%E5%BD%92%E5%8F%82%E6%95%B0-r-R-%E5%92%8C-p/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/longyamiao/article/details/79782254" target="_blank" rel="noopener">巧记linux常用命令中的递归参数-r(R)和-p</a></p>
+    <title>websocket data transfer</title>
+    <url>/1970/01/01/websocket-data-transfer/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>websocket message type： text or binary byte. And for binary data, we can choose between Blob and ArrayBuffer formats.</p>
+<a id="more"></a>
+<h3 id="Receiving-Text-and-Binary-Data"><a href="#Receiving-Text-and-Binary-Data" class="headerlink" title="Receiving Text and Binary Data"></a>Receiving Text and Binary Data</h3><p><strong>参考：<a href="https://www.oreilly.com/library/view/high-performance-browser/9781449344757/ch17.html" target="_blank" rel="noopener">websocket receiving Text and Binary Data</a></strong></p>
+<p>WebSocket communication consists of messages and application code and does not need to worry about buffering, parsing, and reconstructing received data. For example, if the server sends a 1 MB payload, the application’s onmessage callback will be called only when the entire message is available on the client.</p>
+<p>Further, the WebSocket protocol makes no assumptions and places no constraints on the application payload: both text and binary data are fair game. Internally, the protocol tracks only two pieces of information about the message: the length of payload as a variable-length field and the type of payload to distinguish UTF-8 from binary transfers.</p>
+<p>When a new message is received by the browser, it is automatically converted to a DOMString object for text-based data, or a Blob object for binary data, and then passed directly to the application. The only other option, which acts as performance hint and optimization for the client, is to tell the browser to convert the received binary data to an ArrayBuffer instead of Blob:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var ws &#x3D; new WebSocket(&#39;wss:&#x2F;&#x2F;example.com&#x2F;socket&#39;);</span><br><span class="line">ws.binaryType &#x3D; &quot;arraybuffer&quot;; 1</span><br><span class="line"></span><br><span class="line">ws.onmessage &#x3D; function(msg) &#123;</span><br><span class="line">  if(msg.data instanceof ArrayBuffer) &#123;</span><br><span class="line">    processArrayBuffer(msg.data);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    processText(msg.data);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Data-transfer"><a href="#Data-transfer" class="headerlink" title="Data transfer"></a>Data transfer</h3><p><strong>参考：<a href="https://javascript.info/websocket#data-transfer" target="_blank" rel="noopener">websocket data transfer</a></strong></p>
+<p>WebSocket communication consists of “frames” – data fragments, that can be sent from either side, and can be of several kinds:</p>
+<ul>
+<li>“text frames” – contain text data that parties send to each other.</li>
+<li>“binary data frames” – contain binary data that parties send to each other.</li>
+<li>“ping&#x2F;pong frames” are used to check the connection, sent from the server, the browser responds to these automatically.</li>
+<li>there’s also “connection close frame” and a few other service frames.<br>In the browser, we directly work only with text or binary frames.</li>
+</ul>
+<p><em>WebSocket .send()</em> method can send either text or binary data.</p>
+<p>A call <em>socket.send(body)</em> allows body in string or a binary format, including Blob, ArrayBuffer, etc. No settings required: just send it out in any format.</p>
+<p>When we receive the data, text always comes as string. And for binary data, we can choose between Blob and ArrayBuffer formats.</p>
+<p>That’s set by <em>socket.binaryType</em> property, it’s “blob” by default, so binary data comes as Blob objects.</p>
+<p>Blob is a high-level binary object, it directly integrates with <a>, <img> and other tags, so that’s a sane default. But for binary processing, to access individual data bytes, we can change it to “arraybuffer”:</a></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  ws.binaryType &#x3D; &quot;arraybuffer&quot;;</span><br><span class="line">  ws.onmessage &#x3D; (event) &#x3D;&gt; &#123;</span><br><span class="line">  &#x2F;&#x2F; event.data is either a string (if text) or arraybuffer (if binary)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>linux</category>
+        <category>websocket</category>
       </categories>
   </entry>
   <entry>
@@ -3142,15 +3215,24 @@
 ]]></content>
   </entry>
   <entry>
-    <title>网络抓包常用命令</title>
-    <url>/2022/05/04/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<p><a href="https://plantegg.github.io/2022/01/01/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" target="_blank" rel="noopener">网络抓包常用命令</a></p>
+    <title>巧记linux常用命令中的递归参数-r(R)和-p</title>
+    <url>/2021/03/09/%E5%B7%A7%E8%AE%B0linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E4%B8%AD%E7%9A%84%E9%80%92%E5%BD%92%E5%8F%82%E6%95%B0-r-R-%E5%92%8C-p/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/longyamiao/article/details/79782254" target="_blank" rel="noopener">巧记linux常用命令中的递归参数-r(R)和-p</a></p>
 ]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
   </entry>
   <entry>
     <title>查找算法</title>
     <url>/2021/02/23/%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<p><a href="https://www.cnblogs.com/yw09041432/p/5908444.html" target="_blank" rel="noopener">七大查找算法</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>网络抓包常用命令</title>
+    <url>/2022/05/04/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<p><a href="https://plantegg.github.io/2022/01/01/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" target="_blank" rel="noopener">网络抓包常用命令</a></p>
 ]]></content>
   </entry>
   <entry>
