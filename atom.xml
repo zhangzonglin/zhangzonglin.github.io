@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglinagain.xyz/"/>
-  <updated>2023-02-18T14:03:58.638Z</updated>
+  <updated>2023-02-18T19:46:56.972Z</updated>
   <id>http://blog.zhangzonglinagain.xyz/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>webflux mysql</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2023/02/19/webflux-mysql/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2023/02/19/webflux-mysql/</id>
+    <published>2023-02-18T19:39:53.000Z</published>
+    <updated>2023-02-18T19:46:56.972Z</updated>
+    
+    <content type="html"><![CDATA[<p>在熟悉webflux，看看跟vertx的区别，配置数据库的时候，发现项目跑不起来</p><a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">***************************</span><br><span class="line">APPLICATION FAILED TO START</span><br><span class="line">***************************</span><br><span class="line"></span><br><span class="line">Description:</span><br><span class="line"></span><br><span class="line">R2DBC connection pooling configuration should be provided by either the spring.r2dbc.pool.* properties or the spring.r2dbc.url property but both have been used.</span><br><span class="line"></span><br><span class="line">Action:</span><br><span class="line"></span><br><span class="line">Update your configuration so that R2DBC connection pooling is configured using either the spring.r2dbc.url property or the spring.r2dbc.pool.* properties</span><br></pre></td></tr></table></figure><p>application.properties如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">server.port&#x3D;8088</span><br><span class="line"></span><br><span class="line">#USE MYSQL</span><br><span class="line">spring.r2dbc.url&#x3D;r2dbc:pool:mysql:&#x2F;&#x2F;localhost:3306&#x2F;dev?useSSL&#x3D;false</span><br><span class="line">spring.r2dbc.username&#x3D;root</span><br><span class="line">spring.r2dbc.password&#x3D;12345678</span><br><span class="line">spring.r2dbc.pool.enabled&#x3D;true</span><br><span class="line">spring.r2dbc.pool.initial-size&#x3D;5</span><br><span class="line">spring.r2dbc.pool.max-size&#x3D;20</span><br><span class="line">spring.r2dbc.pool.max-idle-time&#x3D;30m</span><br><span class="line">spring.r2dbc.pool.validation-query&#x3D;SELECT 1</span><br><span class="line"></span><br><span class="line">#logging.level.org.springframework.data.r2dbc&#x3D;DEBUG</span><br><span class="line">logging.level.org.springframework&#x3D;DEBUG</span><br></pre></td></tr></table></figure><p>后面发现把spring.r2dbc.pool…注释掉就跑起来了，原来是spring.r2dbc.url&#x3D;r2dbc:pool:mysql:&#x2F;&#x2F;localhost:3306&#x2F;dev?useSSL&#x3D;false中已经有了pool的配置，把url里的pool去掉，下面pool的配置不动就可以了，记录一下这个错误。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在熟悉webflux，看看跟vertx的区别，配置数据库的时候，发现项目跑不起来&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>ubuntu20.04 mysql change data directory</title>
@@ -422,29 +441,6 @@
       <category term="move" scheme="http://blog.zhangzonglinagain.xyz/tags/move/"/>
     
       <category term="copy" scheme="http://blog.zhangzonglinagain.xyz/tags/copy/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Rust引用</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2022/03/17/Rust%E5%BC%95%E7%94%A8/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2022/03/17/Rust%E5%BC%95%E7%94%A8/</id>
-    <published>2022-03-16T17:07:00.000Z</published>
-    <updated>2022-03-16T17:14:47.643Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch3/07_reference_type.html" target="_blank" rel="noopener">Rust中的引用</a></p><a id="more"></a><h3 id="解引用"><a href="#解引用" class="headerlink" title="解引用"></a>解引用</h3><p>Rust绝大多数时候不会自动地解除引用。但在某些环境下，Rust会自动进行解引用。</p><p>自动解引用的情况有(结论先总结在此，混脸熟，以后涉及到时再来)：</p><ol><li><p>使用.操作符时(包括取属性值和方法调用)，会隐式地尽可能解除或创建多层引用</p></li><li><p>使用比较操作符时，若比较的两边是相同类型的引用，则会自动解除引用到它们的值然后比较<br>对于(1)，Rust会自动分析func()的参数，并在需要的时候自动创建或自动解除引用。例如以abc.func()有可能会自动转换为&amp;abc.func()，反之，&amp;abc.func()也有可能会自动转换为abc.func()。</p></li></ol><p>对于(2)，例如有引用类型的变量n，那么n &gt; &amp;30和*n &gt; 30的效果是一样的。</p><p>————————————————《rust入门秘籍》</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;https://rust-book.junmajinlong.com/ch3/07_reference_type.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Rust中的引用&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="rust" scheme="http://blog.zhangzonglinagain.xyz/categories/rust/"/>
-    
-    
-      <category term="references" scheme="http://blog.zhangzonglinagain.xyz/tags/references/"/>
     
   </entry>
   

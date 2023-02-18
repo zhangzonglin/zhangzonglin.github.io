@@ -48,17 +48,19 @@
   };
 </script>
 
-  <meta name="description" content="哥哥姐姐的梦">
-<meta property="og:type" content="website">
-<meta property="og:title" content="1.5L的喜欢">
-<meta property="og:url" content="http://blog.zhangzonglinagain.xyz/categories/vertx/index.html">
+  <meta name="description" content="在熟悉webflux，看看跟vertx的区别，配置数据库的时候，发现项目跑不起来">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webflux mysql">
+<meta property="og:url" content="http://blog.zhangzonglinagain.xyz/2023/02/19/webflux-mysql/index.html">
 <meta property="og:site_name" content="1.5L的喜欢">
-<meta property="og:description" content="哥哥姐姐的梦">
+<meta property="og:description" content="在熟悉webflux，看看跟vertx的区别，配置数据库的时候，发现项目跑不起来">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-02-18T19:39:53.000Z">
+<meta property="article:modified_time" content="2023-02-18T19:46:56.972Z">
 <meta property="article:author" content="zzl">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://blog.zhangzonglinagain.xyz/categories/vertx/">
+<link rel="canonical" href="http://blog.zhangzonglinagain.xyz/2023/02/19/webflux-mysql/">
 
 
 <script id="page-configurations">
@@ -66,11 +68,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false
+    isPost: true
   };
 </script>
 
-  <title>分类: vertx | 1.5L的喜欢</title>
+  <title>webflux mysql | 1.5L的喜欢</title>
   <script src="/live2d-widget/autoload.js"></script>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-156237863-1"></script>
@@ -213,54 +215,133 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">vertx
-          <small>分类</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangzonglinagain.xyz/2023/02/19/webflux-mysql/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/lizi.png">
+      <meta itemprop="name" content="zzl">
+      <meta itemprop="description" content="哥哥姐姐的梦">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="1.5L的喜欢">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          webflux mysql
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-02-19 03:39:53 / 修改时间：03:46:56" itemprop="dateCreated datePublished" datetime="2023-02-19T03:39:53+08:00">2023-02-19</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2023/02/19/webflux-mysql/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/02/19/webflux-mysql/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2021</h1>
+        <p>在熟悉webflux，看看跟vertx的区别，配置数据库的时候，发现项目跑不起来</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">***************************</span><br><span class="line">APPLICATION FAILED TO START</span><br><span class="line">***************************</span><br><span class="line"></span><br><span class="line">Description:</span><br><span class="line"></span><br><span class="line">R2DBC connection pooling configuration should be provided by either the spring.r2dbc.pool.* properties or the spring.r2dbc.url property but both have been used.</span><br><span class="line"></span><br><span class="line">Action:</span><br><span class="line"></span><br><span class="line">Update your configuration so that R2DBC connection pooling is configured using either the spring.r2dbc.url property or the spring.r2dbc.pool.* properties</span><br></pre></td></tr></table></figure>
+<p>application.properties如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">server.port&#x3D;8088</span><br><span class="line"></span><br><span class="line">#USE MYSQL</span><br><span class="line">spring.r2dbc.url&#x3D;r2dbc:pool:mysql:&#x2F;&#x2F;localhost:3306&#x2F;dev?useSSL&#x3D;false</span><br><span class="line">spring.r2dbc.username&#x3D;root</span><br><span class="line">spring.r2dbc.password&#x3D;12345678</span><br><span class="line">spring.r2dbc.pool.enabled&#x3D;true</span><br><span class="line">spring.r2dbc.pool.initial-size&#x3D;5</span><br><span class="line">spring.r2dbc.pool.max-size&#x3D;20</span><br><span class="line">spring.r2dbc.pool.max-idle-time&#x3D;30m</span><br><span class="line">spring.r2dbc.pool.validation-query&#x3D;SELECT 1</span><br><span class="line"></span><br><span class="line">#logging.level.org.springframework.data.r2dbc&#x3D;DEBUG</span><br><span class="line">logging.level.org.springframework&#x3D;DEBUG</span><br></pre></td></tr></table></figure>
+<p>后面发现把spring.r2dbc.pool…注释掉就跑起来了，原来是spring.r2dbc.url&#x3D;r2dbc:pool:mysql:&#x2F;&#x2F;localhost:3306&#x2F;dev?useSSL&#x3D;false中已经有了pool的配置，把url里的pool去掉，下面pool的配置不动就可以了，记录一下这个错误。</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
+        
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-05-06T01:42:00+08:00"
-              content="2021-05-06">
-          05-06
-        </time>
-      </div>
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>zzl
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://blog.zhangzonglinagain.xyz/2023/02/19/webflux-mysql/" title="webflux mysql">http://blog.zhangzonglinagain.xyz/2023/02/19/webflux-mysql/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2021/05/06/build-vertx-app-with-gradle/" itemprop="url">
-            <span itemprop="name">vertx-plugin build vertx app with gradle</span>
-          </a>
-      </h2>
 
-    </header>
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/02/18/ubuntu20-04-install-mysql-and-change-data-dir/" rel="prev" title="ubuntu20.04 mysql change data directory">
+      <i class="fa fa-chevron-left"></i> ubuntu20.04 mysql change data directory
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
+  
+  
+  
 
-    </div>
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
