@@ -48,17 +48,21 @@
   };
 </script>
 
-  <meta name="description" content="哥哥姐姐的梦">
-<meta property="og:type" content="website">
-<meta property="og:title" content="1.5L的喜欢">
-<meta property="og:url" content="http://blog.zhangzonglinagain.xyz/tags/root/index.html">
+  <meta name="description" content="深入理解SpringMVC工作原理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringMVC工作原理">
+<meta property="og:url" content="http://blog.zhangzonglinagain.xyz/2023/02/19/SpringMVC%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/index.html">
 <meta property="og:site_name" content="1.5L的喜欢">
-<meta property="og:description" content="哥哥姐姐的梦">
+<meta property="og:description" content="深入理解SpringMVC工作原理">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.zhangzonglinagain.xyz/images/pasted-61.png">
+<meta property="article:published_time" content="2023-02-19T11:10:14.000Z">
+<meta property="article:modified_time" content="2023-02-19T11:13:18.761Z">
 <meta property="article:author" content="zzl">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.zhangzonglinagain.xyz/images/pasted-61.png">
 
-<link rel="canonical" href="http://blog.zhangzonglinagain.xyz/tags/root/">
+<link rel="canonical" href="http://blog.zhangzonglinagain.xyz/2023/02/19/SpringMVC%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/">
 
 
 <script id="page-configurations">
@@ -66,11 +70,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false
+    isPost: true
   };
 </script>
 
-  <title>标签: root | 1.5L的喜欢</title>
+  <title>SpringMVC工作原理 | 1.5L的喜欢</title>
   <script src="/live2d-widget/autoload.js"></script>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-156237863-1"></script>
@@ -213,54 +217,146 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">root
-          <small>标签</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.zhangzonglinagain.xyz/2023/02/19/SpringMVC%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/lizi.png">
+      <meta itemprop="name" content="zzl">
+      <meta itemprop="description" content="哥哥姐姐的梦">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="1.5L的喜欢">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SpringMVC工作原理
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-02-19 19:10:14 / 修改时间：19:13:18" itemprop="dateCreated datePublished" datetime="2023-02-19T19:10:14+08:00">2023-02-19</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2023/02/19/SpringMVC%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2023/02/19/SpringMVC%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>542</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2022</h1>
+        <p><a href="https://juejin.cn/post/7139807630024769549" target="_blank" rel="noopener">深入理解SpringMVC工作原理</a></p>
+<a id="more"></a>
+
+<p><img src="/images/pasted-61.png" alt="upload successful"></p>
+<blockquote>
+<ul>
+<li>用户发送请求至会先进入DispatcherServlet控制器进行相应处理。</li>
+<li>DispatcherServlet会调用HandlerMapping根据请求路径查找Handler。</li>
+<li>处理器映射器找到具体的处理器后，生成Handler对象及Handler拦截器（如果有则生成），然后返回给DispatcherServlet。</li>
+<li>DispatcherServlet紧接着会调用HandlerAdapter，准备执行Handler。</li>
+<li>HandlerAdapter底层会利用反射机制，对前面生成的Handler对象进行执行。</li>
+<li>执行完对应的Java方法后，HandlerAdapter会得到一个ModelAndView对象。</li>
+<li>HandlerAdapter将ModelAndView再返回给DispatcherServlet控制器。</li>
+<li>DisPatcherServlet再调用ViewReslover，并将ModelAndView传递给它。</li>
+<li>ViewReslover视图解析器开始解析ModelAndView并返回解析出的View视图。</li>
+<li>解析出View视图后，对视图进行数据渲染（即将模型数据填充至视图中）。</li>
+<li>DispatcherServlet最终将渲染好的View视图响应给用户浏览器。</li>
+</ul>
+</blockquote>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
+        
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-03-23T23:58:00+08:00"
-              content="2022-03-23">
-          03-23
-        </time>
-      </div>
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>zzl
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://blog.zhangzonglinagain.xyz/2023/02/19/SpringMVC%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/" title="SpringMVC工作原理">http://blog.zhangzonglinagain.xyz/2023/02/19/SpringMVC工作原理/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2022/03/23/nginx-conf-location-%E9%85%8D%E7%BD%AE/" itemprop="url">
-            <span itemprop="name">nginx conf location</span>
-          </a>
-      </h2>
 
-    </header>
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/02/19/ubuntu-miss-Setting/" rel="prev" title="ubuntu miss Settings">
+      <i class="fa fa-chevron-left"></i> ubuntu miss Settings
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
+  
+  
+  
 
-    </div>
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
