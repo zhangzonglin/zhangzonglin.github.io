@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Async/await</title>
+    <url>/2021/04/14/Async-await/</url>
+    <content><![CDATA[<p><a href="https://javascript.info/async-await" target="_blank" rel="noopener">Async&#x2F;await</a></p>
+]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
+  </entry>
+  <entry>
     <title>TCP/IP协议族的网络层基础（6）——NAT和NAPT</title>
     <url>/2020/03/27/CP-IP%E4%B9%8BNAT/</url>
     <content><![CDATA[<p>转载：**<a href="https://blog.csdn.net/lvyibin890/article/details/80206979" target="_blank" rel="noopener">TCP&#x2F;IP协议族的网络层基础（6）——NAT和NAPT</a>**。</p>
@@ -79,15 +88,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Async/await</title>
-    <url>/2021/04/14/Async-await/</url>
-    <content><![CDATA[<p><a href="https://javascript.info/async-await" target="_blank" rel="noopener">Async&#x2F;await</a></p>
-]]></content>
-      <categories>
-        <category>javascript</category>
-      </categories>
-  </entry>
-  <entry>
     <title>IOC的实现原理—反射与工厂模式(转载)</title>
     <url>/2020/03/03/C%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E2%80%94%E5%8F%8D%E5%B0%84%E4%B8%8E%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</url>
     <content><![CDATA[<h3 id="反射与工厂模式实现IOC"><a href="#反射与工厂模式实现IOC" class="headerlink" title="反射与工厂模式实现IOC"></a>反射与工厂模式实现IOC</h3><p>   &amp;emsp;Spring中的IoC的实现原理就是工厂模式加反射机制。 我们首先看一下不用反射机制时的工厂模式：<br>   <a id="more"></a></p>
@@ -111,6 +111,44 @@
 <p>&amp;emsp;4）IOC框架产品本身的成熟度需要进行评估，如果引入一个不成熟的IOC框架产品，那么会影响到整个项目，所以这也是一个隐性的风险。</p>
 <p>&amp;emsp;我们大体可以得出这样的结论：一些工作量不大的项目或者产品，不太适合使用IOC框架产品。另外，如果团队成员的知识能力欠缺，对于IOC框架产品缺乏深入的理解，也不要贸然引入。最后，特别强调运行效率的项目或者产品，也不太适合引入IOC框架产品，像WEB2.0网站就是这种情况。<br>————————————————<br>版权声明：本文为CSDN博主「fuzhongmin05」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br><a href="https://blog.csdn.net/fuzhongmin05/article/details/61614873" target="_blank" rel="noopener">原文链接</a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>H5页面在微信浏览器中通过网页授权获取用户信息(openid、昵称、头像等)</title>
+    <url>/2021/08/11/H5%E9%A1%B5%E9%9D%A2%E8%8E%B7%E5%8F%96%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E7%9A%84openid/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>需要做一个Vue前端项目，UI选择buefy（一个基于Bulma的vue轻量级组件），其中一个H5页面涉及到，如果是在微信浏览器中，需要在后台服务器自动注册以及登录，即需要通过网页授权来获取用户信息（openid、昵称、头像等)。这儿只涉及前端的工作…</p>
+<a id="more"></a>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>公众号准备：生产环境的微信公众号，需要按照官方文档（**<a href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html" target="_blank" rel="noopener">微信网页开发授权</a><strong>）设置。开发环境可以前往</strong><a href="https://link.segmentfault.com/?url=https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login" target="_blank" rel="noopener">微信公众平台</a>**申请测试号。</p>
+<p>注意：正式的公众号不需要关注，也可以通过网页授权获取用户信息，而测试号必须要关注！</p>
+<h3 id="微信授权流程"><a href="#微信授权流程" class="headerlink" title="微信授权流程"></a>微信授权流程</h3><p>详细流程见官方文档（**<a href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html" target="_blank" rel="noopener">微信网页开发授权</a>**）。</p>
+<p>具体而言，网页授权流程分为四步：</p>
+<ol>
+<li><p>引导用户进入授权页面同意授权，获取code</p>
+</li>
+<li><p>通过code换取网页授权access_token（与基础支持中的access_token不同）</p>
+</li>
+<li><p>如果需要，开发者可以刷新网页授权access_token，避免过期</p>
+</li>
+<li><p>通过网页授权access_token和openid获取用户基本信息（支持UnionID机制）</p>
+</li>
+</ol>
+<p>时序图如下：</p>
+<p><img src="/images/pasted-47.png" alt="upload successful"></p>
+<h3 id="授权code的获取"><a href="#授权code的获取" class="headerlink" title="授权code的获取"></a>授权code的获取</h3><p>以上是大概流程，这里主要分析用户统一授权后，获取code的两个路径：前端截取及后端获取。</p>
+<p>原理是：获取用户授权需要按照微信规定拼装链接，让用户点击访问，其中拼接的链接中有个redirect_uri参数(授权后重定向的回调链接地址)，微信服务器处理后会将redirect_uri拼接code等参数，浏览器会重定向该地址，也就形成了两个获取code的方法，前端在url截取code,后端也可以通过浏览器访问此链接获取code参数。</p>
+<p>示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const appid &#x3D; &quot;wx3b0e58d4d2dbea9q&quot;;  &#x2F;&#x2F;公众号后台获取</span><br><span class="line">const redirectUri &#x3D; encodeURIComponent(&quot;http:&#x2F;&#x2F;245691q6b5.zicp.vip&quot;)&#x2F;&#x2F;微信会带code码访问这个链接</span><br><span class="line">const url &#x3D; &#96;https:&#x2F;&#x2F;open.weixin.qq.com&#x2F;connect&#x2F;oauth2&#x2F;authorizeappid&#x3D;$&#123;appid&#125;&amp;redirect_uri&#x3D;$&#123;redirectUri&#125;&amp;response_type&#x3D;code&amp;scope&#x3D;snsapi_userinfo&amp;state&#x3D;STATE#wechat_redirect&#96;</span><br></pre></td></tr></table></figure>
+<h4 id="前端获取"><a href="#前端获取" class="headerlink" title="前端获取"></a>前端获取</h4><p>如果不是每次进入页面都要从微信获取code码时（用户信息），建议在前端获取，需要时才改变浏览器链接让用户访问链接获取授权，把code码传给后端获取用户信息。</p>
+<p>也可以参看此代码：**<a href="https://www.cnblogs.com/congfeicong/p/11125575.html" target="_blank" rel="noopener">H5页面获取微信公众号的openid</a>**，或者如下示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">const appid &#x3D; &quot;wx3b0e58d4d2dbea9q&quot;;  &#x2F;&#x2F;公众号后台获取</span><br><span class="line">const redirectUri &#x3D; encodeURIComponent(&quot;http:&#x2F;&#x2F;245691q6b5.zicp.vip&quot;)&#x2F;&#x2F;微信会带code码访问这个链接</span><br><span class="line"></span><br><span class="line">const url&#x3D;&#96;https:&#x2F;&#x2F;open.weixin.qq.com&#x2F;connect&#x2F;oauth2&#x2F;authorizeappid&#x3D;$&#123;appid&#125;&amp;redirect_uri&#x3D;$&#123;redirectUri&#125;&amp;response_type&#x3D;code&amp;scope&#x3D;snsapi_userinfo&amp;state&#x3D;STATE#wechat_redirect&#96;</span><br><span class="line"></span><br><span class="line">const querystring &#x3D; getQueryString()</span><br><span class="line">let code &#x3D; querystring.code;</span><br><span class="line"></span><br><span class="line">if(!code)&#123;</span><br><span class="line">    location.href &#x3D; url;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    https.get(&#39;http:&#x2F;&#x2F;127.0.0.1:3000&#x2F;auth&#39;,&#123;code&#125;).then(res &#x3D;&gt; &#123;</span><br><span class="line">      console.log(res)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function getQueryString() &#123;</span><br><span class="line">    const url &#x3D; location.search;</span><br><span class="line">    const rs &#x3D; &#123;&#125;</span><br><span class="line">    if(url.indexOf(&#39;?&#39;) &#x3D;&#x3D;&#x3D; 0)&#123;</span><br><span class="line">        const querystring &#x3D; url.substr(1);</span><br><span class="line">        const kvArr &#x3D; querystring.split(&#39;&amp;&#39;);</span><br><span class="line">        kvArr.forEach(item &#x3D;&gt; &#123;</span><br><span class="line">            const temp &#x3D; item.split(&#39;&#x3D;&#39;)</span><br><span class="line">            const key &#x3D; temp[0];</span><br><span class="line">            const val &#x3D; temp[1];</span><br><span class="line">            rs[key] &#x3D; val</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    return rs</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="后端获取"><a href="#后端获取" class="headerlink" title="后端获取"></a>后端获取</h4><p>如果每次都要获取code码，就让用户只要进入页面就访问接口链接，但这时的redirectUri要配置成后端接口的链接，也就是说微信会带着code码访问后端接口，后端直接获取code码。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;后端使用koa2</span><br><span class="line">&#x2F;&#x2F;Superagent时一个后端的http请求中间件</span><br><span class="line">router.get(&#39;&#x2F;auth&#39;, async (ctx, next) &#x3D;&gt; &#123;</span><br><span class="line">    code &#x3D; ctx.querystring.split(&#39;&amp;&#39;)[0].split(&#39;&#x3D;&#39;)[1];</span><br><span class="line">    &#x2F;&#x2F; 使用code获取openid和access_token </span><br><span class="line">    await Superagent</span><br><span class="line">        .get(&#96;https:&#x2F;&#x2F;api.weixin.qq.com&#x2F;sns&#x2F;oauth2&#x2F;access_token?appid&#x3D;$&#123;appid&#125;&amp;secret&#x3D;$&#123;appsecret&#125;&amp;code&#x3D;$&#123;code&#125;&amp;grant_type&#x3D;authorization_code&#96;)</span><br><span class="line">        .then(res &#x3D;&gt; &#123;</span><br><span class="line">            let result &#x3D; JSON.parse(res.text)</span><br><span class="line">            access_token &#x3D; result.access_token</span><br><span class="line">            openid &#x3D; result.openid</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 使用ACCESS_TOKEN和openid获取userinfo</span><br><span class="line">    await Superagent</span><br><span class="line">        .get(&#96;https:&#x2F;&#x2F;api.weixin.qq.com&#x2F;sns&#x2F;userinfo?access_token&#x3D;$&#123;access_token&#125;&amp;openid&#x3D;$&#123;openid&#125;&amp;lang&#x3D;zh_CN&#96;)</span><br><span class="line">        .then(res &#x3D;&gt; &#123;</span><br><span class="line">            &#x2F;&#x2F;userinfo返回给前端</span><br><span class="line">            userinfo &#x3D; JSON.parse(res.text)</span><br><span class="line">            ctx.body &#x3D; res.text</span><br><span class="line">        &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>微信公众号</tag>
+      </tags>
   </entry>
   <entry>
     <title>Filter和Interceptor的比较</title>
@@ -166,42 +204,10 @@
 ]]></content>
   </entry>
   <entry>
-    <title>H5页面在微信浏览器中通过网页授权获取用户信息(openid、昵称、头像等)</title>
-    <url>/2021/08/11/H5%E9%A1%B5%E9%9D%A2%E8%8E%B7%E5%8F%96%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E7%9A%84openid/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>需要做一个Vue前端项目，UI选择buefy（一个基于Bulma的vue轻量级组件），其中一个H5页面涉及到，如果是在微信浏览器中，需要在后台服务器自动注册以及登录，即需要通过网页授权来获取用户信息（openid、昵称、头像等)。这儿只涉及前端的工作…</p>
-<a id="more"></a>
-<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>公众号准备：生产环境的微信公众号，需要按照官方文档（**<a href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html" target="_blank" rel="noopener">微信网页开发授权</a><strong>）设置。开发环境可以前往</strong><a href="https://link.segmentfault.com/?url=https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login" target="_blank" rel="noopener">微信公众平台</a>**申请测试号。</p>
-<p>注意：正式的公众号不需要关注，也可以通过网页授权获取用户信息，而测试号必须要关注！</p>
-<h3 id="微信授权流程"><a href="#微信授权流程" class="headerlink" title="微信授权流程"></a>微信授权流程</h3><p>详细流程见官方文档（**<a href="https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html" target="_blank" rel="noopener">微信网页开发授权</a>**）。</p>
-<p>具体而言，网页授权流程分为四步：</p>
-<ol>
-<li><p>引导用户进入授权页面同意授权，获取code</p>
-</li>
-<li><p>通过code换取网页授权access_token（与基础支持中的access_token不同）</p>
-</li>
-<li><p>如果需要，开发者可以刷新网页授权access_token，避免过期</p>
-</li>
-<li><p>通过网页授权access_token和openid获取用户基本信息（支持UnionID机制）</p>
-</li>
-</ol>
-<p>时序图如下：</p>
-<p><img src="/images/pasted-47.png" alt="upload successful"></p>
-<h3 id="授权code的获取"><a href="#授权code的获取" class="headerlink" title="授权code的获取"></a>授权code的获取</h3><p>以上是大概流程，这里主要分析用户统一授权后，获取code的两个路径：前端截取及后端获取。</p>
-<p>原理是：获取用户授权需要按照微信规定拼装链接，让用户点击访问，其中拼接的链接中有个redirect_uri参数(授权后重定向的回调链接地址)，微信服务器处理后会将redirect_uri拼接code等参数，浏览器会重定向该地址，也就形成了两个获取code的方法，前端在url截取code,后端也可以通过浏览器访问此链接获取code参数。</p>
-<p>示例如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const appid &#x3D; &quot;wx3b0e58d4d2dbea9q&quot;;  &#x2F;&#x2F;公众号后台获取</span><br><span class="line">const redirectUri &#x3D; encodeURIComponent(&quot;http:&#x2F;&#x2F;245691q6b5.zicp.vip&quot;)&#x2F;&#x2F;微信会带code码访问这个链接</span><br><span class="line">const url &#x3D; &#96;https:&#x2F;&#x2F;open.weixin.qq.com&#x2F;connect&#x2F;oauth2&#x2F;authorizeappid&#x3D;$&#123;appid&#125;&amp;redirect_uri&#x3D;$&#123;redirectUri&#125;&amp;response_type&#x3D;code&amp;scope&#x3D;snsapi_userinfo&amp;state&#x3D;STATE#wechat_redirect&#96;</span><br></pre></td></tr></table></figure>
-<h4 id="前端获取"><a href="#前端获取" class="headerlink" title="前端获取"></a>前端获取</h4><p>如果不是每次进入页面都要从微信获取code码时（用户信息），建议在前端获取，需要时才改变浏览器链接让用户访问链接获取授权，把code码传给后端获取用户信息。</p>
-<p>也可以参看此代码：**<a href="https://www.cnblogs.com/congfeicong/p/11125575.html" target="_blank" rel="noopener">H5页面获取微信公众号的openid</a>**，或者如下示例：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">const appid &#x3D; &quot;wx3b0e58d4d2dbea9q&quot;;  &#x2F;&#x2F;公众号后台获取</span><br><span class="line">const redirectUri &#x3D; encodeURIComponent(&quot;http:&#x2F;&#x2F;245691q6b5.zicp.vip&quot;)&#x2F;&#x2F;微信会带code码访问这个链接</span><br><span class="line"></span><br><span class="line">const url&#x3D;&#96;https:&#x2F;&#x2F;open.weixin.qq.com&#x2F;connect&#x2F;oauth2&#x2F;authorizeappid&#x3D;$&#123;appid&#125;&amp;redirect_uri&#x3D;$&#123;redirectUri&#125;&amp;response_type&#x3D;code&amp;scope&#x3D;snsapi_userinfo&amp;state&#x3D;STATE#wechat_redirect&#96;</span><br><span class="line"></span><br><span class="line">const querystring &#x3D; getQueryString()</span><br><span class="line">let code &#x3D; querystring.code;</span><br><span class="line"></span><br><span class="line">if(!code)&#123;</span><br><span class="line">    location.href &#x3D; url;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    https.get(&#39;http:&#x2F;&#x2F;127.0.0.1:3000&#x2F;auth&#39;,&#123;code&#125;).then(res &#x3D;&gt; &#123;</span><br><span class="line">      console.log(res)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function getQueryString() &#123;</span><br><span class="line">    const url &#x3D; location.search;</span><br><span class="line">    const rs &#x3D; &#123;&#125;</span><br><span class="line">    if(url.indexOf(&#39;?&#39;) &#x3D;&#x3D;&#x3D; 0)&#123;</span><br><span class="line">        const querystring &#x3D; url.substr(1);</span><br><span class="line">        const kvArr &#x3D; querystring.split(&#39;&amp;&#39;);</span><br><span class="line">        kvArr.forEach(item &#x3D;&gt; &#123;</span><br><span class="line">            const temp &#x3D; item.split(&#39;&#x3D;&#39;)</span><br><span class="line">            const key &#x3D; temp[0];</span><br><span class="line">            const val &#x3D; temp[1];</span><br><span class="line">            rs[key] &#x3D; val</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    return rs</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="后端获取"><a href="#后端获取" class="headerlink" title="后端获取"></a>后端获取</h4><p>如果每次都要获取code码，就让用户只要进入页面就访问接口链接，但这时的redirectUri要配置成后端接口的链接，也就是说微信会带着code码访问后端接口，后端直接获取code码。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;后端使用koa2</span><br><span class="line">&#x2F;&#x2F;Superagent时一个后端的http请求中间件</span><br><span class="line">router.get(&#39;&#x2F;auth&#39;, async (ctx, next) &#x3D;&gt; &#123;</span><br><span class="line">    code &#x3D; ctx.querystring.split(&#39;&amp;&#39;)[0].split(&#39;&#x3D;&#39;)[1];</span><br><span class="line">    &#x2F;&#x2F; 使用code获取openid和access_token </span><br><span class="line">    await Superagent</span><br><span class="line">        .get(&#96;https:&#x2F;&#x2F;api.weixin.qq.com&#x2F;sns&#x2F;oauth2&#x2F;access_token?appid&#x3D;$&#123;appid&#125;&amp;secret&#x3D;$&#123;appsecret&#125;&amp;code&#x3D;$&#123;code&#125;&amp;grant_type&#x3D;authorization_code&#96;)</span><br><span class="line">        .then(res &#x3D;&gt; &#123;</span><br><span class="line">            let result &#x3D; JSON.parse(res.text)</span><br><span class="line">            access_token &#x3D; result.access_token</span><br><span class="line">            openid &#x3D; result.openid</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 使用ACCESS_TOKEN和openid获取userinfo</span><br><span class="line">    await Superagent</span><br><span class="line">        .get(&#96;https:&#x2F;&#x2F;api.weixin.qq.com&#x2F;sns&#x2F;userinfo?access_token&#x3D;$&#123;access_token&#125;&amp;openid&#x3D;$&#123;openid&#125;&amp;lang&#x3D;zh_CN&#96;)</span><br><span class="line">        .then(res &#x3D;&gt; &#123;</span><br><span class="line">            &#x2F;&#x2F;userinfo返回给前端</span><br><span class="line">            userinfo &#x3D; JSON.parse(res.text)</span><br><span class="line">            ctx.body &#x3D; res.text</span><br><span class="line">        &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+    <title>IDEA中的后缀补全</title>
+    <url>/2022/04/24/IDEA%E4%B8%AD%E7%9A%84%E5%90%8E%E7%BC%80%E8%A1%A5%E5%85%A8/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/correlate/article/details/109578810" target="_blank" rel="noopener">IDEA中的后缀补全</a></p>
 ]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>微信公众号</tag>
-      </tags>
   </entry>
   <entry>
     <title>IntelliJ IDEA激活</title>
@@ -224,15 +230,9 @@
       </tags>
   </entry>
   <entry>
-    <title>IDEA中的后缀补全</title>
-    <url>/2022/04/24/IDEA%E4%B8%AD%E7%9A%84%E5%90%8E%E7%BC%80%E8%A1%A5%E5%85%A8/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/correlate/article/details/109578810" target="_blank" rel="noopener">IDEA中的后缀补全</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Spring中@Import的各种用法以及ImportAware接口</title>
-    <url>/2022/05/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B9%8Bsynchronized%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[<p><a href="https://www.jianshu.com/p/640a339474fb" target="_blank" rel="noopener">Spring中@Import的各种用法以及ImportAware接口</a></p>
+    <title>Java 内部类详解</title>
+    <url>/2022/05/15/Java-%E5%86%85%E9%83%A8%E7%B1%BB%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<p><a href="https://www.runoob.com/w3cnote/java-inner-class-intro.html" target="_blank" rel="noopener">Java 内部类详解</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -242,33 +242,15 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Java 内部类详解</title>
-    <url>/2022/05/15/Java-%E5%86%85%E9%83%A8%E7%B1%BB%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[<p><a href="https://www.runoob.com/w3cnote/java-inner-class-intro.html" target="_blank" rel="noopener">Java 内部类详解</a></p>
+    <title>Spring中@Import的各种用法以及ImportAware接口</title>
+    <url>/2022/05/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B9%8Bsynchronized%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<p><a href="https://www.jianshu.com/p/640a339474fb" target="_blank" rel="noopener">Spring中@Import的各种用法以及ImportAware接口</a></p>
 ]]></content>
   </entry>
   <entry>
     <title>Java泛型详解：&lt;T&gt;和Class&lt;T&gt;的使用。泛型类，泛型方法的详细使用实例 </title>
     <url>/2021/12/17/Java%E6%B3%9B%E5%9E%8B%E8%AF%A6%E8%A7%A3%EF%BC%9A-T-%E5%92%8CClass-T-%E7%9A%84%E4%BD%BF%E7%94%A8%E3%80%82%E6%B3%9B%E5%9E%8B%E7%B1%BB%EF%BC%8C%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95%E7%9A%84%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B/</url>
     <content><![CDATA[<p><a href="https://www.cnblogs.com/jpfss/p/9928747.html" target="_blank" rel="noopener">Java泛型详解：<T>和Class<T>的使用。泛型类，泛型方法的详细使用实例 </T></T></a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>@PostConstruct注解原理解析</title>
-    <url>/2021/11/16/PostConstruct%E6%B3%A8%E8%A7%A3%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/lay2017/p/11735802.html" target="_blank" rel="noopener">@PostConstruct注解原理解析</a></p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>PostConstruct</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Nacos</title>
-    <url>/2022/04/01/Nacos/</url>
-    <content><![CDATA[<p>Nacos(Dynamic Naming and Configuration Service)，Na为naming&#x2F;nameServer即注册中心,co为configuration即配置中心，service是指该注册&#x2F;配置中心都是以服务为核心。操作起来比eureka简单且功能强大。<br><strong><a href="https://nacos.io/zh-cn/docs/quick-start-spring-cloud.html" target="_blank" rel="noopener">Nacos Spring Cloud 快速开始</a><strong>、</strong><a href="https://www.jianshu.com/p/39ade28c150d" target="_blank" rel="noopener">什么是Nacos？Nacos注册配置中心介绍</a></strong></p>
 ]]></content>
   </entry>
   <entry>
@@ -284,27 +266,21 @@
       </categories>
   </entry>
   <entry>
-    <title>Rust引用</title>
-    <url>/2022/03/17/Rust%E5%BC%95%E7%94%A8/</url>
-    <content><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch3/07_reference_type.html" target="_blank" rel="noopener">Rust中的引用</a></p>
-<a id="more"></a>
-
-<h3 id="解引用"><a href="#解引用" class="headerlink" title="解引用"></a>解引用</h3><p>Rust绝大多数时候不会自动地解除引用。但在某些环境下，Rust会自动进行解引用。</p>
-<p>自动解引用的情况有(结论先总结在此，混脸熟，以后涉及到时再来)：</p>
-<ol>
-<li><p>使用.操作符时(包括取属性值和方法调用)，会隐式地尽可能解除或创建多层引用</p>
-</li>
-<li><p>使用比较操作符时，若比较的两边是相同类型的引用，则会自动解除引用到它们的值然后比较<br>对于(1)，Rust会自动分析func()的参数，并在需要的时候自动创建或自动解除引用。例如以abc.func()有可能会自动转换为&amp;abc.func()，反之，&amp;abc.func()也有可能会自动转换为abc.func()。</p>
-</li>
-</ol>
-<p>对于(2)，例如有引用类型的变量n，那么n &gt; &amp;30和*n &gt; 30的效果是一样的。</p>
-<p>————————————————《rust入门秘籍》</p>
+    <title>Nacos</title>
+    <url>/2022/04/01/Nacos/</url>
+    <content><![CDATA[<p>Nacos(Dynamic Naming and Configuration Service)，Na为naming&#x2F;nameServer即注册中心,co为configuration即配置中心，service是指该注册&#x2F;配置中心都是以服务为核心。操作起来比eureka简单且功能强大。<br><strong><a href="https://nacos.io/zh-cn/docs/quick-start-spring-cloud.html" target="_blank" rel="noopener">Nacos Spring Cloud 快速开始</a><strong>、</strong><a href="https://www.jianshu.com/p/39ade28c150d" target="_blank" rel="noopener">什么是Nacos？Nacos注册配置中心介绍</a></strong></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>@PostConstruct注解原理解析</title>
+    <url>/2021/11/16/PostConstruct%E6%B3%A8%E8%A7%A3%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/lay2017/p/11735802.html" target="_blank" rel="noopener">@PostConstruct注解原理解析</a></p>
 ]]></content>
       <categories>
-        <category>rust</category>
+        <category>java</category>
       </categories>
       <tags>
-        <tag>references</tag>
+        <tag>PostConstruct</tag>
       </tags>
   </entry>
   <entry>
@@ -326,79 +302,6 @@
       <categories>
         <category>java</category>
       </categories>
-  </entry>
-  <entry>
-    <title>SQL语句的执行顺序</title>
-    <url>/2022/12/07/SQL%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/</url>
-    <content><![CDATA[<p>Logical Query Processing Phases in Brief—《Microsoft SQL Server 2008技术内幕T-SQL语言基础.pdf》p27</p>
-<a id="more"></a>
-
-<h3 id="FROM"><a href="#FROM" class="headerlink" title="FROM"></a>FROM</h3><p>  The FROM phase identifi es the query’s source tables and processes table operators. Each table operator applies a series of subphases. For example, the phases involved in a join are (1-J1) Cartesian Product, (1-J2) ON Filter, (1-J3) Add Outer Rows. The FROM phase generates virtual table VT1. </p>
-<h4 id="Cartesian-Product"><a href="#Cartesian-Product" class="headerlink" title="Cartesian Product"></a><em>Cartesian Product</em></h4><p>This phase performs a Cartesian product (cross join) between the two tables involved in the table operator, generating VT1-J1. </p>
-<h4 id="ON-Filter"><a href="#ON-Filter" class="headerlink" title="ON Filter"></a><em>ON Filter</em></h4><p>This phase fi lters the rows from VT1-J1 based on the predicate that appears in the ON clause (<on_predicate>). Only rows for which the predicate evaluates to TRUE are inserted into VT1-J2.</on_predicate></p>
-<h4 id="Add-Outer-Rows"><a href="#Add-Outer-Rows" class="headerlink" title="Add Outer Rows"></a><em>Add Outer Rows</em></h4><p>If OUTER JOIN is specifi ed (as opposed to CROSS JOIN or INNER JOIN), rows from the preserved table or tables for which a match was not found are added to the rows from VT1-J2 as outer rows, generating VT1-J3.</p>
-<p><img src="/images/pasted-59.png" alt="upload successful"></p>
-<h3 id="WHERE"><a href="#WHERE" class="headerlink" title="WHERE"></a>WHERE</h3><p>This phase fi lters the rows from VT1 based on the predicate that appears in the WHERE clause (<where_predicate>). Only rows for which the predicate evaluates to TRUE are inserted into VT2. </where_predicate></p>
-<h3 id="GROUP-BY"><a href="#GROUP-BY" class="headerlink" title="GROUP BY"></a>GROUP BY</h3><p>This phase arranges the rows from VT2 in groups based on the column list specifi ed in the GROUP BY clause, generating VT3. Ultimately, there will be one result row per group. </p>
-<h3 id="HAVING"><a href="#HAVING" class="headerlink" title="HAVING"></a>HAVING</h3><p>This phase fi lters the groups from VT3 based on the predicate that appears in the HAVING clause (<having_predicate>). Only groups for which the predicate evaluates to TRUE are inserted into VT4. </having_predicate></p>
-<h3 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h3><p>This phase processes the elements in the SELECT clause, generating VT5. </p>
-<h4 id="Evaluate-Expressions"><a href="#Evaluate-Expressions" class="headerlink" title="Evaluate Expressions"></a><em>Evaluate Expressions</em></h4><p>This phase evaluates the expressions in the SELECT list, generating VT5-1. </p>
-<h4 id="DISTINCT"><a href="#DISTINCT" class="headerlink" title="DISTINCT"></a><em>DISTINCT</em></h4><p>This phase removes duplicate rows from VT5-1, generating VT5-2. </p>
-<h4 id="TOP"><a href="#TOP" class="headerlink" title="TOP"></a><em>TOP</em></h4><p>This phase fi lters the specifi ed top number or percentage of rows from VT5-2 based on the logical ordering defi ned by the ORDER BY clause, generating the table VT5-3. </p>
-<h3 id="ORDER-BY"><a href="#ORDER-BY" class="headerlink" title="ORDER BY"></a>ORDER BY</h3><p>This phase sorts the rows from VT5-3 according to the column list specifi ed in the ORDER BY clause, generating the cursor VC6.</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Shell脚本检测Nginx服务状态</title>
-    <url>/1970/01/01/Shell%E8%84%9A%E6%9C%AC%E6%A3%80%E6%B5%8BNginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A&#x3D;&#96;ps -C nginx --no-header |wc -l&#96;</span><br><span class="line">if [ $A -eq 0 ];then</span><br><span class="line">    service nginx start</span><br><span class="line">    sleep 2</span><br><span class="line">    if [ &#96;ps -C nginx --no-header |wc -l&#96; -eq 0 ];then</span><br><span class="line">        killall keepalived</span><br><span class="line">    fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-
-<h3 id="脚本解析"><a href="#脚本解析" class="headerlink" title="脚本解析"></a>脚本解析</h3><p>以上是通过进程判断，也可以通过端口判断，如netstat -nlpt | grep nginx</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# netstat -nlpt | grep nginx</span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      8801&#x2F;nginx: master</span><br></pre></td></tr></table></figure>
-
-<p>以下，以进程为例详解，ps -C nginx –no-header<br>这里涉及ps 的用法，我们一般用ps查看相关进程，一般都是用ps -ef | grep XX 或 ps -aux| grep XX 的模式<br>如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br><span class="line">root     11660  5532  0 09:55 pts&#x2F;1    00:00:00 grep --color&#x3D;auto nginx</span><br></pre></td></tr></table></figure>
-<p>但是这样通常都会覆盖一个grep的进程。</p>
-<p>我们可以用ps -ef|grep nginx|grep -v grep的方式排除grep的进程，如</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# ps -ef|grep nginx|grep -v grep</span><br><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br></pre></td></tr></table></figure>
-
-<p>也可以直接用ps -C 或ps -c 的方式， -C 后面接命令的名字（推荐） ，如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx</span><br><span class="line">   PID TTY          TIME CMD</span><br><span class="line">  8801 ?        00:00:00 nginx</span><br><span class="line">  8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
-<p>–no-header 就是去挑title,如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx --no-header</span><br><span class="line"> 8801 ?        00:00:00 nginx</span><br><span class="line"> 8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
-<p>wc -l 这个很熟悉了，行数计算</p>
-<p>所以用这种方式可判断，如果<br>ps -C nginx –no-header|wc -l</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">值为0，即代表服务未启动</span><br><span class="line">值为非0，即代表服务已启动</span><br></pre></td></tr></table></figure>
-<p>最后，killall keepalived 这个是以服务名称杀死进程，日常中也用的挺多的</p>
-<p>上面那段完整的脚本意思即为：<br>判断nginx 服务是否启动<br>如果未启动，执行启动命令<br>再次判断，如果启动失败，关掉keepalived，进入从节点</p>
-]]></content>
-      <categories>
-        <category>shell</category>
-      </categories>
-      <tags>
-        <tag>shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title> ThreadLocal 详解</title>
-    <url>/2021/11/13/ThreadLocal-%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[<p><a href="https://www.pdai.tech/md/java/thread/java-thread-x-threadlocal.html" target="_blank" rel="noopener">ThreadLocal原理</a>  ,&amp;nbsp;&amp;nbsp;&amp;nbsp; <a href="https://juejin.cn/post/6844903487193481224" target="_blank" rel="noopener">Java 之 ThreadLocal 详解: 内存泄漏</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>《Spring设计思想-事务篇》2.数据库隔离级别</title>
-    <url>/2020/03/12/Spring%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3-%E4%BA%8B%E5%8A%A1%E7%AF%87%E3%80%8B2-%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</url>
-    <content><![CDATA[<p>转载：**<a href="https://blog.csdn.net/luanlouis/article/details/95319795" target="_blank" rel="noopener">《Spring设计思想-事务篇》2.数据库隔离级别
-</a><strong>，</strong><a href="http://www.hollischuang.com/archives/943" target="_blank" rel="noopener">深入分析事务的隔离级别</a><strong>，</strong><a href="https://www.hollischuang.com/archives/923" target="_blank" rel="noopener">MySQL中的共享锁与排他锁</a>**</p>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>对上述的四种事务隔离级别的阐述中，我们使用了从资源互斥访问的角度做了解释。资源互斥粒度控制的越细，客户端事务的并发能力就越高，但是与此同时，会相应地降低数据的一致性。</p>
-<a id="more"></a>
-
-<p>事务的并发数和数据数据一致性这两个是两个相反的理想指标。而数据库研发的方向就是尽可能提高同时提高两个指标，尽可能减少之间的反作用影响。</p>
-<p>SERIALIZABLE 序列化读，隔离级别最高，客户端以互斥的方式访问数据库资源，统一时间内，同一个资源只能被一个客户端访问，好像客户端在排队请求访问，所以称为序列化读。<br>REPEATABLE_READ 可重复读，可重复读能够保证，一个客户端在一个事务内，多次访问同一个资源时，返回结果是一样的，顾名思义，称为可重复读，这种隔离级别可能会造成幻读现象。<br>READ_COMMITTED 读已提交，即客户端在一个事务内，每次查询读取的数据都是从数据库读取最新的已提交的数据；这种隔离界别可能会造成不可重复读和幻读现象。<br>READ_UNCOMMITTED 读未提交，即客户端在一个事务内，可以读取到其他客户端事务的尚未提交的数据；这种隔离级别可能会造成脏读、不可重复读、幻读 现象。</p>
-<p><img src="/images/pasted-23.png" alt="upload successful"></p>
-]]></content>
   </entry>
   <entry>
     <title>Rust copy 、move、clone</title>
@@ -456,9 +359,81 @@
       </tags>
   </entry>
   <entry>
-    <title>Ubuntu 20.04优化</title>
-    <url>/1970/01/01/Ubuntu-18-04-%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E4%BC%98%E5%8C%96/</url>
-    <content><![CDATA[<p>**<a href="https://ratimechen.github.io/posts/1490628848/#%E5%AE%89%E8%A3%9D%E5%BF%85%E8%A3%9D%E5%B7%A5%E5%85%B7" target="_blank" rel="noopener">把 Ubuntu 20.04 打造成 macOS 風格</a>**，备用。 ps: 安装Dash to Dock插件时，一直Error，后电脑重启，不知道是重启前卸除“gnome-shell-extension-dock”起的作用，还是重启大法威力无边…</p>
+    <title>Rust引用</title>
+    <url>/2022/03/17/Rust%E5%BC%95%E7%94%A8/</url>
+    <content><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch3/07_reference_type.html" target="_blank" rel="noopener">Rust中的引用</a></p>
+<a id="more"></a>
+
+<h3 id="解引用"><a href="#解引用" class="headerlink" title="解引用"></a>解引用</h3><p>Rust绝大多数时候不会自动地解除引用。但在某些环境下，Rust会自动进行解引用。</p>
+<p>自动解引用的情况有(结论先总结在此，混脸熟，以后涉及到时再来)：</p>
+<ol>
+<li><p>使用.操作符时(包括取属性值和方法调用)，会隐式地尽可能解除或创建多层引用</p>
+</li>
+<li><p>使用比较操作符时，若比较的两边是相同类型的引用，则会自动解除引用到它们的值然后比较<br>对于(1)，Rust会自动分析func()的参数，并在需要的时候自动创建或自动解除引用。例如以abc.func()有可能会自动转换为&amp;abc.func()，反之，&amp;abc.func()也有可能会自动转换为abc.func()。</p>
+</li>
+</ol>
+<p>对于(2)，例如有引用类型的变量n，那么n &gt; &amp;30和*n &gt; 30的效果是一样的。</p>
+<p>————————————————《rust入门秘籍》</p>
+]]></content>
+      <categories>
+        <category>rust</category>
+      </categories>
+      <tags>
+        <tag>references</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Shell脚本检测Nginx服务状态</title>
+    <url>/1970/01/01/Shell%E8%84%9A%E6%9C%AC%E6%A3%80%E6%B5%8BNginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A&#x3D;&#96;ps -C nginx --no-header |wc -l&#96;</span><br><span class="line">if [ $A -eq 0 ];then</span><br><span class="line">    service nginx start</span><br><span class="line">    sleep 2</span><br><span class="line">    if [ &#96;ps -C nginx --no-header |wc -l&#96; -eq 0 ];then</span><br><span class="line">        killall keepalived</span><br><span class="line">    fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<h3 id="脚本解析"><a href="#脚本解析" class="headerlink" title="脚本解析"></a>脚本解析</h3><p>以上是通过进程判断，也可以通过端口判断，如netstat -nlpt | grep nginx</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# netstat -nlpt | grep nginx</span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      8801&#x2F;nginx: master</span><br></pre></td></tr></table></figure>
+
+<p>以下，以进程为例详解，ps -C nginx –no-header<br>这里涉及ps 的用法，我们一般用ps查看相关进程，一般都是用ps -ef | grep XX 或 ps -aux| grep XX 的模式<br>如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br><span class="line">root     11660  5532  0 09:55 pts&#x2F;1    00:00:00 grep --color&#x3D;auto nginx</span><br></pre></td></tr></table></figure>
+<p>但是这样通常都会覆盖一个grep的进程。</p>
+<p>我们可以用ps -ef|grep nginx|grep -v grep的方式排除grep的进程，如</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# ps -ef|grep nginx|grep -v grep</span><br><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br></pre></td></tr></table></figure>
+
+<p>也可以直接用ps -C 或ps -c 的方式， -C 后面接命令的名字（推荐） ，如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx</span><br><span class="line">   PID TTY          TIME CMD</span><br><span class="line">  8801 ?        00:00:00 nginx</span><br><span class="line">  8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
+<p>–no-header 就是去挑title,如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx --no-header</span><br><span class="line"> 8801 ?        00:00:00 nginx</span><br><span class="line"> 8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
+<p>wc -l 这个很熟悉了，行数计算</p>
+<p>所以用这种方式可判断，如果<br>ps -C nginx –no-header|wc -l</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">值为0，即代表服务未启动</span><br><span class="line">值为非0，即代表服务已启动</span><br></pre></td></tr></table></figure>
+<p>最后，killall keepalived 这个是以服务名称杀死进程，日常中也用的挺多的</p>
+<p>上面那段完整的脚本意思即为：<br>判断nginx 服务是否启动<br>如果未启动，执行启动命令<br>再次判断，如果启动失败，关掉keepalived，进入从节点</p>
+]]></content>
+      <categories>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SQL语句的执行顺序</title>
+    <url>/2022/12/07/SQL%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/</url>
+    <content><![CDATA[<p>Logical Query Processing Phases in Brief—《Microsoft SQL Server 2008技术内幕T-SQL语言基础.pdf》p27</p>
+<a id="more"></a>
+
+<h3 id="FROM"><a href="#FROM" class="headerlink" title="FROM"></a>FROM</h3><p>  The FROM phase identifi es the query’s source tables and processes table operators. Each table operator applies a series of subphases. For example, the phases involved in a join are (1-J1) Cartesian Product, (1-J2) ON Filter, (1-J3) Add Outer Rows. The FROM phase generates virtual table VT1. </p>
+<h4 id="Cartesian-Product"><a href="#Cartesian-Product" class="headerlink" title="Cartesian Product"></a><em>Cartesian Product</em></h4><p>This phase performs a Cartesian product (cross join) between the two tables involved in the table operator, generating VT1-J1. </p>
+<h4 id="ON-Filter"><a href="#ON-Filter" class="headerlink" title="ON Filter"></a><em>ON Filter</em></h4><p>This phase fi lters the rows from VT1-J1 based on the predicate that appears in the ON clause (<on_predicate>). Only rows for which the predicate evaluates to TRUE are inserted into VT1-J2.</on_predicate></p>
+<h4 id="Add-Outer-Rows"><a href="#Add-Outer-Rows" class="headerlink" title="Add Outer Rows"></a><em>Add Outer Rows</em></h4><p>If OUTER JOIN is specifi ed (as opposed to CROSS JOIN or INNER JOIN), rows from the preserved table or tables for which a match was not found are added to the rows from VT1-J2 as outer rows, generating VT1-J3.</p>
+<p><img src="/images/pasted-59.png" alt="upload successful"></p>
+<h3 id="WHERE"><a href="#WHERE" class="headerlink" title="WHERE"></a>WHERE</h3><p>This phase fi lters the rows from VT1 based on the predicate that appears in the WHERE clause (<where_predicate>). Only rows for which the predicate evaluates to TRUE are inserted into VT2. </where_predicate></p>
+<h3 id="GROUP-BY"><a href="#GROUP-BY" class="headerlink" title="GROUP BY"></a>GROUP BY</h3><p>This phase arranges the rows from VT2 in groups based on the column list specifi ed in the GROUP BY clause, generating VT3. Ultimately, there will be one result row per group. </p>
+<h3 id="HAVING"><a href="#HAVING" class="headerlink" title="HAVING"></a>HAVING</h3><p>This phase fi lters the groups from VT3 based on the predicate that appears in the HAVING clause (<having_predicate>). Only groups for which the predicate evaluates to TRUE are inserted into VT4. </having_predicate></p>
+<h3 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h3><p>This phase processes the elements in the SELECT clause, generating VT5. </p>
+<h4 id="Evaluate-Expressions"><a href="#Evaluate-Expressions" class="headerlink" title="Evaluate Expressions"></a><em>Evaluate Expressions</em></h4><p>This phase evaluates the expressions in the SELECT list, generating VT5-1. </p>
+<h4 id="DISTINCT"><a href="#DISTINCT" class="headerlink" title="DISTINCT"></a><em>DISTINCT</em></h4><p>This phase removes duplicate rows from VT5-1, generating VT5-2. </p>
+<h4 id="TOP"><a href="#TOP" class="headerlink" title="TOP"></a><em>TOP</em></h4><p>This phase fi lters the specifi ed top number or percentage of rows from VT5-2 based on the logical ordering defi ned by the ORDER BY clause, generating the table VT5-3. </p>
+<h3 id="ORDER-BY"><a href="#ORDER-BY" class="headerlink" title="ORDER BY"></a>ORDER BY</h3><p>This phase sorts the rows from VT5-3 according to the column list specifi ed in the ORDER BY clause, generating the cursor VC6.</p>
 ]]></content>
   </entry>
   <entry>
@@ -469,6 +444,38 @@
       <tags>
         <tag>SkipList</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>《Spring设计思想-事务篇》2.数据库隔离级别</title>
+    <url>/2020/03/12/Spring%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3-%E4%BA%8B%E5%8A%A1%E7%AF%87%E3%80%8B2-%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</url>
+    <content><![CDATA[<p>转载：**<a href="https://blog.csdn.net/luanlouis/article/details/95319795" target="_blank" rel="noopener">《Spring设计思想-事务篇》2.数据库隔离级别
+</a><strong>，</strong><a href="http://www.hollischuang.com/archives/943" target="_blank" rel="noopener">深入分析事务的隔离级别</a><strong>，</strong><a href="https://www.hollischuang.com/archives/923" target="_blank" rel="noopener">MySQL中的共享锁与排他锁</a>**</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>对上述的四种事务隔离级别的阐述中，我们使用了从资源互斥访问的角度做了解释。资源互斥粒度控制的越细，客户端事务的并发能力就越高，但是与此同时，会相应地降低数据的一致性。</p>
+<a id="more"></a>
+
+<p>事务的并发数和数据数据一致性这两个是两个相反的理想指标。而数据库研发的方向就是尽可能提高同时提高两个指标，尽可能减少之间的反作用影响。</p>
+<p>SERIALIZABLE 序列化读，隔离级别最高，客户端以互斥的方式访问数据库资源，统一时间内，同一个资源只能被一个客户端访问，好像客户端在排队请求访问，所以称为序列化读。<br>REPEATABLE_READ 可重复读，可重复读能够保证，一个客户端在一个事务内，多次访问同一个资源时，返回结果是一样的，顾名思义，称为可重复读，这种隔离级别可能会造成幻读现象。<br>READ_COMMITTED 读已提交，即客户端在一个事务内，每次查询读取的数据都是从数据库读取最新的已提交的数据；这种隔离界别可能会造成不可重复读和幻读现象。<br>READ_UNCOMMITTED 读未提交，即客户端在一个事务内，可以读取到其他客户端事务的尚未提交的数据；这种隔离级别可能会造成脏读、不可重复读、幻读 现象。</p>
+<p><img src="/images/pasted-23.png" alt="upload successful"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Ubuntu 20.04优化</title>
+    <url>/1970/01/01/Ubuntu-18-04-%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<p>**<a href="https://ratimechen.github.io/posts/1490628848/#%E5%AE%89%E8%A3%9D%E5%BF%85%E8%A3%9D%E5%B7%A5%E5%85%B7" target="_blank" rel="noopener">把 Ubuntu 20.04 打造成 macOS 風格</a>**，备用。 ps: 安装Dash to Dock插件时，一直Error，后电脑重启，不知道是重启前卸除“gnome-shell-extension-dock”起的作用，还是重启大法威力无边…</p>
+]]></content>
+  </entry>
+  <entry>
+    <title> ThreadLocal 详解</title>
+    <url>/2021/11/13/ThreadLocal-%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<p><a href="https://www.pdai.tech/md/java/thread/java-thread-x-threadlocal.html" target="_blank" rel="noopener">ThreadLocal原理</a>  ,&amp;nbsp;&amp;nbsp;&amp;nbsp; <a href="https://juejin.cn/post/6844903487193481224" target="_blank" rel="noopener">Java 之 ThreadLocal 详解: 内存泄漏</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Ulauncher</title>
+    <url>/2022/04/10/Ulauncher/</url>
+    <content><![CDATA[<p>Ulauncher(Application launcher for Linux)效率提升工具…</p>
+<p><a href="https://ulauncher.io/#Download" target="_blank" rel="noopener">官网</a>、<a href="https://www.geeksforgeeks.org/how-to-install-ulauncher-in-ubuntu/" target="_blank" rel="noopener">How to Install Ulauncher in Ubuntu?</a>、<a href="https://www.makeuseof.com/install-ulauncher-on-linux/" target="_blank" rel="noopener">How to Install Extensions And Best Ulauncher Extensions</a>.<br>实测好用的插件：Terminal Runner(关机重启方便)、IpCopy（查看自己内网外网IP并复制）、Better file browser（文件浏览及搜索）、Translate（翻译。默认翻译成en，如果是英译汉格式为“tr :zh english”）、Calculate Anything</p>
+]]></content>
   </entry>
   <entry>
     <title>Ubuntu apt-get autoclean,clean,autoremove</title>
@@ -529,11 +536,13 @@
       </tags>
   </entry>
   <entry>
-    <title>Ulauncher</title>
-    <url>/2022/04/10/Ulauncher/</url>
-    <content><![CDATA[<p>Ulauncher(Application launcher for Linux)效率提升工具…</p>
-<p><a href="https://ulauncher.io/#Download" target="_blank" rel="noopener">官网</a>、<a href="https://www.geeksforgeeks.org/how-to-install-ulauncher-in-ubuntu/" target="_blank" rel="noopener">How to Install Ulauncher in Ubuntu?</a>、<a href="https://www.makeuseof.com/install-ulauncher-on-linux/" target="_blank" rel="noopener">How to Install Extensions And Best Ulauncher Extensions</a>.<br>实测好用的插件：Terminal Runner(关机重启方便)、IpCopy（查看自己内网外网IP并复制）、Better file browser（文件浏览及搜索）、Translate（翻译。默认翻译成en，如果是英译汉格式为“tr :zh english”）、Calculate Anything</p>
+    <title>Using the Switch(true) Pattern in JavaScript</title>
+    <url>/1970/01/01/Using-the-Switch-true-Pattern-in-JavaScript/</url>
+    <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
 ]]></content>
+      <categories>
+        <category>javascript</category>
+      </categories>
   </entry>
   <entry>
     <title>Using the Switch(true) Pattern in JavaScript</title>
@@ -546,12 +555,6 @@
       <tags>
         <tag>javascript</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Wireshark抓包原理（ARP劫持、MAC泛洪）及数据流追踪和图像抓取</title>
-    <url>/2021/05/31/Wireshark%E6%8A%93%E5%8C%85%E5%8E%9F%E7%90%86%EF%BC%88ARP%E5%8A%AB%E6%8C%81%E3%80%81MAC%E6%B3%9B%E6%B4%AA%EF%BC%89%E5%8F%8A%E6%95%B0%E6%8D%AE%E6%B5%81%E8%BF%BD%E8%B8%AA%E5%92%8C%E5%9B%BE%E5%83%8F%E6%8A%93%E5%8F%96/</url>
-    <content><![CDATA[<p>转载：<a href="https://cloud.tencent.com/developer/article/1626729" target="_blank" rel="noopener">Wireshark抓包原理（ARP劫持、MAC泛洪）及数据流追踪和图像抓取</a></p>
-]]></content>
   </entry>
   <entry>
     <title>android studio http proxy for sdk </title>
@@ -572,6 +575,30 @@
       </tags>
   </entry>
   <entry>
+    <title>android studio 真机调试</title>
+    <url>/2020/02/10/android-run-on-a-real-device/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Android studio调试的时候可以运行在模拟器，也可以在真机上运行，本文记录一下真机（MIUI10）调试的前期准备。</p>
+<a id="more"></a>
+<h3 id="Windows设置"><a href="#Windows设置" class="headerlink" title="Windows设置"></a>Windows设置</h3><p>打开AS，点击File–&gt;Setting–&gt;Appearance &amp; Behavior–&gt;System Setting–&gt;Android SDK，在SDK Platforms下勾选真机Android版本相应的SDK。</p>
+<p><img src="/images/pasted-9.png" alt="upload successful"></p>
+<p>在SDK Tools目录下勾选Google Usb Driver，点击Apply，AS会自动下载Usb驱动，并记下Android SDK location。</p>
+<p><img src="/images/pasted-10.png" alt="upload successful"></p>
+<p>数据线连接手机，windows打开设备管理器，点击便携设备，</p>
+<p><img src="/images/pasted-11.png" alt="upload successful"></p>
+<p>点击相应的设备MI 5 ，选择驱动程序，更新驱动程序，浏览我的计算机以查找更新驱动程序，输入目录：AS中记下的SDK目录\extras\google\usb_driver，并安装。<br><img src="/images/pasted-12.png" alt="upload successful"></p>
+<p><img src="/images/pasted-14.png" alt="upload successful"></p>
+<p><img src="/images/pasted-13.png" alt="upload successful"></p>
+<h3 id="手机设置"><a href="#手机设置" class="headerlink" title="手机设置"></a>手机设置</h3><p>首先要打开开发者模式（每款手机的开发者模式打开方式不同，大家自行搜索），以小米为例，“设置-我的设备-全部参数-多次点击MIUI版本（有提示），如此便进入“开发者模式”了，在“更多设置”找到开发者选项，打开“USB调试” “USB安装”，并把滚动条滚到最下面，关掉“启用MIUI优化”。</p>
+<p>如此便可以进入android studio调试安装了。</p>
+]]></content>
+      <categories>
+        <category>android</category>
+      </categories>
+      <tags>
+        <tag>android-studio</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>java自定义类equal重写</title>
     <url>/2020/02/27/ava-equal/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>判断两个对象在逻辑上是否相等，有时需要根据类的某些成员变量来判断两个实例是否相等，而继承Object中的equals方法比较的只是对象的引用是否指向同一块内存地址。这时候便需要重写equals()方法了。</p>
@@ -588,12 +615,12 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Using the Switch(true) Pattern in JavaScript</title>
-    <url>/1970/01/01/Using-the-Switch-true-Pattern-in-JavaScript/</url>
-    <content><![CDATA[<p><a href="https://seanbarry.dev/posts/switch-true-pattern" target="_blank" rel="noopener">Using the Switch(true) Pattern in JavaScript</a></p>
+    <title>java底层机制（堆/栈/方法区/GC/类加载）</title>
+    <url>/2020/03/08/ava%E5%BA%95%E5%B1%82%E6%9C%BA%E5%88%B6/</url>
+    <content><![CDATA[<p>转载:<strong><a href="https://www.jianshu.com/p/ae97b692614e?from=timeline" target="_blank" rel="noopener">java底层机制</a><strong>、</strong><a href="https://blog.csdn.net/luanlouis/article/details/40043991" target="_blank" rel="noopener">《Java虚拟机原理图解》3、JVM运行时数据区</a></strong></p>
 ]]></content>
       <categories>
-        <category>javascript</category>
+        <category>java</category>
       </categories>
   </entry>
   <entry>
@@ -620,36 +647,30 @@
 ]]></content>
   </entry>
   <entry>
-    <title>java底层机制（堆/栈/方法区/GC/类加载）</title>
-    <url>/2020/03/08/ava%E5%BA%95%E5%B1%82%E6%9C%BA%E5%88%B6/</url>
-    <content><![CDATA[<p>转载:<strong><a href="https://www.jianshu.com/p/ae97b692614e?from=timeline" target="_blank" rel="noopener">java底层机制</a><strong>、</strong><a href="https://blog.csdn.net/luanlouis/article/details/40043991" target="_blank" rel="noopener">《Java虚拟机原理图解》3、JVM运行时数据区</a></strong></p>
+    <title>Wireshark抓包原理（ARP劫持、MAC泛洪）及数据流追踪和图像抓取</title>
+    <url>/2021/05/31/Wireshark%E6%8A%93%E5%8C%85%E5%8E%9F%E7%90%86%EF%BC%88ARP%E5%8A%AB%E6%8C%81%E3%80%81MAC%E6%B3%9B%E6%B4%AA%EF%BC%89%E5%8F%8A%E6%95%B0%E6%8D%AE%E6%B5%81%E8%BF%BD%E8%B8%AA%E5%92%8C%E5%9B%BE%E5%83%8F%E6%8A%93%E5%8F%96/</url>
+    <content><![CDATA[<p>转载：<a href="https://cloud.tencent.com/developer/article/1626729" target="_blank" rel="noopener">Wireshark抓包原理（ARP劫持、MAC泛洪）及数据流追踪和图像抓取</a></p>
 ]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
   </entry>
   <entry>
-    <title>android studio 真机调试</title>
-    <url>/2020/02/10/android-run-on-a-real-device/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Android studio调试的时候可以运行在模拟器，也可以在真机上运行，本文记录一下真机（MIUI10）调试的前期准备。</p>
+    <title>vertx-plugin build vertx app with gradle</title>
+    <url>/2021/05/06/build-vertx-app-with-gradle/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><a href="https://plugins.gradle.org/plugin/io.vertx.vertx-plugin" target="_blank" rel="noopener">io.vertx.vertx-plugin</a> 介绍，gradle 添加vertx-plugin，脚本启动vertx application.</p>
 <a id="more"></a>
-<h3 id="Windows设置"><a href="#Windows设置" class="headerlink" title="Windows设置"></a>Windows设置</h3><p>打开AS，点击File–&gt;Setting–&gt;Appearance &amp; Behavior–&gt;System Setting–&gt;Android SDK，在SDK Platforms下勾选真机Android版本相应的SDK。</p>
-<p><img src="/images/pasted-9.png" alt="upload successful"></p>
-<p>在SDK Tools目录下勾选Google Usb Driver，点击Apply，AS会自动下载Usb驱动，并记下Android SDK location。</p>
-<p><img src="/images/pasted-10.png" alt="upload successful"></p>
-<p>数据线连接手机，windows打开设备管理器，点击便携设备，</p>
-<p><img src="/images/pasted-11.png" alt="upload successful"></p>
-<p>点击相应的设备MI 5 ，选择驱动程序，更新驱动程序，浏览我的计算机以查找更新驱动程序，输入目录：AS中记下的SDK目录\extras\google\usb_driver，并安装。<br><img src="/images/pasted-12.png" alt="upload successful"></p>
-<p><img src="/images/pasted-14.png" alt="upload successful"></p>
-<p><img src="/images/pasted-13.png" alt="upload successful"></p>
-<h3 id="手机设置"><a href="#手机设置" class="headerlink" title="手机设置"></a>手机设置</h3><p>首先要打开开发者模式（每款手机的开发者模式打开方式不同，大家自行搜索），以小米为例，“设置-我的设备-全部参数-多次点击MIUI版本（有提示），如此便进入“开发者模式”了，在“更多设置”找到开发者选项，打开“USB调试” “USB安装”，并把滚动条滚到最下面，关掉“启用MIUI优化”。</p>
-<p>如此便可以进入android studio调试安装了。</p>
+<ol>
+<li>build.gradle</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id &#39;io.vertx.vertx-plugin&#39; version &#39;1.2.0&#39;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">group &#39;org.example&#39;</span><br><span class="line">version &#39;1.0-SNAPSHOT&#39;</span><br><span class="line"></span><br><span class="line">repositories &#123;</span><br><span class="line">    mavenCentral()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">![upload successful](&#x2F;images&#x2F;pasted-45.png)</span><br><span class="line">    testImplementation &#39;org.junit.jupiter:junit-jupiter-api:5.6.0&#39;</span><br><span class="line">    testRuntimeOnly &#39;org.junit.jupiter:junit-jupiter-engine&#39;</span><br><span class="line">    compile &quot;io.vertx:vertx-core:4.0.3&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vertx &#123;</span><br><span class="line">  mainVerticle &#x3D; &quot;MainVerticle&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test &#123;</span><br><span class="line">    useJUnitPlatform()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>idea Run&#x2F;Debug configurations</li>
+</ol>
+<p><img src="/images/pasted-46.png" alt="upload successful"></p>
 ]]></content>
       <categories>
-        <category>android</category>
+        <category>vertx</category>
       </categories>
       <tags>
-        <tag>android-studio</tag>
+        <tag>vertx-plugin</tag>
       </tags>
   </entry>
   <entry>
@@ -689,33 +710,6 @@
         <category>linux</category>
         <category>ubuntu</category>
       </categories>
-  </entry>
-  <entry>
-    <title>centos 定时任务（cron）通过第三方邮件服务器（MTA）发送邮件</title>
-    <url>/2020/01/13/corn-mail/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>有时会需要把一些日志或者任务结果发送到用户邮箱，特此记录一下定时任务和邮箱信息的配置。</p>
-<a id="more"></a>
-<h3 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h3><p>守护进程 crond定期(每分钟)检查是否有要执行的任务，任务调度分为两类：<strong>系统任务调度</strong>和<strong>用户任务调度</strong>。</p>
-<p><strong>系统任务调度</strong>：系统周期性所要执行的工作，比如写缓存数据到硬盘、日志清理等。配置文件<code>/etc/crontab</code>。（若要配置定时reboot任务，需配置在此）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SHELL&#x3D;&#x2F;bin&#x2F;bash</span><br><span class="line">PATH&#x3D;&#x2F;sbin:&#x2F;bin:&#x2F;usr&#x2F;sbin:&#x2F;usr&#x2F;bin</span><br><span class="line">MAILTO&#x3D;root</span><br><span class="line">HOME&#x3D;&#x2F;</span><br><span class="line"># For details see man 4 crontabs</span><br><span class="line"># Example of job definition:</span><br><span class="line"># .---------------- minute (0 - 59)</span><br><span class="line"># |  .------------- hour (0 - 23)</span><br><span class="line"># |  |  .---------- day of month (1 - 31)</span><br><span class="line"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span><br><span class="line"># |  |  |  |  .---- day of week (0 - 6) (Sunday&#x3D;0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span><br><span class="line"># |  |  |  |  |</span><br><span class="line"># *  *  *  *  * user-name command to be executed</span><br><span class="line">  10 21 *  *  * root reboot</span><br></pre></td></tr></table></figure>
-
-
-<p><strong>用户任务调度</strong>：用户定期要执行的工作，比如用户数据备份、定时邮件提醒、自定义脚本等。配置文件<code>/var/spool/cron/usernamne</code>，用户亦可以用命令crontab定制自己的计划任务。如每隔一分钟给指定邮箱发信息，<code>crontab -u username -e</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">MAILTO&#x3D;&quot;yourmailaddress@**.com&quot;</span><br><span class="line">*&#x2F;1 * * * *  echo &#39;message&#39;</span><br></pre></td></tr></table></figure>
-<p><em>ps</em>：crontab中任何程序产生的输出都会以邮件的形式发送给由MAILTO指定的对象，若未指定则发给任务运行的用户（可于<code>/var/spool/mail/username</code>中查看），此时可通过<code>.forward</code> 或配置<code>/etc/aliases</code> 发送到外部邮箱。</p>
-<h3 id="邮件配置"><a href="#邮件配置" class="headerlink" title="邮件配置"></a>邮件配置</h3><p>用系统自带的postfix配置MTA太费事儿，所以采用163邮箱的SMTP服务。</p>
-<p>  1.邮箱开启SMTP服务</p>
-<p>  登录邮箱，在<code>设置</code>里打开<code>POP3/SMTP/IMAP</code>，勾选<code>POP3/SMTP服务</code>和<code>IMAP/SMTP服务</code>，并设置自己的<code>客户端授权密码</code>。</p>
-<p>  2.centos安装mailx(相当于MUA)<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install mailx</span><br></pre></td></tr></table></figure><br>  3.centos配置163邮箱信息，在文件 <code>/etc/mail.rc</code>末尾添加如下信息<br>    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set from&#x3D;&quot;*********@163.com&quot;</span><br><span class="line">set smtp&#x3D;smtp.163.com</span><br><span class="line">set smtp-auth-user&#x3D;*********@163.com</span><br><span class="line">set smtp-auth-password&#x3D;客户端授权密码</span><br><span class="line">set smtp-auth&#x3D;login</span><br></pre></td></tr></table></figure></p>
-<p>  <em>ps</em>:防火墙配置（vultr要联系客服“开光”25端口）</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>mail</tag>
-        <tag>crontab</tag>
-      </tags>
   </entry>
   <entry>
     <title>centos 免密切换root</title>
@@ -775,24 +769,30 @@
       </categories>
   </entry>
   <entry>
-    <title>vertx-plugin build vertx app with gradle</title>
-    <url>/2021/05/06/build-vertx-app-with-gradle/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><a href="https://plugins.gradle.org/plugin/io.vertx.vertx-plugin" target="_blank" rel="noopener">io.vertx.vertx-plugin</a> 介绍，gradle 添加vertx-plugin，脚本启动vertx application.</p>
+    <title>centos 定时任务（cron）通过第三方邮件服务器（MTA）发送邮件</title>
+    <url>/2020/01/13/corn-mail/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>有时会需要把一些日志或者任务结果发送到用户邮箱，特此记录一下定时任务和邮箱信息的配置。</p>
 <a id="more"></a>
-<ol>
-<li>build.gradle</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id &#39;io.vertx.vertx-plugin&#39; version &#39;1.2.0&#39;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">group &#39;org.example&#39;</span><br><span class="line">version &#39;1.0-SNAPSHOT&#39;</span><br><span class="line"></span><br><span class="line">repositories &#123;</span><br><span class="line">    mavenCentral()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">![upload successful](&#x2F;images&#x2F;pasted-45.png)</span><br><span class="line">    testImplementation &#39;org.junit.jupiter:junit-jupiter-api:5.6.0&#39;</span><br><span class="line">    testRuntimeOnly &#39;org.junit.jupiter:junit-jupiter-engine&#39;</span><br><span class="line">    compile &quot;io.vertx:vertx-core:4.0.3&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vertx &#123;</span><br><span class="line">  mainVerticle &#x3D; &quot;MainVerticle&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test &#123;</span><br><span class="line">    useJUnitPlatform()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>idea Run&#x2F;Debug configurations</li>
-</ol>
-<p><img src="/images/pasted-46.png" alt="upload successful"></p>
+<h3 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h3><p>守护进程 crond定期(每分钟)检查是否有要执行的任务，任务调度分为两类：<strong>系统任务调度</strong>和<strong>用户任务调度</strong>。</p>
+<p><strong>系统任务调度</strong>：系统周期性所要执行的工作，比如写缓存数据到硬盘、日志清理等。配置文件<code>/etc/crontab</code>。（若要配置定时reboot任务，需配置在此）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SHELL&#x3D;&#x2F;bin&#x2F;bash</span><br><span class="line">PATH&#x3D;&#x2F;sbin:&#x2F;bin:&#x2F;usr&#x2F;sbin:&#x2F;usr&#x2F;bin</span><br><span class="line">MAILTO&#x3D;root</span><br><span class="line">HOME&#x3D;&#x2F;</span><br><span class="line"># For details see man 4 crontabs</span><br><span class="line"># Example of job definition:</span><br><span class="line"># .---------------- minute (0 - 59)</span><br><span class="line"># |  .------------- hour (0 - 23)</span><br><span class="line"># |  |  .---------- day of month (1 - 31)</span><br><span class="line"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span><br><span class="line"># |  |  |  |  .---- day of week (0 - 6) (Sunday&#x3D;0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span><br><span class="line"># |  |  |  |  |</span><br><span class="line"># *  *  *  *  * user-name command to be executed</span><br><span class="line">  10 21 *  *  * root reboot</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>用户任务调度</strong>：用户定期要执行的工作，比如用户数据备份、定时邮件提醒、自定义脚本等。配置文件<code>/var/spool/cron/usernamne</code>，用户亦可以用命令crontab定制自己的计划任务。如每隔一分钟给指定邮箱发信息，<code>crontab -u username -e</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">MAILTO&#x3D;&quot;yourmailaddress@**.com&quot;</span><br><span class="line">*&#x2F;1 * * * *  echo &#39;message&#39;</span><br></pre></td></tr></table></figure>
+<p><em>ps</em>：crontab中任何程序产生的输出都会以邮件的形式发送给由MAILTO指定的对象，若未指定则发给任务运行的用户（可于<code>/var/spool/mail/username</code>中查看），此时可通过<code>.forward</code> 或配置<code>/etc/aliases</code> 发送到外部邮箱。</p>
+<h3 id="邮件配置"><a href="#邮件配置" class="headerlink" title="邮件配置"></a>邮件配置</h3><p>用系统自带的postfix配置MTA太费事儿，所以采用163邮箱的SMTP服务。</p>
+<p>  1.邮箱开启SMTP服务</p>
+<p>  登录邮箱，在<code>设置</code>里打开<code>POP3/SMTP/IMAP</code>，勾选<code>POP3/SMTP服务</code>和<code>IMAP/SMTP服务</code>，并设置自己的<code>客户端授权密码</code>。</p>
+<p>  2.centos安装mailx(相当于MUA)<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install mailx</span><br></pre></td></tr></table></figure><br>  3.centos配置163邮箱信息，在文件 <code>/etc/mail.rc</code>末尾添加如下信息<br>    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set from&#x3D;&quot;*********@163.com&quot;</span><br><span class="line">set smtp&#x3D;smtp.163.com</span><br><span class="line">set smtp-auth-user&#x3D;*********@163.com</span><br><span class="line">set smtp-auth-password&#x3D;客户端授权密码</span><br><span class="line">set smtp-auth&#x3D;login</span><br></pre></td></tr></table></figure></p>
+<p>  <em>ps</em>:防火墙配置（vultr要联系客服“开光”25端口）</p>
 ]]></content>
       <categories>
-        <category>vertx</category>
+        <category>linux</category>
       </categories>
       <tags>
-        <tag>vertx-plugin</tag>
+        <tag>mail</tag>
+        <tag>crontab</tag>
       </tags>
   </entry>
   <entry>
@@ -812,22 +812,6 @@
 <p><img src="/images/pasted-58.png" alt="upload successful"></p>
 <p>是crond产生的垃圾日志，不管它，先来个重启大法<em>service crond stop</em>、<em>service crond start</em>，再瞧问题依旧。谷歌之，<em>No configuration file found at &#x2F;root&#x2F;.esmtprc or &#x2F;etc&#x2F;esmtprc</em>,没找到问题原因，只看到个解决方法 <a href="https://www.axinblog.com/2022/02/16/Linux-%E6%97%A5%E5%BF%97%E6%B8%85%E7%90%86/" target="_blank" rel="noopener">Linux 日志清理</a>，先暂且安装重启crond，记下来以观后效，明天再查…</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>idea下gradle报jdk版本错误</title>
-    <url>/2020/03/05/idea-gradle-jdk/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>idea下用gradle编译项目的时候报错如下：“Could not target platform: ‘Java SE 13’ using tool chain: ‘JDK 11 (11)’.”</p>
-<a id="more"></a>
-<p>确认project采用的jdk 13,build.gradle里也是13，应该是Gradle用的版本不匹配，最后在File–&gt;Setting–&gt;Build Tools–&gt;Gradle里，找到配置项。</p>
-<p><img src="/images/pasted-22.png" alt="upload successful"></p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>gradle</tag>
-        <tag>jdk</tag>
-      </tags>
   </entry>
   <entry>
     <title>trojan科学上网</title>
@@ -881,30 +865,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>intellij-idea的快捷键</title>
-    <url>/2020/12/23/intellij-idea%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
-    <content><![CDATA[<p><a href="https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf" target="_blank" rel="noopener">Intellij-idea的快捷键</a></p>
-]]></content>
-      <tags>
-        <tag>idea</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>java中的乱码</title>
-    <url>/2020/12/08/java%E4%B8%AD%E7%9A%84%E4%B9%B1%E7%A0%81/</url>
-    <content><![CDATA[<p><a href="https://developer.ibm.com/zh/languages/java/articles/j-lo-chinesecoding/" target="_blank" rel="noopener">深入分析 Java 中的中文编码问题</a>、<a href="https://blog.csdn.net/u010234516/article/details/52853214" target="_blank" rel="noopener">锟斤拷？UTF-8与GBK互转，为什么会乱码？</a></p>
-<p>附图一张:</p>
-<a id="more"></a>
-<p><img src="/images/crazyCode.jpg" alt="upload successful"></p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>乱码</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>git学习笔记</title>
     <url>/2020/01/18/git-command/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>以前使用SVN,切换到分布式版本控制系统Git，此笔记记录一下学习心得，备询。**<a href="https://gist.github.com/guweigang/9848271" target="_blank" rel="noopener">git命令大全</a><strong>，贴个链接，比较</strong><a href="https://www.liaoxuefeng.com/wiki/896043488029600/896067008724000" target="_blank" rel="noopener">适合初次接触者</a><strong>，</strong><a href="https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1" target="_blank" rel="noopener">动画演示Git命令</a>**</p>
@@ -941,21 +901,68 @@
       </tags>
   </entry>
   <entry>
+    <title>idea下gradle报jdk版本错误</title>
+    <url>/2020/03/05/idea-gradle-jdk/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>idea下用gradle编译项目的时候报错如下：“Could not target platform: ‘Java SE 13’ using tool chain: ‘JDK 11 (11)’.”</p>
+<a id="more"></a>
+<p>确认project采用的jdk 13,build.gradle里也是13，应该是Gradle用的版本不匹配，最后在File–&gt;Setting–&gt;Build Tools–&gt;Gradle里，找到配置项。</p>
+<p><img src="/images/pasted-22.png" alt="upload successful"></p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>gradle</tag>
+        <tag>jdk</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>intellij-idea的快捷键</title>
+    <url>/2020/12/23/intellij-idea%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
+    <content><![CDATA[<p><a href="https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf" target="_blank" rel="noopener">Intellij-idea的快捷键</a></p>
+]]></content>
+      <tags>
+        <tag>idea</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>int&amp;Integer、 double&amp;Double&amp;BigDecimal</title>
+    <url>/2022/03/09/int%E5%92%8CInteger%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/guodongdidi/p/6953217.html" target="_blank" rel="noopener">int和Integer的区别</a>&amp;nbsp;&amp;nbsp;<a href="http://www.louisvv.com/archives/2514.html" target="_blank" rel="noopener">double、Double与BigDecimal</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>@interface 简介</title>
     <url>/2021/11/11/interface/</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/zhangbeizhen18/article/details/87885441/" target="_blank" rel="noopener">自定义注释@interface的用法理解</a></p>
 ]]></content>
   </entry>
   <entry>
-    <title>spring boot注解基本了解</title>
-    <url>/2020/03/06/java-annotation/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这里放两篇对Java注解的文章，以备后面查询。<a href="https://www.jianshu.com/p/d74ed7374841" target="_blank" rel="noopener"><strong>Spring Boot 注解—基本知识</strong></a>以及<a href="https://www.cnblogs.com/liaojie970/p/7879917.html" target="_blank" rel="noopener"><strong>Java注释@interface的用法</strong></a></p>
+    <title>java中的乱码</title>
+    <url>/2020/12/08/java%E4%B8%AD%E7%9A%84%E4%B9%B1%E7%A0%81/</url>
+    <content><![CDATA[<p><a href="https://developer.ibm.com/zh/languages/java/articles/j-lo-chinesecoding/" target="_blank" rel="noopener">深入分析 Java 中的中文编码问题</a>、<a href="https://blog.csdn.net/u010234516/article/details/52853214" target="_blank" rel="noopener">锟斤拷？UTF-8与GBK互转，为什么会乱码？</a></p>
+<p>附图一张:</p>
+<a id="more"></a>
+<p><img src="/images/crazyCode.jpg" alt="upload successful"></p>
 ]]></content>
       <categories>
         <category>java</category>
       </categories>
       <tags>
-        <tag>annotation</tag>
+        <tag>乱码</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>json web token(jwt)</title>
+    <url>/2020/05/02/json-web-token-jwt/</url>
+    <content><![CDATA[<p>转载：**<a href="https://learnku.com/articles/22616" target="_blank" rel="noopener">别再使用 JWT 作为 Session 系统！问题重重且很危险。
+</a>**<br>结论：无状态 JWT Tokens 无法被单独地销毁或更新，取决于你如何存储，可能还会导致长度问题、安全隐患。有状态 JWT Tokens 在功能方面与 Session cookies 无异，但缺乏生产环境的验证、经过大量 Review 的实现，以及良好的客户端支持。<br>JWT 特别有效的使用例子通常是作为一次性的授权令牌。</p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>jwt</tag>
       </tags>
   </entry>
   <entry>
@@ -978,29 +985,22 @@
       </tags>
   </entry>
   <entry>
-    <title>int&amp;Integer、 double&amp;Double&amp;BigDecimal</title>
-    <url>/2022/03/09/int%E5%92%8CInteger%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/guodongdidi/p/6953217.html" target="_blank" rel="noopener">int和Integer的区别</a>&amp;nbsp;&amp;nbsp;<a href="http://www.louisvv.com/archives/2514.html" target="_blank" rel="noopener">double、Double与BigDecimal</a></p>
+    <title>linux sort uniq命令</title>
+    <url>/2021/02/26/linux-sort-uniq%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<p><a href="https://www.linuxjournal.com/content/back-basics-sort-and-uniq" target="_blank" rel="noopener">Back to Basics: Sort and Uniq</a></p>
 ]]></content>
   </entry>
   <entry>
-    <title>json web token(jwt)</title>
-    <url>/2020/05/02/json-web-token-jwt/</url>
-    <content><![CDATA[<p>转载：**<a href="https://learnku.com/articles/22616" target="_blank" rel="noopener">别再使用 JWT 作为 Session 系统！问题重重且很危险。
-</a>**<br>结论：无状态 JWT Tokens 无法被单独地销毁或更新，取决于你如何存储，可能还会导致长度问题、安全隐患。有状态 JWT Tokens 在功能方面与 Session cookies 无异，但缺乏生产环境的验证、经过大量 Review 的实现，以及良好的客户端支持。<br>JWT 特别有效的使用例子通常是作为一次性的授权令牌。</p>
+    <title>spring boot注解基本了解</title>
+    <url>/2020/03/06/java-annotation/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这里放两篇对Java注解的文章，以备后面查询。<a href="https://www.jianshu.com/p/d74ed7374841" target="_blank" rel="noopener"><strong>Spring Boot 注解—基本知识</strong></a>以及<a href="https://www.cnblogs.com/liaojie970/p/7879917.html" target="_blank" rel="noopener"><strong>Java注释@interface的用法</strong></a></p>
 ]]></content>
       <categories>
         <category>java</category>
       </categories>
       <tags>
-        <tag>jwt</tag>
+        <tag>annotation</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>linux sort uniq命令</title>
-    <url>/2021/02/26/linux-sort-uniq%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<p><a href="https://www.linuxjournal.com/content/back-basics-sort-and-uniq" target="_blank" rel="noopener">Back to Basics: Sort and Uniq</a></p>
-]]></content>
   </entry>
   <entry>
     <title>js  0 == &#39;&#39; 引出的判等</title>
@@ -1187,6 +1187,27 @@
 ]]></content>
   </entry>
   <entry>
+    <title>linux 查看登录历史 操作用户</title>
+    <url>/2021/02/26/linux-%E6%9F%A5%E7%9C%8B%E7%99%BB%E5%BD%95%E5%8E%86%E5%8F%B2-%E6%93%8D%E4%BD%9C%E7%94%A8%E6%88%B7/</url>
+    <content><![CDATA[<p>linux 查看登录历史 操作用户</p>
+<a id="more"></a>
+<h2 id="linux查看用户登录，操作历史等"><a href="#linux查看用户登录，操作历史等" class="headerlink" title="linux查看用户登录，操作历史等"></a>linux查看用户登录，操作历史等</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">who 命令：显示当前当登录的用户的信息</span><br><span class="line">who -b命令：显示系统最近一次的启动时间</span><br><span class="line">w 命令：显示登录的用户及其当前执行的任务</span><br><span class="line">last 命令：显示当前与过去登录系统的用户的信息</span><br><span class="line">lastb 命令：显示所有登录系统失败的用户的信息</span><br><span class="line">lastlog 命令：显示用户最后一次登录的信息</span><br><span class="line">history 命令：查看操作历史</span><br><span class="line">history -c命令：清除操作历史</span><br><span class="line">pkill -kill -u test ： 强制test用户下线</span><br></pre></td></tr></table></figure>
+<h2 id="linux清除系统日志、历史记录、登录信息"><a href="#linux清除系统日志、历史记录、登录信息" class="headerlink" title="linux清除系统日志、历史记录、登录信息"></a>linux清除系统日志、历史记录、登录信息</h2><h3 id="清楚日志"><a href="#清楚日志" class="headerlink" title="清楚日志"></a>清楚日志</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &gt; &#x2F;var&#x2F;log&#x2F;wtmp &#x2F;&#x2F;清除用户登录记录</span><br><span class="line">echo &gt; &#x2F;var&#x2F;log&#x2F;btmp &#x2F;&#x2F;清除尝试登录记录</span><br><span class="line">echo&gt;&#x2F;var&#x2F;log&#x2F;lastlog &#x2F;&#x2F;清除最近登录信息</span><br><span class="line">echo &gt; &#x2F;var&#x2F;log&#x2F;secure &#x2F;&#x2F;登录信息</span><br><span class="line">echo &gt; &#x2F;var&#x2F;log&#x2F;messages</span><br><span class="line">echo&gt;&#x2F;var&#x2F;log&#x2F;syslog &#x2F;&#x2F;记录系统日志的服务</span><br><span class="line">echo&gt;&#x2F;var&#x2F;log&#x2F;xferlog</span><br><span class="line">echo&gt;&#x2F;var&#x2F;log&#x2F;auth.log</span><br><span class="line">echo&gt;&#x2F;var&#x2F;log&#x2F;user.log</span><br><span class="line">cat &#x2F;dev&#x2F;null &gt; &#x2F;var&#x2F;adm&#x2F;sylog</span><br><span class="line">cat &#x2F;dev&#x2F;null &gt; &#x2F;var&#x2F;log&#x2F;maillog</span><br><span class="line">cat &#x2F;dev&#x2F;null &gt; &#x2F;var&#x2F;log&#x2F;openwebmail.log</span><br><span class="line">cat &#x2F;dev&#x2F;null &gt; &#x2F;var&#x2F;log&#x2F;mail.info</span><br><span class="line">echo&gt;&#x2F;var&#x2F;run&#x2F;utmp</span><br></pre></td></tr></table></figure>
+<h3 id="清除操作过的命令记录"><a href="#清除操作过的命令记录" class="headerlink" title="清除操作过的命令记录"></a>清除操作过的命令记录</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &gt; .bash_history &#x2F;&#x2F;清除保存的用户操作历史记录</span><br><span class="line">history -cw &#x2F;&#x2F;清除所有历史</span><br></pre></td></tr></table></figure>
+<h3 id="Linux查看History记录加时间戳小技巧"><a href="#Linux查看History记录加时间戳小技巧" class="headerlink" title="Linux查看History记录加时间戳小技巧"></a>Linux查看History记录加时间戳小技巧</h3><p>熟悉bash的都一定知道使用history可以输出你曾经输入过的历史命令，例如  </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@servyou_web ~]# history | more</span><br><span class="line">.&#x2F;test.sh</span><br><span class="line">vim test.sh</span><br><span class="line">.&#x2F;test.sh</span><br></pre></td></tr></table></figure>
+<p>但是这里只显示了命令，并没有显示执行命令的时间，因为保存历史命令的~&#x2F;.bash_history里并没有保存时间。</p>
+<p>通过设置环境变量 export HISTTIMEFORMAT&#x3D;”%F %T whoami “ 给history加上时间戳</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@servyou_web ~]# export HISTTIMEFORMAT&#x3D;&quot;%F %T whoami &quot;</span><br><span class="line">[root@servyou_web ~]# history | tail</span><br><span class="line">2011-06-22 19:17:29 root 15 2011-06-22 19:13:02 root .&#x2F;test.sh</span><br><span class="line">2011-06-22 19:17:29 root 16 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:17:29 root 17 2011-06-22 19:13:02 root .&#x2F;test.sh</span><br><span class="line">2011-06-22 19:17:29 root 18 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:17:29 root 19 2011-06-22 19:13:02 root .&#x2F;test.sh</span><br><span class="line">2011-06-22 19:17:29 root 20 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:17:29 root 21 2011-06-22 19:13:02 root .&#x2F;test.sh</span><br><span class="line">2011-06-22 19:17:29 root 22 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:25:22 root 22 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:25:28 root history | tail</span><br></pre></td></tr></table></figure>
+<p>可以看到，历史命令的时间戳已经加上了，但是.bash_history里并没有加上这个时间戳。其实这个时间记录是保存在当前shell进程内存里的，如果你logout并且重新登录的话会发现你上次登录时执行的那些命令的时间戳都为同一个值，即当时logout时的时间。</p>
+<p>尽管如此，对于加上screen的bash来说，这个时间戳仍然可以长时间有效的，毕竟只要你的server不重启，screen就不会退出，因而这些时间就能长时间保留。你也可以使用echo ‘export HISTTIMEFORMAT&#x3D;”%F %T whoami “‘ &gt;&gt; &#x2F;etc&#x2F;profile 然后source一下就OK。</p>
+<p><a href="https://blog.51cto.com/study2008/2301555" target="_blank" rel="noopener">source</a></p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
     <title>linux 后台运行、输出重定向</title>
     <url>/2021/04/02/linux-%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C%E3%80%81%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>linux termianl中，命令脚本的后台运行以及输出的重定向，如</p>
@@ -1227,93 +1248,50 @@
       </categories>
   </entry>
   <entry>
-    <title>linux 查看登录历史 操作用户</title>
-    <url>/2021/02/26/linux-%E6%9F%A5%E7%9C%8B%E7%99%BB%E5%BD%95%E5%8E%86%E5%8F%B2-%E6%93%8D%E4%BD%9C%E7%94%A8%E6%88%B7/</url>
-    <content><![CDATA[<p>linux 查看登录历史 操作用户</p>
+    <title>markdown的html标签应用及常用语法</title>
+    <url>/2021/04/19/markdown%E5%86%85%E5%AE%B9%E6%8A%98%E5%8F%A0/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Markdown 是一种轻量级标记语言，非常适合网络书写。同时，Markdown支持嵌入html标签，我们就可以借此实现markdown不具有的某些功能，如代码折叠和文字样式等。</p>
+<p><strong><a href="http://connorlin.github.io/2016/05/06/Markdown%E7%9A%84%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95(%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93)/" target="_blank" rel="noopener">Markdown的常用语法(个人总结) | ConnorLin’s Blog </a></strong></p>
 <a id="more"></a>
-<h2 id="linux查看用户登录，操作历史等"><a href="#linux查看用户登录，操作历史等" class="headerlink" title="linux查看用户登录，操作历史等"></a>linux查看用户登录，操作历史等</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">who 命令：显示当前当登录的用户的信息</span><br><span class="line">who -b命令：显示系统最近一次的启动时间</span><br><span class="line">w 命令：显示登录的用户及其当前执行的任务</span><br><span class="line">last 命令：显示当前与过去登录系统的用户的信息</span><br><span class="line">lastb 命令：显示所有登录系统失败的用户的信息</span><br><span class="line">lastlog 命令：显示用户最后一次登录的信息</span><br><span class="line">history 命令：查看操作历史</span><br><span class="line">history -c命令：清除操作历史</span><br><span class="line">pkill -kill -u test ： 强制test用户下线</span><br></pre></td></tr></table></figure>
-<h2 id="linux清除系统日志、历史记录、登录信息"><a href="#linux清除系统日志、历史记录、登录信息" class="headerlink" title="linux清除系统日志、历史记录、登录信息"></a>linux清除系统日志、历史记录、登录信息</h2><h3 id="清楚日志"><a href="#清楚日志" class="headerlink" title="清楚日志"></a>清楚日志</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &gt; &#x2F;var&#x2F;log&#x2F;wtmp &#x2F;&#x2F;清除用户登录记录</span><br><span class="line">echo &gt; &#x2F;var&#x2F;log&#x2F;btmp &#x2F;&#x2F;清除尝试登录记录</span><br><span class="line">echo&gt;&#x2F;var&#x2F;log&#x2F;lastlog &#x2F;&#x2F;清除最近登录信息</span><br><span class="line">echo &gt; &#x2F;var&#x2F;log&#x2F;secure &#x2F;&#x2F;登录信息</span><br><span class="line">echo &gt; &#x2F;var&#x2F;log&#x2F;messages</span><br><span class="line">echo&gt;&#x2F;var&#x2F;log&#x2F;syslog &#x2F;&#x2F;记录系统日志的服务</span><br><span class="line">echo&gt;&#x2F;var&#x2F;log&#x2F;xferlog</span><br><span class="line">echo&gt;&#x2F;var&#x2F;log&#x2F;auth.log</span><br><span class="line">echo&gt;&#x2F;var&#x2F;log&#x2F;user.log</span><br><span class="line">cat &#x2F;dev&#x2F;null &gt; &#x2F;var&#x2F;adm&#x2F;sylog</span><br><span class="line">cat &#x2F;dev&#x2F;null &gt; &#x2F;var&#x2F;log&#x2F;maillog</span><br><span class="line">cat &#x2F;dev&#x2F;null &gt; &#x2F;var&#x2F;log&#x2F;openwebmail.log</span><br><span class="line">cat &#x2F;dev&#x2F;null &gt; &#x2F;var&#x2F;log&#x2F;mail.info</span><br><span class="line">echo&gt;&#x2F;var&#x2F;run&#x2F;utmp</span><br></pre></td></tr></table></figure>
-<h3 id="清除操作过的命令记录"><a href="#清除操作过的命令记录" class="headerlink" title="清除操作过的命令记录"></a>清除操作过的命令记录</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &gt; .bash_history &#x2F;&#x2F;清除保存的用户操作历史记录</span><br><span class="line">history -cw &#x2F;&#x2F;清除所有历史</span><br></pre></td></tr></table></figure>
-<h3 id="Linux查看History记录加时间戳小技巧"><a href="#Linux查看History记录加时间戳小技巧" class="headerlink" title="Linux查看History记录加时间戳小技巧"></a>Linux查看History记录加时间戳小技巧</h3><p>熟悉bash的都一定知道使用history可以输出你曾经输入过的历史命令，例如  </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@servyou_web ~]# history | more</span><br><span class="line">.&#x2F;test.sh</span><br><span class="line">vim test.sh</span><br><span class="line">.&#x2F;test.sh</span><br></pre></td></tr></table></figure>
-<p>但是这里只显示了命令，并没有显示执行命令的时间，因为保存历史命令的~&#x2F;.bash_history里并没有保存时间。</p>
-<p>通过设置环境变量 export HISTTIMEFORMAT&#x3D;”%F %T whoami “ 给history加上时间戳</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@servyou_web ~]# export HISTTIMEFORMAT&#x3D;&quot;%F %T whoami &quot;</span><br><span class="line">[root@servyou_web ~]# history | tail</span><br><span class="line">2011-06-22 19:17:29 root 15 2011-06-22 19:13:02 root .&#x2F;test.sh</span><br><span class="line">2011-06-22 19:17:29 root 16 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:17:29 root 17 2011-06-22 19:13:02 root .&#x2F;test.sh</span><br><span class="line">2011-06-22 19:17:29 root 18 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:17:29 root 19 2011-06-22 19:13:02 root .&#x2F;test.sh</span><br><span class="line">2011-06-22 19:17:29 root 20 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:17:29 root 21 2011-06-22 19:13:02 root .&#x2F;test.sh</span><br><span class="line">2011-06-22 19:17:29 root 22 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:25:22 root 22 2011-06-22 19:13:02 root vim test.sh</span><br><span class="line">2011-06-22 19:25:28 root history | tail</span><br></pre></td></tr></table></figure>
-<p>可以看到，历史命令的时间戳已经加上了，但是.bash_history里并没有加上这个时间戳。其实这个时间记录是保存在当前shell进程内存里的，如果你logout并且重新登录的话会发现你上次登录时执行的那些命令的时间戳都为同一个值，即当时logout时的时间。</p>
-<p>尽管如此，对于加上screen的bash来说，这个时间戳仍然可以长时间有效的，毕竟只要你的server不重启，screen就不会退出，因而这些时间就能长时间保留。你也可以使用echo ‘export HISTTIMEFORMAT&#x3D;”%F %T whoami “‘ &gt;&gt; &#x2F;etc&#x2F;profile 然后source一下就OK。</p>
-<p><a href="https://blog.51cto.com/study2008/2301555" target="_blank" rel="noopener">source</a></p>
+<h3 id="代码折叠"><a href="#代码折叠" class="headerlink" title="代码折叠"></a>代码折叠</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;details&gt;</span><br><span class="line">  &lt;summary&gt;</span><br><span class="line">  	&lt;font color&#x3D;&quot;#0000ff&quot; &gt;点击时的区域标题：点击查看详细内容&lt;&#x2F;font&gt;</span><br><span class="line">  &lt;&#x2F;summary&gt;</span><br><span class="line">  &lt;p&gt; - 测试 测试测试&lt;&#x2F;p&gt;</span><br><span class="line">  &lt;pre&gt;&lt;code&gt;  title，value，callBack可以缺省  &lt;&#x2F;code&gt;  &lt;&#x2F;pre&gt;</span><br><span class="line">&lt;&#x2F;details&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>summary：折叠语法展示的摘要</p>
+</li>
+<li><p>details：折叠语法标签</p>
+</li>
+<li><p>pre：以原有格式显示元素内的文字是已经格式化的文本。</p>
+</li>
+<li><p>blockcode：表示程序的代码块。</p>
+</li>
+<li><p>code：指定代码范例。</p>
+</li>
+</ul>
+<p>效果如下：</p>
+<details>
+  <summary><font color="#0000ff">点击时的区域标题：点击查看详细内容</font></summary>
+  <p> - 测试 测试测试</p>
+  <pre><code>  title，value，callBack可以缺省  </code>  </pre>
+</details>
+
+<h3 id="字体样式"><a href="#字体样式" class="headerlink" title="字体样式"></a>字体样式</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;span style&#x3D;&#39;color:red&#39;&gt;This is red&lt;&#x2F;span&gt;   &#x2F;&#x2F;字体颜色</span><br><span class="line">&lt;ruby&gt; 漢 &lt;rt&gt; ㄏㄢˋ &lt;&#x2F;rt&gt; &lt;&#x2F;ruby&gt; &#x2F;&#x2F; 特殊字</span><br><span class="line">&lt;kbd&gt;Ctrl&lt;&#x2F;kbd&gt;+&lt;kbd&gt;F9&lt;&#x2F;kbd&gt;  &#x2F;&#x2F; 按键标识</span><br><span class="line">&lt;span style&#x3D;&quot;font-size:2rem; background:yellow;&quot;&gt;**Bigger**&lt;&#x2F;span&gt; &#x2F;&#x2F;字体大小和背景</span><br><span class="line"></span><br><span class="line">&lt;font face&#x3D;&quot;微软雅黑&quot; color&#x3D;&quot;red&quot; size&#x3D;&quot;6&quot;&gt;字体及字体颜色和大小&lt;&#x2F;font&gt;</span><br><span class="line">&lt;font color&#x3D;&quot;#0000ff&quot;&gt;字体颜色&lt;&#x2F;font&gt;</span><br><span class="line"></span><br><span class="line">&lt;p align&#x3D;&quot;left&quot;&gt;居左文本&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p align&#x3D;&quot;center&quot;&gt;居中文本&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p align&#x3D;&quot;right&quot;&gt;居右文本&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
+<p>使用span或者font标签，同时用style属性控制样式。</p>
+<p>效果如下：<br><span style="color:red">This is red</span>   &#x2F;&#x2F;字体颜色</p>
+<p><ruby> 漢 <rt> ㄏㄢˋ </rt> </ruby> &#x2F;&#x2F; 特殊字</p>
+<p><kbd>Ctrl</kbd>+<kbd>F9</kbd>  &#x2F;&#x2F; 按键标识</p>
+<p><span style="font-size:2rem; background:yellow;"><strong>Bigger</strong></span> &#x2F;&#x2F;字体大小和背景</p>
+<p><font face="微软雅黑" color="red" size="6">字体及字体颜色和大小</font></p>
+<p><font color="#0000ff">字体颜色</font></p>
+<p align="left">居左文本</p>
+
+<p align="center">居中文本</p>
+
+<p align="right">居右文本</p>
+
+<p>参考来源：<br>**<a href="https://www.cnblogs.com/buwuliao/p/9578918.html" target="_blank" rel="noopener">【MarkDown】使用Html样式和折叠语法</a>**、<br><strong><a href="http://connorlin.github.io/2016/05/06/Markdown%E7%9A%84%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95(%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93)/" target="_blank" rel="noopener">Markdown的常用语法(个人总结) | ConnorLin’s Blog </a></strong></p>
 ]]></content>
       <categories>
-        <category>linux</category>
+        <category>markdown</category>
       </categories>
-  </entry>
-  <entry>
-    <title>本地Hexo生成的博客部署到VPS</title>
-    <url>/2020/01/17/localblog-git-vps/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>为了科学上网搭建了vps，顺便跑一下自己的博客，但vps只有500M内存，所以决定本地windows跑hexo生成网页，然后git到vps，记录一下本地和vps的git配置。</p>
-<a id="more"></a>
-<h3 id="本地配置"><a href="#本地配置" class="headerlink" title="本地配置"></a>本地配置</h3><p>本地windows安装Node.js hexo git，过程不提。</p>
-<h4 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h4><p>安装后打开 Git Bash 输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;你的用户名&quot;</span><br><span class="line">git config --global user.email &quot;你的电子邮箱&quot;</span><br></pre></td></tr></table></figure>
-<p>由于 Hexo 的 Git 部署不支持使用密码登陆，所以需要配置 SSH 公钥：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~</span><br><span class="line">mkdir .ssh</span><br><span class="line">cd .ssh</span><br><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
-<p>由此便在系统当前用户文件夹下生成了私钥 id_rsa 和公钥 id_rsa.pub。</p>
-<p>在上面建立的.ssh文件中新建config文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~&#x2F;.ssh</span><br><span class="line">vim config</span><br></pre></td></tr></table></figure>
-<p>内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Host 服务器IP</span><br><span class="line">HostName 服务器IP</span><br><span class="line">User git</span><br><span class="line">Port 端口号</span><br><span class="line">IdentityFile ~&#x2F;.ssh&#x2F;id_rsa</span><br></pre></td></tr></table></figure>
-<h4 id="hexo配置"><a href="#hexo配置" class="headerlink" title="hexo配置"></a>hexo配置</h4><p>安装插件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
-<p>打开位于 hexo 文件夹下的 _config.yml，修改 deploy 参数：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@vps的IP:hexo.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<h3 id="VPS-配置"><a href="#VPS-配置" class="headerlink" title="VPS 配置"></a>VPS 配置</h3><h4 id="新建用户"><a href="#新建用户" class="headerlink" title="新建用户"></a>新建用户</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adduser git</span><br><span class="line">passwd git</span><br></pre></td></tr></table></figure>
-<h4 id="为用户git添加-sudo-权限"><a href="#为用户git添加-sudo-权限" class="headerlink" title="为用户git添加 sudo 权限"></a>为用户git添加 sudo 权限</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod 740 &#x2F;etc&#x2F;sudoers</span><br><span class="line">vim &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure>
-<p>找到以下内容</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL:ALL) ALL</span><br></pre></td></tr></table></figure>
-<p>添加修改为</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL:ALL) ALL</span><br><span class="line">git     ALL&#x3D;(ALL:ALL) ALL</span><br></pre></td></tr></table></figure>
-<p>假如是</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL) ALL</span><br></pre></td></tr></table></figure>
-<p>则修改为</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL) ALL</span><br><span class="line">git     ALL&#x3D;(ALL) ALL</span><br></pre></td></tr></table></figure>
-<p>保存,退出</p>
-<p>然后修改回文件的权限</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod 440 &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure>
-<h4 id="关闭-git-用户-shell-权限"><a href="#关闭-git-用户-shell-权限" class="headerlink" title="关闭 git 用户 shell 权限"></a>关闭 git 用户 shell 权限</h4><p>至此我们可以在本地通过：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh git@VPS IP</span><br></pre></td></tr></table></figure>
-<p>ssh 连接服务器，登录到服务器上，对服务器进行各种操作，这通常很不安全，也不合适，我们只需要能对仓库操作就可以了，不需要更大的权限。</p>
-<p>因此我们关闭 git 用户 shell 权限，执行：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;passwd</span><br></pre></td></tr></table></figure>
-<p>找到git用户的一行：<em>git:x:1001:1001:,,,:&#x2F;home&#x2F;git:&#x2F;bin&#x2F;bash</em><br>改为：<em>git:x:1001:1001:,,,:&#x2F;home&#x2F;git:&#x2F;usr&#x2F;bin&#x2F;git-shell</em></p>
-<p>这样，git 用户可以正常通过 ssh 使用 git，但无法登录 shell，因为我们为 git 用户指定的 git-shell 每次一登录就自动退出。</p>
-<h4 id="初始化-git-仓库"><a href="#初始化-git-仓库" class="headerlink" title="初始化 git 仓库"></a>初始化 git 仓库</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git                &#x2F;&#x2F;切换到git用户目录</span><br><span class="line">mkdir blog.git              &#x2F;&#x2F;创建git仓库文件夹，以blog.git为例</span><br><span class="line">cd blog.git                 &#x2F;&#x2F;进入仓库目录</span><br><span class="line">git init --bare             &#x2F;&#x2F;使用--bare参数初始化为裸仓库，这样创建的仓库不包含工作区</span><br></pre></td></tr></table></figure>
-<p>注意：裸仓库没有工作区，因为服务器上的 Git 仓库纯粹是为了共享，所以不让用户直接登录到服务器上去改工作区，并且服务器上的 Git 仓库通常都以.git 结尾。</p>
-<h4 id="配置-SSH"><a href="#配置-SSH" class="headerlink" title="配置 SSH"></a>配置 SSH</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git                &#x2F;&#x2F;切换到git用户目录</span><br><span class="line">mkdir .ssh                  &#x2F;&#x2F;创建.ssh目录</span><br><span class="line">cd .ssh</span><br><span class="line">vim authorized_keys</span><br></pre></td></tr></table></figure>
-<p>然后将本地的公钥复制到 authorized_keys 文件里 (公钥即上文生成的公钥，可通过 <em>cat ~&#x2F;.ssh&#x2F;id_rsa.pub</em> 查看)。</p>
-<p>注意：收集所有需要登录的用户的公钥，就是他们自己的 id_rsa.pub 文件，把所有公钥导入到 <em>&#x2F;home&#x2F;git&#x2F;.ssh&#x2F;authorized_keys</em> 文件里，一行一个。</p>
-<h4 id="用户组管理"><a href="#用户组管理" class="headerlink" title="用户组管理"></a>用户组管理</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ll &#x2F;home&#x2F;git&#x2F;</span><br><span class="line">ll &#x2F;var&#x2F;www&#x2F;</span><br></pre></td></tr></table></figure>
-<p>确保 blog.git、.ssh、blog 目录的用户组权限为 git:git，若不是，执行下列命令：</p>
-<p>修改用户权限的命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chown -R git.git &#x2F;home&#x2F;git&#x2F;blog.git&#x2F;</span><br><span class="line">chown -R git.git &#x2F;home&#x2F;git&#x2F;.ssh&#x2F;</span><br><span class="line">chown -R git.git &#x2F;var&#x2F;www&#x2F;blog&#x2F;</span><br></pre></td></tr></table></figure>
-
-<h4 id="配置-Git-Hooks"><a href="#配置-Git-Hooks" class="headerlink" title="配置 Git Hooks"></a>配置 Git Hooks</h4><p>创建 post-receive 文件<br>git 用户下执行（这里由于禁止了git用户shell权限，所以我用 root 用户执行上述命令，然后更改了文件所有者为 git.git）：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git&#x2F;blog.git&#x2F;hooks     &#x2F;&#x2F;切换到hooks目录下</span><br><span class="line">vim post-receive            &#x2F;&#x2F;创建文件</span><br></pre></td></tr></table></figure>
-<p>复制下面的内容到 post-receive 文件中：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">echo &quot;post-receive hook is running...&quot;</span><br><span class="line"></span><br><span class="line">GIT_REPO&#x3D;&#x2F;home&#x2F;git&#x2F;blog.git</span><br><span class="line">TMP_GIT_CLONE&#x3D;&#x2F;tmp&#x2F;blog</span><br><span class="line">PUBLIC_WWW&#x3D;&#x2F;var&#x2F;www&#x2F;blog</span><br><span class="line"></span><br><span class="line">rm -rf $&#123;TMP_GIT_CLONE&#125;</span><br><span class="line">git clone $GIT_REPO $TMP_GIT_CLONE</span><br><span class="line">rm -rf $&#123;PUBLIC_WWW&#125;&#x2F;*</span><br><span class="line">cp -rf $&#123;TMP_GIT_CLONE&#125;&#x2F;* $&#123;PUBLIC_WWW&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>为什么不直接将裸仓库克隆到 Web 根目录下呢？我之前也一直被这个问题困扰，感觉先&gt;克隆到 tmp 目录再拷贝到 Web 根目录是多此一举。后来我觉得可能是出于项目安全的&gt;考虑，在执行 cp 命令的时候，.git 作为隐藏目录不会被拷贝到 Web 根目录下，也就&gt;避免了将整个仓库历史暴露在 Web 服务中。</p>
-</blockquote>
-<p>赋予可执行权限：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod +x post-receive</span><br></pre></td></tr></table></figure>
-<p>ok，至此配置完毕，可以本地hexo d直接发布到vps了。</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>git hooks</tag>
-      </tags>
   </entry>
   <entry>
     <title>linux小技巧</title>
@@ -1392,56 +1370,72 @@
       </categories>
   </entry>
   <entry>
-    <title>markdown的html标签应用及常用语法</title>
-    <url>/2021/04/19/markdown%E5%86%85%E5%AE%B9%E6%8A%98%E5%8F%A0/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Markdown 是一种轻量级标记语言，非常适合网络书写。同时，Markdown支持嵌入html标签，我们就可以借此实现markdown不具有的某些功能，如代码折叠和文字样式等。</p>
-<p><strong><a href="http://connorlin.github.io/2016/05/06/Markdown%E7%9A%84%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95(%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93)/" target="_blank" rel="noopener">Markdown的常用语法(个人总结) | ConnorLin’s Blog </a></strong></p>
+    <title>本地Hexo生成的博客部署到VPS</title>
+    <url>/2020/01/17/localblog-git-vps/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>为了科学上网搭建了vps，顺便跑一下自己的博客，但vps只有500M内存，所以决定本地windows跑hexo生成网页，然后git到vps，记录一下本地和vps的git配置。</p>
 <a id="more"></a>
-<h3 id="代码折叠"><a href="#代码折叠" class="headerlink" title="代码折叠"></a>代码折叠</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;details&gt;</span><br><span class="line">  &lt;summary&gt;</span><br><span class="line">  	&lt;font color&#x3D;&quot;#0000ff&quot; &gt;点击时的区域标题：点击查看详细内容&lt;&#x2F;font&gt;</span><br><span class="line">  &lt;&#x2F;summary&gt;</span><br><span class="line">  &lt;p&gt; - 测试 测试测试&lt;&#x2F;p&gt;</span><br><span class="line">  &lt;pre&gt;&lt;code&gt;  title，value，callBack可以缺省  &lt;&#x2F;code&gt;  &lt;&#x2F;pre&gt;</span><br><span class="line">&lt;&#x2F;details&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>summary：折叠语法展示的摘要</p>
-</li>
-<li><p>details：折叠语法标签</p>
-</li>
-<li><p>pre：以原有格式显示元素内的文字是已经格式化的文本。</p>
-</li>
-<li><p>blockcode：表示程序的代码块。</p>
-</li>
-<li><p>code：指定代码范例。</p>
-</li>
-</ul>
-<p>效果如下：</p>
-<details>
-  <summary><font color="#0000ff">点击时的区域标题：点击查看详细内容</font></summary>
-  <p> - 测试 测试测试</p>
-  <pre><code>  title，value，callBack可以缺省  </code>  </pre>
-</details>
+<h3 id="本地配置"><a href="#本地配置" class="headerlink" title="本地配置"></a>本地配置</h3><p>本地windows安装Node.js hexo git，过程不提。</p>
+<h4 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h4><p>安装后打开 Git Bash 输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;你的用户名&quot;</span><br><span class="line">git config --global user.email &quot;你的电子邮箱&quot;</span><br></pre></td></tr></table></figure>
+<p>由于 Hexo 的 Git 部署不支持使用密码登陆，所以需要配置 SSH 公钥：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~</span><br><span class="line">mkdir .ssh</span><br><span class="line">cd .ssh</span><br><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+<p>由此便在系统当前用户文件夹下生成了私钥 id_rsa 和公钥 id_rsa.pub。</p>
+<p>在上面建立的.ssh文件中新建config文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~&#x2F;.ssh</span><br><span class="line">vim config</span><br></pre></td></tr></table></figure>
+<p>内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Host 服务器IP</span><br><span class="line">HostName 服务器IP</span><br><span class="line">User git</span><br><span class="line">Port 端口号</span><br><span class="line">IdentityFile ~&#x2F;.ssh&#x2F;id_rsa</span><br></pre></td></tr></table></figure>
+<h4 id="hexo配置"><a href="#hexo配置" class="headerlink" title="hexo配置"></a>hexo配置</h4><p>安装插件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 
-<h3 id="字体样式"><a href="#字体样式" class="headerlink" title="字体样式"></a>字体样式</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;span style&#x3D;&#39;color:red&#39;&gt;This is red&lt;&#x2F;span&gt;   &#x2F;&#x2F;字体颜色</span><br><span class="line">&lt;ruby&gt; 漢 &lt;rt&gt; ㄏㄢˋ &lt;&#x2F;rt&gt; &lt;&#x2F;ruby&gt; &#x2F;&#x2F; 特殊字</span><br><span class="line">&lt;kbd&gt;Ctrl&lt;&#x2F;kbd&gt;+&lt;kbd&gt;F9&lt;&#x2F;kbd&gt;  &#x2F;&#x2F; 按键标识</span><br><span class="line">&lt;span style&#x3D;&quot;font-size:2rem; background:yellow;&quot;&gt;**Bigger**&lt;&#x2F;span&gt; &#x2F;&#x2F;字体大小和背景</span><br><span class="line"></span><br><span class="line">&lt;font face&#x3D;&quot;微软雅黑&quot; color&#x3D;&quot;red&quot; size&#x3D;&quot;6&quot;&gt;字体及字体颜色和大小&lt;&#x2F;font&gt;</span><br><span class="line">&lt;font color&#x3D;&quot;#0000ff&quot;&gt;字体颜色&lt;&#x2F;font&gt;</span><br><span class="line"></span><br><span class="line">&lt;p align&#x3D;&quot;left&quot;&gt;居左文本&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p align&#x3D;&quot;center&quot;&gt;居中文本&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p align&#x3D;&quot;right&quot;&gt;居右文本&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
-<p>使用span或者font标签，同时用style属性控制样式。</p>
-<p>效果如下：<br><span style="color:red">This is red</span>   &#x2F;&#x2F;字体颜色</p>
-<p><ruby> 漢 <rt> ㄏㄢˋ </rt> </ruby> &#x2F;&#x2F; 特殊字</p>
-<p><kbd>Ctrl</kbd>+<kbd>F9</kbd>  &#x2F;&#x2F; 按键标识</p>
-<p><span style="font-size:2rem; background:yellow;"><strong>Bigger</strong></span> &#x2F;&#x2F;字体大小和背景</p>
-<p><font face="微软雅黑" color="red" size="6">字体及字体颜色和大小</font></p>
-<p><font color="#0000ff">字体颜色</font></p>
-<p align="left">居左文本</p>
+<p>打开位于 hexo 文件夹下的 _config.yml，修改 deploy 参数：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@vps的IP:hexo.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<h3 id="VPS-配置"><a href="#VPS-配置" class="headerlink" title="VPS 配置"></a>VPS 配置</h3><h4 id="新建用户"><a href="#新建用户" class="headerlink" title="新建用户"></a>新建用户</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adduser git</span><br><span class="line">passwd git</span><br></pre></td></tr></table></figure>
+<h4 id="为用户git添加-sudo-权限"><a href="#为用户git添加-sudo-权限" class="headerlink" title="为用户git添加 sudo 权限"></a>为用户git添加 sudo 权限</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod 740 &#x2F;etc&#x2F;sudoers</span><br><span class="line">vim &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure>
+<p>找到以下内容</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL:ALL) ALL</span><br></pre></td></tr></table></figure>
+<p>添加修改为</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL:ALL) ALL</span><br><span class="line">git     ALL&#x3D;(ALL:ALL) ALL</span><br></pre></td></tr></table></figure>
+<p>假如是</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL) ALL</span><br></pre></td></tr></table></figure>
+<p>则修改为</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL) ALL</span><br><span class="line">git     ALL&#x3D;(ALL) ALL</span><br></pre></td></tr></table></figure>
+<p>保存,退出</p>
+<p>然后修改回文件的权限</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod 440 &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure>
+<h4 id="关闭-git-用户-shell-权限"><a href="#关闭-git-用户-shell-权限" class="headerlink" title="关闭 git 用户 shell 权限"></a>关闭 git 用户 shell 权限</h4><p>至此我们可以在本地通过：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh git@VPS IP</span><br></pre></td></tr></table></figure>
+<p>ssh 连接服务器，登录到服务器上，对服务器进行各种操作，这通常很不安全，也不合适，我们只需要能对仓库操作就可以了，不需要更大的权限。</p>
+<p>因此我们关闭 git 用户 shell 权限，执行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;passwd</span><br></pre></td></tr></table></figure>
+<p>找到git用户的一行：<em>git:x:1001:1001:,,,:&#x2F;home&#x2F;git:&#x2F;bin&#x2F;bash</em><br>改为：<em>git:x:1001:1001:,,,:&#x2F;home&#x2F;git:&#x2F;usr&#x2F;bin&#x2F;git-shell</em></p>
+<p>这样，git 用户可以正常通过 ssh 使用 git，但无法登录 shell，因为我们为 git 用户指定的 git-shell 每次一登录就自动退出。</p>
+<h4 id="初始化-git-仓库"><a href="#初始化-git-仓库" class="headerlink" title="初始化 git 仓库"></a>初始化 git 仓库</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git                &#x2F;&#x2F;切换到git用户目录</span><br><span class="line">mkdir blog.git              &#x2F;&#x2F;创建git仓库文件夹，以blog.git为例</span><br><span class="line">cd blog.git                 &#x2F;&#x2F;进入仓库目录</span><br><span class="line">git init --bare             &#x2F;&#x2F;使用--bare参数初始化为裸仓库，这样创建的仓库不包含工作区</span><br></pre></td></tr></table></figure>
+<p>注意：裸仓库没有工作区，因为服务器上的 Git 仓库纯粹是为了共享，所以不让用户直接登录到服务器上去改工作区，并且服务器上的 Git 仓库通常都以.git 结尾。</p>
+<h4 id="配置-SSH"><a href="#配置-SSH" class="headerlink" title="配置 SSH"></a>配置 SSH</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git                &#x2F;&#x2F;切换到git用户目录</span><br><span class="line">mkdir .ssh                  &#x2F;&#x2F;创建.ssh目录</span><br><span class="line">cd .ssh</span><br><span class="line">vim authorized_keys</span><br></pre></td></tr></table></figure>
+<p>然后将本地的公钥复制到 authorized_keys 文件里 (公钥即上文生成的公钥，可通过 <em>cat ~&#x2F;.ssh&#x2F;id_rsa.pub</em> 查看)。</p>
+<p>注意：收集所有需要登录的用户的公钥，就是他们自己的 id_rsa.pub 文件，把所有公钥导入到 <em>&#x2F;home&#x2F;git&#x2F;.ssh&#x2F;authorized_keys</em> 文件里，一行一个。</p>
+<h4 id="用户组管理"><a href="#用户组管理" class="headerlink" title="用户组管理"></a>用户组管理</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ll &#x2F;home&#x2F;git&#x2F;</span><br><span class="line">ll &#x2F;var&#x2F;www&#x2F;</span><br></pre></td></tr></table></figure>
+<p>确保 blog.git、.ssh、blog 目录的用户组权限为 git:git，若不是，执行下列命令：</p>
+<p>修改用户权限的命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chown -R git.git &#x2F;home&#x2F;git&#x2F;blog.git&#x2F;</span><br><span class="line">chown -R git.git &#x2F;home&#x2F;git&#x2F;.ssh&#x2F;</span><br><span class="line">chown -R git.git &#x2F;var&#x2F;www&#x2F;blog&#x2F;</span><br></pre></td></tr></table></figure>
 
-<p align="center">居中文本</p>
-
-<p align="right">居右文本</p>
-
-<p>参考来源：<br>**<a href="https://www.cnblogs.com/buwuliao/p/9578918.html" target="_blank" rel="noopener">【MarkDown】使用Html样式和折叠语法</a>**、<br><strong><a href="http://connorlin.github.io/2016/05/06/Markdown%E7%9A%84%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95(%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93)/" target="_blank" rel="noopener">Markdown的常用语法(个人总结) | ConnorLin’s Blog </a></strong></p>
+<h4 id="配置-Git-Hooks"><a href="#配置-Git-Hooks" class="headerlink" title="配置 Git Hooks"></a>配置 Git Hooks</h4><p>创建 post-receive 文件<br>git 用户下执行（这里由于禁止了git用户shell权限，所以我用 root 用户执行上述命令，然后更改了文件所有者为 git.git）：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git&#x2F;blog.git&#x2F;hooks     &#x2F;&#x2F;切换到hooks目录下</span><br><span class="line">vim post-receive            &#x2F;&#x2F;创建文件</span><br></pre></td></tr></table></figure>
+<p>复制下面的内容到 post-receive 文件中：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">echo &quot;post-receive hook is running...&quot;</span><br><span class="line"></span><br><span class="line">GIT_REPO&#x3D;&#x2F;home&#x2F;git&#x2F;blog.git</span><br><span class="line">TMP_GIT_CLONE&#x3D;&#x2F;tmp&#x2F;blog</span><br><span class="line">PUBLIC_WWW&#x3D;&#x2F;var&#x2F;www&#x2F;blog</span><br><span class="line"></span><br><span class="line">rm -rf $&#123;TMP_GIT_CLONE&#125;</span><br><span class="line">git clone $GIT_REPO $TMP_GIT_CLONE</span><br><span class="line">rm -rf $&#123;PUBLIC_WWW&#125;&#x2F;*</span><br><span class="line">cp -rf $&#123;TMP_GIT_CLONE&#125;&#x2F;* $&#123;PUBLIC_WWW&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>为什么不直接将裸仓库克隆到 Web 根目录下呢？我之前也一直被这个问题困扰，感觉先&gt;克隆到 tmp 目录再拷贝到 Web 根目录是多此一举。后来我觉得可能是出于项目安全的&gt;考虑，在执行 cp 命令的时候，.git 作为隐藏目录不会被拷贝到 Web 根目录下，也就&gt;避免了将整个仓库历史暴露在 Web 服务中。</p>
+</blockquote>
+<p>赋予可执行权限：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod +x post-receive</span><br></pre></td></tr></table></figure>
+<p>ok，至此配置完毕，可以本地hexo d直接发布到vps了。</p>
 ]]></content>
       <categories>
-        <category>markdown</category>
+        <category>linux</category>
       </categories>
-  </entry>
-  <entry>
-    <title>mybatis mysql in (#{list}) 只能查询/删除第一条的问题</title>
-    <url>/2021/12/30/mybatis-mysql-in-list-%E5%8F%AA%E8%83%BD%E6%9F%A5%E8%AF%A2-%E5%88%A0%E9%99%A4%E7%AC%AC%E4%B8%80%E6%9D%A1%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/do-your-best/p/9513194.html" target="_blank" rel="noopener">mysql in (#{list}) 只能查询&#x2F;删除第一条的问题</a></p>
-]]></content>
+      <tags>
+        <tag>git hooks</tag>
+      </tags>
   </entry>
   <entry>
     <title>android studio多语言(中英)适配</title>
@@ -1481,29 +1475,10 @@
       </tags>
   </entry>
   <entry>
-    <title>netstat 命令</title>
-    <url>/2022/02/15/netstat-%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">netstat -ntu|awk &#39;&#123;pring $5&#125;&#39;|cut -d : -f 1|sort|uniq -c</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h4 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h4><p>-n 显示数字IP, -t tcp连接, -u udp连接, -a 全部连接…</p>
-<p><strong><a href="https://blog.csdn.net/qq_42014600/article/details/90372315" target="_blank" rel="noopener">netstat详解</a></strong></p>
-<h4 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h4><p>-F 指定分割符(如 awk -F: ), 如不显示指定字段分隔符，awk的默认字段分隔符为任意空白字符，包括制表符、空格符、换行符等</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$0表示整行文本</span><br><span class="line">$1表示文本行中第一个数据字段</span><br><span class="line">$2表示文本行中第二个数据字段</span><br><span class="line">$n表示文本行中第n个数据字段</span><br></pre></td></tr></table></figure>
-<p><strong><a href="https://blog.csdn.net/u010502101/article/details/81839519" target="_blank" rel="noopener">awk详解</a></strong></p>
-<h4 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h4><p>cut -[n]b file</p>
-<p>cut -c file</p>
-<p>cut -d[分隔符] -f[域] file</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-b(bytes) ：以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志。</span><br><span class="line">-c(characters) ：以字符为单位进行分割。</span><br><span class="line">-d ：自定义分隔符，默认为制表符。</span><br><span class="line">-f(filed) ：与-d一起使用，指定显示哪个区域。</span><br><span class="line">-n ：取消分割多字节字符。仅和 -b 标志一起使用。如果字符的最后一个字节落在由 -b 标志的 List 参数指示的</span><br><span class="line">范围之内，该字符将被写出；否则，该字符将被排除。</span><br></pre></td></tr></table></figure>
-<p><strong><a href="https://blog.csdn.net/u011003120/article/details/52190187" target="_blank" rel="noopener">cut用法</a></strong></p>
-<h4 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a>uniq</h4><p>　报告或删除文件中重复的行。<br> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> -c, --count           在每行前加上表示相应行目出现次数的前缀编号</span><br><span class="line">-d, --repeated        只输出重复的行</span><br><span class="line">-D, --all-repeated[&#x3D;delimit-method    显示所有重复的行</span><br><span class="line">                      delimit-method&#x3D;&#123;none(default),prepend,separate&#125;</span><br><span class="line">                      以空行为界限</span><br><span class="line">-f, --skip-fields&#x3D;N   比较时跳过前N 列</span><br><span class="line">-i, --ignore-case     在比较的时候不区分大小写</span><br><span class="line">-s, --skip-chars&#x3D;N    比较时跳过前N 个字符</span><br><span class="line">-u, --unique          只显示唯一的行</span><br><span class="line">-z, --zero-terminated 使用&#39;\0&#39;作为行结束符，而不是新换行</span><br><span class="line">-w, --check-chars&#x3D;N   对每行第N 个字符以后的内容不作对照</span><br><span class="line">    --help            显示此帮助信息并退出</span><br><span class="line">    --version         显示版本信息并退出</span><br></pre></td></tr></table></figure></p>
-<p> <strong><a href="https://www.cnblogs.com/ftl1012/p/uniq.html" target="_blank" rel="noopener">uniq详解</a></strong></p>
+    <title>mybatis mysql in (#{list}) 只能查询/删除第一条的问题</title>
+    <url>/2021/12/30/mybatis-mysql-in-list-%E5%8F%AA%E8%83%BD%E6%9F%A5%E8%AF%A2-%E5%88%A0%E9%99%A4%E7%AC%AC%E4%B8%80%E6%9D%A1%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/do-your-best/p/9513194.html" target="_blank" rel="noopener">mysql in (#{list}) 只能查询&#x2F;删除第一条的问题</a></p>
 ]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>linux command</tag>
-      </tags>
   </entry>
   <entry>
     <title>pac.txt---url通配规则</title>
@@ -1963,6 +1938,49 @@
       </categories>
   </entry>
   <entry>
+    <title>netstat 命令</title>
+    <url>/2022/02/15/netstat-%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">netstat -ntu|awk &#39;&#123;pring $5&#125;&#39;|cut -d : -f 1|sort|uniq -c</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h4><p>-n 显示数字IP, -t tcp连接, -u udp连接, -a 全部连接…</p>
+<p><strong><a href="https://blog.csdn.net/qq_42014600/article/details/90372315" target="_blank" rel="noopener">netstat详解</a></strong></p>
+<h4 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h4><p>-F 指定分割符(如 awk -F: ), 如不显示指定字段分隔符，awk的默认字段分隔符为任意空白字符，包括制表符、空格符、换行符等</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$0表示整行文本</span><br><span class="line">$1表示文本行中第一个数据字段</span><br><span class="line">$2表示文本行中第二个数据字段</span><br><span class="line">$n表示文本行中第n个数据字段</span><br></pre></td></tr></table></figure>
+<p><strong><a href="https://blog.csdn.net/u010502101/article/details/81839519" target="_blank" rel="noopener">awk详解</a></strong></p>
+<h4 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h4><p>cut -[n]b file</p>
+<p>cut -c file</p>
+<p>cut -d[分隔符] -f[域] file</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-b(bytes) ：以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志。</span><br><span class="line">-c(characters) ：以字符为单位进行分割。</span><br><span class="line">-d ：自定义分隔符，默认为制表符。</span><br><span class="line">-f(filed) ：与-d一起使用，指定显示哪个区域。</span><br><span class="line">-n ：取消分割多字节字符。仅和 -b 标志一起使用。如果字符的最后一个字节落在由 -b 标志的 List 参数指示的</span><br><span class="line">范围之内，该字符将被写出；否则，该字符将被排除。</span><br></pre></td></tr></table></figure>
+<p><strong><a href="https://blog.csdn.net/u011003120/article/details/52190187" target="_blank" rel="noopener">cut用法</a></strong></p>
+<h4 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a>uniq</h4><p>　报告或删除文件中重复的行。<br> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> -c, --count           在每行前加上表示相应行目出现次数的前缀编号</span><br><span class="line">-d, --repeated        只输出重复的行</span><br><span class="line">-D, --all-repeated[&#x3D;delimit-method    显示所有重复的行</span><br><span class="line">                      delimit-method&#x3D;&#123;none(default),prepend,separate&#125;</span><br><span class="line">                      以空行为界限</span><br><span class="line">-f, --skip-fields&#x3D;N   比较时跳过前N 列</span><br><span class="line">-i, --ignore-case     在比较的时候不区分大小写</span><br><span class="line">-s, --skip-chars&#x3D;N    比较时跳过前N 个字符</span><br><span class="line">-u, --unique          只显示唯一的行</span><br><span class="line">-z, --zero-terminated 使用&#39;\0&#39;作为行结束符，而不是新换行</span><br><span class="line">-w, --check-chars&#x3D;N   对每行第N 个字符以后的内容不作对照</span><br><span class="line">    --help            显示此帮助信息并退出</span><br><span class="line">    --version         显示版本信息并退出</span><br></pre></td></tr></table></figure></p>
+<p> <strong><a href="https://www.cnblogs.com/ftl1012/p/uniq.html" target="_blank" rel="noopener">uniq详解</a></strong></p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux command</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>spring 线程安全</title>
+    <url>/2020/03/09/pring-%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/</url>
+    <content><![CDATA[<p>转载：<a href="https://www.cnblogs.com/kismetv/p/8757260.html" target="_blank" rel="noopener"><strong>Spring中获取request的几种方法，及其线程安全性分析</strong></a>、**<a href="https://www.jianshu.com/p/e04491f3550f" target="_blank" rel="noopener">Spring 如何保证线程安全
+</a><strong>、</strong><a href="https://blog.csdn.net/cs408/article/details/48972653" target="_blank" rel="noopener">Spring中Singleton模式的线程安全
+</a>**</p>
+<h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><p>&amp;emsp;每启动一个线程，JVM都会为它分配一个Java栈，用于存放方法中的局部变量，操作</p>
+<a id="more"></a>
+<p>数以及异常数据等。当线程调用某个方法时，JVM会根据方法区中该方法的字节码组建一个栈帧。并将该栈帧压入Java栈中，方法执行完毕时，JVM会弹出该栈帧并释放掉。</p>
+<p>&amp;emsp;注意：Java栈中的数据是线程私有的，一个线程是无法访问另一个线程的Java栈的数据。这也就是为什么多线程编程时，两个相同线程执行同一方法时，对方法内的局部变量是不需要数据同步的原因。</p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>spring</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>nginx conf location</title>
     <url>/2022/03/23/nginx-conf-location-%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h4 id="root-alias"><a href="#root-alias" class="headerlink" title="root alias"></a>root alias</h4><ul>
@@ -2024,24 +2042,6 @@
       </tags>
   </entry>
   <entry>
-    <title>spring 线程安全</title>
-    <url>/2020/03/09/pring-%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/</url>
-    <content><![CDATA[<p>转载：<a href="https://www.cnblogs.com/kismetv/p/8757260.html" target="_blank" rel="noopener"><strong>Spring中获取request的几种方法，及其线程安全性分析</strong></a>、**<a href="https://www.jianshu.com/p/e04491f3550f" target="_blank" rel="noopener">Spring 如何保证线程安全
-</a><strong>、</strong><a href="https://blog.csdn.net/cs408/article/details/48972653" target="_blank" rel="noopener">Spring中Singleton模式的线程安全
-</a>**</p>
-<h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><p>&amp;emsp;每启动一个线程，JVM都会为它分配一个Java栈，用于存放方法中的局部变量，操作</p>
-<a id="more"></a>
-<p>数以及异常数据等。当线程调用某个方法时，JVM会根据方法区中该方法的字节码组建一个栈帧。并将该栈帧压入Java栈中，方法执行完毕时，JVM会弹出该栈帧并释放掉。</p>
-<p>&amp;emsp;注意：Java栈中的数据是线程私有的，一个线程是无法访问另一个线程的Java栈的数据。这也就是为什么多线程编程时，两个相同线程执行同一方法时，对方法内的局部变量是不需要数据同步的原因。</p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>spring</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>《Spring设计思想》AOP设计基本原理</title>
     <url>/2020/03/11/pring%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3%E3%80%8BAOP%E8%AE%BE%E8%AE%A1%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/</url>
     <content><![CDATA[<p>转载：**<a href="https://blog.csdn.net/luanlouis/article/details/51095702" target="_blank" rel="noopener">《Spring设计思想》AOP设计基本原理
@@ -2054,53 +2054,6 @@
       <tags>
         <tag>spring</tag>
         <tag>aop</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>shell脚本监测nginx服务状态</title>
-    <url>/1970/01/01/shell%E8%84%9A%E6%9C%AC%E7%9B%91%E6%B5%8Bnginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A&#x3D;&#96;ps -C nginx --no-header |wc -l&#96;</span><br><span class="line">if [ $A -eq 0 ];then</span><br><span class="line">    service nginx start</span><br><span class="line">    sleep 2</span><br><span class="line">    if [ &#96;ps -C nginx --no-header |wc -l&#96; -eq 0 ];then</span><br><span class="line">        killall keepalived</span><br><span class="line">    fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-
-<h3 id="脚本解析"><a href="#脚本解析" class="headerlink" title="脚本解析"></a>脚本解析</h3><p>以上是通过进程判断，也可以通过端口判断，如netstat -nlpt | grep nginx</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# netstat -nlpt | grep nginx</span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      8801&#x2F;nginx: master</span><br></pre></td></tr></table></figure>
-
-<p>以下，以进程为例详解，ps -C nginx –no-header<br>这里涉及ps 的用法，我们一般用ps查看相关进程，一般都是用ps -ef | grep XX 或 ps -aux| grep XX 的模式<br>如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br><span class="line">root     11660  5532  0 09:55 pts&#x2F;1    00:00:00 grep --color&#x3D;auto nginx</span><br></pre></td></tr></table></figure>
-<p>但是这样通常都会覆盖一个grep的进程。</p>
-<p>我们可以用ps -ef|grep nginx|grep -v grep的方式排除grep的进程，如</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# ps -ef|grep nginx|grep -v grep</span><br><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br></pre></td></tr></table></figure>
-
-<p>也可以直接用ps -C 或ps -c 的方式， -C 后面接命令的名字（推荐） ，如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx</span><br><span class="line">   PID TTY          TIME CMD</span><br><span class="line">  8801 ?        00:00:00 nginx</span><br><span class="line">  8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
-<p>–no-header 就是去挑title,如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx --no-header</span><br><span class="line"> 8801 ?        00:00:00 nginx</span><br><span class="line"> 8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
-<p>wc -l 这个很熟悉了，行数计算</p>
-<p>所以用这种方式可判断，如果<br>ps -C nginx –no-header|wc -l</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">值为0，即代表服务未启动</span><br><span class="line">值为非0，即代表服务已启动</span><br></pre></td></tr></table></figure>
-<p>最后，killall keepalived 这个是以服务名称杀死进程，日常中也用的挺多的</p>
-<p>上面那段完整的脚本意思即为：<br>判断nginx 服务是否启动<br>如果未启动，执行启动命令<br>再次判断，如果启动失败，关掉keepalived，进入从节点</p>
-]]></content>
-      <categories>
-        <category>shell</category>
-      </categories>
-      <tags>
-        <tag>shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Rust是基于表达式的语言</title>
-    <url>/2022/03/16/rust-%E8%AF%AD%E5%8F%A5%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
-    <content><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch1/01_expression.html" target="_blank" rel="noopener">Rust是基于表达式的语言</a></p>
-<a id="more"></a>
-
-<p>除了在表达式尾部加分号的代码是语句之外，还有另外一种情况的代码是语句而非表达式：<strong>用于声明或定义</strong>。例如let声明变量、fn定义函数、struct声明结构体等。</p>
-<p>Rust很多地方都会结合表达式和语句来做变量赋值。例如，if结构也是一个表达式，所以它有返回值，可以将if的返回值赋值给变量，而<strong>它的返回值来自于它的大括号</strong>：当大括号最后执行的一条代码不加分号结尾时，该代码的计算结果就是if结构的返回值。</p>
-<p>————————————————《rust入门秘籍》</p>
-]]></content>
-      <tags>
-        <tag>rust</tag>
       </tags>
   </entry>
   <entry>
@@ -2155,24 +2108,6 @@
       </tags>
   </entry>
   <entry>
-    <title>spring security 处理filter chain抛出的异常</title>
-    <url>/2021/12/15/spring-security-%E5%A4%84%E7%90%86filter-chain%E6%8A%9B%E5%87%BA%E7%9A%84%E5%BC%82%E5%B8%B8/</url>
-    <content><![CDATA[<p>springboot异常处理默认会redirect &#x2F;error,但前后分离后, 异常处理就要返回json<br>异常一种是controller抛出的异常, 可以通过@RestControllerAdvice @ExceptionHandler全局处理,<br>另一种是spring security filter chain 抛出的异常,由于在@RestControllerAdvice之前,所以需要其它方式处理.<br>1: 自定义MyErrorController ,overriding default Spring Boot &#x2F;error handler<br>2:在filter chain里第一的位置新增自定义filter,处理后面没有处理掉的异常.</p>
-<p><strong><a href="https://blog.csdn.net/muyuanjin67/article/details/120373168" target="_blank" rel="noopener">Spring和SpringSecurity 的全局异常处理</a></strong>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;,<strong><a href="https://stackoverflow.com/questions/34595605/how-to-manage-exceptions-thrown-in-filters-in-spring" target="_blank" rel="noopener">How to manage exceptions thrown in filters in Spring?</a></strong>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;,<strong><a href="https://www.jianshu.com/p/f528fe2377e2" target="_blank" rel="noopener">Spring security restful like 服务下的异常处理</a></strong></p>
-]]></content>
-      <tags>
-        <tag>spring security</tag>
-        <tag>filter chain</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java动态代理机制详解（JDK 和CGLIB，Javassist，ASM）</title>
-    <url>/2020/03/11/spring-struts2-action%E5%8D%95%E4%BE%8B%E8%BF%98%E6%98%AF%E5%A4%9A%E4%BE%8B/</url>
-    <content><![CDATA[<p>转载：**<a href="https://blog.csdn.net/luanlouis/article/details/24589193" target="_blank" rel="noopener">Java动态代理机制详解（JDK 和CGLIB，Javassist，ASM）
-</a>**</p>
-]]></content>
-  </entry>
-  <entry>
     <title>shell脚本检查nginx服务状态</title>
     <url>/2021/04/08/shell%E8%84%9A%E6%9C%AC%E6%A3%80%E6%9F%A5nginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
@@ -2206,30 +2141,55 @@
       </tags>
   </entry>
   <entry>
-    <title>ssh 复用(避免重输密码)</title>
-    <url>/2022/04/10/ssh-%E5%A4%8D%E7%94%A8/</url>
-    <content><![CDATA[<p><a href="https://github.com/int32bit/notes/blob/master/linux/%E8%AE%BE%E7%BD%AEssh%E8%BF%9E%E6%8E%A5%E4%BC%9A%E8%AF%9D%E5%A4%8D%E7%94%A8.md" target="_blank" rel="noopener">设置ssh连接会话复用</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>ssh 密码登录脚本</title>
-    <url>/2021/03/19/ssh-%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>脚本密码登录服务器</p>
+    <title>shell脚本监测nginx服务状态</title>
+    <url>/1970/01/01/shell%E8%84%9A%E6%9C%AC%E7%9B%91%E6%B5%8Bnginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
 <a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A&#x3D;&#96;ps -C nginx --no-header |wc -l&#96;</span><br><span class="line">if [ $A -eq 0 ];then</span><br><span class="line">    service nginx start</span><br><span class="line">    sleep 2</span><br><span class="line">    if [ &#96;ps -C nginx --no-header |wc -l&#96; -eq 0 ];then</span><br><span class="line">        killall keepalived</span><br><span class="line">    fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
 
-<p>1、安装expect<br>使用以下代码检测expect是否已经安装</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ls &#x2F;usr&#x2F;bin | grep expect</span><br></pre></td></tr></table></figure>
-<p>如果显示为空，则使用以下命令安装</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get install tcl tk expect</span><br></pre></td></tr></table></figure>
-<p>2、 制作脚本<br>合适位置建个sh文件，脚本中写入以下内容</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">spawn ssh root@127.0.0.1 -p 22</span><br><span class="line">expect &quot;*Are you sure you want to continue connecting (yes&#x2F;no)?&quot;</span><br><span class="line">send &quot;yes\r&quot;</span><br><span class="line">expect &quot;*password:&quot;</span><br><span class="line">send &quot;123456\r&quot;</span><br><span class="line">interact</span><br></pre></td></tr></table></figure>]]></content>
+<h3 id="脚本解析"><a href="#脚本解析" class="headerlink" title="脚本解析"></a>脚本解析</h3><p>以上是通过进程判断，也可以通过端口判断，如netstat -nlpt | grep nginx</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# netstat -nlpt | grep nginx</span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      8801&#x2F;nginx: master</span><br></pre></td></tr></table></figure>
+
+<p>以下，以进程为例详解，ps -C nginx –no-header<br>这里涉及ps 的用法，我们一般用ps查看相关进程，一般都是用ps -ef | grep XX 或 ps -aux| grep XX 的模式<br>如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br><span class="line">root     11660  5532  0 09:55 pts&#x2F;1    00:00:00 grep --color&#x3D;auto nginx</span><br></pre></td></tr></table></figure>
+<p>但是这样通常都会覆盖一个grep的进程。</p>
+<p>我们可以用ps -ef|grep nginx|grep -v grep的方式排除grep的进程，如</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# ps -ef|grep nginx|grep -v grep</span><br><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br></pre></td></tr></table></figure>
+
+<p>也可以直接用ps -C 或ps -c 的方式， -C 后面接命令的名字（推荐） ，如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx</span><br><span class="line">   PID TTY          TIME CMD</span><br><span class="line">  8801 ?        00:00:00 nginx</span><br><span class="line">  8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
+<p>–no-header 就是去挑title,如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx --no-header</span><br><span class="line"> 8801 ?        00:00:00 nginx</span><br><span class="line"> 8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
+<p>wc -l 这个很熟悉了，行数计算</p>
+<p>所以用这种方式可判断，如果<br>ps -C nginx –no-header|wc -l</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">值为0，即代表服务未启动</span><br><span class="line">值为非0，即代表服务已启动</span><br></pre></td></tr></table></figure>
+<p>最后，killall keepalived 这个是以服务名称杀死进程，日常中也用的挺多的</p>
+<p>上面那段完整的脚本意思即为：<br>判断nginx 服务是否启动<br>如果未启动，执行启动命令<br>再次判断，如果启动失败，关掉keepalived，进入从节点</p>
+]]></content>
       <categories>
-        <category>linux</category>
         <category>shell</category>
       </categories>
       <tags>
-        <tag>ssh</tag>
+        <tag>shell</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>spring security 处理filter chain抛出的异常</title>
+    <url>/2021/12/15/spring-security-%E5%A4%84%E7%90%86filter-chain%E6%8A%9B%E5%87%BA%E7%9A%84%E5%BC%82%E5%B8%B8/</url>
+    <content><![CDATA[<p>springboot异常处理默认会redirect &#x2F;error,但前后分离后, 异常处理就要返回json<br>异常一种是controller抛出的异常, 可以通过@RestControllerAdvice @ExceptionHandler全局处理,<br>另一种是spring security filter chain 抛出的异常,由于在@RestControllerAdvice之前,所以需要其它方式处理.<br>1: 自定义MyErrorController ,overriding default Spring Boot &#x2F;error handler<br>2:在filter chain里第一的位置新增自定义filter,处理后面没有处理掉的异常.</p>
+<p><strong><a href="https://blog.csdn.net/muyuanjin67/article/details/120373168" target="_blank" rel="noopener">Spring和SpringSecurity 的全局异常处理</a></strong>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;,<strong><a href="https://stackoverflow.com/questions/34595605/how-to-manage-exceptions-thrown-in-filters-in-spring" target="_blank" rel="noopener">How to manage exceptions thrown in filters in Spring?</a></strong>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;,<strong><a href="https://www.jianshu.com/p/f528fe2377e2" target="_blank" rel="noopener">Spring security restful like 服务下的异常处理</a></strong></p>
+]]></content>
+      <tags>
+        <tag>spring security</tag>
+        <tag>filter chain</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java动态代理机制详解（JDK 和CGLIB，Javassist，ASM）</title>
+    <url>/2020/03/11/spring-struts2-action%E5%8D%95%E4%BE%8B%E8%BF%98%E6%98%AF%E5%A4%9A%E4%BE%8B/</url>
+    <content><![CDATA[<p>转载：**<a href="https://blog.csdn.net/luanlouis/article/details/24589193" target="_blank" rel="noopener">Java动态代理机制详解（JDK 和CGLIB，Javassist，ASM）
+</a>**</p>
+]]></content>
   </entry>
   <entry>
     <title>cors--springboot shiro 前后端分离跨域</title>
@@ -2287,18 +2247,43 @@
       </tags>
   </entry>
   <entry>
-    <title>锁、synchronized、CAS、volatile</title>
-    <url>/2020/04/06/synchronized%E3%80%81CAS%E3%80%81volatile/</url>
-    <content><![CDATA[<p>转载：**<a href="https://tech.meituan.com/2018/11/15/java-lock.html" target="_blank" rel="noopener">不可不说的Java“锁”事</a><strong>、</strong><a href="https://blog.csdn.net/javazejian/article/details/72828483" target="_blank" rel="noopener">深入理解Java并发之synchronized实现原理</a><strong>、</strong><a href="https://www.cnblogs.com/zhangyinhua/p/14519190.html" target="_blank" rel="noopener">Java多线程之synchronized详解</a><strong>、</strong><a href="https://juejin.im/post/5a73cbbff265da4e807783f5" target="_blank" rel="noopener">Java CAS 原理剖析
-</a><strong>、</strong><a href="https://www.cnblogs.com/theRhyme/p/12129120.html" target="_blank" rel="noopener">从原子类和UNSAFE来理解JAVA内存模型，ATOMICINTEGER的INCREMENTANDGET方法和UNSAFE部分源码介绍，VALUEOFFSET偏移量的理解</a><strong>、</strong><a href="https://www.cnblogs.com/theRhyme/p/9396834.html" target="_blank" rel="noopener">JAVA内存模型中VOLATILE关键字的作用
-</a><strong>、</strong><a href="https://www.cnblogs.com/theRhyme/p/9399881.html" target="_blank" rel="noopener">JAVA内存模型，为啥线程要有自己的本地内存，CPU高速缓存
-</a>**</p>
+    <title>ssh 复用(避免重输密码)</title>
+    <url>/2022/04/10/ssh-%E5%A4%8D%E7%94%A8/</url>
+    <content><![CDATA[<p><a href="https://github.com/int32bit/notes/blob/master/linux/%E8%AE%BE%E7%BD%AEssh%E8%BF%9E%E6%8E%A5%E4%BC%9A%E8%AF%9D%E5%A4%8D%E7%94%A8.md" target="_blank" rel="noopener">设置ssh连接会话复用</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>ssh 密码登录脚本</title>
+    <url>/2021/03/19/ssh-%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95%E8%84%9A%E6%9C%AC/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>脚本密码登录服务器</p>
+<a id="more"></a>
+
+<p>1、安装expect<br>使用以下代码检测expect是否已经安装</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ls &#x2F;usr&#x2F;bin | grep expect</span><br></pre></td></tr></table></figure>
+<p>如果显示为空，则使用以下命令安装</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get install tcl tk expect</span><br></pre></td></tr></table></figure>
+<p>2、 制作脚本<br>合适位置建个sh文件，脚本中写入以下内容</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">spawn ssh root@127.0.0.1 -p 22</span><br><span class="line">expect &quot;*Are you sure you want to continue connecting (yes&#x2F;no)?&quot;</span><br><span class="line">send &quot;yes\r&quot;</span><br><span class="line">expect &quot;*password:&quot;</span><br><span class="line">send &quot;123456\r&quot;</span><br><span class="line">interact</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>ssh</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rust是基于表达式的语言</title>
+    <url>/2022/03/16/rust-%E8%AF%AD%E5%8F%A5%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
+    <content><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch1/01_expression.html" target="_blank" rel="noopener">Rust是基于表达式的语言</a></p>
+<a id="more"></a>
+
+<p>除了在表达式尾部加分号的代码是语句之外，还有另外一种情况的代码是语句而非表达式：<strong>用于声明或定义</strong>。例如let声明变量、fn定义函数、struct声明结构体等。</p>
+<p>Rust很多地方都会结合表达式和语句来做变量赋值。例如，if结构也是一个表达式，所以它有返回值，可以将if的返回值赋值给变量，而<strong>它的返回值来自于它的大括号</strong>：当大括号最后执行的一条代码不加分号结尾时，该代码的计算结果就是if结构的返回值。</p>
+<p>————————————————《rust入门秘籍》</p>
 ]]></content>
       <tags>
-        <tag>lock</tag>
-        <tag>synchronized</tag>
-        <tag>CAS</tag>
-        <tag>volatile</tag>
+        <tag>rust</tag>
       </tags>
   </entry>
   <entry>
@@ -2316,6 +2301,21 @@
 <p>将上面左边的命令位置，替换用which npm查询出来的就行了。</p>
 <p><strong>当然我用了which node之后就意识到我以前是用的nvm管理node的版本，差点儿就用n在另外的位置重新下了个版本，而且还发现以前用apt-get下了个更早的版本，每个工具下载的位置都不同，混乱不堪，统统删了，以后只用nvm管理node版本！教训啊～</strong></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>锁、synchronized、CAS、volatile</title>
+    <url>/2020/04/06/synchronized%E3%80%81CAS%E3%80%81volatile/</url>
+    <content><![CDATA[<p>转载：**<a href="https://tech.meituan.com/2018/11/15/java-lock.html" target="_blank" rel="noopener">不可不说的Java“锁”事</a><strong>、</strong><a href="https://blog.csdn.net/javazejian/article/details/72828483" target="_blank" rel="noopener">深入理解Java并发之synchronized实现原理</a><strong>、</strong><a href="https://www.cnblogs.com/zhangyinhua/p/14519190.html" target="_blank" rel="noopener">Java多线程之synchronized详解</a><strong>、</strong><a href="https://juejin.im/post/5a73cbbff265da4e807783f5" target="_blank" rel="noopener">Java CAS 原理剖析
+</a><strong>、</strong><a href="https://www.cnblogs.com/theRhyme/p/12129120.html" target="_blank" rel="noopener">从原子类和UNSAFE来理解JAVA内存模型，ATOMICINTEGER的INCREMENTANDGET方法和UNSAFE部分源码介绍，VALUEOFFSET偏移量的理解</a><strong>、</strong><a href="https://www.cnblogs.com/theRhyme/p/9396834.html" target="_blank" rel="noopener">JAVA内存模型中VOLATILE关键字的作用
+</a><strong>、</strong><a href="https://www.cnblogs.com/theRhyme/p/9399881.html" target="_blank" rel="noopener">JAVA内存模型，为啥线程要有自己的本地内存，CPU高速缓存
+</a>**</p>
+]]></content>
+      <tags>
+        <tag>lock</tag>
+        <tag>synchronized</tag>
+        <tag>CAS</tag>
+        <tag>volatile</tag>
+      </tags>
   </entry>
   <entry>
     <title>tmux 使用</title>
@@ -2350,6 +2350,47 @@
 ]]></content>
   </entry>
   <entry>
+    <title>ubuntu 开机启动管理</title>
+    <url>/2021/03/21/ubuntu-%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%AE%A1%E7%90%86/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ubuntu自启服务管理命令</p>
+<a id="more"></a>
+<p>查看开机启动服务</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl list-unit-files --type&#x3D;service|grep enabled</span><br></pre></td></tr></table></figure>
+<p>以蓝牙为例，查询蓝牙服务是否开机启动</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl is-enabled bluetooth.service</span><br></pre></td></tr></table></figure>
+<p>如果是enable开机自启动<br>如果是disable不开机启动</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl enable bluetooth.service #开机运行服务</span><br><span class="line"></span><br><span class="line">systemctl disable bluetooth.service #取消开机运行</span><br><span class="line"></span><br><span class="line">sudo systemctl disable  bluetooth.service#关闭蓝牙服务</span><br><span class="line"></span><br><span class="line">systemctl start bluetooth.service #启动服务</span><br><span class="line"></span><br><span class="line">systemctl stop bluetooth.service #停止服务</span><br><span class="line"></span><br><span class="line">systemctl restart bluetooth.service #重启服务</span><br><span class="line"></span><br><span class="line">systemctl reload bluetooth.service #重新加载服务配置文件</span><br><span class="line"></span><br><span class="line">systemctl status bluetooth.service #查询服务运行状态</span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>ubuntu terminal 打开后的默认位置和大小</title>
+    <url>/2021/03/18/ubuntu-terminal-location/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>经常一边儿搜着浏览器，一边儿操作终端，这时候终端打开的默认位置大小就很重要，能节省不少步骤，下面介绍一下怎么设置。</p>
+<a id="more"></a>
+<p>网传的一般有两种，一种是自定义快捷键，一种是修改*&#x2F;usr&#x2F;share&#x2F;applications&#x2F;gnome-terminal.desktop<em>。第二种效果只是修改了“通过菜单栏或鼠标点击进入终端时的位置”，用</em>Ctrl+Alt+T*进入时，没有效果，所以本文选择第一种，步骤如下：</p>
+<p>1、打开一个终端，把它调整到自己想要的大小和位置</p>
+<p>2、在终端内执行xwininfo，鼠标变成十字，然后鼠标点击终端，出现终端窗口的信息，注意最后一行： -geometry 80x24-4+168</p>
+<p><img src="/images/pasted-29.png" alt="upload successful"></p>
+<p>3、依次进入Setting - Devices - keyboard，可以看到系统的所有快捷键设置，包括<em>Launch terminal Ctrl+Alt+T</em>。拉到最下面，点击+号</p>
+<p><img src="/images/pasted-31.png" alt="upload successful"></p>
+<p>Name自己取，主要是Command,输入步骤2的大小坐标信息，  <em>gnome-terminal –geometry 80x24-4+168</em><br>PS:重装20.04后，格式为</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gnome-terminal --geometry 80x32--45+100 -- tmux #注意geometry及数字45前，均为两个“-” -- tmux：直接打开tmux，不用再输命令</span><br></pre></td></tr></table></figure>
+<p>Shortcut自定义即可，注意不要跟现存的快捷键冲突。我自己是用的Super+T。</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+        <category>ubuntu</category>
+      </categories>
+      <tags>
+        <tag>terminal</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ubuntu 开机自动挂载其他盘</title>
     <url>/1970/01/01/ubuntu-%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E5%85%B6%E4%BB%96%E7%9B%98/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>双系统，ubuntu和win10装在同一个固态盘，还有另外一个机械盘，平时放些资料啥的，设置给ubuntu开机自动挂载另一个机械盘。</p>
@@ -2369,20 +2410,6 @@
 ]]></content>
       <categories>
         <category>linux</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>ubuntu 打开win10 txt中文乱码</title>
-    <url>/2021/03/19/ubuntu-%E6%89%93%E5%BC%80win10-txt%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>双系统，ubuntu打开win10的文本文件，中文乱码，明显是编码问题，记录之。</p>
-<a id="more"></a>
-
-<p>1、原因<br>ubuntu系统locale是utf-8（很多linux系统默认的locale形式），编辑的文档是GB2312或GBK形式的（Windows记事本默认保存形式，大部分编辑器也默认保存为这个形式，所以最常见），终端类型utf-8（也就是假定客户端是putty类的unicode软件）则vim打开文档后，encoding&#x3D;utf-8（locale决定的），fileencoding&#x3D;latin1（自动编码判断机制不准导致的），termencoding&#x3D;空（默认无需转换term编码），最终显示文件为乱码。</p>
-<p>2、解决办法<br>在*&#x2F;home&#x2F;user&#x2F;<em>下修改</em>.vimrc*文件（系统新装，默认情况下尚未创建）。 编辑 ~&#x2F;.vimrc 文件（ 添加如下几行即可</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set fileencodings&#x3D;utf-8,ucs-bom,gb18030,gbk,gb2312,cp936</span><br><span class="line">set termencoding&#x3D;utf-8</span><br><span class="line">set encoding&#x3D;utf-8</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>linux</category>
-        <category>ubuntu</category>
       </categories>
   </entry>
   <entry>
@@ -2419,6 +2446,20 @@
       </categories>
   </entry>
   <entry>
+    <title>ubuntu 打开win10 txt中文乱码</title>
+    <url>/2021/03/19/ubuntu-%E6%89%93%E5%BC%80win10-txt%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>双系统，ubuntu打开win10的文本文件，中文乱码，明显是编码问题，记录之。</p>
+<a id="more"></a>
+
+<p>1、原因<br>ubuntu系统locale是utf-8（很多linux系统默认的locale形式），编辑的文档是GB2312或GBK形式的（Windows记事本默认保存形式，大部分编辑器也默认保存为这个形式，所以最常见），终端类型utf-8（也就是假定客户端是putty类的unicode软件）则vim打开文档后，encoding&#x3D;utf-8（locale决定的），fileencoding&#x3D;latin1（自动编码判断机制不准导致的），termencoding&#x3D;空（默认无需转换term编码），最终显示文件为乱码。</p>
+<p>2、解决办法<br>在*&#x2F;home&#x2F;user&#x2F;<em>下修改</em>.vimrc*文件（系统新装，默认情况下尚未创建）。 编辑 ~&#x2F;.vimrc 文件（ 添加如下几行即可</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set fileencodings&#x3D;utf-8,ucs-bom,gb18030,gbk,gb2312,cp936</span><br><span class="line">set termencoding&#x3D;utf-8</span><br><span class="line">set encoding&#x3D;utf-8</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+        <category>ubuntu</category>
+      </categories>
+  </entry>
+  <entry>
     <title>ubuntu 桌面死机(重启gnome-shell)</title>
     <url>/2021/04/19/ubuntu-%E6%A1%8C%E9%9D%A2%E6%AD%BB%E6%9C%BA/</url>
     <content><![CDATA[<p>ubuntu有时桌面会卡死，鼠标点击失灵，解决方法：重启gnome-shell。<br>建议以下两种二选一：</p>
@@ -2443,6 +2484,18 @@
       <tags>
         <tag>gnome-shell</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>ubuntu miss Settings</title>
+    <url>/2023/02/19/ubuntu-miss-Setting/</url>
+    <content><![CDATA[<p>清理磁盘空间，删了一大堆有的没的，不知道误删了哪块儿，系统的Settings没了,重新安装gnome-control-center即可。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get install --reinstall gnome-control-center</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>java类加载</title>
+    <url>/2020/03/03/va-class/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这里贴一个介绍类加载的介绍链接：<a href="https://juejin.im/post/5dac4edff265da5b5f7588d1#heading-0" target="_blank" rel="noopener">java 的类加载</a></p>
+]]></content>
   </entry>
   <entry>
     <title>ubuntu登录界面美化</title>
@@ -2534,12 +2587,6 @@
 <p>For more information on managing MySQL’s data directories, check out the following sections in the official MySQL documentation:</p>
 <p><a href="https://dev.mysql.com/doc/refman/5.7/en/data-directory.html" target="_blank" rel="noopener">The MySQL Data Directory</a></p>
 <p><a href="https://dev.mysql.com/doc/refman/5.7/en/multiple-data-directories.html" target="_blank" rel="noopener">Setting Up Multiple Data Directories</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>java类加载</title>
-    <url>/2020/03/03/va-class/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这里贴一个介绍类加载的介绍链接：<a href="https://juejin.im/post/5dac4edff265da5b5f7588d1#heading-0" target="_blank" rel="noopener">java 的类加载</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -2985,63 +3032,6 @@
       </tags>
   </entry>
   <entry>
-    <title>jvm-invokeinterface</title>
-    <url>/2020/03/09/vm-invokeinterface/</url>
-    <content><![CDATA[<p>转载：<a href="https://blog.csdn.net/kang389110772/article/details/50723127" target="_blank" rel="noopener">Spring为什么Autowired注入的是接口
-</a>、</p>
-<p><a href="https://github.com/1993hzh/thoughts/issues/5" target="_blank" rel="noopener">浅析JVM中invokevirtual与invokeinterface的区别 #5
-</a>、</p>
-<p><a href="https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.6.3" target="_blank" rel="noopener">Java Virtual Machine Specification</a></p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>jvm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ubuntu terminal 打开后的默认位置和大小</title>
-    <url>/2021/03/18/ubuntu-terminal-location/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>经常一边儿搜着浏览器，一边儿操作终端，这时候终端打开的默认位置大小就很重要，能节省不少步骤，下面介绍一下怎么设置。</p>
-<a id="more"></a>
-<p>网传的一般有两种，一种是自定义快捷键，一种是修改*&#x2F;usr&#x2F;share&#x2F;applications&#x2F;gnome-terminal.desktop<em>。第二种效果只是修改了“通过菜单栏或鼠标点击进入终端时的位置”，用</em>Ctrl+Alt+T*进入时，没有效果，所以本文选择第一种，步骤如下：</p>
-<p>1、打开一个终端，把它调整到自己想要的大小和位置</p>
-<p>2、在终端内执行xwininfo，鼠标变成十字，然后鼠标点击终端，出现终端窗口的信息，注意最后一行： -geometry 80x24-4+168</p>
-<p><img src="/images/pasted-29.png" alt="upload successful"></p>
-<p>3、依次进入Setting - Devices - keyboard，可以看到系统的所有快捷键设置，包括<em>Launch terminal Ctrl+Alt+T</em>。拉到最下面，点击+号</p>
-<p><img src="/images/pasted-31.png" alt="upload successful"></p>
-<p>Name自己取，主要是Command,输入步骤2的大小坐标信息，  <em>gnome-terminal –geometry 80x24-4+168</em><br>PS:重装20.04后，格式为</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gnome-terminal --geometry 80x32--45+100 -- tmux #注意geometry及数字45前，均为两个“-” -- tmux：直接打开tmux，不用再输命令</span><br></pre></td></tr></table></figure>
-<p>Shortcut自定义即可，注意不要跟现存的快捷键冲突。我自己是用的Super+T。</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-        <category>ubuntu</category>
-      </categories>
-      <tags>
-        <tag>terminal</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ubuntu 开机启动管理</title>
-    <url>/2021/03/21/ubuntu-%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%AE%A1%E7%90%86/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ubuntu自启服务管理命令</p>
-<a id="more"></a>
-<p>查看开机启动服务</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl list-unit-files --type&#x3D;service|grep enabled</span><br></pre></td></tr></table></figure>
-<p>以蓝牙为例，查询蓝牙服务是否开机启动</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl is-enabled bluetooth.service</span><br></pre></td></tr></table></figure>
-<p>如果是enable开机自启动<br>如果是disable不开机启动</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl enable bluetooth.service #开机运行服务</span><br><span class="line"></span><br><span class="line">systemctl disable bluetooth.service #取消开机运行</span><br><span class="line"></span><br><span class="line">sudo systemctl disable  bluetooth.service#关闭蓝牙服务</span><br><span class="line"></span><br><span class="line">systemctl start bluetooth.service #启动服务</span><br><span class="line"></span><br><span class="line">systemctl stop bluetooth.service #停止服务</span><br><span class="line"></span><br><span class="line">systemctl restart bluetooth.service #重启服务</span><br><span class="line"></span><br><span class="line">systemctl reload bluetooth.service #重新加载服务配置文件</span><br><span class="line"></span><br><span class="line">systemctl status bluetooth.service #查询服务运行状态</span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Ubuntu中vim的粘帖复制</title>
     <url>/2021/03/17/vim-%E7%B2%98%E5%B8%96%E5%A4%8D%E5%88%B6%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>想要从浏览器中把Ctrl+c的内容复制到Vim中，要搞懂Ubuntu18中vim的复制粘帖原理及使用。</p>
@@ -3083,14 +3073,19 @@
       </tags>
   </entry>
   <entry>
-    <title>vue cli 前端跨域设置</title>
-    <url>/2021/11/27/vue-cli-%E5%89%8D%E7%AB%AF%E8%B7%A8%E5%9F%9F%E8%AE%BE%E7%BD%AE/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>前后分离的前端开发时,一般都缺少后端的支持,开发阶段可以用mock模拟后端的返回请求, 但后续总要访问后端联调, 此时就涉及到前端的跨越了(只有开发阶段,部署的时候统一部署). 本质上就是在前端开一个代理服务,服务器访问服务器就没有浏览器访问后端的跨域限制了.</p>
-<a id="more"></a>
-<p><strong><a href="https://blog.csdn.net/qq_34450741/article/details/107444815?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-2.no_search_link&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-2.no_search_link" target="_blank" rel="noopener">[vue] vue cli 4.0+ 解决前端跨域问题</a></strong> &amp;nbsp;&amp;nbsp;<strong><a href="https://blog.csdn.net/weixin_39553363/article/details/104152142" target="_blank" rel="noopener">图解vue3.0&#x2F;vueCli4解决跨域问题</a></strong></p>
+    <title>jvm-invokeinterface</title>
+    <url>/2020/03/09/vm-invokeinterface/</url>
+    <content><![CDATA[<p>转载：<a href="https://blog.csdn.net/kang389110772/article/details/50723127" target="_blank" rel="noopener">Spring为什么Autowired注入的是接口
+</a>、</p>
+<p><a href="https://github.com/1993hzh/thoughts/issues/5" target="_blank" rel="noopener">浅析JVM中invokevirtual与invokeinterface的区别 #5
+</a>、</p>
+<p><a href="https://docs.oracle.com/javase/specs/jvms/se8/html/jvms-2.html#jvms-2.6.3" target="_blank" rel="noopener">Java Virtual Machine Specification</a></p>
 ]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
       <tags>
-        <tag>跨域</tag>
+        <tag>jvm</tag>
       </tags>
   </entry>
   <entry>
@@ -3102,6 +3097,46 @@
         <tag>nginx</tag>
         <tag>vue</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>vue cli 前端跨域设置</title>
+    <url>/2021/11/27/vue-cli-%E5%89%8D%E7%AB%AF%E8%B7%A8%E5%9F%9F%E8%AE%BE%E7%BD%AE/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>前后分离的前端开发时,一般都缺少后端的支持,开发阶段可以用mock模拟后端的返回请求, 但后续总要访问后端联调, 此时就涉及到前端的跨越了(只有开发阶段,部署的时候统一部署). 本质上就是在前端开一个代理服务,服务器访问服务器就没有浏览器访问后端的跨域限制了.</p>
+<a id="more"></a>
+<p><strong><a href="https://blog.csdn.net/qq_34450741/article/details/107444815?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-2.no_search_link&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-2.no_search_link" target="_blank" rel="noopener">[vue] vue cli 4.0+ 解决前端跨域问题</a></strong> &amp;nbsp;&amp;nbsp;<strong><a href="https://blog.csdn.net/weixin_39553363/article/details/104152142" target="_blank" rel="noopener">图解vue3.0&#x2F;vueCli4解决跨域问题</a></strong></p>
+]]></content>
+      <tags>
+        <tag>跨域</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>websocket data transfer</title>
+    <url>/1970/01/01/websocket-data-transfer/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>websocket message type： text or binary byte. And for binary data, we can choose between Blob and ArrayBuffer formats.</p>
+<a id="more"></a>
+<h3 id="Receiving-Text-and-Binary-Data"><a href="#Receiving-Text-and-Binary-Data" class="headerlink" title="Receiving Text and Binary Data"></a>Receiving Text and Binary Data</h3><p><strong>参考：<a href="https://www.oreilly.com/library/view/high-performance-browser/9781449344757/ch17.html" target="_blank" rel="noopener">websocket receiving Text and Binary Data</a></strong></p>
+<p>WebSocket communication consists of messages and application code and does not need to worry about buffering, parsing, and reconstructing received data. For example, if the server sends a 1 MB payload, the application’s onmessage callback will be called only when the entire message is available on the client.</p>
+<p>Further, the WebSocket protocol makes no assumptions and places no constraints on the application payload: both text and binary data are fair game. Internally, the protocol tracks only two pieces of information about the message: the length of payload as a variable-length field and the type of payload to distinguish UTF-8 from binary transfers.</p>
+<p>When a new message is received by the browser, it is automatically converted to a DOMString object for text-based data, or a Blob object for binary data, and then passed directly to the application. The only other option, which acts as performance hint and optimization for the client, is to tell the browser to convert the received binary data to an ArrayBuffer instead of Blob:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var ws &#x3D; new WebSocket(&#39;wss:&#x2F;&#x2F;example.com&#x2F;socket&#39;);</span><br><span class="line">ws.binaryType &#x3D; &quot;arraybuffer&quot;; 1</span><br><span class="line"></span><br><span class="line">ws.onmessage &#x3D; function(msg) &#123;</span><br><span class="line">  if(msg.data instanceof ArrayBuffer) &#123;</span><br><span class="line">    processArrayBuffer(msg.data);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    processText(msg.data);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Data-transfer"><a href="#Data-transfer" class="headerlink" title="Data transfer"></a>Data transfer</h3><p><strong>参考：<a href="https://javascript.info/websocket#data-transfer" target="_blank" rel="noopener">websocket data transfer</a></strong></p>
+<p>WebSocket communication consists of “frames” – data fragments, that can be sent from either side, and can be of several kinds:</p>
+<ul>
+<li>“text frames” – contain text data that parties send to each other.</li>
+<li>“binary data frames” – contain binary data that parties send to each other.</li>
+<li>“ping&#x2F;pong frames” are used to check the connection, sent from the server, the browser responds to these automatically.</li>
+<li>there’s also “connection close frame” and a few other service frames.<br>In the browser, we directly work only with text or binary frames.</li>
+</ul>
+<p><em>WebSocket .send()</em> method can send either text or binary data.</p>
+<p>A call <em>socket.send(body)</em> allows body in string or a binary format, including Blob, ArrayBuffer, etc. No settings required: just send it out in any format.</p>
+<p>When we receive the data, text always comes as string. And for binary data, we can choose between Blob and ArrayBuffer formats.</p>
+<p>That’s set by <em>socket.binaryType</em> property, it’s “blob” by default, so binary data comes as Blob objects.</p>
+<p>Blob is a high-level binary object, it directly integrates with <a>, <img> and other tags, so that’s a sane default. But for binary processing, to access individual data bytes, we can change it to “arraybuffer”:</a></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  ws.binaryType &#x3D; &quot;arraybuffer&quot;;</span><br><span class="line">  ws.onmessage &#x3D; (event) &#x3D;&gt; &#123;</span><br><span class="line">  &#x2F;&#x2F; event.data is either a string (if text) or arraybuffer (if binary)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>websocket</category>
+      </categories>
   </entry>
   <entry>
     <title>webflux mysql</title>
@@ -3121,18 +3156,10 @@
 ]]></content>
   </entry>
   <entry>
-    <title>RxJava --学习链接</title>
-    <url>/2020/02/18/xJava/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Rx（Reactive Extensions）是一个使用<code>可观察数据流</code>进行<code>异步编程</code>的编程接口，ReactiveX结合了<code>观察者模式</code>、<code>迭代器模式</code>和<code>函数式编程</code>的精华。Rx的语言库比较流行的有RxJava&#x2F;RxJS&#x2F;Rx.NET，这里贴一些有关RxJava的链接，以便后续查找。</p>
-<a id="more"></a>
-<p><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/" target="_blank" rel="noopener">Rx中文文档</a><br><a href="https://www.jianshu.com/p/03a72a5a2049" target="_blank" rel="noopener">RxJava心得</a><br><a href="https://blog.lixplor.com/2016/10/16/rxjava/" target="_blank" rel="noopener">RxJava操作符</a></p>
+    <title>你真的会用Gson吗?Gson使用指南（一）</title>
+    <url>/2021/12/23/%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BC%9A%E7%94%A8Gson%E5%90%97-Gson%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<p><strong><a href="https://www.jianshu.com/p/e740196225a4" target="_blank" rel="noopener">你真的会用Gson吗?Gson使用指南（一）</a></strong>&amp;nbsp;&amp;nbsp;<strong><a href="https://blog.csdn.net/majalis_c/article/details/79801863?utm_term=gsonjsonobject%E8%BD%ACstring&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-0-79801863&spm=3001.4430" target="_blank" rel="noopener">Gson基本操作，JsonObject，JsonArray，String，JavaBean，List互转</a></strong></p>
 ]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>RxJava</tag>
-      </tags>
   </entry>
   <entry>
     <title>websocket data transfer </title>
@@ -3167,47 +3194,6 @@
       </tags>
   </entry>
   <entry>
-    <title>websocket data transfer</title>
-    <url>/1970/01/01/websocket-data-transfer/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>websocket message type： text or binary byte. And for binary data, we can choose between Blob and ArrayBuffer formats.</p>
-<a id="more"></a>
-<h3 id="Receiving-Text-and-Binary-Data"><a href="#Receiving-Text-and-Binary-Data" class="headerlink" title="Receiving Text and Binary Data"></a>Receiving Text and Binary Data</h3><p><strong>参考：<a href="https://www.oreilly.com/library/view/high-performance-browser/9781449344757/ch17.html" target="_blank" rel="noopener">websocket receiving Text and Binary Data</a></strong></p>
-<p>WebSocket communication consists of messages and application code and does not need to worry about buffering, parsing, and reconstructing received data. For example, if the server sends a 1 MB payload, the application’s onmessage callback will be called only when the entire message is available on the client.</p>
-<p>Further, the WebSocket protocol makes no assumptions and places no constraints on the application payload: both text and binary data are fair game. Internally, the protocol tracks only two pieces of information about the message: the length of payload as a variable-length field and the type of payload to distinguish UTF-8 from binary transfers.</p>
-<p>When a new message is received by the browser, it is automatically converted to a DOMString object for text-based data, or a Blob object for binary data, and then passed directly to the application. The only other option, which acts as performance hint and optimization for the client, is to tell the browser to convert the received binary data to an ArrayBuffer instead of Blob:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var ws &#x3D; new WebSocket(&#39;wss:&#x2F;&#x2F;example.com&#x2F;socket&#39;);</span><br><span class="line">ws.binaryType &#x3D; &quot;arraybuffer&quot;; 1</span><br><span class="line"></span><br><span class="line">ws.onmessage &#x3D; function(msg) &#123;</span><br><span class="line">  if(msg.data instanceof ArrayBuffer) &#123;</span><br><span class="line">    processArrayBuffer(msg.data);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    processText(msg.data);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Data-transfer"><a href="#Data-transfer" class="headerlink" title="Data transfer"></a>Data transfer</h3><p><strong>参考：<a href="https://javascript.info/websocket#data-transfer" target="_blank" rel="noopener">websocket data transfer</a></strong></p>
-<p>WebSocket communication consists of “frames” – data fragments, that can be sent from either side, and can be of several kinds:</p>
-<ul>
-<li>“text frames” – contain text data that parties send to each other.</li>
-<li>“binary data frames” – contain binary data that parties send to each other.</li>
-<li>“ping&#x2F;pong frames” are used to check the connection, sent from the server, the browser responds to these automatically.</li>
-<li>there’s also “connection close frame” and a few other service frames.<br>In the browser, we directly work only with text or binary frames.</li>
-</ul>
-<p><em>WebSocket .send()</em> method can send either text or binary data.</p>
-<p>A call <em>socket.send(body)</em> allows body in string or a binary format, including Blob, ArrayBuffer, etc. No settings required: just send it out in any format.</p>
-<p>When we receive the data, text always comes as string. And for binary data, we can choose between Blob and ArrayBuffer formats.</p>
-<p>That’s set by <em>socket.binaryType</em> property, it’s “blob” by default, so binary data comes as Blob objects.</p>
-<p>Blob is a high-level binary object, it directly integrates with <a>, <img> and other tags, so that’s a sane default. But for binary processing, to access individual data bytes, we can change it to “arraybuffer”:</a></p>
-  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">  ws.binaryType &#x3D; &quot;arraybuffer&quot;;</span><br><span class="line">  ws.onmessage &#x3D; (event) &#x3D;&gt; &#123;</span><br><span class="line">  &#x2F;&#x2F; event.data is either a string (if text) or arraybuffer (if binary)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>websocket</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>图解--函数调用过程及栈帧分析</title>
-    <url>/2022/02/11/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B%E5%8F%8A%E6%A0%88%E5%B8%A7%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/yishizuofei/article/details/78282958" target="_blank" rel="noopener">函数调用过程原理及函数栈帧分析</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>你真的会用Gson吗?Gson使用指南（一）</title>
-    <url>/2021/12/23/%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BC%9A%E7%94%A8Gson%E5%90%97-Gson%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%EF%BC%88%E4%B8%80%EF%BC%89/</url>
-    <content><![CDATA[<p><strong><a href="https://www.jianshu.com/p/e740196225a4" target="_blank" rel="noopener">你真的会用Gson吗?Gson使用指南（一）</a></strong>&amp;nbsp;&amp;nbsp;<strong><a href="https://blog.csdn.net/majalis_c/article/details/79801863?utm_term=gsonjsonobject%E8%BD%ACstring&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-0-79801863&spm=3001.4430" target="_blank" rel="noopener">Gson基本操作，JsonObject，JsonArray，String，JavaBean，List互转</a></strong></p>
-]]></content>
-  </entry>
-  <entry>
     <title>二叉树</title>
     <url>/2021/02/04/%E5%8F%89%E6%A0%91/</url>
     <content><![CDATA[<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><p><a href="https://www.kukuxiaai.com/blog/2019-07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E6%A0%91/" target="_blank" rel="noopener">数据结构与算法-树</a></p>
@@ -3223,15 +3209,9 @@
       </categories>
   </entry>
   <entry>
-    <title>微信内置浏览器缓存清理</title>
-    <url>/2022/03/30/%E5%BE%AE%E4%BF%A1%E5%86%85%E7%BD%AE%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E6%B8%85%E7%90%86/</url>
-    <content><![CDATA[<p>单页面应用在微信浏览器里是个巨坑，它会缓存你的index.html，导致版本更新失效…</p>
-<a id="more"></a>
-
-
-
-<p> 调试时，可以手动清除微信缓存， 在安卓版微信内打开链接  <em><a href="http://debugtbs.qq.com/" target="_blank" rel="noopener">http://debugtbs.qq.com</a></em><br> 按照它提示的再打开<em>debugmm.qq.com&#x2F;?forcex5&#x3D;true</em>，再重新打开<em><a href="http://debugtbs.qq.com/" target="_blank" rel="noopener">http://debugtbs.qq.com</a></em>，点击清楚本地缓存….</p>
-<p><a href="https://blog.csdn.net/weixin_40136189/article/details/81485171" target="_blank" rel="noopener">微信内置浏览器缓存清理</a></p>
+    <title>图解--函数调用过程及栈帧分析</title>
+    <url>/2022/02/11/%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B%E5%8F%8A%E6%A0%88%E5%B8%A7%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/yishizuofei/article/details/78282958" target="_blank" rel="noopener">函数调用过程原理及函数栈帧分析</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -3239,6 +3219,20 @@
     <url>/2021/02/23/%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<p><a href="https://www.cnblogs.com/yw09041432/p/5908444.html" target="_blank" rel="noopener">七大查找算法</a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>RxJava --学习链接</title>
+    <url>/2020/02/18/xJava/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Rx（Reactive Extensions）是一个使用<code>可观察数据流</code>进行<code>异步编程</code>的编程接口，ReactiveX结合了<code>观察者模式</code>、<code>迭代器模式</code>和<code>函数式编程</code>的精华。Rx的语言库比较流行的有RxJava&#x2F;RxJS&#x2F;Rx.NET，这里贴一些有关RxJava的链接，以便后续查找。</p>
+<a id="more"></a>
+<p><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/" target="_blank" rel="noopener">Rx中文文档</a><br><a href="https://www.jianshu.com/p/03a72a5a2049" target="_blank" rel="noopener">RxJava心得</a><br><a href="https://blog.lixplor.com/2016/10/16/rxjava/" target="_blank" rel="noopener">RxJava操作符</a></p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>RxJava</tag>
+      </tags>
   </entry>
   <entry>
     <title>网络抓包常用命令</title>
@@ -3257,6 +3251,18 @@
       <tags>
         <tag>补码</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>微信内置浏览器缓存清理</title>
+    <url>/2022/03/30/%E5%BE%AE%E4%BF%A1%E5%86%85%E7%BD%AE%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E6%B8%85%E7%90%86/</url>
+    <content><![CDATA[<p>单页面应用在微信浏览器里是个巨坑，它会缓存你的index.html，导致版本更新失效…</p>
+<a id="more"></a>
+
+
+
+<p> 调试时，可以手动清除微信缓存， 在安卓版微信内打开链接  <em><a href="http://debugtbs.qq.com/" target="_blank" rel="noopener">http://debugtbs.qq.com</a></em><br> 按照它提示的再打开<em>debugmm.qq.com&#x2F;?forcex5&#x3D;true</em>，再重新打开<em><a href="http://debugtbs.qq.com/" target="_blank" rel="noopener">http://debugtbs.qq.com</a></em>，点击清楚本地缓存….</p>
+<p><a href="https://blog.csdn.net/weixin_40136189/article/details/81485171" target="_blank" rel="noopener">微信内置浏览器缓存清理</a></p>
+]]></content>
   </entry>
   <entry>
     <title>计算机网络之IP、MAC</title>
