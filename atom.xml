@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglinagain.xyz/"/>
-  <updated>2023-02-19T11:13:18.761Z</updated>
+  <updated>2023-02-19T16:41:29.541Z</updated>
   <id>http://blog.zhangzonglinagain.xyz/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>interface.super.method()</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2023/02/20/Parentinterface-super-method/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2023/02/20/Parentinterface-super-method/</id>
+    <published>2023-02-19T16:30:32.000Z</published>
+    <updated>2023-02-19T16:41:29.541Z</updated>
+    
+    <content type="html"><![CDATA[<p>看到类A有个方法，其中有一句 interface.super.method(),interface是该class实现的接口，method是interface的default method。</p><a id="more"></a><p>在java8里，这个用法主要是应对此场景：该类实现了多个接口，每个接口都有default method，并且它们的signature类似，此时该类调用接口的default method时，就要特别指出用的是哪个接口的。</p><p>Consider the example about computer-controlled cars that can now fly. You have two interfaces (OperateCar and FlyCar) that provide default implementations for the same method, (startEngine):</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public interface OperateCar &#123;</span><br><span class="line">    &#x2F;&#x2F; ...</span><br><span class="line">    default public int startEngine(EncryptedKey key) &#123;</span><br><span class="line">        &#x2F;&#x2F; Implementation</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public interface FlyCar &#123;</span><br><span class="line">    &#x2F;&#x2F; ...</span><br><span class="line">    default public int startEngine(EncryptedKey key) &#123;</span><br><span class="line">        &#x2F;&#x2F; Implementation</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>A class that implements both OperateCar and FlyCar must override the method startEngine. You could invoke any of the of the default implementations with the super keyword.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class FlyingCar implements OperateCar, FlyCar &#123;</span><br><span class="line">    &#x2F;&#x2F; ...</span><br><span class="line">    public int startEngine(EncryptedKey key) &#123;</span><br><span class="line">        FlyCar.super.startEngine(key);</span><br><span class="line">        OperateCar.super.startEngine(key);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>The name preceding super (in this example, FlyCar or OperateCar) must refer to a direct superinterface that defines or inherits a default for the invoked method. This form of method invocation is not restricted to differentiating between multiple implemented interfaces that contain default methods with the same signature. You can use the super keyword to invoke a default method in both classes and interfaces.</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;看到类A有个方法，其中有一句 interface.super.method(),interface是该class实现的接口，method是interface的default method。&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>SpringMVC工作原理</title>
@@ -405,25 +424,6 @@
     <summary type="html">
     
       &lt;p&gt;在用idea（vscode）搜索时，按Ctlr +Shift +F ,没反应，后打字发现触发了搜狗拼音的繁简切换，盘它~&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>tmux 使用</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2022/03/25/tmux-%E4%BD%BF%E7%94%A8/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2022/03/25/tmux-%E4%BD%BF%E7%94%A8/</id>
-    <published>2022-03-24T18:09:22.000Z</published>
-    <updated>2022-04-08T19:37:14.761Z</updated>
-    
-    <content type="html"><![CDATA[<p>只能说 tmux太香了…</p><a id="more"></a><h3 id="vim配色在tmux中异常"><a href="#vim配色在tmux中异常" class="headerlink" title="vim配色在tmux中异常"></a>vim配色在tmux中异常</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim ~&#x2F;.tmux.conf</span><br><span class="line">set -g default-terminal &quot;xterm-256color&quot;</span><br><span class="line">source  ~&#x2F;.tmux.conf</span><br></pre></td></tr></table></figure><p>ps：退出tmux再设置…</p><h3 id="常用命令："><a href="#常用命令：" class="headerlink" title="常用命令："></a>常用命令：</h3><ul><li>tmux：新建一个session和一个window</li><li>tmux a：打开挂起的session</li><li>tmux ls：显示所有挂起的session</li></ul><p>在tmux中的操作：</p><ul><li>按下 ctrl + b 后松开，再按 % 可将当前pane左右平分成两个pane</li><li>按下 ctrl + b 后松开，再按 “ 可将当前pane上下平分成两个pane</li><li>按下 ctrl + b 后松开，再按 d 可挂起当前的session</li><li>按下 ctrl + b 后松开，再按 z 可将当前pane全屏或取消全屏</li><li>按下 ctrl + b 后松开，再按 c 可在当前session中创建新的window</li><li>按下 ctrl + b 后松开，再按 s 可选择其他session，用方向键操作</li><li>按下 ctrl + b 后松开，再按 w 可选择其他window，同样用方向键操作</li><li>按下 ctrl + b 后松开，再按 PageUp 或 PageDown 可翻阅当前pane中的内容</li></ul><p>tmux中的复制粘贴</p><ul><li>按下 ctrl + b 后松开，再按 [</li><li>用鼠标选中文本，被选中的文本会被自动复制到tmux的剪贴板</li><li>按下 ctrl + b 后松开，再按 ]，会将剪贴板的内容粘贴到光标处</li></ul><p><a href="https://developer.aliyun.com/article/789729" target="_blank" rel="noopener">tmux简介</a>、<br><a href="http://www.ruanyifeng.com/blog/2019/10/tmux.html" target="_blank" rel="noopener">Tmux 使用教程</a>、<br><a href="https://developer.aliyun.com/article/789729" target="_blank" rel="noopener">Tmux 修改前缀快捷键</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;只能说 tmux太香了…&lt;/p&gt;
     
     </summary>
     
