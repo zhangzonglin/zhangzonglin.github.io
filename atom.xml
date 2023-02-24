@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglinagain.xyz/"/>
-  <updated>2023-02-19T16:41:29.541Z</updated>
+  <updated>2023-02-24T20:03:26.985Z</updated>
   <id>http://blog.zhangzonglinagain.xyz/</id>
   
   <author>
@@ -15,6 +15,46 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>java 泛型擦除</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2023/02/25/java-%E6%B3%9B%E5%9E%8B%E6%93%A6%E9%99%A4/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2023/02/25/java-%E6%B3%9B%E5%9E%8B%E6%93%A6%E9%99%A4/</id>
+    <published>2023-02-24T20:00:28.000Z</published>
+    <updated>2023-02-24T20:03:26.985Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.cnblogs.com/hongdada/p/13993251.html" target="_blank" rel="noopener">Java 泛型擦除 </a></p><p>Java的泛型是伪泛型，这是因为Java在编译期间，所有的泛型信息都会被擦掉，正确理解泛型概念的首要前提是理解类型擦除。Java的泛型基本上都是在编译器这个层次上实现的，在生成的字节码中是不包含泛型中的类型信息的，使用泛型的时候加上类型参数，在编译器编译的时候会去掉，这个过程成为类型擦除。<br>例如：List<String> 和 List<Integer> 在编译后都变成 List。<br>  <a id="more"></a></Integer></String></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/hongdada/p/13993251.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Java 泛型擦除 &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Java的泛型是伪泛型，这是因为Java在编译期间，所有的泛型信息都会被擦掉，正确理解泛型概念的首要前提是理解类型擦除。Java的泛型基本上都是在编译器这个层次上实现的，在生成的字节码中是不包含泛型中的类型信息的，使用泛型的时候加上类型参数，在编译器编译的时候会去掉，这个过程成为类型擦除。&lt;br&gt;例如：List&lt;String&gt; 和 List&lt;Integer&gt; 在编译后都变成 List。&lt;br&gt;&lt;/Integer&gt;&lt;/String&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>java 内部类与实例化</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2023/02/25/java-%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%8C%96/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2023/02/25/java-%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%8C%96/</id>
+    <published>2023-02-24T19:55:03.000Z</published>
+    <updated>2023-02-24T21:27:12.511Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://blog.csdn.net/weixin_47552600/article/details/106888302" target="_blank" rel="noopener">Java内部类基本介绍、如何实例化内部类和如何调用外部类属性和方法</a>、<a href="https://blog.csdn.net/qq_28214047/article/details/53229331" target="_blank" rel="noopener">java内部类的实例化</a>、<a href="https://zhuanlan.zhihu.com/p/61735448" target="_blank" rel="noopener">内部类和静态内部类的区别</a>、<a href="https://blog.csdn.net/naoguoteng/article/details/124177958?spm=1001.2101.3001.6650.3&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-124177958-blog-107604508.pc_relevant_recovery_v2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-124177958-blog-107604508.pc_relevant_recovery_v2&utm_relevant_index=4" target="_blank" rel="noopener">内部类与外部类之间的访问</a></p><p>局部内部类访问外部类的局部变量，局部变量必须用final修饰，使之成为常量.</p><a id="more"></a><p>为什么呢? 因为局部变量会随着方法的调用完毕而消失，这个时候，局部对象并没有立马从堆内存中消失，还要使用那个变量。为了让数据还能继续被使用，就用final修饰，这样，在堆内存里面存储的其实是一个常量值。(JDK1.8之后，final会默认加上)  <a href="https://blog.csdn.net/qq_38238296/article/details/83315263" target="_blank" rel="noopener">局部内部类访问局部变量时，变量必须用final修饰</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/weixin_47552600/article/details/106888302&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Java内部类基本介绍、如何实例化内部类和如何调用外部类属性和方法&lt;/a&gt;、&lt;a href=&quot;https://blog.csdn.net/qq_28214047/article/details/53229331&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;java内部类的实例化&lt;/a&gt;、&lt;a href=&quot;https://zhuanlan.zhihu.com/p/61735448&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;内部类和静态内部类的区别&lt;/a&gt;、&lt;a href=&quot;https://blog.csdn.net/naoguoteng/article/details/124177958?spm=1001.2101.3001.6650.3&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-124177958-blog-107604508.pc_relevant_recovery_v2&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-124177958-blog-107604508.pc_relevant_recovery_v2&amp;utm_relevant_index=4&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;内部类与外部类之间的访问&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;局部内部类访问外部类的局部变量，局部变量必须用final修饰，使之成为常量.&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>interface.super.method()</title>
@@ -386,44 +426,6 @@
       
         &lt;p&gt;Nacos(Dynamic Naming and Configuration Service)，Na为naming&amp;#x2F;nameServer即注册中心,co为configuration即配置中心，service是指该注册&amp;#x2F;配置中心都是以服务为核心。操作起来比
       
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>微信内置浏览器缓存清理</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2022/03/30/%E5%BE%AE%E4%BF%A1%E5%86%85%E7%BD%AE%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E6%B8%85%E7%90%86/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2022/03/30/%E5%BE%AE%E4%BF%A1%E5%86%85%E7%BD%AE%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E6%B8%85%E7%90%86/</id>
-    <published>2022-03-30T09:38:32.000Z</published>
-    <updated>2022-03-30T09:45:51.828Z</updated>
-    
-    <content type="html"><![CDATA[<p>单页面应用在微信浏览器里是个巨坑，它会缓存你的index.html，导致版本更新失效…</p><a id="more"></a><p> 调试时，可以手动清除微信缓存， 在安卓版微信内打开链接  <em><a href="http://debugtbs.qq.com/" target="_blank" rel="noopener">http://debugtbs.qq.com</a></em><br> 按照它提示的再打开<em>debugmm.qq.com&#x2F;?forcex5&#x3D;true</em>，再重新打开<em><a href="http://debugtbs.qq.com/" target="_blank" rel="noopener">http://debugtbs.qq.com</a></em>，点击清楚本地缓存….</p><p><a href="https://blog.csdn.net/weixin_40136189/article/details/81485171" target="_blank" rel="noopener">微信内置浏览器缓存清理</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;单页面应用在微信浏览器里是个巨坑，它会缓存你的index.html，导致版本更新失效…&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>ubuntu 搜狗拼音 繁简切换快捷键冲突</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2022/03/27/ubuntu-%E6%90%9C%E7%8B%97%E6%8B%BC%E9%9F%B3-%E7%B9%81%E7%AE%80%E5%88%87%E6%8D%A2%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%86%B2%E7%AA%81/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2022/03/27/ubuntu-%E6%90%9C%E7%8B%97%E6%8B%BC%E9%9F%B3-%E7%B9%81%E7%AE%80%E5%88%87%E6%8D%A2%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%86%B2%E7%AA%81/</id>
-    <published>2022-03-27T15:46:20.000Z</published>
-    <updated>2022-03-27T15:50:23.808Z</updated>
-    
-    <content type="html"><![CDATA[<p>在用idea（vscode）搜索时，按Ctlr +Shift +F ,没反应，后打字发现触发了搜狗拼音的繁简切换，盘它~</p><a id="more"></a><h4 id="修改搜狗拼音的配置文件"><a href="#修改搜狗拼音的配置文件" class="headerlink" title="修改搜狗拼音的配置文件"></a>修改搜狗拼音的配置文件</h4><p>首先打开搜狗拼音的配置文件：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~&#x2F;.config&#x2F;sogoupinyin&#x2F;conf&#x2F;env.ini</span><br></pre></td></tr></table></figure><p>然后找到下面这行，将后面的值改为0，保存文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ShortCutFanJian&#x3D;1</span><br></pre></td></tr></table></figure><p>完成这一步还没结束，还需要修改fcitx的配置文件</p><h4 id="修改-fcitx-的配置文件"><a href="#修改-fcitx-的配置文件" class="headerlink" title="修改 fcitx 的配置文件"></a>修改 fcitx 的配置文件</h4><p>打开 fcitx 的相关配置文件：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~&#x2F;.config&#x2F;fcitx&#x2F;conf&#x2F;fcitx-chttrans.config</span><br></pre></td></tr></table></figure><p>然后找到下面这行</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#Hotkey&#x3D;CTRL_SHIFT_F</span><br></pre></td></tr></table></figure><p>将前面的注释取消，随便修改一个不常用的快捷键，比如</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hotkey&#x3D;CTRL_SHIFT_]</span><br></pre></td></tr></table></figure><p>保存文件，重新登录一下账户即可。</p><p><a href="https://www.cnblogs.com/FengZeng666/p/15504636.html" target="_blank" rel="noopener">Ubuntu 禁用搜狗输入法Linux版的简繁切换快捷键</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在用idea（vscode）搜索时，按Ctlr +Shift +F ,没反应，后打字发现触发了搜狗拼音的繁简切换，盘它~&lt;/p&gt;
     
     </summary>
     
