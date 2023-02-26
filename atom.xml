@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglinagain.xyz/"/>
-  <updated>2023-02-24T20:03:26.985Z</updated>
+  <updated>2023-02-26T15:15:00.217Z</updated>
   <id>http://blog.zhangzonglinagain.xyz/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>浅析 Java Stream 实现原理</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2023/02/26/%E6%B5%85%E6%9E%90-Java-Stream-%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2023/02/26/%E6%B5%85%E6%9E%90-Java-Stream-%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/</id>
+    <published>2023-02-26T14:27:05.000Z</published>
+    <updated>2023-02-26T15:15:00.217Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.cnblogs.com/CarpenterLee/p/6637118.html" target="_blank" rel="noopener">深入理解Java Stream流水线</a>、<a href="https://zhuanlan.zhihu.com/p/47478339?utm_id=0" target="_blank" rel="noopener">浅析 Java Stream 实现原理</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/CarpenterLee/p/6637118.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;深入理解Java Stream流水线&lt;/a&gt;、&lt;a href=&quot;https://zhua
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>java 泛型擦除</title>
@@ -404,28 +426,6 @@
     <summary type="html">
     
       &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;人被杀就会死，ubuntu20果然崩溃了，起因似乎是重装搜狗输入法，卸载时autoremove不知删了哪个依赖，桌面死活进不去（oh,no,something went wrong警告），&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Nacos</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2022/04/01/Nacos/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2022/04/01/Nacos/</id>
-    <published>2022-04-01T15:47:00.000Z</published>
-    <updated>2022-04-01T15:54:44.867Z</updated>
-    
-    <content type="html"><![CDATA[<p>Nacos(Dynamic Naming and Configuration Service)，Na为naming&#x2F;nameServer即注册中心,co为configuration即配置中心，service是指该注册&#x2F;配置中心都是以服务为核心。操作起来比eureka简单且功能强大。<br><strong><a href="https://nacos.io/zh-cn/docs/quick-start-spring-cloud.html" target="_blank" rel="noopener">Nacos Spring Cloud 快速开始</a><strong>、</strong><a href="https://www.jianshu.com/p/39ade28c150d" target="_blank" rel="noopener">什么是Nacos？Nacos注册配置中心介绍</a></strong></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Nacos(Dynamic Naming and Configuration Service)，Na为naming&amp;#x2F;nameServer即注册中心,co为configuration即配置中心，service是指该注册&amp;#x2F;配置中心都是以服务为核心。操作起来比
-      
     
     </summary>
     
