@@ -48,15 +48,15 @@
   };
 </script>
 
-  <meta name="description" content="Java内部类基本介绍、如何实例化内部类和如何调用外部类属性和方法、java内部类的实例化、内部类和静态内部类的区别、内部类与外部类之间的访问 局部内部类访问外部类的局部变量，局部变量必须用final修饰，使之成为常量.">
+  <meta name="description" content="Java内部类基本介绍、如何实例化内部类和如何调用外部类属性和方法、java内部类的实例化、内部类和静态内部类的区别、内部类与外部类之间的访问、Java局部匿名内部类是否会持有外部类的引用？  内部类可以继承其他类，从而实现“多继承”的效果。其中局部内部类访问外部类的局部变量，局部变量必须用final修饰，使之成为常量。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java 内部类与实例化">
 <meta property="og:url" content="http://blog.zhangzonglinagain.xyz/2023/02/25/java-%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%8C%96/index.html">
 <meta property="og:site_name" content="1.5L的喜欢">
-<meta property="og:description" content="Java内部类基本介绍、如何实例化内部类和如何调用外部类属性和方法、java内部类的实例化、内部类和静态内部类的区别、内部类与外部类之间的访问 局部内部类访问外部类的局部变量，局部变量必须用final修饰，使之成为常量.">
+<meta property="og:description" content="Java内部类基本介绍、如何实例化内部类和如何调用外部类属性和方法、java内部类的实例化、内部类和静态内部类的区别、内部类与外部类之间的访问、Java局部匿名内部类是否会持有外部类的引用？  内部类可以继承其他类，从而实现“多继承”的效果。其中局部内部类访问外部类的局部变量，局部变量必须用final修饰，使之成为常量。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-02-24T19:55:03.000Z">
-<meta property="article:modified_time" content="2023-02-24T21:27:12.511Z">
+<meta property="article:modified_time" content="2023-03-06T12:13:35.805Z">
 <meta property="article:author" content="zzl">
 <meta name="twitter:card" content="summary">
 
@@ -158,7 +158,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">65</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">66</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -168,7 +168,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">119</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">127</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -242,10 +242,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2023-02-25 03:55:03 / 修改时间：05:27:12" itemprop="dateCreated datePublished" datetime="2023-02-25T03:55:03+08:00">2023-02-25</time>
+              <time title="创建时间：2023-02-25 03:55:03" itemprop="dateCreated datePublished" datetime="2023-02-25T03:55:03+08:00">2023-02-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-06 20:13:35" itemprop="dateModified" datetime="2023-03-06T20:13:35+08:00">2023-03-06</time>
+              </span>
 
           
   
@@ -267,7 +273,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>255</span>
+              <span>352</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -286,11 +292,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><a href="https://blog.csdn.net/weixin_47552600/article/details/106888302" target="_blank" rel="noopener">Java内部类基本介绍、如何实例化内部类和如何调用外部类属性和方法</a>、<a href="https://blog.csdn.net/qq_28214047/article/details/53229331" target="_blank" rel="noopener">java内部类的实例化</a>、<a href="https://zhuanlan.zhihu.com/p/61735448" target="_blank" rel="noopener">内部类和静态内部类的区别</a>、<a href="https://blog.csdn.net/naoguoteng/article/details/124177958?spm=1001.2101.3001.6650.3&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-124177958-blog-107604508.pc_relevant_recovery_v2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-124177958-blog-107604508.pc_relevant_recovery_v2&utm_relevant_index=4" target="_blank" rel="noopener">内部类与外部类之间的访问</a></p>
-<p>局部内部类访问外部类的局部变量，局部变量必须用final修饰，使之成为常量.</p>
+        <p><a href="https://blog.csdn.net/weixin_47552600/article/details/106888302" target="_blank" rel="noopener">Java内部类基本介绍、如何实例化内部类和如何调用外部类属性和方法</a>、<a href="https://blog.csdn.net/qq_28214047/article/details/53229331" target="_blank" rel="noopener">java内部类的实例化</a>、<a href="https://zhuanlan.zhihu.com/p/61735448" target="_blank" rel="noopener">内部类和静态内部类的区别</a>、<a href="https://blog.csdn.net/naoguoteng/article/details/124177958?spm=1001.2101.3001.6650.3&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-124177958-blog-107604508.pc_relevant_recovery_v2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-124177958-blog-107604508.pc_relevant_recovery_v2&utm_relevant_index=4" target="_blank" rel="noopener">内部类与外部类之间的访问</a>、<a href="https://blog.csdn.net/cmder1000/article/details/108091460" target="_blank" rel="noopener">Java局部匿名内部类是否会持有外部类的引用？
+</a></p>
+<p>内部类可以继承其他类，从而实现“多继承”的效果。其中局部内部类访问外部类的局部变量，局部变量必须用final修饰，使之成为常量。</p>
 <a id="more"></a>
 
-<p>为什么呢? 因为局部变量会随着方法的调用完毕而消失，这个时候，局部对象并没有立马从堆内存中消失，还要使用那个变量。为了让数据还能继续被使用，就用final修饰，这样，在堆内存里面存储的其实是一个常量值。(JDK1.8之后，final会默认加上)  <a href="https://blog.csdn.net/qq_38238296/article/details/83315263" target="_blank" rel="noopener">局部内部类访问局部变量时，变量必须用final修饰</a></p>
+<p>为什么呢? 一说因为局部变量会”copy”给内部类为成员变量，为了前后数据的一致性，二说是局部变量会随着方法的调用完毕而消失，这个时候，局部对象并没有立马从堆内存中消失，还要使用那个变量。为了让数据还能继续被使用，就用final修饰，这样，在堆内存里面存储的其实是一个常量值。(JDK1.8之后，final会默认加上)  <a href="https://juejin.cn/post/7037139668718059534" target="_blank" rel="noopener">匿名内部类访问局部变量为什么要加final修饰（JDK1.7及其之前）</a></p>
 
     </div>
 
@@ -405,7 +412,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">119</span>
+          <span class="site-state-item-count">127</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -418,7 +425,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">65</span>
+        <span class="site-state-item-count">66</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -461,7 +468,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -471,13 +478,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">132k</span>
+    <span title="站点总字数">139k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:01</span>
+    <span title="站点阅读时长">2:06</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
   </div>

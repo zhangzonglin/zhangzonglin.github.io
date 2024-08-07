@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.zhangzonglinagain.xyz/"/>
-  <updated>2023-02-26T15:15:00.217Z</updated>
+  <updated>2024-08-07T12:24:53.260Z</updated>
   <id>http://blog.zhangzonglinagain.xyz/</id>
   
   <author>
@@ -15,6 +15,173 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前端请求Connection Start, Stalled时间过长</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2024/08/07/%E5%89%8D%E7%AB%AF%E8%AF%B7%E6%B1%82Connection-Start-Stalled%E6%97%B6%E9%97%B4%E8%BF%87%E9%95%BF/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2024/08/07/%E5%89%8D%E7%AB%AF%E8%AF%B7%E6%B1%82Connection-Start-Stalled%E6%97%B6%E9%97%B4%E8%BF%87%E9%95%BF/</id>
+    <published>2024-08-07T11:18:00.000Z</published>
+    <updated>2024-08-07T12:24:53.260Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这两天发现前端页面长时间不操作后，第一次的请求偶尔会长达3、4秒，后续请求则正常。</p><a id="more"></a><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>chrome debug network timing ,发现是Stalled耗时太久，如下图所示：</p><p><img src="/%5Cimages%5Cpasted-70.png" alt="upload successful"><br>网上关于Stalled的解释很多，这里不再赘述。第一个反应是http版本的原因，但当时只有一个请求，不应该是并发导致的，本着试试也没差的态度，先升级到http2再说。</p><h3 id="nginx配置http2"><a href="#nginx配置http2" class="headerlink" title="nginx配置http2"></a>nginx配置http2</h3><p>由于是已有的项目，nginx需要重新编译添加ngx_http_v2_module模块, 具体可以参考如下：<br><a href="https://segmentfault.com/a/1190000044036143" target="_blank" rel="noopener">Nginx—已安装了nginx，如何启用http2.0协议</a>。安装完毕后，修改conf配置，添加http2支持。<br><img src="/%5Cimages%5Cpasted-71.png" alt="upload successful"><br>重新载入，service nginx reload，查看chrome，已是http2<br><img src="/%5Cimages%5Cpasted-73.png" alt="upload successful">但是，Stalled阶段耗时太久的问题，还是会偶尔发生。</p><h3 id="chrome日志"><a href="#chrome日志" class="headerlink" title="chrome日志"></a>chrome日志</h3><p>一开始想着用wireshark抓包，后来发现chrome自带的抓包日志挺好用的。chrome里打开 chrome:&#x2F;&#x2F;net-export&#x2F;，参数默认，选择好日志文件名后，点击开始记录，回到前端项目发送请求（由于是偶发的时间过长，重复了多次才捕捉到一回耗时太久的请求）。然后打开<code>https://netlog-viewer.appspot.com/</code>(需要科学上网)，import刚刚生成的日志文件，如下图所示：</p><p><img src="/%5Cimages%5Cpasted-74.png" alt="upload successful"><br>点击左侧的Events,可以看到刚刚记录的所有请求，找到前端项目的那个请求，可以看到它的各个任务的耗时，</p><p><img src="/%5Cimages%5Cpasted-75.png" alt="upload successful">，参考<a href="https://blog.csdn.net/u010793461/article/details/109194973" target="_blank" rel="noopener">chrome Stalled时间过长</a>里对日志的解读方式，日志第一列为时间线，自请求发起时算。 第二列为每步操作所逝去的时间，时间差的概念，与第三列里面的dt不同，它会积累前面的耗时。 第三列为具体的事件，以及相应事件的耗时dt，此耗时为绝对耗时。这里主要看st以及后面的dt耗时就行。如图所示，本次请求耗时4407ms，其中<br><img src="/%5Cimages%5Cpasted-76.png" alt="upload successful">这里就耗时4015ms，可以根据层层包裹的ID，一直追踪到ID为131808的事件耗时3970ms</p><p><img src="/%5Cimages%5Cpasted-77.png" alt="upload successful"><br>打开131808: HOST_RESOLVER_IMPL_JOB，查看详细日志，如下图：</p><p><img src="/%5Cimages%5Cpasted-78.png" alt="upload successful"><br>到这里猜测是DNS解析的时候出了问题。</p><h3 id="DNS解析"><a href="#DNS解析" class="headerlink" title="DNS解析"></a>DNS解析</h3><p>输入命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig +trace +nodnssec time.geekbang.org</span><br></pre></td></tr></table></figure><p>如何解读可以参考下面的连接。尝试多次，基本上十次里有两三次带有超时，就是通过IPV6地址连接DNS服务器ns1.dns-diy.com与ns2.dns-diy.com，然后本地ping这两个DNS服务器，有时正常，有时就ping不通。</p><p><img src="/%5Cimages/pasted-79.png" alt="upload successful"><br>换了其他网络的服务器，执行同样的命令，则一直正常，如下：</p><p><img src="/%5Cimages/pasted-80.png" alt="upload successful"><br>到了这里怀疑是我本地网络（杭州联通）的原因，后续再追查下</p><p>参考：<a href="https://blog.csdn.net/xixihahalelehehe/article/details/119218996" target="_blank" rel="noopener">DNS解析命令</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;这两天发现前端页面长时间不操作后，第一次的请求偶尔会长达3、4秒，后续请求则正常。&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="运维" scheme="http://blog.zhangzonglinagain.xyz/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>paddleocr 在centos7.9上的部署</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2023/10/27/paddleocr-%E5%9C%A8centos7-9%E4%B8%8A%E7%9A%84%E9%83%A8%E7%BD%B2/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2023/10/27/paddleocr-%E5%9C%A8centos7-9%E4%B8%8A%E7%9A%84%E9%83%A8%E7%BD%B2/</id>
+    <published>2023-10-27T10:36:18.000Z</published>
+    <updated>2023-10-27T13:30:07.554Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>业务需求，要给项目加个身份证图片识别，看了一圈目前的开源OCR，发现除了百度的paddleocr还可以，其余的只能算是玩具，本地玩儿玩儿还可以，要上生产还不够，谨此记录一下部署paddleocr的步骤，后续参考。</p><a id="more"></a><h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><p>系统centos7.9,为了避免搞乱生产环境，采取docker部署paddlehub的方式。</p><h4 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h4><p>参考以下<a href="https://blog.csdn.net/qq_43721032/article/details/119134118" target="_blank" rel="noopener">CentOS 7.9下安装Docker及常用镜像</a>中安装dockery以及配置docker镜像源的部分。<br>另外考虑到系统系统盘大小有限，要把docker的数据存储目录设置在数据盘上(&#x2F;mnt&#x2F;docker),同样在上面设置镜像源的文件(&#x2F;etc&#x2F;docker&#x2F;daemon.json)里，配置”data-root”，结果如下：</p><p><img src="/images/pasted-63.png" alt="upload successful"></p><p>重启docker后，通过命令：docker info 查看设置是否生效</p><p><img src="/images/pasted-64.png" alt="upload successful"></p><h3 id="拉镜像以及安装ocr"><a href="#拉镜像以及安装ocr" class="headerlink" title="拉镜像以及安装ocr"></a>拉镜像以及安装ocr</h3><h4 id="下载代码"><a href="#下载代码" class="headerlink" title="下载代码"></a>下载代码</h4><p>直接从github或者gitgee下载paddleocr的代码（git clone的话，指定最新版本），放到系统上新建立的相应目录下，如：&#x2F;data&#x2F;PaddleOCR&#x2F;</p><h4 id="拉镜像"><a href="#拉镜像" class="headerlink" title="拉镜像"></a>拉镜像</h4><p>本次为了省事儿，直接用的飞桨官网的镜像（它们的镜像是ubuntu18 python是3.7，还需要重新安装python3.8，以及后面一系列的安装，下次可以直接用ubuntu22的镜像,就是需要各种安装）。参考官网：<a href="https://www.paddlepaddle.org.cn/documentation/docs/zh/install/docker/linux-docker.html#anchor-0" target="_blank" rel="noopener">Linux 下的 Docker 安装</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;data&#x2F;PaddleOCR</span><br><span class="line"></span><br><span class="line">docker pull registry.baidubce.com&#x2F;paddlepaddle&#x2F;paddle:2.5.2  </span><br><span class="line"></span><br><span class="line">docker run --name paddle_docker -p 8868:8868 -it -v $PWD:&#x2F;PaddleOCR registry.baidubce.com&#x2F;paddlepaddle&#x2F;paddle:2.5.2 &#x2F;bin&#x2F;bash</span><br></pre></td></tr></table></figure><p>然后就可以进去配置环境了。以下命令查看系统信息：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">uname -a</span><br><span class="line"></span><br><span class="line">cat &#x2F;etc&#x2F;issue</span><br></pre></td></tr></table></figure><p>也可在在根目录下看到&#x2F;PaddleOCR目录，即上面paddleocr项目的目录。<br>以下的操作都是在该容器内进行</p><h4 id="安装python3-8"><a href="#安装python3-8" class="headerlink" title="安装python3.8"></a>安装python3.8</h4><p>从python官网下载安装包，解压安装，具体参考<a href="https://zhuanlan.zhihu.com/p/149796622#:~:text=Ubuntu%E5%AE%89%E8%A3%85Python3%201%20%E7%AC%AC2%E6%AD%A5%EF%BC%9A%E4%B8%8B%E8%BD%BD%20Python%20%E6%BA%90%E7%A0%81%20%E5%8E%BB%E5%AE%98%E6%96%B9%E7%BD%91%E7%AB%99%E4%B8%8B%E8%BD%BD%EF%BC%9A%20wget%20https%3A%2F%2Fwww.python.org%2Fftp%2Fpython%2F3.8.3%2FPython-3.8.3.tgz,-s%20%2Fusr%2Flocal%2Fpython3.8%2Fbin%2Fpython3.8%20%2Fusr%2Fbin%2Fpython3.8%20ln%20-s%20%2Fusr%2Flocal%2Fpython3.8%2Fbin%2Fpython3.8-config%20%2Fusr%2Fbin%2Fpython3.8-config%20" target="_blank" rel="noopener">Ubuntu安装Python3</a>, 唯一的区别就是我把系统原来的python python3 pip pip3的软连接都删了，重新替换成python3.8的。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;bin</span><br><span class="line">rm -rf python</span><br><span class="line">ln -s &#x2F;usr&#x2F;local&#x2F;python3.8&#x2F;bin&#x2F;python3.8 &#x2F;usr&#x2F;bin&#x2F;python3.8</span><br><span class="line">ln -s &#x2F;usr&#x2F;local&#x2F;python3.8&#x2F;bin&#x2F;python3.8 &#x2F;usr&#x2F;bin&#x2F;python</span><br><span class="line">rm -rf python3</span><br><span class="line">ln -s &#x2F;usr&#x2F;local&#x2F;python3.8&#x2F;bin&#x2F;python3.8 &#x2F;usr&#x2F;bin&#x2F;python3</span><br><span class="line"></span><br><span class="line">cd &#x2F;usr&#x2F;local&#x2F;bin</span><br><span class="line">rm -rf pip</span><br><span class="line">ln -s &#x2F;usr&#x2F;local&#x2F;python3.8&#x2F;bin&#x2F;pip3.8 pip</span><br><span class="line">rm -rf pip3</span><br><span class="line">ln -s &#x2F;usr&#x2F;local&#x2F;python3.8&#x2F;bin&#x2F;pip3.8 pip3</span><br></pre></td></tr></table></figure><p>至此，python升级到3.8，原来的3.7 3.6 等可删可不删。</p><h4 id="安装paddlehub"><a href="#安装paddlehub" class="headerlink" title="安装paddlehub"></a>安装paddlehub</h4><p>由于重新安装了python3.8，要从官网重新安装paddle</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pip install paddlepaddle&#x3D;&#x3D;2.5.2 -i https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple</span><br><span class="line"></span><br><span class="line">pip install paddlehub --upgrade -i https:&#x2F;&#x2F;mirror.baidu.com&#x2F;pypi&#x2F;simple</span><br><span class="line"></span><br><span class="line">pip install -r requirements.txt -i https:&#x2F;&#x2F;mirror.baidu.com&#x2F;pypi&#x2F;simple</span><br></pre></td></tr></table></figure><p>中途报错如果缺什么组件，直接pip安装该组件即可。安装完之后，给hub命令建立软连接</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s &#x2F;usr&#x2F;local&#x2F;python3.8&#x2F;bin&#x2F;hub &#x2F;usr&#x2F;bin&#x2F;hub</span><br></pre></td></tr></table></figure><p>然后输入 hub version 即可看到paddlehub版本号</p><p>下载推理模型，并修改参数(github gitgee上找到推理模型的链接)</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;PaddleOCR</span><br><span class="line">mkdir inference</span><br><span class="line">cd inference</span><br><span class="line">wget wget https:&#x2F;&#x2F;paddleocr.bj.bcebos.com&#x2F;PP-OCRv4&#x2F;chinese&#x2F;ch_PP-OCRv4_det_infer.tar </span><br><span class="line"></span><br><span class="line">wget https:&#x2F;&#x2F;paddleocr.bj.bcebos.com&#x2F;PP-OCRv4&#x2F;chinese&#x2F;ch_PP-OCRv4_rec_infer.tar</span><br><span class="line"></span><br><span class="line">wget https:&#x2F;&#x2F;paddleocr.bj.bcebos.com&#x2F;dygraph_v2.0&#x2F;ch&#x2F;ch_ppocr_mobile_v2.0_cls_infer.tar</span><br></pre></td></tr></table></figure><p>并解压模型文件。</p><p>修改参数：在&#x2F;PaddleOCR&#x2F;deploy&#x2F;hubserving&#x2F;ocr_system&#x2F;下修改params.py，让模型名称跟inference下的一致。</p><p><img src="/images/pasted-65.png" alt="upload successful"></p><p>将&#x2F;PaddleOCR&#x2F;deploy&#x2F;hubserving&#x2F;ocr_system&#x2F;下的config.json拷贝到&#x2F;PaddleOCR目录下，并根据自己需求修改配置</p><p><img src="/images/pasted-66.png" alt="upload successful"><br>config.josn 配置参考：<a href="https://gitee.com/paddlepaddle/PaddleClas/blob/release/2.3/docs/zh_CN/inference_deployment/paddle_hub_serving_deploy.md" target="_blank" rel="noopener">基于 PaddleHub Serving 的服务部署</a>, 也可以查找官网，不过都大同小异。</p><p>ps: 查找配置时，发现有人提issue,记录在此<a href="https://github.com/PaddlePaddle/PaddleOCR/issues/10497" target="_blank" rel="noopener">PaddleOcr在使用 mkldnn后精度下降</a>, 里面也有修复方法，但要看后续如何。</p><p>为了启动方便，在&#x2F;PaddleOCR下新建个脚本paddleServer.sh</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;sh</span><br><span class="line">cd &#x2F;PaddleOCR</span><br><span class="line">hub install &#x2F;PaddleOCR&#x2F;deploy&#x2F;hubserving&#x2F;ocr_system &amp;&amp; nohup hub serving start -c config.json &amp;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 paddleServer.sh</span><br><span class="line">.&#x2F;paddleServer.sh</span><br></pre></td></tr></table></figure><p>就可以看到paddlehub成功启动。（后续可以考虑将脚本执行添加到docker容器启动里，不用每次进入容器内执行脚本）</p><p>测试：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;PaddleOCR&#x2F;tools</span><br><span class="line"></span><br><span class="line">python test_hubserving.py --server_url http:&#x2F;&#x2F;anluyou.dibchina.com:8868&#x2F;predict&#x2F;ocr_system --image_dir ..&#x2F;doc&#x2F;imgs&#x2F;00006737.jpg</span><br></pre></td></tr></table></figure><p>就可以看到测试结果</p><p><img src="/images/pasted-67.png" alt="upload successful"></p><p>可以在&#x2F;root&#x2F;.paddlehub&#x2F;log&#x2F;看到hub日志<br>通过直接通过hub查看各个命令参数</p><p><img src="/images/pasted-69.png" alt="upload successful"></p><h3 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h3><p>每次退出docker容器是，要Ctrl+P+Q,不然容器也会停止运行。<br>也可以将上面布置的环境生成docker镜像,详情可以搜索docker commit 命令。</p><p>上面完成后可以给docker容器增加内存限制，命令如下：<a href="https://blog.51cto.com/u_16175465/7242290" target="_blank" rel="noopener">docker容器默认内存大小</a>、<br><a href="https://zhuanlan.zhihu.com/p/417472115#:~:text=%E9%99%90%E5%88%B6Docker%E4%BD%BF%E7%94%A8%E5%86%85%E5%AD%98%201%20-m%20%E6%88%96,--memory%EF%BC%9A%E8%AE%BE%E7%BD%AE%E5%86%85%E5%AD%98%E7%9A%84%E4%BD%BF%E7%94%A8%E9%99%90%E9%A2%9D%EF%BC%8C%E4%BE%8B%E5%A6%82%EF%BC%9A100MB%EF%BC%8C2GB%E3%80%82%202%20--memory-swap%EF%BC%9A%E8%AE%BE%E7%BD%AE%20%E5%86%85%E5%AD%98%2Bswap%20%E7%9A%84%E4%BD%BF%E7%94%A8%E9%99%90%E9%A2%9D%E3%80%82" target="_blank" rel="noopener">限制Docker使用内存</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker update -m 200M --memory-swap&#x3D;300M ubuntu</span><br></pre></td></tr></table></figure><p>后通过docker stats命令查看运行的容易状态：</p><p><img src="/images/pasted-68.png" alt="upload successful"></p><p>以上设置内存限制主要是为了应对paddleocr预测完之后，内存不会主动释放的问题。问题见：<a href="https://github.com/PaddlePaddle/PaddleOCR/issues/303" target="_blank" rel="noopener">识别时内存一直涨 溢出</a>、<a href="https://github.com/PaddlePaddle/Paddle/issues/43346" target="_blank" rel="noopener">paddle 推理完之后内存不释放 </a>、<a href="https://github.com/PaddlePaddle/PaddleOCR/issues/11075" target="_blank" rel="noopener">这个提交未完全解决内存泄漏问题</a><br>一定要控制输入图片的大小，最好不能大于1M，图片越大越慢，甚至预测失败…</p><p>还有一些常用的docker命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker logs 容器名称： 查看容器日志</span><br><span class="line">docker image ls ：查看所有镜像</span><br><span class="line">docker ps -a : 查看所有容器（去掉a，查看运行的容器）</span><br><span class="line">docker rm 容器ID</span><br><span class="line">docker rmi 镜像ID</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;业务需求，要给项目加个身份证图片识别，看了一圈目前的开源OCR，发现除了百度的paddleocr还可以，其余的只能算是玩具，本地玩儿玩儿还可以，要上生产还不够，谨此记录一下部署paddleocr的步骤，后续参考。&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>linux 常用命令alias</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2023/10/10/linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4alias/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2023/10/10/linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4alias/</id>
+    <published>2023-10-09T17:44:28.000Z</published>
+    <updated>2023-10-09T17:46:17.761Z</updated>
+    
+    <content type="html"><![CDATA[<p>方便日常，ll也要显示隐藏目录及文件，在~&#x2F;.bashrc里添加如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alias ll&#x3D;&#39;ls -alF&#39;</span><br><span class="line">alias la&#x3D;&#39;ls -A&#39;</span><br><span class="line">alias l&#x3D;&#39;ls -CF&#39;</span><br></pre></td></tr></table></figure><p>然后source ~&#x2F;.bashrc即可。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;方便日常，ll也要显示隐藏目录及文件，在~&amp;#x2F;.bashrc里添加如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/spa
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>什么是公钥和私钥？</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2023/10/05/%E4%BB%80%E4%B9%88%E6%98%AF%E5%85%AC%E9%92%A5%E5%92%8C%E7%A7%81%E9%92%A5%EF%BC%9F/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2023/10/05/%E4%BB%80%E4%B9%88%E6%98%AF%E5%85%AC%E9%92%A5%E5%92%8C%E7%A7%81%E9%92%A5%EF%BC%9F/</id>
+    <published>2023-10-05T05:02:24.000Z</published>
+    <updated>2023-10-05T05:02:45.422Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.ledger.com/zh-hans/academy/blockchain/%E4%BB%80%E4%B9%88%E6%98%AF%E5%85%AC%E9%92%A5%E5%92%8C%E7%A7%81%E9%92%A5" target="_blank" rel="noopener">什么是公钥和私钥？</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://www.ledger.com/zh-hans/academy/blockchain/%E4%BB%80%E4%B9%88%E6%98%AF%E5%85%AC%E9%92%A5%E5%92%8C%E7%A7%81%E9%92%A5&quot; targ
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>let var</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2023/03/11/let-var/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2023/03/11/let-var/</id>
+    <published>2023-03-10T19:28:27.000Z</published>
+    <updated>2023-03-10T19:29:52.045Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://juejin.cn/post/6925641096152399880" target="_blank" rel="noopener">一看就懂的var、let、const三者区别</a>、<a href="https://www.cnblogs.com/95xdy/p/14578765.html" target="_blank" rel="noopener">let,var区别的实现原理以及变量环境、词法环境、执行上下文，作用域链查找</a>、<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/let" target="_blank" rel="noopener">let</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://juejin.cn/post/6925641096152399880&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;一看就懂的var、let、const三者区别&lt;/a&gt;、&lt;a href=&quot;https://www.cnblo
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>【uni-app】小程序实现微信授权登陆（附流程图）</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2023/03/10/%E3%80%90uni-app%E3%80%91%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AE%9E%E7%8E%B0%E5%BE%AE%E4%BF%A1%E6%8E%88%E6%9D%83%E7%99%BB%E9%99%86%EF%BC%88%E9%99%84%E6%B5%81%E7%A8%8B%E5%9B%BE%EF%BC%89/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2023/03/10/%E3%80%90uni-app%E3%80%91%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AE%9E%E7%8E%B0%E5%BE%AE%E4%BF%A1%E6%8E%88%E6%9D%83%E7%99%BB%E9%99%86%EF%BC%88%E9%99%84%E6%B5%81%E7%A8%8B%E5%9B%BE%EF%BC%89/</id>
+    <published>2023-03-10T09:37:08.000Z</published>
+    <updated>2023-03-10T11:05:33.026Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://blog.csdn.net/haidong55/article/details/124559209" target="_blank" rel="noopener">【uni-app】小程序实现微信授权登陆（附流程图）</a>、<a href="https://blog.csdn.net/qq_43576866/article/details/113126676" target="_blank" rel="noopener">【uni-app】uni-app微信小程序授权登录（详细总结）</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/haidong55/article/details/124559209&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;【uni-app】小程序实现微信授权登陆（附流程图）&lt;/a&gt;、&lt;a href
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>java 继承</title>
+    <link href="http://blog.zhangzonglinagain.xyz/2023/03/06/java-%E7%BB%A7%E6%89%BF/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2023/03/06/java-%E7%BB%A7%E6%89%BF/</id>
+    <published>2023-03-05T20:52:39.000Z</published>
+    <updated>2023-03-08T23:25:44.201Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://zhuanlan.zhihu.com/p/133312663" target="_blank" rel="noopener">Java 类继承机制</a>、<a href="https://blog.csdn.net/dxtianlei/article/details/99299051" target="_blank" rel="noopener">Java继承–父类私有属性和私有方法的继承</a>、<a href="https://www.zhihu.com/question/51920553?utm_id=0" target="_blank" rel="noopener">java中，创建子类对象时，父类对象会也被一起创建么？</a>、<a href="https://developer.aliyun.com/article/1135982" target="_blank" rel="noopener">Java对象内存布局和对象头</a>、<br><a href="https://blog.csdn.net/lkforce/article/details/81128115" target="_blank" rel="noopener">Java的对象头和对象组成详解</a></p><a id="more"></a><p>所以位于堆内存中的对象中的对象头里的Klass word(类元信息，又叫类型指针，该指针指向它的类元数据，JVM通过这个指针确定对象是哪个类的实例)即该对象的getClass()，当子类对象赋值给父类变量时，只是栈中的赋值，堆对象中的getClass()仍然是子类的class。另外，对象头里的类型指针指向的是位于方法区的类元信息，并不是位于堆中的该java.lang.class的对象。其中类元信息中包含该java.lang.class的引用。（类的加载指的是将类的.class文件中的二进制数据读入到内存中，将其放在Jvm的方法区内，然后在堆区创建一个java.lang.Class对象，用来封装类在方法区内的数据结构。类的加载的最终产品是位于堆区中的Class对象，Class对象封装了类在方法区内的数据结构，并且向Java程序员提供了访问方法区内的数据结构的接口）</p><p><a href="https://blog.csdn.net/qq_43209615/article/details/123542266" target="_blank" rel="noopener">java对象头的总体结构，MarkWord的结构、MarkWord和锁的关系</a>、<a href="https://zhuanlan.zhihu.com/p/30527228" target="_blank" rel="noopener">Java虚拟机Class对象是在方法区还是堆中</a>、<a href="https://juejin.cn/post/6995361827055992863" target="_blank" rel="noopener">深入理解JVM（六）一一运行时数据区（方法区）</a></p><p><img src="/images/pasted-62.png" alt="upload successful"></p><h3 id="virtual-method-table"><a href="#virtual-method-table" class="headerlink" title="virtual method table"></a>virtual method table</h3><p><a href="https://blog.csdn.net/lnazj/article/details/116752559" target="_blank" rel="noopener">Java 继承底层原理</a>、<a href="https://blog.csdn.net/wzq6578702/article/details/82712667" target="_blank" rel="noopener">jvm原理（34）虚方法表与动态分派机制详解</a></p><h3 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h3><p>If a subclass has a public property with the same name as a public property in its parent class, the subclass’s property will shadow or hide the parent class’s property. This means that when you access the property from within the subclass using its name (e.g., x), you will be accessing the subclass’s property, not the parent class’s property. However, you can still access the parent class’s property from within the subclass using the super keyword (e.g., super.x).</p><p>The underlying principle behind shadowing is that Java uses the concept of scope to determine which property or variable to access. When you access a property or variable using its name (e.g., x), Java will first look for it in the current scope (i.e., within the current block of code). If it doesn’t find it there, it will look for it in the next outer scope (e.g., within the current method), and so on until it finds it. If there are multiple properties or variables with the same name in different scopes, Java will always choose the one in the innermost scope.</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/133312663&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Java 类继承机制&lt;/a&gt;、&lt;a href=&quot;https://blog.csdn.net/dxtianlei/article/details/99299051&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Java继承–父类私有属性和私有方法的继承&lt;/a&gt;、&lt;a href=&quot;https://www.zhihu.com/question/51920553?utm_id=0&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;java中，创建子类对象时，父类对象会也被一起创建么？&lt;/a&gt;、&lt;a href=&quot;https://developer.aliyun.com/article/1135982&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Java对象内存布局和对象头&lt;/a&gt;、&lt;br&gt;&lt;a href=&quot;https://blog.csdn.net/lkforce/article/details/81128115&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Java的对象头和对象组成详解&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>谈谈Java的classpath </title>
+    <link href="http://blog.zhangzonglinagain.xyz/2023/03/05/%E8%B0%88%E8%B0%88Java%E7%9A%84classpath/"/>
+    <id>http://blog.zhangzonglinagain.xyz/2023/03/05/%E8%B0%88%E8%B0%88Java%E7%9A%84classpath/</id>
+    <published>2023-03-04T21:44:23.000Z</published>
+    <updated>2023-03-04T21:45:26.982Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.cnblogs.com/LDZZDL/p/9081594.html" target="_blank" rel="noopener">谈谈Java的classpath </a></p><a id="more"></a><p>可打印classpath查看：<br> System.out.println(System.getProperty(“java.class.path”));</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/LDZZDL/p/9081594.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;谈谈Java的classpath &lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>浅析 Java Stream 实现原理</title>
@@ -63,14 +230,15 @@
     <link href="http://blog.zhangzonglinagain.xyz/2023/02/25/java-%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%8C%96/"/>
     <id>http://blog.zhangzonglinagain.xyz/2023/02/25/java-%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%8C%96/</id>
     <published>2023-02-24T19:55:03.000Z</published>
-    <updated>2023-02-24T21:27:12.511Z</updated>
+    <updated>2023-03-06T12:13:35.805Z</updated>
     
-    <content type="html"><![CDATA[<p><a href="https://blog.csdn.net/weixin_47552600/article/details/106888302" target="_blank" rel="noopener">Java内部类基本介绍、如何实例化内部类和如何调用外部类属性和方法</a>、<a href="https://blog.csdn.net/qq_28214047/article/details/53229331" target="_blank" rel="noopener">java内部类的实例化</a>、<a href="https://zhuanlan.zhihu.com/p/61735448" target="_blank" rel="noopener">内部类和静态内部类的区别</a>、<a href="https://blog.csdn.net/naoguoteng/article/details/124177958?spm=1001.2101.3001.6650.3&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-124177958-blog-107604508.pc_relevant_recovery_v2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-124177958-blog-107604508.pc_relevant_recovery_v2&utm_relevant_index=4" target="_blank" rel="noopener">内部类与外部类之间的访问</a></p><p>局部内部类访问外部类的局部变量，局部变量必须用final修饰，使之成为常量.</p><a id="more"></a><p>为什么呢? 因为局部变量会随着方法的调用完毕而消失，这个时候，局部对象并没有立马从堆内存中消失，还要使用那个变量。为了让数据还能继续被使用，就用final修饰，这样，在堆内存里面存储的其实是一个常量值。(JDK1.8之后，final会默认加上)  <a href="https://blog.csdn.net/qq_38238296/article/details/83315263" target="_blank" rel="noopener">局部内部类访问局部变量时，变量必须用final修饰</a></p>]]></content>
+    <content type="html"><![CDATA[<p><a href="https://blog.csdn.net/weixin_47552600/article/details/106888302" target="_blank" rel="noopener">Java内部类基本介绍、如何实例化内部类和如何调用外部类属性和方法</a>、<a href="https://blog.csdn.net/qq_28214047/article/details/53229331" target="_blank" rel="noopener">java内部类的实例化</a>、<a href="https://zhuanlan.zhihu.com/p/61735448" target="_blank" rel="noopener">内部类和静态内部类的区别</a>、<a href="https://blog.csdn.net/naoguoteng/article/details/124177958?spm=1001.2101.3001.6650.3&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-124177958-blog-107604508.pc_relevant_recovery_v2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-124177958-blog-107604508.pc_relevant_recovery_v2&utm_relevant_index=4" target="_blank" rel="noopener">内部类与外部类之间的访问</a>、<a href="https://blog.csdn.net/cmder1000/article/details/108091460" target="_blank" rel="noopener">Java局部匿名内部类是否会持有外部类的引用？</a></p><p>内部类可以继承其他类，从而实现“多继承”的效果。其中局部内部类访问外部类的局部变量，局部变量必须用final修饰，使之成为常量。</p><a id="more"></a><p>为什么呢? 一说因为局部变量会”copy”给内部类为成员变量，为了前后数据的一致性，二说是局部变量会随着方法的调用完毕而消失，这个时候，局部对象并没有立马从堆内存中消失，还要使用那个变量。为了让数据还能继续被使用，就用final修饰，这样，在堆内存里面存储的其实是一个常量值。(JDK1.8之后，final会默认加上)  <a href="https://juejin.cn/post/7037139668718059534" target="_blank" rel="noopener">匿名内部类访问局部变量为什么要加final修饰（JDK1.7及其之前）</a></p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/weixin_47552600/article/details/106888302&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Java内部类基本介绍、如何实例化内部类和如何调用外部类属性和方法&lt;/a&gt;、&lt;a href=&quot;https://blog.csdn.net/qq_28214047/article/details/53229331&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;java内部类的实例化&lt;/a&gt;、&lt;a href=&quot;https://zhuanlan.zhihu.com/p/61735448&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;内部类和静态内部类的区别&lt;/a&gt;、&lt;a href=&quot;https://blog.csdn.net/naoguoteng/article/details/124177958?spm=1001.2101.3001.6650.3&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-124177958-blog-107604508.pc_relevant_recovery_v2&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-124177958-blog-107604508.pc_relevant_recovery_v2&amp;utm_relevant_index=4&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;内部类与外部类之间的访问&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;局部内部类访问外部类的局部变量，局部变量必须用final修饰，使之成为常量.&lt;/p&gt;
+      &lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/weixin_47552600/article/details/106888302&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Java内部类基本介绍、如何实例化内部类和如何调用外部类属性和方法&lt;/a&gt;、&lt;a href=&quot;https://blog.csdn.net/qq_28214047/article/details/53229331&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;java内部类的实例化&lt;/a&gt;、&lt;a href=&quot;https://zhuanlan.zhihu.com/p/61735448&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;内部类和静态内部类的区别&lt;/a&gt;、&lt;a href=&quot;https://blog.csdn.net/naoguoteng/article/details/124177958?spm=1001.2101.3001.6650.3&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-124177958-blog-107604508.pc_relevant_recovery_v2&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-124177958-blog-107604508.pc_relevant_recovery_v2&amp;utm_relevant_index=4&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;内部类与外部类之间的访问&lt;/a&gt;、&lt;a href=&quot;https://blog.csdn.net/cmder1000/article/details/108091460&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Java局部匿名内部类是否会持有外部类的引用？
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;内部类可以继承其他类，从而实现“多继承”的效果。其中局部内部类访问外部类的局部变量，局部变量必须用final修饰，使之成为常量。&lt;/p&gt;
     
     </summary>
     
@@ -252,180 +420,6 @@
       
         &lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/ShIcily/article/details/121673976&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;ES6中js的运算符（?.、?:、? ?、? ?&amp;#x3D;、）&lt;/a&gt;、&lt;a 
       
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Spring中@Import的各种用法以及ImportAware接口</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2022/05/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B9%8Bsynchronized%E8%AF%A6%E8%A7%A3/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2022/05/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B9%8Bsynchronized%E8%AF%A6%E8%A7%A3/</id>
-    <published>2022-05-14T17:05:42.000Z</published>
-    <updated>2022-05-18T21:49:00.657Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://www.jianshu.com/p/640a339474fb" target="_blank" rel="noopener">Spring中@Import的各种用法以及ImportAware接口</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;https://www.jianshu.com/p/640a339474fb&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Spring中@Import的各种用法以及ImportAware接口&lt;/a&gt;&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Java 内部类详解</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2022/05/15/Java-%E5%86%85%E9%83%A8%E7%B1%BB%E8%AF%A6%E8%A7%A3/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2022/05/15/Java-%E5%86%85%E9%83%A8%E7%B1%BB%E8%AF%A6%E8%A7%A3/</id>
-    <published>2022-05-14T16:44:56.000Z</published>
-    <updated>2022-05-14T16:45:09.141Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://www.runoob.com/w3cnote/java-inner-class-intro.html" target="_blank" rel="noopener">Java 内部类详解</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;https://www.runoob.com/w3cnote/java-inner-class-intro.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Java 内部类详解&lt;/a&gt;&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>网络抓包常用命令</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2022/05/04/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2022/05/04/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
-    <published>2022-05-04T08:09:58.000Z</published>
-    <updated>2022-05-04T08:10:13.476Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://plantegg.github.io/2022/01/01/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" target="_blank" rel="noopener">网络抓包常用命令</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;https://plantegg.github.io/2022/01/01/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/&quot; target=&quot;_blank&quot;
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>IDEA中的后缀补全</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2022/04/24/IDEA%E4%B8%AD%E7%9A%84%E5%90%8E%E7%BC%80%E8%A1%A5%E5%85%A8/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2022/04/24/IDEA%E4%B8%AD%E7%9A%84%E5%90%8E%E7%BC%80%E8%A1%A5%E5%85%A8/</id>
-    <published>2022-04-23T17:57:53.000Z</published>
-    <updated>2022-04-23T17:58:02.069Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://blog.csdn.net/correlate/article/details/109578810" target="_blank" rel="noopener">IDEA中的后缀补全</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;https://blog.csdn.net/correlate/article/details/109578810&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;IDEA中的后缀补全&lt;/a&gt;&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Hard Links VS Soft Links in Linux: What’s the Difference</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2022/04/23/Hard-Links-VS-Soft-Links-in-Linux-What%E2%80%99s-the-Difference/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2022/04/23/Hard-Links-VS-Soft-Links-in-Linux-What%E2%80%99s-the-Difference/</id>
-    <published>2022-04-23T15:12:15.000Z</published>
-    <updated>2022-04-23T15:27:08.837Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://medium.com/techtofreedom/hard-links-vs-soft-links-in-linux-whats-the-difference-bbd3dfbe24f7" target="_blank" rel="noopener">Hard Links VS Soft Links in Linux: What’s the Difference</a></p><a id="more"></a><p>总结：</p><ul><li>A hard link is a link pointing to an existing file’s inode, One or more hard links for an existing file can be created, and they have the <strong>same  inode number</strong>. </li><li>A soft link is a pointer to a file or directory.Unlike a hard link, a soft link has its own inode and inode number. </li><li>A hard link: <ul><li>A file can be accessed with different filenames.</li><li>Modifications of a file by one of its filenames will affect all filenames.</li><li>Deleting one filename does not affect access to other filenames.</li></ul></li><li>A soft link points to another existing file’s content. This means that a soft link depends on its “host file” to exist. If its host file is deleted, opening the soft link will report an error: “No such file or directory”. (This is totally different with hard links.)</li><li>Hard links, by the way, <strong>cannot</strong> be created for directories and files on a different filesystem, cause different filesystems manage their own inodes.</li><li>A soft link is a pointer and there’s nothing about inodes, a soft link can point to a file or a directory on a different filesystem or partition.</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;https://medium.com/techtofreedom/hard-links-vs-soft-links-in-linux-whats-the-difference-bbd3dfbe24f7&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hard Links VS Soft Links in Linux: What’s the Difference&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>ssh 复用(避免重输密码)</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2022/04/10/ssh-%E5%A4%8D%E7%94%A8/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2022/04/10/ssh-%E5%A4%8D%E7%94%A8/</id>
-    <published>2022-04-09T20:14:44.000Z</published>
-    <updated>2022-04-09T20:20:20.280Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://github.com/int32bit/notes/blob/master/linux/%E8%AE%BE%E7%BD%AEssh%E8%BF%9E%E6%8E%A5%E4%BC%9A%E8%AF%9D%E5%A4%8D%E7%94%A8.md" target="_blank" rel="noopener">设置ssh连接会话复用</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;https://github.com/int32bit/notes/blob/master/linux/%E8%AE%BE%E7%BD%AEssh%E8%BF%9E%E6%8E%A5%E4%BC%9A%E8%AF%9D%E5%A4%8D%E7%94%A8.
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Ulauncher</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2022/04/10/Ulauncher/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2022/04/10/Ulauncher/</id>
-    <published>2022-04-09T18:13:58.000Z</published>
-    <updated>2022-04-09T23:00:35.731Z</updated>
-    
-    <content type="html"><![CDATA[<p>Ulauncher(Application launcher for Linux)效率提升工具…</p><p><a href="https://ulauncher.io/#Download" target="_blank" rel="noopener">官网</a>、<a href="https://www.geeksforgeeks.org/how-to-install-ulauncher-in-ubuntu/" target="_blank" rel="noopener">How to Install Ulauncher in Ubuntu?</a>、<a href="https://www.makeuseof.com/install-ulauncher-on-linux/" target="_blank" rel="noopener">How to Install Extensions And Best Ulauncher Extensions</a>.<br>实测好用的插件：Terminal Runner(关机重启方便)、IpCopy（查看自己内网外网IP并复制）、Better file browser（文件浏览及搜索）、Translate（翻译。默认翻译成en，如果是英译汉格式为“tr :zh english”）、Calculate Anything</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Ulauncher(Application launcher for Linux)效率提升工具…&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://ulauncher.io/#Download&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;官网&lt;/a&gt;、&lt;a
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>重装ubuntu及win10引导修复</title>
-    <link href="http://blog.zhangzonglinagain.xyz/2022/04/08/%E9%87%8D%E8%A3%85ubuntu%E5%8F%8Awin10%E5%BC%95%E5%AF%BC%E4%BF%AE%E5%A4%8D/"/>
-    <id>http://blog.zhangzonglinagain.xyz/2022/04/08/%E9%87%8D%E8%A3%85ubuntu%E5%8F%8Awin10%E5%BC%95%E5%AF%BC%E4%BF%AE%E5%A4%8D/</id>
-    <published>2022-04-07T19:27:52.000Z</published>
-    <updated>2022-04-07T20:06:51.117Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>人被杀就会死，ubuntu20果然崩溃了，起因似乎是重装搜狗输入法，卸载时autoremove不知删了哪个依赖，桌面死活进不去（oh,no,something went wrong警告），<a id="more"></a> 后面<em>Ctrl+Alt+F3</em>通过tty3登录，进去翻日志，一通装一通删，试了N次，发现把gnome-session删了，倒是能进桌面了，算了，直接转移数据，重装。切到win10系统，下载镜像、刻盘一气呵成，隐约记得以前用EasyBCD添加引导，下了个进去手贱，把WIN10的引导给删了,这时候才想起ubuntu新版本不用自己添加引导了~~. 幸亏U盘已经刻好，索性先重装ubuntu，再在ubuntu下，看看有什么方法恢复引导文件。装系统网上很多教程，倒是在ubuntu下刻盘，恢复win10引导值得记录一下（毕竟两个晚上的青春）。</p><h3 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h3><p>度娘说，可以通过winPE，修复引导，所以第一步：下载镜像文件。国内镜像多坑爹，问问我那逝去的青春就知道了，直接谷歌救我命<a href="https://archive.org/details/wpe-64" target="_blank" rel="noopener">WinPE.iso</a>–!</p><h3 id="刻盘"><a href="#刻盘" class="headerlink" title="刻盘"></a>刻盘</h3><p>ubuntu下刻盘，看大部分推荐dd命令，用国内坑爹的镜像试了几次，不确定是哪儿的原因，反正开机进不去WinPE, 包括救我命的镜像，用该命令失败。后面还是用WoeUSB（采用命令行方式，GUI失败）成功</p><h4 id="安装WoeUSB"><a href="#安装WoeUSB" class="headerlink" title="安装WoeUSB"></a>安装WoeUSB</h4><p>在github上下载最新版本：<a href="https://github.com/WoeUSB/WoeUSB/releases/download/v5.2.4/woeusb-5.2.4.bash" target="_blank" rel="noopener">WoeUSB github</a></p><p>安装 WoeUSB-ng 的依赖项，和第一种方法要安装的依赖项是一样的！</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x woeusb-5.2.4.bash</span><br></pre></td></tr></table></figure><p>然后还需要安装一些依赖项</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install git p7zip-full python3-pip python3-wxgtk4.0 grub2-common grub-pc-bin wimtools</span><br></pre></td></tr></table></figure><p>现在就可以执行这个文件了 .&#x2F;woeusb-5.2.4.bash 可以看到命令提示，只需要制定一个windows镜像文件地址 和 u盘的位置即可</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo fdisk -l #查看U盘</span><br><span class="line">umount &#x2F;dev&#x2F;sdb  #卸载u盘</span><br><span class="line">sudo mkfs.ntfs -F &#x2F;dev&#x2F;sdb #格式化U盘</span><br><span class="line">sudo .&#x2F;woeusb-5.2.4.bash --device &#39;WinPE.iso&#39;  &#x2F;dev&#x2F;sdb  --tgt-fs  NTFS #刻盘</span><br></pre></td></tr></table></figure><h3 id="WIN10-引导修复"><a href="#WIN10-引导修复" class="headerlink" title="WIN10 引导修复"></a>WIN10 引导修复</h3><p>拿着刻好的U盘，重新开机，狂按F12,进入WINPE，接来下的修复过程，严格参照下面的链接（C盘和D盘，我的也是反着的）<br><a href="https://blog.csdn.net/A_Sen_A/article/details/89545311" target="_blank" rel="noopener">win10 UEFI引导恢复</a></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;人被杀就会死，ubuntu20果然崩溃了，起因似乎是重装搜狗输入法，卸载时autoremove不知删了哪个依赖，桌面死活进不去（oh,no,something went wrong警告），&lt;/p&gt;
     
     </summary>
     

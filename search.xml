@@ -10,12 +10,6 @@
       </categories>
   </entry>
   <entry>
-    <title>ES6中js的运算符（?.、?:、? ?、? ?=、）</title>
-    <url>/2022/06/25/ES6%E4%B8%ADjs%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%88-%E3%80%81-%E3%80%81-%E3%80%81-%E3%80%81%EF%BC%89/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/ShIcily/article/details/121673976" target="_blank" rel="noopener">ES6中js的运算符（?.、?:、? ?、? ?&#x3D;、）</a>、<a href="https://blog.csdn.net/sinat_36146776/article/details/112170829" target="_blank" rel="noopener">JavaScript表达式和运算符之：逻辑或赋值（||&#x3D; ），逻辑空赋值（??&#x3D;） ，逻辑与赋值（&amp;&amp;&#x3D;），空值合并操作符（??），可选链式操作符（?.）</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>TCP/IP协议族的网络层基础（6）——NAT和NAPT</title>
     <url>/2020/03/27/CP-IP%E4%B9%8BNAT/</url>
     <content><![CDATA[<p>转载：**<a href="https://blog.csdn.net/lvyibin890/article/details/80206979" target="_blank" rel="noopener">TCP&#x2F;IP协议族的网络层基础（6）——NAT和NAPT</a>**。</p>
@@ -88,6 +82,12 @@
       </tags>
   </entry>
   <entry>
+    <title>ES6中js的运算符（?.、?:、? ?、? ?=、）</title>
+    <url>/2022/06/25/ES6%E4%B8%ADjs%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%88-%E3%80%81-%E3%80%81-%E3%80%81-%E3%80%81%EF%BC%89/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/ShIcily/article/details/121673976" target="_blank" rel="noopener">ES6中js的运算符（?.、?:、? ?、? ?&#x3D;、）</a>、<a href="https://blog.csdn.net/sinat_36146776/article/details/112170829" target="_blank" rel="noopener">JavaScript表达式和运算符之：逻辑或赋值（||&#x3D; ），逻辑空赋值（??&#x3D;） ，逻辑与赋值（&amp;&amp;&#x3D;），空值合并操作符（??），可选链式操作符（?.）</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>IOC的实现原理—反射与工厂模式(转载)</title>
     <url>/2020/03/03/C%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E2%80%94%E5%8F%8D%E5%B0%84%E4%B8%8E%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</url>
     <content><![CDATA[<h3 id="反射与工厂模式实现IOC"><a href="#反射与工厂模式实现IOC" class="headerlink" title="反射与工厂模式实现IOC"></a>反射与工厂模式实现IOC</h3><p>   &amp;emsp;Spring中的IoC的实现原理就是工厂模式加反射机制。 我们首先看一下不用反射机制时的工厂模式：<br>   <a id="more"></a></p>
@@ -138,6 +138,34 @@
       </tags>
   </entry>
   <entry>
+    <title>Hard Links VS Soft Links in Linux: What’s the Difference</title>
+    <url>/2022/04/23/Hard-Links-VS-Soft-Links-in-Linux-What%E2%80%99s-the-Difference/</url>
+    <content><![CDATA[<p><a href="https://medium.com/techtofreedom/hard-links-vs-soft-links-in-linux-whats-the-difference-bbd3dfbe24f7" target="_blank" rel="noopener">Hard Links VS Soft Links in Linux: What’s the Difference</a></p>
+<a id="more"></a>
+
+<p>总结：</p>
+<ul>
+<li>A hard link is a link pointing to an existing file’s inode, One or more hard links for an existing file can be created, and they have the <strong>same  inode number</strong>. </li>
+<li>A soft link is a pointer to a file or directory.Unlike a hard link, a soft link has its own inode and inode number. </li>
+<li>A hard link: <ul>
+<li>A file can be accessed with different filenames.</li>
+<li>Modifications of a file by one of its filenames will affect all filenames.</li>
+<li>Deleting one filename does not affect access to other filenames.</li>
+</ul>
+</li>
+<li>A soft link points to another existing file’s content. This means that a soft link depends on its “host file” to exist. If its host file is deleted, opening the soft link will report an error: “No such file or directory”. (This is totally different with hard links.)</li>
+<li>Hard links, by the way, <strong>cannot</strong> be created for directories and files on a different filesystem, cause different filesystems manage their own inodes.</li>
+<li>A soft link is a pointer and there’s nothing about inodes, a soft link can point to a file or a directory on a different filesystem or partition.</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>Hashtable、HashMap、ConcurrentHashMap</title>
+    <url>/2021/12/01/Hashtable%E3%80%81HashMap%E3%80%81ConcurrentHashMap/</url>
+    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/Mr_YanMingXin/article/details/118601591" target="_blank" rel="noopener">详解Java中HashMap、HashTable、ConcurrentHashMap常见问题</a></strong> &amp;nbsp;;&amp;nbsp;<strong><a href="https://blog.csdn.net/amunamuna/article/details/107773902" target="_blank" rel="noopener">Hashtable、HashMap、ConcurrentHashMap等及常用阻塞队列</a></strong> &amp;nbsp;&amp;nbsp;</p>
+]]></content>
+  </entry>
+  <entry>
     <title>H5页面在微信浏览器中通过网页授权获取用户信息(openid、昵称、头像等)</title>
     <url>/2021/08/11/H5%E9%A1%B5%E9%9D%A2%E8%8E%B7%E5%8F%96%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E7%9A%84openid/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>需要做一个Vue前端项目，UI选择buefy（一个基于Bulma的vue轻量级组件），其中一个H5页面涉及到，如果是在微信浏览器中，需要在后台服务器自动注册以及登录，即需要通过网页授权来获取用户信息（openid、昵称、头像等)。这儿只涉及前端的工作…</p>
@@ -176,37 +204,15 @@
       </tags>
   </entry>
   <entry>
-    <title>Hard Links VS Soft Links in Linux: What’s the Difference</title>
-    <url>/2022/04/23/Hard-Links-VS-Soft-Links-in-Linux-What%E2%80%99s-the-Difference/</url>
-    <content><![CDATA[<p><a href="https://medium.com/techtofreedom/hard-links-vs-soft-links-in-linux-whats-the-difference-bbd3dfbe24f7" target="_blank" rel="noopener">Hard Links VS Soft Links in Linux: What’s the Difference</a></p>
-<a id="more"></a>
-
-<p>总结：</p>
-<ul>
-<li>A hard link is a link pointing to an existing file’s inode, One or more hard links for an existing file can be created, and they have the <strong>same  inode number</strong>. </li>
-<li>A soft link is a pointer to a file or directory.Unlike a hard link, a soft link has its own inode and inode number. </li>
-<li>A hard link: <ul>
-<li>A file can be accessed with different filenames.</li>
-<li>Modifications of a file by one of its filenames will affect all filenames.</li>
-<li>Deleting one filename does not affect access to other filenames.</li>
-</ul>
-</li>
-<li>A soft link points to another existing file’s content. This means that a soft link depends on its “host file” to exist. If its host file is deleted, opening the soft link will report an error: “No such file or directory”. (This is totally different with hard links.)</li>
-<li>Hard links, by the way, <strong>cannot</strong> be created for directories and files on a different filesystem, cause different filesystems manage their own inodes.</li>
-<li>A soft link is a pointer and there’s nothing about inodes, a soft link can point to a file or a directory on a different filesystem or partition.</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>Hashtable、HashMap、ConcurrentHashMap</title>
-    <url>/2021/12/01/Hashtable%E3%80%81HashMap%E3%80%81ConcurrentHashMap/</url>
-    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/Mr_YanMingXin/article/details/118601591" target="_blank" rel="noopener">详解Java中HashMap、HashTable、ConcurrentHashMap常见问题</a></strong> &amp;nbsp;;&amp;nbsp;<strong><a href="https://blog.csdn.net/amunamuna/article/details/107773902" target="_blank" rel="noopener">Hashtable、HashMap、ConcurrentHashMap等及常用阻塞队列</a></strong> &amp;nbsp;&amp;nbsp;</p>
-]]></content>
-  </entry>
-  <entry>
     <title>IDEA中的后缀补全</title>
     <url>/2022/04/24/IDEA%E4%B8%AD%E7%9A%84%E5%90%8E%E7%BC%80%E8%A1%A5%E5%85%A8/</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/correlate/article/details/109578810" target="_blank" rel="noopener">IDEA中的后缀补全</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Java 内部类详解</title>
+    <url>/2022/05/15/Java-%E5%86%85%E9%83%A8%E7%B1%BB%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<p><a href="https://www.runoob.com/w3cnote/java-inner-class-intro.html" target="_blank" rel="noopener">Java 内部类详解</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -230,27 +236,15 @@
       </tags>
   </entry>
   <entry>
-    <title>Java 内部类详解</title>
-    <url>/2022/05/15/Java-%E5%86%85%E9%83%A8%E7%B1%BB%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[<p><a href="https://www.runoob.com/w3cnote/java-inner-class-intro.html" target="_blank" rel="noopener">Java 内部类详解</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Java内存使用情况查看工具(jmap,jinfo,jstack...)</title>
-    <url>/2022/07/02/Java%E5%86%85%E5%AD%98%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5%E6%9F%A5%E7%9C%8B%E5%B7%A5%E5%85%B7/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/hellozhxy/article/details/80496550" target="_blank" rel="noopener">Java内存使用情况查看工具</a>、或者直接采用阿里的开源工具<a href="https://developer.aliyun.com/article/764933" target="_blank" rel="noopener">Java 线上问题排查神器 Arthas 快速上手与原理浅谈</a>&amp;&amp;<a href="https://cloud.tencent.com/developer/article/1534894" target="_blank" rel="noopener">Arthas - Java 线上问题定位处理的终极利器</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>Spring中@Import的各种用法以及ImportAware接口</title>
     <url>/2022/05/15/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B9%8Bsynchronized%E8%AF%A6%E8%A7%A3/</url>
     <content><![CDATA[<p><a href="https://www.jianshu.com/p/640a339474fb" target="_blank" rel="noopener">Spring中@Import的各种用法以及ImportAware接口</a></p>
 ]]></content>
   </entry>
   <entry>
-    <title>Java泛型详解：&lt;T&gt;和Class&lt;T&gt;的使用。泛型类，泛型方法的详细使用实例 </title>
-    <url>/2021/12/17/Java%E6%B3%9B%E5%9E%8B%E8%AF%A6%E8%A7%A3%EF%BC%9A-T-%E5%92%8CClass-T-%E7%9A%84%E4%BD%BF%E7%94%A8%E3%80%82%E6%B3%9B%E5%9E%8B%E7%B1%BB%EF%BC%8C%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95%E7%9A%84%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/jpfss/p/9928747.html" target="_blank" rel="noopener">Java泛型详解：<T>和Class<T>的使用。泛型类，泛型方法的详细使用实例 </T></T></a></p>
+    <title>Java内存使用情况查看工具(jmap,jinfo,jstack...)</title>
+    <url>/2022/07/02/Java%E5%86%85%E5%AD%98%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5%E6%9F%A5%E7%9C%8B%E5%B7%A5%E5%85%B7/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/hellozhxy/article/details/80496550" target="_blank" rel="noopener">Java内存使用情况查看工具</a>、或者直接采用阿里的开源工具<a href="https://developer.aliyun.com/article/764933" target="_blank" rel="noopener">Java 线上问题排查神器 Arthas 快速上手与原理浅谈</a>&amp;&amp;<a href="https://cloud.tencent.com/developer/article/1534894" target="_blank" rel="noopener">Arthas - Java 线上问题定位处理的终极利器</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -264,6 +258,12 @@
       <categories>
         <category>linux</category>
       </categories>
+  </entry>
+  <entry>
+    <title>Java泛型详解：&lt;T&gt;和Class&lt;T&gt;的使用。泛型类，泛型方法的详细使用实例 </title>
+    <url>/2021/12/17/Java%E6%B3%9B%E5%9E%8B%E8%AF%A6%E8%A7%A3%EF%BC%9A-T-%E5%92%8CClass-T-%E7%9A%84%E4%BD%BF%E7%94%A8%E3%80%82%E6%B3%9B%E5%9E%8B%E7%B1%BB%EF%BC%8C%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95%E7%9A%84%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/jpfss/p/9928747.html" target="_blank" rel="noopener">Java泛型详解：<T>和Class<T>的使用。泛型类，泛型方法的详细使用实例 </T></T></a></p>
+]]></content>
   </entry>
   <entry>
     <title>Nacos</title>
@@ -283,18 +283,6 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public class FlyingCar implements OperateCar, FlyCar &#123;</span><br><span class="line">    &#x2F;&#x2F; ...</span><br><span class="line">    public int startEngine(EncryptedKey key) &#123;</span><br><span class="line">        FlyCar.super.startEngine(key);</span><br><span class="line">        OperateCar.super.startEngine(key);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>The name preceding super (in this example, FlyCar or OperateCar) must refer to a direct superinterface that defines or inherits a default for the invoked method. This form of method invocation is not restricted to differentiating between multiple implemented interfaces that contain default methods with the same signature. You can use the super keyword to invoke a default method in both classes and interfaces.</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>@PostConstruct注解原理解析</title>
-    <url>/2021/11/16/PostConstruct%E6%B3%A8%E8%A7%A3%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/lay2017/p/11735802.html" target="_blank" rel="noopener">@PostConstruct注解原理解析</a></p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>PostConstruct</tag>
-      </tags>
   </entry>
   <entry>
     <title>ProcessExecutor、ProcessBuilder、Runtime.getRuntime().exec(...) </title>
@@ -369,6 +357,18 @@
       <tags>
         <tag>move</tag>
         <tag>copy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>@PostConstruct注解原理解析</title>
+    <url>/2021/11/16/PostConstruct%E6%B3%A8%E8%A7%A3%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/lay2017/p/11735802.html" target="_blank" rel="noopener">@PostConstruct注解原理解析</a></p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>PostConstruct</tag>
       </tags>
   </entry>
   <entry>
@@ -483,6 +483,12 @@
 ]]></content>
   </entry>
   <entry>
+    <title> ThreadLocal 详解</title>
+    <url>/2021/11/13/ThreadLocal-%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<p><a href="https://www.pdai.tech/md/java/thread/java-thread-x-threadlocal.html" target="_blank" rel="noopener">ThreadLocal原理</a>  ,&amp;nbsp;&amp;nbsp;&amp;nbsp; <a href="https://juejin.cn/post/6844903487193481224" target="_blank" rel="noopener">Java 之 ThreadLocal 详解: 内存泄漏</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>《Spring设计思想-事务篇》2.数据库隔离级别</title>
     <url>/2020/03/12/Spring%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3-%E4%BA%8B%E5%8A%A1%E7%AF%87%E3%80%8B2-%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/</url>
     <content><![CDATA[<p>转载：**<a href="https://blog.csdn.net/luanlouis/article/details/95319795" target="_blank" rel="noopener">《Spring设计思想-事务篇》2.数据库隔离级别
@@ -493,12 +499,6 @@
 <p>事务的并发数和数据数据一致性这两个是两个相反的理想指标。而数据库研发的方向就是尽可能提高同时提高两个指标，尽可能减少之间的反作用影响。</p>
 <p>SERIALIZABLE 序列化读，隔离级别最高，客户端以互斥的方式访问数据库资源，统一时间内，同一个资源只能被一个客户端访问，好像客户端在排队请求访问，所以称为序列化读。<br>REPEATABLE_READ 可重复读，可重复读能够保证，一个客户端在一个事务内，多次访问同一个资源时，返回结果是一样的，顾名思义，称为可重复读，这种隔离级别可能会造成幻读现象。<br>READ_COMMITTED 读已提交，即客户端在一个事务内，每次查询读取的数据都是从数据库读取最新的已提交的数据；这种隔离界别可能会造成不可重复读和幻读现象。<br>READ_UNCOMMITTED 读未提交，即客户端在一个事务内，可以读取到其他客户端事务的尚未提交的数据；这种隔离级别可能会造成脏读、不可重复读、幻读 现象。</p>
 <p><img src="/images/pasted-23.png" alt="upload successful"></p>
-]]></content>
-  </entry>
-  <entry>
-    <title> ThreadLocal 详解</title>
-    <url>/2021/11/13/ThreadLocal-%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[<p><a href="https://www.pdai.tech/md/java/thread/java-thread-x-threadlocal.html" target="_blank" rel="noopener">ThreadLocal原理</a>  ,&amp;nbsp;&amp;nbsp;&amp;nbsp; <a href="https://juejin.cn/post/6844903487193481224" target="_blank" rel="noopener">Java 之 ThreadLocal 详解: 内存泄漏</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -661,6 +661,10 @@
     <title>java底层机制（堆/栈/方法区/GC/类加载）</title>
     <url>/2020/03/08/ava%E5%BA%95%E5%B1%82%E6%9C%BA%E5%88%B6/</url>
     <content><![CDATA[<p>转载:<strong><a href="https://www.jianshu.com/p/ae97b692614e?from=timeline" target="_blank" rel="noopener">java底层机制</a><strong>、</strong><a href="https://blog.csdn.net/luanlouis/article/details/40043991" target="_blank" rel="noopener">《Java虚拟机原理图解》3、JVM运行时数据区</a></strong></p>
+<a id="more"></a>
+<p>其中第一篇中论述静态变量位于方法区有待确认:<br>Java8的静态变量存在于堆中，而不是元空间。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、类加载时，.class文件被加载到内存中，并构建了一个Class对象，在堆中。</span><br><span class="line">2、静态变量经过追踪，发现其和Class对象绑定在一起，由 1 可知其存在于堆中（都说静态变量在方法区，只能说.class文件的信息都在方法区，所以静态变量的信息存在于方法区，静态变量本身并不在）</span><br><span class="line">3、它的对象实体（new出来的对象）也存在于堆中（java8）。</span><br><span class="line">补充：java8 将 静态变量 、StringTable 都从方法区移动到 堆中，主要是想进行GC，方法区也能GC，但只能full GC，频率会很低。</span><br></pre></td></tr></table></figure>
+<p><a href="https://blog.csdn.net/Xu_JL1997/article/details/89433916" target="_blank" rel="noopener">JDK 1.8 下的 java.lang.Class 对象和 static 成员变量在堆还是方法区？</a></p>
 ]]></content>
       <categories>
         <category>java</category>
@@ -726,22 +730,27 @@
       </tags>
   </entry>
   <entry>
-    <title>centos 命令补全失效(硬盘满了)</title>
-    <url>/2022/12/04/centos-%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%A8%E5%A4%B1%E6%95%88-%E7%A1%AC%E7%9B%98%E6%BB%A1%E4%BA%86/</url>
-    <content><![CDATA[<h3 id="Tab补全失效"><a href="#Tab补全失效" class="headerlink" title="Tab补全失效"></a>Tab补全失效</h3><p>登录服务器，cd 相应路径按Tab补全时，提示*-bash: cannot create temp file for here-document: No space left on device*。</p>
+    <title>ubuntu自动挂载其他盘</title>
+    <url>/2021/03/18/ceshi/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>双系统，ubuntu和win10装在同一个固态盘，还有另外一个机械盘，平时放些资料啥的，设置给ubuntu开机自动挂载另一个机械盘。</p>
 <a id="more"></a>
-<p>如图所示：<br><img src="/images/pasted-52.png" alt="upload successful"><br>谷歌查询是硬盘满了。df命令查看，果然如此：</p>
-<p><img src="/images/pasted-54.png" alt="upload successful"></p>
-<p>然后用du命令查看可以目录</p>
-<p><img src="/images/pasted-55.png" alt="upload successful"></p>
-<p>发现可以目录&#x2F;var &#x2F;app &#x2F;sftproot,继续用du命令挨个查看，最后发现&#x2F;var&#x2F;log目录占用12G</p>
-<p><img src="/images/pasted-56.png" alt="upload successful"></p>
-<p>进入log继续du加sort排序查看(ll -h也可)</p>
-<p><img src="/images/pasted-57.png" alt="upload successful"></p>
-<p>就是这几个messages文件占了10多G，且都是最近产生的，随便打开进去一看都是如下内容：</p>
-<p><img src="/images/pasted-58.png" alt="upload successful"></p>
-<p>是crond产生的垃圾日志，不管它，先来个重启大法<em>service crond stop</em>、<em>service crond start</em>，再瞧问题依旧。谷歌之，<em>No configuration file found at &#x2F;root&#x2F;.esmtprc or &#x2F;etc&#x2F;esmtprc</em>,没找到问题原因，只看到个解决方法 <a href="https://www.axinblog.com/2022/02/16/Linux-%E6%97%A5%E5%BF%97%E6%B8%85%E7%90%86/" target="_blank" rel="noopener">Linux 日志清理</a>，先暂且安装重启crond，记下来以观后效，明天再查…</p>
+
+<p>1、查询挂载硬盘UUID</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo blkid &#x2F;dev&#x2F;sda2</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-32.png" alt="upload successful"><br>Secert和WorkSpace盘信息如上，下面用到两个盘的UUID。</p>
+<p>2、打开文件&#x2F;etc&#x2F;fstab文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;fstab</span><br></pre></td></tr></table></figure>
+<p>在文档末尾添加相应磁盘的信息。格式为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[UUID&#x3D;************] [挂载磁盘分区]  [挂载磁盘格式]  0  2</span><br><span class="line"></span><br><span class="line">UUID&#x3D;4D55CFC14D016D60 &#x2F;mnt&#x2F;workspace ntfs defaults  0  2</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-33.png" alt="upload successful"><br>第一个数字：0表示开机不检查磁盘，1表示开机检查磁盘；<br>第二个数字：0表示交换分区，1代表启动分区（Linux），2表示普通分区</p>
+<p>3、重启生效</p>
 ]]></content>
+      <categories>
+        <category>linux</category>
+        <category>ubuntu</category>
+      </categories>
   </entry>
   <entry>
     <title>centos 免密切换root</title>
@@ -801,56 +810,6 @@
       </categories>
   </entry>
   <entry>
-    <title>ubuntu自动挂载其他盘</title>
-    <url>/2021/03/18/ceshi/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>双系统，ubuntu和win10装在同一个固态盘，还有另外一个机械盘，平时放些资料啥的，设置给ubuntu开机自动挂载另一个机械盘。</p>
-<a id="more"></a>
-
-<p>1、查询挂载硬盘UUID</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo blkid &#x2F;dev&#x2F;sda2</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/pasted-32.png" alt="upload successful"><br>Secert和WorkSpace盘信息如上，下面用到两个盘的UUID。</p>
-<p>2、打开文件&#x2F;etc&#x2F;fstab文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;fstab</span><br></pre></td></tr></table></figure>
-<p>在文档末尾添加相应磁盘的信息。格式为：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[UUID&#x3D;************] [挂载磁盘分区]  [挂载磁盘格式]  0  2</span><br><span class="line"></span><br><span class="line">UUID&#x3D;4D55CFC14D016D60 &#x2F;mnt&#x2F;workspace ntfs defaults  0  2</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/pasted-33.png" alt="upload successful"><br>第一个数字：0表示开机不检查磁盘，1表示开机检查磁盘；<br>第二个数字：0表示交换分区，1代表启动分区（Linux），2表示普通分区</p>
-<p>3、重启生效</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-        <category>ubuntu</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>centos 定时任务（cron）通过第三方邮件服务器（MTA）发送邮件</title>
-    <url>/2020/01/13/corn-mail/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>有时会需要把一些日志或者任务结果发送到用户邮箱，特此记录一下定时任务和邮箱信息的配置。</p>
-<a id="more"></a>
-<h3 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h3><p>守护进程 crond定期(每分钟)检查是否有要执行的任务，任务调度分为两类：<strong>系统任务调度</strong>和<strong>用户任务调度</strong>。</p>
-<p><strong>系统任务调度</strong>：系统周期性所要执行的工作，比如写缓存数据到硬盘、日志清理等。配置文件<code>/etc/crontab</code>。（若要配置定时reboot任务，需配置在此）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SHELL&#x3D;&#x2F;bin&#x2F;bash</span><br><span class="line">PATH&#x3D;&#x2F;sbin:&#x2F;bin:&#x2F;usr&#x2F;sbin:&#x2F;usr&#x2F;bin</span><br><span class="line">MAILTO&#x3D;root</span><br><span class="line">HOME&#x3D;&#x2F;</span><br><span class="line"># For details see man 4 crontabs</span><br><span class="line"># Example of job definition:</span><br><span class="line"># .---------------- minute (0 - 59)</span><br><span class="line"># |  .------------- hour (0 - 23)</span><br><span class="line"># |  |  .---------- day of month (1 - 31)</span><br><span class="line"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span><br><span class="line"># |  |  |  |  .---- day of week (0 - 6) (Sunday&#x3D;0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span><br><span class="line"># |  |  |  |  |</span><br><span class="line"># *  *  *  *  * user-name command to be executed</span><br><span class="line">  10 21 *  *  * root reboot</span><br></pre></td></tr></table></figure>
-
-
-<p><strong>用户任务调度</strong>：用户定期要执行的工作，比如用户数据备份、定时邮件提醒、自定义脚本等。配置文件<code>/var/spool/cron/usernamne</code>，用户亦可以用命令crontab定制自己的计划任务。如每隔一分钟给指定邮箱发信息，<code>crontab -u username -e</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">MAILTO&#x3D;&quot;yourmailaddress@**.com&quot;</span><br><span class="line">*&#x2F;1 * * * *  echo &#39;message&#39;</span><br></pre></td></tr></table></figure>
-<p><em>ps</em>：crontab中任何程序产生的输出都会以邮件的形式发送给由MAILTO指定的对象，若未指定则发给任务运行的用户（可于<code>/var/spool/mail/username</code>中查看），此时可通过<code>.forward</code> 或配置<code>/etc/aliases</code> 发送到外部邮箱。</p>
-<h3 id="邮件配置"><a href="#邮件配置" class="headerlink" title="邮件配置"></a>邮件配置</h3><p>用系统自带的postfix配置MTA太费事儿，所以采用163邮箱的SMTP服务。</p>
-<p>  1.邮箱开启SMTP服务</p>
-<p>  登录邮箱，在<code>设置</code>里打开<code>POP3/SMTP/IMAP</code>，勾选<code>POP3/SMTP服务</code>和<code>IMAP/SMTP服务</code>，并设置自己的<code>客户端授权密码</code>。</p>
-<p>  2.centos安装mailx(相当于MUA)<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install mailx</span><br></pre></td></tr></table></figure><br>  3.centos配置163邮箱信息，在文件 <code>/etc/mail.rc</code>末尾添加如下信息<br>    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set from&#x3D;&quot;*********@163.com&quot;</span><br><span class="line">set smtp&#x3D;smtp.163.com</span><br><span class="line">set smtp-auth-user&#x3D;*********@163.com</span><br><span class="line">set smtp-auth-password&#x3D;客户端授权密码</span><br><span class="line">set smtp-auth&#x3D;login</span><br></pre></td></tr></table></figure></p>
-<p>  <em>ps</em>:防火墙配置（vultr要联系客服“开光”25端口）</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>mail</tag>
-        <tag>crontab</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>trojan科学上网</title>
     <url>/2020/01/29/gfw/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>一直用的ssr科学上网，侥幸挺过了去年国庆等的各种严打，一直傲娇地活跃到年底，没想到值此新春佳节之际，终于不出预料地被封了，丧事喜办，旧的不去新的不来，正好试试trojan，希望他能接过前辈的火种，超神带我飞，直直挺到2021吖，本文记录一下vps、windows pc以及android手机的配置。</p>
@@ -883,6 +842,51 @@
       </tags>
   </entry>
   <entry>
+    <title>centos 定时任务（cron）通过第三方邮件服务器（MTA）发送邮件</title>
+    <url>/2020/01/13/corn-mail/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>有时会需要把一些日志或者任务结果发送到用户邮箱，特此记录一下定时任务和邮箱信息的配置。</p>
+<a id="more"></a>
+<h3 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h3><p>守护进程 crond定期(每分钟)检查是否有要执行的任务，任务调度分为两类：<strong>系统任务调度</strong>和<strong>用户任务调度</strong>。</p>
+<p><strong>系统任务调度</strong>：系统周期性所要执行的工作，比如写缓存数据到硬盘、日志清理等。配置文件<code>/etc/crontab</code>。（若要配置定时reboot任务，需配置在此）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SHELL&#x3D;&#x2F;bin&#x2F;bash</span><br><span class="line">PATH&#x3D;&#x2F;sbin:&#x2F;bin:&#x2F;usr&#x2F;sbin:&#x2F;usr&#x2F;bin</span><br><span class="line">MAILTO&#x3D;root</span><br><span class="line">HOME&#x3D;&#x2F;</span><br><span class="line"># For details see man 4 crontabs</span><br><span class="line"># Example of job definition:</span><br><span class="line"># .---------------- minute (0 - 59)</span><br><span class="line"># |  .------------- hour (0 - 23)</span><br><span class="line"># |  |  .---------- day of month (1 - 31)</span><br><span class="line"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</span><br><span class="line"># |  |  |  |  .---- day of week (0 - 6) (Sunday&#x3D;0 or 7) OR sun,mon,tue,wed,thu,fri,sat</span><br><span class="line"># |  |  |  |  |</span><br><span class="line"># *  *  *  *  * user-name command to be executed</span><br><span class="line">  10 21 *  *  * root reboot</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>用户任务调度</strong>：用户定期要执行的工作，比如用户数据备份、定时邮件提醒、自定义脚本等。配置文件<code>/var/spool/cron/usernamne</code>，用户亦可以用命令crontab定制自己的计划任务。如每隔一分钟给指定邮箱发信息，<code>crontab -u username -e</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">MAILTO&#x3D;&quot;yourmailaddress@**.com&quot;</span><br><span class="line">*&#x2F;1 * * * *  echo &#39;message&#39;</span><br></pre></td></tr></table></figure>
+<p><em>ps</em>：crontab中任何程序产生的输出都会以邮件的形式发送给由MAILTO指定的对象，若未指定则发给任务运行的用户（可于<code>/var/spool/mail/username</code>中查看），此时可通过<code>.forward</code> 或配置<code>/etc/aliases</code> 发送到外部邮箱。</p>
+<h3 id="邮件配置"><a href="#邮件配置" class="headerlink" title="邮件配置"></a>邮件配置</h3><p>用系统自带的postfix配置MTA太费事儿，所以采用163邮箱的SMTP服务。</p>
+<p>  1.邮箱开启SMTP服务</p>
+<p>  登录邮箱，在<code>设置</code>里打开<code>POP3/SMTP/IMAP</code>，勾选<code>POP3/SMTP服务</code>和<code>IMAP/SMTP服务</code>，并设置自己的<code>客户端授权密码</code>。</p>
+<p>  2.centos安装mailx(相当于MUA)<br>  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yum install mailx</span><br></pre></td></tr></table></figure><br>  3.centos配置163邮箱信息，在文件 <code>/etc/mail.rc</code>末尾添加如下信息<br>    <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set from&#x3D;&quot;*********@163.com&quot;</span><br><span class="line">set smtp&#x3D;smtp.163.com</span><br><span class="line">set smtp-auth-user&#x3D;*********@163.com</span><br><span class="line">set smtp-auth-password&#x3D;客户端授权密码</span><br><span class="line">set smtp-auth&#x3D;login</span><br></pre></td></tr></table></figure></p>
+<p>  <em>ps</em>:防火墙配置（vultr要联系客服“开光”25端口）</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>mail</tag>
+        <tag>crontab</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>centos 命令补全失效(硬盘满了)</title>
+    <url>/2022/12/04/centos-%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%A8%E5%A4%B1%E6%95%88-%E7%A1%AC%E7%9B%98%E6%BB%A1%E4%BA%86/</url>
+    <content><![CDATA[<h3 id="Tab补全失效"><a href="#Tab补全失效" class="headerlink" title="Tab补全失效"></a>Tab补全失效</h3><p>登录服务器，cd 相应路径按Tab补全时，提示*-bash: cannot create temp file for here-document: No space left on device*。</p>
+<a id="more"></a>
+<p>如图所示：<br><img src="/images/pasted-52.png" alt="upload successful"><br>谷歌查询是硬盘满了。df命令查看，果然如此：</p>
+<p><img src="/images/pasted-54.png" alt="upload successful"></p>
+<p>然后用du命令查看可以目录</p>
+<p><img src="/images/pasted-55.png" alt="upload successful"></p>
+<p>发现可以目录&#x2F;var &#x2F;app &#x2F;sftproot,继续用du命令挨个查看，最后发现&#x2F;var&#x2F;log目录占用12G</p>
+<p><img src="/images/pasted-56.png" alt="upload successful"></p>
+<p>进入log继续du加sort排序查看(ll -h也可)</p>
+<p><img src="/images/pasted-57.png" alt="upload successful"></p>
+<p>就是这几个messages文件占了10多G，且都是最近产生的，随便打开进去一看都是如下内容：</p>
+<p><img src="/images/pasted-58.png" alt="upload successful"></p>
+<p>是crond产生的垃圾日志，不管它，先来个重启大法<em>service crond stop</em>、<em>service crond start</em>，再瞧问题依旧。谷歌之，<em>No configuration file found at &#x2F;root&#x2F;.esmtprc or &#x2F;etc&#x2F;esmtprc</em>,没找到问题原因，只看到个解决方法 <a href="https://www.axinblog.com/2022/02/16/Linux-%E6%97%A5%E5%BF%97%E6%B8%85%E7%90%86/" target="_blank" rel="noopener">Linux 日志清理</a>，先暂且安装重启crond，记下来以观后效，明天再查…</p>
+]]></content>
+  </entry>
+  <entry>
     <title>随笔有感</title>
     <url>/2020/01/13/hello-world/</url>
     <content><![CDATA[<p>一个不读书之人的胡思胡想</p>
@@ -902,6 +906,48 @@
 ]]></content>
   </entry>
   <entry>
+    <title>git学习笔记</title>
+    <url>/2020/01/18/git-command/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>以前使用SVN,切换到分布式版本控制系统Git，此笔记记录一下学习心得，备询。**<a href="https://gist.github.com/guweigang/9848271" target="_blank" rel="noopener">git命令大全</a><strong>，贴个链接，比较</strong><a href="https://www.liaoxuefeng.com/wiki/896043488029600/896067008724000" target="_blank" rel="noopener">适合初次接触者</a><strong>，</strong><a href="https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1" target="_blank" rel="noopener">动画演示Git命令</a>**</p>
+<a id="more"></a>
+<h3 id="git配置代理"><a href="#git配置代理" class="headerlink" title="git配置代理"></a>git配置代理</h3><p>天朝特色，使用git clone下载同性交友网站（github）的仓库时，巨慢！如果可以科学上网的话，设置一下代理，加一下速…<br>本文用的trojan科学上网，利用它的socks5代理加速。配置命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global http.proxy &#39;socks5:&#x2F;&#x2F;127.0.0.1:1080&#39; </span><br><span class="line">git config --global https.proxy &#39;socks5:&#x2F;&#x2F;127.0.0.1:1080&#39;</span><br></pre></td></tr></table></figure>
+
+<p>取消代理的命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>
+
+<h3 id="git提交到多个remote"><a href="#git提交到多个remote" class="headerlink" title="git提交到多个remote"></a>git提交到多个remote</h3><p>本地生成博客页面，git部署到VPS远端，也顺便也部署到github。下面就通过把本地的文件提交到两个git远端(Remote)的事例，了解git命令的使用。<br>切换到指定目录（以目录hexo下的.deploy_git文件夹为例）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git init        &#x2F;&#x2F;初始化一个git的本地仓库(以前hexo deploy的时候已经有了本地仓库，配置信息在隐藏文件夹.git里)</span><br><span class="line">git add myfile. &#x2F;&#x2F;将myfile加入暂存区index（</span><br><span class="line">git commit -m “first commit” &#x2F;&#x2F;把暂存区的文件提交到本地仓库</span><br><span class="line">git remote add Name1 git@vps的IP:hexo.git &#x2F;&#x2F;增加一个新的远程仓库，并命名为Name1</span><br><span class="line">git push -u Name1 master &#x2F;&#x2F;把分支master的内容push到远程仓库</span><br><span class="line">git remote add Name2 git@github.com:yourname&#x2F;yourname.github.io.git</span><br><span class="line"> &#x2F;&#x2F;添加第二个远程仓库，并命名为Name2</span><br><span class="line">git push -u Name2 master &#x2F;&#x2F;将分支master的内容push到第二个远程仓库</span><br></pre></td></tr></table></figure>
+<p>至此，就将本地文件提交到两个远端仓库了。<br>ps:由于我的github的yourname.github.io仓库里已经有了文件，所以push的时候会报错：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">error: failed to push some refs to &#39;git@github.com:yourname&#x2F;yourname.github.io.git&#39;</span><br><span class="line">hint: Updates were rejected because the remote contains work that you do</span><br><span class="line">hint: not have locally. This is usually caused by another repository pushing</span><br><span class="line">hint: to the same ref. You may want to first integrate the remote changes</span><br><span class="line">hint: (e.g., &#39;git pull ...&#39;) before pushing again.</span><br><span class="line">hint: See the &#39;Note about fast-forwards&#39; in &#39;git push --help&#39; for details.</span><br></pre></td></tr></table></figure>
+<p>解决方法：<br>$ git push -f Name2 master</p>
+<h3 id="git-pull冲突"><a href="#git-pull冲突" class="headerlink" title="git pull冲突"></a>git pull冲突</h3><p>从github上fork了一个项目，并clone到本地，做了一些删改后，想要提交到github个人仓库，但发现作者项目更新了，便把fork来的项目通过New pull request和原项目同步更新了。这时本地在用git pull更新项目时，遇到了下面的问题：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">error: Your local changes to the following files would be overwritten by merge: xxx&#x2F;xxx&#x2F;xxx </span><br><span class="line">Please, commit your changes or stash them before you can merge. </span><br><span class="line">Aborting</span><br></pre></td></tr></table></figure>
+<p>解决方法两种：</p>
+<h4 id="覆盖本地修改"><a href="#覆盖本地修改" class="headerlink" title="覆盖本地修改"></a>覆盖本地修改</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git reset --hard</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
+<p>这种会放弃本地修改的代码，看情况使用。</p>
+<h4 id="使用git-stash"><a href="#使用git-stash" class="headerlink" title="使用git stash"></a>使用git stash</h4><p>这种会保留自己本地修改</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git stash</span><br><span class="line">git pull</span><br><span class="line">git stash pop</span><br></pre></td></tr></table></figure>
+<p>git stash: 备份当前的工作区的内容，从最近的一次提交中读取相关内容，让工作区保证和上次提交的内容一致。同时，将当前的工作区内容保存到Git栈中。<br>git stash pop: 从Git栈中读取最近一次保存的内容，恢复工作区的相关内容。由于可能存在多个Stash的内容，所以用栈来管理，pop会从最近的一个stash中读取内容并恢复。<br>git stash list: 显示Git栈内的所有备份，可以利用这个列表来决定从那个地方恢复。<br>git stash clear: 清空Git栈。此时使用gitg等图形化工具会发现，原来stash的哪些节点都消失了。</p>
+<p>最后就可以diff一下文件看看自动合并的情况，并对解决冲突文件做相应修改后提交即可。</p>
+<p><strong><a href="https://blog.csdn.net/stone_yw/article/details/80795669" target="_blank" rel="noopener">git stash详解</a></strong></p>
+<h3 id="git-fetch和pull的差别"><a href="#git-fetch和pull的差别" class="headerlink" title="git fetch和pull的差别"></a>git fetch和pull的差别</h3><p><a href="https://blog.csdn.net/caseywei/article/details/95637431/" target="_blank" rel="noopener">git fetch 和git pull 的差别</a></p>
+<h3 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h3><p><strong><a href="https://blog.csdn.net/qq_39505245/article/details/119899171" target="_blank" rel="noopener">git diff 比较文件的差异</a></strong></p>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>@interface 简介</title>
+    <url>/2021/11/11/interface/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/zhangbeizhen18/article/details/87885441/" target="_blank" rel="noopener">自定义注释@interface的用法理解</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>idea下gradle报jdk版本错误</title>
     <url>/2020/03/05/idea-gradle-jdk/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>idea下用gradle编译项目的时候报错如下：“Could not target platform: ‘Java SE 13’ using tool chain: ‘JDK 11 (11)’.”</p>
@@ -918,6 +964,12 @@
       </tags>
   </entry>
   <entry>
+    <title>int&amp;Integer、 double&amp;Double&amp;BigDecimal</title>
+    <url>/2022/03/09/int%E5%92%8CInteger%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/guodongdidi/p/6953217.html" target="_blank" rel="noopener">int和Integer的区别</a>&amp;nbsp;&amp;nbsp;<a href="http://www.louisvv.com/archives/2514.html" target="_blank" rel="noopener">double、Double与BigDecimal</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>intellij-idea的快捷键</title>
     <url>/2020/12/23/intellij-idea%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE/</url>
     <content><![CDATA[<p><a href="https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf" target="_blank" rel="noopener">Intellij-idea的快捷键</a></p>
@@ -925,18 +977,6 @@
       <tags>
         <tag>idea</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>@interface 简介</title>
-    <url>/2021/11/11/interface/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/zhangbeizhen18/article/details/87885441/" target="_blank" rel="noopener">自定义注释@interface的用法理解</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>int&amp;Integer、 double&amp;Double&amp;BigDecimal</title>
-    <url>/2022/03/09/int%E5%92%8CInteger%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/guodongdidi/p/6953217.html" target="_blank" rel="noopener">int和Integer的区别</a>&amp;nbsp;&amp;nbsp;<a href="http://www.louisvv.com/archives/2514.html" target="_blank" rel="noopener">double、Double与BigDecimal</a></p>
-]]></content>
   </entry>
   <entry>
     <title>spring boot注解基本了解</title>
@@ -951,16 +991,6 @@
       </tags>
   </entry>
   <entry>
-    <title>java 内部类与实例化</title>
-    <url>/2023/02/25/java-%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%8C%96/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/weixin_47552600/article/details/106888302" target="_blank" rel="noopener">Java内部类基本介绍、如何实例化内部类和如何调用外部类属性和方法</a>、<a href="https://blog.csdn.net/qq_28214047/article/details/53229331" target="_blank" rel="noopener">java内部类的实例化</a>、<a href="https://zhuanlan.zhihu.com/p/61735448" target="_blank" rel="noopener">内部类和静态内部类的区别</a>、<a href="https://blog.csdn.net/naoguoteng/article/details/124177958?spm=1001.2101.3001.6650.3&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-124177958-blog-107604508.pc_relevant_recovery_v2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-124177958-blog-107604508.pc_relevant_recovery_v2&utm_relevant_index=4" target="_blank" rel="noopener">内部类与外部类之间的访问</a></p>
-<p>局部内部类访问外部类的局部变量，局部变量必须用final修饰，使之成为常量.</p>
-<a id="more"></a>
-
-<p>为什么呢? 因为局部变量会随着方法的调用完毕而消失，这个时候，局部对象并没有立马从堆内存中消失，还要使用那个变量。为了让数据还能继续被使用，就用final修饰，这样，在堆内存里面存储的其实是一个常量值。(JDK1.8之后，final会默认加上)  <a href="https://blog.csdn.net/qq_38238296/article/details/83315263" target="_blank" rel="noopener">局部内部类访问局部变量时，变量必须用final修饰</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>java 泛型擦除</title>
     <url>/2023/02/25/java-%E6%B3%9B%E5%9E%8B%E6%93%A6%E9%99%A4/</url>
     <content><![CDATA[<p><a href="https://www.cnblogs.com/hongdada/p/13993251.html" target="_blank" rel="noopener">Java 泛型擦除 </a></p>
@@ -968,19 +998,31 @@
 ]]></content>
   </entry>
   <entry>
-    <title>java中的乱码</title>
-    <url>/2020/12/08/java%E4%B8%AD%E7%9A%84%E4%B9%B1%E7%A0%81/</url>
-    <content><![CDATA[<p><a href="https://developer.ibm.com/zh/languages/java/articles/j-lo-chinesecoding/" target="_blank" rel="noopener">深入分析 Java 中的中文编码问题</a>、<a href="https://blog.csdn.net/u010234516/article/details/52853214" target="_blank" rel="noopener">锟斤拷？UTF-8与GBK互转，为什么会乱码？</a></p>
-<p>附图一张:</p>
-<a id="more"></a>
-<p><img src="/images/crazyCode.jpg" alt="upload successful"></p>
+    <title>json web token(jwt)</title>
+    <url>/2020/05/02/json-web-token-jwt/</url>
+    <content><![CDATA[<p>转载：**<a href="https://learnku.com/articles/22616" target="_blank" rel="noopener">别再使用 JWT 作为 Session 系统！问题重重且很危险。
+</a>**<br>结论：无状态 JWT Tokens 无法被单独地销毁或更新，取决于你如何存储，可能还会导致长度问题、安全隐患。有状态 JWT Tokens 在功能方面与 Session cookies 无异，但缺乏生产环境的验证、经过大量 Review 的实现，以及良好的客户端支持。<br>JWT 特别有效的使用例子通常是作为一次性的授权令牌。</p>
 ]]></content>
       <categories>
         <category>java</category>
       </categories>
       <tags>
-        <tag>乱码</tag>
+        <tag>jwt</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>java 继承</title>
+    <url>/2023/03/06/java-%E7%BB%A7%E6%89%BF/</url>
+    <content><![CDATA[<p><a href="https://zhuanlan.zhihu.com/p/133312663" target="_blank" rel="noopener">Java 类继承机制</a>、<a href="https://blog.csdn.net/dxtianlei/article/details/99299051" target="_blank" rel="noopener">Java继承–父类私有属性和私有方法的继承</a>、<a href="https://www.zhihu.com/question/51920553?utm_id=0" target="_blank" rel="noopener">java中，创建子类对象时，父类对象会也被一起创建么？</a>、<a href="https://developer.aliyun.com/article/1135982" target="_blank" rel="noopener">Java对象内存布局和对象头</a>、<br><a href="https://blog.csdn.net/lkforce/article/details/81128115" target="_blank" rel="noopener">Java的对象头和对象组成详解</a></p>
+<a id="more"></a>
+
+<p>所以位于堆内存中的对象中的对象头里的Klass word(类元信息，又叫类型指针，该指针指向它的类元数据，JVM通过这个指针确定对象是哪个类的实例)即该对象的getClass()，当子类对象赋值给父类变量时，只是栈中的赋值，堆对象中的getClass()仍然是子类的class。另外，对象头里的类型指针指向的是位于方法区的类元信息，并不是位于堆中的该java.lang.class的对象。其中类元信息中包含该java.lang.class的引用。（类的加载指的是将类的.class文件中的二进制数据读入到内存中，将其放在Jvm的方法区内，然后在堆区创建一个java.lang.Class对象，用来封装类在方法区内的数据结构。类的加载的最终产品是位于堆区中的Class对象，Class对象封装了类在方法区内的数据结构，并且向Java程序员提供了访问方法区内的数据结构的接口）</p>
+<p><a href="https://blog.csdn.net/qq_43209615/article/details/123542266" target="_blank" rel="noopener">java对象头的总体结构，MarkWord的结构、MarkWord和锁的关系</a>、<a href="https://zhuanlan.zhihu.com/p/30527228" target="_blank" rel="noopener">Java虚拟机Class对象是在方法区还是堆中</a>、<a href="https://juejin.cn/post/6995361827055992863" target="_blank" rel="noopener">深入理解JVM（六）一一运行时数据区（方法区）</a></p>
+<p><img src="/images/pasted-62.png" alt="upload successful"></p>
+<h3 id="virtual-method-table"><a href="#virtual-method-table" class="headerlink" title="virtual method table"></a>virtual method table</h3><p><a href="https://blog.csdn.net/lnazj/article/details/116752559" target="_blank" rel="noopener">Java 继承底层原理</a>、<a href="https://blog.csdn.net/wzq6578702/article/details/82712667" target="_blank" rel="noopener">jvm原理（34）虚方法表与动态分派机制详解</a></p>
+<h3 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h3><p>If a subclass has a public property with the same name as a public property in its parent class, the subclass’s property will shadow or hide the parent class’s property. This means that when you access the property from within the subclass using its name (e.g., x), you will be accessing the subclass’s property, not the parent class’s property. However, you can still access the parent class’s property from within the subclass using the super keyword (e.g., super.x).</p>
+<p>The underlying principle behind shadowing is that Java uses the concept of scope to determine which property or variable to access. When you access a property or variable using its name (e.g., x), Java will first look for it in the current scope (i.e., within the current block of code). If it doesn’t find it there, it will look for it in the next outer scope (e.g., within the current method), and so on until it finds it. If there are multiple properties or variables with the same name in different scopes, Java will always choose the one in the innermost scope.</p>
+]]></content>
   </entry>
   <entry>
     <title>js  0 == &#39;&#39; 引出的判等</title>
@@ -1167,19 +1209,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>json web token(jwt)</title>
-    <url>/2020/05/02/json-web-token-jwt/</url>
-    <content><![CDATA[<p>转载：**<a href="https://learnku.com/articles/22616" target="_blank" rel="noopener">别再使用 JWT 作为 Session 系统！问题重重且很危险。
-</a>**<br>结论：无状态 JWT Tokens 无法被单独地销毁或更新，取决于你如何存储，可能还会导致长度问题、安全隐患。有状态 JWT Tokens 在功能方面与 Session cookies 无异，但缺乏生产环境的验证、经过大量 Review 的实现，以及良好的客户端支持。<br>JWT 特别有效的使用例子通常是作为一次性的授权令牌。</p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>jwt</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>kotlin 构造函数</title>
     <url>/2020/05/17/kotlin-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<p>转载：**<a href="https://www.cnblogs.com/Jetictors/p/7758828.html" target="_blank" rel="noopener">Kotlin——中级篇（一）：类（class）详解</a><strong>、</strong><a href="https://www.jianshu.com/p/5db34354d812" target="_blank" rel="noopener">kotlin之构造函数(constructor)
@@ -1199,40 +1228,36 @@
       </tags>
   </entry>
   <entry>
-    <title>git学习笔记</title>
-    <url>/2020/01/18/git-command/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>以前使用SVN,切换到分布式版本控制系统Git，此笔记记录一下学习心得，备询。**<a href="https://gist.github.com/guweigang/9848271" target="_blank" rel="noopener">git命令大全</a><strong>，贴个链接，比较</strong><a href="https://www.liaoxuefeng.com/wiki/896043488029600/896067008724000" target="_blank" rel="noopener">适合初次接触者</a><strong>，</strong><a href="https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1" target="_blank" rel="noopener">动画演示Git命令</a>**</p>
+    <title>java 内部类与实例化</title>
+    <url>/2023/02/25/java-%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%8C%96/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/weixin_47552600/article/details/106888302" target="_blank" rel="noopener">Java内部类基本介绍、如何实例化内部类和如何调用外部类属性和方法</a>、<a href="https://blog.csdn.net/qq_28214047/article/details/53229331" target="_blank" rel="noopener">java内部类的实例化</a>、<a href="https://zhuanlan.zhihu.com/p/61735448" target="_blank" rel="noopener">内部类和静态内部类的区别</a>、<a href="https://blog.csdn.net/naoguoteng/article/details/124177958?spm=1001.2101.3001.6650.3&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-124177958-blog-107604508.pc_relevant_recovery_v2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-124177958-blog-107604508.pc_relevant_recovery_v2&utm_relevant_index=4" target="_blank" rel="noopener">内部类与外部类之间的访问</a>、<a href="https://blog.csdn.net/cmder1000/article/details/108091460" target="_blank" rel="noopener">Java局部匿名内部类是否会持有外部类的引用？
+</a></p>
+<p>内部类可以继承其他类，从而实现“多继承”的效果。其中局部内部类访问外部类的局部变量，局部变量必须用final修饰，使之成为常量。</p>
 <a id="more"></a>
-<h3 id="git配置代理"><a href="#git配置代理" class="headerlink" title="git配置代理"></a>git配置代理</h3><p>天朝特色，使用git clone下载同性交友网站（github）的仓库时，巨慢！如果可以科学上网的话，设置一下代理，加一下速…<br>本文用的trojan科学上网，利用它的socks5代理加速。配置命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global http.proxy &#39;socks5:&#x2F;&#x2F;127.0.0.1:1080&#39; </span><br><span class="line">git config --global https.proxy &#39;socks5:&#x2F;&#x2F;127.0.0.1:1080&#39;</span><br></pre></td></tr></table></figure>
 
-<p>取消代理的命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>
-
-<h3 id="git提交到多个remote"><a href="#git提交到多个remote" class="headerlink" title="git提交到多个remote"></a>git提交到多个remote</h3><p>本地生成博客页面，git部署到VPS远端，也顺便也部署到github。下面就通过把本地的文件提交到两个git远端(Remote)的事例，了解git命令的使用。<br>切换到指定目录（以目录hexo下的.deploy_git文件夹为例）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git init        &#x2F;&#x2F;初始化一个git的本地仓库(以前hexo deploy的时候已经有了本地仓库，配置信息在隐藏文件夹.git里)</span><br><span class="line">git add myfile. &#x2F;&#x2F;将myfile加入暂存区index（</span><br><span class="line">git commit -m “first commit” &#x2F;&#x2F;把暂存区的文件提交到本地仓库</span><br><span class="line">git remote add Name1 git@vps的IP:hexo.git &#x2F;&#x2F;增加一个新的远程仓库，并命名为Name1</span><br><span class="line">git push -u Name1 master &#x2F;&#x2F;把分支master的内容push到远程仓库</span><br><span class="line">git remote add Name2 git@github.com:yourname&#x2F;yourname.github.io.git</span><br><span class="line"> &#x2F;&#x2F;添加第二个远程仓库，并命名为Name2</span><br><span class="line">git push -u Name2 master &#x2F;&#x2F;将分支master的内容push到第二个远程仓库</span><br></pre></td></tr></table></figure>
-<p>至此，就将本地文件提交到两个远端仓库了。<br>ps:由于我的github的yourname.github.io仓库里已经有了文件，所以push的时候会报错：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">error: failed to push some refs to &#39;git@github.com:yourname&#x2F;yourname.github.io.git&#39;</span><br><span class="line">hint: Updates were rejected because the remote contains work that you do</span><br><span class="line">hint: not have locally. This is usually caused by another repository pushing</span><br><span class="line">hint: to the same ref. You may want to first integrate the remote changes</span><br><span class="line">hint: (e.g., &#39;git pull ...&#39;) before pushing again.</span><br><span class="line">hint: See the &#39;Note about fast-forwards&#39; in &#39;git push --help&#39; for details.</span><br></pre></td></tr></table></figure>
-<p>解决方法：<br>$ git push -f Name2 master</p>
-<h3 id="git-pull冲突"><a href="#git-pull冲突" class="headerlink" title="git pull冲突"></a>git pull冲突</h3><p>从github上fork了一个项目，并clone到本地，做了一些删改后，想要提交到github个人仓库，但发现作者项目更新了，便把fork来的项目通过New pull request和原项目同步更新了。这时本地在用git pull更新项目时，遇到了下面的问题：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">error: Your local changes to the following files would be overwritten by merge: xxx&#x2F;xxx&#x2F;xxx </span><br><span class="line">Please, commit your changes or stash them before you can merge. </span><br><span class="line">Aborting</span><br></pre></td></tr></table></figure>
-<p>解决方法两种：</p>
-<h4 id="覆盖本地修改"><a href="#覆盖本地修改" class="headerlink" title="覆盖本地修改"></a>覆盖本地修改</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git reset --hard</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
-<p>这种会放弃本地修改的代码，看情况使用。</p>
-<h4 id="使用git-stash"><a href="#使用git-stash" class="headerlink" title="使用git stash"></a>使用git stash</h4><p>这种会保留自己本地修改</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git stash</span><br><span class="line">git pull</span><br><span class="line">git stash pop</span><br></pre></td></tr></table></figure>
-<p>git stash: 备份当前的工作区的内容，从最近的一次提交中读取相关内容，让工作区保证和上次提交的内容一致。同时，将当前的工作区内容保存到Git栈中。<br>git stash pop: 从Git栈中读取最近一次保存的内容，恢复工作区的相关内容。由于可能存在多个Stash的内容，所以用栈来管理，pop会从最近的一个stash中读取内容并恢复。<br>git stash list: 显示Git栈内的所有备份，可以利用这个列表来决定从那个地方恢复。<br>git stash clear: 清空Git栈。此时使用gitg等图形化工具会发现，原来stash的哪些节点都消失了。</p>
-<p>最后就可以diff一下文件看看自动合并的情况，并对解决冲突文件做相应修改后提交即可。</p>
-<p><strong><a href="https://blog.csdn.net/stone_yw/article/details/80795669" target="_blank" rel="noopener">git stash详解</a></strong></p>
-<h3 id="git-fetch和pull的差别"><a href="#git-fetch和pull的差别" class="headerlink" title="git fetch和pull的差别"></a>git fetch和pull的差别</h3><p><a href="https://blog.csdn.net/caseywei/article/details/95637431/" target="_blank" rel="noopener">git fetch 和git pull 的差别</a></p>
-<h3 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h3><p><strong><a href="https://blog.csdn.net/qq_39505245/article/details/119899171" target="_blank" rel="noopener">git diff 比较文件的差异</a></strong></p>
+<p>为什么呢? 一说因为局部变量会”copy”给内部类为成员变量，为了前后数据的一致性，二说是局部变量会随着方法的调用完毕而消失，这个时候，局部对象并没有立马从堆内存中消失，还要使用那个变量。为了让数据还能继续被使用，就用final修饰，这样，在堆内存里面存储的其实是一个常量值。(JDK1.8之后，final会默认加上)  <a href="https://juejin.cn/post/7037139668718059534" target="_blank" rel="noopener">匿名内部类访问局部变量为什么要加final修饰（JDK1.7及其之前）</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>java中的乱码</title>
+    <url>/2020/12/08/java%E4%B8%AD%E7%9A%84%E4%B9%B1%E7%A0%81/</url>
+    <content><![CDATA[<p><a href="https://developer.ibm.com/zh/languages/java/articles/j-lo-chinesecoding/" target="_blank" rel="noopener">深入分析 Java 中的中文编码问题</a>、<a href="https://blog.csdn.net/u010234516/article/details/52853214" target="_blank" rel="noopener">锟斤拷？UTF-8与GBK互转，为什么会乱码？</a></p>
+<p>附图一张:</p>
+<a id="more"></a>
+<p><img src="/images/crazyCode.jpg" alt="upload successful"></p>
 ]]></content>
       <categories>
-        <category>git</category>
+        <category>java</category>
       </categories>
       <tags>
-        <tag>git</tag>
+        <tag>乱码</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>let var</title>
+    <url>/2023/03/11/let-var/</url>
+    <content><![CDATA[<p><a href="https://juejin.cn/post/6925641096152399880" target="_blank" rel="noopener">一看就懂的var、let、const三者区别</a>、<a href="https://www.cnblogs.com/95xdy/p/14578765.html" target="_blank" rel="noopener">let,var区别的实现原理以及变量环境、词法环境、执行上下文，作用域链查找</a>、<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/let" target="_blank" rel="noopener">let</a></p>
+]]></content>
   </entry>
   <entry>
     <title>linux sort uniq命令</title>
@@ -1281,6 +1306,14 @@
       </categories>
   </entry>
   <entry>
+    <title>linux 常用命令alias</title>
+    <url>/2023/10/10/linux-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4alias/</url>
+    <content><![CDATA[<p>方便日常，ll也要显示隐藏目录及文件，在~&#x2F;.bashrc里添加如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">alias ll&#x3D;&#39;ls -alF&#39;</span><br><span class="line">alias la&#x3D;&#39;ls -A&#39;</span><br><span class="line">alias l&#x3D;&#39;ls -CF&#39;</span><br></pre></td></tr></table></figure>
+<p>然后source ~&#x2F;.bashrc即可。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>linux 查看登录历史 操作用户</title>
     <url>/2021/02/26/linux-%E6%9F%A5%E7%9C%8B%E7%99%BB%E5%BD%95%E5%8E%86%E5%8F%B2-%E6%93%8D%E4%BD%9C%E7%94%A8%E6%88%B7/</url>
     <content><![CDATA[<p>linux 查看登录历史 操作用户</p>
@@ -1300,74 +1333,6 @@
       <categories>
         <category>linux</category>
       </categories>
-  </entry>
-  <entry>
-    <title>本地Hexo生成的博客部署到VPS</title>
-    <url>/2020/01/17/localblog-git-vps/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>为了科学上网搭建了vps，顺便跑一下自己的博客，但vps只有500M内存，所以决定本地windows跑hexo生成网页，然后git到vps，记录一下本地和vps的git配置。</p>
-<a id="more"></a>
-<h3 id="本地配置"><a href="#本地配置" class="headerlink" title="本地配置"></a>本地配置</h3><p>本地windows安装Node.js hexo git，过程不提。</p>
-<h4 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h4><p>安装后打开 Git Bash 输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;你的用户名&quot;</span><br><span class="line">git config --global user.email &quot;你的电子邮箱&quot;</span><br></pre></td></tr></table></figure>
-<p>由于 Hexo 的 Git 部署不支持使用密码登陆，所以需要配置 SSH 公钥：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~</span><br><span class="line">mkdir .ssh</span><br><span class="line">cd .ssh</span><br><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
-<p>由此便在系统当前用户文件夹下生成了私钥 id_rsa 和公钥 id_rsa.pub。</p>
-<p>在上面建立的.ssh文件中新建config文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~&#x2F;.ssh</span><br><span class="line">vim config</span><br></pre></td></tr></table></figure>
-<p>内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Host 服务器IP</span><br><span class="line">HostName 服务器IP</span><br><span class="line">User git</span><br><span class="line">Port 端口号</span><br><span class="line">IdentityFile ~&#x2F;.ssh&#x2F;id_rsa</span><br></pre></td></tr></table></figure>
-<h4 id="hexo配置"><a href="#hexo配置" class="headerlink" title="hexo配置"></a>hexo配置</h4><p>安装插件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
-<p>打开位于 hexo 文件夹下的 _config.yml，修改 deploy 参数：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@vps的IP:hexo.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<h3 id="VPS-配置"><a href="#VPS-配置" class="headerlink" title="VPS 配置"></a>VPS 配置</h3><h4 id="新建用户"><a href="#新建用户" class="headerlink" title="新建用户"></a>新建用户</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adduser git</span><br><span class="line">passwd git</span><br></pre></td></tr></table></figure>
-<h4 id="为用户git添加-sudo-权限"><a href="#为用户git添加-sudo-权限" class="headerlink" title="为用户git添加 sudo 权限"></a>为用户git添加 sudo 权限</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod 740 &#x2F;etc&#x2F;sudoers</span><br><span class="line">vim &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure>
-<p>找到以下内容</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL:ALL) ALL</span><br></pre></td></tr></table></figure>
-<p>添加修改为</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL:ALL) ALL</span><br><span class="line">git     ALL&#x3D;(ALL:ALL) ALL</span><br></pre></td></tr></table></figure>
-<p>假如是</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL) ALL</span><br></pre></td></tr></table></figure>
-<p>则修改为</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL) ALL</span><br><span class="line">git     ALL&#x3D;(ALL) ALL</span><br></pre></td></tr></table></figure>
-<p>保存,退出</p>
-<p>然后修改回文件的权限</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod 440 &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure>
-<h4 id="关闭-git-用户-shell-权限"><a href="#关闭-git-用户-shell-权限" class="headerlink" title="关闭 git 用户 shell 权限"></a>关闭 git 用户 shell 权限</h4><p>至此我们可以在本地通过：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh git@VPS IP</span><br></pre></td></tr></table></figure>
-<p>ssh 连接服务器，登录到服务器上，对服务器进行各种操作，这通常很不安全，也不合适，我们只需要能对仓库操作就可以了，不需要更大的权限。</p>
-<p>因此我们关闭 git 用户 shell 权限，执行：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;passwd</span><br></pre></td></tr></table></figure>
-<p>找到git用户的一行：<em>git:x:1001:1001:,,,:&#x2F;home&#x2F;git:&#x2F;bin&#x2F;bash</em><br>改为：<em>git:x:1001:1001:,,,:&#x2F;home&#x2F;git:&#x2F;usr&#x2F;bin&#x2F;git-shell</em></p>
-<p>这样，git 用户可以正常通过 ssh 使用 git，但无法登录 shell，因为我们为 git 用户指定的 git-shell 每次一登录就自动退出。</p>
-<h4 id="初始化-git-仓库"><a href="#初始化-git-仓库" class="headerlink" title="初始化 git 仓库"></a>初始化 git 仓库</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git                &#x2F;&#x2F;切换到git用户目录</span><br><span class="line">mkdir blog.git              &#x2F;&#x2F;创建git仓库文件夹，以blog.git为例</span><br><span class="line">cd blog.git                 &#x2F;&#x2F;进入仓库目录</span><br><span class="line">git init --bare             &#x2F;&#x2F;使用--bare参数初始化为裸仓库，这样创建的仓库不包含工作区</span><br></pre></td></tr></table></figure>
-<p>注意：裸仓库没有工作区，因为服务器上的 Git 仓库纯粹是为了共享，所以不让用户直接登录到服务器上去改工作区，并且服务器上的 Git 仓库通常都以.git 结尾。</p>
-<h4 id="配置-SSH"><a href="#配置-SSH" class="headerlink" title="配置 SSH"></a>配置 SSH</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git                &#x2F;&#x2F;切换到git用户目录</span><br><span class="line">mkdir .ssh                  &#x2F;&#x2F;创建.ssh目录</span><br><span class="line">cd .ssh</span><br><span class="line">vim authorized_keys</span><br></pre></td></tr></table></figure>
-<p>然后将本地的公钥复制到 authorized_keys 文件里 (公钥即上文生成的公钥，可通过 <em>cat ~&#x2F;.ssh&#x2F;id_rsa.pub</em> 查看)。</p>
-<p>注意：收集所有需要登录的用户的公钥，就是他们自己的 id_rsa.pub 文件，把所有公钥导入到 <em>&#x2F;home&#x2F;git&#x2F;.ssh&#x2F;authorized_keys</em> 文件里，一行一个。</p>
-<h4 id="用户组管理"><a href="#用户组管理" class="headerlink" title="用户组管理"></a>用户组管理</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ll &#x2F;home&#x2F;git&#x2F;</span><br><span class="line">ll &#x2F;var&#x2F;www&#x2F;</span><br></pre></td></tr></table></figure>
-<p>确保 blog.git、.ssh、blog 目录的用户组权限为 git:git，若不是，执行下列命令：</p>
-<p>修改用户权限的命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chown -R git.git &#x2F;home&#x2F;git&#x2F;blog.git&#x2F;</span><br><span class="line">chown -R git.git &#x2F;home&#x2F;git&#x2F;.ssh&#x2F;</span><br><span class="line">chown -R git.git &#x2F;var&#x2F;www&#x2F;blog&#x2F;</span><br></pre></td></tr></table></figure>
-
-<h4 id="配置-Git-Hooks"><a href="#配置-Git-Hooks" class="headerlink" title="配置 Git Hooks"></a>配置 Git Hooks</h4><p>创建 post-receive 文件<br>git 用户下执行（这里由于禁止了git用户shell权限，所以我用 root 用户执行上述命令，然后更改了文件所有者为 git.git）：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git&#x2F;blog.git&#x2F;hooks     &#x2F;&#x2F;切换到hooks目录下</span><br><span class="line">vim post-receive            &#x2F;&#x2F;创建文件</span><br></pre></td></tr></table></figure>
-<p>复制下面的内容到 post-receive 文件中：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">echo &quot;post-receive hook is running...&quot;</span><br><span class="line"></span><br><span class="line">GIT_REPO&#x3D;&#x2F;home&#x2F;git&#x2F;blog.git</span><br><span class="line">TMP_GIT_CLONE&#x3D;&#x2F;tmp&#x2F;blog</span><br><span class="line">PUBLIC_WWW&#x3D;&#x2F;var&#x2F;www&#x2F;blog</span><br><span class="line"></span><br><span class="line">rm -rf $&#123;TMP_GIT_CLONE&#125;</span><br><span class="line">git clone $GIT_REPO $TMP_GIT_CLONE</span><br><span class="line">rm -rf $&#123;PUBLIC_WWW&#125;&#x2F;*</span><br><span class="line">cp -rf $&#123;TMP_GIT_CLONE&#125;&#x2F;* $&#123;PUBLIC_WWW&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>为什么不直接将裸仓库克隆到 Web 根目录下呢？我之前也一直被这个问题困扰，感觉先&gt;克隆到 tmp 目录再拷贝到 Web 根目录是多此一举。后来我觉得可能是出于项目安全的&gt;考虑，在执行 cp 命令的时候，.git 作为隐藏目录不会被拷贝到 Web 根目录下，也就&gt;避免了将整个仓库历史暴露在 Web 服务中。</p>
-</blockquote>
-<p>赋予可执行权限：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod +x post-receive</span><br></pre></td></tr></table></figure>
-<p>ok，至此配置完毕，可以本地hexo d直接发布到vps了。</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>git hooks</tag>
-      </tags>
   </entry>
   <entry>
     <title>linux小技巧</title>
@@ -1444,6 +1409,334 @@
       <categories>
         <category>linux</category>
       </categories>
+  </entry>
+  <entry>
+    <title>本地Hexo生成的博客部署到VPS</title>
+    <url>/2020/01/17/localblog-git-vps/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>为了科学上网搭建了vps，顺便跑一下自己的博客，但vps只有500M内存，所以决定本地windows跑hexo生成网页，然后git到vps，记录一下本地和vps的git配置。</p>
+<a id="more"></a>
+<h3 id="本地配置"><a href="#本地配置" class="headerlink" title="本地配置"></a>本地配置</h3><p>本地windows安装Node.js hexo git，过程不提。</p>
+<h4 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h4><p>安装后打开 Git Bash 输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;你的用户名&quot;</span><br><span class="line">git config --global user.email &quot;你的电子邮箱&quot;</span><br></pre></td></tr></table></figure>
+<p>由于 Hexo 的 Git 部署不支持使用密码登陆，所以需要配置 SSH 公钥：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~</span><br><span class="line">mkdir .ssh</span><br><span class="line">cd .ssh</span><br><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+<p>由此便在系统当前用户文件夹下生成了私钥 id_rsa 和公钥 id_rsa.pub。</p>
+<p>在上面建立的.ssh文件中新建config文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~&#x2F;.ssh</span><br><span class="line">vim config</span><br></pre></td></tr></table></figure>
+<p>内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Host 服务器IP</span><br><span class="line">HostName 服务器IP</span><br><span class="line">User git</span><br><span class="line">Port 端口号</span><br><span class="line">IdentityFile ~&#x2F;.ssh&#x2F;id_rsa</span><br></pre></td></tr></table></figure>
+<h4 id="hexo配置"><a href="#hexo配置" class="headerlink" title="hexo配置"></a>hexo配置</h4><p>安装插件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>打开位于 hexo 文件夹下的 _config.yml，修改 deploy 参数：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@vps的IP:hexo.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<h3 id="VPS-配置"><a href="#VPS-配置" class="headerlink" title="VPS 配置"></a>VPS 配置</h3><h4 id="新建用户"><a href="#新建用户" class="headerlink" title="新建用户"></a>新建用户</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adduser git</span><br><span class="line">passwd git</span><br></pre></td></tr></table></figure>
+<h4 id="为用户git添加-sudo-权限"><a href="#为用户git添加-sudo-权限" class="headerlink" title="为用户git添加 sudo 权限"></a>为用户git添加 sudo 权限</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod 740 &#x2F;etc&#x2F;sudoers</span><br><span class="line">vim &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure>
+<p>找到以下内容</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL:ALL) ALL</span><br></pre></td></tr></table></figure>
+<p>添加修改为</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL:ALL) ALL</span><br><span class="line">git     ALL&#x3D;(ALL:ALL) ALL</span><br></pre></td></tr></table></figure>
+<p>假如是</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL) ALL</span><br></pre></td></tr></table></figure>
+<p>则修改为</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># User privilege specification</span><br><span class="line">root    ALL&#x3D;(ALL) ALL</span><br><span class="line">git     ALL&#x3D;(ALL) ALL</span><br></pre></td></tr></table></figure>
+<p>保存,退出</p>
+<p>然后修改回文件的权限</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod 440 &#x2F;etc&#x2F;sudoers</span><br></pre></td></tr></table></figure>
+<h4 id="关闭-git-用户-shell-权限"><a href="#关闭-git-用户-shell-权限" class="headerlink" title="关闭 git 用户 shell 权限"></a>关闭 git 用户 shell 权限</h4><p>至此我们可以在本地通过：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh git@VPS IP</span><br></pre></td></tr></table></figure>
+<p>ssh 连接服务器，登录到服务器上，对服务器进行各种操作，这通常很不安全，也不合适，我们只需要能对仓库操作就可以了，不需要更大的权限。</p>
+<p>因此我们关闭 git 用户 shell 权限，执行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;passwd</span><br></pre></td></tr></table></figure>
+<p>找到git用户的一行：<em>git:x:1001:1001:,,,:&#x2F;home&#x2F;git:&#x2F;bin&#x2F;bash</em><br>改为：<em>git:x:1001:1001:,,,:&#x2F;home&#x2F;git:&#x2F;usr&#x2F;bin&#x2F;git-shell</em></p>
+<p>这样，git 用户可以正常通过 ssh 使用 git，但无法登录 shell，因为我们为 git 用户指定的 git-shell 每次一登录就自动退出。</p>
+<h4 id="初始化-git-仓库"><a href="#初始化-git-仓库" class="headerlink" title="初始化 git 仓库"></a>初始化 git 仓库</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git                &#x2F;&#x2F;切换到git用户目录</span><br><span class="line">mkdir blog.git              &#x2F;&#x2F;创建git仓库文件夹，以blog.git为例</span><br><span class="line">cd blog.git                 &#x2F;&#x2F;进入仓库目录</span><br><span class="line">git init --bare             &#x2F;&#x2F;使用--bare参数初始化为裸仓库，这样创建的仓库不包含工作区</span><br></pre></td></tr></table></figure>
+<p>注意：裸仓库没有工作区，因为服务器上的 Git 仓库纯粹是为了共享，所以不让用户直接登录到服务器上去改工作区，并且服务器上的 Git 仓库通常都以.git 结尾。</p>
+<h4 id="配置-SSH"><a href="#配置-SSH" class="headerlink" title="配置 SSH"></a>配置 SSH</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git                &#x2F;&#x2F;切换到git用户目录</span><br><span class="line">mkdir .ssh                  &#x2F;&#x2F;创建.ssh目录</span><br><span class="line">cd .ssh</span><br><span class="line">vim authorized_keys</span><br></pre></td></tr></table></figure>
+<p>然后将本地的公钥复制到 authorized_keys 文件里 (公钥即上文生成的公钥，可通过 <em>cat ~&#x2F;.ssh&#x2F;id_rsa.pub</em> 查看)。</p>
+<p>注意：收集所有需要登录的用户的公钥，就是他们自己的 id_rsa.pub 文件，把所有公钥导入到 <em>&#x2F;home&#x2F;git&#x2F;.ssh&#x2F;authorized_keys</em> 文件里，一行一个。</p>
+<h4 id="用户组管理"><a href="#用户组管理" class="headerlink" title="用户组管理"></a>用户组管理</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ll &#x2F;home&#x2F;git&#x2F;</span><br><span class="line">ll &#x2F;var&#x2F;www&#x2F;</span><br></pre></td></tr></table></figure>
+<p>确保 blog.git、.ssh、blog 目录的用户组权限为 git:git，若不是，执行下列命令：</p>
+<p>修改用户权限的命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chown -R git.git &#x2F;home&#x2F;git&#x2F;blog.git&#x2F;</span><br><span class="line">chown -R git.git &#x2F;home&#x2F;git&#x2F;.ssh&#x2F;</span><br><span class="line">chown -R git.git &#x2F;var&#x2F;www&#x2F;blog&#x2F;</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置-Git-Hooks"><a href="#配置-Git-Hooks" class="headerlink" title="配置 Git Hooks"></a>配置 Git Hooks</h4><p>创建 post-receive 文件<br>git 用户下执行（这里由于禁止了git用户shell权限，所以我用 root 用户执行上述命令，然后更改了文件所有者为 git.git）：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;home&#x2F;git&#x2F;blog.git&#x2F;hooks     &#x2F;&#x2F;切换到hooks目录下</span><br><span class="line">vim post-receive            &#x2F;&#x2F;创建文件</span><br></pre></td></tr></table></figure>
+<p>复制下面的内容到 post-receive 文件中：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">echo &quot;post-receive hook is running...&quot;</span><br><span class="line"></span><br><span class="line">GIT_REPO&#x3D;&#x2F;home&#x2F;git&#x2F;blog.git</span><br><span class="line">TMP_GIT_CLONE&#x3D;&#x2F;tmp&#x2F;blog</span><br><span class="line">PUBLIC_WWW&#x3D;&#x2F;var&#x2F;www&#x2F;blog</span><br><span class="line"></span><br><span class="line">rm -rf $&#123;TMP_GIT_CLONE&#125;</span><br><span class="line">git clone $GIT_REPO $TMP_GIT_CLONE</span><br><span class="line">rm -rf $&#123;PUBLIC_WWW&#125;&#x2F;*</span><br><span class="line">cp -rf $&#123;TMP_GIT_CLONE&#125;&#x2F;* $&#123;PUBLIC_WWW&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>为什么不直接将裸仓库克隆到 Web 根目录下呢？我之前也一直被这个问题困扰，感觉先&gt;克隆到 tmp 目录再拷贝到 Web 根目录是多此一举。后来我觉得可能是出于项目安全的&gt;考虑，在执行 cp 命令的时候，.git 作为隐藏目录不会被拷贝到 Web 根目录下，也就&gt;避免了将整个仓库历史暴露在 Web 服务中。</p>
+</blockquote>
+<p>赋予可执行权限：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod +x post-receive</span><br></pre></td></tr></table></figure>
+<p>ok，至此配置完毕，可以本地hexo d直接发布到vps了。</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>git hooks</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>markdown的html标签应用及常用语法</title>
+    <url>/2021/04/19/markdown%E5%86%85%E5%AE%B9%E6%8A%98%E5%8F%A0/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Markdown 是一种轻量级标记语言，非常适合网络书写。同时，Markdown支持嵌入html标签，我们就可以借此实现markdown不具有的某些功能，如代码折叠和文字样式等。</p>
+<p><strong><a href="http://connorlin.github.io/2016/05/06/Markdown%E7%9A%84%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95(%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93)/" target="_blank" rel="noopener">Markdown的常用语法(个人总结) | ConnorLin’s Blog </a></strong></p>
+<a id="more"></a>
+<h3 id="代码折叠"><a href="#代码折叠" class="headerlink" title="代码折叠"></a>代码折叠</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;details&gt;</span><br><span class="line">  &lt;summary&gt;</span><br><span class="line">  	&lt;font color&#x3D;&quot;#0000ff&quot; &gt;点击时的区域标题：点击查看详细内容&lt;&#x2F;font&gt;</span><br><span class="line">  &lt;&#x2F;summary&gt;</span><br><span class="line">  &lt;p&gt; - 测试 测试测试&lt;&#x2F;p&gt;</span><br><span class="line">  &lt;pre&gt;&lt;code&gt;  title，value，callBack可以缺省  &lt;&#x2F;code&gt;  &lt;&#x2F;pre&gt;</span><br><span class="line">&lt;&#x2F;details&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>summary：折叠语法展示的摘要</p>
+</li>
+<li><p>details：折叠语法标签</p>
+</li>
+<li><p>pre：以原有格式显示元素内的文字是已经格式化的文本。</p>
+</li>
+<li><p>blockcode：表示程序的代码块。</p>
+</li>
+<li><p>code：指定代码范例。</p>
+</li>
+</ul>
+<p>效果如下：</p>
+<details>
+  <summary><font color="#0000ff">点击时的区域标题：点击查看详细内容</font></summary>
+  <p> - 测试 测试测试</p>
+  <pre><code>  title，value，callBack可以缺省  </code>  </pre>
+</details>
+
+<h3 id="字体样式"><a href="#字体样式" class="headerlink" title="字体样式"></a>字体样式</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;span style&#x3D;&#39;color:red&#39;&gt;This is red&lt;&#x2F;span&gt;   &#x2F;&#x2F;字体颜色</span><br><span class="line">&lt;ruby&gt; 漢 &lt;rt&gt; ㄏㄢˋ &lt;&#x2F;rt&gt; &lt;&#x2F;ruby&gt; &#x2F;&#x2F; 特殊字</span><br><span class="line">&lt;kbd&gt;Ctrl&lt;&#x2F;kbd&gt;+&lt;kbd&gt;F9&lt;&#x2F;kbd&gt;  &#x2F;&#x2F; 按键标识</span><br><span class="line">&lt;span style&#x3D;&quot;font-size:2rem; background:yellow;&quot;&gt;**Bigger**&lt;&#x2F;span&gt; &#x2F;&#x2F;字体大小和背景</span><br><span class="line"></span><br><span class="line">&lt;font face&#x3D;&quot;微软雅黑&quot; color&#x3D;&quot;red&quot; size&#x3D;&quot;6&quot;&gt;字体及字体颜色和大小&lt;&#x2F;font&gt;</span><br><span class="line">&lt;font color&#x3D;&quot;#0000ff&quot;&gt;字体颜色&lt;&#x2F;font&gt;</span><br><span class="line"></span><br><span class="line">&lt;p align&#x3D;&quot;left&quot;&gt;居左文本&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p align&#x3D;&quot;center&quot;&gt;居中文本&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p align&#x3D;&quot;right&quot;&gt;居右文本&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
+<p>使用span或者font标签，同时用style属性控制样式。</p>
+<p>效果如下：<br><span style="color:red">This is red</span>   &#x2F;&#x2F;字体颜色</p>
+<p><ruby> 漢 <rt> ㄏㄢˋ </rt> </ruby> &#x2F;&#x2F; 特殊字</p>
+<p><kbd>Ctrl</kbd>+<kbd>F9</kbd>  &#x2F;&#x2F; 按键标识</p>
+<p><span style="font-size:2rem; background:yellow;"><strong>Bigger</strong></span> &#x2F;&#x2F;字体大小和背景</p>
+<p><font face="微软雅黑" color="red" size="6">字体及字体颜色和大小</font></p>
+<p><font color="#0000ff">字体颜色</font></p>
+<p align="left">居左文本</p>
+
+<p align="center">居中文本</p>
+
+<p align="right">居右文本</p>
+
+<p>参考来源：<br>**<a href="https://www.cnblogs.com/buwuliao/p/9578918.html" target="_blank" rel="noopener">【MarkDown】使用Html样式和折叠语法</a>**、<br><strong><a href="http://connorlin.github.io/2016/05/06/Markdown%E7%9A%84%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95(%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93)/" target="_blank" rel="noopener">Markdown的常用语法(个人总结) | ConnorLin’s Blog </a></strong></p>
+]]></content>
+      <categories>
+        <category>markdown</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>mybatis mysql in (#{list}) 只能查询/删除第一条的问题</title>
+    <url>/2021/12/30/mybatis-mysql-in-list-%E5%8F%AA%E8%83%BD%E6%9F%A5%E8%AF%A2-%E5%88%A0%E9%99%A4%E7%AC%AC%E4%B8%80%E6%9D%A1%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/do-your-best/p/9513194.html" target="_blank" rel="noopener">mysql in (#{list}) 只能查询&#x2F;删除第一条的问题</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>netstat 命令</title>
+    <url>/2022/02/15/netstat-%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">netstat -ntu|awk &#39;&#123;pring $5&#125;&#39;|cut -d : -f 1|sort|uniq -c</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h4><p>-n 显示数字IP, -t tcp连接, -u udp连接, -a 全部连接…</p>
+<p><strong><a href="https://blog.csdn.net/qq_42014600/article/details/90372315" target="_blank" rel="noopener">netstat详解</a></strong></p>
+<h4 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h4><p>-F 指定分割符(如 awk -F: ), 如不显示指定字段分隔符，awk的默认字段分隔符为任意空白字符，包括制表符、空格符、换行符等</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$0表示整行文本</span><br><span class="line">$1表示文本行中第一个数据字段</span><br><span class="line">$2表示文本行中第二个数据字段</span><br><span class="line">$n表示文本行中第n个数据字段</span><br></pre></td></tr></table></figure>
+<p><strong><a href="https://blog.csdn.net/u010502101/article/details/81839519" target="_blank" rel="noopener">awk详解</a></strong></p>
+<h4 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h4><p>cut -[n]b file</p>
+<p>cut -c file</p>
+<p>cut -d[分隔符] -f[域] file</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-b(bytes) ：以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志。</span><br><span class="line">-c(characters) ：以字符为单位进行分割。</span><br><span class="line">-d ：自定义分隔符，默认为制表符。</span><br><span class="line">-f(filed) ：与-d一起使用，指定显示哪个区域。</span><br><span class="line">-n ：取消分割多字节字符。仅和 -b 标志一起使用。如果字符的最后一个字节落在由 -b 标志的 List 参数指示的</span><br><span class="line">范围之内，该字符将被写出；否则，该字符将被排除。</span><br></pre></td></tr></table></figure>
+<p><strong><a href="https://blog.csdn.net/u011003120/article/details/52190187" target="_blank" rel="noopener">cut用法</a></strong></p>
+<h4 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a>uniq</h4><p>　报告或删除文件中重复的行。<br> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> -c, --count           在每行前加上表示相应行目出现次数的前缀编号</span><br><span class="line">-d, --repeated        只输出重复的行</span><br><span class="line">-D, --all-repeated[&#x3D;delimit-method    显示所有重复的行</span><br><span class="line">                      delimit-method&#x3D;&#123;none(default),prepend,separate&#125;</span><br><span class="line">                      以空行为界限</span><br><span class="line">-f, --skip-fields&#x3D;N   比较时跳过前N 列</span><br><span class="line">-i, --ignore-case     在比较的时候不区分大小写</span><br><span class="line">-s, --skip-chars&#x3D;N    比较时跳过前N 个字符</span><br><span class="line">-u, --unique          只显示唯一的行</span><br><span class="line">-z, --zero-terminated 使用&#39;\0&#39;作为行结束符，而不是新换行</span><br><span class="line">-w, --check-chars&#x3D;N   对每行第N 个字符以后的内容不作对照</span><br><span class="line">    --help            显示此帮助信息并退出</span><br><span class="line">    --version         显示版本信息并退出</span><br></pre></td></tr></table></figure></p>
+<p> <strong><a href="https://www.cnblogs.com/ftl1012/p/uniq.html" target="_blank" rel="noopener">uniq详解</a></strong></p>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux command</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>pac.txt---url通配规则</title>
+    <url>/2020/01/30/pac/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>科学上网PAC模式，有时会需要自己在pac.txt里添加一些被墙的URL，记录一下url通配的规则，以备以后使用。</p>
+<a id="more"></a>
+<ol>
+<li>通配符支持。比如 .example.com&#x2F; 实际书写时可省略 * ， 如 .example.com&#x2F; ， 和 *.example.com&#x2F; 效果一样</li>
+<li>正则表达式支持。以 \ 开始和结束， 如 [\w]+://example.com\</li>
+<li>例外规则 @@ ，如 @@.example.com&#x2F; 满足 @@ 后规则的地址不使用代理</li>
+<li>匹配地址开始和结尾 | ，如 |<a href="http://example.com/" target="_blank" rel="noopener">http://example.com</a> 、 example.com| 分别表示以 <a href="http://example.com/" target="_blank" rel="noopener">http://example.com</a> 开始和以 example.com 结束的地址</li>
+<li>|| 标记，如 ||example.com 则 <a href="http://example.com/" target="_blank" rel="noopener">http://example.com</a> 、 <a href="https://example.com/" target="_blank" rel="noopener">https://example.com</a> 、 <a href="ftp://example.com/">ftp://example.com</a> 等地址均满足条件</li>
+<li>注释 ! 。 如 !我是注释<br>v2rayN需重启生效。</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>android studio多语言(中英)适配</title>
+    <url>/2020/02/14/ndroid-studio%E4%B8%AD%E8%8B%B1%E6%96%87%E9%80%82%E9%85%8D/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>strings.xml在目录res相应的value文件夹下,用来显示文本，避免硬编码，要添加新的语言支持，就要在不同的 value 文件夹下（如value 、values-zh-rCN）添加不同语言的 string.xml 文件。本文以简体中文为例,描述一下Android studio下相应strings.xml(zh-rCN)的生成方式，其他语言类似。</p>
+<a id="more"></a>
+<h3 id="手动建立文件"><a href="#手动建立文件" class="headerlink" title="手动建立文件"></a>手动建立文件</h3><p>选中res文件夹，右键New–&gt;Android Resource Directory,然后选中Locale,如下图所示：</p>
+<p><img src="/images/pasted-17.png" alt="upload successful"><br>选择相应语言和相应区域：</p>
+<p><img src="/images/pasted-18.png" alt="upload successful"><br>文件夹名称（values-zh-rCN）自动生成，最后在该文件夹生成strings.xml即可。项目视图如下：</p>
+<p><img src="/images/pasted-19.png" alt="upload successful"></p>
+<h3 id="自动生成"><a href="#自动生成" class="headerlink" title="自动生成"></a>自动生成</h3><p>打开Translations Editor（双击打开strings.xml，窗口右上角点击Open Editor），点击Add Locale，在下拉菜单中选择相应语言区域，系统会自动生成相应文件夹以及strings.xml文件。</p>
+<p><img src="/images/pasted-20.png" alt="upload successful"></p>
+<p><img src="/images/pasted-21.png" alt="upload successful"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>nginx conf location</title>
+    <url>/2022/03/23/nginx-conf-location-%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h4 id="root-alias"><a href="#root-alias" class="headerlink" title="root alias"></a>root alias</h4><ul>
+<li>root的处理结果是：root路径＋location路径</li>
+<li>alias的处理结果是：使用alias路径替换location路径</li>
+</ul>
+<a id="more"></a>
+
+<p>nginx指定文件路径有两种方式root和alias，root与alias主要区别在于nginx如何解释location后面的uri，这会使两者分别以不同的方式将请求映射到服务器文件上。</p>
+<p>alias 指定的目录是准确的，给location指定一个目录。</p>
+<p>root 指定目录的上级目录，并且该上级目录要含有locatoin指定名称的同名目录。也就是</p>
+<p>以root方式设置资源路径：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法: root path;</span><br><span class="line">配置块: http、server、location、if</span><br></pre></td></tr></table></figure>
+<p>如果server,location同时配置，优先采用location内的root路径，</p>
+<p>以alias 方式设置资源路径</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法: alias path;</span><br><span class="line">配置块: location</span><br></pre></td></tr></table></figure>
+<p>Example:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">location &#x2F;img&#x2F; &#123;</span><br><span class="line">	alias &#x2F;var&#x2F;www&#x2F;image&#x2F;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>#若按照上述配置的话，则访问&#x2F;img&#x2F;目录里面的文件时，ningx会自动去&#x2F;var&#x2F;www&#x2F;image&#x2F;目录找文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">location &#x2F;img&#x2F; &#123;</span><br><span class="line">	root &#x2F;var&#x2F;www&#x2F;image;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>#若按照这种配置的话，则访问&#x2F;img&#x2F;目录下的文件时，nginx会去&#x2F;var&#x2F;www&#x2F;image&#x2F;img&#x2F;目录下找文件</p>
+<p>注意： </p>
+<ol>
+<li>使用alias时，目录名后面一定要加”&#x2F;“。</li>
+<li>使用alias标签的目录块中不能使用rewrite的break。</li>
+<li>alias在使用正则匹配时，必须捕捉要匹配的内容并在指定的内容处使用。</li>
+<li>alias只能位于location块中</li>
+</ol>
+<h4 id="nginx-location配置详细解释"><a href="#nginx-location配置详细解释" class="headerlink" title="nginx location配置详细解释"></a>nginx location配置详细解释</h4><p>语法详解<br>语法规则： location [&#x3D;|<del>|</del>*|^~] &#x2F;uri&#x2F; { … }</p>
+<ul>
+<li>&#x3D; 开头表示精确匹配</li>
+<li>^~ 开头表示uri以某个常规字符串开头，理解为匹配 url路径即可。nginx不对url做编码，因此请求为&#x2F;static&#x2F;20%&#x2F;aa，可以被规则^~ &#x2F;static&#x2F; &#x2F;aa匹配到（注意是空格）。以xx开头</li>
+<li>~ 开头表示区分大小写的正则匹配 以xx结尾</li>
+<li>~* 开头表示不区分大小写的正则匹配 以xx结尾</li>
+<li>!<del>和!</del>*分别为区分大小写不匹配及不区分大小写不匹配 的正则</li>
+<li>&#x2F; 通用匹配，任何请求都会匹配到。</li>
+</ul>
+<p>例子，有如下匹配规则：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">location &#x3D; &#x2F; &#123;</span><br><span class="line">   #规则A  访问根目录&#x2F;， 比如http:&#x2F;&#x2F;localhost&#x2F;</span><br><span class="line">&#125;</span><br><span class="line">location &#x3D; &#x2F;login &#123;</span><br><span class="line">   #规则B  http:&#x2F;&#x2F;localhost&#x2F;login 将匹配规则B，http:&#x2F;&#x2F;localhost&#x2F;register 则匹配规则H</span><br><span class="line">&#125;</span><br><span class="line">location ^~ &#x2F;static&#x2F; &#123;</span><br><span class="line">   #规则C  http:&#x2F;&#x2F;localhost&#x2F;static&#x2F;a.html 将匹配规则C</span><br><span class="line">&#125;</span><br><span class="line">location ~ \.(gif|jpg|png|js|css)$ &#123;</span><br><span class="line">   #规则D，注意：是根据括号内的大小写进行匹配。括号内全是小写，只匹配小写</span><br><span class="line">&#125;</span><br><span class="line">location ~* \.png$ &#123;</span><br><span class="line">   #规则E  http:&#x2F;&#x2F;localhost&#x2F;a.gif, http:&#x2F;&#x2F;localhost&#x2F;b.jpg 将匹配规则D和规则E，但是规则D顺序优先，规则E不起作用， </span><br><span class="line">      http:&#x2F;&#x2F;localhost&#x2F;static&#x2F;c.png 则优先匹配到 规则C</span><br><span class="line">      http:&#x2F;&#x2F;localhost&#x2F;a.PNG 则匹配规则E， 而不会匹配规则D，因为规则E不区分大小写。</span><br><span class="line">&#125;</span><br><span class="line">location !~ \.xhtml$ &#123;</span><br><span class="line">   #规则F  访问 http:&#x2F;&#x2F;localhost&#x2F;a.xhtml 不会匹配规则F和规则G，</span><br><span class="line">&#125;</span><br><span class="line">location !~* \.xhtml$ &#123;</span><br><span class="line">   #规则G  访问 http:&#x2F;&#x2F;localhost&#x2F;a.xhtml 不会匹配规则F和规则G，</span><br><span class="line">&#125;</span><br><span class="line">location &#x2F; &#123;</span><br><span class="line">   #规则H</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost&#x2F;a.XHTML不会匹配规则G，（因为!）。规则F，规则G属于排除法，符合匹配规则也不会匹配到，所以想想看实际应用中哪里会用到。</span><br><span class="line"></span><br><span class="line">访问 http:&#x2F;&#x2F;localhost&#x2F;category&#x2F;id&#x2F;1111 则最终匹配到规则H，因为以上规则都不匹配，这个时候nginx转发请求给后端应用[服务器](https:&#x2F;&#x2F;www.baidu.com&#x2F;s?wd&#x3D;服务器&amp;tn&#x3D;24004469_oem_dg&amp;rsv_dl&#x3D;gh_pl_sl_csd)，比如FastCGI（php），tomcat（jsp），nginx作为方向代理服务器存在。</span><br><span class="line"></span><br><span class="line">所以实际使用中，个人觉得至少有三个匹配规则定义，如下：</span><br><span class="line">#直接匹配网站根，通过域名访问网站首页比较频繁，使用这个会加速处理，官网如是说。</span><br><span class="line">#这里是直接转发给后端应用服务器了，也可以是一个静态首页</span><br><span class="line"># 第一个必选规则</span><br><span class="line">location &#x3D; &#x2F; &#123;</span><br><span class="line">    proxy_pass http:&#x2F;&#x2F;tomcat:8080&#x2F;index</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location &#x3D; &#x2F;api&#x2F; &#123;   # 访问http:&#x2F;&#x2F;localhost&#x2F;api&#x2F;xxx.xxx  会被代理到192.168.0.1&#x2F;xxx.xxx</span><br><span class="line">    proxy_pass http:&#x2F;&#x2F;192.168.0.1&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 第二个必选规则是处理静态文件请求，这是nginx作为http服务器的强项</span><br><span class="line"># 有两种配置模式，目录匹配或后缀匹配,任选其一或搭配使用</span><br><span class="line">location ^~ &#x2F;static&#x2F; &#123;                              &#x2F;&#x2F;以xx开头</span><br><span class="line">    root &#x2F;webroot&#x2F;static&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line">location ~* \.(gif|jpg|jpeg|png|css|js|ico)$ &#123;     &#x2F;&#x2F;以xx结尾</span><br><span class="line">    root &#x2F;webroot&#x2F;res&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#第三个规则就是通用规则，用来转发动态请求到后端应用服务器</span><br><span class="line">#非静态文件请求就默认是动态请求，自己根据实际把握</span><br><span class="line">location &#x2F; &#123;</span><br><span class="line">    proxy_pass http:&#x2F;&#x2F;tomcat:8080&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="try-files详解"><a href="#try-files详解" class="headerlink" title="try_files详解"></a>try_files详解</h4><ul>
+<li>格式1：try_files file … uri;  </li>
+<li>格式2：try_files file … &#x3D;code;</li>
+</ul>
+<p><a href="https://www.cnblogs.com/jedi1995/p/10900224.html" target="_blank" rel="noopener">nginx配置选项try_files详解</a></p>
+<h4 id="proxy-pass详解"><a href="#proxy-pass详解" class="headerlink" title="proxy_pass详解"></a>proxy_pass详解</h4><p>在nginx中配置proxy_pass代理转发时，如果在proxy_pass后面的url加&#x2F;，表示绝对根路径；如果没有&#x2F;，表示相对路径，把匹配的路径部分也给代理走。<br>假设下面四种情况分别用 <a href="http://192.168.1.1/proxy/test.html" target="_blank" rel="noopener">http://192.168.1.1/proxy/test.html</a> 进行访问。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">第一种：</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;test.html</span><br><span class="line"></span><br><span class="line">第二种（相对于第一种，最后少一个 &#x2F; ）</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;proxy&#x2F;test.html</span><br><span class="line"></span><br><span class="line">第三种：</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1&#x2F;aaa&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;aaa&#x2F;test.html</span><br><span class="line"></span><br><span class="line">第四种（相对于第三种，最后少一个 &#x2F; ）</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1&#x2F;aaa;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;aaatest.html</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.jianshu.com/p/b010c9302cd0" target="_blank" rel="noopener">nginx 之 proxy_pass详解</a></p>
+<h4 id="80端口重定向到443端口"><a href="#80端口重定向到443端口" class="headerlink" title="80端口重定向到443端口"></a>80端口重定向到443端口</h4><p>nginx 80端口重定向到443端口，也就是http访问自动跳转到https</p>
+<p>配置如下：<br>一、按照如下格式修改nginx.conf 配置文件，80端口会自动转给443端口，这样就强制使用SSL证书加密了。访问http的时候会自动跳转到https上面。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name www.域名.com;</span><br><span class="line">    rewrite ^(.*)$ https:&#x2F;&#x2F;$&#123;server_name&#125;$1 permanent;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">    listen 443;</span><br><span class="line">    server_name www.域名.com;</span><br><span class="line">    root &#x2F;home&#x2F;wwwroot;</span><br><span class="line">    ssl on;</span><br><span class="line">    ssl_certificate &#x2F;etc&#x2F;nginx&#x2F;certs&#x2F;server.crt;</span><br><span class="line">    ssl_certificate_key &#x2F;etc&#x2F;nginx&#x2F;certs&#x2F;server.key;</span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>alias</tag>
+        <tag>root</tag>
+        <tag>location</tag>
+        <tag>nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>paddleocr 在centos7.9上的部署</title>
+    <url>/2023/10/27/paddleocr-%E5%9C%A8centos7-9%E4%B8%8A%E7%9A%84%E9%83%A8%E7%BD%B2/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>业务需求，要给项目加个身份证图片识别，看了一圈目前的开源OCR，发现除了百度的paddleocr还可以，其余的只能算是玩具，本地玩儿玩儿还可以，要上生产还不够，谨此记录一下部署paddleocr的步骤，后续参考。</p>
+<a id="more"></a>
+<h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><p>系统centos7.9,为了避免搞乱生产环境，采取docker部署paddlehub的方式。</p>
+<h4 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h4><p>参考以下<a href="https://blog.csdn.net/qq_43721032/article/details/119134118" target="_blank" rel="noopener">CentOS 7.9下安装Docker及常用镜像</a>中安装dockery以及配置docker镜像源的部分。<br>另外考虑到系统系统盘大小有限，要把docker的数据存储目录设置在数据盘上(&#x2F;mnt&#x2F;docker),同样在上面设置镜像源的文件(&#x2F;etc&#x2F;docker&#x2F;daemon.json)里，配置”data-root”，结果如下：</p>
+<p><img src="/images/pasted-63.png" alt="upload successful"></p>
+<p>重启docker后，通过命令：docker info 查看设置是否生效</p>
+<p><img src="/images/pasted-64.png" alt="upload successful"></p>
+<h3 id="拉镜像以及安装ocr"><a href="#拉镜像以及安装ocr" class="headerlink" title="拉镜像以及安装ocr"></a>拉镜像以及安装ocr</h3><h4 id="下载代码"><a href="#下载代码" class="headerlink" title="下载代码"></a>下载代码</h4><p>直接从github或者gitgee下载paddleocr的代码（git clone的话，指定最新版本），放到系统上新建立的相应目录下，如：&#x2F;data&#x2F;PaddleOCR&#x2F;</p>
+<h4 id="拉镜像"><a href="#拉镜像" class="headerlink" title="拉镜像"></a>拉镜像</h4><p>本次为了省事儿，直接用的飞桨官网的镜像（它们的镜像是ubuntu18 python是3.7，还需要重新安装python3.8，以及后面一系列的安装，下次可以直接用ubuntu22的镜像,就是需要各种安装）。参考官网：<a href="https://www.paddlepaddle.org.cn/documentation/docs/zh/install/docker/linux-docker.html#anchor-0" target="_blank" rel="noopener">Linux 下的 Docker 安装</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;data&#x2F;PaddleOCR</span><br><span class="line"></span><br><span class="line">docker pull registry.baidubce.com&#x2F;paddlepaddle&#x2F;paddle:2.5.2  </span><br><span class="line"></span><br><span class="line">docker run --name paddle_docker -p 8868:8868 -it -v $PWD:&#x2F;PaddleOCR registry.baidubce.com&#x2F;paddlepaddle&#x2F;paddle:2.5.2 &#x2F;bin&#x2F;bash</span><br></pre></td></tr></table></figure>
+<p>然后就可以进去配置环境了。以下命令查看系统信息：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">uname -a</span><br><span class="line"></span><br><span class="line">cat &#x2F;etc&#x2F;issue</span><br></pre></td></tr></table></figure>
+<p>也可在在根目录下看到&#x2F;PaddleOCR目录，即上面paddleocr项目的目录。<br>以下的操作都是在该容器内进行</p>
+<h4 id="安装python3-8"><a href="#安装python3-8" class="headerlink" title="安装python3.8"></a>安装python3.8</h4><p>从python官网下载安装包，解压安装，具体参考<a href="https://zhuanlan.zhihu.com/p/149796622#:~:text=Ubuntu%E5%AE%89%E8%A3%85Python3%201%20%E7%AC%AC2%E6%AD%A5%EF%BC%9A%E4%B8%8B%E8%BD%BD%20Python%20%E6%BA%90%E7%A0%81%20%E5%8E%BB%E5%AE%98%E6%96%B9%E7%BD%91%E7%AB%99%E4%B8%8B%E8%BD%BD%EF%BC%9A%20wget%20https%3A%2F%2Fwww.python.org%2Fftp%2Fpython%2F3.8.3%2FPython-3.8.3.tgz,-s%20%2Fusr%2Flocal%2Fpython3.8%2Fbin%2Fpython3.8%20%2Fusr%2Fbin%2Fpython3.8%20ln%20-s%20%2Fusr%2Flocal%2Fpython3.8%2Fbin%2Fpython3.8-config%20%2Fusr%2Fbin%2Fpython3.8-config%20" target="_blank" rel="noopener">Ubuntu安装Python3</a>, 唯一的区别就是我把系统原来的python python3 pip pip3的软连接都删了，重新替换成python3.8的。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;bin</span><br><span class="line">rm -rf python</span><br><span class="line">ln -s &#x2F;usr&#x2F;local&#x2F;python3.8&#x2F;bin&#x2F;python3.8 &#x2F;usr&#x2F;bin&#x2F;python3.8</span><br><span class="line">ln -s &#x2F;usr&#x2F;local&#x2F;python3.8&#x2F;bin&#x2F;python3.8 &#x2F;usr&#x2F;bin&#x2F;python</span><br><span class="line">rm -rf python3</span><br><span class="line">ln -s &#x2F;usr&#x2F;local&#x2F;python3.8&#x2F;bin&#x2F;python3.8 &#x2F;usr&#x2F;bin&#x2F;python3</span><br><span class="line"></span><br><span class="line">cd &#x2F;usr&#x2F;local&#x2F;bin</span><br><span class="line">rm -rf pip</span><br><span class="line">ln -s &#x2F;usr&#x2F;local&#x2F;python3.8&#x2F;bin&#x2F;pip3.8 pip</span><br><span class="line">rm -rf pip3</span><br><span class="line">ln -s &#x2F;usr&#x2F;local&#x2F;python3.8&#x2F;bin&#x2F;pip3.8 pip3</span><br></pre></td></tr></table></figure>
+<p>至此，python升级到3.8，原来的3.7 3.6 等可删可不删。</p>
+<h4 id="安装paddlehub"><a href="#安装paddlehub" class="headerlink" title="安装paddlehub"></a>安装paddlehub</h4><p>由于重新安装了python3.8，要从官网重新安装paddle</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install paddlepaddle&#x3D;&#x3D;2.5.2 -i https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple</span><br><span class="line"></span><br><span class="line">pip install paddlehub --upgrade -i https:&#x2F;&#x2F;mirror.baidu.com&#x2F;pypi&#x2F;simple</span><br><span class="line"></span><br><span class="line">pip install -r requirements.txt -i https:&#x2F;&#x2F;mirror.baidu.com&#x2F;pypi&#x2F;simple</span><br></pre></td></tr></table></figure>
+<p>中途报错如果缺什么组件，直接pip安装该组件即可。安装完之后，给hub命令建立软连接</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ln -s &#x2F;usr&#x2F;local&#x2F;python3.8&#x2F;bin&#x2F;hub &#x2F;usr&#x2F;bin&#x2F;hub</span><br></pre></td></tr></table></figure>
+<p>然后输入 hub version 即可看到paddlehub版本号</p>
+<p>下载推理模型，并修改参数(github gitgee上找到推理模型的链接)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;PaddleOCR</span><br><span class="line">mkdir inference</span><br><span class="line">cd inference</span><br><span class="line">wget wget https:&#x2F;&#x2F;paddleocr.bj.bcebos.com&#x2F;PP-OCRv4&#x2F;chinese&#x2F;ch_PP-OCRv4_det_infer.tar </span><br><span class="line"></span><br><span class="line">wget https:&#x2F;&#x2F;paddleocr.bj.bcebos.com&#x2F;PP-OCRv4&#x2F;chinese&#x2F;ch_PP-OCRv4_rec_infer.tar</span><br><span class="line"></span><br><span class="line">wget https:&#x2F;&#x2F;paddleocr.bj.bcebos.com&#x2F;dygraph_v2.0&#x2F;ch&#x2F;ch_ppocr_mobile_v2.0_cls_infer.tar</span><br></pre></td></tr></table></figure>
+<p>并解压模型文件。</p>
+<p>修改参数：在&#x2F;PaddleOCR&#x2F;deploy&#x2F;hubserving&#x2F;ocr_system&#x2F;下修改params.py，让模型名称跟inference下的一致。</p>
+<p><img src="/images/pasted-65.png" alt="upload successful"></p>
+<p>将&#x2F;PaddleOCR&#x2F;deploy&#x2F;hubserving&#x2F;ocr_system&#x2F;下的config.json拷贝到&#x2F;PaddleOCR目录下，并根据自己需求修改配置</p>
+<p><img src="/images/pasted-66.png" alt="upload successful"><br>config.josn 配置参考：<a href="https://gitee.com/paddlepaddle/PaddleClas/blob/release/2.3/docs/zh_CN/inference_deployment/paddle_hub_serving_deploy.md" target="_blank" rel="noopener">基于 PaddleHub Serving 的服务部署</a>, 也可以查找官网，不过都大同小异。</p>
+<p>ps: 查找配置时，发现有人提issue,记录在此<a href="https://github.com/PaddlePaddle/PaddleOCR/issues/10497" target="_blank" rel="noopener">PaddleOcr在使用 mkldnn后精度下降</a>, 里面也有修复方法，但要看后续如何。</p>
+<p>为了启动方便，在&#x2F;PaddleOCR下新建个脚本paddleServer.sh</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;sh</span><br><span class="line">cd &#x2F;PaddleOCR</span><br><span class="line">hub install &#x2F;PaddleOCR&#x2F;deploy&#x2F;hubserving&#x2F;ocr_system &amp;&amp; nohup hub serving start -c config.json &amp;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod 777 paddleServer.sh</span><br><span class="line">.&#x2F;paddleServer.sh</span><br></pre></td></tr></table></figure>
+<p>就可以看到paddlehub成功启动。（后续可以考虑将脚本执行添加到docker容器启动里，不用每次进入容器内执行脚本）</p>
+<p>测试：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;PaddleOCR&#x2F;tools</span><br><span class="line"></span><br><span class="line">python test_hubserving.py --server_url http:&#x2F;&#x2F;anluyou.dibchina.com:8868&#x2F;predict&#x2F;ocr_system --image_dir ..&#x2F;doc&#x2F;imgs&#x2F;00006737.jpg</span><br></pre></td></tr></table></figure>
+<p>就可以看到测试结果</p>
+<p><img src="/images/pasted-67.png" alt="upload successful"></p>
+<p>可以在&#x2F;root&#x2F;.paddlehub&#x2F;log&#x2F;看到hub日志<br>通过直接通过hub查看各个命令参数</p>
+<p><img src="/images/pasted-69.png" alt="upload successful"></p>
+<h3 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h3><p>每次退出docker容器是，要Ctrl+P+Q,不然容器也会停止运行。<br>也可以将上面布置的环境生成docker镜像,详情可以搜索docker commit 命令。</p>
+<p>上面完成后可以给docker容器增加内存限制，命令如下：<a href="https://blog.51cto.com/u_16175465/7242290" target="_blank" rel="noopener">docker容器默认内存大小</a>、<br><a href="https://zhuanlan.zhihu.com/p/417472115#:~:text=%E9%99%90%E5%88%B6Docker%E4%BD%BF%E7%94%A8%E5%86%85%E5%AD%98%201%20-m%20%E6%88%96,--memory%EF%BC%9A%E8%AE%BE%E7%BD%AE%E5%86%85%E5%AD%98%E7%9A%84%E4%BD%BF%E7%94%A8%E9%99%90%E9%A2%9D%EF%BC%8C%E4%BE%8B%E5%A6%82%EF%BC%9A100MB%EF%BC%8C2GB%E3%80%82%202%20--memory-swap%EF%BC%9A%E8%AE%BE%E7%BD%AE%20%E5%86%85%E5%AD%98%2Bswap%20%E7%9A%84%E4%BD%BF%E7%94%A8%E9%99%90%E9%A2%9D%E3%80%82" target="_blank" rel="noopener">限制Docker使用内存</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker update -m 200M --memory-swap&#x3D;300M ubuntu</span><br></pre></td></tr></table></figure>
+<p>后通过docker stats命令查看运行的容易状态：</p>
+<p><img src="/images/pasted-68.png" alt="upload successful"></p>
+<p>以上设置内存限制主要是为了应对paddleocr预测完之后，内存不会主动释放的问题。问题见：<a href="https://github.com/PaddlePaddle/PaddleOCR/issues/303" target="_blank" rel="noopener">识别时内存一直涨 溢出</a>、<a href="https://github.com/PaddlePaddle/Paddle/issues/43346" target="_blank" rel="noopener">paddle 推理完之后内存不释放 </a>、<a href="https://github.com/PaddlePaddle/PaddleOCR/issues/11075" target="_blank" rel="noopener">这个提交未完全解决内存泄漏问题
+</a><br>一定要控制输入图片的大小，最好不能大于1M，图片越大越慢，甚至预测失败…</p>
+<p>还有一些常用的docker命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker logs 容器名称： 查看容器日志</span><br><span class="line">docker image ls ：查看所有镜像</span><br><span class="line">docker ps -a : 查看所有容器（去掉a，查看运行的容器）</span><br><span class="line">docker rm 容器ID</span><br><span class="line">docker rmi 镜像ID</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>ubuntu下使用微信、QQ等</title>
+    <url>/2021/03/18/new/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ubuntu下使用微信，网页版的登录不了，只能考虑客户端了。考虑了下，还是在docker里，无论怎么折腾，也不会污染系统。</p>
+<a id="more"></a>
+<p>网上教程多如牛毛，但不是坑，就是坑，找了个自己能用的，记录下备用<br>1、安装docker docker-compose，网上教程一大把，自己搜<br>2、执行如下命令<br>首先要允许所有用户访问X11服务,运行:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xhost +</span><br></pre></td></tr></table></figure>
+<p>拉取镜像（注意docker设置国内镜像地址，用科大的就行）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull bestwu&#x2F;wechat</span><br></pre></td></tr></table></figure>
+<p>在你指定的文件夹下创建 docker-compose.yml</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">version: &#39;2&#39;</span><br><span class="line">services:</span><br><span class="line">  wechat:</span><br><span class="line">    image: bestwu&#x2F;wechat</span><br><span class="line">    container_name: wechat</span><br><span class="line">    devices:</span><br><span class="line">      - &#x2F;dev&#x2F;snd</span><br><span class="line">    volumes:</span><br><span class="line">      - &#x2F;tmp&#x2F;.X11-unix:&#x2F;tmp&#x2F;.X11-unix</span><br><span class="line">      - $PWD&#x2F;WeChatFiles:&#x2F;WeChatFiles</span><br><span class="line">    environment:</span><br><span class="line">      - DISPLAY&#x3D;unix$DISPLAY</span><br><span class="line">      - QT_IM_MODULE&#x3D;fcitx</span><br><span class="line">      - XMODIFIERS&#x3D;@im&#x3D;fcitx</span><br><span class="line">      - GTK_IM_MODULE&#x3D;fcitx</span><br><span class="line">      - AUDIO_GID&#x3D;26 # 可选 默认63（在终端用getent group video | cut -d: -f3查） 主机audio gid 解决声音设备访问权限问题</span><br><span class="line">      - GID&#x3D;1000 # 可选 默认1000 主机当前用户 gid 解决挂载目录访问权限问题</span><br><span class="line">      - UID&#x3D;1000 # 可选 默认1000 主机当前用户 uid 解决挂载目录访问权限问题</span><br><span class="line">    ipc: host</span><br></pre></td></tr></table></figure>
+<p>启动</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+<p>停止</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose stop</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+        <category>ubuntu</category>
+      </categories>
+      <tags>
+        <tag>wechat</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>spring 线程安全</title>
+    <url>/2020/03/09/pring-%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/</url>
+    <content><![CDATA[<p>转载：<a href="https://www.cnblogs.com/kismetv/p/8757260.html" target="_blank" rel="noopener"><strong>Spring中获取request的几种方法，及其线程安全性分析</strong></a>、**<a href="https://www.jianshu.com/p/e04491f3550f" target="_blank" rel="noopener">Spring 如何保证线程安全
+</a><strong>、</strong><a href="https://blog.csdn.net/cs408/article/details/48972653" target="_blank" rel="noopener">Spring中Singleton模式的线程安全
+</a>**</p>
+<h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><p>&amp;emsp;每启动一个线程，JVM都会为它分配一个Java栈，用于存放方法中的局部变量，操作</p>
+<a id="more"></a>
+<p>数以及异常数据等。当线程调用某个方法时，JVM会根据方法区中该方法的字节码组建一个栈帧。并将该栈帧压入Java栈中，方法执行完毕时，JVM会弹出该栈帧并释放掉。</p>
+<p>&amp;emsp;注意：Java栈中的数据是线程私有的，一个线程是无法访问另一个线程的Java栈的数据。这也就是为什么多线程编程时，两个相同线程执行同一方法时，对方法内的局部变量是不需要数据同步的原因。</p>
+]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>spring</tag>
+      </tags>
   </entry>
   <entry>
     <title>linux常用命令</title>
@@ -1888,200 +2181,6 @@
       </categories>
   </entry>
   <entry>
-    <title>markdown的html标签应用及常用语法</title>
-    <url>/2021/04/19/markdown%E5%86%85%E5%AE%B9%E6%8A%98%E5%8F%A0/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Markdown 是一种轻量级标记语言，非常适合网络书写。同时，Markdown支持嵌入html标签，我们就可以借此实现markdown不具有的某些功能，如代码折叠和文字样式等。</p>
-<p><strong><a href="http://connorlin.github.io/2016/05/06/Markdown%E7%9A%84%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95(%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93)/" target="_blank" rel="noopener">Markdown的常用语法(个人总结) | ConnorLin’s Blog </a></strong></p>
-<a id="more"></a>
-<h3 id="代码折叠"><a href="#代码折叠" class="headerlink" title="代码折叠"></a>代码折叠</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;details&gt;</span><br><span class="line">  &lt;summary&gt;</span><br><span class="line">  	&lt;font color&#x3D;&quot;#0000ff&quot; &gt;点击时的区域标题：点击查看详细内容&lt;&#x2F;font&gt;</span><br><span class="line">  &lt;&#x2F;summary&gt;</span><br><span class="line">  &lt;p&gt; - 测试 测试测试&lt;&#x2F;p&gt;</span><br><span class="line">  &lt;pre&gt;&lt;code&gt;  title，value，callBack可以缺省  &lt;&#x2F;code&gt;  &lt;&#x2F;pre&gt;</span><br><span class="line">&lt;&#x2F;details&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>summary：折叠语法展示的摘要</p>
-</li>
-<li><p>details：折叠语法标签</p>
-</li>
-<li><p>pre：以原有格式显示元素内的文字是已经格式化的文本。</p>
-</li>
-<li><p>blockcode：表示程序的代码块。</p>
-</li>
-<li><p>code：指定代码范例。</p>
-</li>
-</ul>
-<p>效果如下：</p>
-<details>
-  <summary><font color="#0000ff">点击时的区域标题：点击查看详细内容</font></summary>
-  <p> - 测试 测试测试</p>
-  <pre><code>  title，value，callBack可以缺省  </code>  </pre>
-</details>
-
-<h3 id="字体样式"><a href="#字体样式" class="headerlink" title="字体样式"></a>字体样式</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;span style&#x3D;&#39;color:red&#39;&gt;This is red&lt;&#x2F;span&gt;   &#x2F;&#x2F;字体颜色</span><br><span class="line">&lt;ruby&gt; 漢 &lt;rt&gt; ㄏㄢˋ &lt;&#x2F;rt&gt; &lt;&#x2F;ruby&gt; &#x2F;&#x2F; 特殊字</span><br><span class="line">&lt;kbd&gt;Ctrl&lt;&#x2F;kbd&gt;+&lt;kbd&gt;F9&lt;&#x2F;kbd&gt;  &#x2F;&#x2F; 按键标识</span><br><span class="line">&lt;span style&#x3D;&quot;font-size:2rem; background:yellow;&quot;&gt;**Bigger**&lt;&#x2F;span&gt; &#x2F;&#x2F;字体大小和背景</span><br><span class="line"></span><br><span class="line">&lt;font face&#x3D;&quot;微软雅黑&quot; color&#x3D;&quot;red&quot; size&#x3D;&quot;6&quot;&gt;字体及字体颜色和大小&lt;&#x2F;font&gt;</span><br><span class="line">&lt;font color&#x3D;&quot;#0000ff&quot;&gt;字体颜色&lt;&#x2F;font&gt;</span><br><span class="line"></span><br><span class="line">&lt;p align&#x3D;&quot;left&quot;&gt;居左文本&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p align&#x3D;&quot;center&quot;&gt;居中文本&lt;&#x2F;p&gt;</span><br><span class="line">&lt;p align&#x3D;&quot;right&quot;&gt;居右文本&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
-<p>使用span或者font标签，同时用style属性控制样式。</p>
-<p>效果如下：<br><span style="color:red">This is red</span>   &#x2F;&#x2F;字体颜色</p>
-<p><ruby> 漢 <rt> ㄏㄢˋ </rt> </ruby> &#x2F;&#x2F; 特殊字</p>
-<p><kbd>Ctrl</kbd>+<kbd>F9</kbd>  &#x2F;&#x2F; 按键标识</p>
-<p><span style="font-size:2rem; background:yellow;"><strong>Bigger</strong></span> &#x2F;&#x2F;字体大小和背景</p>
-<p><font face="微软雅黑" color="red" size="6">字体及字体颜色和大小</font></p>
-<p><font color="#0000ff">字体颜色</font></p>
-<p align="left">居左文本</p>
-
-<p align="center">居中文本</p>
-
-<p align="right">居右文本</p>
-
-<p>参考来源：<br>**<a href="https://www.cnblogs.com/buwuliao/p/9578918.html" target="_blank" rel="noopener">【MarkDown】使用Html样式和折叠语法</a>**、<br><strong><a href="http://connorlin.github.io/2016/05/06/Markdown%E7%9A%84%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95(%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93)/" target="_blank" rel="noopener">Markdown的常用语法(个人总结) | ConnorLin’s Blog </a></strong></p>
-]]></content>
-      <categories>
-        <category>markdown</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>mybatis mysql in (#{list}) 只能查询/删除第一条的问题</title>
-    <url>/2021/12/30/mybatis-mysql-in-list-%E5%8F%AA%E8%83%BD%E6%9F%A5%E8%AF%A2-%E5%88%A0%E9%99%A4%E7%AC%AC%E4%B8%80%E6%9D%A1%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p><a href="https://www.cnblogs.com/do-your-best/p/9513194.html" target="_blank" rel="noopener">mysql in (#{list}) 只能查询&#x2F;删除第一条的问题</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>netstat 命令</title>
-    <url>/2022/02/15/netstat-%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">netstat -ntu|awk &#39;&#123;pring $5&#125;&#39;|cut -d : -f 1|sort|uniq -c</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h4 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h4><p>-n 显示数字IP, -t tcp连接, -u udp连接, -a 全部连接…</p>
-<p><strong><a href="https://blog.csdn.net/qq_42014600/article/details/90372315" target="_blank" rel="noopener">netstat详解</a></strong></p>
-<h4 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h4><p>-F 指定分割符(如 awk -F: ), 如不显示指定字段分隔符，awk的默认字段分隔符为任意空白字符，包括制表符、空格符、换行符等</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$0表示整行文本</span><br><span class="line">$1表示文本行中第一个数据字段</span><br><span class="line">$2表示文本行中第二个数据字段</span><br><span class="line">$n表示文本行中第n个数据字段</span><br></pre></td></tr></table></figure>
-<p><strong><a href="https://blog.csdn.net/u010502101/article/details/81839519" target="_blank" rel="noopener">awk详解</a></strong></p>
-<h4 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h4><p>cut -[n]b file</p>
-<p>cut -c file</p>
-<p>cut -d[分隔符] -f[域] file</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-b(bytes) ：以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志。</span><br><span class="line">-c(characters) ：以字符为单位进行分割。</span><br><span class="line">-d ：自定义分隔符，默认为制表符。</span><br><span class="line">-f(filed) ：与-d一起使用，指定显示哪个区域。</span><br><span class="line">-n ：取消分割多字节字符。仅和 -b 标志一起使用。如果字符的最后一个字节落在由 -b 标志的 List 参数指示的</span><br><span class="line">范围之内，该字符将被写出；否则，该字符将被排除。</span><br></pre></td></tr></table></figure>
-<p><strong><a href="https://blog.csdn.net/u011003120/article/details/52190187" target="_blank" rel="noopener">cut用法</a></strong></p>
-<h4 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a>uniq</h4><p>　报告或删除文件中重复的行。<br> <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"> -c, --count           在每行前加上表示相应行目出现次数的前缀编号</span><br><span class="line">-d, --repeated        只输出重复的行</span><br><span class="line">-D, --all-repeated[&#x3D;delimit-method    显示所有重复的行</span><br><span class="line">                      delimit-method&#x3D;&#123;none(default),prepend,separate&#125;</span><br><span class="line">                      以空行为界限</span><br><span class="line">-f, --skip-fields&#x3D;N   比较时跳过前N 列</span><br><span class="line">-i, --ignore-case     在比较的时候不区分大小写</span><br><span class="line">-s, --skip-chars&#x3D;N    比较时跳过前N 个字符</span><br><span class="line">-u, --unique          只显示唯一的行</span><br><span class="line">-z, --zero-terminated 使用&#39;\0&#39;作为行结束符，而不是新换行</span><br><span class="line">-w, --check-chars&#x3D;N   对每行第N 个字符以后的内容不作对照</span><br><span class="line">    --help            显示此帮助信息并退出</span><br><span class="line">    --version         显示版本信息并退出</span><br></pre></td></tr></table></figure></p>
-<p> <strong><a href="https://www.cnblogs.com/ftl1012/p/uniq.html" target="_blank" rel="noopener">uniq详解</a></strong></p>
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-      <tags>
-        <tag>linux command</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ubuntu下使用微信、QQ等</title>
-    <url>/2021/03/18/new/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ubuntu下使用微信，网页版的登录不了，只能考虑客户端了。考虑了下，还是在docker里，无论怎么折腾，也不会污染系统。</p>
-<a id="more"></a>
-<p>网上教程多如牛毛，但不是坑，就是坑，找了个自己能用的，记录下备用<br>1、安装docker docker-compose，网上教程一大把，自己搜<br>2、执行如下命令<br>首先要允许所有用户访问X11服务,运行:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xhost +</span><br></pre></td></tr></table></figure>
-<p>拉取镜像（注意docker设置国内镜像地址，用科大的就行）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker pull bestwu&#x2F;wechat</span><br></pre></td></tr></table></figure>
-<p>在你指定的文件夹下创建 docker-compose.yml</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">version: &#39;2&#39;</span><br><span class="line">services:</span><br><span class="line">  wechat:</span><br><span class="line">    image: bestwu&#x2F;wechat</span><br><span class="line">    container_name: wechat</span><br><span class="line">    devices:</span><br><span class="line">      - &#x2F;dev&#x2F;snd</span><br><span class="line">    volumes:</span><br><span class="line">      - &#x2F;tmp&#x2F;.X11-unix:&#x2F;tmp&#x2F;.X11-unix</span><br><span class="line">      - $PWD&#x2F;WeChatFiles:&#x2F;WeChatFiles</span><br><span class="line">    environment:</span><br><span class="line">      - DISPLAY&#x3D;unix$DISPLAY</span><br><span class="line">      - QT_IM_MODULE&#x3D;fcitx</span><br><span class="line">      - XMODIFIERS&#x3D;@im&#x3D;fcitx</span><br><span class="line">      - GTK_IM_MODULE&#x3D;fcitx</span><br><span class="line">      - AUDIO_GID&#x3D;26 # 可选 默认63（在终端用getent group video | cut -d: -f3查） 主机audio gid 解决声音设备访问权限问题</span><br><span class="line">      - GID&#x3D;1000 # 可选 默认1000 主机当前用户 gid 解决挂载目录访问权限问题</span><br><span class="line">      - UID&#x3D;1000 # 可选 默认1000 主机当前用户 uid 解决挂载目录访问权限问题</span><br><span class="line">    ipc: host</span><br></pre></td></tr></table></figure>
-<p>启动</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
-<p>停止</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-compose stop</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>linux</category>
-        <category>ubuntu</category>
-      </categories>
-      <tags>
-        <tag>wechat</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>nginx conf location</title>
-    <url>/2022/03/23/nginx-conf-location-%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<h4 id="root-alias"><a href="#root-alias" class="headerlink" title="root alias"></a>root alias</h4><ul>
-<li>root的处理结果是：root路径＋location路径</li>
-<li>alias的处理结果是：使用alias路径替换location路径</li>
-</ul>
-<a id="more"></a>
-
-<p>nginx指定文件路径有两种方式root和alias，root与alias主要区别在于nginx如何解释location后面的uri，这会使两者分别以不同的方式将请求映射到服务器文件上。</p>
-<p>alias 指定的目录是准确的，给location指定一个目录。</p>
-<p>root 指定目录的上级目录，并且该上级目录要含有locatoin指定名称的同名目录。也就是</p>
-<p>以root方式设置资源路径：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法: root path;</span><br><span class="line">配置块: http、server、location、if</span><br></pre></td></tr></table></figure>
-<p>如果server,location同时配置，优先采用location内的root路径，</p>
-<p>以alias 方式设置资源路径</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">语法: alias path;</span><br><span class="line">配置块: location</span><br></pre></td></tr></table></figure>
-<p>Example:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">location &#x2F;img&#x2F; &#123;</span><br><span class="line">	alias &#x2F;var&#x2F;www&#x2F;image&#x2F;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>#若按照上述配置的话，则访问&#x2F;img&#x2F;目录里面的文件时，ningx会自动去&#x2F;var&#x2F;www&#x2F;image&#x2F;目录找文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">location &#x2F;img&#x2F; &#123;</span><br><span class="line">	root &#x2F;var&#x2F;www&#x2F;image;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>#若按照这种配置的话，则访问&#x2F;img&#x2F;目录下的文件时，nginx会去&#x2F;var&#x2F;www&#x2F;image&#x2F;img&#x2F;目录下找文件</p>
-<p>注意： </p>
-<ol>
-<li>使用alias时，目录名后面一定要加”&#x2F;“。</li>
-<li>使用alias标签的目录块中不能使用rewrite的break。</li>
-<li>alias在使用正则匹配时，必须捕捉要匹配的内容并在指定的内容处使用。</li>
-<li>alias只能位于location块中</li>
-</ol>
-<h4 id="nginx-location配置详细解释"><a href="#nginx-location配置详细解释" class="headerlink" title="nginx location配置详细解释"></a>nginx location配置详细解释</h4><p>语法详解<br>语法规则： location [&#x3D;|<del>|</del>*|^~] &#x2F;uri&#x2F; { … }</p>
-<ul>
-<li>&#x3D; 开头表示精确匹配</li>
-<li>^~ 开头表示uri以某个常规字符串开头，理解为匹配 url路径即可。nginx不对url做编码，因此请求为&#x2F;static&#x2F;20%&#x2F;aa，可以被规则^~ &#x2F;static&#x2F; &#x2F;aa匹配到（注意是空格）。以xx开头</li>
-<li>~ 开头表示区分大小写的正则匹配 以xx结尾</li>
-<li>~* 开头表示不区分大小写的正则匹配 以xx结尾</li>
-<li>!<del>和!</del>*分别为区分大小写不匹配及不区分大小写不匹配 的正则</li>
-<li>&#x2F; 通用匹配，任何请求都会匹配到。</li>
-</ul>
-<p>例子，有如下匹配规则：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">location &#x3D; &#x2F; &#123;</span><br><span class="line">   #规则A  访问根目录&#x2F;， 比如http:&#x2F;&#x2F;localhost&#x2F;</span><br><span class="line">&#125;</span><br><span class="line">location &#x3D; &#x2F;login &#123;</span><br><span class="line">   #规则B  http:&#x2F;&#x2F;localhost&#x2F;login 将匹配规则B，http:&#x2F;&#x2F;localhost&#x2F;register 则匹配规则H</span><br><span class="line">&#125;</span><br><span class="line">location ^~ &#x2F;static&#x2F; &#123;</span><br><span class="line">   #规则C  http:&#x2F;&#x2F;localhost&#x2F;static&#x2F;a.html 将匹配规则C</span><br><span class="line">&#125;</span><br><span class="line">location ~ \.(gif|jpg|png|js|css)$ &#123;</span><br><span class="line">   #规则D，注意：是根据括号内的大小写进行匹配。括号内全是小写，只匹配小写</span><br><span class="line">&#125;</span><br><span class="line">location ~* \.png$ &#123;</span><br><span class="line">   #规则E  http:&#x2F;&#x2F;localhost&#x2F;a.gif, http:&#x2F;&#x2F;localhost&#x2F;b.jpg 将匹配规则D和规则E，但是规则D顺序优先，规则E不起作用， </span><br><span class="line">      http:&#x2F;&#x2F;localhost&#x2F;static&#x2F;c.png 则优先匹配到 规则C</span><br><span class="line">      http:&#x2F;&#x2F;localhost&#x2F;a.PNG 则匹配规则E， 而不会匹配规则D，因为规则E不区分大小写。</span><br><span class="line">&#125;</span><br><span class="line">location !~ \.xhtml$ &#123;</span><br><span class="line">   #规则F  访问 http:&#x2F;&#x2F;localhost&#x2F;a.xhtml 不会匹配规则F和规则G，</span><br><span class="line">&#125;</span><br><span class="line">location !~* \.xhtml$ &#123;</span><br><span class="line">   #规则G  访问 http:&#x2F;&#x2F;localhost&#x2F;a.xhtml 不会匹配规则F和规则G，</span><br><span class="line">&#125;</span><br><span class="line">location &#x2F; &#123;</span><br><span class="line">   #规则H</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost&#x2F;a.XHTML不会匹配规则G，（因为!）。规则F，规则G属于排除法，符合匹配规则也不会匹配到，所以想想看实际应用中哪里会用到。</span><br><span class="line"></span><br><span class="line">访问 http:&#x2F;&#x2F;localhost&#x2F;category&#x2F;id&#x2F;1111 则最终匹配到规则H，因为以上规则都不匹配，这个时候nginx转发请求给后端应用[服务器](https:&#x2F;&#x2F;www.baidu.com&#x2F;s?wd&#x3D;服务器&amp;tn&#x3D;24004469_oem_dg&amp;rsv_dl&#x3D;gh_pl_sl_csd)，比如FastCGI（php），tomcat（jsp），nginx作为方向代理服务器存在。</span><br><span class="line"></span><br><span class="line">所以实际使用中，个人觉得至少有三个匹配规则定义，如下：</span><br><span class="line">#直接匹配网站根，通过域名访问网站首页比较频繁，使用这个会加速处理，官网如是说。</span><br><span class="line">#这里是直接转发给后端应用服务器了，也可以是一个静态首页</span><br><span class="line"># 第一个必选规则</span><br><span class="line">location &#x3D; &#x2F; &#123;</span><br><span class="line">    proxy_pass http:&#x2F;&#x2F;tomcat:8080&#x2F;index</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">location &#x3D; &#x2F;api&#x2F; &#123;   # 访问http:&#x2F;&#x2F;localhost&#x2F;api&#x2F;xxx.xxx  会被代理到192.168.0.1&#x2F;xxx.xxx</span><br><span class="line">    proxy_pass http:&#x2F;&#x2F;192.168.0.1&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 第二个必选规则是处理静态文件请求，这是nginx作为http服务器的强项</span><br><span class="line"># 有两种配置模式，目录匹配或后缀匹配,任选其一或搭配使用</span><br><span class="line">location ^~ &#x2F;static&#x2F; &#123;                              &#x2F;&#x2F;以xx开头</span><br><span class="line">    root &#x2F;webroot&#x2F;static&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line">location ~* \.(gif|jpg|jpeg|png|css|js|ico)$ &#123;     &#x2F;&#x2F;以xx结尾</span><br><span class="line">    root &#x2F;webroot&#x2F;res&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#第三个规则就是通用规则，用来转发动态请求到后端应用服务器</span><br><span class="line">#非静态文件请求就默认是动态请求，自己根据实际把握</span><br><span class="line">location &#x2F; &#123;</span><br><span class="line">    proxy_pass http:&#x2F;&#x2F;tomcat:8080&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="try-files详解"><a href="#try-files详解" class="headerlink" title="try_files详解"></a>try_files详解</h4><ul>
-<li>格式1：try_files file … uri;  </li>
-<li>格式2：try_files file … &#x3D;code;</li>
-</ul>
-<p><a href="https://www.cnblogs.com/jedi1995/p/10900224.html" target="_blank" rel="noopener">nginx配置选项try_files详解</a></p>
-<h4 id="proxy-pass详解"><a href="#proxy-pass详解" class="headerlink" title="proxy_pass详解"></a>proxy_pass详解</h4><p>在nginx中配置proxy_pass代理转发时，如果在proxy_pass后面的url加&#x2F;，表示绝对根路径；如果没有&#x2F;，表示相对路径，把匹配的路径部分也给代理走。<br>假设下面四种情况分别用 <a href="http://192.168.1.1/proxy/test.html" target="_blank" rel="noopener">http://192.168.1.1/proxy/test.html</a> 进行访问。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">第一种：</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;test.html</span><br><span class="line"></span><br><span class="line">第二种（相对于第一种，最后少一个 &#x2F; ）</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;proxy&#x2F;test.html</span><br><span class="line"></span><br><span class="line">第三种：</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1&#x2F;aaa&#x2F;;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;aaa&#x2F;test.html</span><br><span class="line"></span><br><span class="line">第四种（相对于第三种，最后少一个 &#x2F; ）</span><br><span class="line">location &#x2F;proxy&#x2F; &#123;</span><br><span class="line">proxy_pass http:&#x2F;&#x2F;127.0.0.1&#x2F;aaa;</span><br><span class="line">&#125;</span><br><span class="line">代理到URL：http:&#x2F;&#x2F;127.0.0.1&#x2F;aaatest.html</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://www.jianshu.com/p/b010c9302cd0" target="_blank" rel="noopener">nginx 之 proxy_pass详解</a></p>
-<h4 id="80端口重定向到443端口"><a href="#80端口重定向到443端口" class="headerlink" title="80端口重定向到443端口"></a>80端口重定向到443端口</h4><p>nginx 80端口重定向到443端口，也就是http访问自动跳转到https</p>
-<p>配置如下：<br>一、按照如下格式修改nginx.conf 配置文件，80端口会自动转给443端口，这样就强制使用SSL证书加密了。访问http的时候会自动跳转到https上面。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name www.域名.com;</span><br><span class="line">    rewrite ^(.*)$ https:&#x2F;&#x2F;$&#123;server_name&#125;$1 permanent;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">    listen 443;</span><br><span class="line">    server_name www.域名.com;</span><br><span class="line">    root &#x2F;home&#x2F;wwwroot;</span><br><span class="line">    ssl on;</span><br><span class="line">    ssl_certificate &#x2F;etc&#x2F;nginx&#x2F;certs&#x2F;server.crt;</span><br><span class="line">    ssl_certificate_key &#x2F;etc&#x2F;nginx&#x2F;certs&#x2F;server.key;</span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>alias</tag>
-        <tag>root</tag>
-        <tag>location</tag>
-        <tag>nginx</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>pac.txt---url通配规则</title>
-    <url>/2020/01/30/pac/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>科学上网PAC模式，有时会需要自己在pac.txt里添加一些被墙的URL，记录一下url通配的规则，以备以后使用。</p>
-<a id="more"></a>
-<ol>
-<li>通配符支持。比如 .example.com&#x2F; 实际书写时可省略 * ， 如 .example.com&#x2F; ， 和 *.example.com&#x2F; 效果一样</li>
-<li>正则表达式支持。以 \ 开始和结束， 如 [\w]+://example.com\</li>
-<li>例外规则 @@ ，如 @@.example.com&#x2F; 满足 @@ 后规则的地址不使用代理</li>
-<li>匹配地址开始和结尾 | ，如 |<a href="http://example.com/" target="_blank" rel="noopener">http://example.com</a> 、 example.com| 分别表示以 <a href="http://example.com/" target="_blank" rel="noopener">http://example.com</a> 开始和以 example.com 结束的地址</li>
-<li>|| 标记，如 ||example.com 则 <a href="http://example.com/" target="_blank" rel="noopener">http://example.com</a> 、 <a href="https://example.com/" target="_blank" rel="noopener">https://example.com</a> 、 <a href="ftp://example.com/">ftp://example.com</a> 等地址均满足条件</li>
-<li>注释 ! 。 如 !我是注释<br>v2rayN需重启生效。</li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
-    <title>spring 线程安全</title>
-    <url>/2020/03/09/pring-%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/</url>
-    <content><![CDATA[<p>转载：<a href="https://www.cnblogs.com/kismetv/p/8757260.html" target="_blank" rel="noopener"><strong>Spring中获取request的几种方法，及其线程安全性分析</strong></a>、**<a href="https://www.jianshu.com/p/e04491f3550f" target="_blank" rel="noopener">Spring 如何保证线程安全
-</a><strong>、</strong><a href="https://blog.csdn.net/cs408/article/details/48972653" target="_blank" rel="noopener">Spring中Singleton模式的线程安全
-</a>**</p>
-<h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><p>&amp;emsp;每启动一个线程，JVM都会为它分配一个Java栈，用于存放方法中的局部变量，操作</p>
-<a id="more"></a>
-<p>数以及异常数据等。当线程调用某个方法时，JVM会根据方法区中该方法的字节码组建一个栈帧。并将该栈帧压入Java栈中，方法执行完毕时，JVM会弹出该栈帧并释放掉。</p>
-<p>&amp;emsp;注意：Java栈中的数据是线程私有的，一个线程是无法访问另一个线程的Java栈的数据。这也就是为什么多线程编程时，两个相同线程执行同一方法时，对方法内的局部变量是不需要数据同步的原因。</p>
-]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>spring</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>《Spring设计思想》AOP设计基本原理</title>
     <url>/2020/03/11/pring%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3%E3%80%8BAOP%E8%AE%BE%E8%AE%A1%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/</url>
     <content><![CDATA[<p>转载：**<a href="https://blog.csdn.net/luanlouis/article/details/51095702" target="_blank" rel="noopener">《Spring设计思想》AOP设计基本原理
@@ -2094,6 +2193,148 @@
       <tags>
         <tag>spring</tag>
         <tag>aop</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rust是基于表达式的语言</title>
+    <url>/2022/03/16/rust-%E8%AF%AD%E5%8F%A5%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
+    <content><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch1/01_expression.html" target="_blank" rel="noopener">Rust是基于表达式的语言</a></p>
+<a id="more"></a>
+
+<p>除了在表达式尾部加分号的代码是语句之外，还有另外一种情况的代码是语句而非表达式：<strong>用于声明或定义</strong>。例如let声明变量、fn定义函数、struct声明结构体等。</p>
+<p>Rust很多地方都会结合表达式和语句来做变量赋值。例如，if结构也是一个表达式，所以它有返回值，可以将if的返回值赋值给变量，而<strong>它的返回值来自于它的大括号</strong>：当大括号最后执行的一条代码不加分号结尾时，该代码的计算结果就是if结构的返回值。</p>
+<p>————————————————《rust入门秘籍》</p>
+]]></content>
+      <tags>
+        <tag>rust</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>shell脚本检查nginx服务状态</title>
+    <url>/2021/04/08/shell%E8%84%9A%E6%9C%AC%E6%A3%80%E6%9F%A5nginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A&#x3D;&#96;ps -C nginx --no-header |wc -l&#96;</span><br><span class="line">if [ $A -eq 0 ];then</span><br><span class="line">    service nginx start</span><br><span class="line">    sleep 2</span><br><span class="line">    if [ &#96;ps -C nginx --no-header |wc -l&#96; -eq 0 ];then</span><br><span class="line">        killall keepalived</span><br><span class="line">    fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<h3 id="脚本解析"><a href="#脚本解析" class="headerlink" title="脚本解析"></a>脚本解析</h3><p>以上是通过进程判断，也可以通过端口判断，如netstat -nlpt | grep nginx</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# netstat -nlpt | grep nginx</span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      8801&#x2F;nginx: master</span><br></pre></td></tr></table></figure>
+
+<p>以下，以进程为例详解，ps -C nginx –no-header<br>这里涉及ps 的用法，我们一般用ps查看相关进程，一般都是用ps -ef | grep XX 或 ps -aux| grep XX 的模式<br>如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br><span class="line">root     11660  5532  0 09:55 pts&#x2F;1    00:00:00 grep --color&#x3D;auto nginx</span><br></pre></td></tr></table></figure>
+<p>但是这样通常都会覆盖一个grep的进程。</p>
+<p>我们可以用ps -ef|grep nginx|grep -v grep的方式排除grep的进程，如</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# ps -ef|grep nginx|grep -v grep</span><br><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br></pre></td></tr></table></figure>
+
+<p>也可以直接用ps -C 或ps -c 的方式， -C 后面接命令的名字（推荐） ，如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx</span><br><span class="line">   PID TTY          TIME CMD</span><br><span class="line">  8801 ?        00:00:00 nginx</span><br><span class="line">  8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
+<p>–no-header 就是去挑title,如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx --no-header</span><br><span class="line"> 8801 ?        00:00:00 nginx</span><br><span class="line"> 8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
+<p>wc -l 这个很熟悉了，行数计算</p>
+<p>所以用这种方式可判断，如果<br>ps -C nginx –no-header|wc -l</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">值为0，即代表服务未启动</span><br><span class="line">值为非0，即代表服务已启动</span><br></pre></td></tr></table></figure>
+<p>最后，killall keepalived 这个是以服务名称杀死进程，日常中也用的挺多的</p>
+<p>上面那段完整的脚本意思即为：<br>判断nginx 服务是否启动<br>如果未启动，执行启动命令<br>再次判断，如果启动失败，关掉keepalived，进入从节点</p>
+]]></content>
+      <categories>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>rust --堆栈(内存)</title>
+    <url>/2022/02/08/rust-%E7%9A%84%E5%A0%86%E6%A0%88-%E5%BC%95%E7%94%A8/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>类型的值默认都分布在栈中(即便是动态类型的数据，但也通过胖指针改变了该类型的值的表现形式)，所以<strong>创建某个变量的引用时，引用的是栈中的那个值</strong>.   </p>
+<a id="more"></a>
+
+<h4 id="Rust将哪些数据存放于栈中？"><a href="#Rust将哪些数据存放于栈中？" class="headerlink" title="Rust将哪些数据存放于栈中？"></a>Rust将哪些数据存放于栈中？</h4><p>Rust中各种类型的值默认都存储在栈中，除非显式地使用Box::new()将它们存放在堆上。</p>
+<p>但数据要存放在栈中，要求其数据类型的大小已知。对于静态大小的类型，可直接存储在栈上。</p>
+<p>例如如下类型的数据存放在栈中：</p>
+<ul>
+<li>裸指针(一个机器字长)、普通引用(一个机器字长)、胖指针(除了指针外还包含其他元数据信息，智能指针也是一种带有额外功能的胖指针，而胖指针实际上又是Struct结构)</li>
+<li>布尔值</li>
+<li>char</li>
+<li>各种整数、浮点数</li>
+<li>数组(Rust数组的元素数据类型和数组长度都是固定不变的)</li>
+<li>元组</li>
+</ul>
+<p>对于动态大小的类型(如Vec、String)，则数据部分分布在堆中(被称为allocate buffer)，并在栈中留下胖指针(Struct方式实现)指向实际的数据，栈中的那个胖指针结构是静态大小的(换句话说，动态类型以Vec为例，Vec类型的值理应是那些连续的元素，但因为这样的连续内存的大小是不确定的，所以改变了它的行为，它的值是那个栈中的胖指针，而不是存储在allocatge buffer中的实际数据)。</p>
+<p>以上分类需要注意几点：</p>
+<ul>
+<li>将栈中数据赋值给变量时，数据直接存放在栈中。比如i32类型的33，33直接存放在栈内，而不是在堆中存放33并在栈中存放指向33的指针</li>
+<li>因为类型的值默认都分布在栈中(即便是动态类型的数据，但也通过胖指针改变了该类型的值的表现形式)，所以<strong>创建某个变量的引用时，引用的是栈中的那个值</strong></li>
+<li>有些数据是0字节的，不需要占用空间，比如()</li>
+<li>尽管【容器】结构中(如数组、元组、Struct)可以存放任意数据，但保存在容器中的要么是原始类型的栈中值，要么是指向堆中数据的引用，所以这些容器类型的值也在栈中。例如，对于struct User {name: String}，name字段存储的是String类型的胖指针，String类型实际的数据则在堆中</li>
+<li>尽管Box::new(T)可以将类型T的数据放入堆中，但Box类型本身是一个struct，它是一个胖指针(更严格地说是智能指针)，它在栈中</li>
+</ul>
+<p>实际上，对于理解来说，只有Box才能让数据存放到堆中，但对于实现上，只有调用alloc才能申请堆内存并将数据存放在堆中。比如，自己想实现一个类型，将某些数据明确存放在堆中，那么必须要在实现代码中调用alloc来分配堆内存，但同时，要实现的这个类型本身，它的值是在栈中的。</p>
+<p>(5).Rust除了使用堆栈，还使用全局内存区(静态变量区和字面量区)。</p>
+<p>Rust编译器会将全局内存区的数据直接嵌入在二进制程序文件中，当启动并加载程序时，嵌入在全局内存区的数据被放入内存的某个位置。</p>
+<p>全局内存区的数据是编译期间就可确定的，且存活于整个程序运行期间。</p>
+<p>字符串字面量、static定义的静态变量(相当于全局变量)都会硬编码嵌入到二进制程序的全局内存区。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fn main()&#123;</span><br><span class="line">  let _s &#x3D; &quot;hello&quot;;     &#x2F;&#x2F; (1)</span><br><span class="line">  let _ss &#x3D; String::from(&quot;hello&quot;); &#x2F;&#x2F; (2)</span><br><span class="line">  let _arr &#x3D; [&quot;hello&quot;;3];    &#x2F;&#x2F; (3)</span><br><span class="line">  let _tuple &#x3D; (&quot;hello&quot;,);   &#x2F;&#x2F; (4)</span><br><span class="line">  &#x2F;&#x2F; ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码中的几个变量都使用了字符串字面量，且使用的都是相同的字面量”hello”，在编译期间，它们会共用同一个”hello”，该”hello”会硬编码到二进制程序文件中。当程序被加载到内存时，该被放入到全局内存区，它在全局内存区有自己的内存地址，当运行到以上各行代码时：</p>
+<ul>
+<li>代码(1)、(3)、(4)，将根据地址取得其引用，并分别保存到变量_s、_arr各元素、_tuple元素中</li>
+<li>代码(2)，将根据地址取得数据并将其拷贝到堆中(转换为Vec<u8>的方式存储，它是String类型的底层存储方式)</u8></li>
+</ul>
+<h4 id="Rust中允许使用const定义常量。"><a href="#Rust中允许使用const定义常量。" class="headerlink" title="Rust中允许使用const定义常量。"></a>Rust中允许使用const定义常量。</h4><p>常量将在编译期间直接以硬编码的方式内联(inline)插入到使用常量的地方。</p>
+<p>所谓内联，即将它代表的值直接替换到使用它的地方。</p>
+<p>比如，定义了常量ABC&#x3D;33，在第100行和第300行处都使用了常量ABC，那么在编译期间，会将33硬编码到第100行和第300行处。</p>
+<p>Rust中，除了const定义的常量会被内联，某些函数也可以被内联。将函数进行内联，表示将该函数对应的代码体直接展开并插入到调用该函数的地方，这样就没有函数调用的开销(比如没有调用函数时申请栈帧、在寄存器保存某些变量等的行为)，效率会更高一些。但只有那些频繁调用的短函数才适合被内联，并且内联会导致程序的代码膨胀。</p>
+<p>原地址: <strong><a href="https://rust-book.junmajinlong.com/ch5/02_rust_mem.html" target="_blank" rel="noopener">Rust如何使用堆和栈</a></strong></p>
+]]></content>
+      <categories>
+        <category>rust</category>
+      </categories>
+      <tags>
+        <tag>引用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>shell脚本监测nginx服务状态</title>
+    <url>/1970/01/01/shell%E8%84%9A%E6%9C%AC%E7%9B%91%E6%B5%8Bnginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A&#x3D;&#96;ps -C nginx --no-header |wc -l&#96;</span><br><span class="line">if [ $A -eq 0 ];then</span><br><span class="line">    service nginx start</span><br><span class="line">    sleep 2</span><br><span class="line">    if [ &#96;ps -C nginx --no-header |wc -l&#96; -eq 0 ];then</span><br><span class="line">        killall keepalived</span><br><span class="line">    fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<h3 id="脚本解析"><a href="#脚本解析" class="headerlink" title="脚本解析"></a>脚本解析</h3><p>以上是通过进程判断，也可以通过端口判断，如netstat -nlpt | grep nginx</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# netstat -nlpt | grep nginx</span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      8801&#x2F;nginx: master</span><br></pre></td></tr></table></figure>
+
+<p>以下，以进程为例详解，ps -C nginx –no-header<br>这里涉及ps 的用法，我们一般用ps查看相关进程，一般都是用ps -ef | grep XX 或 ps -aux| grep XX 的模式<br>如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br><span class="line">root     11660  5532  0 09:55 pts&#x2F;1    00:00:00 grep --color&#x3D;auto nginx</span><br></pre></td></tr></table></figure>
+<p>但是这样通常都会覆盖一个grep的进程。</p>
+<p>我们可以用ps -ef|grep nginx|grep -v grep的方式排除grep的进程，如</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# ps -ef|grep nginx|grep -v grep</span><br><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br></pre></td></tr></table></figure>
+
+<p>也可以直接用ps -C 或ps -c 的方式， -C 后面接命令的名字（推荐） ，如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx</span><br><span class="line">   PID TTY          TIME CMD</span><br><span class="line">  8801 ?        00:00:00 nginx</span><br><span class="line">  8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
+<p>–no-header 就是去挑title,如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx --no-header</span><br><span class="line"> 8801 ?        00:00:00 nginx</span><br><span class="line"> 8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
+<p>wc -l 这个很熟悉了，行数计算</p>
+<p>所以用这种方式可判断，如果<br>ps -C nginx –no-header|wc -l</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">值为0，即代表服务未启动</span><br><span class="line">值为非0，即代表服务已启动</span><br></pre></td></tr></table></figure>
+<p>最后，killall keepalived 这个是以服务名称杀死进程，日常中也用的挺多的</p>
+<p>上面那段完整的脚本意思即为：<br>判断nginx 服务是否启动<br>如果未启动，执行启动命令<br>再次判断，如果启动失败，关掉keepalived，进入从节点</p>
+]]></content>
+      <categories>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>spring security 处理filter chain抛出的异常</title>
+    <url>/2021/12/15/spring-security-%E5%A4%84%E7%90%86filter-chain%E6%8A%9B%E5%87%BA%E7%9A%84%E5%BC%82%E5%B8%B8/</url>
+    <content><![CDATA[<p>springboot异常处理默认会redirect &#x2F;error,但前后分离后, 异常处理就要返回json<br>异常一种是controller抛出的异常, 可以通过@RestControllerAdvice @ExceptionHandler全局处理,<br>另一种是spring security filter chain 抛出的异常,由于在@RestControllerAdvice之前,所以需要其它方式处理.<br>1: 自定义MyErrorController ,overriding default Spring Boot &#x2F;error handler<br>2:在filter chain里第一的位置新增自定义filter,处理后面没有处理掉的异常.</p>
+<p><strong><a href="https://blog.csdn.net/muyuanjin67/article/details/120373168" target="_blank" rel="noopener">Spring和SpringSecurity 的全局异常处理</a></strong>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;,<strong><a href="https://stackoverflow.com/questions/34595605/how-to-manage-exceptions-thrown-in-filters-in-spring" target="_blank" rel="noopener">How to manage exceptions thrown in filters in Spring?</a></strong>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;,<strong><a href="https://www.jianshu.com/p/f528fe2377e2" target="_blank" rel="noopener">Spring security restful like 服务下的异常处理</a></strong></p>
+]]></content>
+      <tags>
+        <tag>spring security</tag>
+        <tag>filter chain</tag>
       </tags>
   </entry>
   <entry>
@@ -2152,172 +2393,16 @@
       </tags>
   </entry>
   <entry>
-    <title>rust --堆栈(内存)</title>
-    <url>/2022/02/08/rust-%E7%9A%84%E5%A0%86%E6%A0%88-%E5%BC%95%E7%94%A8/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>类型的值默认都分布在栈中(即便是动态类型的数据，但也通过胖指针改变了该类型的值的表现形式)，所以<strong>创建某个变量的引用时，引用的是栈中的那个值</strong>.   </p>
-<a id="more"></a>
-
-<h4 id="Rust将哪些数据存放于栈中？"><a href="#Rust将哪些数据存放于栈中？" class="headerlink" title="Rust将哪些数据存放于栈中？"></a>Rust将哪些数据存放于栈中？</h4><p>Rust中各种类型的值默认都存储在栈中，除非显式地使用Box::new()将它们存放在堆上。</p>
-<p>但数据要存放在栈中，要求其数据类型的大小已知。对于静态大小的类型，可直接存储在栈上。</p>
-<p>例如如下类型的数据存放在栈中：</p>
-<ul>
-<li>裸指针(一个机器字长)、普通引用(一个机器字长)、胖指针(除了指针外还包含其他元数据信息，智能指针也是一种带有额外功能的胖指针，而胖指针实际上又是Struct结构)</li>
-<li>布尔值</li>
-<li>char</li>
-<li>各种整数、浮点数</li>
-<li>数组(Rust数组的元素数据类型和数组长度都是固定不变的)</li>
-<li>元组</li>
-</ul>
-<p>对于动态大小的类型(如Vec、String)，则数据部分分布在堆中(被称为allocate buffer)，并在栈中留下胖指针(Struct方式实现)指向实际的数据，栈中的那个胖指针结构是静态大小的(换句话说，动态类型以Vec为例，Vec类型的值理应是那些连续的元素，但因为这样的连续内存的大小是不确定的，所以改变了它的行为，它的值是那个栈中的胖指针，而不是存储在allocatge buffer中的实际数据)。</p>
-<p>以上分类需要注意几点：</p>
-<ul>
-<li>将栈中数据赋值给变量时，数据直接存放在栈中。比如i32类型的33，33直接存放在栈内，而不是在堆中存放33并在栈中存放指向33的指针</li>
-<li>因为类型的值默认都分布在栈中(即便是动态类型的数据，但也通过胖指针改变了该类型的值的表现形式)，所以<strong>创建某个变量的引用时，引用的是栈中的那个值</strong></li>
-<li>有些数据是0字节的，不需要占用空间，比如()</li>
-<li>尽管【容器】结构中(如数组、元组、Struct)可以存放任意数据，但保存在容器中的要么是原始类型的栈中值，要么是指向堆中数据的引用，所以这些容器类型的值也在栈中。例如，对于struct User {name: String}，name字段存储的是String类型的胖指针，String类型实际的数据则在堆中</li>
-<li>尽管Box::new(T)可以将类型T的数据放入堆中，但Box类型本身是一个struct，它是一个胖指针(更严格地说是智能指针)，它在栈中</li>
-</ul>
-<p>实际上，对于理解来说，只有Box才能让数据存放到堆中，但对于实现上，只有调用alloc才能申请堆内存并将数据存放在堆中。比如，自己想实现一个类型，将某些数据明确存放在堆中，那么必须要在实现代码中调用alloc来分配堆内存，但同时，要实现的这个类型本身，它的值是在栈中的。</p>
-<p>(5).Rust除了使用堆栈，还使用全局内存区(静态变量区和字面量区)。</p>
-<p>Rust编译器会将全局内存区的数据直接嵌入在二进制程序文件中，当启动并加载程序时，嵌入在全局内存区的数据被放入内存的某个位置。</p>
-<p>全局内存区的数据是编译期间就可确定的，且存活于整个程序运行期间。</p>
-<p>字符串字面量、static定义的静态变量(相当于全局变量)都会硬编码嵌入到二进制程序的全局内存区。</p>
-<p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fn main()&#123;</span><br><span class="line">  let _s &#x3D; &quot;hello&quot;;     &#x2F;&#x2F; (1)</span><br><span class="line">  let _ss &#x3D; String::from(&quot;hello&quot;); &#x2F;&#x2F; (2)</span><br><span class="line">  let _arr &#x3D; [&quot;hello&quot;;3];    &#x2F;&#x2F; (3)</span><br><span class="line">  let _tuple &#x3D; (&quot;hello&quot;,);   &#x2F;&#x2F; (4)</span><br><span class="line">  &#x2F;&#x2F; ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面代码中的几个变量都使用了字符串字面量，且使用的都是相同的字面量”hello”，在编译期间，它们会共用同一个”hello”，该”hello”会硬编码到二进制程序文件中。当程序被加载到内存时，该被放入到全局内存区，它在全局内存区有自己的内存地址，当运行到以上各行代码时：</p>
-<ul>
-<li>代码(1)、(3)、(4)，将根据地址取得其引用，并分别保存到变量_s、_arr各元素、_tuple元素中</li>
-<li>代码(2)，将根据地址取得数据并将其拷贝到堆中(转换为Vec<u8>的方式存储，它是String类型的底层存储方式)</u8></li>
-</ul>
-<h4 id="Rust中允许使用const定义常量。"><a href="#Rust中允许使用const定义常量。" class="headerlink" title="Rust中允许使用const定义常量。"></a>Rust中允许使用const定义常量。</h4><p>常量将在编译期间直接以硬编码的方式内联(inline)插入到使用常量的地方。</p>
-<p>所谓内联，即将它代表的值直接替换到使用它的地方。</p>
-<p>比如，定义了常量ABC&#x3D;33，在第100行和第300行处都使用了常量ABC，那么在编译期间，会将33硬编码到第100行和第300行处。</p>
-<p>Rust中，除了const定义的常量会被内联，某些函数也可以被内联。将函数进行内联，表示将该函数对应的代码体直接展开并插入到调用该函数的地方，这样就没有函数调用的开销(比如没有调用函数时申请栈帧、在寄存器保存某些变量等的行为)，效率会更高一些。但只有那些频繁调用的短函数才适合被内联，并且内联会导致程序的代码膨胀。</p>
-<p>原地址: <strong><a href="https://rust-book.junmajinlong.com/ch5/02_rust_mem.html" target="_blank" rel="noopener">Rust如何使用堆和栈</a></strong></p>
+    <title>Java动态代理机制详解（JDK 和CGLIB，Javassist，ASM）</title>
+    <url>/2020/03/11/spring-struts2-action%E5%8D%95%E4%BE%8B%E8%BF%98%E6%98%AF%E5%A4%9A%E4%BE%8B/</url>
+    <content><![CDATA[<p>转载：**<a href="https://blog.csdn.net/luanlouis/article/details/24589193" target="_blank" rel="noopener">Java动态代理机制详解（JDK 和CGLIB，Javassist，ASM）
+</a>**</p>
 ]]></content>
-      <categories>
-        <category>rust</category>
-      </categories>
-      <tags>
-        <tag>引用</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Rust是基于表达式的语言</title>
-    <url>/2022/03/16/rust-%E8%AF%AD%E5%8F%A5%E4%B8%8E%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
-    <content><![CDATA[<p><a href="https://rust-book.junmajinlong.com/ch1/01_expression.html" target="_blank" rel="noopener">Rust是基于表达式的语言</a></p>
-<a id="more"></a>
-
-<p>除了在表达式尾部加分号的代码是语句之外，还有另外一种情况的代码是语句而非表达式：<strong>用于声明或定义</strong>。例如let声明变量、fn定义函数、struct声明结构体等。</p>
-<p>Rust很多地方都会结合表达式和语句来做变量赋值。例如，if结构也是一个表达式，所以它有返回值，可以将if的返回值赋值给变量，而<strong>它的返回值来自于它的大括号</strong>：当大括号最后执行的一条代码不加分号结尾时，该代码的计算结果就是if结构的返回值。</p>
-<p>————————————————《rust入门秘籍》</p>
-]]></content>
-      <tags>
-        <tag>rust</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>shell脚本检查nginx服务状态</title>
-    <url>/2021/04/08/shell%E8%84%9A%E6%9C%AC%E6%A3%80%E6%9F%A5nginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A&#x3D;&#96;ps -C nginx --no-header |wc -l&#96;</span><br><span class="line">if [ $A -eq 0 ];then</span><br><span class="line">    service nginx start</span><br><span class="line">    sleep 2</span><br><span class="line">    if [ &#96;ps -C nginx --no-header |wc -l&#96; -eq 0 ];then</span><br><span class="line">        killall keepalived</span><br><span class="line">    fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-
-<h3 id="脚本解析"><a href="#脚本解析" class="headerlink" title="脚本解析"></a>脚本解析</h3><p>以上是通过进程判断，也可以通过端口判断，如netstat -nlpt | grep nginx</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# netstat -nlpt | grep nginx</span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      8801&#x2F;nginx: master</span><br></pre></td></tr></table></figure>
-
-<p>以下，以进程为例详解，ps -C nginx –no-header<br>这里涉及ps 的用法，我们一般用ps查看相关进程，一般都是用ps -ef | grep XX 或 ps -aux| grep XX 的模式<br>如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br><span class="line">root     11660  5532  0 09:55 pts&#x2F;1    00:00:00 grep --color&#x3D;auto nginx</span><br></pre></td></tr></table></figure>
-<p>但是这样通常都会覆盖一个grep的进程。</p>
-<p>我们可以用ps -ef|grep nginx|grep -v grep的方式排除grep的进程，如</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# ps -ef|grep nginx|grep -v grep</span><br><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br></pre></td></tr></table></figure>
-
-<p>也可以直接用ps -C 或ps -c 的方式， -C 后面接命令的名字（推荐） ，如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx</span><br><span class="line">   PID TTY          TIME CMD</span><br><span class="line">  8801 ?        00:00:00 nginx</span><br><span class="line">  8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
-<p>–no-header 就是去挑title,如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx --no-header</span><br><span class="line"> 8801 ?        00:00:00 nginx</span><br><span class="line"> 8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
-<p>wc -l 这个很熟悉了，行数计算</p>
-<p>所以用这种方式可判断，如果<br>ps -C nginx –no-header|wc -l</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">值为0，即代表服务未启动</span><br><span class="line">值为非0，即代表服务已启动</span><br></pre></td></tr></table></figure>
-<p>最后，killall keepalived 这个是以服务名称杀死进程，日常中也用的挺多的</p>
-<p>上面那段完整的脚本意思即为：<br>判断nginx 服务是否启动<br>如果未启动，执行启动命令<br>再次判断，如果启动失败，关掉keepalived，进入从节点</p>
-]]></content>
-      <categories>
-        <category>shell</category>
-      </categories>
-      <tags>
-        <tag>shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>shell脚本监测nginx服务状态</title>
-    <url>/1970/01/01/shell%E8%84%9A%E6%9C%AC%E7%9B%91%E6%B5%8Bnginx%E6%9C%8D%E5%8A%A1%E7%8A%B6%E6%80%81/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有的时候我们需要对某个服务状态进行监控，下面就是个脚本例子。</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A&#x3D;&#96;ps -C nginx --no-header |wc -l&#96;</span><br><span class="line">if [ $A -eq 0 ];then</span><br><span class="line">    service nginx start</span><br><span class="line">    sleep 2</span><br><span class="line">    if [ &#96;ps -C nginx --no-header |wc -l&#96; -eq 0 ];then</span><br><span class="line">        killall keepalived</span><br><span class="line">    fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-
-<h3 id="脚本解析"><a href="#脚本解析" class="headerlink" title="脚本解析"></a>脚本解析</h3><p>以上是通过进程判断，也可以通过端口判断，如netstat -nlpt | grep nginx</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# netstat -nlpt | grep nginx</span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      8801&#x2F;nginx: master</span><br></pre></td></tr></table></figure>
-
-<p>以下，以进程为例详解，ps -C nginx –no-header<br>这里涉及ps 的用法，我们一般用ps查看相关进程，一般都是用ps -ef | grep XX 或 ps -aux| grep XX 的模式<br>如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br><span class="line">root     11660  5532  0 09:55 pts&#x2F;1    00:00:00 grep --color&#x3D;auto nginx</span><br></pre></td></tr></table></figure>
-<p>但是这样通常都会覆盖一个grep的进程。</p>
-<p>我们可以用ps -ef|grep nginx|grep -v grep的方式排除grep的进程，如</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@newyork ~]# ps -ef|grep nginx|grep -v grep</span><br><span class="line">root      8801     1  0 09:06 ?        00:00:00 nginx: master process &#x2F;usr&#x2F;sbin&#x2F;nginx -c &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br><span class="line">root      8802  8801  0 09:06 ?        00:00:00 nginx: worker process</span><br></pre></td></tr></table></figure>
-
-<p>也可以直接用ps -C 或ps -c 的方式， -C 后面接命令的名字（推荐） ，如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx</span><br><span class="line">   PID TTY          TIME CMD</span><br><span class="line">  8801 ?        00:00:00 nginx</span><br><span class="line">  8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
-<p>–no-header 就是去挑title,如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@bogon ~]# ps -C nginx --no-header</span><br><span class="line"> 8801 ?        00:00:00 nginx</span><br><span class="line"> 8802 ?        00:00:00 nginx</span><br></pre></td></tr></table></figure>
-<p>wc -l 这个很熟悉了，行数计算</p>
-<p>所以用这种方式可判断，如果<br>ps -C nginx –no-header|wc -l</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">值为0，即代表服务未启动</span><br><span class="line">值为非0，即代表服务已启动</span><br></pre></td></tr></table></figure>
-<p>最后，killall keepalived 这个是以服务名称杀死进程，日常中也用的挺多的</p>
-<p>上面那段完整的脚本意思即为：<br>判断nginx 服务是否启动<br>如果未启动，执行启动命令<br>再次判断，如果启动失败，关掉keepalived，进入从节点</p>
-]]></content>
-      <categories>
-        <category>shell</category>
-      </categories>
-      <tags>
-        <tag>shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>spring security 处理filter chain抛出的异常</title>
-    <url>/2021/12/15/spring-security-%E5%A4%84%E7%90%86filter-chain%E6%8A%9B%E5%87%BA%E7%9A%84%E5%BC%82%E5%B8%B8/</url>
-    <content><![CDATA[<p>springboot异常处理默认会redirect &#x2F;error,但前后分离后, 异常处理就要返回json<br>异常一种是controller抛出的异常, 可以通过@RestControllerAdvice @ExceptionHandler全局处理,<br>另一种是spring security filter chain 抛出的异常,由于在@RestControllerAdvice之前,所以需要其它方式处理.<br>1: 自定义MyErrorController ,overriding default Spring Boot &#x2F;error handler<br>2:在filter chain里第一的位置新增自定义filter,处理后面没有处理掉的异常.</p>
-<p><strong><a href="https://blog.csdn.net/muyuanjin67/article/details/120373168" target="_blank" rel="noopener">Spring和SpringSecurity 的全局异常处理</a></strong>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;,<strong><a href="https://stackoverflow.com/questions/34595605/how-to-manage-exceptions-thrown-in-filters-in-spring" target="_blank" rel="noopener">How to manage exceptions thrown in filters in Spring?</a></strong>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;,<strong><a href="https://www.jianshu.com/p/f528fe2377e2" target="_blank" rel="noopener">Spring security restful like 服务下的异常处理</a></strong></p>
-]]></content>
-      <tags>
-        <tag>spring security</tag>
-        <tag>filter chain</tag>
-      </tags>
   </entry>
   <entry>
     <title>ssh 复用(避免重输密码)</title>
     <url>/2022/04/10/ssh-%E5%A4%8D%E7%94%A8/</url>
     <content><![CDATA[<p><a href="https://github.com/int32bit/notes/blob/master/linux/%E8%AE%BE%E7%BD%AEssh%E8%BF%9E%E6%8E%A5%E4%BC%9A%E8%AF%9D%E5%A4%8D%E7%94%A8.md" target="_blank" rel="noopener">设置ssh连接会话复用</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>android studio多语言(中英)适配</title>
-    <url>/2020/02/14/ndroid-studio%E4%B8%AD%E8%8B%B1%E6%96%87%E9%80%82%E9%85%8D/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>strings.xml在目录res相应的value文件夹下,用来显示文本，避免硬编码，要添加新的语言支持，就要在不同的 value 文件夹下（如value 、values-zh-rCN）添加不同语言的 string.xml 文件。本文以简体中文为例,描述一下Android studio下相应strings.xml(zh-rCN)的生成方式，其他语言类似。</p>
-<a id="more"></a>
-<h3 id="手动建立文件"><a href="#手动建立文件" class="headerlink" title="手动建立文件"></a>手动建立文件</h3><p>选中res文件夹，右键New–&gt;Android Resource Directory,然后选中Locale,如下图所示：</p>
-<p><img src="/images/pasted-17.png" alt="upload successful"><br>选择相应语言和相应区域：</p>
-<p><img src="/images/pasted-18.png" alt="upload successful"><br>文件夹名称（values-zh-rCN）自动生成，最后在该文件夹生成strings.xml即可。项目视图如下：</p>
-<p><img src="/images/pasted-19.png" alt="upload successful"></p>
-<h3 id="自动生成"><a href="#自动生成" class="headerlink" title="自动生成"></a>自动生成</h3><p>打开Translations Editor（双击打开strings.xml，窗口右上角点击Open Editor），点击Add Locale，在下拉菜单中选择相应语言区域，系统会自动生成相应文件夹以及strings.xml文件。</p>
-<p><img src="/images/pasted-20.png" alt="upload successful"></p>
-<p><img src="/images/pasted-21.png" alt="upload successful"></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Java动态代理机制详解（JDK 和CGLIB，Javassist，ASM）</title>
-    <url>/2020/03/11/spring-struts2-action%E5%8D%95%E4%BE%8B%E8%BF%98%E6%98%AF%E5%A4%9A%E4%BE%8B/</url>
-    <content><![CDATA[<p>转载：**<a href="https://blog.csdn.net/luanlouis/article/details/24589193" target="_blank" rel="noopener">Java动态代理机制详解（JDK 和CGLIB，Javassist，ASM）
-</a>**</p>
 ]]></content>
   </entry>
   <entry>
@@ -2410,6 +2495,24 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get install --reinstall gnome-control-center</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
+    <title>ubuntu 开机启动管理</title>
+    <url>/2021/03/21/ubuntu-%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%AE%A1%E7%90%86/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ubuntu自启服务管理命令</p>
+<a id="more"></a>
+<p>查看开机启动服务</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl list-unit-files --type&#x3D;service|grep enabled</span><br></pre></td></tr></table></figure>
+<p>以蓝牙为例，查询蓝牙服务是否开机启动</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl is-enabled bluetooth.service</span><br></pre></td></tr></table></figure>
+<p>如果是enable开机自启动<br>如果是disable不开机启动</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl enable bluetooth.service #开机运行服务</span><br><span class="line"></span><br><span class="line">systemctl disable bluetooth.service #取消开机运行</span><br><span class="line"></span><br><span class="line">sudo systemctl disable  bluetooth.service#关闭蓝牙服务</span><br><span class="line"></span><br><span class="line">systemctl start bluetooth.service #启动服务</span><br><span class="line"></span><br><span class="line">systemctl stop bluetooth.service #停止服务</span><br><span class="line"></span><br><span class="line">systemctl restart bluetooth.service #重启服务</span><br><span class="line"></span><br><span class="line">systemctl reload bluetooth.service #重新加载服务配置文件</span><br><span class="line"></span><br><span class="line">systemctl status bluetooth.service #查询服务运行状态</span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
     <title>ubuntu terminal 打开后的默认位置和大小</title>
     <url>/2021/03/18/ubuntu-terminal-location/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>经常一边儿搜着浏览器，一边儿操作终端，这时候终端打开的默认位置大小就很重要，能节省不少步骤，下面介绍一下怎么设置。</p>
@@ -2433,21 +2536,39 @@
       </tags>
   </entry>
   <entry>
-    <title>ubuntu 开机启动管理</title>
-    <url>/2021/03/21/ubuntu-%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E7%AE%A1%E7%90%86/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ubuntu自启服务管理命令</p>
+    <title>ubuntu 开机自动挂载其他盘</title>
+    <url>/1970/01/01/ubuntu-%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E5%85%B6%E4%BB%96%E7%9B%98/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>双系统，ubuntu和win10装在同一个固态盘，还有另外一个机械盘，平时放些资料啥的，设置给ubuntu开机自动挂载另一个机械盘。</p>
 <a id="more"></a>
-<p>查看开机启动服务</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl list-unit-files --type&#x3D;service|grep enabled</span><br></pre></td></tr></table></figure>
-<p>以蓝牙为例，查询蓝牙服务是否开机启动</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl is-enabled bluetooth.service</span><br></pre></td></tr></table></figure>
-<p>如果是enable开机自启动<br>如果是disable不开机启动</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl enable bluetooth.service #开机运行服务</span><br><span class="line"></span><br><span class="line">systemctl disable bluetooth.service #取消开机运行</span><br><span class="line"></span><br><span class="line">sudo systemctl disable  bluetooth.service#关闭蓝牙服务</span><br><span class="line"></span><br><span class="line">systemctl start bluetooth.service #启动服务</span><br><span class="line"></span><br><span class="line">systemctl stop bluetooth.service #停止服务</span><br><span class="line"></span><br><span class="line">systemctl restart bluetooth.service #重启服务</span><br><span class="line"></span><br><span class="line">systemctl reload bluetooth.service #重新加载服务配置文件</span><br><span class="line"></span><br><span class="line">systemctl status bluetooth.service #查询服务运行状态</span><br></pre></td></tr></table></figure>
 
+<p>1、查询挂载硬盘UUID</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo blkid &#x2F;dev&#x2F;sda2</span><br></pre></td></tr></table></figure>
 
+<p><img src="/images/pasted-32.png" alt="upload successful"><br>Secert和WorkSpace盘信息如上，下面用到两个盘的UUID。</p>
+<p>2、打开文件&#x2F;etc&#x2F;fstab文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;fstab</span><br></pre></td></tr></table></figure>
+<p>在文档末尾添加相应磁盘的信息。格式为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[UUID&#x3D;************] [挂载磁盘分区]  [挂载磁盘格式]  0  2</span><br><span class="line"></span><br><span class="line">UUID&#x3D;4D55CFC14D016D60 &#x2F;mnt&#x2F;workspace ntfs defaults  0  2</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-33.png" alt="upload successful"><br>第一个数字：0表示开机不检查磁盘，1表示开机检查磁盘；<br>第二个数字：0表示交换分区，1代表启动分区（Linux），2表示普通分区</p>
+<p>3、重启生效</p>
 ]]></content>
       <categories>
         <category>linux</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>ubuntu 打开win10 txt中文乱码</title>
+    <url>/2021/03/19/ubuntu-%E6%89%93%E5%BC%80win10-txt%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>双系统，ubuntu打开win10的文本文件，中文乱码，明显是编码问题，记录之。</p>
+<a id="more"></a>
+
+<p>1、原因<br>ubuntu系统locale是utf-8（很多linux系统默认的locale形式），编辑的文档是GB2312或GBK形式的（Windows记事本默认保存形式，大部分编辑器也默认保存为这个形式，所以最常见），终端类型utf-8（也就是假定客户端是putty类的unicode软件）则vim打开文档后，encoding&#x3D;utf-8（locale决定的），fileencoding&#x3D;latin1（自动编码判断机制不准导致的），termencoding&#x3D;空（默认无需转换term编码），最终显示文件为乱码。</p>
+<p>2、解决办法<br>在*&#x2F;home&#x2F;user&#x2F;<em>下修改</em>.vimrc*文件（系统新装，默认情况下尚未创建）。 编辑 ~&#x2F;.vimrc 文件（ 添加如下几行即可</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set fileencodings&#x3D;utf-8,ucs-bom,gb18030,gbk,gb2312,cp936</span><br><span class="line">set termencoding&#x3D;utf-8</span><br><span class="line">set encoding&#x3D;utf-8</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>linux</category>
+        <category>ubuntu</category>
       </categories>
   </entry>
   <entry>
@@ -2472,6 +2593,16 @@
 <p>保存文件，重新登录一下账户即可。</p>
 <p><a href="https://www.cnblogs.com/FengZeng666/p/15504636.html" target="_blank" rel="noopener">Ubuntu 禁用搜狗输入法Linux版的简繁切换快捷键</a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Ubuntu20.04 标题栏实时显示上下行网速、CPU及内存使用率</title>
+    <url>/1970/01/01/ubuntu-%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E5%85%B6%E4%BB%96%E7%9B%98/</url>
+    <content><![CDATA[<p><a href="https://www.tuziang.com/combat/1106.html" target="_blank" rel="noopener">Ubuntu18.04安装indicator-sysmonitor显示CPU、网速</a></p>
+]]></content>
+      <categories>
+        <category>linux</category>
+        <category>ubuntu</category>
+      </categories>
   </entry>
   <entry>
     <title>ubuntu 桌面死机(重启gnome-shell)</title>
@@ -2500,16 +2631,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Ubuntu20.04 标题栏实时显示上下行网速、CPU及内存使用率</title>
-    <url>/1970/01/01/ubuntu-%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E5%85%B6%E4%BB%96%E7%9B%98/</url>
-    <content><![CDATA[<p><a href="https://www.tuziang.com/combat/1106.html" target="_blank" rel="noopener">Ubuntu18.04安装indicator-sysmonitor显示CPU、网速</a></p>
-]]></content>
-      <categories>
-        <category>linux</category>
-        <category>ubuntu</category>
-      </categories>
-  </entry>
-  <entry>
     <title>ubuntu登录界面美化</title>
     <url>/2021/04/14/ubuntu%E5%BC%80%E6%9C%BA%E7%95%8C%E9%9D%A2%E7%BE%8E%E5%8C%96/</url>
     <content><![CDATA[<p>**<a href="https://blog.csdn.net/vselfdom/article/details/88546349" target="_blank" rel="noopener">Ubuntu 18.04 用户登录界面优化</a>**，备用。</p>
@@ -2518,6 +2639,12 @@
         <category>linux</category>
         <category>ubuntu</category>
       </categories>
+  </entry>
+  <entry>
+    <title>java类加载</title>
+    <url>/2020/03/03/va-class/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这里贴一个介绍类加载的介绍链接：<a href="https://juejin.im/post/5dac4edff265da5b5f7588d1#heading-0" target="_blank" rel="noopener">java 的类加载</a>。<br>java9之后模块化，类加载器也跟上述文章里不一样了 。<a href="https://juejin.cn/post/6978014106892632071" target="_blank" rel="noopener">JVM - 类加载器（二）</a></p>
+]]></content>
   </entry>
   <entry>
     <title>ubuntu20.04 mysql change data directory</title>
@@ -2599,12 +2726,6 @@
 <p>For more information on managing MySQL’s data directories, check out the following sections in the official MySQL documentation:</p>
 <p><a href="https://dev.mysql.com/doc/refman/5.7/en/data-directory.html" target="_blank" rel="noopener">The MySQL Data Directory</a></p>
 <p><a href="https://dev.mysql.com/doc/refman/5.7/en/multiple-data-directories.html" target="_blank" rel="noopener">Setting Up Multiple Data Directories</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>java类加载</title>
-    <url>/2020/03/03/va-class/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这里贴一个介绍类加载的介绍链接：<a href="https://juejin.im/post/5dac4edff265da5b5f7588d1#heading-0" target="_blank" rel="noopener">java 的类加载</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -3050,28 +3171,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ubuntu 开机自动挂载其他盘</title>
-    <url>/1970/01/01/ubuntu-%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E5%85%B6%E4%BB%96%E7%9B%98/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>双系统，ubuntu和win10装在同一个固态盘，还有另外一个机械盘，平时放些资料啥的，设置给ubuntu开机自动挂载另一个机械盘。</p>
-<a id="more"></a>
-
-<p>1、查询挂载硬盘UUID</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo blkid &#x2F;dev&#x2F;sda2</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/pasted-32.png" alt="upload successful"><br>Secert和WorkSpace盘信息如上，下面用到两个盘的UUID。</p>
-<p>2、打开文件&#x2F;etc&#x2F;fstab文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vim &#x2F;etc&#x2F;fstab</span><br></pre></td></tr></table></figure>
-<p>在文档末尾添加相应磁盘的信息。格式为：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[UUID&#x3D;************] [挂载磁盘分区]  [挂载磁盘格式]  0  2</span><br><span class="line"></span><br><span class="line">UUID&#x3D;4D55CFC14D016D60 &#x2F;mnt&#x2F;workspace ntfs defaults  0  2</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/pasted-33.png" alt="upload successful"><br>第一个数字：0表示开机不检查磁盘，1表示开机检查磁盘；<br>第二个数字：0表示交换分区，1代表启动分区（Linux），2表示普通分区</p>
-<p>3、重启生效</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
-  </entry>
-  <entry>
     <title>jvm-invokeinterface</title>
     <url>/2020/03/09/vm-invokeinterface/</url>
     <content><![CDATA[<p>转载：<a href="https://blog.csdn.net/kang389110772/article/details/50723127" target="_blank" rel="noopener">Spring为什么Autowired注入的是接口
@@ -3088,18 +3187,14 @@
       </tags>
   </entry>
   <entry>
-    <title>ubuntu 打开win10 txt中文乱码</title>
-    <url>/2021/03/19/ubuntu-%E6%89%93%E5%BC%80win10-txt%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>双系统，ubuntu打开win10的文本文件，中文乱码，明显是编码问题，记录之。</p>
-<a id="more"></a>
-
-<p>1、原因<br>ubuntu系统locale是utf-8（很多linux系统默认的locale形式），编辑的文档是GB2312或GBK形式的（Windows记事本默认保存形式，大部分编辑器也默认保存为这个形式，所以最常见），终端类型utf-8（也就是假定客户端是putty类的unicode软件）则vim打开文档后，encoding&#x3D;utf-8（locale决定的），fileencoding&#x3D;latin1（自动编码判断机制不准导致的），termencoding&#x3D;空（默认无需转换term编码），最终显示文件为乱码。</p>
-<p>2、解决办法<br>在*&#x2F;home&#x2F;user&#x2F;<em>下修改</em>.vimrc*文件（系统新装，默认情况下尚未创建）。 编辑 ~&#x2F;.vimrc 文件（ 添加如下几行即可</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set fileencodings&#x3D;utf-8,ucs-bom,gb18030,gbk,gb2312,cp936</span><br><span class="line">set termencoding&#x3D;utf-8</span><br><span class="line">set encoding&#x3D;utf-8</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>linux</category>
-        <category>ubuntu</category>
-      </categories>
+    <title>vue nginx 压缩</title>
+    <url>/2022/02/10/vue-nginx-%E5%8E%8B%E7%BC%A9/</url>
+    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/qq_43363884/article/details/108195408" target="_blank" rel="noopener">vue打包时gzip压缩的两种方案</a></strong>  ,   &amp;nbsp;&amp;nbsp;<strong><a href="https://blog.csdn.net/github_38924695/article/details/108773173" target="_blank" rel="noopener">nginx中配置gzip_static on</a></strong></p>
+]]></content>
+      <tags>
+        <tag>nginx</tag>
+        <tag>vue</tag>
+      </tags>
   </entry>
   <entry>
     <title>Ubuntu中vim的粘帖复制</title>
@@ -3165,22 +3260,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>vue nginx 压缩</title>
-    <url>/2022/02/10/vue-nginx-%E5%8E%8B%E7%BC%A9/</url>
-    <content><![CDATA[<p><strong><a href="https://blog.csdn.net/qq_43363884/article/details/108195408" target="_blank" rel="noopener">vue打包时gzip压缩的两种方案</a></strong>  ,   &amp;nbsp;&amp;nbsp;<strong><a href="https://blog.csdn.net/github_38924695/article/details/108773173" target="_blank" rel="noopener">nginx中配置gzip_static on</a></strong></p>
-]]></content>
-      <tags>
-        <tag>nginx</tag>
-        <tag>vue</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>websocket --Token Authentication</title>
-    <url>/2020/06/07/websocket-Token-Authentication/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>链接：<a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#websocket-stomp-authentication" target="_blank" rel="noopener">STOMP–Token Authentication</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>websocket data transfer</title>
     <url>/1970/01/01/websocket-data-transfer/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>websocket message type： text or binary byte. And for binary data, we can choose between Blob and ArrayBuffer formats.</p>
@@ -3242,6 +3321,12 @@
       </tags>
   </entry>
   <entry>
+    <title>websocket --Token Authentication</title>
+    <url>/2020/06/07/websocket-Token-Authentication/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>链接：<a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#websocket-stomp-authentication" target="_blank" rel="noopener">STOMP–Token Authentication</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>RxJava --学习链接</title>
     <url>/2020/02/18/xJava/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Rx（Reactive Extensions）是一个使用<code>可观察数据流</code>进行<code>异步编程</code>的编程接口，ReactiveX结合了<code>观察者模式</code>、<code>迭代器模式</code>和<code>函数式编程</code>的精华。Rx的语言库比较流行的有RxJava&#x2F;RxJS&#x2F;Rx.NET，这里贴一些有关RxJava的链接，以便后续查找。</p>
@@ -3256,9 +3341,16 @@
       </tags>
   </entry>
   <entry>
-    <title>你真的会用Gson吗?Gson使用指南（一）</title>
-    <url>/2021/12/23/%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BC%9A%E7%94%A8Gson%E5%90%97-Gson%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%EF%BC%88%E4%B8%80%EF%BC%89/</url>
-    <content><![CDATA[<p><strong><a href="https://www.jianshu.com/p/e740196225a4" target="_blank" rel="noopener">你真的会用Gson吗?Gson使用指南（一）</a></strong>&amp;nbsp;&amp;nbsp;<strong><a href="https://blog.csdn.net/majalis_c/article/details/79801863?utm_term=gsonjsonobject%E8%BD%ACstring&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-0-79801863&spm=3001.4430" target="_blank" rel="noopener">Gson基本操作，JsonObject，JsonArray，String，JavaBean，List互转</a></strong></p>
+    <title>什么是公钥和私钥？</title>
+    <url>/2023/10/05/%E4%BB%80%E4%B9%88%E6%98%AF%E5%85%AC%E9%92%A5%E5%92%8C%E7%A7%81%E9%92%A5%EF%BC%9F/</url>
+    <content><![CDATA[<p><a href="https://www.ledger.com/zh-hans/academy/blockchain/%E4%BB%80%E4%B9%88%E6%98%AF%E5%85%AC%E9%92%A5%E5%92%8C%E7%A7%81%E9%92%A5" target="_blank" rel="noopener">什么是公钥和私钥？</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>【uni-app】小程序实现微信授权登陆（附流程图）</title>
+    <url>/2023/03/10/%E3%80%90uni-app%E3%80%91%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AE%9E%E7%8E%B0%E5%BE%AE%E4%BF%A1%E6%8E%88%E6%9D%83%E7%99%BB%E9%99%86%EF%BC%88%E9%99%84%E6%B5%81%E7%A8%8B%E5%9B%BE%EF%BC%89/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/haidong55/article/details/124559209" target="_blank" rel="noopener">【uni-app】小程序实现微信授权登陆（附流程图）</a>、<a href="https://blog.csdn.net/qq_43576866/article/details/113126676" target="_blank" rel="noopener">【uni-app】uni-app微信小程序授权登录（详细总结）
+</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -3268,21 +3360,39 @@
 ]]></content>
   </entry>
   <entry>
+    <title>前端请求Connection Start, Stalled时间过长</title>
+    <url>/2024/08/07/%E5%89%8D%E7%AB%AF%E8%AF%B7%E6%B1%82Connection-Start-Stalled%E6%97%B6%E9%97%B4%E8%BF%87%E9%95%BF/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这两天发现前端页面长时间不操作后，第一次的请求偶尔会长达3、4秒，后续请求则正常。</p>
+<a id="more"></a>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>chrome debug network timing ,发现是Stalled耗时太久，如下图所示：</p>
+<p><img src="/%5Cimages%5Cpasted-70.png" alt="upload successful"><br>网上关于Stalled的解释很多，这里不再赘述。第一个反应是http版本的原因，但当时只有一个请求，不应该是并发导致的，本着试试也没差的态度，先升级到http2再说。</p>
+<h3 id="nginx配置http2"><a href="#nginx配置http2" class="headerlink" title="nginx配置http2"></a>nginx配置http2</h3><p>由于是已有的项目，nginx需要重新编译添加ngx_http_v2_module模块, 具体可以参考如下：<br><a href="https://segmentfault.com/a/1190000044036143" target="_blank" rel="noopener">Nginx—已安装了nginx，如何启用http2.0协议</a>。安装完毕后，修改conf配置，添加http2支持。<br><img src="/%5Cimages%5Cpasted-71.png" alt="upload successful"><br>重新载入，service nginx reload，查看chrome，已是http2<br><img src="/%5Cimages%5Cpasted-73.png" alt="upload successful">但是，Stalled阶段耗时太久的问题，还是会偶尔发生。</p>
+<h3 id="chrome日志"><a href="#chrome日志" class="headerlink" title="chrome日志"></a>chrome日志</h3><p>一开始想着用wireshark抓包，后来发现chrome自带的抓包日志挺好用的。chrome里打开 chrome:&#x2F;&#x2F;net-export&#x2F;，参数默认，选择好日志文件名后，点击开始记录，回到前端项目发送请求（由于是偶发的时间过长，重复了多次才捕捉到一回耗时太久的请求）。然后打开<code>https://netlog-viewer.appspot.com/</code>(需要科学上网)，import刚刚生成的日志文件，如下图所示：</p>
+<p><img src="/%5Cimages%5Cpasted-74.png" alt="upload successful"><br>点击左侧的Events,可以看到刚刚记录的所有请求，找到前端项目的那个请求，可以看到它的各个任务的耗时，</p>
+<p><img src="/%5Cimages%5Cpasted-75.png" alt="upload successful">，参考<a href="https://blog.csdn.net/u010793461/article/details/109194973" target="_blank" rel="noopener">chrome Stalled时间过长</a>里对日志的解读方式，日志第一列为时间线，自请求发起时算。 第二列为每步操作所逝去的时间，时间差的概念，与第三列里面的dt不同，它会积累前面的耗时。 第三列为具体的事件，以及相应事件的耗时dt，此耗时为绝对耗时。这里主要看st以及后面的dt耗时就行。如图所示，本次请求耗时4407ms，其中<br><img src="/%5Cimages%5Cpasted-76.png" alt="upload successful">这里就耗时4015ms，可以根据层层包裹的ID，一直追踪到ID为131808的事件耗时3970ms</p>
+<p><img src="/%5Cimages%5Cpasted-77.png" alt="upload successful"><br>打开131808: HOST_RESOLVER_IMPL_JOB，查看详细日志，如下图：</p>
+<p><img src="/%5Cimages%5Cpasted-78.png" alt="upload successful"><br>到这里猜测是DNS解析的时候出了问题。</p>
+<h3 id="DNS解析"><a href="#DNS解析" class="headerlink" title="DNS解析"></a>DNS解析</h3><p>输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dig +trace +nodnssec time.geekbang.org</span><br></pre></td></tr></table></figure>
+<p>如何解读可以参考下面的连接。尝试多次，基本上十次里有两三次带有超时，就是通过IPV6地址连接DNS服务器ns1.dns-diy.com与ns2.dns-diy.com，然后本地ping这两个DNS服务器，有时正常，有时就ping不通。</p>
+<p><img src="/%5Cimages/pasted-79.png" alt="upload successful"><br>换了其他网络的服务器，执行同样的命令，则一直正常，如下：</p>
+<p><img src="/%5Cimages/pasted-80.png" alt="upload successful"><br>到了这里怀疑是我本地网络（杭州联通）的原因，后续再追查下</p>
+<p>参考：<a href="https://blog.csdn.net/xixihahalelehehe/article/details/119218996" target="_blank" rel="noopener">DNS解析命令</a></p>
+]]></content>
+      <tags>
+        <tag>运维</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>二叉树</title>
     <url>/2021/02/04/%E5%8F%89%E6%A0%91/</url>
     <content><![CDATA[<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><p><a href="https://www.kukuxiaai.com/blog/2019-07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E6%A0%91/" target="_blank" rel="noopener">数据结构与算法-树</a></p>
 ]]></content>
   </entry>
   <entry>
-    <title>微信内置浏览器缓存清理</title>
-    <url>/2022/03/30/%E5%BE%AE%E4%BF%A1%E5%86%85%E7%BD%AE%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E6%B8%85%E7%90%86/</url>
-    <content><![CDATA[<p>单页面应用在微信浏览器里是个巨坑，它会缓存你的index.html，导致版本更新失效…</p>
-<a id="more"></a>
-
-
-
-<p> 调试时，可以手动清除微信缓存， 在安卓版微信内打开链接  <em><a href="http://debugtbs.qq.com/" target="_blank" rel="noopener">http://debugtbs.qq.com</a></em><br> 按照它提示的再打开<em>debugmm.qq.com&#x2F;?forcex5&#x3D;true</em>，再重新打开<em><a href="http://debugtbs.qq.com/" target="_blank" rel="noopener">http://debugtbs.qq.com</a></em>，点击清楚本地缓存….</p>
-<p><a href="https://blog.csdn.net/weixin_40136189/article/details/81485171" target="_blank" rel="noopener">微信内置浏览器缓存清理</a></p>
+    <title>你真的会用Gson吗?Gson使用指南（一）</title>
+    <url>/2021/12/23/%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BC%9A%E7%94%A8Gson%E5%90%97-Gson%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<p><strong><a href="https://www.jianshu.com/p/e740196225a4" target="_blank" rel="noopener">你真的会用Gson吗?Gson使用指南（一）</a></strong>&amp;nbsp;&amp;nbsp;<strong><a href="https://blog.csdn.net/majalis_c/article/details/79801863?utm_term=gsonjsonobject%E8%BD%ACstring&utm_medium=distribute.pc_aggpage_search_result.none-task-blog-2~all~sobaiduweb~default-0-79801863&spm=3001.4430" target="_blank" rel="noopener">Gson基本操作，JsonObject，JsonArray，String，JavaBean，List互转</a></strong></p>
 ]]></content>
   </entry>
   <entry>
@@ -3298,6 +3408,18 @@
     <title>查找算法</title>
     <url>/2021/02/23/%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<p><a href="https://www.cnblogs.com/yw09041432/p/5908444.html" target="_blank" rel="noopener">七大查找算法</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>微信内置浏览器缓存清理</title>
+    <url>/2022/03/30/%E5%BE%AE%E4%BF%A1%E5%86%85%E7%BD%AE%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E6%B8%85%E7%90%86/</url>
+    <content><![CDATA[<p>单页面应用在微信浏览器里是个巨坑，它会缓存你的index.html，导致版本更新失效…</p>
+<a id="more"></a>
+
+
+
+<p> 调试时，可以手动清除微信缓存， 在安卓版微信内打开链接  <em><a href="http://debugtbs.qq.com/" target="_blank" rel="noopener">http://debugtbs.qq.com</a></em><br> 按照它提示的再打开<em>debugmm.qq.com&#x2F;?forcex5&#x3D;true</em>，再重新打开<em><a href="http://debugtbs.qq.com/" target="_blank" rel="noopener">http://debugtbs.qq.com</a></em>，点击清楚本地缓存….</p>
+<p><a href="https://blog.csdn.net/weixin_40136189/article/details/81485171" target="_blank" rel="noopener">微信内置浏览器缓存清理</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -3351,6 +3473,15 @@
 <p>现在就可以执行这个文件了 .&#x2F;woeusb-5.2.4.bash 可以看到命令提示，只需要制定一个windows镜像文件地址 和 u盘的位置即可</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo fdisk -l #查看U盘</span><br><span class="line">umount &#x2F;dev&#x2F;sdb  #卸载u盘</span><br><span class="line">sudo mkfs.ntfs -F &#x2F;dev&#x2F;sdb #格式化U盘</span><br><span class="line">sudo .&#x2F;woeusb-5.2.4.bash --device &#39;WinPE.iso&#39;  &#x2F;dev&#x2F;sdb  --tgt-fs  NTFS #刻盘</span><br></pre></td></tr></table></figure>
 <h3 id="WIN10-引导修复"><a href="#WIN10-引导修复" class="headerlink" title="WIN10 引导修复"></a>WIN10 引导修复</h3><p>拿着刻好的U盘，重新开机，狂按F12,进入WINPE，接来下的修复过程，严格参照下面的链接（C盘和D盘，我的也是反着的）<br><a href="https://blog.csdn.net/A_Sen_A/article/details/89545311" target="_blank" rel="noopener">win10 UEFI引导恢复</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>谈谈Java的classpath </title>
+    <url>/2023/03/05/%E8%B0%88%E8%B0%88Java%E7%9A%84classpath/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/LDZZDL/p/9081594.html" target="_blank" rel="noopener">谈谈Java的classpath </a></p>
+<a id="more"></a>
+
+<p>可打印classpath查看：<br> System.out.println(System.getProperty(“java.class.path”));</p>
 ]]></content>
   </entry>
 </search>
